@@ -189,8 +189,16 @@ def use_item(line, inventory, room, history):
 
 
 def save_history(line, history):
-    for entry in history:
-        print(entry)
+    try:
+        f = open('history.txt', 'w')
+
+        for entry in history:
+            f.write(entry + '\n')
+
+        f.close()
+        print('Historia bola ulozena')
+    except PermissionError:
+        print('Subor s  historiou sa nepodarilo ulozit: nedostatocne prava.')
 
 
 def play_game():
