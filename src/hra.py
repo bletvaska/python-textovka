@@ -67,7 +67,7 @@ def show_room(room):
         print("Nevidím tu nič zaujímavé.")
 
 
-def take_item(line, inventory, room):
+def take_item(line, inventory, room, history):
     cmd = line.split(maxsplit=1)
 
     if len(cmd) == 1:
@@ -87,13 +87,14 @@ def take_item(line, inventory, room):
                     room['items'].remove(item)
                     inventory.append(item)
                     print(f'Do batohu si si vložil predmet {name}.')
+                    history.append(line)
 
                 break
         else:
             print("taký predmet tu nikde nevidim.")
 
 
-def drop_item(line, inventory, room):
+def drop_item(line, inventory, room, history):
     cmd = line.split(maxsplit=1)
 
     if len(cmd) == 1:
@@ -105,6 +106,7 @@ def drop_item(line, inventory, room):
                 inventory.remove(item)
                 room['items'].append(item)
                 print(f'Položil si predmet {name}.')
+                history.append(line)
                 break
         else:
             print("Taký predmet u seba nemáš.")
@@ -157,7 +159,7 @@ def use_kava(item, inventory, room):
                 print('ponukol si kavou instruktora. usmial sa. asi si jeho typ.')
 
 
-def use_item(line, inventory, room):
+def use_item(line, inventory, room, history):
     cmd = line.split(maxsplit=1)
 
     if len(cmd) == 1:
@@ -168,6 +170,7 @@ def use_item(line, inventory, room):
         for item in inventory + room['items']:
             if name == item['name']:
                 if 'usable' in item['features']:
+                    history.append(line)
                     if name == 'spekacky':
                         use_spekacky(item, inventory, room)
                     elif name == 'kluc':
@@ -185,6 +188,11 @@ def use_item(line, inventory, room):
             print('Taky predmet tu nikde nevidim')
 
 
+def save_history(line, history):
+    for entry in history:
+        print(entry)
+
+
 def play_game():
     inventory = [
         {
@@ -200,6 +208,8 @@ def play_game():
         }
     ]
 
+    history = []
+
     line = None
     location = "l4"
     show_room(world[location])
@@ -212,6 +222,7 @@ def play_game():
             if line in world[location]["exits"]:
                 location = line
                 show_room(world[location])
+                history.append(line)
             else:
                 print("Tam sa neda ist.")
 
@@ -233,13 +244,16 @@ def play_game():
             examine_item(line, inventory, world[location])
 
         elif line.startswith("vezmi"):
-            take_item(line, inventory, world[location])
+            take_item(line, inventory, world[location], history)
 
         elif line.startswith("poloz"):
-            drop_item(line, inventory, world[location])
+            drop_item(line, inventory, world[location], history)
 
         elif line.startswith("pouzi"):
-            use_item(line, inventory, world[location])
+            use_item(line, inventory, world[location], history)
+
+        elif line.startswith("uloz"):
+            save_history(line, history)
 
         else:
             print("tam sa neda ist")
