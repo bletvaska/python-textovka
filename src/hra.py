@@ -74,7 +74,7 @@ def show_inventory(inventory):
         print("V batohu mas: " + ', '.join(items))
 
 
-def take_item(room, inventory, line):
+def take_item(room, inventory, line, history):
     cmd = line.split(maxsplit=1)
     if len(cmd) == 1:
         print("Ta ja neznám čo chceš zobrať.")
@@ -92,13 +92,14 @@ def take_item(room, inventory, line):
                     room['items'].remove(item)
                     inventory.append(item)
                     print(f'Z miestnosti si vzal predmet {name}.')
+                    history.append(line)
 
                 break
         else:
             print("Taký predmet tu nikde nevidím.")
 
 
-def drop_item(room, inventory, line):
+def drop_item(room, inventory, line, history):
     cmd = line.split(maxsplit=1)
     if len(cmd) == 1:
         print("Ta ja neznám čo chceš položiť.")
@@ -109,6 +110,7 @@ def drop_item(room, inventory, line):
                 inventory.remove(item)
                 room['items'].append(item)
                 print(f'Položil si predmet {name}.')
+                history.append(line)
                 break
         else:
             print("Taký predmet u seba nemáš.")
@@ -166,7 +168,7 @@ def use_kava(item, inventory, room):
         print('Tak neni koho ponuknut touto kavou.')
 
 
-def use_item(room, inventory, line):
+def use_item(room, inventory, line, history):
     cmd = line.split(maxsplit=1)
 
     if len(cmd) == 1:
@@ -185,11 +187,30 @@ def use_item(room, inventory, line):
                         use_ovladac(item, inventory, room)
                     elif name == 'kava':
                         use_kava(item, inventory, room)
+                    history.append(line)
                 else:
                     print('Tento predmet sa neda pouzit')
                 break
         else:
             print('Taky predmet tu nikde nevidim')
+
+
+def save_history(line, history):
+    try:
+        f = open('history.csv', 'w')
+
+        for entry in history:
+            f.write(f'{entry}\n')
+
+        f.close()
+
+        print('Historia bola uspesne ulozena.')
+    except PermissionError:
+        print('Chyba: Nemas dostatocne prava na ulozenie suboru.')
+    except FileNotFoundError:
+        print('Chyba: Uvedena cesta k suboru neexistuje.')
+    except Exception:
+        print('Chyba: Subor sa nepodarilo ulozit.')
 
 
 def play_game():
@@ -218,6 +239,7 @@ def play_game():
     location = "garaz"
     show_room(world[location])
     line = None
+    history = []
 
     while line != "koniec":
         line = input("> ")
@@ -227,6 +249,7 @@ def play_game():
             if line in world[location]["exits"]:
                 location = line
                 show_room(world[location])
+                history.append(line)
             else:
                 print("Tam sa neda ist")
 
@@ -247,13 +270,16 @@ def play_game():
             examine_item(world[location], inventory, line)
 
         elif line.startswith("vezmi"):
-            take_item(world[location], inventory, line)
+            take_item(world[location], inventory, line, history)
 
         elif line.startswith("poloz"):
-            drop_item(world[location], inventory, line)
+            drop_item(world[location], inventory, line, history)
 
         elif line.startswith("pouzi"):
-            use_item(world[location], inventory, line)
+            use_item(world[location], inventory, line, history)
+
+        elif line.startswith("uloz"):
+            save_history(line, history)
 
         else:
             print("taky prikaz nepoznam")
