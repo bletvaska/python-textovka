@@ -4,13 +4,17 @@ world = {
     'pred jaskynou': {
         'name': 'pred jaskynou',
         'description': "Stojis pred vchodom do tajomnej jaskyne. Jaskyna nevesti nic dobre.",
-        'exits': 'vychod'
+        'exits': {
+            'vychod': 'v jaskyni'
+        }
     },
 
     'v jaskyni': {
         'name': 'v jaskyni',
         'description': 'Stojis v temnej jaskyni. Uz aj tak mizernu viditelnost znizuju este pavuciny, ktorych je tu teda riadna kopa.',
-        'exits': 'zapad'
+        'exits': {
+            'zapad': 'pred jaskynou'
+        }
     }
 }
 
@@ -45,9 +49,14 @@ while answer != 'koniec':
         print('ta diky ze si si zahral tuto mocnu hru, lebo je fakt mocna.')
 
     elif answer == 'vychod':
-        current_room = 'v jaskyni'
-        print(world[current_room]['description'])
-        print('Mozes ist na ', world[current_room]['exits'])
+        room = world[current_room]
+
+        if 'vychod' in room['exits']:
+            current_room = room['exits']['vychod']
+            print(world[current_room]['description'])
+            print('Mozes ist na ', world[current_room]['exits'])
+        else:
+            print('tam sa neda ist')
 
     else:
         print('ta taky prikaz nepoznam')
