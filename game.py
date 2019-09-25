@@ -58,5 +58,35 @@ while answer != 'koniec':
         else:
             print('tam sa neda ist')
 
+    elif answer == 'zapad':
+        room = world[current_room]
+
+        if 'zapad' in room['exits']:
+            current_room = room['exits']['zapad']
+            print(world[current_room]['description'])
+            print('Mozes ist na ', world[current_room]['exits'])
+        else:
+            print('tam sa neda ist')
+
+    elif answer == 'sever':
+        room = world[current_room]
+
+        if 'sever' in room['exits']:
+            current_room = room['exits']['sever']
+            print(world[current_room]['description'])
+            print('Mozes ist na ', world[current_room]['exits'])
+        else:
+            print('tam sa neda ist')
+
+    elif answer == 'juh':
+        room = world[current_room]
+
+        if 'juh' in room['exits']:
+            current_room = room['exits']['juh']
+            print(world[current_room]['description'])
+            print('Mozes ist na ', world[current_room]['exits'])
+        else:
+            print('tam sa neda ist')
+
     else:
         print('ta taky prikaz nepoznam')
