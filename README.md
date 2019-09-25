@@ -4,3 +4,4 @@ Introduction to python by creating the text based adventure game (interactive fi
 
 * location: FPT KE
 * time: september 2019
+
