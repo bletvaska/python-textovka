@@ -71,5 +71,15 @@ while answer != 'koniec':
         else:
             print('tam sa neda ist')
 
+    elif answer == 'dolu':
+        room = world[current_room]
+
+        if 'dolu' in room['exits']:
+            current_room = room['exits']['dolu']
+            print(world[current_room]['description'])
+            print('Mozes ist na ', world[current_room]['exits'])
+        else:
+            print('tam sa neda ist')
+
     else:
         print('ta taky prikaz nepoznam')
