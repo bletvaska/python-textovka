@@ -12,6 +12,15 @@ def show_room(room):
         print('Z miestnosti nevedú žiadne východy.')
 
 
+def show_inventory(backpack):
+    if len(backpack) > 0:
+        print('V batohu máš:')
+        for item in backpack:
+            print(f'     {item["name"]}')
+    else:
+        print('Batoh je prázdny.')
+
+
 current_room = 'pred jaskynou'
 backpack = [
     {
@@ -90,7 +99,7 @@ while answer != 'koniec':
             print('tam sa neda ist')
 
     elif answer == 'inventar':
-        pass
+        show_inventory(backpack)
 
 
     else:

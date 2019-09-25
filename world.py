@@ -4,7 +4,8 @@ world = {
         'description': "Stojis pred vchodom do tajomnej jaskyne. Jaskyna nevesti nic dobre.",
         'exits': {
             'vychod': 'v jaskyni'
-        }
+        },
+        'items': []
     },
 
     'v jaskyni': {
@@ -13,7 +14,8 @@ world = {
         'exits': {
             'zapad': 'pred jaskynou',
             'vychod': 'nad priepastou'
-        }
+        },
+        'items': []
     },
 
     'nad priepastou': {
@@ -23,13 +25,15 @@ world = {
             'zapad': 'v jaskyni',
             'dolu': 'priepast',
             'vychod': 'chram'
-        }
+        },
+        'items': []
     },
 
     'priepast': {
         'name': 'priepast',
         'description': 'Dno priepaste posiate kostrami rozlicneho vzrastu. Zrejme sa jedna o nahodnych turistov, ktori svoj vylet nestihli dokoncit. Alebo len preskocit.',
-        'exits': {}
+        'exits': {},
+        'items': []
     },
 
     'chram':{
@@ -37,6 +41,12 @@ world = {
         'description': 'Rozlahla miestnost, v strede ktorej sa nachadza oltar, na ktorom je este stale umiestneny ciel tvojej cesty: Golden Idol.',
         'exits': {
             'zapad': 'nad priepastou'
-        }
+        },
+        'items': [
+            {
+                'name': 'zlata soska',
+                'description': 'Zlata soska, medzi ucastnikmi kurzu tiez znama aj ako Golden Idol. Sen nejedneho archeologa. Cela zo zlata a vazi hadam aj zo 10 kil. To by bolo prachov...'
+            }
+        ]
     }
 }
