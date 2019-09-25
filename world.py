@@ -38,6 +38,5 @@ world = {
         'exits': {
             'zapad': 'nad priepastou'
         }
-
     }
 }

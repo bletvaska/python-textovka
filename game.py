@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 from world import world
 
+
+def show_room(room):
+    print(room['description'])
+    print('Mozes ist na ', room['exits'])
+
+
 current_room = 'pred jaskynou'
 
 print("Indiana Jones")
-
-print(world[current_room]['description'])
-print('Mozes ist na ', world[current_room]['exits'])
-
+show_room(world[current_room])
 
 answer = None
 
@@ -15,8 +18,7 @@ while answer != 'koniec':
     answer = input('> ').strip().lower()
 
     if answer == 'rozhliadni sa':
-        print(world[current_room]['description'])
-        print('Mozes ist na ', world[current_room]['exits'])
+        show_room(world[current_room])
 
     elif answer == 'o hre':
         print(
@@ -36,8 +38,7 @@ while answer != 'koniec':
 
         if 'vychod' in room['exits']:
             current_room = room['exits']['vychod']
-            print(world[current_room]['description'])
-            print('Mozes ist na ', world[current_room]['exits'])
+            show_room(world[current_room])
         else:
             print('tam sa neda ist')
 
@@ -46,8 +47,7 @@ while answer != 'koniec':
 
         if 'zapad' in room['exits']:
             current_room = room['exits']['zapad']
-            print(world[current_room]['description'])
-            print('Mozes ist na ', world[current_room]['exits'])
+            show_room(world[current_room])
         else:
             print('tam sa neda ist')
 
@@ -56,8 +56,7 @@ while answer != 'koniec':
 
         if 'sever' in room['exits']:
             current_room = room['exits']['sever']
-            print(world[current_room]['description'])
-            print('Mozes ist na ', world[current_room]['exits'])
+            show_room(world[current_room])
         else:
             print('tam sa neda ist')
 
@@ -66,8 +65,7 @@ while answer != 'koniec':
 
         if 'juh' in room['exits']:
             current_room = room['exits']['juh']
-            print(world[current_room]['description'])
-            print('Mozes ist na ', world[current_room]['exits'])
+            show_room(world[current_room])
         else:
             print('tam sa neda ist')
 
@@ -76,8 +74,7 @@ while answer != 'koniec':
 
         if 'dolu' in room['exits']:
             current_room = room['exits']['dolu']
-            print(world[current_room]['description'])
-            print('Mozes ist na ', world[current_room]['exits'])
+            show_room(world[current_room])
         else:
             print('tam sa neda ist')
 
