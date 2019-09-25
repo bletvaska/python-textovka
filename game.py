@@ -13,6 +13,12 @@ def show_room(room):
 
 
 current_room = 'pred jaskynou'
+backpack = [
+    {
+        'name': 'bic',
+        'description': 'Ta mocny bic na krotenie levov, ktory si si zohnal ako mlady chalanisko v tretej casti serie.'
+    }
+]
 
 print("Indiana Jones")
 show_room(world[current_room])
@@ -82,6 +88,10 @@ while answer != 'koniec':
             show_room(world[current_room])
         else:
             print('tam sa neda ist')
+
+    elif answer == 'inventar':
+        pass
+
 
     else:
         print('ta taky prikaz nepoznam')
