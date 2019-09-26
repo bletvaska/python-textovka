@@ -14,7 +14,8 @@ def main():
     ]
 
     print("Indiana Jones")
-    show_room(world[current_room])
+    cmd = LookAround()
+    cmd.exec(world[current_room])
 
     answer = None
 
@@ -22,7 +23,8 @@ def main():
         answer = input('> ').strip().lower()
 
         if answer == 'rozhliadni sa':
-            show_room(world[current_room])
+            cmd = LookAround()
+            cmd.exec(world[current_room])
 
         elif answer == 'o hre':
             cmd = About()

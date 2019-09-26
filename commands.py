@@ -1,5 +1,4 @@
 class About:
-
     def __init__(self):
         self._name = 'o hre'
         self._description = 'Túto hru spáchal mirek v roku 2019. Celkom fajnú.'
@@ -8,27 +7,30 @@ class About:
         print(self._description)
 
 
+class LookAround:
+    def __init__(self):
+        self._name = 'rozhliadni sa'
+        self._description = 'Vypíše opis miestnosti.'
 
+    def exec(self, room: dict):
+        # show description
+        print(room['description'])
 
-def show_room(room: dict):
-    # show description
-    print(room['description'])
+        # show exits
+        if len(room['exits']) > 0:
+            print('Možné východy:')
+            for exit in room['exits']:
+                print(f"    {exit}")
+        else:
+            print('Z miestnosti nevedú žiadne východy.')
 
-    # show exits
-    if len(room['exits']) > 0:
-        print('Možné východy:')
-        for exit in room['exits']:
-            print(f"    {exit}")
-    else:
-        print('Z miestnosti nevedú žiadne východy.')
-
-    # show items
-    if len(room['items']) > 0:
-        print('Vidíš:')
-        for item in room['items']:
-            print(f'     {item["name"]}')
-    else:
-        print('Nevidíš nič zvláštne.')
+        # show items
+        if len(room['items']) > 0:
+            print('Vidíš:')
+            for item in room['items']:
+                print(f'     {item["name"]}')
+        else:
+            print('Nevidíš nič zvláštne.')
 
 
 def show_inventory(backpack: list):
