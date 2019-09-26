@@ -8,4 +8,4 @@ Introduction to python by creating the text based adventure game (interactive fi
 
 ## Diagram tried
 
-![Diagram tried](http://yuml.me/ki/diagram/scruffy;scale:180/class/edit/[Room|-description;-exits;-name;-items], [Item|-description;-name]a)
+![Diagram tried](http://yuml.me/ki/Textovka.png)
