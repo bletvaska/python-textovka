@@ -8,7 +8,8 @@ def main():
     backpack = [
         {
             'name': 'bic',
-            'description': 'Ta mocny bic na krotenie levov, ktory si si zohnal ako mlady chalanisko v tretej casti serie.'
+            'description': 'Ta mocny bic na krotenie levov, ktory si si zohnal ako mlady chalanisko v tretej casti serie.',
+            'features': ['movable']
         }
     ]
 

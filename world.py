@@ -21,12 +21,18 @@ world = {
     'nad priepastou': {
         'name': 'nad priepastou',
         'description': 'Okrem pavucin a nahodne skakjucich tarantul tu nie je nic zaujimave. Pokial za zaujimave nepokladas tu priepast, ktora zabera vacsinu vyhladu v tejto miestnosti.',
-        'exits':{
+        'exits': {
             'zapad': 'v jaskyni',
             'dolu': 'priepast',
             'vychod': 'chram'
         },
-        'items': []
+        'items': [
+            {
+                'name': 'konar',
+                'description': 'Mocný konár visiaci zo stropu nad priepasťou. Hrubý a pevný.',
+                'features': []
+            }
+        ]
     },
 
     'priepast': {
@@ -36,7 +42,7 @@ world = {
         'items': []
     },
 
-    'chram':{
+    'chram': {
         'name': 'chram',
         'description': 'Rozlahla miestnost, v strede ktorej sa nachadza oltar, na ktorom je este stale umiestneny ciel tvojej cesty: Golden Idol.',
         'exits': {
@@ -45,7 +51,8 @@ world = {
         'items': [
             {
                 'name': 'zlata soska',
-                'description': 'Zlata soska, medzi ucastnikmi kurzu tiez znama aj ako Golden Idol. Sen nejedneho archeologa. Cela zo zlata a vazi hadam aj zo 10 kil. To by bolo prachov...'
+                'description': 'Zlata soska, medzi ucastnikmi kurzu tiez znama aj ako Golden Idol. Sen nejedneho archeologa. Cela zo zlata a vazi hadam aj zo 10 kil. To by bolo prachov...',
+                'features': ['movable']
             }
         ]
     }

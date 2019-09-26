@@ -1,4 +1,4 @@
-def show_room(room):
+def show_room(room: dict):
     # show description
     print(room['description'])
 
@@ -19,7 +19,7 @@ def show_room(room):
         print('Nevidíš nič zvláštne.')
 
 
-def show_inventory(backpack):
+def show_inventory(backpack: list):
     if len(backpack) > 0:
         print('V batohu máš:')
         for item in backpack:
@@ -60,7 +60,7 @@ def quit():
     print('ta diky ze si si zahral tuto mocnu hru, lebo je fakt mocna.')
 
 
-def east(world, current_room):
+def east(world: dict, current_room: str):
     """
     Enter the room on east from current room.
     If there is no exit to the east, then no change. The new room will be returned from the function.
@@ -79,7 +79,7 @@ def east(world, current_room):
     return current_room
 
 
-def west(world, current_room):
+def west(world: dict, current_room: str):
     room = world[current_room]
 
     if 'zapad' in room['exits']:
@@ -91,7 +91,7 @@ def west(world, current_room):
     return current_room
 
 
-def north(world, current_room):
+def north(world: dict, current_room: str):
     room = world[current_room]
 
     if 'sever' in room['exits']:
@@ -103,7 +103,7 @@ def north(world, current_room):
     return current_room
 
 
-def south(world, current_room):
+def south(world: dict, current_room: str):
     room = world[current_room]
 
     if 'juh' in room['exits']:
@@ -115,7 +115,7 @@ def south(world, current_room):
     return current_room
 
 
-def down(world, current_room):
+def down(world: dict, current_room: str):
     room = world[current_room]
 
     if 'dolu' in room['exits']:
@@ -127,7 +127,7 @@ def down(world, current_room):
     return current_room
 
 
-def drop_item(world, current_room, backpack, name):
+def drop_item(world: dict, current_room: str, backpack: list, name: str):
     room = world[current_room]
     for item in backpack:
         if item['name'] == name:
@@ -139,7 +139,7 @@ def drop_item(world, current_room, backpack, name):
         print('Taký predmet u seba nemáš.')
 
 
-def take_item(world, current_room, backpack, name):
+def take_item(world: dict, current_room: str, backpack: list, name: str):
     room = world[current_room]
     for item in room['items']:
         if item['name'] == name:
@@ -155,7 +155,7 @@ def take_item(world, current_room, backpack, name):
         print('Taký predmet tu nikde nevidím.')
 
 
-def examine_item(world, current_room, backpack, name):
+def examine_item(world: dict, current_room: str, backpack: list, name: str):
     room = world[current_room]
     items = room['items'] + backpack
 
