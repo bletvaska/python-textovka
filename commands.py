@@ -24,7 +24,7 @@ class Command:
         self._name = name
         self._description = description
 
-    def exec(self, current_room, world, backpack):
+    def exec(self, current_room:str, world:dict, backpack:list):
         pass
 
 
@@ -88,117 +88,153 @@ class Commands(Command):
         print('\n'.join(cmds))
 
 
-def quit():
-    print('ta diky ze si si zahral tuto mocnu hru, lebo je fakt mocna.')
+class Commands(Command):
+    def __init__(self):
+        super().__init__('koniec', 'Ukončí hru.')
+
+    def exec(self, current_room, world, backpack):
+        print('ta diky ze si si zahral tuto mocnu hru, lebo je fakt mocna.')
 
 
-def east(world: dict, current_room: str):
-    """
-    Enter the room on east from current room.
-    If there is no exit to the east, then no change. The new room will be returned from the function.
-    :param world: the world the player is in
-    :param current_room: the name of current room player is in
-    :return: the name of new room on the east
-    """
-    room = world[current_room]
+class East(Command):
+    def __init__(self):
+        super().__init__("vychod", "Presunie sa na vychod.")
 
-    if 'vychod' in room['exits']:
-        current_room = room['exits']['vychod']
-        show_room(world[current_room])
-    else:
-        print('tam sa neda ist')
+    def exec(self, current_room:str, world:dict, backpack:list):
+        """
+        Enter the room on east from current room.
+        If there is no exit to the east, then no change. The new room will be returned from the function.
+        :param world: the world the player is in
+        :param current_room: the name of current room player is in
+        :return: the name of new room on the east
+        """
+        room = world[current_room]
 
-    return current_room
+        if 'vychod' in room['exits']:
+            current_room = room['exits']['vychod']
+            show_room(world[current_room])
+        else:
+            print('tam sa neda ist')
 
-
-def west(world: dict, current_room: str):
-    room = world[current_room]
-
-    if 'zapad' in room['exits']:
-        current_room = room['exits']['zapad']
-        show_room(world[current_room])
-    else:
-        print('tam sa neda ist')
-
-    return current_room
+        return current_room
 
 
-def north(world: dict, current_room: str):
-    room = world[current_room]
+class West(Command):
+    def __init__(self):
+        super().__init__("zapad", "Presunie sa na západ.")
 
-    if 'sever' in room['exits']:
-        current_room = room['exits']['sever']
-        show_room(world[current_room])
-    else:
-        print('tam sa neda ist')
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
 
-    return current_room
+        if 'zapad' in room['exits']:
+            current_room = room['exits']['zapad']
+            show_room(world[current_room])
+        else:
+            print('tam sa neda ist')
 
-
-def south(world: dict, current_room: str):
-    room = world[current_room]
-
-    if 'juh' in room['exits']:
-        current_room = room['exits']['juh']
-        show_room(world[current_room])
-    else:
-        print('tam sa neda ist')
-
-    return current_room
+        return current_room
 
 
-def down(world: dict, current_room: str):
-    room = world[current_room]
+class North(Command):
+    def __init__(self):
+        super().__init__("sever", "Presunie sa na sever.")
 
-    if 'dolu' in room['exits']:
-        current_room = room['exits']['dolu']
-        show_room(world[current_room])
-    else:
-        print('tam sa neda ist')
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
 
-    return current_room
+        if 'sever' in room['exits']:
+            current_room = room['exits']['sever']
+            show_room(world[current_room])
+        else:
+            print('tam sa neda ist')
 
-
-def drop_item(world: dict, current_room: str, backpack: list, name: str):
-    room = world[current_room]
-    for item in backpack:
-        if item['name'] == name:
-            room['items'].append(item)
-            backpack.remove(item)
-            print(f'{item["name"]} si vyložil z batohu.')
-            break
-    else:
-        print('Taký predmet u seba nemáš.')
+        return current_room
 
 
-def take_item(world: dict, current_room: str, backpack: list, name: str):
-    room = world[current_room]
-    for item in room['items']:
-        if item['name'] == name:
-            if 'movable' not in item['features']:
-                print('Tento predmet sa nedá vziať.')
-            elif len(backpack) >= 1:
-                print('Batoh je plný.')
-            else:
-                backpack.append(item)
-                room['items'].remove(item)
-                print(f'{item["name"]} si vložil do batohu.')
+class South(Command):
+    def __init__(self):
+        super().__init__("juh", "Presunie sa na juh.")
 
-            break  # return
-    else:
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
+
+        if 'juh' in room['exits']:
+            current_room = room['exits']['juh']
+            show_room(world[current_room])
+        else:
+            print('tam sa neda ist')
+
+        return current_room
+
+
+class Down(Command):
+    def __init__(self):
+        super().__init__("dolu", "Presunie sa dolu.")
+
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
+
+        if 'dolu' in room['exits']:
+            current_room = room['exits']['dolu']
+            show_room(world[current_room])
+        else:
+            print('tam sa neda ist')
+
+        return current_room
+
+
+class DropItem(Command):
+    def __init__(self):
+        super().__init__("poloz", "Položí predmet v miestnosti.")
+
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
+        for item in backpack:
+            if item['name'] == name:
+                room['items'].append(item)
+                backpack.remove(item)
+                print(f'{item["name"]} si vyložil z batohu.')
+                break
+        else:
+            print('Taký predmet u seba nemáš.')
+
+
+class TakeItem(Command):
+    def __init__(self):
+        super().__init__("poloz", "Vezme predmet z miestnosti.")
+
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
+        for item in room['items']:
+            if item['name'] == name:
+                if 'movable' not in item['features']:
+                    print('Tento predmet sa nedá vziať.')
+                elif len(backpack) >= 1:
+                    print('Batoh je plný.')
+                else:
+                    backpack.append(item)
+                    room['items'].remove(item)
+                    print(f'{item["name"]} si vložil do batohu.')
+
+                break  # return
+        else:
+            print('Taký predmet tu nikde nevidím.')
+
+
+class ExamineItem(Command):
+    def __init__(self):
+        super().__init__("preskumaj", "Preskúma zvolený predmet.")
+
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
+        items = room['items'] + backpack
+
+        for item in items:
+            if item['name'] == name:
+                print(item['description'])
+                return
+
         print('Taký predmet tu nikde nevidím.')
-
-
-def examine_item(world: dict, current_room: str, backpack: list, name: str):
-    room = world[current_room]
-    items = room['items'] + backpack
-
-    for item in items:
-        if item['name'] == name:
-            print(item['description'])
-            return
-
-    print('Taký predmet tu nikde nevidím.')
 
 
 def use_whip(world: dict, current_room: str, backpack: list):
@@ -225,18 +261,22 @@ def use_whip(world: dict, current_room: str, backpack: list):
         'Rozohnal si sa, vzduchom to zasvišťalo a tvoj bič sa zachytil o visiaci konár v hornej časti jaskyne. Prehupnúť sa na druhú stranu už nebude žiadny problém.')
 
 
-def use_item(world: dict, current_room: str, backpack: list, name: str):
-    room = world[current_room]
-    items = room['items'] + backpack
+class UseItem(Command):
+    def __init__(self):
+        super().__init__("pouzi", "Použije zvolený predmet.")
 
-    for item in items:
-        if item['name'] == name:
-            if 'usable' not in item['features']:
-                print('Tento predmet sa nedá použiť')
-                return
+    def exec(self, current_room:str, world:dict, backpack:list):
+        room = world[current_room]
+        items = room['items'] + backpack
 
-            if name == 'bic':
-                use_whip(world, current_room, backpack)
-                return
+        for item in items:
+            if item['name'] == name:
+                if 'usable' not in item['features']:
+                    print('Tento predmet sa nedá použiť')
+                    return
 
-    print('Taký predmet tu nikde nevidím.')
+                if name == 'bic':
+                    use_whip(world, current_room, backpack)
+                    return
+
+        print('Taký predmet tu nikde nevidím.')

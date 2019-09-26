@@ -18,7 +18,17 @@ def main():
         LookAround(),
         Inventory(),
         Commands(),
-        Help()
+        Help(),
+        North(),
+        South(),
+        East(),
+        West(),
+        Down(),
+        # Up(),
+        UseItem(),
+        DropItem(),
+        TakeItem(),
+        ExamineItem
     ]
 
     print("Indiana Jones")
