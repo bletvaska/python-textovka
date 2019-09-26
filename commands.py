@@ -19,30 +19,36 @@ def show_room(room: dict):
         print('Nevidíš nič zvláštne.')
 
 
-class About:
-    def __init__(self):
-        self._name = 'o hre'
-        self._description = 'Túto hru spáchal mirek v roku 2019. Celkom fajnú.'
+class Command:
+    def __init__(self, name, description):
+        self._name = name
+        self._description = description
 
-    def exec(self):
+    def exec(self, current_room, world, backpack):
+        pass
+
+
+class About(Command):
+    def __init__(self):
+        super().__init__('o hre', 'Túto hru spáchal mirek v roku 2019. Celkom fajnú.')
+
+    def exec(self, current_room, world, backpack):
         print(self._description)
 
 
-class LookAround:
+class LookAround(Command):
     def __init__(self):
-        self._name = 'rozhliadni sa'
-        self._description = 'Vypíše opis miestnosti.'
+        super().__init__('rozhliadni sa', 'Vypíše opis miestnosti.')
 
-    def exec(self, room: dict):
-        show_room(room)
+    def exec(self, current_room, world, backpack):
+        show_room(world[current_room])
 
 
-class Inventory:
+class Inventory(Command):
     def __init__(self):
-        self._name = 'inventar'
-        self._description = 'Zobrazí obsah batohu.'
+        super().__init__('inventar', 'Zobrazí obsah batohu.')
 
-    def exec(self, backpack: list):
+    def exec(self, current_room, world, backpack):
         if len(backpack) > 0:
             print('V batohu máš:')
             for item in backpack:
@@ -51,21 +57,19 @@ class Inventory:
             print('Batoh je prázdny.')
 
 
-class Help:
+class Help(Command):
     def __init__(self):
-        self._name = 'pomoc'
-        self._description = 'Zobrazí pomocníka k jednotlivým príkazom'
+        super().__init__('pomoc', 'Zobrazí pomocníka k jednotlivým príkazom')
 
-    def exec(self):
+    def exec(self, current_room, world, backpack):
         print('ta pomoz si sam.')
 
 
-class Commands:
+class Commands(Command):
     def __init__(self):
-        self._name = 'prikazy'
-        self._description = 'Zobrazí zoznam príkazov.'
+        super().__init__('prikazy', 'Zobrazí zoznam príkazov.')
 
-    def exec(self):
+    def exec(self, current_room, world, backpack):
         cmds = (
             'rozhliadni sa',
             'o hre',
