@@ -31,7 +31,7 @@ class Command:
     def set_params(self, params):
         self._params = params
 
-    def exec(self, context:GameContext):
+    def exec(self, context: GameContext):
         pass
 
 
@@ -65,34 +65,32 @@ class Inventory(Command):
 
 
 class Help(Command):
-    def __init__(self):
+    def __init__(self, commands):
         super().__init__('pomoc', 'Zobrazí pomocníka k jednotlivým príkazom')
+        self._commands = commands
 
     def exec(self, context):
-        print('ta pomoz si sam.')
+        if len(self._params) == 0:
+            print('O akom príkaze sa chceš dozvedieť viac?')
+            return
+
+        for command in self._commands:
+            if command._name == self._params:
+                print(f'{command._name} - {command._description}')
+                break
+        else:
+            print('Neznámy príkaz.')
 
 
 class Commands(Command):
-    def __init__(self):
+    def __init__(self, commands):
         super().__init__('prikazy', 'Zobrazí zoznam príkazov.')
+        self._commands = commands
 
     def exec(self, context):
-        cmds = (
-            'rozhliadni sa',
-            'o hre',
-            'pomoc',
-            'prikazy',
-            'sever',
-            'juh',
-            'vychod',
-            'zapad',
-            'dolu',
-            'vezmi',
-            'poloz',
-            'preskumaj',
-            'koniec'
-        )
-        print('\n'.join(cmds))
+        print('Dostupné príkazy:')
+        for command in self._commands:
+            print(f'    {command._name}')
 
 
 class Quit(Command):

@@ -21,8 +21,6 @@ def main():
         About(),
         LookAround(),
         Inventory(),
-        Commands(),
-        Help(),
         Quit(),
         North(),
         South(),
@@ -35,6 +33,9 @@ def main():
         TakeItem(),
         ExamineItem()
     ]
+
+    commands.append(Commands(commands))
+    commands.append(Help(commands))
 
     print("Indiana Jones")
     show_room(world[context.current_room])
