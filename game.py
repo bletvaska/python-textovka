@@ -23,6 +23,7 @@ def main():
         Inventory(),
         Commands(),
         Help(),
+        Quit(),
         North(),
         South(),
         East(),

@@ -91,7 +91,7 @@ class Commands(Command):
         print('\n'.join(cmds))
 
 
-class Commands(Command):
+class Quit(Command):
     def __init__(self):
         super().__init__('koniec', 'Ukončí hru.')
 
