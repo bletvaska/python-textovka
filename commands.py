@@ -34,6 +34,9 @@ class Command:
     def exec(self, context: GameContext):
         pass
 
+    def __str__(self):
+        return f'{self._name} - {self._description}'
+
 
 class About(Command):
     def __init__(self):
@@ -76,7 +79,7 @@ class Help(Command):
 
         for command in self._commands:
             if command._name == self._params:
-                print(f'{command._name} - {command._description}')
+                print(command)
                 break
         else:
             print('Neznámy príkaz.')
