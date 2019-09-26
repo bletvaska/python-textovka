@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
+from game_context import GameContext
 from world import world
 from commands import *
 
 
 def main():
-    current_room = 'pred jaskynou'
-    backpack = [
+    # inicializacia hry
+    context = GameContext()
+    context.current_room = 'pred jaskynou'
+    context.backpack = [
         {
             'name': 'bic',
             'description': 'Ta mocny bic na krotenie levov, ktory si si zohnal ako mlady chalanisko v tretej casti serie.',
             'features': ['movable', 'usable'],
         }
     ]
+    context.world = world
 
     commands = [
         About(),
@@ -32,7 +36,7 @@ def main():
     ]
 
     print("Indiana Jones")
-    show_room(world[current_room])
+    show_room(world[context.current_room])
 
     answer = None
 
@@ -41,7 +45,7 @@ def main():
 
         for command in commands:
             if answer.startswith(command._name):
-                command.exec(current_room, world, backpack)
+                command.exec(context)
                 break
         else:
             print('Taký príkaz nepoznám.')
