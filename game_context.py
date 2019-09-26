@@ -3,3 +3,4 @@ class GameContext:
         self.backpack = []
         self.world = {}
         self.current_room = None
+        self.state = 'playing'

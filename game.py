@@ -39,9 +39,7 @@ def main():
     print("Indiana Jones")
     show_room(world[context.current_room])
 
-    answer = None
-
-    while answer != 'koniec':
+    while context.state == 'playing':
         answer = input('> ').strip().lower()
 
         for command in commands:

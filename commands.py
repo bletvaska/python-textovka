@@ -97,6 +97,7 @@ class Quit(Command):
 
     def exec(self, context):
         print('ta diky ze si si zahral tuto mocnu hru, lebo je fakt mocna.')
+        context.state = 'quit'
 
 
 class East(Command):
