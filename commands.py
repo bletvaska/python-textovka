@@ -38,7 +38,22 @@ def help():
 
 
 def commands():
-    print('rozhliadni sa\no hre\npomoc\nprikazy')
+    cmds = (
+        'rozhliadni sa',
+        'o hre',
+        'pomoc',
+        'prikazy',
+        'sever',
+        'juh',
+        'vychod',
+        'zapad',
+        'dolu',
+        'vezmi',
+        'poloz',
+        'preskumaj',
+        'koniec'
+    )
+    print('\n'.join(cmds))
 
 
 def quit():
@@ -135,7 +150,7 @@ def take_item(world, current_room, backpack, name):
                 room['items'].remove(item)
                 print(f'{item["name"]} si vložil do batohu.')
 
-            break # return
+            break  # return
     else:
         print('Taký predmet tu nikde nevidím.')
 
@@ -148,5 +163,5 @@ def examine_item(world, current_room, backpack, name):
         if item['name'] == name:
             print(item['description'])
             return
-        
+
     print('Taký predmet tu nikde nevidím.')
