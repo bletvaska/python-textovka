@@ -1,3 +1,15 @@
+class About:
+
+    def __init__(self):
+        self._name = 'o hre'
+        self._description = 'Túto hru spáchal mirek v roku 2019. Celkom fajnú.'
+
+    def exec(self):
+        print(self._description)
+
+
+
+
 def show_room(room: dict):
     # show description
     print(room['description'])
@@ -26,11 +38,6 @@ def show_inventory(backpack: list):
             print(f'     {item["name"]}')
     else:
         print('Batoh je prázdny.')
-
-
-def about():
-    print(
-        'Ta tuto mocnu hru o Indianovi Jonesovi spachal uz nie az taky mlady fajny programator mirek v roku 2019. A ak ho chces podporit, ta mozes nejake fsimne poslat na ucet s IBANom SK1234567890987654321')
 
 
 def help():

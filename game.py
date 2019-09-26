@@ -25,7 +25,9 @@ def main():
             show_room(world[current_room])
 
         elif answer == 'o hre':
-            about()
+            cmd = About()
+            cmd.exec()
+            # About().exec()
 
         elif answer == 'pomoc':
             help()
