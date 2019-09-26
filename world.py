@@ -24,7 +24,7 @@ world = {
         'exits': {
             'zapad': 'v jaskyni',
             'dolu': 'priepast',
-            'vychod': 'chram'
+            # 'vychod': 'chram'
         },
         'items': [
             {

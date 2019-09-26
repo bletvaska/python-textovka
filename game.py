@@ -9,7 +9,7 @@ def main():
         {
             'name': 'bic',
             'description': 'Ta mocny bic na krotenie levov, ktory si si zohnal ako mlady chalanisko v tretej casti serie.',
-            'features': ['movable']
+            'features': ['movable', 'usable'],
         }
     ]
 
@@ -65,6 +65,10 @@ def main():
         elif answer.startswith('preskumaj'):
             name = answer.lstrip('preskumaj').strip()
             examine_item(world, current_room, backpack, name)
+
+        elif answer.startswith('pouzi'):
+            name = answer.lstrip('pouzi').strip()
+            use_item(world, current_room, backpack, name)
 
         else:
             print('ta taky prikaz nepoznam')
