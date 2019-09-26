@@ -19,7 +19,6 @@ def show_room(room: dict):
         print('Nevidíš nič zvláštne.')
 
 
-
 class About:
     def __init__(self):
         self._name = 'o hre'
@@ -34,40 +33,55 @@ class LookAround:
         self._name = 'rozhliadni sa'
         self._description = 'Vypíše opis miestnosti.'
 
-    def exec(self, room:dict):
+    def exec(self, room: dict):
         show_room(room)
 
 
-def show_inventory(backpack: list):
-    if len(backpack) > 0:
-        print('V batohu máš:')
-        for item in backpack:
-            print(f'     {item["name"]}')
-    else:
-        print('Batoh je prázdny.')
+class Inventory:
+    def __init__(self):
+        self._name = 'inventar'
+        self._description = 'Zobrazí obsah batohu.'
+
+    def exec(self, backpack: list):
+        if len(backpack) > 0:
+            print('V batohu máš:')
+            for item in backpack:
+                print(f'     {item["name"]}')
+        else:
+            print('Batoh je prázdny.')
 
 
-def help():
-    print('ta pomoz si sam.')
+class Help:
+    def __init__(self):
+        self._name = 'pomoc'
+        self._description = 'Zobrazí pomocníka k jednotlivým príkazom'
+
+    def exec(self):
+        print('ta pomoz si sam.')
 
 
-def commands():
-    cmds = (
-        'rozhliadni sa',
-        'o hre',
-        'pomoc',
-        'prikazy',
-        'sever',
-        'juh',
-        'vychod',
-        'zapad',
-        'dolu',
-        'vezmi',
-        'poloz',
-        'preskumaj',
-        'koniec'
-    )
-    print('\n'.join(cmds))
+class Commands:
+    def __init__(self):
+        self._name = 'prikazy'
+        self._description = 'Zobrazí zoznam príkazov.'
+
+    def exec(self):
+        cmds = (
+            'rozhliadni sa',
+            'o hre',
+            'pomoc',
+            'prikazy',
+            'sever',
+            'juh',
+            'vychod',
+            'zapad',
+            'dolu',
+            'vezmi',
+            'poloz',
+            'preskumaj',
+            'koniec'
+        )
+        print('\n'.join(cmds))
 
 
 def quit():
