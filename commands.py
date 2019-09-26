@@ -236,30 +236,6 @@ class ExamineItem(Command):
         print('Taký predmet tu nikde nevidím.')
 
 
-def use_whip(world: dict, current_room: str, backpack: list):
-    if current_room != 'nad priepastou':
-        print('Svihol si bičíkom vo vzduchu. Ale švihá, pomyslel si si. Ako za mladých čias.')
-        return
-
-    room = world[current_room]
-    # pridanie prechodu z miestnosti na vychod
-    room['exits']['vychod'] = 'chram'
-
-    # vyhodenie bica z miestnosti alebo z batohu
-    for item in backpack:
-        if item['name'] == 'bic':
-            backpack.remove(item)
-            break
-    else:
-        for item in room['items']:
-            if item['name'] == 'bic':
-                room['items'].remove(item)
-                break
-
-    print(
-        'Rozohnal si sa, vzduchom to zasvišťalo a tvoj bič sa zachytil o visiaci konár v hornej časti jaskyne. Prehupnúť sa na druhú stranu už nebude žiadny problém.')
-
-
 class UseItem(Command):
     def __init__(self):
         super().__init__("pouzi", "Použije zvolený predmet.")
