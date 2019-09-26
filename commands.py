@@ -123,3 +123,30 @@ def drop_item(world, current_room, backpack, name):
     else:
         print('Taký predmet u seba nemáš.')
 
+
+def take_item(world, current_room, backpack, name):
+    room = world[current_room]
+    for item in room['items']:
+        if item['name'] == name:
+            if len(backpack) >= 1:
+                print('Batoh je plný.')
+            else:
+                backpack.append(item)
+                room['items'].remove(item)
+                print(f'{item["name"]} si vložil do batohu.')
+
+            break # return
+    else:
+        print('Taký predmet tu nikde nevidím.')
+
+
+def examine_item(world, current_room, backpack, name):
+    room = world[current_room]
+    items = room['items'] + backpack
+
+    for item in items:
+        if item['name'] == name:
+            print(item['description'])
+            return
+        
+    print('Taký predmet tu nikde nevidím.')

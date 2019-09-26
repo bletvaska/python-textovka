@@ -54,8 +54,16 @@ def main():
             show_inventory(backpack)
 
         elif answer.startswith('poloz'):
-            name = answer.strip('poloz').strip()
+            name = answer.lstrip('poloz').strip()
             drop_item(world, current_room, backpack, name)
+
+        elif answer.startswith('vezmi'):
+            name = answer.lstrip('vezmi').strip()
+            take_item(world, current_room, backpack, name)
+
+        elif answer.startswith('preskumaj'):
+            name = answer.lstrip('preskumaj').strip()
+            examine_item(world, current_room, backpack, name)
 
         else:
             print('ta taky prikaz nepoznam')
