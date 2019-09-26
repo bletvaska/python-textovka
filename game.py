@@ -14,8 +14,7 @@ def main():
     ]
 
     print("Indiana Jones")
-    cmd = LookAround()
-    cmd.exec(world[current_room])
+    show_room(world[current_room])
 
     answer = None
 
