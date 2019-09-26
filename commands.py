@@ -143,7 +143,9 @@ def take_item(world: dict, current_room: str, backpack: list, name: str):
     room = world[current_room]
     for item in room['items']:
         if item['name'] == name:
-            if len(backpack) >= 1:
+            if 'movable' not in item['features']:
+                print('Tento predmet sa nedá vziať.')
+            elif len(backpack) >= 1:
                 print('Batoh je plný.')
             else:
                 backpack.append(item)
