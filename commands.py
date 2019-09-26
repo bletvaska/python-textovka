@@ -26,6 +26,10 @@ class Command:
     def __init__(self, name, description):
         self._name = name
         self._description = description
+        self._params = None
+
+    def set_params(self, params):
+        self._params = params
 
     def exec(self, context:GameContext):
         pass
@@ -184,7 +188,7 @@ class DropItem(Command):
     def exec(self, context):
         room = context.world[context.current_room]
         for item in context.backpack:
-            if item['name'] == name:
+            if item['name'] == self._params:
                 room['items'].append(item)
                 context.backpack.remove(item)
                 print(f'{item["name"]} si vyložil z batohu.')
@@ -200,7 +204,7 @@ class TakeItem(Command):
     def exec(self, context):
         room = context.world[context.current_room]
         for item in room['items']:
-            if item['name'] == name:
+            if item['name'] == self._params:
                 if 'movable' not in item['features']:
                     print('Tento predmet sa nedá vziať.')
                 elif len(context.backpack) >= 1:
@@ -224,7 +228,7 @@ class ExamineItem(Command):
         items = room['items'] + context.backpack
 
         for item in items:
-            if item['name'] == name:
+            if item['name'] == self._params:
                 print(item['description'])
                 return
 
@@ -264,12 +268,12 @@ class UseItem(Command):
         items = room['items'] + context.backpack
 
         for item in items:
-            if item['name'] == name:
+            if item['name'] == self._params:
                 if 'usable' not in item['features']:
                     print('Tento predmet sa nedá použiť')
                     return
 
-                if name == 'bic':
+                if self._params == 'bic':
                     use_whip(context.world, context.current_room, context.backpack)
                     return
 
