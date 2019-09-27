@@ -17,7 +17,7 @@ def show_room(room: dict):
     if len(room['items']) > 0:
         print('Vidíš:')
         for item in room['items']:
-            print(f'     {item["name"]}')
+            print(f'     {item._name}')
     else:
         print('Nevidíš nič zvláštne.')
 
@@ -62,7 +62,7 @@ class Inventory(Command):
         if len(context.backpack) > 0:
             print('V batohu máš:')
             for item in context.backpack:
-                print(f'     {item["name"]}')
+                print(f'     {item._name}')
         else:
             print('Batoh je prázdny.')
 
@@ -189,10 +189,10 @@ class DropItem(Command):
     def exec(self, context):
         room = context.world[context.current_room]
         for item in context.backpack:
-            if item['name'] == self._params:
+            if item._name == self._params:
                 room['items'].append(item)
                 context.backpack.remove(item)
-                print(f'{item["name"]} si vyložil z batohu.')
+                print(f'{item._name} si vyložil z batohu.')
                 break
         else:
             print('Taký predmet u seba nemáš.')
@@ -205,15 +205,15 @@ class TakeItem(Command):
     def exec(self, context):
         room = context.world[context.current_room]
         for item in room['items']:
-            if item['name'] == self._params:
-                if 'movable' not in item['features']:
+            if item._name == self._params:
+                if 'movable' not in item._features:
                     print('Tento predmet sa nedá vziať.')
                 elif len(context.backpack) >= 1:
                     print('Batoh je plný.')
                 else:
                     context.backpack.append(item)
                     room['items'].remove(item)
-                    print(f'{item["name"]} si vložil do batohu.')
+                    print(f'{item._name} si vložil do batohu.')
 
                 break  # return
         else:
@@ -229,8 +229,8 @@ class ExamineItem(Command):
         items = room['items'] + context.backpack
 
         for item in items:
-            if item['name'] == self._params:
-                print(item['description'])
+            if item._name == self._params:
+                print(item._description)
                 return
 
         print('Taký predmet tu nikde nevidím.')
@@ -245,8 +245,8 @@ class UseItem(Command):
         items = room['items'] + context.backpack
 
         for item in items:
-            if item['name'] == self._params:
-                if 'usable' not in item['features']:
+            if item._name == self._params:
+                if 'usable' not in item._features:
                     print('Tento predmet sa nedá použiť')
                     return
 
