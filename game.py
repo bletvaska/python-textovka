@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from game_context import GameContext
-from items import Whip
+from items import Whip, Bag
 from world import world
 from commands import *
 
@@ -10,8 +10,8 @@ def main():
     context = GameContext()
     context.current_room = 'pred jaskynou'
     context.backpack = [
-        Whip()
-
+        Whip(),
+        Bag()
     ]
     context.world = world
 

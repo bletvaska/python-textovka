@@ -1,4 +1,4 @@
-from items import Branch, GoldenIdol
+from items import Branch, GoldenIdol, SandPile
 
 world = {
     'pred jaskynou': {
@@ -7,7 +7,9 @@ world = {
         'exits': {
             'vychod': 'v jaskyni'
         },
-        'items': []
+        'items': [
+            SandPile()
+        ]
     },
 
     'v jaskyni': {
