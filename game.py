@@ -12,8 +12,8 @@ def main():
     context.current_room = 'pred jaskynou'
     context.world = world
 
-    context.backpack = Backpack(2)
-    context.backpack.add(Whip())
+    context.backpack = Backpack(1)
+    # context.backpack.add(Whip())
     context.backpack.add(Bag())
 
     commands = [

@@ -1,4 +1,4 @@
-from items import Branch, GoldenIdol, SandPile
+from items import Branch, GoldenIdol, SandPile, Whip
 
 world = {
     'pred jaskynou': {
@@ -8,7 +8,8 @@ world = {
             'vychod': 'v jaskyni'
         },
         'items': [
-            SandPile()
+            SandPile(),
+            Whip()
         ]
     },
 

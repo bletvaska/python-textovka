@@ -1,3 +1,4 @@
+from exceptions import ItemNotFound, BackpackMaxCapacityReached
 from game_context import GameContext
 from items.mixins import Movable, Usable
 
@@ -189,33 +190,42 @@ class DropItem(Command):
         super().__init__("poloz", "Položí predmet v miestnosti.")
 
     def exec(self, context):
-        room = context.world[context.current_room]
-        for item in context.backpack:
-            if item._name == self._params:
-                room['items'].append(item)
-                context.backpack.remove(item)
-                print(f'{item._name} si vyložil z batohu.')
-                break
-        else:
+        try:
+            item = context.backpack.remove(self._params)
+            room = context.get_current_room()
+            room['items'].append(item)
+            print(f'{item._name} si vyložil z batohu.')
+
+        except ItemNotFound as ex:
             print('Taký predmet u seba nemáš.')
+
+        except BaseException as ex:
+            print('Dajaka neznama chyba sa stala')
+            print(ex)
 
 
 class TakeItem(Command):
     def __init__(self):
         super().__init__("vezmi", "Vezme predmet z miestnosti.")
 
-    def exec(self, context):
-        room = context.world[context.current_room]
+    def exec(self, context:GameContext):
+        room = context.get_current_room()
         for item in room['items']:
             if item._name == self._params:
                 if not isinstance(item, Movable):
                     print('Tento predmet sa nedá vziať.')
-                elif len(context.backpack) >= 1:
-                    print('Batoh je plný.')
                 else:
-                    context.backpack.append(item)
-                    room['items'].remove(item)
-                    print(f'{item._name} si vložil do batohu.')
+                    try:
+                        context.backpack.add(item)
+                        room['items'].remove(item)
+                        print(f'{item._name} si vložil do batohu.')
+
+                    except BackpackMaxCapacityReached:
+                        print('Batoh je plný.')
+
+                    except BaseException as ex:
+                        print("Dačo nedobre")
+                        print(ex)
 
                 break  # return
         else:
@@ -227,7 +237,7 @@ class ExamineItem(Command):
         super().__init__("preskumaj", "Preskúma zvolený predmet.")
 
     def exec(self, context):
-        room = context.world[context.current_room]
+        room = context.get_current_room()
         items = room['items'] + context.backpack
 
         for item in items:
