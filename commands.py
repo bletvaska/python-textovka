@@ -60,10 +60,11 @@ class Inventory(Command):
         super().__init__('inventar', 'Zobrazí obsah batohu.')
 
     def exec(self, context):
-        if len(context.backpack) > 0:
+        items = context.backpack.get_items()
+        if len(items) > 0:
             print('V batohu máš:')
-            for item in context.backpack:
-                print(f'     {item._name}')
+            for item in items:
+                print(f'     {item}')
         else:
             print('Batoh je prázdny.')
 

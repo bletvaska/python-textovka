@@ -1,6 +1,6 @@
 class GameContext:
     def __init__(self):
-        self.backpack = []
+        self.backpack = None
         self.world = {}
         self.current_room = None
         self.state = 'playing'
