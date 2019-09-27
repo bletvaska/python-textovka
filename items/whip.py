@@ -18,12 +18,12 @@ class Whip(Item):
 
         # vyhodenie bica z miestnosti alebo z batohu
         for item in context.backpack:
-            if item['name'] == 'bic':
+            if item._name == 'bic':
                 context.backpack.remove(item)
                 break
         else:
             for item in room['items']:
-                if item['name'] == 'bic':
+                if item._name == 'bic':
                     room['items'].remove(item)
                     break
 

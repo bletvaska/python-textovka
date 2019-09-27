@@ -250,8 +250,7 @@ class UseItem(Command):
                     print('Tento predmet sa nedá použiť')
                     return
 
-                if self._params == 'bic':
-                    use_whip(context.world, context.current_room, context.backpack)
-                    return
+                item.use(context)
+                return
 
         print('Taký predmet tu nikde nevidím.')
