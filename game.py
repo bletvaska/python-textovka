@@ -53,6 +53,16 @@ def main():
         else:
             print('Taký príkaz nepoznám.')
 
+        # evaluation
+        try:
+            context.backpack.find_item('zlata soska')
+            if context.current_room == 'pred jaskynou':
+                print('Ta ďalšie dobrodružstvo Indiana Jonesa je úspešne za tebou. Teraz už môžeš len užívať slávu, ženy a peniaze alebo si večer pozri Oteckov na Markíze.')
+                print('Vidíme sa pri ďalšom dobrodružstve v 2021.')
+                context.state = 'well done'
+        except ItemNotFound:
+            pass
+
 
 if __name__ == '__main__':
     main()

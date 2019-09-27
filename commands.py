@@ -307,6 +307,6 @@ class Load(Command):
                     print(line, end='')
 
             print('História bola úspešne načítaná.')
-            
+
         except BaseException:
             print('Históriu sa nepodarilo načítať.')
