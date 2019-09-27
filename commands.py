@@ -1,4 +1,5 @@
 from game_context import GameContext
+from items.mixins import Movable, Usable
 
 
 def show_room(room: dict):
@@ -206,7 +207,7 @@ class TakeItem(Command):
         room = context.world[context.current_room]
         for item in room['items']:
             if item._name == self._params:
-                if 'movable' not in item._features:
+                if not isinstance(item, Movable):
                     print('Tento predmet sa nedá vziať.')
                 elif len(context.backpack) >= 1:
                     print('Batoh je plný.')
@@ -246,7 +247,7 @@ class UseItem(Command):
 
         for item in items:
             if item._name == self._params:
-                if 'usable' not in item._features:
+                if not isinstance(item, Usable):
                     print('Tento predmet sa nedá použiť')
                     return
 

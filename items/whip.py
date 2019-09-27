@@ -1,11 +1,12 @@
 from items.item import Item
+# from items.mixins import Movable
+from items import mixins
 
 
-class Whip(Item):
+class Whip(Item, mixins.Movable, mixins.Usable):
     def __init__(self):
         super().__init__('bic',
-                         'Ta mocny bic na krotenie levov, ktory si si zohnal ako mlady chalanisko v tretej casti serie.',
-                         ['movable', 'usable'])
+                         'Ta mocny bic na krotenie levov, ktory si si zohnal ako mlady chalanisko v tretej casti serie.')
 
     def use(self, context):
         if context.current_room != 'nad priepastou':
