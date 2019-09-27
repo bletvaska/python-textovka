@@ -282,9 +282,31 @@ class Save(Command):
         super().__init__('uloz', 'Uloží aktuálny stav hry do súboru.')
 
     def exec(self, context: GameContext):
-        with open('history.dat', 'w') as file:
-            for line in context.history:
-                file.write(f'{line}\n')
+        try:
+            with open('history.dat', 'w') as file:
+                for line in context.history:
+                    file.write(f'{line}\n')
 
-        print('História bola úspešne uložená.')
+            print('História bola úspešne uložená.')
 
+        except PermissionError:
+            print('Nemáš právo na zápis do súboru.')
+
+        except BaseException:
+            print('Históriu sa nepodarilo uložiť.')
+
+
+class Load(Command):
+    def __init__(self):
+        super().__init__('nahraj', 'Nahrá históriu zo súboru.')
+
+    def exec(self, context: GameContext):
+        try:
+            with open('history.dat', 'r') as file:
+                for line in file.readlines():
+                    print(line, end='')
+
+            print('História bola úspešne načítaná.')
+            
+        except BaseException:
+            print('Históriu sa nepodarilo načítať.')
