@@ -7,21 +7,26 @@ class Backpack(object):
         self._capacity = capacity
         self._items = []
 
-    def add(self, item:Item):
+    def add(self, item: Item):
         if len(self._items) == self._capacity:
             raise BackpackMaxCapacityReached('Backpack is full.')
 
         self._items.append(item)
 
-    def remove(self, name:str) -> Item:
+    def remove(self, name: str) -> Item:
         item = self.find_item(name)
         self._items.remove(item)
         return item
 
-    def find_item(self, name:str):
+    def find_item(self, name: str) -> Item:
         for item in self._items:
             if item._name == name:
                 return item
         else:
             raise ItemNotFound(f'Item "{name}" was not found in backpack.')
 
+    def get_items(self) -> list:
+        items = []
+        for item in self._items:
+            items.append(item._name)
+        return items

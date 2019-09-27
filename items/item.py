@@ -5,3 +5,6 @@ class Item(object):
 
     def __str__(self):
         return f'{self._name} - {self._description}'
+
+    def __repr__(self):
+        return self.__str__()
