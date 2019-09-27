@@ -1,3 +1,5 @@
+from items import Branch, GoldenIdol
+
 world = {
     'pred jaskynou': {
         'name': 'pred jaskynou',
@@ -27,11 +29,7 @@ world = {
             # 'vychod': 'chram'
         },
         'items': [
-            {
-                'name': 'konar',
-                'description': 'Mocný konár visiaci zo stropu nad priepasťou. Hrubý a pevný.',
-                'features': []
-            }
+            Branch()
         ]
     },
 
@@ -49,11 +47,7 @@ world = {
             'zapad': 'nad priepastou'
         },
         'items': [
-            {
-                'name': 'zlata soska',
-                'description': 'Zlata soska, medzi ucastnikmi kurzu tiez znama aj ako Golden Idol. Sen nejedneho archeologa. Cela zo zlata a vazi hadam aj zo 10 kil. To by bolo prachov...',
-                'features': ['movable']
-            }
+            GoldenIdol()
         ]
     }
 }
