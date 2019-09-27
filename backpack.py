@@ -30,3 +30,12 @@ class Backpack(object):
         for item in self._items:
             items.append(item._name)
         return items
+
+    def __iter__(self):
+        return self._items.__iter__()
+
+    def __next__(self):
+        return self._items.__next__()
+
+    def __len__(self):
+        return len(self._items)

@@ -20,7 +20,7 @@ class Whip(Item, mixins.Movable, mixins.Usable):
         # vyhodenie bica z miestnosti alebo z batohu
         for item in context.backpack:
             if item._name == 'bic':
-                context.backpack.remove(item)
+                context.backpack.remove(item._name)
                 break
         else:
             for item in room['items']:

@@ -30,7 +30,8 @@ def main():
         UseItem(),
         DropItem(),
         TakeItem(),
-        ExamineItem()
+        ExamineItem(),
+        Save()
     ]
 
     commands.append(Commands(commands))

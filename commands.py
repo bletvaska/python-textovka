@@ -61,10 +61,9 @@ class Inventory(Command):
         super().__init__('inventar', 'Zobrazí obsah batohu.')
 
     def exec(self, context):
-        items = context.backpack.get_items()
-        if len(items) > 0:
+        if len(context.backpack) > 0:
             print('V batohu máš:')
-            for item in items:
+            for item in context.backpack:
                 print(f'     {item}')
         else:
             print('Batoh je prázdny.')
@@ -120,11 +119,12 @@ class East(Command):
         :param current_room: the name of current room player is in
         :return: the name of new room on the east
         """
-        room = context.world[context.current_room]
+        room = context.get_current_room()
 
         if 'vychod' in room['exits']:
             context.current_room = room['exits']['vychod']
-            show_room(context.world[context.current_room])
+            show_room(context.get_current_room())
+            context.history.append(self._name)
         else:
             print('tam sa neda ist')
 
@@ -139,6 +139,7 @@ class West(Command):
         if 'zapad' in room['exits']:
             context.current_room = room['exits']['zapad']
             show_room(context.world[context.current_room])
+            context.history.append(self._name)
         else:
             print('tam sa neda ist')
 
@@ -153,6 +154,7 @@ class North(Command):
         if 'sever' in room['exits']:
             context.current_room = room['exits']['sever']
             show_room(context.world[context.current_room])
+            context.history.append(self._name)
         else:
             print('tam sa neda ist')
 
@@ -167,6 +169,7 @@ class South(Command):
         if 'juh' in room['exits']:
             context.current_room = room['exits']['juh']
             show_room(context.world[context.current_room])
+            context.history.append(self._name)
         else:
             print('tam sa neda ist')
 
@@ -181,6 +184,7 @@ class Down(Command):
         if 'dolu' in room['exits']:
             context.current_room = room['exits']['dolu']
             show_room(context.world[context.current_room])
+            context.history.append(self._name)
         else:
             print('tam sa neda ist')
 
@@ -195,6 +199,7 @@ class DropItem(Command):
             room = context.get_current_room()
             room['items'].append(item)
             print(f'{item._name} si vyložil z batohu.')
+            context.history.append(f'{self._name} {item._name}')
 
         except ItemNotFound as ex:
             print('Taký predmet u seba nemáš.')
@@ -219,6 +224,7 @@ class TakeItem(Command):
                         context.backpack.add(item)
                         room['items'].remove(item)
                         print(f'{item._name} si vložil do batohu.')
+                        context.history.append(f'{self._name} {item._name}')
 
                     except BackpackMaxCapacityReached:
                         print('Batoh je plný.')
@@ -237,15 +243,17 @@ class ExamineItem(Command):
         super().__init__("preskumaj", "Preskúma zvolený predmet.")
 
     def exec(self, context):
-        room = context.get_current_room()
-        items = room['items'] + context.backpack
+        try:
+            item = context.backpack.find_item(self._params)
+            print(item._description)
+        except ItemNotFound:
+            room = context.get_current_room()
+            for item in room['items']:
+                if item._name == self._params:
+                    print(item._description)
+                    return
 
-        for item in items:
-            if item._name == self._params:
-                print(item._description)
-                return
-
-        print('Taký predmet tu nikde nevidím.')
+            print('Taký predmet tu nikde nevidím.')
 
 
 class UseItem(Command):
@@ -254,7 +262,7 @@ class UseItem(Command):
 
     def exec(self, context):
         room = context.world[context.current_room]
-        items = room['items'] + context.backpack
+        items = room['items'] + context.backpack._items
 
         for item in items:
             if item._name == self._params:
@@ -263,6 +271,20 @@ class UseItem(Command):
                     return
 
                 item.use(context)
+                context.history.append(f'{self._name} {item._name}')
                 return
 
         print('Taký predmet tu nikde nevidím.')
+
+
+class Save(Command):
+    def __init__(self):
+        super().__init__('uloz', 'Uloží aktuálny stav hry do súboru.')
+
+    def exec(self, context: GameContext):
+        with open('history.dat', 'w') as file:
+            for line in context.history:
+                file.write(f'{line}\n')
+
+        print('História bola úspešne uložená.')
+
