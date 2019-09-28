@@ -16,7 +16,7 @@ class TakeItem(Command):
                 elif len(context.backpack) >= 1:
                     print('Batoh je plný.')
                 else:
-                    context.backpack.append(item)
+                    context.backpack.add_item(item)
                     room['items'].remove(item)
                     print(f'{item.name} si vložil do batohu.')
                     context.history.append('f{self.name} {item.name}')

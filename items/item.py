@@ -1,4 +1,10 @@
-class Item():
+from abc import ABC
+
+
+class Item(ABC):
+    """
+    Abstract class specifying game item.
+    """
     def __init__(self, name, description):
         self.name = name
         self.description = description
