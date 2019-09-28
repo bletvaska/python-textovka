@@ -6,6 +6,7 @@ from game_context import GameContext
 class DropItem(Command):
     def __init__(self):
         super().__init__("poloz", "Položí predmet v miestnosti.")
+        self.aliases += ['drop']
 
     def exec(self, context: GameContext):
         try:

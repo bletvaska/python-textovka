@@ -6,6 +6,7 @@ from .command import Command
 class East(Command):
     def __init__(self):
         super().__init__("vychod", "Presunie sa na vychod.")
+        self.aliases += ['east', 'v', 'e']
 
     def exec(self, context:GameContext):
         """

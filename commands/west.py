@@ -6,6 +6,7 @@ from .command import Command
 class West(Command):
     def __init__(self):
         super().__init__("zapad", "Presunie sa na západ.")
+        self.aliases += ['west', 'z', 'w']
 
     def exec(self, context:GameContext):
         room = context.get_current_room()

@@ -6,6 +6,7 @@ from .command import Command
 class TakeItem(Command):
     def __init__(self):
         super().__init__("vezmi", "Vezme predmet z miestnosti.")
+        self.aliases += ['take']
 
     def exec(self, context:GameContext):
         room = context.get_current_room()

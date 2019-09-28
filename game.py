@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # from game_context import GameContext
 from backpack import Backpack
+from exceptions import UnknownCommandException
 from helper import show_room
 import game_context
 from items import Whip
+from parser import Parser
 from world import world
 from commands import *
 
@@ -37,19 +39,18 @@ def main():
     commands.append(Commands(commands))
     commands.append(Help(commands))
 
+    parser = Parser(commands)
+
     print("Indiana Jones")
     show_room(world[context.current_room])
 
     while context.state == 'playing':
-        answer = input('> ').strip().lower()
+        line = input('> ')
 
-        for command in commands:
-            if answer.startswith(command.name):
-                params = answer.lstrip(command.name).strip()
-                command.params = params
-                command.exec(context)
-                break
-        else:
+        try:
+            command = parser.parse(line)
+            command.exec(context)
+        except UnknownCommandException:
             print('Taký príkaz nepoznám.')
 
 

@@ -5,6 +5,7 @@ from .command import Command
 class Help(Command):
     def __init__(self, commands:list):
         super().__init__('pomoc', 'Zobrazí pomocníka k jednotlivým príkazom')
+        self.aliases += ['help', '?']
         self._commands = commands
 
     def exec(self, context:GameContext):

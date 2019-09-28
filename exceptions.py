@@ -8,3 +8,7 @@ class FullBackpackException(GameException):
 
 class ItemNotFoundException(GameException):
     pass
+
+
+class UnknownCommandException(GameException):
+    pass

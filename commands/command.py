@@ -1,12 +1,16 @@
+from abc import ABC, abstractmethod
+
 from game_context import GameContext
 
 
-class Command:
-    def __init__(self, name:str, description:str):
+class Command(ABC):
+    def __init__(self, name: str, description: str):
         self.name = name
         self.description = description
         self.params = None
+        self.aliases = [name]
 
+    @abstractmethod
     def exec(self, context: GameContext):
         pass
 

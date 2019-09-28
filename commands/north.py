@@ -6,6 +6,7 @@ from .command import Command
 class North(Command):
     def __init__(self):
         super().__init__("sever", "Presunie sa na sever.")
+        self.aliases += ['north', 's', 'n']
 
     def exec(self, context:GameContext):
         room = context.get_current_room()

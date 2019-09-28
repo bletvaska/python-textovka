@@ -6,6 +6,7 @@ from .command import Command
 class Down(Command):
     def __init__(self):
         super().__init__("dolu", "Presunie sa dolu.")
+        self.aliases += ['down', 'd']
 
     def exec(self, context:GameContext):
         room = context.get_current_room()
