@@ -17,7 +17,7 @@ class Room(object):
         return self
 
     def set_exit(self, direction, name):
-        self._exits['name'] = direction
+        self._exits[direction] = name
         return self
 
     def add_item(self, item):
@@ -40,4 +40,21 @@ class Room(object):
             return False
 
     def show(self):
-        print('juchu')
+        # show description
+        print(self._description)
+
+        # show exits
+        if len(self._exits) > 0:
+            print('Možné východy:')
+            for exit in self._exits:
+                print(f"    {exit}")
+        else:
+            print('Z miestnosti nevedú žiadne východy.')
+
+        # show items
+        if len(self._items) > 0:
+            print('Vidíš:')
+            for item in self._items:
+                print(f'     {item.name}')
+        else:
+            print('Nevidíš nič zvláštne.')

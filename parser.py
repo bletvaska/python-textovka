@@ -10,8 +10,8 @@ class Parser(object):
 
         for command in self._commands:
             for alias in command.aliases:
-                if line.startswith(f'{alias} '):
-                    params = line.lstrip(alias).strip()
+                if line.startswith(alias):
+                    params = line[len(alias):].strip()
                     command.params = params
                     return command
         else:

@@ -2,7 +2,6 @@
 # from game_context import GameContext
 from backpack import Backpack
 from exceptions import UnknownCommandException
-from helper import show_room
 import game_context
 from items import Whip
 from parser import Parser
@@ -13,7 +12,7 @@ from commands import *
 def main():
     # inicializacia hry
     context = game_context.GameContext()
-    context.current_room = 'pred jaskynou'
+    context.init_game()
     context.backpack = Backpack(2)
     context.backpack.add_item(Whip())
     context.world = world
@@ -42,7 +41,8 @@ def main():
     parser = Parser(commands)
 
     print("Indiana Jones")
-    show_room(world[context.current_room])
+    context.get_current_room().show()
+    # show_room(world[context.current_room])
 
     while context.state == 'playing':
         line = input('> ')

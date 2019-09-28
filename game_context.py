@@ -11,8 +11,12 @@ class GameContext(object):
         self.state = 'playing'
         self.history = []
 
-    def get_current_room(self):
-        return self.world[self.current_room]
+    def get_current_room(self) -> Room:
+        for room in self._rooms:
+            if room._name == self.current_room:
+                return room
+
+        # return self.world[self.current_room]
 
     def init_game(self):
         self._rooms = []
@@ -32,7 +36,7 @@ class GameContext(object):
                     'Okrem pavucin a nahodne skakjucich tarantul tu nie je nic zaujimave. Pokial za zaujimave nepokladas tu priepast, ktora zabera vacsinu vyhladu v tejto miestnosti.') \
             .set_exit('zapad', 'v jaskyni') \
             .set_exit('dolu', 'priepast')
-            # .add_item(Branch())
+        # .add_item(Branch())
         self._rooms.append(room)
 
         room = Room('priepast',
@@ -42,5 +46,7 @@ class GameContext(object):
         room = Room('chram',
                     'Rozlahla miestnost, v strede ktorej sa nachadza oltar, na ktorom je este stale umiestneny ciel tvojej cesty: Golden Idol.') \
             .set_exit('zapad', 'nad priepastou')
-            # .add_item(GoldenIdol())
+        # .add_item(GoldenIdol())
         self._rooms.append(room)
+
+        self.current_room = 'pred jaskynou'

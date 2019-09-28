@@ -1,5 +1,4 @@
 from game_context import GameContext
-from helper import show_room
 from .command import Command
 
 
@@ -18,9 +17,9 @@ class East(Command):
         """
         room = context.get_current_room()
 
-        if self.name in room['exits']:
-            context.current_room = room['exits']['vychod']
-            show_room(context.get_current_room())
+        if self.name in room._exits:
+            context.current_room = room._exits['vychod']
+            context.get_current_room().show()
             context.history.append(self.name)
         else:
             print('tam sa neda ist')
