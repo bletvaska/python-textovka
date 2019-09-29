@@ -15,4 +15,4 @@ class Down(Command):
             context.get_current_room().show()
             context.history.append(self.name)
         else:
-            print('tam sa neda ist')
+            print('Tam sa nedá ísť.')
