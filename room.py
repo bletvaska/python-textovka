@@ -11,7 +11,18 @@ class Room:
             raise TypeError('Not a Room object.')
 
     def __str__(self) -> str:
-        return self._description
+        # room description first
+        output = f'{self._description}\n\n'
+
+        #
+        if len(self._exits) == 0:
+            output += 'Z tejto miestnosti sa nedá nikam dostať.'
+        else:
+            # list of exits
+            output += 'Možné východy:\n\t'
+            output += '\n\t'.join(self._exits.keys())
+
+        return output
 
     def __repr__(self):
         return f'repr: "{self._name}". {self._description}'

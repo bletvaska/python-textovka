@@ -1,7 +1,25 @@
+"""
+Game Context Module
+"""
 from room import Room, DeadRoom
 
 
+def add(a, b):
+    """
+    spocitaj daco
+
+    >>> add(10, 20)
+    30
+    >>> add(0, 0)
+    10
+    """
+    return a+b
+
+
 class Context:
+    """
+    Game context
+    """
     def __init__(self):
         self.game_state = 'PLAYING'
         self.world = {}
