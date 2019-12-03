@@ -10,9 +10,12 @@ class Room:
         else:
             raise TypeError('Not a Room object.')
 
-
     def __str__(self) -> str:
         return self._description
 
     def __repr__(self):
         return f'repr: "{self._name}". {self._description}'
+
+
+class DeadRoom(Room):
+    pass
