@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
-# from commands.about import About
-# from commands.commands import Commands
-# from commands.quit import Quit
-# from context import Context
-# from commands.down import Down
-# from commands.east import East
-# # from commands.quit import Quit
-# from room import DeadRoom
-# from commands.west import West
-
+from context import Context
+from room import DeadRoom
+from commands import Commands, About, Quit, West, East, Down
+from commands import *
 
 if __name__ == '__main__':
     context = Context()
