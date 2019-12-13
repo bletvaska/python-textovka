@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from context import Context
 from room import DeadRoom
-from commands import Commands, About, Quit, West, East, Down
+# from commands import Commands, About, Quit, West, East, Down
 from commands import *
 
 if __name__ == '__main__':
@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     print(context.current_room)
 
-    commands = [About(), Quit(), West(), East(), Down()]
+    commands = [About(), Quit(), West(), East(), Down(), LookAround()]
     commands.append(Commands(commands))
 
     while context.game_state == 'PLAYING':
