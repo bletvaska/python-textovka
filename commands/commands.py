@@ -10,4 +10,4 @@ class Commands(Command):
         print('Zoznam prikazov:')
 
         for command in self._commands:
-            print(f'\t{command._name.upper()} - {command._description}')
+            print(f'\t{command}')

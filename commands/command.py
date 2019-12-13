@@ -8,3 +8,6 @@ class Command:
 
     def exec(self, context):
         raise CommandNotYetImplemented('Telo príkazu ešte nebolo implementované.')
+
+    def __str__(self):
+        return f'{self._name.upper()} - {self._description}'

@@ -3,6 +3,7 @@ class Room:
         self._name = name
         self._description = description
         self._exits = {}
+        self._items = []
 
     def add_exit(self, name, room):
         if isinstance(room, Room):
@@ -21,6 +22,9 @@ class Room:
             # list of exits
             output += 'Možné východy:\n\t'
             output += '\n\t'.join(self._exits.keys())
+
+        # list items in room
+        
 
         return output
 
