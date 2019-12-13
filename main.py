@@ -7,27 +7,6 @@ from room import DeadRoom
 # from commands import Commands, About, Quit, West, East, Down
 from commands import *
 
-
-bp = Backpack(2)
-whip = Whip()
-
-bp += whip
-bp += Fedora()
-# bp += whip
-# print(len(bp))
-# bp += whip
-
-# print('bic' in bp)
-# print('klobuk' in bp)
-
-# print(bp['bic'])
-# print(bp['klobuk'])
-
-for item in bp:
-    print(item)
-
-
-
 if __name__ == '__main__':
     context = Context()
 

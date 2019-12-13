@@ -13,23 +13,26 @@ class Take(Command):
             return
 
         # zisti, ci sa predmet uplnou nahodou nenachadza v batohu
-        for item in context.backpack:
-            if item._name == self._params:
-                print(f'Predmet {item._name} sa už nachádza v batohu.')
-                return
+        if self._params in context.backpack:
+            print(f'Predmet {self._params} sa už nachádza v batohu.')
+            return
 
-        # zisti, ci sa predmet nachadza v miestnosti
-        for item in context.current_room._items:
-            if item._name == self._params:
-                # zisti, ci sa da zobrat
-                if isinstance(item, Movable):
-                    # zober
-                    context.backpack.append(item)
-                    context.current_room._items.remove(item)
-                    print(f'Do batôžku si si vložil {item._name}.')
-                else:
-                    print('Tento predmet sa nedá zobrať.')
-                break
-        else:
-            print('Taký predmet tu nikde nevidím.')
+        try:
+            # zisti, ci sa predmet nachadza v miestnosti
+            for item in context.current_room._items:
+                if item._name == self._params:
+                    # zisti, ci sa da zobrat
+                    if isinstance(item, Movable):
+                        # zober
+                        context.backpack += item
+                        context.current_room._items.remove(item)
+                        print(f'Do batôžku si si vložil {item._name}.')
+                    else:
+                        print('Tento predmet sa nedá zobrať.')
+                    break
+            else:
+                print('Taký predmet tu nikde nevidím.')
+
+        except:
+            print('Batoh je plny.')
 

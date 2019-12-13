@@ -45,7 +45,9 @@ class Backpack:
         if not isinstance(other, Item):
             raise TypeError('Not an Item.')
 
-        # item = self.get(other)
+        self._items.remove(other)
+
+        return self
 
     def __contains__(self, name: str):
         if not isinstance(name, str):

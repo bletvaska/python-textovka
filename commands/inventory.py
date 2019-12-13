@@ -11,4 +11,4 @@ class Inventory(Command):
         else:
             print('Nesieš so sebou:')
             for item in context.backpack:
-                print(f'\t{item._name}')
+                print(f'\t{item}')

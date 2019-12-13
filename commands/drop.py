@@ -18,12 +18,14 @@ class Drop(Command):
                 return
 
         # zisti, ci sa predmet nachadza v batohu
-        for item in context.backpack:
-            if item._name == self._params:
-                context.backpack.remove(item)
-                context.current_room._items.append(item)
-                print(f'Do miestnosti si položil predmet {item._name}.')
-                break
-        else:
+        if self._params not in context.backpack:
             print('Taký predmet u seba nemáš.')
+            return
+
+        # poloz predmet
+        item = context.backpack[self._params]
+        context.backpack -= item
+        context.current_room._items.append(item)
+        print(f'Do miestnosti si položil predmet {item._name}.')
+
 
