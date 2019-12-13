@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     print(context.current_room)
 
-    commands = [About(), Quit(), West(), East(), Down(), LookAround(), Examine(), Take()]
+    commands = [About(), Quit(), West(), East(), Down(), LookAround(), Examine(), Take(), Inventory()]
     commands.append(Commands(commands))
 
     while context.game_state == 'PLAYING':

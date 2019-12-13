@@ -7,3 +7,4 @@ from .west import West
 from .lookaround import LookAround
 from .examine import Examine
 from .take import Take
+from .inventory import Inventory
