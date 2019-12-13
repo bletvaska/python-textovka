@@ -23,8 +23,15 @@ class Room:
             output += 'Možné východy:\n\t'
             output += '\n\t'.join(self._exits.keys())
 
-        # list items in room
+        output += '\n'
         
+        # list items in room
+        if len(self._items) == 0:
+            output += 'Nevidíš tu nič zaujímavé.'
+        else:
+            output += 'Vidíš:\n\t'
+            for item in self._items:
+                output += f'\n\t{item._name}'
 
         return output
 
