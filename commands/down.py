@@ -1,7 +1,9 @@
-class Down:
+from commands.command import Command
+
+
+class Down(Command):
     def __init__(self):
-        self._name = 'dolu'
-        self._description = 'Presunie sa do miestnosti nachádzajúcej sa dolu od aktuálnej.'
+        super().__init__('dolu', 'Presunie sa do miestnosti nachádzajúcej sa dolu od aktuálnej.')
 
     def exec(self, context):
         if 'down' in context.current_room._exits:

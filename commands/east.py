@@ -1,7 +1,9 @@
-class East:
+from commands.command import Command
+
+
+class East(Command):
     def __init__(self):
-        self._name = 'vychod'
-        self._description = 'Presunie sa do miestnosti na východ.'
+        super().__init__('vychod', 'Presunie sa do miestnosti na východ.')
 
     def exec(self, context):
         if 'east' in context.current_room._exits:

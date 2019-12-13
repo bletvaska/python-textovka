@@ -1,7 +1,9 @@
-class West:
+from commands.command import Command
+
+
+class West(Command):
     def __init__(self):
-        self._name = 'zapad'
-        self._description = 'Prejde do miestnosti na západ.'
+        super().__init__('zapad', 'Prejde do miestnosti na západ.')
 
     def exec(self, context):
         """

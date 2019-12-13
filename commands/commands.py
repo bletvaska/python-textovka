@@ -1,7 +1,9 @@
-class Commands:
+from commands.command import Command
+
+
+class Commands(Command):
     def __init__(self, commands):
-        self._name = 'prikazy'
-        self._description = 'Zobrazí zoznam príkazov hry.'
+        super().__init__('prikazy', 'Zobrazí zoznam príkazov hry.')
         self._commands = commands
 
     def exec(self, context):

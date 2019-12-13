@@ -1,7 +1,9 @@
-class About:
+from commands.command import Command
+
+
+class About(Command):
     def __init__(self):
-        self._name = 'o hre'
-        self._description = 'zobrazí informácie o hre'
+        super().__init__('o hre', 'zobrazí informácie o hre')
 
     def exec(self, context=None):
         print(

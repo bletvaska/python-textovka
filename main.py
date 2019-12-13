@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from commands.command import Command
 from context import Context
 from room import DeadRoom
 # from commands import Commands, About, Quit, West, East, Down
