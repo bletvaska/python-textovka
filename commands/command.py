@@ -5,6 +5,7 @@ class Command:
     def __init__(self, name: str, description: str):
         self._name = name.lower()
         self._description = description.lower()
+        self._params = None
 
     def exec(self, context):
         raise CommandNotYetImplemented('Telo príkazu ešte nebolo implementované.')

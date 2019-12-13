@@ -22,7 +22,8 @@ if __name__ == '__main__':
         line = input('> ').strip().lower()
 
         for command in commands:
-            if command._name == line:
+            if line.startswith(command._name) == True:
+                command._params = line.split(command._name, 1)[1].strip()
                 command.exec(context)
                 break
         else:
