@@ -11,6 +11,12 @@ class Take(Command):
             print('Neviem, aký predmet chceš vziať.')
             return
 
+        # zisti, ci sa predmet uplnou nahodou nenachdza v batohu
+        for item in context.backpack:
+            if item._name == self._params:
+                print(f'Predmet {item._name} sa už nachádza v batohu.')
+                return
+
         # zisti, ci sa predmet nachadza v miestnosti
         for item in context.current_room._items:
             if item._name == self._params:

@@ -12,10 +12,10 @@ class Examine(Command):
             return
 
         # zisti, ci sa predmet nachadza v miestnosti
-        for item in context.current_room._items:
+        items = context.current_room._items + context.backpack
+        for item in items:
             if item._name == self._params:
                 print(item)
                 break
         else:
             print('Taký predmet tu nikde nevidím.')
-
