@@ -24,14 +24,14 @@ class Room:
             output += '\n\t'.join(self._exits.keys())
 
         output += '\n'
-        
+
         # list items in room
         if len(self._items) == 0:
             output += 'Nevidíš tu nič zaujímavé.'
         else:
-            output += 'Vidíš:\n\t'
+            output += 'Vidíš:\n'
             for item in self._items:
-                output += f'\n\t{item._name}'
+                output += f'\t{item._name}\n'
 
         return output
 
