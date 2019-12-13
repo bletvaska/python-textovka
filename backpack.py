@@ -32,7 +32,7 @@ class Backpack:
 
     def __add__(self, other):
         if not isinstance(other, Item):
-            raise TypeError('Not an item')
+            raise TypeError('Not an Item')
 
         if len(self._items) >= self._capacity:
             raise Exception('Backpack si full.')
@@ -40,3 +40,40 @@ class Backpack:
         self._items.append(other)
 
         return self
+
+    def __sub__(self, other):
+        if not isinstance(other, Item):
+            raise TypeError('Not an Item.')
+
+        # item = self.get(other)
+
+    def __contains__(self, name: str):
+        if not isinstance(name, str):
+            raise TypeError('Not a string.')
+
+        for item in self._items:
+            if item._name == name:
+                return True
+
+        return False
+
+    def __getitem__(self, name: str):
+        if not isinstance(name, str):
+            raise TypeError('Not a string.')
+
+        for item in self._items:
+            if item._name == name:
+                return item
+
+        raise KeyError('Not in backpack.')
+
+    def __iter__(self):
+        self.index = 0
+        return self
+
+    def __next__(self):
+        if self.index >= len(self._items):
+            raise StopIteration
+        item = self._items[self.index]
+        self.index += 1
+        return item._name
