@@ -26,3 +26,17 @@ class Backpack:
     def list(self):
         for item in self._items:
             print(item._name)
+
+    def __len__(self):
+        return len(self._items)
+
+    def __add__(self, other):
+        if not isinstance(other, Item):
+            raise TypeError('Not an item')
+
+        if len(self._items) >= self._capacity:
+            raise Exception('Backpack si full.')
+
+        self._items.append(other)
+
+        return self

@@ -1,9 +1,22 @@
 #!/usr/bin/env python3
+from backpack import Backpack
 from commands.command import Command
 from context import Context
+from items import Whip
 from room import DeadRoom
 # from commands import Commands, About, Quit, West, East, Down
 from commands import *
+
+
+# bp = Backpack(2)
+# whip = Whip()
+#
+# bp += whip
+# bp += whip
+# print(len(bp))
+# bp += whip
+
+
 
 if __name__ == '__main__':
     context = Context()
