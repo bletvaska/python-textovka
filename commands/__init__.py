@@ -5,3 +5,4 @@ from .east import East
 from .quit import Quit
 from .west import West
 from .lookaround import LookAround
+from .examine import Examine
