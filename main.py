@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
+from about import About
 from commands import about, commands, go_west, go_east, go_down, quit
 from context import Context
+from down import Down
+from east import East
+from quit import Quit
 from room import DeadRoom
+from west import West
 
 if __name__ == '__main__':
     context = Context()
-
 
     print('Indiana Jones and the Plane Escape')
 
@@ -14,27 +18,15 @@ if __name__ == '__main__':
 
     print(context.current_room)
 
+    commands = [About(), Quit(), West(), East(), Down()]
+
     while context.game_state == 'PLAYING':
         line = input('> ').strip().lower()
 
-        if line in ('koniec', 'quit', 'k', 'q'):
-            quit(context)
-
-        elif line in ('o autorovi', 'o mne', 'info'):
-            about()
-
-        elif line in ('prikazy', 'prikaz', 'commands'):
-            commands()
-
-        elif line in ('zapad', 'z', 'west', 'w'):
-            go_west(context)
-
-        elif line in ('vychod', 'v', 'east', 'e'):
-            go_east(context)
-
-        elif line in ('dolu', 'down'):
-            go_down(context)
-
+        for command in commands:
+            if command._name == line:
+                command.exec(context)
+                break
         else:
             print('taky prikaz nepoznam.')
 

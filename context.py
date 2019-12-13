@@ -46,5 +46,3 @@ class Context:
         self.world['vo vzduchu'].add_exit('down', self.world['zem'])
 
         self.current_room = self.world['prva trieda']
-
-
