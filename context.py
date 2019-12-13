@@ -1,6 +1,7 @@
 """
 Game Context Module
 """
+from items import Whip, Revolver, Fedora, RubberBoat
 from room import Room, DeadRoom
 
 
@@ -32,9 +33,13 @@ class Context:
 
         self.world['prva trieda'] = Room('prva trieda',
                                     'Prvá trieda. Sliepky a iné živočíchy tu cestujú s tebou tiež. Na sedadlách sa nachádzajú klietky a iný spotrebný materiál.')
+        self.world['prva trieda']._items.append(Whip())
+        self.world['prva trieda']._items.append(Revolver())
+        self.world['prva trieda']._items.append(Fedora())
 
         self.world['batozinovy priestor'] = Room('batozinovy priestor',
                                             'Veľa priestoru pre padáky. Škoda, že tu žiadny nevidno.')
+        self.world['batozinovy priestor']._items.append(RubberBoat())
 
         self.world['zem'] = DeadRoom('zem', 'Ta si bezpečne dorazil na zem. Len škoda, že bez padáku. Technické služby budú mať zasa o robotu navyše. S tebou.')
 
