@@ -6,3 +6,4 @@ from .quit import Quit
 from .west import West
 from .lookaround import LookAround
 from .examine import Examine
+from .take import Take
