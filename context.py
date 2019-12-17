@@ -2,7 +2,7 @@
 Game Context Module
 """
 from backpack import Backpack
-from items import Whip, Revolver, Fedora, RubberBoat, Seats
+from items import Whip, Revolver, Fedora, RubberBoat, Seats, Key, DoorToLuggage
 from room import Room, DeadRoom
 
 
@@ -26,6 +26,7 @@ class Context:
         self.game_state = 'PLAYING'
         self.world = {}
         self.backpack = Backpack()
+        self.backpack += Key()
 
         self.world['kabina'] = Room('kabina',
                                'Vošiel si do kabíny pilotov, ktorá sa skrývala za voľne zatiahnutým závesom. Aj tu je kľud. Nikto tu nie je. Kniple sa voľne pohupujú a ručičky na budíkoch sa voľne otáčajú.')
@@ -39,6 +40,7 @@ class Context:
         self.world['prva trieda']._items.append(Revolver())
         self.world['prva trieda']._items.append(Fedora())
         self.world['prva trieda']._items.append(Seats())
+        self.world['prva trieda']._items.append(DoorToLuggage())
 
         self.world['batozinovy priestor'] = Room('batozinovy priestor',
                                             'Veľa priestoru pre padáky. Škoda, že tu žiadny nevidno.')
