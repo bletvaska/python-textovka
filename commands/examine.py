@@ -15,7 +15,12 @@ class Examine(Command):
         items = context.current_room._items + context.backpack._items
         for item in items:
             if item._name == self._params:
+                # vypisem item description
                 print(item)
+
+                # ak je predmet preskumatelny, tak ho preskumam
+                if 'examinable' in item.features:
+                    item.examine(context)
                 break
         else:
             print('Taký predmet tu nikde nevidím.')

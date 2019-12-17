@@ -30,6 +30,7 @@ class Context:
 
         self.world['kabina'] = Room('kabina',
                                'Vošiel si do kabíny pilotov, ktorá sa skrývala za voľne zatiahnutým závesom. Aj tu je kľud. Nikto tu nie je. Kniple sa voľne pohupujú a ručičky na budíkoch sa voľne otáčajú.')
+        self.world['kabina']._items.append(Seats())
 
         self.world['vo vzduchu'] = Room('vo vzduchu',
                                    'Voľne sa vznášaš v priestore a vychutnávaš si ostrý vzduch. Tvoju pozornosť rozptyľujú len zväčšujúce sa bodky na zemi. Krásne je dnes vonku.')
@@ -39,7 +40,6 @@ class Context:
         self.world['prva trieda']._items.append(Whip())
         self.world['prva trieda']._items.append(Revolver())
         self.world['prva trieda']._items.append(Fedora())
-        self.world['prva trieda']._items.append(Seats())
         self.world['prva trieda']._items.append(DoorToLuggage())
 
         self.world['batozinovy priestor'] = Room('batozinovy priestor',
