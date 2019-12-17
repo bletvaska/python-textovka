@@ -49,7 +49,6 @@ class Context:
         self.world['zem'] = DeadRoom('zem', 'Ta si bezpečne dorazil na zem. Len škoda, že bez padáku. Technické služby budú mať zasa o robotu navyše. S tebou.')
 
         self.world['kabina'].add_exit('east', self.world['prva trieda'])
-        # self.world['prva trieda'].add_exit('east', self.world['batozinovy priestor'])
         self.world['prva trieda'].add_exit('west', self.world['kabina'])
         self.world['prva trieda'].add_exit('down', self.world['vo vzduchu'])
         self.world['batozinovy priestor'].add_exit('west', self.world['prva trieda'])
