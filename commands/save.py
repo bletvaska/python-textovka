@@ -11,5 +11,10 @@ class Save(Command):
             print('Chýba názov súboru.')
             return
 
-        for cmd in context.history:
-            print(cmd)
+        # uloz subor riadok po riadku
+        with open(self._params, 'w') as f:
+            for cmd in context.history:
+                f.write(f'{cmd}\n')
+
+        # vypis spravu pre pouzivatela
+        print('Hra bola úspešne uložená.')
