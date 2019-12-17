@@ -9,3 +9,4 @@ from .examine import Examine
 from .take import Take
 from .drop import Drop
 from .inventory import Inventory
+from .use import Use
