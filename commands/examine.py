@@ -20,6 +20,7 @@ class Examine(Command):
 
                 # ak je predmet preskumatelny, tak ho preskumam
                 if 'examinable' in item.features:
+                    print()
                     item.examine(context)
                 break
         else:

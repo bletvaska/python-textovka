@@ -26,7 +26,6 @@ class Context:
         self.game_state = 'PLAYING'
         self.world = {}
         self.backpack = Backpack()
-        self.backpack += Key()
 
         self.world['kabina'] = Room('kabina',
                                'Vošiel si do kabíny pilotov, ktorá sa skrývala za voľne zatiahnutým závesom. Aj tu je kľud. Nikto tu nie je. Kniple sa voľne pohupujú a ručičky na budíkoch sa voľne otáčajú.')
