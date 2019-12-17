@@ -1,6 +1,6 @@
-from items import Item, mixins
+from items import Item
 
 
-class Fedora(Item, mixins.Movable):
+class Fedora(Item):
     def __init__(self):
-        super().__init__('klobuk', 'Klobúčik na hlavičku.')
+        super().__init__('klobuk', 'Klobúčik na hlavičku.', ['movable'])

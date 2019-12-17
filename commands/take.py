@@ -22,7 +22,7 @@ class Take(Command):
             for item in context.current_room._items:
                 if item._name == self._params:
                     # zisti, ci sa da zobrat
-                    if isinstance(item, Movable):
+                    if 'movable' in item.features:
                         # zober
                         context.backpack += item
                         context.current_room._items.remove(item)

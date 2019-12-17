@@ -1,6 +1,6 @@
-from items import Item, mixins
+from items import Item
 
 
-class Whip(Item, mixins.Movable):
+class Whip(Item):
     def __init__(self):
-        super().__init__('bic', 'Bičík na šľahanie.')
+        super().__init__('bic', 'Bičík na šľahanie.', ['movable'])
