@@ -25,7 +25,8 @@ if __name__ == '__main__':
         Inventory(),
         Drop(),
         Use(),
-        Save()
+        Save(),
+        Load()
     ]
     commands.append(Commands(commands))
 
