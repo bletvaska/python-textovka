@@ -11,4 +11,11 @@ class Load(Command):
             print('Chýba názov súboru.')
             return
 
-        print('ta nacitavam')
+        with open(self._params) as f:
+            context.init_game()
+            for line in f.readlines():
+                print(line)
+
+
+
+        print('ta subor bol uspesne nacitany.')

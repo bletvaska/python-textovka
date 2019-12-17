@@ -13,31 +13,15 @@ if __name__ == '__main__':
 
     print(context.current_room)
 
-    commands = [
-        About(),
-        Quit(),
-        West(),
-        East(),
-        Down(),
-        LookAround(),
-        Examine(),
-        Take(),
-        Inventory(),
-        Drop(),
-        Use(),
-        Save(),
-        Load()
-    ]
-    commands.append(Commands(commands))
+
 
     while context.game_state == 'PLAYING':
         line = input('> ').strip().lower()
 
-        for command in commands:
-            if line.startswith(command._name) == True:
-                command._params = line.split(command._name, 1)[1].strip()
-                command.exec(context)
-                break
+        command = context.parser.parse(line)
+
+        if command is not None:
+            command.exec(context)
         else:
             print('taky prikaz nepoznam.')
 
