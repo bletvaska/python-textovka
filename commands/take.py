@@ -27,6 +27,9 @@ class Take(Command):
                         context.backpack += item
                         context.current_room._items.remove(item)
                         print(f'Do batôžku si si vložil {item._name}.')
+
+                        # ulozi prikaz do historie
+                        self.save_to_history(context)
                     else:
                         print('Tento predmet sa nedá zobrať.')
                     break

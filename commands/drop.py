@@ -28,4 +28,7 @@ class Drop(Command):
         context.current_room._items.append(item)
         print(f'Do miestnosti si položil predmet {item._name}.')
 
+        # ulozi prikaz do historie
+        self.save_to_history(context)
+
 

@@ -12,3 +12,9 @@ class Command:
 
     def __str__(self):
         return f'{self._name.upper()} - {self._description}'
+
+    def save_to_history(self, context):
+        if self._params is not None:
+            context.history.append(f'{self._name} {self._params}')
+        else:
+            context.history.append(self._name)

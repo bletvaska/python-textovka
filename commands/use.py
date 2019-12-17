@@ -17,6 +17,9 @@ class Use(Command):
             if item._name == self._params:
                 if 'usable' in item.features:
                     item.use(context)
+
+                    # ulozi prikaz do historie
+                    self.save_to_history(context)
                 else:
                     print('Tento predmet sa nedá použiť.')
                 break

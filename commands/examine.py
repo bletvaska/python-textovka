@@ -22,6 +22,9 @@ class Examine(Command):
                 if 'examinable' in item.features:
                     print()
                     item.examine(context)
+
+                    # ulozi prikaz do historie
+                    self.save_to_history(context)
                 break
         else:
             print('Taký predmet tu nikde nevidím.')
