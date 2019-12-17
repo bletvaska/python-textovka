@@ -1,5 +1,4 @@
 from commands.command import Command
-from items.mixins import Movable
 
 
 class Take(Command):
