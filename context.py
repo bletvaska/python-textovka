@@ -53,4 +53,10 @@ class Context:
         self.world['batozinovy priestor'].add_exit('west', self.world['prva trieda'])
         self.world['vo vzduchu'].add_exit('down', self.world['zem'])
 
+        # druha mapa
+        self.world['pristav'] = Room('pristav',
+                               'Kamenisté pobrežie lemuje potok, na ktorý máš kopec (ne)príjemných spomienok.')
+
         self.current_room = self.world['prva trieda']
+
+
