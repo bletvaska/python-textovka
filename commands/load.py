@@ -14,8 +14,9 @@ class Load(Command):
         with open(self._params) as f:
             context.init_game()
             for line in f.readlines():
-                print(line)
+                # print(line.strip())
+                command = context.parser.parse(line.strip())
+                command.exec(context)
 
-
-
+        print(context.current_room)
         print('ta subor bol uspesne nacitany.')
