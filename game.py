@@ -100,15 +100,31 @@ while line != 'koniec':
         print('rozhliadni sa - zobrazí opis aktuálnej miestnosti')
 
     elif line == 'vychod':
-        current_room = world['obyvacka']
-        show_room(current_room)
+        name = current_room['exits']['east']
+        if name != None:
+            current_room = world[name]
+            show_room(current_room)
+        else:
+            print('Tam sa nedá ísť.')
 
     elif line == 'zapad':
-        current_room = world['chodba']
-        show_room(current_room)
+        name = current_room['exits']['west']
+        if name != None:
+            current_room = world[name]
+            show_room(current_room)
+        else:
+            print('Tam sa nedá ísť.')
 
     elif line == 'juh':
         name = current_room['exits']['south']
+        if name != None:
+            current_room = world[name]
+            show_room(current_room)
+        else:
+            print('Tam sa nedá ísť.')
+
+    elif line == 'sever':
+        name = current_room['exits']['north']
         if name != None:
             current_room = world[name]
             show_room(current_room)
@@ -122,12 +138,3 @@ while line != 'koniec':
         print("Tento príkaz nepoznám.")
 
 print('Toto je koniec. Díky, že si si zahral.')
-
-room = {
-    'description': None,
-    'name': None,
-    'exits': {
-        'north': None,
-        'south': None
-    }
-}
