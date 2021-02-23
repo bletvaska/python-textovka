@@ -11,7 +11,7 @@ print('                    |_|                                      ')
 print('                                   (c)2021 Python 101 Version')
 print()
 
-print('Nachádzaš sa v chodbe neznámeho bytu. Vchodové sú uspešne zamknuté. Veci visiace na vešiakoch rozhodne nie sú tvoje.')
+print('Nachádzaš sa v chodbe neznámeho bytu. Vchodové dvere sú uspešne zamknuté. Veci visiace na vešiakoch rozhodne nie sú tvoje. Ale... ani by si si ich na seba nedal.')
 print('Môžeš ísť na západ.')
 
 while line != 'koniec':
@@ -26,6 +26,11 @@ while line != 'koniec':
         print('o hre - zobrazí informácie o hre')
         print('koniec - ukončí hru')
         print('prikazy - zobrazi zoznam prikazov')
+        print('zapad - prejdeš na západ')
+
+    elif line == 'zapad':
+        print('Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.')
+        print('Môžeš ísť na východ.')
 
     else:
         print("Tento príkaz nepoznám.")
