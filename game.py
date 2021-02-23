@@ -8,19 +8,53 @@ def show_room(room):
 
 line = None
 
-hall = {
-    'description': 'Nachádzaš sa v chodbe neznámeho bytu. Vchodové dvere sú uspešne zamknuté. Veci visiace na vešiakoch rozhodne nie sú tvoje. Ale... ani by si si ich na seba nedal.',
-    'name': 'chodba',
-    'exits': 'Môžeš ísť na východ.',
-    'items': None
+"""
++-------+     +-------------+
+|  hall |-----| living room |
++-------+     +-------------+          N
+    |                                  ^
+    |                              W < o > E
++---------+                            v
+| dungeon |                            S
++---------+
+"""
+
+world = {
+    'chodba': {
+        'description': 'Nachádzaš sa v chodbe neznámeho bytu. Vchodové dvere sú uspešne zamknuté. Veci visiace na vešiakoch rozhodne nie sú tvoje. Ale... ani by si si ich na seba nedal.',
+        'name': 'chodba',
+        'exits': {
+            'east': 'obyvacka',
+            'west': None,
+            'north': None,
+            'south': 'spajza'
+        },
+        'items': ''
+    },
+    'obycaka':  {
+        'description': 'Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.',
+        'name': 'obyvacka',
+        'exits': {
+            'east': None,
+            'west': 'chodba',
+            'north': None,
+            'south': None
+        },
+        'items': ''
+    },
+    'spajza': {
+        'description': 'Je tu temno a vlhko. Kompóty na poličkách dotvárajú temnú atmostféru tejto miestnosti.',
+        'name': 'spajza',
+        'exits': {
+            'east': None,
+            'west': None,
+            'north': 'chodba',
+            'south': None
+        },
+        'items': ''
+    }
 }
 
-living_room = {
-    'description': 'Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.',
-    'name': 'obyvacka',
-    'exits': 'Môžeš ísť na západ.',
-    'items': None
-}
 
 current_room = hall
 
@@ -57,6 +91,9 @@ while line != 'koniec':
 
     elif line == 'vychod':
         current_room = hall
+        show_room(current_room)
+
+    elif line == 'rozhliadni sa':
         show_room(current_room)
 
     else:
