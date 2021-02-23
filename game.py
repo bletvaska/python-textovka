@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+def show_room(room):
+    print(f'Nachádzaš sa v miestnosti {room["name"]}.')
+    print(room['description'])
+    print(room['exits'])
+
+
 line = None
 
 hall = {
@@ -28,8 +34,7 @@ print('                    |_|                                      ')
 print('                                   (c)2021 Python 101 Version')
 print()
 
-print(hall['description'])
-print(hall['exits'])
+show_room(hall)
 
 while line != 'koniec':
     line = input('> ').strip().lower()
@@ -46,12 +51,10 @@ while line != 'koniec':
         print('zapad - prejdeš na západ')
 
     elif line == 'zapad':
-        print(living_room['description'])
-        print(living_room['exits'])
+        show_room(living_room)
 
     elif line == 'vychod':
-        print(hall['description'])
-        print(hall['exits'])
+        show_room(hall)
 
     else:
         print("Tento príkaz nepoznám.")
