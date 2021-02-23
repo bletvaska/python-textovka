@@ -3,7 +3,19 @@
 def show_room(room):
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(room['description'])
-    print(room['exits'])
+
+    if room['exits']['east'] == None and room['exits']['west'] == None and room['exits']['south'] == None and room['exits']['north'] == None:
+        print('Z miestnosti neexistujú žiadne východy.')
+    else:
+        print('Možné východy z miestnosti:')
+        if room['exits']['east'] != None:
+            print('  vychod')
+        if room['exits']['west'] != None:
+            print('  zapad')
+        if room['exits']['south'] != None:
+            print('  juh')
+        if room['exits']['north'] != None:
+            print('  sever')
 
 
 line = None
@@ -31,6 +43,7 @@ world = {
         },
         'items': ''
     },
+
     'obyvacka':  {
         'description': 'Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.',
         'name': 'obyvacka',
@@ -42,6 +55,7 @@ world = {
         },
         'items': ''
     },
+
     'spajza': {
         'description': 'Je tu temno a vlhko. Kompóty na poličkách dotvárajú temnú atmostféru tejto miestnosti.',
         'name': 'spajza',
