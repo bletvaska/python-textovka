@@ -31,7 +31,7 @@ world = {
         },
         'items': ''
     },
-    'obycaka':  {
+    'obyvacka':  {
         'description': 'Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.',
         'name': 'obyvacka',
         'exits': {
@@ -56,7 +56,7 @@ world = {
 }
 
 
-current_room = hall
+current_room = world['chodba']
 
 
 print(' _____                            ____                       ')
@@ -85,12 +85,12 @@ while line != 'koniec':
         print('zapad - prejdeš na západ')
         print('rozhliadni sa - zobrazí opis aktuálnej miestnosti')
 
-    elif line == 'zapad':
-        current_room = living_room
+    elif line == 'vychod':
+        current_room = world['obyvacka']
         show_room(current_room)
 
-    elif line == 'vychod':
-        current_room = hall
+    elif line == 'zapad':
+        current_room = world['chodba']
         show_room(current_room)
 
     elif line == 'rozhliadni sa':
