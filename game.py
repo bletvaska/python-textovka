@@ -34,7 +34,7 @@ print('                    |_|                                      ')
 print('                                   (c)2021 Python 101 Version')
 print()
 
-show_room(hall)
+show_room(current_room)
 
 while line != 'koniec':
     line = input('> ').strip().lower()
@@ -49,12 +49,15 @@ while line != 'koniec':
         print('koniec - ukončí hru')
         print('prikazy - zobrazi zoznam prikazov')
         print('zapad - prejdeš na západ')
+        print('rozhliadni sa - zobrazí opis aktuálnej miestnosti')
 
     elif line == 'zapad':
-        show_room(living_room)
+        current_room = living_room
+        show_room(current_room)
 
     elif line == 'vychod':
-        show_room(hall)
+        current_room = hall
+        show_room(current_room)
 
     else:
         print("Tento príkaz nepoznám.")
