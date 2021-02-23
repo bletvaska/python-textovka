@@ -5,7 +5,7 @@ line = None
 print('Vitajte v tejto mocnej hre.')
 
 while line != 'koniec':
-    line = input('> ')
+    line = input('> ').strip().lower()
 
     if line == 'o hre':
         print('(c)2021 by mirek na mocnom Pythoňáckom kurze spáchal.')
