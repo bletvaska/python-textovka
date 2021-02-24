@@ -1,6 +1,6 @@
 {
     "chodba": {
-        "description": "Nach\u00e1dza\u0161 sa v chodbe nezn\u00e1meho bytu. Vchodov\u00e9 dvere s\u00fa uspe\u0161ne zamknut\u00e9. Veci visiace na ve\u0161iakoch rozhodne nie s\u00fa tvoje. Ale... ani by si si ich na seba nedal.",
+        "description": "Nachádzaš sa v chodbe neznámeho bytu. Vchodové dvere sú uspešne zamknuté. Veci visiace na vešiakoch rozhodne nie sú tvoje. Ale... ani by si si ich na seba nedal.",
         "name": "chodba",
         "exits": {
             "east": "obyvacka",
@@ -11,7 +11,7 @@
         "items": ""
     },
     "obyvacka": {
-        "description": "Nach\u00e1dza\u0161 sa (zrejme) v obyva\u010dke tohto nehostinn\u00e9ho bytu. P\u00f4vodn\u00fd majite\u013e nechal po sebe na sten\u00e1ch pomerne nevkusn\u00e9 tapety. H\u00e1dam e\u0161te zo sociku. Okno, ktor\u00e9 tu prep\u00fa\u0161\u0165a aspo\u0148 t\u00fa trochu slne\u010dn\u00fdch l\u00fa\u010dov pomedzi diery v kart\u00f3noch je aj tak zamre\u017eovan\u00e9.",
+        "description": "Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.",
         "name": "obyvacka",
         "exits": {
             "east": null,
@@ -22,7 +22,7 @@
         "items": ""
     },
     "spajza": {
-        "description": "Je tu temno a vlhko. Komp\u00f3ty na poli\u010dk\u00e1ch dotv\u00e1raj\u00fa temn\u00fa atmostf\u00e9ru tejto miestnosti.",
+        "description": "Je tu temno a vlhko. Kompóty na poličkách dotvárajú temnú atmostféru tejto miestnosti.",
         "name": "spajza",
         "exits": {
             "east": null,
