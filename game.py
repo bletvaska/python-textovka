@@ -61,11 +61,15 @@ kanister = {
     'features': ['movable', ]
 }
 
-world['chodba']['items'].append(teplaky)
-world['chodba']['items'].append(kanister)
+# world['chodba']['items'].append(teplaky)
+# world['chodba']['items'].append(kanister)
 
 
+# game init
 current_room = world['chodba']
+backpack = []
+backpack.append(kanister)
+backpack.append(teplaky)
 
 
 print(' _____                            ____                       ')
