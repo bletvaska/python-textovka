@@ -133,6 +133,14 @@ while line != 'koniec':
     elif line == 'rozhliadni sa':
         show_room(current_room)
 
+    elif line == 'inventar':
+        if len(backpack) == 0:
+            print('Batoh je prázdny.')
+        else:
+            print('V batohu máš:')
+            for item in backpack:
+                print(f'  {item["name"]}')
+
     elif line.startswith('preskumaj'):
         cmd = line.split(maxsplit=1)
         if len(cmd) == 1:
