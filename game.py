@@ -55,7 +55,14 @@ teplaky = {
     'features': ['movable', ]
 }
 
+kanister = {
+    'name': 'kanister',
+    'description': 'Vojenský kanister na 20l. Odštroboval si zátku, čuchol si a rovno si ju zašroboval naspäť. Fuj benzín. Ešte že nie som fajčiar.',
+    'features': ['movable', ]
+}
+
 world['chodba']['items'].append(teplaky)
+world['chodba']['items'].append(kanister)
 
 
 current_room = world['chodba']
@@ -124,7 +131,16 @@ while line != 'koniec':
 
     elif line.startswith('preskumaj'):
         cmd = line.split(maxsplit=1)
-        print('...preskumavam ' + cmd[1])
+        name = cmd[1]
+
+        for item in current_room['items']:
+            if item['name'] == name:
+                print(item['description'])
+                break
+            else:
+                print('Taký predmet tu nikde nevidím.')
+
+        # print('...preskumavam ' + name)
 
     else:
         print("Tento príkaz nepoznám.")
