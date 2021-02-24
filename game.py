@@ -48,6 +48,16 @@ file = open('world.json', 'r', encoding='utf-8')
 world = json.load(file)
 file.close()
 
+# rozmiestnenie veci do sveta
+teplaky = {
+    'name': 'teplaky',
+    'description': 'Parádne tepláky ružovej farby. Asi pána domáceho. Súdiac podľa veľkosti.',
+    'features': ['movable', ]
+}
+
+world['chodba']['items'].append(teplaky)
+
+
 current_room = world['chodba']
 
 

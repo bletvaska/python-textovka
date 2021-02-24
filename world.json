@@ -8,7 +8,7 @@
             "north": null,
             "south": "spajza"
         },
-        "items": ["teplaky", "ponozky", "sal"]
+        "items": []
     },
     "obyvacka": {
         "description": "Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.",
