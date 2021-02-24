@@ -3,9 +3,11 @@ import json
 
 
 def show_room(room):
+    # nazov a opis miestnosti
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(room['description'])
 
+    # vypis vychodov z miestnosti
     if room['exits']['east'] == None and room['exits']['west'] == None and room['exits']['south'] == None and room['exits']['north'] == None:
         print('Z miestnosti neexistujú žiadne východy.')
     else:
@@ -18,6 +20,8 @@ def show_room(room):
             print('  juh')
         if room['exits']['north'] != None:
             print('  sever')
+
+    # vypis predmetov v miestnosti
 
 
 line = None
