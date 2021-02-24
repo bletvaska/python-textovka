@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import json
+
 
 def show_room(room):
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
@@ -31,44 +33,10 @@ line = None
 +---------+
 """
 
-world = {
-    'chodba': {
-        'description': 'Nachádzaš sa v chodbe neznámeho bytu. Vchodové dvere sú uspešne zamknuté. Veci visiace na vešiakoch rozhodne nie sú tvoje. Ale... ani by si si ich na seba nedal.',
-        'name': 'chodba',
-        'exits': {
-            'east': 'obyvacka',
-            'west': None,
-            'north': None,
-            'south': 'spajza'
-        },
-        'items': ''
-    },
-
-    'obyvacka':  {
-        'description': 'Nachádzaš sa (zrejme) v obyvačke tohto nehostinného bytu. Pôvodný majiteľ nechal po sebe na stenách pomerne nevkusné tapety. Hádam ešte zo sociku. Okno, ktoré tu prepúšťa aspoň tú trochu slnečných lúčov pomedzi diery v kartónoch je aj tak zamrežované.',
-        'name': 'obyvacka',
-        'exits': {
-            'east': None,
-            'west': 'chodba',
-            'north': None,
-            'south': None
-        },
-        'items': ''
-    },
-
-    'spajza': {
-        'description': 'Je tu temno a vlhko. Kompóty na poličkách dotvárajú temnú atmostféru tejto miestnosti.',
-        'name': 'spajza',
-        'exits': {
-            'east': None,
-            'west': None,
-            'north': 'chodba',
-            'south': None
-        },
-        'items': ''
-    }
-}
-
+# nacitanie sveta z json suboru
+file = open('world.json', 'r')
+world = json.load(file)
+file.close()
 
 current_room = world['chodba']
 
