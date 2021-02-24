@@ -34,7 +34,7 @@ line = None
 """
 
 # nacitanie sveta z json suboru
-file = open('world.json', 'r')
+file = open('world.json', 'r', encoding='utf-8')
 world = json.load(file)
 file.close()
 
