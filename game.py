@@ -27,7 +27,7 @@ def show_room(room):
     else:
         print('Vidíš:')
         for item in room['items']:
-            print(f'  {item}')
+            print(f'  {item["name"]}')
 
 
 line = None
@@ -121,6 +121,10 @@ while line != 'koniec':
 
     elif line == 'rozhliadni sa':
         show_room(current_room)
+
+    elif line.startswith('preskumaj'):
+        cmd = line.split(maxsplit=1)
+        print('...preskumavam ' + cmd[1])
 
     else:
         print("Tento príkaz nepoznám.")
