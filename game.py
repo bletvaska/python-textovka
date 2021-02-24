@@ -131,16 +131,20 @@ while line != 'koniec':
 
     elif line.startswith('preskumaj'):
         cmd = line.split(maxsplit=1)
-        name = cmd[1]
+        if len(cmd) == 1:
+            print('Čo chceš preskúmať?')
+        else:
+            name = cmd[1]
 
-        for item in current_room['items']:
-            if item['name'] == name:
-                print(item['description'])
-                break
-            else:
+            found = False
+            for item in current_room['items']:
+                if item['name'] == name:
+                    print(item['description'])
+                    found = True
+                    break
+
+            if found == False:
                 print('Taký predmet tu nikde nevidím.')
-
-        # print('...preskumavam ' + name)
 
     else:
         print("Tento príkaz nepoznám.")
