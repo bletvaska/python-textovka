@@ -22,6 +22,12 @@ def show_room(room):
             print('  sever')
 
     # vypis predmetov v miestnosti
+    if len(room['items']) == 0:
+        print('Nevidíš tu nič zaujímavé.')
+    else:
+        print('Vidíš:')
+        for item in room['items']:
+            print(f'  {item}')
 
 
 line = None
