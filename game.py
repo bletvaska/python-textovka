@@ -138,6 +138,17 @@ def cmd_use(backpack, current_room, line):
             print('Taky predmet tu nikde nevidim.')
 
 
+def cmd_east(room, world):
+    name = room['exits']['east']
+    if name != None:
+        room = world[name]
+        show_room(room)
+    else:
+        print('Tam sa nedá ísť.')
+
+    return room
+
+
 line = None
 
 """
@@ -210,12 +221,7 @@ while line != 'koniec':
 
     # potom zrobit
     elif line == 'vychod':
-        name = current_room['exits']['east']
-        if name != None:
-            current_room = world[name]
-            show_room(current_room)
-        else:
-            print('Tam sa nedá ísť.')
+        current_room = cmd_east(current_room, world)
 
     elif line == 'zapad':
         name = current_room['exits']['west']
