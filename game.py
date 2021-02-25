@@ -44,6 +44,100 @@ def cmd_inventory(backpack):
             print(f'  {item["name"]}')
 
 
+def cmd_commands():
+    print('Zoznam akutálne dostupných príkazov:')
+    print('o hre - zobrazí informácie o hre')
+    print('koniec - ukončí hru')
+    print('prikazy - zobrazi zoznam prikazov')
+    print('zapad - prejdeš na západ')
+    print('rozhliadni sa - zobrazí opis aktuálnej miestnosti')
+
+
+def cmd_look_around(current_room):
+    show_room(current_room)
+
+
+def cmd_explore(backpack, current_room, line):
+    cmd = line.split(maxsplit=1)
+    if len(cmd) == 1:
+        print('Čo chceš preskúmať?')
+    else:
+        name = cmd[1]
+
+        found = False
+        for item in current_room['items'] + backpack:
+            if item['name'] == name:
+                print(item['description'])
+                found = True
+                break
+
+        if found == False:
+            print('Taký predmet tu nikde nevidím.')
+
+
+def cmd_drop(backpack, current_room, line):
+    cmd = line.split(maxsplit=1)
+    if len(cmd) == 1:
+        print('Neviem, čo chceš položiť.')
+    else:
+        name = cmd[1]
+        found = False
+        for item in backpack:
+            if item['name'] == name:
+                backpack.remove(item)
+                current_room['items'].append(item)
+                print(f'Do miestnosti si položil {item["name"]}.')
+                found = True
+                break
+        if found == False:
+            print('Taký predmet u seba nemáš.')
+
+
+def cmd_take(backpack, current_room, line):
+    cmd = line.split(maxsplit=1)
+    if len(cmd) == 1:
+        print('Neviem, čo chceš zobrať.')
+    else:
+        name = cmd[1]
+        found = False
+        for item in current_room['items']:
+
+            if item['name'] == name:
+                if 'movable' in item['features']:
+                    current_room['items'].remove(item)
+                    backpack.append(item)
+                    print(f'Do batohu si vložil {item["name"]}.')
+                else:
+                    print('Tento predmet sa nedá zobrať.')
+
+                found = True
+                break
+
+        if found == False:
+            print(
+                f'Taký predmet v miestnosti {current_room["name"]} nevidím.')
+
+
+def cmd_use(backpack, current_room, line):
+    cmd = line.split(maxsplit=1)
+    if len(cmd) == 1:
+        print('Co chces pouzit?')
+    else:
+        name = cmd[1]
+        found = False
+        for item in current_room['items'] + backpack:
+            if item['name'] == name:
+                if 'usable' in item['features']:
+                    print(f'Pouzivam predmet {item["name"]}')
+                else:
+                    print((f'{item["name"]} sa neda pouzit.').capitalize())
+
+                found = True
+                break
+        if found == False:
+            print('Taky predmet tu nikde nevidim.')
+
+
 line = None
 
 """
@@ -111,14 +205,8 @@ while line != 'koniec':
     if line == 'o hre':
         cmd_about()
 
-    # zrobit
     elif line == 'prikazy':
-        print('Zoznam akutálne dostupných príkazov:')
-        print('o hre - zobrazí informácie o hre')
-        print('koniec - ukončí hru')
-        print('prikazy - zobrazi zoznam prikazov')
-        print('zapad - prejdeš na západ')
-        print('rozhliadni sa - zobrazí opis aktuálnej miestnosti')
+        cmd_commands()
 
     # potom zrobit
     elif line == 'vychod':
@@ -153,93 +241,23 @@ while line != 'koniec':
         else:
             print('Tam sa nedá ísť.')
 
-    # zrobit
     elif line == 'rozhliadni sa':
-        show_room(current_room)
+        cmd_look_around(current_room)
 
     elif line == 'inventar':
         cmd_inventory(backpack)
 
-    # zrobit
     elif line.startswith('preskumaj'):
-        cmd = line.split(maxsplit=1)
-        if len(cmd) == 1:
-            print('Čo chceš preskúmať?')
-        else:
-            name = cmd[1]
+        cmd_explore(backpack, current_room, line)
 
-            found = False
-            for item in current_room['items'] + backpack:
-                if item['name'] == name:
-                    print(item['description'])
-                    found = True
-                    break
-
-            if found == False:
-                print('Taký predmet tu nikde nevidím.')
-
-    # zrobit
     elif line.startswith('poloz'):
-        cmd = line.split(maxsplit=1)
-        if len(cmd) == 1:
-            print('Neviem, čo chceš položiť.')
-        else:
-            name = cmd[1]
-            found = False
-            for item in backpack:
-                if item['name'] == name:
-                    backpack.remove(item)
-                    current_room['items'].append(item)
-                    print(f'Do miestnosti si položil {item["name"]}.')
-                    found = True
-                    break
-            if found == False:
-                print('Taký predmet u seba nemáš.')
+        cmd_drop(backpack, current_room, line)
 
-    # zrobit
     elif line.startswith('vezmi'):
-        cmd = line.split(maxsplit=1)
-        if len(cmd) == 1:
-            print('Neviem, čo chceš zobrať.')
-        else:
-            name = cmd[1]
-            found = False
-            for item in current_room['items']:
+        cmd_take(backpack, current_room, line)
 
-                if item['name'] == name:
-                    if 'movable' in item['features']:
-                        current_room['items'].remove(item)
-                        backpack.append(item)
-                        print(f'Do batohu si vložil {item["name"]}.')
-                    else:
-                        print('Tento predmet sa nedá zobrať.')
-
-                    found = True
-                    break
-
-            if found == False:
-                print(
-                    f'Taký predmet v miestnosti {current_room["name"]} nevidím.')
-
-    # zrobit
     elif line.startswith('pouzi'):
-        cmd = line.split(maxsplit=1)
-        if len(cmd) == 1:
-            print('Co chces pouzit?')
-        else:
-            name = cmd[1]
-            found = False
-            for item in current_room['items'] + backpack:
-                if item['name'] == name:
-                    if 'usable' in item['features']:
-                        print(f'Pouzivam predmet {item["name"]}')
-                    else:
-                        print((f'{item["name"]} sa neda pouzit.').capitalize())
-
-                    found = True
-                    break
-            if found == False:
-                print('Taky predmet tu nikde nevidim.')
+        cmd_use(backpack, current_room, line)
 
     else:
         print("Tento príkaz nepoznám.")
