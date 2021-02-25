@@ -30,6 +30,20 @@ def show_room(room):
             print(f'  {item["name"]}')
 
 
+def cmd_about():
+    print('(c)2021 by mirek na mocnom Pythoňáckom kurze spáchal.')
+    print('Táto mocná hra je o...')
+
+
+def cmd_inventory(backpack):
+    if len(backpack) == 0:
+        print('Batoh je prázdny.')
+    else:
+        print('V batohu máš:')
+        for item in backpack:
+            print(f'  {item["name"]}')
+
+
 line = None
 
 """
@@ -95,9 +109,9 @@ while line != 'koniec':
     line = input('> ').strip().lower()
 
     if line == 'o hre':
-        print('(c)2021 by mirek na mocnom Pythoňáckom kurze spáchal.')
-        print('Táto mocná hra je o...')
+        cmd_about()
 
+    # zrobit
     elif line == 'prikazy':
         print('Zoznam akutálne dostupných príkazov:')
         print('o hre - zobrazí informácie o hre')
@@ -106,6 +120,7 @@ while line != 'koniec':
         print('zapad - prejdeš na západ')
         print('rozhliadni sa - zobrazí opis aktuálnej miestnosti')
 
+    # potom zrobit
     elif line == 'vychod':
         name = current_room['exits']['east']
         if name != None:
@@ -138,17 +153,14 @@ while line != 'koniec':
         else:
             print('Tam sa nedá ísť.')
 
+    # zrobit
     elif line == 'rozhliadni sa':
         show_room(current_room)
 
     elif line == 'inventar':
-        if len(backpack) == 0:
-            print('Batoh je prázdny.')
-        else:
-            print('V batohu máš:')
-            for item in backpack:
-                print(f'  {item["name"]}')
+        cmd_inventory(backpack)
 
+    # zrobit
     elif line.startswith('preskumaj'):
         cmd = line.split(maxsplit=1)
         if len(cmd) == 1:
@@ -166,6 +178,7 @@ while line != 'koniec':
             if found == False:
                 print('Taký predmet tu nikde nevidím.')
 
+    # zrobit
     elif line.startswith('poloz'):
         cmd = line.split(maxsplit=1)
         if len(cmd) == 1:
@@ -183,6 +196,7 @@ while line != 'koniec':
             if found == False:
                 print('Taký predmet u seba nemáš.')
 
+    # zrobit
     elif line.startswith('vezmi'):
         cmd = line.split(maxsplit=1)
         if len(cmd) == 1:
@@ -207,6 +221,7 @@ while line != 'koniec':
                 print(
                     f'Taký predmet v miestnosti {current_room["name"]} nevidím.')
 
+    # zrobit
     elif line.startswith('pouzi'):
         cmd = line.split(maxsplit=1)
         if len(cmd) == 1:
