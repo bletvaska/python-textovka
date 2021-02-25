@@ -63,7 +63,7 @@ kanister = {
 
 dvere = {
     'name': 'vchodove dvere',
-    'description': 'Masívne oceľové vchodové dvere s dvoma zámkami. Toto asi nebude len tak obyčaný bytík nejakého študentíka.',
+    'description': 'Masívne dubové vchodové dvere s dvoma zámkami. Toto asi nebude len tak obyčaný bytík nejakého študentíka.',
     'features': []
 }
 
@@ -157,7 +157,7 @@ while line != 'koniec':
             name = cmd[1]
 
             found = False
-            for item in current_room['items']:
+            for item in current_room['items'] + backpack:
                 if item['name'] == name:
                     print(item['description'])
                     found = True
