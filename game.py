@@ -176,6 +176,24 @@ while line != 'koniec':
             if found == False:
                 print('Taky predmet nemas vo svojom batohu.')
 
+    elif line.startswith('vezmi'):
+        cmd = line.split(maxsplit=1)
+        if len(cmd) == 1:
+            print('Co chces si zobrat?')
+        else:
+            name = cmd[1]
+            found = False
+            for item in current_room['items']:
+                if item['name'] == name:
+                    current_room['items'].remove(item)
+                    backpack.append(item)
+                    print(f'Do batohu si vložil {item["name"]}.')
+                    found = True
+                    break
+            if found == False:
+                print(
+                    f'Taký predmet v miestnosti {current_room["name"]} nevidím.')
+
     else:
         print("Tento príkaz nepoznám.")
 
