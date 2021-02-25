@@ -149,6 +149,39 @@ def cmd_east(room, world):
     return room
 
 
+def cmd_west(current_room, world):
+    name = current_room['exits']['west']
+    if name != None:
+        current_room = world[name]
+        show_room(current_room)
+    else:
+        print('Tam sa nedá ísť.')
+
+    return current_room
+
+
+def cmd_north(current_room, world):
+    name = current_room['exits']['north']
+    if name != None:
+        current_room = world[name]
+        show_room(current_room)
+    else:
+        print('Tam sa nedá ísť.')
+
+    return current_room
+
+
+def cmd_south(current_room, world):
+    name = current_room['exits']['south']
+    if name != None:
+        current_room = world[name]
+        show_room(current_room)
+    else:
+        print('Tam sa nedá ísť.')
+
+    return current_room
+
+
 line = None
 
 """
@@ -219,33 +252,17 @@ while line != 'koniec':
     elif line == 'prikazy':
         cmd_commands()
 
-    # potom zrobit
     elif line == 'vychod':
         current_room = cmd_east(current_room, world)
 
     elif line == 'zapad':
-        name = current_room['exits']['west']
-        if name != None:
-            current_room = world[name]
-            show_room(current_room)
-        else:
-            print('Tam sa nedá ísť.')
+        current_room = cmd_west(current_room, world)
 
     elif line == 'juh':
-        name = current_room['exits']['south']
-        if name != None:
-            current_room = world[name]
-            show_room(current_room)
-        else:
-            print('Tam sa nedá ísť.')
+        current_room = cmd_south(current_room, world)
 
     elif line == 'sever':
-        name = current_room['exits']['north']
-        if name != None:
-            current_room = world[name]
-            show_room(current_room)
-        else:
-            print('Tam sa nedá ísť.')
+        current_room = cmd_north(current_room, world)
 
     elif line == 'rozhliadni sa':
         cmd_look_around(current_room)
