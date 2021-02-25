@@ -133,6 +133,7 @@ def cmd_use(backpack, current_room, line):
 
                     elif name == 'zapalky':
                         pass
+
                     elif name == 'vedro':
                         pass
 
