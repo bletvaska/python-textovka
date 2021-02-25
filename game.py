@@ -169,7 +169,7 @@ while line != 'koniec':
     elif line.startswith('poloz'):
         cmd = line.split(maxsplit=1)
         if len(cmd) == 1:
-            print('Co chces polozit na zem do miestnosti?')
+            print('Neviem, čo chceš položiť.')
         else:
             name = cmd[1]
             found = False
@@ -177,27 +177,32 @@ while line != 'koniec':
                 if item['name'] == name:
                     backpack.remove(item)
                     current_room['items'].append(item)
-                    print(
-                        (f'{item["name"]} si vybral z batoha a polozil na zem.').capitalize())
+                    print(f'Do miestnosti si položil {item["name"]}.')
                     found = True
                     break
             if found == False:
-                print('Taky predmet nemas vo svojom batohu.')
+                print('Taký predmet u seba nemáš.')
 
     elif line.startswith('vezmi'):
         cmd = line.split(maxsplit=1)
         if len(cmd) == 1:
-            print('Co chces si zobrat?')
+            print('Neviem, čo chceš zobrať.')
         else:
             name = cmd[1]
             found = False
             for item in current_room['items']:
+
                 if item['name'] == name:
-                    current_room['items'].remove(item)
-                    backpack.append(item)
-                    print(f'Do batohu si vložil {item["name"]}.')
+                    if 'movable' in item['features']:
+                        current_room['items'].remove(item)
+                        backpack.append(item)
+                        print(f'Do batohu si vložil {item["name"]}.')
+                    else:
+                        print('Tento predmet sa nedá zobrať.')
+
                     found = True
                     break
+
             if found == False:
                 print(
                     f'Taký predmet v miestnosti {current_room["name"]} nevidím.')
