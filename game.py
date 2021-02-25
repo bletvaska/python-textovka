@@ -58,7 +58,7 @@ teplaky = {
 kanister = {
     'name': 'kanister',
     'description': 'Vojenský kanister na 20l. Odštroboval si zátku, čuchol si a rovno si ju zašroboval naspäť. Fuj benzín. Ešte že nie som fajčiar.',
-    'features': ['movable', ]
+    'features': ['movable', 'usable']
 }
 
 dvere = {
@@ -206,6 +206,25 @@ while line != 'koniec':
             if found == False:
                 print(
                     f'Taký predmet v miestnosti {current_room["name"]} nevidím.')
+
+    elif line.startswith('pouzi'):
+        cmd = line.split(maxsplit=1)
+        if len(cmd) == 1:
+            print('Co chces pouzit?')
+        else:
+            name = cmd[1]
+            found = False
+            for item in current_room['items'] + backpack:
+                if item['name'] == name:
+                    if 'usable' in item['features']:
+                        print(f'Pouzivam predmet {item["name"]}')
+                    else:
+                        print((f'{item["name"]} sa neda pouzit.').capitalize())
+
+                    found = True
+                    break
+            if found == False:
+                print('Taky predmet tu nikde nevidim.')
 
     else:
         print("Tento príkaz nepoznám.")
