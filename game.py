@@ -61,6 +61,14 @@ kanister = {
     'features': ['movable', ]
 }
 
+dvere = {
+    'name': 'vchodove dvere',
+    'description': 'Masívne oceľové vchodové dvere s dvoma zámkami. Toto asi nebude len tak obyčaný bytík nejakého študentíka.',
+    'features': []
+}
+
+world['chodba']['items'].append(dvere)
+
 # world['chodba']['items'].append(teplaky)
 # world['chodba']['items'].append(kanister)
 
