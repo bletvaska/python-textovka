@@ -259,6 +259,9 @@ while line != 'koniec':
     elif line.startswith('pouzi'):
         cmd_use(backpack, current_room, line)
 
+    elif line == 'koniec':
+        break
+
     else:
         print("Tento príkaz nepoznám.")
 
