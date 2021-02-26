@@ -13,6 +13,11 @@
                 "name": "vchodove dvere",
                 "description": "Masívne dubové vchodové dvere s dvoma zámkami. Toto asi nebude len tak obyčaný bytík nejakého študentíka.",
                 "features": []
+            },
+            {
+                "name": "teplaky",
+                "description": "Parádne tepláky ružovej farby. Asi pána domáceho. Súdiac podľa veľkosti.",
+                "features": ["movable"]
             }
         ]
     },
@@ -25,7 +30,13 @@
             "north": null,
             "south": null
         },
-        "items": []
+        "items": [
+            {
+                "name": "zapalky",
+                "description": "Zapalky v pocte kusov 10. ",
+                "features": ["movable", "usable"]
+            }
+        ]
     },
     "spajza": {
         "description": "Je tu temno a vlhko. Kompóty na poličkách dotvárajú temnú atmostféru tejto miestnosti.",
@@ -36,7 +47,18 @@
             "north": "chodba",
             "south": null
         },
-        "items": []
+        "items": [
+            {
+                "name": "vedro",
+                "description": "Vedro s vodou",
+                "features": ["movable", "usable"]
+            },
+            {
+                "name": "kanister",
+                "description": "Vojenský kanister na 20l. Odštroboval si zátku, čuchol si a rovno si ju zašroboval naspäť. Fuj benzín. Ešte že nie som fajčiar.",
+                "features": ["movable", "usable"]
+            }
+        ]
     },
     "heaven": {
         "name": "sloboda",

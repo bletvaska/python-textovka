@@ -44,14 +44,11 @@ def cmd_explore(context):
     else:
         name = cmd[1]
 
-        found = False
         for item in current_room['items'] + backpack:
             if item['name'] == name:
                 print(item['description'])
-                found = True
                 break
-
-        if found == False:
+        else:
             print('Taký predmet tu nikde nevidím.')
 
 

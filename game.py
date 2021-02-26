@@ -6,18 +6,21 @@ import json
 """
 +--------+
 | heaven |
+|        |
 +--------+
     |
     |
     v
 +-------+     +-------------+
 |  hall |<--->| living room |
+| t     |     | z           |
 +-------+     +-------------+
     ^                                  N
     |                                  ^
     v                              W < o > E
 +---------+                            v
 | dungeon |                            S
+| k, v    |
 +---------+
 """
 
@@ -35,39 +38,8 @@ file = open('world.json', 'r', encoding='utf-8')
 context['world'] = json.load(file)
 file.close()
 
-# rozmiestnenie veci do sveta
-teplaky = {
-    'name': 'teplaky',
-    'description': 'Parádne tepláky ružovej farby. Asi pána domáceho. Súdiac podľa veľkosti.',
-    'features': ['movable', ]
-}
-
-kanister = {
-    'name': 'kanister',
-    'description': 'Vojenský kanister na 20l. Odštroboval si zátku, čuchol si a rovno si ju zašroboval naspäť. Fuj benzín. Ešte že nie som fajčiar.',
-    'features': ['movable', 'usable']
-}
-
-zapalky = {
-    'name': 'zapalky',
-    'description': 'Zapalky v pocte kusov 10. ',
-    'features': ['movable', 'usable']
-}
-
-bucket = {
-    'name': 'vedro',
-    'description': 'Vedro s vodou',
-    'features': ['movable', 'usable']
-}
-
-
 # game init
 context['current_room'] = context['world']['chodba']
-
-context['backpack'].append(kanister)
-context['backpack'].append(teplaky)
-context['backpack'].append(zapalky)
-context['backpack'].append(bucket)
 
 
 print(' _____                            ____                       ')
