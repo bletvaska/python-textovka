@@ -9,7 +9,9 @@ def cmd_about():
     print('Táto mocná hra je o...')
 
 
-def cmd_inventory(backpack):
+def cmd_inventory(context):
+    backpack = context['backpack']
+
     if len(backpack) == 0:
         print('Batoh je prázdny.')
     else:
@@ -27,11 +29,15 @@ def cmd_commands():
     print('rozhliadni sa - zobrazí opis aktuálnej miestnosti')
 
 
-def cmd_look_around(current_room):
-    show_room(current_room)
+def cmd_look_around(context):
+    show_room(context['current_room'])
 
 
-def cmd_explore(backpack, current_room, line):
+def cmd_explore(context):
+    backpack = context['backpack']
+    current_room = context['current_room']
+    line = context['line']
+
     cmd = line.split(maxsplit=1)
     if len(cmd) == 1:
         print('Čo chceš preskúmať?')
@@ -49,7 +55,11 @@ def cmd_explore(backpack, current_room, line):
             print('Taký predmet tu nikde nevidím.')
 
 
-def cmd_drop(backpack, current_room, line):
+def cmd_drop(context):
+    backpack = context['backpack']
+    current_room = context['current_room']
+    line = context['line']
+
     cmd = line.split(maxsplit=1)
     if len(cmd) == 1:
         print('Neviem, čo chceš položiť.')
@@ -67,7 +77,11 @@ def cmd_drop(backpack, current_room, line):
             print('Taký predmet u seba nemáš.')
 
 
-def cmd_take(backpack, current_room, line):
+def cmd_take(context):
+    current_room = context['current_room']
+    backpack = context['backpack']
+    line = context['line']
+
     cmd = line.split(maxsplit=1)
     if len(cmd) == 1:
         print('Neviem, čo chceš zobrať.')
@@ -92,7 +106,11 @@ def cmd_take(backpack, current_room, line):
                 f'Taký predmet v miestnosti {current_room["name"]} nevidím.')
 
 
-def cmd_use(backpack, current_room, line):
+def cmd_use(context):
+    current_room = context['current_room']
+    backpack = context['backpack']
+    line = context['line']
+
     cmd = line.split(maxsplit=1)
     if len(cmd) == 1:
         print('Co chces pouzit?')
@@ -120,45 +138,37 @@ def cmd_use(backpack, current_room, line):
             print('Taky predmet tu nikde nevidim.')
 
 
-def cmd_east(room, world):
-    name = room['exits']['east']
+def cmd_east(context):
+    name = context['current_room']['exits']['east']
     if name != None:
-        room = world[name]
-        show_room(room)
+        context['current_room'] = context['world'][name]
+        show_room(context['world'][name])
     else:
         print('Tam sa nedá ísť.')
 
-    return room
 
-
-def cmd_west(current_room, world):
-    name = current_room['exits']['west']
+def cmd_west(context):
+    name = context['current_room']['exits']['west']
     if name != None:
-        current_room = world[name]
-        show_room(current_room)
+        context['current_room'] = context['world'][name]
+        show_room(context['current_room'])
     else:
         print('Tam sa nedá ísť.')
 
-    return current_room
 
-
-def cmd_north(current_room, world):
-    name = current_room['exits']['north']
+def cmd_north(context):
+    name = context['current_room']['exits']['north']
     if name != None:
-        current_room = world[name]
-        show_room(current_room)
+        context['current_room'] = context['world'][name]
+        show_room(context['current_room'])
     else:
         print('Tam sa nedá ísť.')
 
-    return current_room
 
-
-def cmd_south(current_room, world):
-    name = current_room['exits']['south']
+def cmd_south(context):
+    name = context['current_room']['exits']['south']
     if name != None:
-        current_room = world[name]
-        show_room(current_room)
+        context['current_room'] = context['world'][name]
+        show_room(context['current_room'])
     else:
         print('Tam sa nedá ísť.')
-
-    return current_room
