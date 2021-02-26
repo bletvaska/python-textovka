@@ -86,7 +86,7 @@ print()
 
 show_room(current_room)
 
-while line != 'koniec':
+while line not in ('koniec', 'quit', 'exit', 'q', 'end', 'x'):
     line = input('> ').strip().lower()
 
     if line == 'o hre':
@@ -95,22 +95,22 @@ while line != 'koniec':
     elif line == 'prikazy':
         cmd_commands()
 
-    elif line == 'vychod':
+    elif line in ('vychod', 'v', 'east', 'e'):
         current_room = cmd_east(current_room, world)
 
-    elif line == 'zapad':
+    elif line in ('zapad', 'z', 'west', 'w'):
         current_room = cmd_west(current_room, world)
 
-    elif line == 'juh':
+    elif line in ('juh', 'j', 'south'):
         current_room = cmd_south(current_room, world)
 
-    elif line == 'sever':
+    elif line in ('sever', 's', 'north', 'n'):
         current_room = cmd_north(current_room, world)
 
     elif line == 'rozhliadni sa':
         cmd_look_around(current_room)
 
-    elif line == 'inventar':
+    elif line in ('inventar', 'i'):
         cmd_inventory(backpack)
 
     elif line.startswith('preskumaj'):
@@ -125,7 +125,7 @@ while line != 'koniec':
     elif line.startswith('pouzi'):
         cmd_use(backpack, current_room, line)
 
-    elif line == 'koniec':
+    elif line not in ('koniec', 'quit', 'exit', 'q', 'end', 'x'):
         break
 
     else:
