@@ -28,17 +28,39 @@ def use_canister(canister, current_room):
         'Odšroboval si zátku na kanistri a celý jeho obsah si vylial na vchodové dvere. Hmm... Je to teraz lepšie, pomyslel si si. Také voňavejšie...')
 
 
-def use_matches():
+def use_matches(current_room, backpack):
     # ak sa nenachdzam v miestnosti s poliatymi dverami (v chodbe), tak napisem hlasku:
     # nemam si co zapalit.
     # a skoncim
+    door = None
+    for item in current_room['items']:
+        if item['name'] == 'poliate dvere':
+            door = item
+            break
 
-    # odstranim z miestnosti poliate dvere a nahradim ich horiacimi dverami
+    if door == None:
+        print('Nemam si co zapalit...')
+        return
+
+    # odstranim z miestnosti poliate dvere
+    current_room['items'].remove(door)
+
+    # a nahradim ich horiacimi dverami
+    door = {
+        'name': 'horiace dvere',
+        'description': 'Jej tie dvere ale krasne horia!!!',
+        'features': []
+    }
+
+    current_room['items'].append(door)
 
     # vyhodim zapalky z batohu, lebo sa minuli
+    for item in backpack:
+        if item['name'] == 'zapalky':
+            backpack.remove(item)
 
     # vypisat hlasku o tom, co som spachal
-    # skrtol si zapalkou blizko dveri, ktore vonali benzinom a co sa nestalo - preskocila iskra. dvere okamzite zblkli a ty si radsej odstupil trosku spat.
+    print('skrtol si zapalkou blizko dveri, ktore vonali benzinom a co sa nestalo - preskocila iskra. dvere okamzite zblkli a ty si radsej odstupil trosku spat.')
     pass
 
 

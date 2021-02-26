@@ -46,6 +46,12 @@ zapalky = {
     'features': ['movable', 'usable']
 }
 
+bucket = {
+    'name': 'vedro',
+    'description': 'Vedro s vodou',
+    'features': ['movable', 'usable']
+}
+
 
 world['chodba']['items'].append(dvere)
 
@@ -59,6 +65,7 @@ backpack = []
 backpack.append(kanister)
 backpack.append(teplaky)
 backpack.append(zapalky)
+backpack.append(bucket)
 
 
 print(' _____                            ____                       ')

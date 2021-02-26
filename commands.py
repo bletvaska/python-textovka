@@ -106,7 +106,7 @@ def cmd_use(backpack, current_room, line):
                         use_canister(item, current_room)
 
                     elif name == 'zapalky':
-                        use_matches()
+                        use_matches(current_room, backpack)
 
                     elif name == 'vedro':
                         use_bucket()
