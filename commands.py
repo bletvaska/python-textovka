@@ -109,7 +109,7 @@ def cmd_use(backpack, current_room, line):
                         use_matches(current_room, backpack)
 
                     elif name == 'vedro':
-                        use_bucket()
+                        use_bucket(current_room, backpack, item)
 
                 else:
                     print((f'{item["name"]} sa neda pouzit.').capitalize())

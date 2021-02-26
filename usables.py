@@ -61,8 +61,30 @@ def use_matches(current_room, backpack):
 
     # vypisat hlasku o tom, co som spachal
     print('skrtol si zapalkou blizko dveri, ktore vonali benzinom a co sa nestalo - preskocila iskra. dvere okamzite zblkli a ty si radsej odstupil trosku spat.')
-    pass
 
 
-def use_bucket():
-    pass
+def use_bucket(current_room, backpack, bucket):
+    # Musime sa nachadzat v miestnosti kde su horiace dvere
+    door = None
+    for item in current_room['items']:
+        if item['name'] == 'horiace dvere':
+            door = item
+            break
+
+    if door == None:
+        print('Nebudem plytvať vodou len tak...')
+        return
+
+    # odstranime horiace dvere z miestnosti
+    current_room['items'].remove(door)
+
+    # odstranime vedro z miestnosti/vacku
+    if bucket in backpack:
+        backpack.remove(bucket)
+    else:
+        current_room['items'].remove(bucket)
+
+    # magic: otvorime prechod do novej miestnosti na sever
+
+    # vypise sa na obrazovku sprava
+    print('Rozohnal si sa a celý obsah vedra si vylial na horiace dvere. Stačilo to na to, aby si ich zahasil. Je tu kopec dymu… ale vychod z bytu je volny.')
