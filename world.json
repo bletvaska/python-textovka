@@ -31,5 +31,16 @@
             "south": null
         },
         "items": []
+    },
+    "heaven": {
+        "name": "sloboda",
+        "description": "Konečne. Je to tu ako v raji. Ftáčiky švitoria, vetrík cítiš, ako sa ti preháňa tvojimi nosnými dierkami... Proste nebo....",
+        "exits": {
+            "east": null,
+            "west": null,
+            "north": null,
+            "south": "chodba"
+        },
+        "items": []
     }
 }

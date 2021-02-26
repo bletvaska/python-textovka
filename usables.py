@@ -85,6 +85,7 @@ def use_bucket(current_room, backpack, bucket):
         current_room['items'].remove(bucket)
 
     # magic: otvorime prechod do novej miestnosti na sever
+    current_room['exits']['north'] = 'heaven'
 
     # vypise sa na obrazovku sprava
     print('Rozohnal si sa a celý obsah vedra si vylial na horiace dvere. Stačilo to na to, aby si ich zahasil. Je tu kopec dymu… ale vychod z bytu je volny.')
