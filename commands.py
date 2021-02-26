@@ -1,5 +1,6 @@
 
 
+from usables import use_bucket, use_canister, use_matches
 from helper import show_room
 
 
@@ -102,40 +103,13 @@ def cmd_use(backpack, current_room, line):
             if item['name'] == name:
                 if 'usable' in item['features']:
                     if name == 'kanister':
-                        kanister = item
-                        # som v miestnosti, kde su dvere?
-                        if current_room['name'] != 'chodba':
-                            print(
-                                'Neviem, čo by som tu s tým kanistrom plným benzínu tak mohol poliať')
-                            return
-
-                        # som v miestnosti s dverami - idem ich poliat
-                        for item in current_room['items']:
-                            if item['name'] == 'vchodove dvere':
-                                current_room['items'].remove(item)
-                                break
-
-                        # vlozim do miestnosti novy predmet - poliate dvere
-                        door = {
-                            'name': 'poliate dvere',
-                            'description': 'Vchodové dubové dvere, ktoré sú stále rovnako masívne ako predtým, akurát teraz ešte voňajú po benzíne.',
-                            'features': []
-                        }
-                        current_room['items'].append(door)
-
-                        # zmenim stav kanistru - zmenim opis a nebude pouzitelny
-                        kanister['description'] = 'Kanister na benzín, v ktorom už nie je ani kvapka'
-                        kanister['features'].remove('usable')
-
-                        # vypisem spravu do hry
-                        print(
-                            'Odšroboval si zátku na kanistri a celý jeho obsah si vylial na vchodové dvere. Hmm... Je to teraz lepšie, pomyslel si si. Také voňavejšie...')
+                        use_canister(item, current_room)
 
                     elif name == 'zapalky':
-                        pass
+                        use_matches()
 
                     elif name == 'vedro':
-                        pass
+                        use_bucket()
 
                 else:
                     print((f'{item["name"]} sa neda pouzit.').capitalize())

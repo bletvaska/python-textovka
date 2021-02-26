@@ -40,6 +40,13 @@ dvere = {
     'features': []
 }
 
+zapalky = {
+    'name': 'zapalky',
+    'description': 'Zapalky v pocte kusov 10. ',
+    'features': ['movable', 'usable']
+}
+
+
 world['chodba']['items'].append(dvere)
 
 # world['chodba']['items'].append(teplaky)
@@ -51,6 +58,7 @@ current_room = world['chodba']
 backpack = []
 backpack.append(kanister)
 backpack.append(teplaky)
+backpack.append(zapalky)
 
 
 print(' _____                            ____                       ')
