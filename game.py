@@ -131,4 +131,16 @@ while line != 'koniec':
     else:
         print("Tento príkaz nepoznám.")
 
+    # vyhodnotenie, ci som hru skoncil
+    if current_room['name'] == 'sloboda':
+        print(" _____                  _                 ")
+        print("|  ___| __ ___  ___  __| | ___  _ __ ___  ")
+        print("| |_ | '__/ _ \/ _ \/ _` |/ _ \| '_ ` _ \ ")
+        print("|  _|| | |  __/  __/ (_| | (_) | | | | | |")
+        print("|_|  |_|  \___|\___|\__,_|\___/|_| |_| |_|")
+        print()
+        print('A konečne si slobodný. Si sa kukol na prsteník, že fakt a fakt. Slobodaaaaaaaa.')
+        break
+
+
 print('Toto je koniec. Díky, že si si zahral.')
