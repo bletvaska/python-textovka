@@ -69,7 +69,10 @@ if __name__ == '__main__':
     while game_state == STATE_PLAYING:
         line = input('> ').upper().strip()
 
-        if line in ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'):
+        if line == '':
+            pass
+
+        elif line in ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'):
             print('Ta končíme')
             game_state = STATE_EXIT
 
