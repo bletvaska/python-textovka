@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# created by: mirek
+
+
 def show_room(room):
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
