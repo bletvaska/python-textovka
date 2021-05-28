@@ -265,11 +265,18 @@ def main():
     }
 
     # welcome
-    print('Room Escape')
+    print(' _____                            ____                       ')
+    print('| ____|___  ___ __ _ _ __   ___  |  _ \ ___   ___  _ __ ___  ')
+    print("|  _| / __|/ __/ _` | '_ \ / _ \ | |_) / _ \ / _ \| '_ ` _ \ ")
+    print('| |___\__ \ (_| (_| | |_) |  __/ |  _ < (_) | (_) | | | | | |')
+    print('|_____|___/\___\__,_| .__/ \___| |_| \_\___/ \___/|_| |_| |_|')
+    print('                    |_|                     (c) mirek 2021   ')
+    print()
     show_room(context['room'])
 
     # game loop
     while context['state'] == STATE_PLAYING:
+        # parsovanie vstupu
         line = input('> ').upper().strip()
 
         if line == '':
