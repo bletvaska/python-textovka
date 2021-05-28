@@ -172,14 +172,24 @@ if __name__ == '__main__':
                             # pouzi kybel
                             if params == 'KYBEL':
                                 # 1. zisti, ci dvere horia
+                                door = find_item('HORIACE DVERE')
+                                if door is None:
+                                    print('Ta neviem, čo by som s tým kýblom polial.')
+                                    break
 
                                 # 2. polej dvere kyblom
+                                print('Rozohnal si sa a celý obsah kýbla si vyšmaril na horiace dvere. Tie sa pod tlakom rozpadli a oheň sa zázrakom uhasil.')
 
                                 # 3. aktualizuj stav vedra (prazdne vedro)
+                                bucket = find_item('KYBEL')
+                                bucket['name'] = 'PRAZDNY KYBEL'
+                                bucket['description'] = 'Prázdny kýbel na 10l rozličného kvapalného obsahu.'
 
                                 # 4. zmaz dvere
+                                room['items'].remove(door)
 
                                 # 5. pridaj vychod z miestnosti
+                                room['exits'].append('sever')
 
                             # pouzitie novin
                             elif params == 'NOVINY':
