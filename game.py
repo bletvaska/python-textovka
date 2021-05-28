@@ -16,10 +16,14 @@ def show_room(room):
     else:
         print(f'Východy z miestnosti: {room["exits"]}.')
 
+STATE_EXIT = 1
+STATE_PLAYING = 2
+
 
 if __name__ == '__main__':
     # game initialization
     line = None
+    game_state = STATE_PLAYING
     inventory_capacity = 2
     inventory = [
         {
@@ -62,12 +66,12 @@ if __name__ == '__main__':
     show_room(room)
 
     # game loop
-    while line != 'KONIEC':
+    while game_state == STATE_PLAYING:
         line = input('> ').upper().strip()
 
         if line in ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'):
             print('Ta končíme')
-            # pass
+            game_state = STATE_EXIT
 
         elif line == 'O HRE':
             print('Room Escape')
