@@ -32,6 +32,64 @@ def cmd_quit(context):
     context['state'] = STATE_EXIT
 
 
+def cmd_about():
+    print('Room Escape')
+    print('Táto mocná hra ťa naučí, ako prežiť v miestnosti uzavretej s Pythonom.')
+    print('Created by šikovný mladý Pythonista (c)2021 mirek')
+    print('Podporiť ho môžeš (aby bol ešte šikovnejší) na účte IBAN1234567890')
+
+
+def cmd_drop(context):
+    params = line.split()[1:]
+    params = ' '.join(params)
+
+    # step 1: neviem, co mam preskumat
+    if len(params) == 0:
+        print('Neviem, čo mám položiť.')
+    else:
+        # step 3: do miestnosti si polozil predmet {name}
+        for item in context['inventory']:
+            if item['name'] == params:
+                context['inventory'].remove(item)
+                context['room']['items'].append(item)
+                print(f'Do miestnosti si vyložil predmet {item["name"]}.')
+                break
+        else:
+            # step 2: taky predmet u seba nemas
+            print('Taký predmet u seba nemáš.')
+
+
+def cmd_take(context):
+    params = line.split()[1:]
+    params = ' '.join(params)
+
+    room = context['room']
+    inventory = context['inventory']
+    inventory_capacity = context['inventory_capacity']
+
+    # step 1: neviem, co mam vziat
+    if len(params) == 0:
+        print('Neviem, čo mám vziať.')
+    else:
+        # step 3: do inventára si vložil predmet {name}
+        for item in room['items']:
+            if item['name'] == params and 'movable' in item['features']:
+                if len(inventory) < inventory_capacity:
+                    room['items'].remove(item)
+                    inventory.append(item)
+                    print(f'Do batohu si si vložil predmet {item["name"].lower()}.')
+                else:
+                    print('Batoh je plný')
+                break
+
+            elif item['name'] == params:
+                print('Tento predmet sa nedá zobrať.')
+                break
+        else:
+            # step 2: taky predmet u seba nemas
+            print('Taký predmet tu nikde nevidím.')
+
+
 if __name__ == '__main__':
     # game initialization
     context = {
@@ -91,58 +149,17 @@ if __name__ == '__main__':
             cmd_quit(context)
 
         elif line in ('O HRE', 'ABOUT', 'INFO'):
-            print('Room Escape')
-            print('Táto mocná hra ťa naučí, ako prežiť v miestnosti uzavretej s Pythonom.')
-            print('Created by šikovný mladý Pythonista (c)2021 mirek')
-            print('Podporiť ho môžeš (aby bol ešte šikovnejší) na účte IBAN1234567890')
+            cmd_about()
 
         elif line in ('ROZHLIADNI SA', 'LOOK AROUND', 'R'):
-            show_room(room)
+            show_room(context['room'])
 
         elif line.split()[0] in ('POLOZ', 'DROP'):
-            params = line.split()[1:]
-            params = ' '.join(params)
-
-            # step 1: neviem, co mam preskumat
-            if len(params) == 0:
-                print('Neviem, čo mám položiť.')
-            else:
-                # step 3: do miestnosti si polozil predmet {name}
-                for item in inventory:
-                    if item['name'] == params:
-                        inventory.remove(item)
-                        room['items'].append(item)
-                        print(f'Do miestnosti si vyložil predmet {item["name"]}.')
-                        break
-                else:
-                    # step 2: taky predmet u seba nemas
-                    print('Taký predmet u seba nemáš.')
+            cmd_drop(context)
 
         elif line.split()[0] in ('VEZMI', 'TAKE'):
-            params = line.split()[1:]
-            params = ' '.join(params)
+            cmd_take(context)
 
-            # step 1: neviem, co mam vziat
-            if len(params) == 0:
-                print('Neviem, čo mám vziať.')
-            else:
-                # step 3: do inventára si vložil predmet {name}
-                for item in room['items']:
-                    if item['name'] == params and 'movable' in item['features']:
-                        if len(inventory) < inventory_capacity:
-                            room['items'].remove(item)
-                            inventory.append(item)
-                            print(f'Do batohu si si vložil predmet {item["name"]}.lower().')
-                        else:
-                            print('Batoh je plný')
-                        break
-
-                    elif item['name'] == params:
-                        print('Tento predmet sa nedá zobrať.')
-                        break
-                else:
-                    # step 2: taky predmet u seba nemas
-                    print('Taký predmet tu nikde nevidím.')
 
         elif line.split()[0] in ('PRESKUMAJ', 'INSPECT'):
             params = line.split()[1:]
