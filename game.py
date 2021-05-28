@@ -73,7 +73,7 @@ if __name__ == '__main__':
             print('Ta končíme')
             game_state = STATE_EXIT
 
-        elif line == 'O HRE':
+        elif line in ('O HRE', 'ABOUT', 'INFO'):
             print('Room Escape')
             print('Táto mocná hra ťa naučí, ako prežiť v miestnosti uzavretej s Pythonom.')
             print('Created by šikovný mladý Pythonista (c)2021 mirek')
@@ -139,6 +139,26 @@ if __name__ == '__main__':
                 for item in room['items'] + inventory:
                     if item['name'] == params:
                         print(item['description'])
+                        break
+                else:
+                    # step 2: Taky predmetu tu nikde nevidim
+                    print('Taký predmet tu nikde nevidím.')
+
+        elif line.split()[0] in ('POUZI', 'USE'):
+            params = line.split()[1:]
+            params = ' '.join(params)
+
+            # step 1: neviem, co mam preskumat
+            if len(params) == 0:
+                print('Neviem, čo mám použiť.')
+            else:
+                # step 3: {description}
+                for item in room['items'] + inventory:
+                    if item['name'] == params:
+                        if 'usable' in item['features']:
+                            print(f'Pouzivam predmet {params}')
+                        else:
+                            print('Tento predmet sa nedá použiť.')
                         break
                 else:
                     # step 2: Taky predmetu tu nikde nevidim
