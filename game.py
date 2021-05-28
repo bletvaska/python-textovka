@@ -21,8 +21,9 @@ STATE_EXIT = 1
 STATE_PLAYING = 2
 
 
-def find_item(name):
-    for item in room['items'] + inventory:
+def find_item(name, context):
+    items = context['room']['items'] + context['inventory']
+    for item in items:
         if item['name'] == name:
             return item
 
@@ -87,6 +88,117 @@ def cmd_take(context):
                 break
         else:
             # step 2: taky predmet u seba nemas
+            print('Taký predmet tu nikde nevidím.')
+
+
+def cmd_inspect(context):
+    params = line.split()[1:]
+    params = ' '.join(params)
+
+    # step 1: neviem, co mam preskumat
+    if len(params) == 0:
+        print('Neviem, čo mám preskúmať.')
+    else:
+        item = find_item(params, context)
+
+        if item is None:
+            # step 2: Taky predmetu tu nikde nevidim
+            print('Taký predmet tu nikde nevidím.')
+        else:
+            # step 3: {description}
+            print(item['description'])
+
+
+def cmd_use(context):
+    params = line.split()[1:]
+    params = ' '.join(params)
+
+    room = context['room']
+    inventory = context['inventory']
+
+    # step 1: neviem, co mam preskumat
+    if len(params) == 0:
+        print('Neviem, čo mám použiť.')
+    else:
+        # step 3: {description}
+        for item in room['items'] + inventory:
+            if item['name'] == params:
+                if 'usable' in item['features']:
+
+                    # pouzi kybel
+                    if params == 'KYBEL':
+                        # 1. zisti, ci dvere horia
+                        door = find_item('HORIACE DVERE', context)
+                        if door is None:
+                            print('Ta neviem, čo by som s tým kýblom polial.')
+                            break
+
+                        # 2. polej dvere kyblom
+                        print(
+                            'Rozohnal si sa a celý obsah kýbla si vyšmaril na horiace dvere. Tie sa pod tlakom rozpadli a oheň sa zázrakom uhasil.')
+
+                        # 3. aktualizuj stav vedra (prazdne vedro)
+                        bucket = find_item('KYBEL', context)
+                        bucket['name'] = 'PRAZDNY KYBEL'
+                        bucket['description'] = 'Prázdny kýbel na 10l rozličného kvapalného obsahu.'
+
+                        # 4. zmaz dvere
+                        room['items'].remove(door)
+
+                        # 5. pridaj vychod z miestnosti
+                        room['exits'].append('sever')
+
+                    # pouzitie novin
+                    elif params == 'NOVINY':
+                        print(
+                            'Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
+                        item['features'].remove('usable')
+                        item['features'].remove('movable')
+                        item['name'] = 'VYLEPENE NOVINY'
+                        item['description'] = 'Nove casy. Jednotlivé stránky sú rozložené po celých dverách.'
+
+                        if item in inventory:
+                            inventory.remove(item)
+                            room['items'].append(item)
+
+                    # pouzitie zapaliek
+                    elif params == 'ZAPALKY':
+                        # 1. skontroluje, ci existuju vylepene noviny
+                        for item in room['items']:
+                            if item['name'] == 'VYLEPENE NOVINY':
+                                newspaper = item
+                                # 2. ak existuju, tak ich zapalime
+                                print(
+                                    'Zo zápalkovej krabičky si vytiahol jedinú zápalku, ktorá sa tam nachádzala a škrtol si ju. Priložil si ju k výtlačku Nových tajmsov a ten okamžite vzblkol. A spolu s ním aj celé dvere. Neviem, či toto bolo v tvojom pláne.')
+
+                                # 3. zapalky zmiznu
+                                matches = find_item('ZAPALKY', context)
+                                if matches in inventory:
+                                    inventory.remove(matches)
+                                else:
+                                    room['items'].remove(matches)
+
+                                # 4. noviny zmiznu
+                                if newspaper in inventory:
+                                    inventory.remove(newspaper)
+                                else:
+                                    room['items'].remove(newspaper)
+
+                                # 5. dvere sa zmenia na horiace dvere
+                                door = find_item('DVERE', context)
+                                door['name'] = 'HORIACE DVERE'
+                                door['description'] = 'Dvere v plameňoch. Ani len priblížiť sa k nim nedá.'
+
+                                break
+                        else:
+                            print(
+                                'Mám tu len jednu zápalku. Nebudem ňou plytvať, keď nevieš čo chceš podpáliť.')
+
+                else:
+                    print('Tento predmet sa nedá použiť.')
+                break
+        else:
+            # step 2: Taky predmetu tu nikde nevidim
             print('Taký predmet tu nikde nevidím.')
 
 
@@ -160,114 +272,11 @@ if __name__ == '__main__':
         elif line.split()[0] in ('VEZMI', 'TAKE'):
             cmd_take(context)
 
-
         elif line.split()[0] in ('PRESKUMAJ', 'INSPECT'):
-            params = line.split()[1:]
-            params = ' '.join(params)
-
-            # step 1: neviem, co mam preskumat
-            if len(params) == 0:
-                print('Neviem, čo mám preskúmať.')
-            else:
-                item = find_item(params)
-
-                if item is None:
-                    # step 2: Taky predmetu tu nikde nevidim
-                    print('Taký predmet tu nikde nevidím.')
-                else:
-                    # step 3: {description}
-                    print(item['description'])
-
-
+            cmd_inspect(context)
 
         elif line.split()[0] in ('POUZI', 'USE'):
-            params = line.split()[1:]
-            params = ' '.join(params)
-
-            # step 1: neviem, co mam preskumat
-            if len(params) == 0:
-                print('Neviem, čo mám použiť.')
-            else:
-                # step 3: {description}
-                for item in room['items'] + inventory:
-                    if item['name'] == params:
-                        if 'usable' in item['features']:
-
-                            # pouzi kybel
-                            if params == 'KYBEL':
-                                # 1. zisti, ci dvere horia
-                                door = find_item('HORIACE DVERE')
-                                if door is None:
-                                    print('Ta neviem, čo by som s tým kýblom polial.')
-                                    break
-
-                                # 2. polej dvere kyblom
-                                print(
-                                    'Rozohnal si sa a celý obsah kýbla si vyšmaril na horiace dvere. Tie sa pod tlakom rozpadli a oheň sa zázrakom uhasil.')
-
-                                # 3. aktualizuj stav vedra (prazdne vedro)
-                                bucket = find_item('KYBEL')
-                                bucket['name'] = 'PRAZDNY KYBEL'
-                                bucket['description'] = 'Prázdny kýbel na 10l rozličného kvapalného obsahu.'
-
-                                # 4. zmaz dvere
-                                room['items'].remove(door)
-
-                                # 5. pridaj vychod z miestnosti
-                                room['exits'].append('sever')
-
-                            # pouzitie novin
-                            elif params == 'NOVINY':
-                                print(
-                                    'Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
-                                item['features'].remove('usable')
-                                item['features'].remove('movable')
-                                item['name'] = 'VYLEPENE NOVINY'
-                                item['description'] = 'Nove casy. Jednotlivé stránky sú rozložené po celých dverách.'
-
-                                if item in inventory:
-                                    inventory.remove(item)
-                                    room['items'].append(item)
-
-                            # pouzitie zapaliek
-                            elif params == 'ZAPALKY':
-                                # 1. skontroluje, ci existuju vylepene noviny
-                                for item in room['items']:
-                                    if item['name'] == 'VYLEPENE NOVINY':
-                                        newspaper = item
-                                        # 2. ak existuju, tak ich zapalime
-                                        print(
-                                            'Zo zápalkovej krabičky si vytiahol jedinú zápalku, ktorá sa tam nachádzala a škrtol si ju. Priložil si ju k výtlačku Nových tajmsov a ten okamžite vzblkol. A spolu s ním aj celé dvere. Neviem, či toto bolo v tvojom pláne.')
-
-                                        # 3. zapalky zmiznu
-                                        matches = find_item('ZAPALKY')
-                                        if matches in inventory:
-                                            inventory.remove(matches)
-                                        else:
-                                            room['items'].remove(matches)
-
-                                        # 4. noviny zmiznu
-                                        if newspaper in inventory:
-                                            inventory.remove(newspaper)
-                                        else:
-                                            room['items'].remove(newspaper)
-
-                                        # 5. dvere sa zmenia na horiace dvere
-                                        door = find_item('DVERE')
-                                        door['name'] = 'HORIACE DVERE'
-                                        door['description'] = 'Dvere v plameňoch. Ani len priblížiť sa k nim nedá.'
-
-                                        break
-                                else:
-                                    print(
-                                        'Mám tu len jednu zápalku. Nebudem ňou plytvať, keď nevieš čo chceš podpáliť.')
-
-                        else:
-                            print('Tento predmet sa nedá použiť.')
-                        break
-                else:
-                    # step 2: Taky predmetu tu nikde nevidim
-                    print('Taký predmet tu nikde nevidím.')
+            cmd_use(context)
 
         elif line in ('INVENTAR', 'INVENTORY', 'I'):
             if len(inventory) == 0:
