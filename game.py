@@ -159,7 +159,32 @@ if __name__ == '__main__':
                 for item in room['items'] + inventory:
                     if item['name'] == params:
                         if 'usable' in item['features']:
-                            print(f'Pouzivam predmet {params}')
+
+                            # pouzitie novin
+                            if params == 'NOVINY':
+                                print('Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
+                                item['features'].remove('usable')
+                                item['features'].remove('movable')
+                                item['name'] = 'VYLEPENE NOVINY'
+                                item['description'] = 'Nove casy. Jednotlivé stránky sú rozložené po celých dverách.'
+
+                                if item in inventory:
+                                    inventory.remove(item)
+                                    room['items'].append(item)
+
+                            # pouzitie zapaliek
+                            elif params == 'ZAPALKY':
+                                # 1. skontroluje, ci existuju vylepene noviny
+
+                                # 2. ak existuju, tak ich zapalime
+
+                                # 3. zapalky zmiznu
+
+                                # 4. noviny zmiznu
+
+                                # 5. dvere sa zmenia na horiace dvere
+                                pass
+
                         else:
                             print('Tento predmet sa nedá použiť.')
                         break
