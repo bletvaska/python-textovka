@@ -27,19 +27,28 @@ def find_item(name):
             return item
 
 
+def cmd_quit(context):
+    print('Ta končíme')
+    context['state'] = STATE_EXIT
+
+
 if __name__ == '__main__':
     # game initialization
+    context = {
+        'state': STATE_PLAYING,
+        'inventory': [],
+        'inventory_capacity': 2,
+        'room': None
+    }
+
+    context['inventory'].append({
+        'name': 'ZAPALKY',
+        'description': 'No zápalky. 4 kusy. Nepoužité. Krbové.',
+        'features': ['movable', 'usable']
+    })
+
     line = None
-    game_state = STATE_PLAYING
-    inventory_capacity = 2
-    inventory = [
-        {
-            'name': 'ZAPALKY',
-            'description': 'No zápalky. 4 kusy. Nepoužité. Krbové.',
-            'features': ['movable', 'usable']
-        }
-    ]
-    room = {
+    context['room'] = {
         'name': 'tmavá miestnosť',
         'description': 'Stojíš v tmavej miestnosti. Zrejme sa tu už dlho neupratovalo, lebo do nosa sa ti ftiera zepeklitý zápach niečoho zdochnutého. Ani len svetlo nepreniká cez zadebnené okná. I have a bad feeling about this place, ako by klasik povedal.',
         'exits': [],
@@ -64,24 +73,22 @@ if __name__ == '__main__':
                 'description': 'Síce zhrdzavený, ale stará klasika - nožík rybka.',
                 'features': ['movable']
             },
-
         ]
     }
 
     # welcome
     print('Room Escape')
-    show_room(room)
+    show_room(context['room'])
 
     # game loop
-    while game_state == STATE_PLAYING:
+    while context['state'] == STATE_PLAYING:
         line = input('> ').upper().strip()
 
         if line == '':
             pass
 
         elif line in ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'):
-            print('Ta končíme')
-            game_state = STATE_EXIT
+            cmd_quit(context)
 
         elif line in ('O HRE', 'ABOUT', 'INFO'):
             print('Room Escape')
@@ -178,7 +185,8 @@ if __name__ == '__main__':
                                     break
 
                                 # 2. polej dvere kyblom
-                                print('Rozohnal si sa a celý obsah kýbla si vyšmaril na horiace dvere. Tie sa pod tlakom rozpadli a oheň sa zázrakom uhasil.')
+                                print(
+                                    'Rozohnal si sa a celý obsah kýbla si vyšmaril na horiace dvere. Tie sa pod tlakom rozpadli a oheň sa zázrakom uhasil.')
 
                                 # 3. aktualizuj stav vedra (prazdne vedro)
                                 bucket = find_item('KYBEL')
