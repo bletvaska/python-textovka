@@ -175,15 +175,25 @@ if __name__ == '__main__':
                             # pouzitie zapaliek
                             elif params == 'ZAPALKY':
                                 # 1. skontroluje, ci existuju vylepene noviny
+                                for item in room['items']:
+                                    if item['name'] == 'VYLEPENE NOVINY':
+                                        # 2. ak existuju, tak ich zapalime
+                                        print('podpalujem')
 
-                                # 2. ak existuju, tak ich zapalime
+                                        # 3. zapalky zmiznu
 
-                                # 3. zapalky zmiznu
 
-                                # 4. noviny zmiznu
 
-                                # 5. dvere sa zmenia na horiace dvere
-                                pass
+                                        # 4. noviny zmiznu
+                                        if item in inventory:
+                                            inventory.remove(item)
+                                        else:
+                                            room['items'].remove(item)
+
+                                        # 5. dvere sa zmenia na horiace dvere
+                                        break
+                                else:
+                                    print('Mám tu len jednu zápalku. Nebudem ňou plytvať, keď nevieš čo chceš podpáliť.')
 
                         else:
                             print('Tento predmet sa nedá použiť.')
