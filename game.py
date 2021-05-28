@@ -177,18 +177,24 @@ if __name__ == '__main__':
                                 # 1. skontroluje, ci existuju vylepene noviny
                                 for item in room['items']:
                                     if item['name'] == 'VYLEPENE NOVINY':
+                                        newspaper = item
                                         # 2. ak existuju, tak ich zapalime
                                         print('podpalujem')
 
                                         # 3. zapalky zmiznu
-
-
+                                        for it in room['items'] + inventory:
+                                            if it['name'] == params:
+                                                if it in inventory:
+                                                    inventory.remove(it)
+                                                else:
+                                                    room['items'].remove(it)
+                                                break
 
                                         # 4. noviny zmiznu
-                                        if item in inventory:
-                                            inventory.remove(item)
+                                        if newspaper in inventory:
+                                            inventory.remove(newspaper)
                                         else:
-                                            room['items'].remove(item)
+                                            room['items'].remove(newspaper)
 
                                         # 5. dvere sa zmenia na horiace dvere
                                         break
