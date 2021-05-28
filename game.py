@@ -20,6 +20,7 @@ def show_room(room):
 if __name__ == '__main__':
     # game initialization
     line = None
+    inventory_capacity = 2
     inventory = [
         {
             'name': 'ZAPALKY',
@@ -64,7 +65,7 @@ if __name__ == '__main__':
     while line != 'KONIEC':
         line = input('> ').upper().strip()
 
-        if line == 'KONIEC':
+        if line in ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'):
             print('Ta končíme')
             # pass
 
@@ -74,10 +75,10 @@ if __name__ == '__main__':
             print('Created by šikovný mladý Pythonista (c)2021 mirek')
             print('Podporiť ho môžeš (aby bol ešte šikovnejší) na účte IBAN1234567890')
 
-        elif line == 'ROZHLIADNI SA':
+        elif line in ('ROZHLIADNI SA', 'LOOK AROUND', 'R'):
             show_room(room)
 
-        elif line.split()[0] == 'POLOZ':
+        elif line.split()[0] in ('POLOZ', 'DROP'):
             params = line.split()[1:]
             params = ' '.join(params)
 
@@ -96,7 +97,7 @@ if __name__ == '__main__':
                     # step 2: taky predmet u seba nemas
                     print('Taký predmet u seba nemáš.')
 
-        elif line.split()[0] == 'VEZMI':
+        elif line.split()[0] in ('VEZMI', 'TAKE'):
             params = line.split()[1:]
             params = ' '.join(params)
 
@@ -106,19 +107,23 @@ if __name__ == '__main__':
             else:
                 # step 3: do inventára si vložil predmet {name}
                 for item in room['items']:
-                    if item['name'] == params:
-                        if 'movable' in item['features']:
+                    if item['name'] == params and 'movable' in item['features']:
+                        if len(inventory) < inventory_capacity:
                             room['items'].remove(item)
                             inventory.append(item)
-                            print(f'Do batohu si si vložil predmet {item["name"]}.')
+                            print(f'Do batohu si si vložil predmet {item["name"]}.lower().')
                         else:
-                            print('Tento predmet sa nedá zobrať.')
+                            print('Batoh je plný')
+                        break
+
+                    elif item['name'] == params:
+                        print('Tento predmet sa nedá zobrať.')
                         break
                 else:
                     # step 2: taky predmet u seba nemas
                     print('Taký predmet tu nikde nevidím.')
 
-        elif line.split()[0] == 'PRESKUMAJ':
+        elif line.split()[0] in ('PRESKUMAJ', 'INSPECT'):
             params = line.split()[1:]
             params = ' '.join(params)
 
@@ -135,7 +140,7 @@ if __name__ == '__main__':
                     # step 2: Taky predmetu tu nikde nevidim
                     print('Taký predmet tu nikde nevidím.')
 
-        elif line == 'INVENTAR':
+        elif line in ('INVENTAR', 'INVENTORY', 'I'):
             if len(inventory) == 0:
                 print('Batoh je prázdny.')
             else:
@@ -143,7 +148,7 @@ if __name__ == '__main__':
                 for item in inventory:
                     print(f'\t{item["name"].lower()}')
 
-        elif line == 'PRIKAZY':
+        elif line in ('PRIKAZY', 'COMMANDS', 'HELP', 'POMOC', '?'):
             print(
                 f'Príkazy:\n KONIEC - Ukonci hru\n PRIKAZY - Vypise zoznam prikazov\n ROZHLIADNI SA - Vypíše opis miestnosti\n O HRE - Zakladne informacie o hre')
 
