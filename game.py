@@ -109,6 +109,24 @@ def cmd_inspect(context):
             print(item['description'])
 
 
+def cmd_inventory(context):
+    if len(context['inventory']) == 0:
+        print('Batoh je prázdny.')
+        return
+
+    print('V batohu máš:')
+    for item in context['inventory']:
+        print(f'\t{item["name"].lower()}')
+
+
+def cmd_command():
+    print('Príkazy:')
+    print(' KONIEC - Ukonci hru')
+    print(' PRIKAZY - Vypise zoznam prikazov')
+    print(' ROZHLIADNI SA - Vypíše opis miestnosti')
+    print(' O HRE - Zakladne informacie o hre')
+
+
 def cmd_use(context):
     params = line.split()[1:]
     params = ' '.join(params)
@@ -202,7 +220,7 @@ def cmd_use(context):
             print('Taký predmet tu nikde nevidím.')
 
 
-if __name__ == '__main__':
+def main():
     # game initialization
     context = {
         'state': STATE_PLAYING,
@@ -279,18 +297,16 @@ if __name__ == '__main__':
             cmd_use(context)
 
         elif line in ('INVENTAR', 'INVENTORY', 'I'):
-            if len(inventory) == 0:
-                print('Batoh je prázdny.')
-            else:
-                print('V batohu máš:')
-                for item in inventory:
-                    print(f'\t{item["name"].lower()}')
+            cmd_inventory(context)
 
         elif line in ('PRIKAZY', 'COMMANDS', 'HELP', 'POMOC', '?'):
-            print(
-                f'Príkazy:\n KONIEC - Ukonci hru\n PRIKAZY - Vypise zoznam prikazov\n ROZHLIADNI SA - Vypíše opis miestnosti\n O HRE - Zakladne informacie o hre')
+            cmd_commands()
 
         else:
             print('Taký príkaz nepoznám.')
 
     print('Created by (c)2021 mirek')
+
+
+if __name__ == '__main__':
+    main()
