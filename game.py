@@ -16,8 +16,15 @@ def show_room(room):
     else:
         print(f'Východy z miestnosti: {room["exits"]}.')
 
+
 STATE_EXIT = 1
 STATE_PLAYING = 2
+
+
+def find_item(name):
+    for item in room['items'] + inventory:
+        if item['name'] == name:
+            return item
 
 
 if __name__ == '__main__':
@@ -138,14 +145,16 @@ if __name__ == '__main__':
             if len(params) == 0:
                 print('Neviem, čo mám preskúmať.')
             else:
-                # step 3: {description}
-                for item in room['items'] + inventory:
-                    if item['name'] == params:
-                        print(item['description'])
-                        break
-                else:
+                item = find_item(params)
+
+                if item is None:
                     # step 2: Taky predmetu tu nikde nevidim
                     print('Taký predmet tu nikde nevidím.')
+                else:
+                    # step 3: {description}
+                    print(item['description'])
+
+
 
         elif line.split()[0] in ('POUZI', 'USE'):
             params = line.split()[1:]
@@ -162,7 +171,8 @@ if __name__ == '__main__':
 
                             # pouzitie novin
                             if params == 'NOVINY':
-                                print('Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
+                                print(
+                                    'Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
                                 item['features'].remove('usable')
                                 item['features'].remove('movable')
                                 item['name'] = 'VYLEPENE NOVINY'
@@ -179,16 +189,14 @@ if __name__ == '__main__':
                                     if item['name'] == 'VYLEPENE NOVINY':
                                         newspaper = item
                                         # 2. ak existuju, tak ich zapalime
-                                        print('podpalujem')
+                                        print('Zo zápalkovej krabičky si vytiahol jedinú zápalku, ktorá sa tam nachádzala a škrtol si ju. Priložil si ju k výtlačku Nových tajmsov a ten okamžite vzblkol. A spolu s ním aj celé dvere. Neviem, či toto bolo v tvojom pláne.')
 
                                         # 3. zapalky zmiznu
-                                        for it in room['items'] + inventory:
-                                            if it['name'] == params:
-                                                if it in inventory:
-                                                    inventory.remove(it)
-                                                else:
-                                                    room['items'].remove(it)
-                                                break
+                                        matches = find_item('ZAPALKY')
+                                        if matches in inventory:
+                                            inventory.remove(matches)
+                                        else:
+                                            room['items'].remove(matches)
 
                                         # 4. noviny zmiznu
                                         if newspaper in inventory:
@@ -197,9 +205,14 @@ if __name__ == '__main__':
                                             room['items'].remove(newspaper)
 
                                         # 5. dvere sa zmenia na horiace dvere
+                                        door = find_item('DVERE')
+                                        door['name'] = 'HORIACE DVERE'
+                                        door['description'] = 'Dvere v plameňoch. Ani len priblížiť sa k nim nedá.'
+
                                         break
                                 else:
-                                    print('Mám tu len jednu zápalku. Nebudem ňou plytvať, keď nevieš čo chceš podpáliť.')
+                                    print(
+                                        'Mám tu len jednu zápalku. Nebudem ňou plytvať, keď nevieš čo chceš podpáliť.')
 
                         else:
                             print('Tento predmet sa nedá použiť.')
