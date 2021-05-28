@@ -169,8 +169,20 @@ if __name__ == '__main__':
                     if item['name'] == params:
                         if 'usable' in item['features']:
 
+                            # pouzi kybel
+                            if params == 'KYBEL':
+                                # 1. zisti, ci dvere horia
+
+                                # 2. polej dvere kyblom
+
+                                # 3. aktualizuj stav vedra (prazdne vedro)
+
+                                # 4. zmaz dvere
+
+                                # 5. pridaj vychod z miestnosti
+
                             # pouzitie novin
-                            if params == 'NOVINY':
+                            elif params == 'NOVINY':
                                 print(
                                     'Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
                                 item['features'].remove('usable')
@@ -189,7 +201,8 @@ if __name__ == '__main__':
                                     if item['name'] == 'VYLEPENE NOVINY':
                                         newspaper = item
                                         # 2. ak existuju, tak ich zapalime
-                                        print('Zo zápalkovej krabičky si vytiahol jedinú zápalku, ktorá sa tam nachádzala a škrtol si ju. Priložil si ju k výtlačku Nových tajmsov a ten okamžite vzblkol. A spolu s ním aj celé dvere. Neviem, či toto bolo v tvojom pláne.')
+                                        print(
+                                            'Zo zápalkovej krabičky si vytiahol jedinú zápalku, ktorá sa tam nachádzala a škrtol si ju. Priložil si ju k výtlačku Nových tajmsov a ten okamžite vzblkol. A spolu s ním aj celé dvere. Neviem, či toto bolo v tvojom pláne.')
 
                                         # 3. zapalky zmiznu
                                         matches = find_item('ZAPALKY')
