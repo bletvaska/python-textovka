@@ -23,7 +23,8 @@ if __name__ == '__main__':
     inventory = [
         {
             'name': 'ZAPALKY',
-            'description': 'No zápalky. 4 kusy. Nepoužité. Krbové.'
+            'description': 'No zápalky. 4 kusy. Nepoužité. Krbové.',
+            'features': ['movable', 'usable']
         }
     ]
     room = {
@@ -38,12 +39,20 @@ if __name__ == '__main__':
             },
             {
                 'name': 'KYBEL',
-                'description': 'Hrdzavý kýbel s obsahom bližšie nešpecifikovaným, ale zrejme to bude len voda.'
+                'description': 'Hrdzavý kýbel s obsahom bližšie nešpecifikovaným, ale zrejme to bude len voda.',
+                'features': ['usable', 'movable']
             },
             {
                 'name': 'NOVINY',
-                'description': 'Staré suché Nové tajmsy z roku pána 1998. Z titulky rozpoznávaš len Vladimíra. To je teda veľký kus h... histórie.'
-            }
+                'description': 'Staré suché Nové tajmsy z roku pána 1998. Z titulky rozpoznávaš len Vladimíra. To je teda veľký kus h... histórie.',
+                'features': ['usable', 'movable']
+            },
+            {
+                'name': 'NOZIK',
+                'description': 'Síce zhrdzavený, ale stará klasika - nožík rybka.',
+                'features': ['movable']
+            },
+
         ]
     }
 
@@ -98,9 +107,12 @@ if __name__ == '__main__':
                 # step 3: do inventára si vložil predmet {name}
                 for item in room['items']:
                     if item['name'] == params:
-                        room['items'].remove(item)
-                        inventory.append(item)
-                        print(f'Do batohu si si vložil predmet {item["name"]}.')
+                        if 'movable' in item['features']:
+                            room['items'].remove(item)
+                            inventory.append(item)
+                            print(f'Do batohu si si vložil predmet {item["name"]}.')
+                        else:
+                            print('Tento predmet sa nedá zobrať.')
                         break
                 else:
                     # step 2: taky predmet u seba nemas
