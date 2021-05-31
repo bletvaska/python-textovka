@@ -118,7 +118,7 @@ def cmd_inventory(context):
         print(f'\t{item["name"].lower()}')
 
 
-def cmd_command(context):
+def cmd_commands(context):
     print('Príkazy:')
     print(' KONIEC - Ukonci hru')
     print(' PRIKAZY - Vypise zoznam prikazov')
@@ -280,6 +280,12 @@ def main():
             'description': 'Zobrazí informácie o zvolenom predmete.',
             'aliases': ('PRESKUMAJ', 'INSPECT'),
             'exec': cmd_inspect
+        },
+
+        {
+            'description': 'Zobrazí zoznam príkazov dostupných v hre.',
+            'aliases': ('PRIKAZY', 'COMMANDS', 'HELP', 'POMOC', '?'),
+            'exec': cmd_commands
         }
     ]
 
