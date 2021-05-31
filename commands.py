@@ -1,9 +1,10 @@
 from helper import find_item, show_room
+import states
 
 
 def cmd_quit(context):
     print('Ta končíme')
-    context['state'] = STATE_EXIT
+    context['state'] = states.STATE_EXIT
 
 
 def cmd_about(context):

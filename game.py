@@ -2,10 +2,7 @@
 
 from commands import commands as list_of_commands
 from helper import show_room
-
-
-STATE_EXIT = 1
-STATE_PLAYING = 2
+import states
 
 
 def parse(context, line):
@@ -21,7 +18,7 @@ def parse(context, line):
 def main():
     # game initialization
     context = {
-        'state': STATE_PLAYING,
+        'state': states.STATE_PLAYING,
         'inventory': [],
         'inventory_capacity': 2,
         'room': None
@@ -75,7 +72,7 @@ def main():
     show_room(context['room'])
 
     # game loop
-    while context['state'] == STATE_PLAYING:
+    while context['state'] == states.STATE_PLAYING:
         # parsovanie vstupu
         line = input('> ').upper().strip()
 
