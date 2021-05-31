@@ -33,4 +33,24 @@ def show_room(room):
     if len(room['exits']) == 0:
         print('Z miestnosti neexistujú žiadne východy.')
     else:
-        print(f'Východy z miestnosti: {room["exits"]}.')
+        print(f'Východy z miestnosti:')
+
+        # ttable = {
+        #     'north': 'server',
+        #     'south': 'juh',
+        #     'east': 'vychod',
+        #     'west': 'zapad'
+        # }
+        #
+        # for key in room['exits']:
+        #     print(ttable[key])
+
+        for key in room["exits"]:
+            if key == 'north':
+                print('\tsever')
+            elif key == 'south':
+                print('\tjuh')
+            elif key == 'east':
+                print('\tvýchod')
+            elif key == 'west':
+                print('\tzápad')

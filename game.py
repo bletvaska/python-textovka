@@ -31,11 +31,11 @@ def main():
     })
 
     line = None
-    context['room'] = 'tmavá miestnosť'
+    context['room'] = 'záhradka'
 
     context['world'] = {
-        'v záhradke': {
-            'name': 'v záhradke',
+        'záhradka': {
+            'name': 'záhradka',
             'description': 'Značne neudržiavaná záhradka nevšedných rozmerov.',
             'exits': {
                 'north': 'tmavá miestnosť'
