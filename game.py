@@ -264,6 +264,26 @@ def main():
         ]
     }
 
+    context['commands'] = [
+        {
+            'description': 'Ukončí rozohratú hru.',
+            'aliases': ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'),
+            'exec': cmd_quit
+        },
+
+        {
+            'description': 'Zobrazí informácie o hre',
+            'aliases': ('O HRE', 'ABOUT', 'INFO'),
+            'exec': cmd_about
+        },
+
+        {
+            'description': 'Zobrazí informácie o zvolenom predmete.',
+            'alias': ('PRESKUMAJ', 'INSPECT'),
+            'exec': cmd_inspect
+        }
+    ]
+
     # welcome
     print(' _____                            ____                       ')
     print('| ____|___  ___ __ _ _ __   ___  |  _ \ ___   ___  _ __ ___  ')
