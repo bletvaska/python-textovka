@@ -225,7 +225,7 @@ def cmd_use(context):
 def parse(context, line):
     for cmd in context['commands']:
         for alias in cmd['aliases']:
-            if alias in line:
+            if line.startswith(alias):
                 context['params'] = line.replace(alias, '').strip()
                 return cmd
 
@@ -352,7 +352,6 @@ def main():
             print('Taký príkaz nepoznám.')
         else:
             cmd['exec'](context)
-
 
     print('Created by (c)2021 mirek')
 
