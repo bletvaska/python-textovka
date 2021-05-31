@@ -41,8 +41,7 @@ def cmd_about(context):
 
 
 def cmd_drop(context):
-    params = line.split()[1:]
-    params = ' '.join(params)
+    params = context['params']
 
     # step 1: neviem, co mam preskumat
     if len(params) == 0:
@@ -61,9 +60,7 @@ def cmd_drop(context):
 
 
 def cmd_take(context):
-    params = line.split()[1:]
-    params = ' '.join(params)
-
+    params = context['params']
     room = context['room']
     inventory = context['inventory']
     inventory_capacity = context['inventory_capacity']
@@ -130,9 +127,7 @@ def cmd_look_around(context):
 
 
 def cmd_use(context):
-    params = line.split()[1:]
-    params = ' '.join(params)
-
+    params = context['params']
     room = context['room']
     inventory = context['inventory']
 
