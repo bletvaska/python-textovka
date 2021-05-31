@@ -217,6 +217,14 @@ def cmd_use(context):
             # step 2: Taky predmetu tu nikde nevidim
             print('Taký predmet tu nikde nevidím.')
 
+def parse(context, line):
+    for cmd in context['commands']:
+        for alias in cmd['aliases']:
+            if alias in line:
+                context['params'] = line.replace(alias, '').strip()
+                return cmd
+
+    return None
 
 def main():
     # game initialization
@@ -303,11 +311,14 @@ def main():
         # parsovanie vstupu
         line = input('> ').upper().strip()
 
-        for cmd in context['commands']:
-            for alias in cmd['aliases']:
-                if alias in line:
-                    context['params'] = line.replace(alias, '').strip()
-                    cmd['exec'](context)
+        cmd = parse(context, line)
+        if cmd is None:
+            print('Taký príkaz nepoznám.')
+        else:
+            cmd['exec'](context)
+
+
+
 
         # if line == '':
         #     pass
