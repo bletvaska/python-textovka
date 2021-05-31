@@ -120,10 +120,9 @@ def cmd_inventory(context):
 
 def cmd_commands(context):
     print('Príkazy:')
-    print(' KONIEC - Ukonci hru')
-    print(' PRIKAZY - Vypise zoznam prikazov')
-    print(' ROZHLIADNI SA - Vypíše opis miestnosti')
-    print(' O HRE - Zakladne informacie o hre')
+
+    for cmd in context['commands']:
+        print(f' {cmd["aliases"][0]} - {cmd["description"]}')
 
 
 def cmd_use(context):
