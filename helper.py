@@ -6,7 +6,9 @@ def find_item(name: str, context: dict) -> dict:
     :param context: context object (with room and inventory)
     :return: reference to the item dictionary if found, `None` otherwise
     """
-    items = context['room']['items'] + context['inventory']
+    room_name = context['room']
+    room = context['world'][room_name]
+    items = room['items'] + context['inventory']
     for item in items:
         if item['name'] == name:
             return item

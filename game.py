@@ -82,7 +82,10 @@ def main():
     print('|_____|___/\___\__,_| .__/ \___| |_| \_\___/ \___/|_| |_| |_|')
     print('                    |_|                     (c) mirek 2021   ')
     print()
-    show_room(context['room'])
+
+    room_name = context['room']
+    room = context['world'][room_name]
+    show_room(room)
 
     # game loop
     while context['state'] == states.STATE_PLAYING:

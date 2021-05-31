@@ -16,6 +16,8 @@ def cmd_about(context):
 
 def cmd_drop(context):
     params = context['params']
+    room_name = context['room']
+    room = context['world'][room_name]
 
     # step 1: neviem, co mam preskumat
     if len(params) == 0:
@@ -25,7 +27,7 @@ def cmd_drop(context):
         for item in context['inventory']:
             if item['name'] == params:
                 context['inventory'].remove(item)
-                context['room']['items'].append(item)
+                room['items'].append(item)
                 print(f'Do miestnosti si vyložil predmet {item["name"]}.')
                 break
         else:
@@ -35,7 +37,8 @@ def cmd_drop(context):
 
 def cmd_take(context):
     params = context['params']
-    room = context['room']
+    room_name = context['room']
+    room = context['world'][room_name]
     inventory = context['inventory']
     inventory_capacity = context['inventory_capacity']
 
@@ -97,12 +100,15 @@ def cmd_commands(context):
 
 
 def cmd_look_around(context):
-    show_room(context['room'])
+    room_name = context['room']
+    room = context['world'][room_name]
+    show_room(room)
 
 
 def cmd_use(context):
     params = context['params']
-    room = context['room']
+    room_name = context['room']
+    room = context['world'][room_name]
     inventory = context['inventory']
 
     # step 1: neviem, co mam preskumat
