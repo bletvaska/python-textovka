@@ -33,7 +33,7 @@ def cmd_quit(context):
     context['state'] = STATE_EXIT
 
 
-def cmd_about():
+def cmd_about(context):
     print('Room Escape')
     print('Táto mocná hra ťa naučí, ako prežiť v miestnosti uzavretej s Pythonom.')
     print('Created by šikovný mladý Pythonista (c)2021 mirek')
@@ -92,8 +92,7 @@ def cmd_take(context):
 
 
 def cmd_inspect(context):
-    params = line.split()[1:]
-    params = ' '.join(params)
+    params = context['params']
 
     # step 1: neviem, co mam preskumat
     if len(params) == 0:
@@ -119,7 +118,7 @@ def cmd_inventory(context):
         print(f'\t{item["name"].lower()}')
 
 
-def cmd_command():
+def cmd_command(context):
     print('Príkazy:')
     print(' KONIEC - Ukonci hru')
     print(' PRIKAZY - Vypise zoznam prikazov')
@@ -279,7 +278,7 @@ def main():
 
         {
             'description': 'Zobrazí informácie o zvolenom predmete.',
-            'alias': ('PRESKUMAJ', 'INSPECT'),
+            'aliases': ('PRESKUMAJ', 'INSPECT'),
             'exec': cmd_inspect
         }
     ]
@@ -299,38 +298,44 @@ def main():
         # parsovanie vstupu
         line = input('> ').upper().strip()
 
-        if line == '':
-            pass
+        for cmd in context['commands']:
+            for alias in cmd['aliases']:
+                if alias in line:
+                    context['params'] = line.replace(alias, '').strip()
+                    cmd['exec'](context)
 
-        elif line in ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'):
-            cmd_quit(context)
-
-        elif line in ('O HRE', 'ABOUT', 'INFO'):
-            cmd_about()
-
-        elif line in ('ROZHLIADNI SA', 'LOOK AROUND', 'R'):
-            show_room(context['room'])
-
-        elif line.split()[0] in ('POLOZ', 'DROP'):
-            cmd_drop(context)
-
-        elif line.split()[0] in ('VEZMI', 'TAKE'):
-            cmd_take(context)
-
-        elif line.split()[0] in ('PRESKUMAJ', 'INSPECT'):
-            cmd_inspect(context)
-
-        elif line.split()[0] in ('POUZI', 'USE'):
-            cmd_use(context)
-
-        elif line in ('INVENTAR', 'INVENTORY', 'I'):
-            cmd_inventory(context)
-
-        elif line in ('PRIKAZY', 'COMMANDS', 'HELP', 'POMOC', '?'):
-            cmd_commands()
-
-        else:
-            print('Taký príkaz nepoznám.')
+        # if line == '':
+        #     pass
+        #
+        # elif line in ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'):
+        #     cmd_quit(context)
+        #
+        # elif line in ('O HRE', 'ABOUT', 'INFO'):
+        #     cmd_about()
+        #
+        # elif line in ('ROZHLIADNI SA', 'LOOK AROUND', 'R'):
+        #     show_room(context['room'])
+        #
+        # elif line.split()[0] in ('POLOZ', 'DROP'):
+        #     cmd_drop(context)
+        #
+        # elif line.split()[0] in ('VEZMI', 'TAKE'):
+        #     cmd_take(context)
+        #
+        # elif line.split()[0] in ('PRESKUMAJ', 'INSPECT'):
+        #     cmd_inspect(context)
+        #
+        # elif line.split()[0] in ('POUZI', 'USE'):
+        #     cmd_use(context)
+        #
+        # elif line in ('INVENTAR', 'INVENTORY', 'I'):
+        #     cmd_inventory(context)
+        #
+        # elif line in ('PRIKAZY', 'COMMANDS', 'HELP', 'POMOC', '?'):
+        #     cmd_commands()
+        #
+        # else:
+        #     print('Taký príkaz nepoznám.')
 
     print('Created by (c)2021 mirek')
 
