@@ -31,32 +31,45 @@ def main():
     })
 
     line = None
-    context['room'] = {
-        'name': 'tmavá miestnosť',
-        'description': 'Stojíš v tmavej miestnosti. Zrejme sa tu už dlho neupratovalo, lebo do nosa sa ti ftiera zepeklitý zápach niečoho zdochnutého. Ani len svetlo nepreniká cez zadebnené okná. I have a bad feeling about this place, ako by klasik povedal.',
-        'exits': [],
-        'items': [
-            {
-                'name': 'DVERE',
-                'description': 'Velke masivne drevene dvere. Okrem toho su aj zamknute',
-                'features': []
+    context['room'] = 'tmavá miestnosť'
+
+    context['world'] = {
+        'v záhradke': {
+            'name': 'v záhradke',
+            'description': 'Značne neudržiavaná záhradka nevšedných rozmerov.',
+            'exits': {
+                'north': 'tmavá miestnosť'
             },
-            {
-                'name': 'KYBEL',
-                'description': 'Hrdzavý kýbel s obsahom bližšie nešpecifikovaným, ale zrejme to bude len voda.',
-                'features': ['usable', 'movable']
-            },
-            {
-                'name': 'NOVINY',
-                'description': 'Staré suché Nové tajmsy z roku pána 1998. Z titulky rozpoznávaš len Vladimíra. To je teda veľký kus h... histórie.',
-                'features': ['usable', 'movable']
-            },
-            {
-                'name': 'NOZIK',
-                'description': 'Síce zhrdzavený, ale stará klasika - nožík rybka.',
-                'features': ['movable']
-            },
-        ]
+            'items': []
+        },
+
+        'tmavá miestnosť': {
+            'name': 'tmavá miestnosť',
+            'description': 'Stojíš v tmavej miestnosti. Zrejme sa tu už dlho neupratovalo, lebo do nosa sa ti ftiera zepeklitý zápach niečoho zdochnutého. Ani len svetlo nepreniká cez zadebnené okná. I have a bad feeling about this place, ako by klasik povedal.',
+            'exits': {},
+            'items': [
+                {
+                    'name': 'DVERE',
+                    'description': 'Velke masivne drevene dvere. Okrem toho su aj zamknute',
+                    'features': []
+                },
+                {
+                    'name': 'KYBEL',
+                    'description': 'Hrdzavý kýbel s obsahom bližšie nešpecifikovaným, ale zrejme to bude len voda.',
+                    'features': ['usable', 'movable']
+                },
+                {
+                    'name': 'NOVINY',
+                    'description': 'Staré suché Nové tajmsy z roku pána 1998. Z titulky rozpoznávaš len Vladimíra. To je teda veľký kus h... histórie.',
+                    'features': ['usable', 'movable']
+                },
+                {
+                    'name': 'NOZIK',
+                    'description': 'Síce zhrdzavený, ale stará klasika - nožík rybka.',
+                    'features': ['movable']
+                },
+            ]
+        }
     }
 
     context['commands'] = list_of_commands

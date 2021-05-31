@@ -1,4 +1,11 @@
-def find_item(name, context):
+def find_item(name: str, context: dict) -> dict:
+    """
+    Finds item in current room and inventory
+
+    :param name: the name of the item to find
+    :param context: context object (with room and inventory)
+    :return: reference to the item dictionary if found, `None` otherwise
+    """
     items = context['room']['items'] + context['inventory']
     for item in items:
         if item['name'] == name:
@@ -6,6 +13,11 @@ def find_item(name, context):
 
 
 def show_room(room):
+    """
+    Shows the content of the room
+
+    :param room: the room to show
+    """
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
 
