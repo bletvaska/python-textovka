@@ -1,0 +1,74 @@
+{
+    "jama": {
+        "name": "jama",
+        "description": "Kde sa tu len vzala? 2x2 metre, ale do výšky hádam 3 metre.",
+        "exits": {},
+        "items": []
+    },
+    "spálňa": {
+        "name": "spálňa",
+        "description": "Vyzerá to ako spálňa, až na to, že tu chýba posteľ, nočné stolíky, lampa a skriňa. Ale záclony sú také... ako do spálne.",
+        "exits": {
+            "west": "tmavá miestnosť"
+        },
+        "items": [
+            {
+                "name": "NOVINY",
+                "description": "Staré suché Nové tajmsy z roku pána 1998. Z titulky rozpoznávaš len Vladimíra. To je teda veľký kus h... histórie.",
+                "features": [
+                    "usable",
+                    "movable"
+                ]
+            }
+        ]
+    },
+    "kuchyňa": {
+        "name": "kuchyňa",
+        "description": "Dve platničky, šparhét a chladnička Calex. Hrnčeky, lyžičky, nožíky. Podľa pachu sa tu naposledy varili ryby. Alebo to je syr? Ponožky?",
+        "exits": {
+            "south": "tmavá miestnosť"
+        },
+        "items": [
+            {
+                "name": "NOZIK",
+                "description": "Síce zhrdzavený, ale stará klasika - nožík rybka.",
+                "features": [
+                    "movable"
+                ]
+            },
+            {
+                "name": "KYBEL",
+                "description": "Hrdzavý kýbel s obsahom bližšie nešpecifikovaným, ale zrejme to bude len voda.",
+                "features": [
+                    "usable",
+                    "movable"
+                ]
+            }
+        ]
+    },
+    "záhradka": {
+        "name": "záhradka",
+        "description": "Značne neudržiavaná záhradka nevšedných rozmerov.",
+        "exits": {
+            "east": "tmavá miestnosť"
+        },
+        "items": []
+    },
+    "tmavá miestnosť": {
+        "name": "tmavá miestnosť",
+        "description": "Stojíš v tmavej miestnosti. Zrejme sa tu už dlho neupratovalo, lebo do nosa sa ti ftiera zepeklitý zápach niečoho zdochnutého. Ani len svetlo nepreniká cez zadebnené okná. I have a bad feeling about this place, ako by klasik povedal.",
+        "features": [],
+        "exits": {
+            "south": "jama",
+            "north": "kuchyňa",
+            "east": "spálňa"
+        },
+        "items": [
+            {
+                "name": "DVERE",
+                "description": "Velke masivne drevene dvere. Okrem toho su aj zamknute",
+                "features": []
+            }
+        ]
+    }
+}

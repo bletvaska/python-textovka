@@ -143,7 +143,7 @@ def cmd_use(context):
                         room['items'].remove(door)
 
                         # 5. pridaj vychod z miestnosti
-                        room['exits'].append('sever')
+                        room['exits']['west'] = 'záhradka'
 
                     # pouzitie novin
                     elif params == 'NOVINY':
