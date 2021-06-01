@@ -1,3 +1,5 @@
+import random
+
 from helper import find_item, show_room
 import states
 
@@ -145,7 +147,16 @@ def cmd_use(context):
 
                     # pouzitie novin
                     elif params == 'NOVINY':
+                        if find_item('DVERE', context) is None:
+                            text = random.choice([
+                                'Hmm... Morkadela sa dá kúpiť len za 99 centov.',
+                                'Naši prehrali s Čechmi. To už dnes nikoho neprekvapí.',
+                                'Čak Noris včera napočítal do nekonečna. A rovno dvakrát! Je to proste frajer.',
+                                'Šmoulinka odišla zo šmoulej dediny. Vraj to tak cítila už dlhšie.'
+                            ])
 
+                            print(f'Zalistoval si v novinách a začítal si sa. {text}')
+                            return
 
                         print(
                             'Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
