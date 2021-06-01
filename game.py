@@ -33,7 +33,7 @@ def main():
     })
 
     # load world
-    with open('world.json', 'r') as file:
+    with open('world.json', 'r', encoding='utf-8') as file:
         context['world'] = json.load(file)
 
     # welcome
