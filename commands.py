@@ -145,6 +145,8 @@ def cmd_use(context):
 
                     # pouzitie novin
                     elif params == 'NOVINY':
+
+
                         print(
                             'Nove časy. Celkom hrube vydanie. Zo všetkých dvojstránok si úplne obložil dvere. Proste ti to prišlo ako celkom dobrý nápad.')
                         item['features'].remove('usable')
@@ -197,68 +199,36 @@ def cmd_use(context):
             print('Taký predmet tu nikde nevidím.')
 
 
-def cmd_north(context):
+def _go(context, direction):
     room_name = context['room']
     room = context['world'][room_name]
 
-    # test, if room on north exists
-    if 'north' not in room['exits']:
+    # test, if room in given direction exists
+    if direction not in room['exits']:
         print('Tam sa nedá ísť.')
         return
 
     # enter the room
-    next_room = room['exits']['north']
+    next_room = room['exits'][direction]
     context['room'] = next_room
     room = context['world'][next_room]
     show_room(room)
+
+
+def cmd_north(context):
+    _go(context, 'north')
 
 
 def cmd_south(context):
-    room_name = context['room']
-    room = context['world'][room_name]
-
-    # test, if room on south exists
-    if 'south' not in room['exits']:
-        print('Tam sa nedá ísť.')
-        return
-
-    # enter the room
-    next_room = room['exits']['south']
-    context['room'] = next_room
-    room = context['world'][next_room]
-    show_room(room)
+    _go(context, 'south')
 
 
 def cmd_east(context):
-    room_name = context['room']
-    room = context['world'][room_name]
-
-    # test, if room on east exists
-    if 'east' not in room['exits']:
-        print('Tam sa nedá ísť.')
-        return
-
-    # enter the room
-    next_room = room['exits']['east']
-    context['room'] = next_room
-    room = context['world'][next_room]
-    show_room(room)
+    _go(context, 'east')
 
 
 def cmd_west(context):
-    room_name = context['room']
-    room = context['world'][room_name]
-
-    # test, if room on west exists
-    if 'west' not in room['exits']:
-        print('Tam sa nedá ísť.')
-        return
-
-    # enter the room
-    next_room = room['exits']['west']
-    context['room'] = next_room
-    room = context['world'][next_room]
-    show_room(room)
+    _go(context, 'west')
 
 
 commands = [
