@@ -7,8 +7,8 @@ from helper import show_room
 import states
 
 
-def parse(context, line):
-    for cmd in context['commands']:
+def parse(commands, context, line):
+    for cmd in commands:
         for alias in cmd['aliases']:
             if line.startswith(alias):
                 context['params'] = line.replace(alias, '').strip()
@@ -24,7 +24,7 @@ def main():
         'inventory': [],
         'inventory_capacity': 2,
         'room': 'tmavá miestnosť',
-        'commands': list_of_commands
+        # 'commands': list_of_commands
     }
 
     context['inventory'].append({
@@ -55,7 +55,7 @@ def main():
         # parsovanie vstupu
         line = input('> ').upper().strip()
 
-        cmd = parse(context, line)
+        cmd = parse(list_of_commands, context, line)
         if cmd is None:
             print('Taký príkaz nepoznám.')
         else:
