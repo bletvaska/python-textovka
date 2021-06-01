@@ -245,9 +245,18 @@ def cmd_west(context):
 
 def cmd_save(context):
     with open('save.json', 'w+', encoding='utf-8') as file:
-        json.dump(context, file, ensure_ascii=False)
+        json.dump(context, file, ensure_ascii=False, indent=4)
 
     print('Pozícia sa úspešne uložila.')
+
+
+def cmd_load(context):
+    with open('save.json', 'r', encoding='utf-8') as file:
+        context.update(json.load(file))
+
+        room = context['room']
+        show_room(context['world'][room])
+        print('Pozícia bola úspešne načítaná.')
 
 
 commands = [
@@ -333,5 +342,11 @@ commands = [
         'description': 'Uloží stav hry na disk.',
         'aliases': ('ULOZ', 'SAVE', 'ULOZIT'),
         'exec': cmd_save
+    },
+
+    {
+        'description': 'Načíta stav hry z disku.',
+        'aliases': ('NACITAT', 'LOAD', 'NAHRAT', 'NACITAJ', 'NAHRAJ'),
+        'exec': cmd_load
     },
 ]
