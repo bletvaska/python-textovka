@@ -197,6 +197,36 @@ def cmd_use(context):
             print('Taký predmet tu nikde nevidím.')
 
 
+def cmd_north(context):
+    room_name = context['room']
+    room = context['world'][room_name]
+
+    # test, if room on north exists
+    if 'north' not in room['exits']:
+        print('Tam sa nedá ísť.')
+        return
+
+    # enter the room
+    room_on_north = room['exits']['north']
+    context['room'] = room_on_north
+    room = context['world'][room_on_north]
+    show_room(room)
+
+
+def cmd_west(context):
+   params = context['params']
+   room_name = context['room']
+   room = context['world'][room_name]
+
+   if 'west' not in room['exits']:
+       print('Vychod na zapad neexistuje.')
+   else:
+       context['room'] = room['exits']['west']
+       states.STATE_ROOM = context['room']
+       # context['state'] = states.STATE_ROOM
+
+
+
 commands = [
     {
         'description': 'Ukončí rozohratú hru.',
@@ -250,5 +280,11 @@ commands = [
         'description': 'Vypíše opis miestnosti.',
         'aliases': ('ROZHLIADNI SA', 'LOOK AROUND', 'R'),
         'exec': cmd_look_around
+    },
+
+    {
+        'description': 'Presunie sa do miestnosti na sever.',
+        'aliases': ('SEVER', 'NORTH', 'S'),
+        'exec': cmd_north
     }
 ]
