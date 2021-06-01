@@ -207,24 +207,58 @@ def cmd_north(context):
         return
 
     # enter the room
-    room_on_north = room['exits']['north']
-    context['room'] = room_on_north
-    room = context['world'][room_on_north]
+    next_room = room['exits']['north']
+    context['room'] = next_room
+    room = context['world'][next_room]
+    show_room(room)
+
+
+def cmd_south(context):
+    room_name = context['room']
+    room = context['world'][room_name]
+
+    # test, if room on south exists
+    if 'south' not in room['exits']:
+        print('Tam sa nedá ísť.')
+        return
+
+    # enter the room
+    next_room = room['exits']['south']
+    context['room'] = next_room
+    room = context['world'][next_room]
+    show_room(room)
+
+
+def cmd_east(context):
+    room_name = context['room']
+    room = context['world'][room_name]
+
+    # test, if room on east exists
+    if 'east' not in room['exits']:
+        print('Tam sa nedá ísť.')
+        return
+
+    # enter the room
+    next_room = room['exits']['east']
+    context['room'] = next_room
+    room = context['world'][next_room]
     show_room(room)
 
 
 def cmd_west(context):
-   params = context['params']
-   room_name = context['room']
-   room = context['world'][room_name]
+    room_name = context['room']
+    room = context['world'][room_name]
 
-   if 'west' not in room['exits']:
-       print('Vychod na zapad neexistuje.')
-   else:
-       context['room'] = room['exits']['west']
-       states.STATE_ROOM = context['room']
-       # context['state'] = states.STATE_ROOM
+    # test, if room on west exists
+    if 'west' not in room['exits']:
+        print('Tam sa nedá ísť.')
+        return
 
+    # enter the room
+    next_room = room['exits']['west']
+    context['room'] = next_room
+    room = context['world'][next_room]
+    show_room(room)
 
 
 commands = [
@@ -286,5 +320,23 @@ commands = [
         'description': 'Presunie sa do miestnosti na sever.',
         'aliases': ('SEVER', 'NORTH', 'S'),
         'exec': cmd_north
+    },
+
+    {
+        'description': 'Presunie sa do miestnosti na juh.',
+        'aliases': ('JUH', 'SOUTH', 'J'),
+        'exec': cmd_south
+    },
+
+    {
+        'description': 'Presunie sa do miestnosti na východ.',
+        'aliases': ('VYCHOD', 'EAST', 'V'),
+        'exec': cmd_east
+    },
+
+    {
+        'description': 'Presunie sa do miestnosti na západ.',
+        'aliases': ('ZAPAD', 'WEST', 'Z'),
+        'exec': cmd_west
     }
 ]

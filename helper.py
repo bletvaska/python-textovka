@@ -47,7 +47,7 @@ def show_room(room):
 
         for key in room["exits"]:
             if key == 'north':
-                print('\tsever')
+                print(f'\tsever')
             elif key == 'south':
                 print('\tjuh')
             elif key == 'east':
