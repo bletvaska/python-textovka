@@ -95,13 +95,6 @@ def cmd_inventory(context):
         print(f'\t{item["name"].lower()}')
 
 
-def cmd_commands(context):
-    print('Príkazy:')
-
-    for cmd in context['commands']:
-        print(f' {cmd["aliases"][0]} - {cmd["description"]}')
-
-
 def cmd_look_around(context):
     room_name = context['room']
     room = context['world'][room_name]
@@ -259,7 +252,20 @@ def cmd_load(context):
         print('Pozícia bola úspešne načítaná.')
 
 
+def cmd_commands(context):
+    print('Príkazy:')
+
+    for cmd in commands:
+        print(f' {cmd["aliases"][0]} - {cmd["description"]}')
+
+
 commands = [
+    {
+        'description': 'Zobrazí zoznam príkazov dostupných v hre.',
+        'aliases': ('PRIKAZY', 'COMMANDS', 'HELP', 'POMOC', '?'),
+        'exec': cmd_commands
+    },
+
     {
         'description': 'Ukončí rozohratú hru.',
         'aliases': ('KONIEC', 'QUIT', 'EXIT', 'Q', 'BYE'),
@@ -276,12 +282,6 @@ commands = [
         'description': 'Zobrazí informácie o zvolenom predmete.',
         'aliases': ('PRESKUMAJ', 'INSPECT'),
         'exec': cmd_inspect
-    },
-
-    {
-        'description': 'Zobrazí zoznam príkazov dostupných v hre.',
-        'aliases': ('PRIKAZY', 'COMMANDS', 'HELP', 'POMOC', '?'),
-        'exec': cmd_commands
     },
 
     {
