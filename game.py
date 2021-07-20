@@ -11,6 +11,14 @@ def show_room(room: dict):
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room['description'])
 
+    # print items in the room
+    if room['items'] == []:
+        print('Nevidíš tu nič zvláštne.')
+    else:
+        print('Vidíš:')
+        for item in room['items']:
+            print(f'\t{item}')
+
     # print exits from the room
     if room['exits'] == []:
         print('Z tejto miestnosti neexistujú žiadne východy.')
