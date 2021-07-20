@@ -18,6 +18,12 @@ while line != 'koniec':
         print('Hru spáchal  (c)2021 mirek')
         print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
 
+    elif line == 'prikazy':
+        print('Dostupné príkazy v hre:')
+        print('* koniec - ukončí rozohratú hru')
+        print('* o hre - zobrazí informácie o fantastickom autorovi hry a o hre samotnej')
+        print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
+
     elif line in ('koniec', ''):
         continue
 
