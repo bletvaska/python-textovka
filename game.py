@@ -15,9 +15,9 @@ def show_room(room: dict):
     if room['items'] == []:
         print('Nevidíš tu nič zvláštne.')
     else:
-        print('Vidíš:')
-        for item in room['items']:
-            print(f'\t{item}')
+        output = 'Vidíš: '
+        print('Vidíš: ', end='')
+        print(', '.join(room['items']))
 
     # print exits from the room
     if room['exits'] == []:
