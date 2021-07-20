@@ -40,3 +40,4 @@ if __name__ == '__main__':
         repeat = input('Chceš si zahrať znova? (ano/nie) ')
 
     print('Ďakujem, že si si zahral túto mocnú hru.')
+
