@@ -10,6 +10,11 @@ def show_room(room: dict):
     """
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room['description'])
+
+    # print exits from the room
+    if room['exits'] == []:
+        print('Z tejto miestnosti neexistujú žiadne východy.')
+
     print()
 
 
@@ -25,8 +30,8 @@ if __name__ == '__main__':
     room = {
         'description': 'Nachádzaš v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? Okná tu nie sú žiadne, čo by ťa uistili o správnosti tohto predpokladu.',
         'name': 'kobka',
-        'items': None,
-        'exits': None
+        'items': ['vedro', 'kanister', 'zapalky'],
+        'exits': []
     }
 
     show_room(room)
