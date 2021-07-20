@@ -18,5 +18,8 @@ while line != 'koniec':
         print('Hru spáchal  (c)2021 mirek')
         print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
 
+    elif line in ('koniec', ''):
+        continue
+
     else:
         print('Taký príkaz nepoznám.')
