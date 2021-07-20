@@ -43,6 +43,14 @@ def play_game(secret=11):
 
 
 if __name__ == '__main__':
-    secret = randint(1, 20)
-    play_game(secret)
+    playing = True
+
+    while playing:
+        secret = randint(1, 20)
+        play_game(secret)
+
+        choice = input('Chceš hrať znova? (y/n)')
+        if choice not in ('y', 'Y'):
+            playing = False
+
     print('the end')
