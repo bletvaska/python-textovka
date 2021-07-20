@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 
-def show_room(room):
+def show_room(room: dict):
+    """
+    Prints room on the screen.
+
+    Prints out the room given as the parameter of type dictionary on the screen.
+
+    :params room: the room to show
+    """
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room['description'])
     print()
+
 
 if __name__ == '__main__':
     print(' ___           _ _                         _                       ')
@@ -39,8 +47,10 @@ if __name__ == '__main__':
         elif line == 'prikazy':
             print('Dostupné príkazy v hre:')
             print('* koniec - ukončí rozohratú hru')
-            print('* o hre - zobrazí informácie o fantastickom autorovi hry a o hre samotnej')
+            print(
+                '* o hre - zobrazí informácie o fantastickom autorovi hry a o hre samotnej')
             print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
+            print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
             print()
 
         elif line in ('koniec', ''):
