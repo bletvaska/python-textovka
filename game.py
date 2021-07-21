@@ -1,6 +1,25 @@
 #!/usr/bin/env python3
 
-def cmd_take(line, room, backpack):
+def cmd_drop(line: str, room: dict, backpack: list):
+    name = line[5:].strip()
+
+    if name == '':
+        print('Neviem, čo chceš položiť.')
+
+    else:
+        for item in backpack:
+            if item['name'] == name:
+                backpack.remove(item)
+                room['items'].append(item)
+                print(f'Do miestnosti si položil predmet {name}.')
+                break
+
+        # if no such item was found
+        else:
+            print('Taký predmet tu nigde nevidím.')
+
+
+def cmd_take(line: str, room: dict, backpack: list):
     name = line[5:].strip()
 
     if name == '':
@@ -19,7 +38,7 @@ def cmd_take(line, room, backpack):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_explore(line, room, backpack):
+def cmd_explore(line: str, room: dict, backpack: list):
     name = line[9:].strip()
 
     # if no name was given
@@ -37,7 +56,7 @@ def cmd_explore(line, room, backpack):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_inventory(backpack):
+def cmd_inventory(backpack: list):
     if backpack == []:
         print('Batoh je prázdny.')
     else:
@@ -154,6 +173,9 @@ if __name__ == '__main__':
 
         elif line.startswith('vezmi'):
             cmd_take(line, room, backpack)
+
+        elif line.startswith('poloz'):
+            cmd_drop(line, room, backpack)
 
         elif line in ('koniec', ''):
             continue
