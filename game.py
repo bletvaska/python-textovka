@@ -38,6 +38,12 @@ if __name__ == '__main__':
 
     print('                                                     (c) 2021 mirek')
 
+    backpack = [
+        {
+            'name': 'noviny',
+            'description': 'Nové tajmsy, husté čítanie na každý deň.'
+        }
+    ]
     room = {
         'description': 'Nachádzaš v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? Okná tu nie sú žiadne, čo by ťa uistili o správnosti tohto predpokladu.',
         'name': 'kobka',
@@ -81,6 +87,14 @@ if __name__ == '__main__':
             print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
             print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
             print()
+
+        elif line == 'inventar':
+            if backpack == []:
+                print('Batoh je prázdny.')
+            else:
+                print('V batohu máš:')
+                for item in backpack:
+                    print(f'\t{item["name"]}')
 
         elif line.startswith('preskumaj'):
             name = line[9:].strip()
