@@ -8,6 +8,9 @@ def show_room(room: dict):
 
     :params room: the room to show
     """
+    if type(room) is not dict:
+        raise TypeError('Room is not of type dictionary.')
+
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room['description'])
 
@@ -15,9 +18,9 @@ def show_room(room: dict):
     if room['items'] == []:
         print('Nevidíš tu nič zvláštne.')
     else:
-        output = 'Vidíš: '
-        print('Vidíš: ', end='')
-        print(', '.join(room['items']))
+        print('Vidíš: ')
+        for item in room['items']:
+            print(f'\t{item["name"]}')
 
     # print exits from the room
     if room['exits'] == []:
@@ -38,7 +41,20 @@ if __name__ == '__main__':
     room = {
         'description': 'Nachádzaš v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? Okná tu nie sú žiadne, čo by ťa uistili o správnosti tohto predpokladu.',
         'name': 'kobka',
-        'items': ['vedro', 'kanister', 'zapalky'],
+        'items': [
+            {
+                'name': 'vedro',
+                'description': 'Vedro plné vody.'
+            },
+            {
+                'name': 'kanister',
+                'description': 'Kanister plný benzínu.'
+            },
+            {
+                'name': 'zapalky',
+                'description': 'Zápalky na vatru.'
+            }
+        ],
         'exits': []
     }
 
