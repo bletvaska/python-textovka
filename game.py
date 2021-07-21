@@ -82,6 +82,23 @@ if __name__ == '__main__':
             print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
             print()
 
+        elif line.startswith('preskumaj'):
+            name = line[9:].strip()
+
+            # if no name was given
+            if name == '':
+                print('Neviem, čo chceš preskúmať.')
+
+            else:
+                for item in room['items']:
+                    # if name was found
+                    if item['name'] == name:
+                        print(item['description'])
+                        break
+                # if no such item was found
+                else:
+                    print('Taký predmet tu nigde nevidím.')
+
         elif line in ('koniec', ''):
             continue
 
