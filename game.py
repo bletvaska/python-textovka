@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
-def cmd_drop(line: str, room: dict, backpack: list):
+def cmd_drop(line: str, room: dict, backpack: dict):
     name = line[5:].strip()
 
     if name == '':
         print('Neviem, čo chceš položiť.')
 
     else:
-        for item in backpack:
+        for item in backpack['items']:
             if item['name'] == name:
-                backpack.remove(item)
+                backpack['items'].remove(item)
                 room['items'].append(item)
                 print(f'Do miestnosti si položil predmet {name}.')
                 break
@@ -19,16 +19,19 @@ def cmd_drop(line: str, room: dict, backpack: list):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_take(line: str, room: dict, backpack: list):
+def cmd_take(line: str, room: dict, backpack: dict):
     name = line[5:].strip()
 
-    if name == '':
+    if len(backpack['items']) >= backpack['capacity']:
+        print('Batoh je plný.')
+
+    elif name == '':
         print('Neviem, čo chceš zobrať.')
 
     else:
         for item in room['items']:
             if item['name'] == name:
-                backpack.append(item)
+                backpack['items'].append(item)
                 room['items'].remove(item)
                 print(f'Predmet {name} si si vložil do batohu.')
                 break
@@ -38,7 +41,7 @@ def cmd_take(line: str, room: dict, backpack: list):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_explore(line: str, room: dict, backpack: list):
+def cmd_explore(line: str, room: dict, backpack: dict):
     name = line[9:].strip()
 
     # if no name was given
@@ -46,7 +49,7 @@ def cmd_explore(line: str, room: dict, backpack: list):
         print('Neviem, čo chceš preskúmať.')
 
     else:
-        for item in room['items'] + backpack:
+        for item in room['items'] + backpack['items']:
             # if name was found
             if item['name'] == name:
                 print(item['description'])
@@ -56,12 +59,12 @@ def cmd_explore(line: str, room: dict, backpack: list):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_inventory(backpack: list):
-    if backpack == []:
+def cmd_inventory(backpack: dict):
+    if backpack['items'] == []:
         print('Batoh je prázdny.')
     else:
         print('V batohu máš:')
-        for item in backpack:
+        for item in backpack['items']:
             print(f'\t{item["name"]}')
 
 
@@ -122,12 +125,16 @@ if __name__ == '__main__':
 
     print('                                                     (c) 2021 mirek')
 
-    backpack = [
-        {
-            'name': 'noviny',
-            'description': 'Nové tajmsy, husté čítanie na každý deň.'
-        }
-    ]
+    backpack = {
+        'capacity': 2,
+        'items': [
+            {
+                'name': 'noviny',
+                'description': 'Nové tajmsy, husté čítanie na každý deň.'
+            }
+        ]
+    }
+
     room = {
         'description': 'Nachádzaš v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? Okná tu nie sú žiadne, čo by ťa uistili o správnosti tohto predpokladu.',
         'name': 'kobka',
