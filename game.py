@@ -29,9 +29,11 @@ def cmd_inventory(backpack):
 
 def cmd_commands():
     print('Dostupné príkazy v hre:')
+    print('* inventar - zobrazí obsah batohu')
     print('* koniec - ukončí rozohratú hru')
     print(
         '* o hre - zobrazí informácie o fantastickom autorovi hry a o hre samotnej')
+    print('* preskumaj - preskúma zadaný predmet')
     print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
     print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
     print()
