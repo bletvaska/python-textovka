@@ -1,5 +1,24 @@
 #!/usr/bin/env python3
 
+def cmd_take(line, room, backpack):
+    name = line[5:].strip()
+
+    if name == '':
+        print('Neviem, čo chceš zobrať.')
+
+    else:
+        for item in room['items']:
+            if item['name'] == name:
+                backpack.append(item)
+                room['items'].remove(item)
+                print(f'Predmet {name} si si vložil do batohu.')
+                break
+
+        # if no such item was found
+        else:
+            print('Taký predmet tu nigde nevidím.')
+
+
 def cmd_explore(line, room, backpack):
     name = line[9:].strip()
 
@@ -36,6 +55,7 @@ def cmd_commands():
     print('* preskumaj - preskúma zadaný predmet')
     print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
     print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
+    print('* vezmi - vezmi zadaný predmet z miestnosti a vloží si ho do batohu')
     print()
 
 
@@ -131,6 +151,9 @@ if __name__ == '__main__':
 
         elif line.startswith('preskumaj'):
             cmd_explore(line, room, backpack)
+
+        elif line.startswith('vezmi'):
+            cmd_take(line, room, backpack)
 
         elif line in ('koniec', ''):
             continue
