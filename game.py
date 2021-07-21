@@ -130,7 +130,8 @@ if __name__ == '__main__':
         'items': [
             {
                 'name': 'noviny',
-                'description': 'Nové tajmsy, husté čítanie na každý deň.'
+                'description': 'Nové tajmsy, husté čítanie na každý deň.',
+                'features': ['movable']
             }
         ]
     }
@@ -141,15 +142,24 @@ if __name__ == '__main__':
         'items': [
             {
                 'name': 'vedro',
-                'description': 'Vedro plné vody.'
+                'description': 'Vedro plné vody.',
+                'features': ['movable']
             },
             {
                 'name': 'kanister',
-                'description': 'Kanister plný benzínu.'
+                'description': 'Kanister plný benzínu.',
+                'features': ['movable']
             },
             {
                 'name': 'zapalky',
-                'description': 'Zápalky na vatru.'
+                'description': 'Zápalky na vatru.',
+                'features': ['movable']
+
+            },
+            {
+                'name': 'chladnicka',
+                'description': 'Chladnička značky Calex. Zvláštne znamenie: pokazená.',
+                'features': []
             }
         ],
         'exits': []
