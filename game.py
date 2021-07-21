@@ -31,9 +31,12 @@ def cmd_take(line: str, room: dict, backpack: dict):
     else:
         for item in room['items']:
             if item['name'] == name:
-                backpack['items'].append(item)
-                room['items'].remove(item)
-                print(f'Predmet {name} si si vložil do batohu.')
+                if 'movable' in item['features']:
+                    backpack['items'].append(item)
+                    room['items'].remove(item)
+                    print(f'Predmet {name} si si vložil do batohu.')
+                else:
+                    print('Tento predmet sa nedá zobrať.')
                 break
 
         # if no such item was found
@@ -119,9 +122,9 @@ def show_room(room: dict):
 if __name__ == '__main__':
     print(' ___           _ _                         _                       ')
     print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ')
-    print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
-    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\__ \\")
-    print('|___|_| |_|\__,_|_|\__,_|_| |_|\__,_|  \___/ \___/|_| |_|\___||___/')
+    print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
+    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\")
+    print('|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/')
 
     print('                                                     (c) 2021 mirek')
 
@@ -154,7 +157,6 @@ if __name__ == '__main__':
                 'name': 'zapalky',
                 'description': 'Zápalky na vatru.',
                 'features': ['movable']
-
             },
             {
                 'name': 'chladnicka',
