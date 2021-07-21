@@ -1,5 +1,48 @@
 #!/usr/bin/env python3
 
+def cmd_explore(line, room, backpack):
+    name = line[9:].strip()
+
+    # if no name was given
+    if name == '':
+        print('Neviem, čo chceš preskúmať.')
+
+    else:
+        for item in room['items'] + backpack:
+            # if name was found
+            if item['name'] == name:
+                print(item['description'])
+                break
+        # if no such item was found
+        else:
+            print('Taký predmet tu nigde nevidím.')
+
+
+def cmd_inventory(backpack):
+    if backpack == []:
+        print('Batoh je prázdny.')
+    else:
+        print('V batohu máš:')
+        for item in backpack:
+            print(f'\t{item["name"]}')
+
+
+def cmd_commands():
+    print('Dostupné príkazy v hre:')
+    print('* koniec - ukončí rozohratú hru')
+    print(
+        '* o hre - zobrazí informácie o fantastickom autorovi hry a o hre samotnej')
+    print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
+    print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
+    print()
+
+
+def cmd_about():
+    print('Hru spáchal  (c)2021 mirek')
+    print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
+    print()
+
+
 def show_room(room: dict):
     """
     Prints room on the screen.
@@ -68,50 +111,24 @@ if __name__ == '__main__':
 
     line = None
 
+    # input parser
     while line != 'koniec':
         line = input('> ').rstrip().lstrip().lower()
 
         if line == 'o hre':
-            print('Hru spáchal  (c)2021 mirek')
-            print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
-            print()
+            cmd_about()
 
         elif line == 'rozhliadni sa':
             show_room(room)
 
         elif line == 'prikazy':
-            print('Dostupné príkazy v hre:')
-            print('* koniec - ukončí rozohratú hru')
-            print(
-                '* o hre - zobrazí informácie o fantastickom autorovi hry a o hre samotnej')
-            print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
-            print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
-            print()
+            cmd_commands()
 
         elif line == 'inventar':
-            if backpack == []:
-                print('Batoh je prázdny.')
-            else:
-                print('V batohu máš:')
-                for item in backpack:
-                    print(f'\t{item["name"]}')
+            cmd_inventory(backpack)
 
         elif line.startswith('preskumaj'):
-            name = line[9:].strip()
-
-            # if no name was given
-            if name == '':
-                print('Neviem, čo chceš preskúmať.')
-
-            else:
-                for item in room['items']:
-                    # if name was found
-                    if item['name'] == name:
-                        print(item['description'])
-                        break
-                # if no such item was found
-                else:
-                    print('Taký predmet tu nigde nevidím.')
+            cmd_explore(line, room, backpack)
 
         elif line in ('koniec', ''):
             continue
