@@ -56,6 +56,18 @@ def cmd_explore(line: str, room: dict, backpack: dict):
             # if name was found
             if item['name'] == name:
                 print(item['description'])
+
+                if 'observable' in item['features']:
+                    if item['name'] == 'chladnicka':
+                        print('Zaprel si sa celou silou do dvier chladničky, až si ich urval. Ale tá rukoväť by sa ti mohla zísť.')
+                        room['items'].append(
+                            {
+                                'name': 'rukovat',
+                                'description': 'Kovová rukoväť značky Calex. Schopná fungovať aj ako páčidlo.',
+                                'features': ['movable']
+                            }
+                        )
+                        item['features'].remove('observable')
                 break
         # if no such item was found
         else:
@@ -161,7 +173,7 @@ if __name__ == '__main__':
             {
                 'name': 'chladnicka',
                 'description': 'Chladnička značky Calex. Zvláštne znamenie: pokazená.',
-                'features': []
+                'features': ['observable']
             }
         ],
         'exits': []
