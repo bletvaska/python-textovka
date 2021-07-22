@@ -29,7 +29,6 @@ def cmd_drop(line: str, room: dict, backpack: dict):
         room['items'].append(item)
         print(f'Do miestnosti si položil predmet {name}.')
 
-
         # for item in backpack['items']:
         #     if item['name'] == name:
         #         backpack['items'].remove(item)
@@ -67,8 +66,8 @@ def cmd_take(line: str, room: dict, backpack: dict):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_explore(line: str, room: dict, backpack: dict):
-    name = line[9:].strip()
+def cmd_explore(param: str, room: dict, backpack: dict):
+    name = param
 
     # if no name was given
     if name == '':
@@ -100,7 +99,7 @@ def cmd_explore(line: str, room: dict, backpack: dict):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_inventory(backpack: dict):
+def cmd_inventory(line: str, room: dict, backpack: dict):
     if backpack['items'] == []:
         print('Batoh je prázdny.')
     else:
@@ -109,7 +108,7 @@ def cmd_inventory(backpack: dict):
             print(f'\t{item["name"]}')
 
 
-def cmd_commands():
+def cmd_commands(line: str, room: dict, backpack: dict):
     print('Dostupné príkazy v hre:')
     print('* inventar - zobrazí obsah batohu')
     print('* koniec - ukončí rozohratú hru')
@@ -122,13 +121,13 @@ def cmd_commands():
     print()
 
 
-def cmd_about():
+def cmd_about(line: str, room: dict, backpack: dict):
     print('Hru spáchal  (c)2021 mirek')
     print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
     print()
 
 
-def show_room(room: dict):
+def show_room(line: str = None, room: dict = None, backpack: dict = None):
     """
     Prints room on the screen.
 
@@ -155,6 +154,17 @@ def show_room(room: dict):
         print('Z tejto miestnosti neexistujú žiadne východy.')
 
     print()
+
+
+def parse(line: str, commands: list) -> dict:
+    # walk throught the list of commands
+    for cmd in commands:
+        for alias in cmd['aliases']:
+            if line.startswith(alias):   # preskumaj cervena ciapocka
+                param = line[len(alias):].strip()
+                return (cmd, param)
+
+    return None
 
 
 if __name__ == '__main__':
@@ -205,7 +215,45 @@ if __name__ == '__main__':
         'exits': []
     }
 
-    show_room(room)
+    commands = [
+        {
+            'name': 'inventar',
+            'description': 'Zobrazí obsah hráčovho batohu',
+            'aliases': ['inventar', 'inventory', 'i'],
+            'exec': cmd_inventory
+        },
+
+        {
+            'name': 'o hre',
+            'description': 'Zobrazí informácie o autorovi hry a o hre samotnej.',
+            'aliases': ['o hre', 'about'],
+            'exec': cmd_about
+        },
+
+        {
+            'name': 'rozhliadni sa',
+            'description': 'Vypíše obsah aktuálnej miestnosti.',
+            'aliases': ['rozhliadni sa', 'look around'],
+            'exec': show_room
+        },
+
+        {
+            'name': 'koniec',
+            'description': 'Ukončí rozohratú hru',
+            'aliases': ['koniec', 'quit', 'end', 'q'],
+            # 'exec': cmd_quit
+        },
+
+        {
+            'name': 'preskumaj',
+            'description': 'Preskúma zvolený predmet.',
+            'aliases': ['preskumaj', 'explore'],
+            'exec': cmd_explore,
+        },
+
+    ]
+
+    show_room(room=room)
 
     line = None
 
@@ -213,29 +261,37 @@ if __name__ == '__main__':
     while line != 'koniec':
         line = input('> ').rstrip().lstrip().lower()
 
-        if line == 'o hre':
-            cmd_about()
+        cmd = parse(line, commands)
 
-        elif line == 'rozhliadni sa':
-            show_room(room)
-
-        elif line == 'prikazy':
-            cmd_commands()
-
-        elif line == 'inventar':
-            cmd_inventory(backpack)
-
-        elif line.startswith('preskumaj'):
-            cmd_explore(line, room, backpack)
-
-        elif line.startswith('vezmi'):
-            cmd_take(line, room, backpack)
-
-        elif line.startswith('poloz'):
-            cmd_drop(line, room, backpack)
-
-        elif line in ('koniec', ''):
-            continue
-
-        else:
+        if cmd is None:
             print('Taký príkaz nepoznám.')
+        else:
+            # print(cmd)
+            cmd['exec'](cmd['param'], room, backpack)
+
+        # if line == 'o hre' or line == 'about':
+        #     cmd_about()
+
+        # elif line == 'rozhliadni sa':
+        #     show_room(room)
+
+        # elif line == 'prikazy':
+        #     cmd_commands()
+
+        # elif line in ('inventar', 'inventory', 'i'):
+        #     cmd_inventory(backpack)
+
+        # elif line.startswith('preskumaj'):
+        #     cmd_explore(line, room, backpack)
+
+        # elif line.startswith('vezmi'):
+        #     cmd_take(line, room, backpack)
+
+        # elif line.startswith('poloz'):
+        #     cmd_drop(line, room, backpack)
+
+        # elif line in ('koniec', ''):
+        #     continue
+
+        # else:
+        #     print('Taký príkaz nepoznám.')
