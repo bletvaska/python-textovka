@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+def get_item_by_name(items: list, name: list) -> dict:
+    for item in items:
+        if item['name'] == name:
+            return item
+
+    return None
+
+
 def cmd_drop(line: str, room: dict, backpack: dict):
     name = line[5:].strip()
 
@@ -57,9 +65,12 @@ def cmd_explore(line: str, room: dict, backpack: dict):
             if item['name'] == name:
                 print(item['description'])
 
+                # is item observable?
                 if 'observable' in item['features']:
                     if item['name'] == 'chladnicka':
-                        print('Zaprel si sa celou silou do dvier chladničky, až si ich urval. Ale tá rukoväť by sa ti mohla zísť.')
+                        print('Zaprel si sa celou silou do dvier chladničky, '
+                              'až si ich urval. Ale tá rukoväť by sa ti mohla '
+                              'zísť.')
                         room['items'].append(
                             {
                                 'name': 'rukovat',
