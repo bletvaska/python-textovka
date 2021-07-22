@@ -1,3 +1,4 @@
+from usages import use_item
 
 from states import STATE_QUIT
 from helper import get_item_by_name, show_room
@@ -27,7 +28,7 @@ def cmd_use(param: str, context: dict):
         elif 'usable' not in item['features']:
             print('Tento predmet sa nedá použiť.')
         else:
-            print(f'Práve sa zamýšľaš, ako použiť predmet {name}.')
+            use_item(context, name)
 
 
 def cmd_drop(param: str, context: dict):

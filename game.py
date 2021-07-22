@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from usages import use_newspaper
 import game_parser
 from states import STATE_PLAYING
 from helper import show_room
@@ -10,7 +11,7 @@ def init_game(context: dict) -> None:
     context['backpack']['items'].append({
         'name': 'noviny',
         'description': 'Nové tajmsy, husté čítanie na každý deň.',
-        'features': ['movable']
+        'features': ['movable', 'usable'],
     })
 
     # initialize room
@@ -21,12 +22,12 @@ def init_game(context: dict) -> None:
             {
                 'name': 'vedro',
                 'description': 'Vedro plné vody.',
-                'features': ['movable', 'usable']
+                'features': ['movable']
             },
             {
                 'name': 'kanister',
                 'description': 'Kanister plný benzínu.',
-                'features': ['movable']
+                'features': ['movable', 'usable']
             },
             {
                 'name': 'zapalky',
@@ -37,6 +38,11 @@ def init_game(context: dict) -> None:
                 'name': 'chladnicka',
                 'description': 'Chladnička značky Calex. Zvláštne znamenie: pokazená.',
                 'features': ['observable']
+            },
+            {
+                'name': 'dvere',
+                'description': 'Veľké masívne dubové dvere.',
+                'features': []
             }
         ],
         'exits': []
