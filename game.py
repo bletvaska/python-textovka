@@ -8,6 +8,11 @@ def get_item_by_name(items: list, name: list) -> dict:
     return None
 
 
+def cmd_quit(param: str, context: dict):
+    input('Naozaj chceš skončiť? (y/n) ')
+    context['state'] = 'end'
+
+
 def cmd_use(param: str, room: dict, backpack: dict, commands: list):
     name = param
 
@@ -183,27 +188,16 @@ def parse(line: str, commands: list) -> dict:
     return None
 
 
-if __name__ == '__main__':
-    print(' ___           _ _                         _                       ')
-    print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ')
-    print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
-    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\")
-    print('|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/')
+def init_game(context: dict) -> None:
+    # initialize backpack
+    context['backpack']['items'].append({
+        'name': 'noviny',
+        'description': 'Nové tajmsy, husté čítanie na každý deň.',
+        'features': ['movable']
+    })
 
-    print('                                                     (c) 2021 mirek')
-
-    backpack = {
-        'capacity': 2,
-        'items': [
-            {
-                'name': 'noviny',
-                'description': 'Nové tajmsy, husté čítanie na každý deň.',
-                'features': ['movable']
-            }
-        ]
-    }
-
-    room = {
+    # initialize room
+    context['room'] = {
         'description': 'Nachádzaš v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? Okná tu nie sú žiadne, čo by ťa uistili o správnosti tohto predpokladu.',
         'name': 'kobka',
         'items': [
@@ -231,7 +225,8 @@ if __name__ == '__main__':
         'exits': []
     }
 
-    commands = [
+    # initialize commands
+    context['commands'] += [
         {
             'name': 'inventar',
             'description': 'Zobrazí obsah hráčovho batohu',
@@ -255,9 +250,9 @@ if __name__ == '__main__':
 
         {
             'name': 'koniec',
-            'description': 'Ukončí rozohratú hru',
+            'description': 'Ukončí rozohratú hru.',
             'aliases': ['koniec', 'quit', 'end', 'q'],
-            # 'exec': cmd_quit
+            'exec': cmd_quit
         },
 
         {
@@ -294,15 +289,37 @@ if __name__ == '__main__':
             'aliases': ['pouzi', 'use', 'u'],
             'exec': cmd_use
         },
-
     ]
 
-    show_room(room=room)
 
-    line = None
+if __name__ == '__main__':
+    # state of the game
+    context = {
+        'state': 'playing',
+        'room': None,
+        'world': None,
+        'backpack': {
+            'capacity': 2,
+            'items': []
+        },
+        'commands': []
+    }
+
+    init_game(context)
+
+    # intro banner
+    print(' ___           _ _                         _                       ')
+    print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ')
+    print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
+    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\")
+    print('|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/')
+
+    print('                                                     (c) 2021 mirek')
+
+    show_room(room=context['room'])
 
     # input parser
-    while line != 'koniec':
+    while context['state'] == 'playing':
         # read input from user and normalize it
         line = input('> ').rstrip().lstrip().lower()
 
@@ -310,12 +327,13 @@ if __name__ == '__main__':
         if line == '':
             continue
 
-        cmd = parse(line, commands)
+        cmd = parse(line, context['commands'])
 
         if cmd is None:
             print('Taký príkaz nepoznám.')
         else:
-            cmd['exec'](cmd['param'], room, backpack, commands)
+            cmd['exec'](cmd['param'], context['room'],
+                        context['backpack'], context['commands'])
 
-        # elif line in ('koniec', ''):
-        #     continue
+    # it must finish here
+    print('(c)2021 mirek')
