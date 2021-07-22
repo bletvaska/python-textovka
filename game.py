@@ -278,16 +278,19 @@ if __name__ == '__main__':
 
     # input parser
     while line != 'koniec':
+        # read input from user and normalize it
         line = input('> ').rstrip().lstrip().lower()
+
+        # test if line is empty
+        if line == '':
+            continue
 
         cmd = parse(line, commands)
 
         if cmd is None:
             print('Taký príkaz nepoznám.')
         else:
-            # print(cmd)
             cmd['exec'](cmd['param'], room, backpack, commands)
 
-       
         # elif line in ('koniec', ''):
         #     continue
