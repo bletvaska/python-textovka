@@ -1,3 +1,12 @@
+
+from states import STATE_QUIT
+from helper import get_item_by_name, show_room
+
+
+def cmd_look_around(param: str, context: dict):
+    show_room(context['room'])
+
+
 def cmd_quit(param: str, context: dict):
     input('Naozaj chceš skončiť? (y/n) ')
     context['state'] = STATE_QUIT
