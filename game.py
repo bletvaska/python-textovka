@@ -15,16 +15,31 @@ def cmd_drop(line: str, room: dict, backpack: dict):
         print('Neviem, čo chceš položiť.')
 
     else:
-        for item in backpack['items']:
-            if item['name'] == name:
-                backpack['items'].remove(item)
-                room['items'].append(item)
-                print(f'Do miestnosti si položil predmet {name}.')
-                break
 
-        # if no such item was found
-        else:
+        # find item item by name
+        item = get_item_by_name(backpack['items'], name)
+
+        # if nout found
+        if item is None:
             print('Taký predmet tu nigde nevidím.')
+            return
+
+        # if found
+        backpack['items'].remove(item)
+        room['items'].append(item)
+        print(f'Do miestnosti si položil predmet {name}.')
+
+
+        # for item in backpack['items']:
+        #     if item['name'] == name:
+        #         backpack['items'].remove(item)
+        #         room['items'].append(item)
+        #         print(f'Do miestnosti si položil predmet {name}.')
+        #         break
+
+        # # if no such item was found
+        # else:
+        #     print('Taký predmet tu nigde nevidím.')
 
 
 def cmd_take(line: str, room: dict, backpack: dict):
