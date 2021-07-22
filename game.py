@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 
+from helper import get_item_by_name, show_room
+
+
 STATE_PLAYING = 1
 STATE_QUIT = 2
 
 
-def get_item_by_name(items: list, name: list) -> dict:
-    for item in items:
-        if item['name'] == name:
-            return item
-
-    return None
+def cmd_look_around(param: str, context: dict):
+    show_room(context['room'])
 
 
 def cmd_quit(param: str, context: dict):
@@ -149,37 +148,6 @@ def cmd_about(param: str, context: dict):
     print()
 
 
-def show_room(context: dict = None, param: str = None):
-    """
-    Prints room on the screen.
-
-    Prints out the room given as the parameter of type dictionary on the screen.
-
-    :params room: the room to show
-    """
-    room = context['room']
-
-    if type(room) is not dict:
-        raise TypeError('Room is not of type dictionary.')
-
-    print(f'Nachádzaš sa v miestnosti {room["name"]}')
-    print(room['description'])
-
-    # print items in the room
-    if room['items'] == []:
-        print('Nevidíš tu nič zvláštne.')
-    else:
-        print('Vidíš: ')
-        for item in room['items']:
-            print(f'\t{item["name"]}')
-
-    # print exits from the room
-    if room['exits'] == []:
-        print('Z tejto miestnosti neexistujú žiadne východy.')
-
-    print()
-
-
 # ! FIXME zamysliet sa nad jednopismenkovymi prikazmi
 def parse(line: str, commands: list) -> dict:
     # walk throught the list of commands
@@ -251,7 +219,7 @@ def init_game(context: dict) -> None:
             'name': 'rozhliadni sa',
             'description': 'Vypíše obsah aktuálnej miestnosti.',
             'aliases': ['rozhliadni sa', 'look around'],
-            'exec': show_room
+            'exec': cmd_look_around
         },
 
         {
@@ -322,7 +290,7 @@ if __name__ == '__main__':
 
     print('                                                     (c) 2021 mirek')
 
-    show_room(context=context)
+    show_room(context['room'])
 
     # input parser
     while context['state'] == STATE_PLAYING:
