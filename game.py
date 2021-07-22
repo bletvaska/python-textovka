@@ -13,7 +13,7 @@ def cmd_quit(param: str, context: dict):
     context['state'] = 'end'
 
 
-def cmd_use(param: str, room: dict, backpack: dict, commands: list):
+def cmd_use(param: str, context: dict):
     name = param
 
     if name == '':
@@ -332,8 +332,7 @@ if __name__ == '__main__':
         if cmd is None:
             print('Taký príkaz nepoznám.')
         else:
-            cmd['exec'](cmd['param'], context['room'],
-                        context['backpack'], context['commands'])
+            cmd['exec'](cmd['param'], context)
 
     # it must finish here
     print('(c)2021 mirek')
