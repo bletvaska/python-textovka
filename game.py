@@ -8,6 +8,23 @@ def get_item_by_name(items: list, name: list) -> dict:
     return None
 
 
+def cmd_use(param: str, room: dict, backpack: dict, commands: list):
+    name = param
+
+    if name == '':
+        print('Neviem čo chceš použiť.')
+
+    else:
+        item = get_item_by_name(room['items'] + backpack['items'], name)
+
+        if item is None:
+            print('Takýto predmet tu nikde nevidím.')
+        elif 'usable' not in item['features']:
+            print('Tento predmet sa nedá použiť.')
+        else:
+            print(f'Práve sa zamýšľaš, ako použiť predmet {name}.')
+
+
 def cmd_drop(param: str, room: dict, backpack: dict, commands: list):
     name = param
 
@@ -193,7 +210,7 @@ if __name__ == '__main__':
             {
                 'name': 'vedro',
                 'description': 'Vedro plné vody.',
-                'features': ['movable']
+                'features': ['movable', 'usable']
             },
             {
                 'name': 'kanister',
@@ -270,6 +287,14 @@ if __name__ == '__main__':
             'aliases': ['prikazy', 'commands'],
             'exec': cmd_commands,
         },
+
+        {
+            'name': 'pouzi',
+            'description': 'Použije daný predmet.',
+            'aliases': ['pouzi', 'use', 'u'],
+            'exec': cmd_use
+        },
+
     ]
 
     show_room(room=room)
