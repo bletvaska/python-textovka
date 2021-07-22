@@ -20,7 +20,8 @@ def cmd_use(param: str, context: dict):
         print('Neviem čo chceš použiť.')
 
     else:
-        item = get_item_by_name(room['items'] + backpack['items'], name)
+        items = context['room']['items'] + context['backpack']['items']
+        item = get_item_by_name(items, name)
 
         if item is None:
             print('Takýto predmet tu nikde nevidím.')
@@ -30,13 +31,15 @@ def cmd_use(param: str, context: dict):
             print(f'Práve sa zamýšľaš, ako použiť predmet {name}.')
 
 
-def cmd_drop(param: str, room: dict, backpack: dict, commands: list):
+def cmd_drop(param: str, context: dict):
     name = param
 
     if name == '':
         print('Neviem, čo chceš položiť.')
 
     else:
+        backpack = context['backpack']
+        room = context['room']
 
         # find item item by name
         item = get_item_by_name(backpack['items'], name)
@@ -51,20 +54,10 @@ def cmd_drop(param: str, room: dict, backpack: dict, commands: list):
         room['items'].append(item)
         print(f'Do miestnosti si položil predmet {name}.')
 
-        # for item in backpack['items']:
-        #     if item['name'] == name:
-        #         backpack['items'].remove(item)
-        #         room['items'].append(item)
-        #         print(f'Do miestnosti si položil predmet {name}.')
-        #         break
 
-        # # if no such item was found
-        # else:
-        #     print('Taký predmet tu nigde nevidím.')
-
-
-def cmd_take(param: str, room: dict, backpack: dict, commands: list):
+def cmd_take(param: str,  context: dict):
     name = param
+    backpack = context['backpack']
 
     if len(backpack['items']) >= backpack['capacity']:
         print('Batoh je plný.')
@@ -73,6 +66,8 @@ def cmd_take(param: str, room: dict, backpack: dict, commands: list):
         print('Neviem, čo chceš zobrať.')
 
     else:
+        room = context['room']
+
         for item in room['items']:
             if item['name'] == name:
                 if 'movable' in item['features']:
@@ -88,7 +83,7 @@ def cmd_take(param: str, room: dict, backpack: dict, commands: list):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_explore(param: str, room: dict, backpack: dict, commands: list):
+def cmd_explore(param: str, context: dict):
     name = param
 
     # if no name was given
@@ -96,6 +91,9 @@ def cmd_explore(param: str, room: dict, backpack: dict, commands: list):
         print('Neviem, čo chceš preskúmať.')
 
     else:
+        room = context['room']
+        backpack = context['backpack']
+
         for item in room['items'] + backpack['items']:
             # if name was found
             if item['name'] == name:
@@ -121,7 +119,9 @@ def cmd_explore(param: str, room: dict, backpack: dict, commands: list):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_inventory(param: str, room: dict, backpack: dict, commands: list):
+def cmd_inventory(param: str, context: dict):
+    backpack = context['backpack']
+
     if backpack['items'] == []:
         print('Batoh je prázdny.')
     else:
@@ -130,22 +130,22 @@ def cmd_inventory(param: str, room: dict, backpack: dict, commands: list):
             print(f'\t{item["name"]}')
 
 
-def cmd_commands(param: str, room: dict, backpack: dict, commands: list):
+def cmd_commands(param: str, context: dict):
     print('Dostupné príkazy v hre:')
 
-    for cmd in commands:
+    for cmd in context['commands']:
         print(f'\t{cmd["name"]} - {cmd["description"]}')
 
     print()
 
 
-def cmd_about(param: str, room: dict, backpack: dict, commands: list):
+def cmd_about(param: str, context: dict):
     print('Hru spáchal  (c)2021 mirek')
     print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
     print()
 
 
-def show_room(param: str = None, room: dict = None, backpack: dict = None, commands: list = None):
+def show_room(param: str = None, context: dict = None):
     """
     Prints room on the screen.
 
@@ -153,6 +153,8 @@ def show_room(param: str = None, room: dict = None, backpack: dict = None, comma
 
     :params room: the room to show
     """
+    room = context['room']
+
     if type(room) is not dict:
         raise TypeError('Room is not of type dictionary.')
 
@@ -316,7 +318,7 @@ if __name__ == '__main__':
 
     print('                                                     (c) 2021 mirek')
 
-    show_room(room=context['room'])
+    show_room(context=context)
 
     # input parser
     while context['state'] == 'playing':
