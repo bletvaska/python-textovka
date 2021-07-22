@@ -8,7 +8,7 @@ def get_item_by_name(items: list, name: list) -> dict:
     return None
 
 
-def cmd_drop(param: str, room: dict, backpack: dict):
+def cmd_drop(param: str, room: dict, backpack: dict, commands: list):
     name = param
 
     if name == '':
@@ -41,7 +41,7 @@ def cmd_drop(param: str, room: dict, backpack: dict):
         #     print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_take(param: str, room: dict, backpack: dict):
+def cmd_take(param: str, room: dict, backpack: dict, commands: list):
     name = param
 
     if len(backpack['items']) >= backpack['capacity']:
@@ -66,7 +66,7 @@ def cmd_take(param: str, room: dict, backpack: dict):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_explore(param: str, room: dict, backpack: dict):
+def cmd_explore(param: str, room: dict, backpack: dict, commands: list):
     name = param
 
     # if no name was given
@@ -99,7 +99,7 @@ def cmd_explore(param: str, room: dict, backpack: dict):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_inventory(param: str, room: dict, backpack: dict):
+def cmd_inventory(param: str, room: dict, backpack: dict, commands: list):
     if backpack['items'] == []:
         print('Batoh je prázdny.')
     else:
@@ -108,26 +108,22 @@ def cmd_inventory(param: str, room: dict, backpack: dict):
             print(f'\t{item["name"]}')
 
 
-def cmd_commands(param: str, room: dict, backpack: dict):
+def cmd_commands(param: str, room: dict, backpack: dict, commands: list):
     print('Dostupné príkazy v hre:')
-    print('* inventar - zobrazí obsah batohu')
-    print('* koniec - ukončí rozohratú hru')
-    print(
-        '* o hre - zobrazí informácie o fantastickom autorovi hry a o hre samotnej')
-    print('* preskumaj - preskúma zadaný predmet')
-    print('* prikazy - zobrazí zoznam príkazov, ktoré hra podporuje')
-    print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč nachádza')
-    print('* vezmi - vezmi zadaný predmet z miestnosti a vloží si ho do batohu')
+
+    for cmd in commands:
+        print(f'\t{cmd["name"]} - {cmd["description"]}')
+
     print()
 
 
-def cmd_about(param: str, room: dict, backpack: dict):
+def cmd_about(param: str, room: dict, backpack: dict, commands: list):
     print('Hru spáchal  (c)2021 mirek')
     print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
     print()
 
 
-def show_room(param: str = None, room: dict = None, backpack: dict = None):
+def show_room(param: str = None, room: dict = None, backpack: dict = None, commands: list = None):
     """
     Prints room on the screen.
 
@@ -267,6 +263,13 @@ if __name__ == '__main__':
             'aliases': ['poloz', 'drop'],
             'exec': cmd_drop,
         },
+
+        {
+            'name': 'prikazy',
+            'description': 'Zobrazí zoznam dostupných príkazov v hre.',
+            'aliases': ['prikazy', 'commands'],
+            'exec': cmd_commands,
+        },
     ]
 
     show_room(room=room)
@@ -283,31 +286,8 @@ if __name__ == '__main__':
             print('Taký príkaz nepoznám.')
         else:
             # print(cmd)
-            cmd['exec'](cmd['param'], room, backpack)
+            cmd['exec'](cmd['param'], room, backpack, commands)
 
-        # if line == 'o hre' or line == 'about':
-        #     cmd_about()
-
-        # elif line == 'rozhliadni sa':
-        #     show_room(room)
-
-        # elif line == 'prikazy':
-        #     cmd_commands()
-
-        # elif line in ('inventar', 'inventory', 'i'):
-        #     cmd_inventory(backpack)
-
-        # elif line.startswith('preskumaj'):
-        #     cmd_explore(line, room, backpack)
-
-        # elif line.startswith('vezmi'):
-        #     cmd_take(line, room, backpack)
-
-        # elif line.startswith('poloz'):
-        #     cmd_drop(line, room, backpack)
-
+       
         # elif line in ('koniec', ''):
         #     continue
-
-        # else:
-        #     print('Taký príkaz nepoznám.')
