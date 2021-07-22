@@ -301,7 +301,7 @@ def init_game(context: dict) -> None:
 if __name__ == '__main__':
     # state of the game
     context = {
-        'state': 'playing',
+        'state': STATE_PLAYING,
         'room': None,
         'world': None,
         'backpack': {
