@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import parser
+import game_parser
 from states import STATE_PLAYING
 from helper import show_room
 
@@ -43,7 +43,7 @@ def init_game(context: dict) -> None:
     }
 
     # initialize commands
-    context['commands'] += parser.commands
+    context['commands'] += game_parser.commands
 
 
 if __name__ == '__main__':
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         if line == '':
             continue
 
-        cmd = parser.parse(line, context['commands'])
+        cmd = game_parser.parse(line, context['commands'])
 
         if cmd is None:
             print('Taký príkaz nepoznám.')
