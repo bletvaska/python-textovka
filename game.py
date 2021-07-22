@@ -160,9 +160,11 @@ def parse(line: str, commands: list) -> dict:
     # walk throught the list of commands
     for cmd in commands:
         for alias in cmd['aliases']:
-            if line.startswith(alias):   # preskumaj cervena ciapocka
-                param = line[len(alias):].strip()
-                return (cmd, param)
+
+            if line.startswith(alias):
+                # extract parameter, if cmd was found
+                cmd['param'] = line[len(alias):].strip()
+                return cmd
 
     return None
 
@@ -226,7 +228,7 @@ if __name__ == '__main__':
         {
             'name': 'o hre',
             'description': 'Zobrazí informácie o autorovi hry a o hre samotnej.',
-            'aliases': ['o hre', 'about'],
+            'aliases': ['o hre', 'about', 'info'],
             'exec': cmd_about
         },
 
