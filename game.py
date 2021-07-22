@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+STATE_PLAYING = 1
+STATE_QUIT = 2
+
+
 def get_item_by_name(items: list, name: list) -> dict:
     for item in items:
         if item['name'] == name:
@@ -10,7 +14,7 @@ def get_item_by_name(items: list, name: list) -> dict:
 
 def cmd_quit(param: str, context: dict):
     input('Naozaj chceš skončiť? (y/n) ')
-    context['state'] = 'end'
+    context['state'] = STATE_QUIT
 
 
 def cmd_use(param: str, context: dict):
@@ -145,7 +149,7 @@ def cmd_about(param: str, context: dict):
     print()
 
 
-def show_room(param: str = None, context: dict = None):
+def show_room(context: dict = None, param: str = None):
     """
     Prints room on the screen.
 
@@ -321,7 +325,7 @@ if __name__ == '__main__':
     show_room(context=context)
 
     # input parser
-    while context['state'] == 'playing':
+    while context['state'] == STATE_PLAYING:
         # read input from user and normalize it
         line = input('> ').rstrip().lstrip().lower()
 
