@@ -8,8 +8,8 @@ def get_item_by_name(items: list, name: list) -> dict:
     return None
 
 
-def cmd_drop(line: str, room: dict, backpack: dict):
-    name = line[5:].strip()
+def cmd_drop(param: str, room: dict, backpack: dict):
+    name = param
 
     if name == '':
         print('Neviem, čo chceš položiť.')
@@ -41,8 +41,8 @@ def cmd_drop(line: str, room: dict, backpack: dict):
         #     print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_take(line: str, room: dict, backpack: dict):
-    name = line[5:].strip()
+def cmd_take(param: str, room: dict, backpack: dict):
+    name = param
 
     if len(backpack['items']) >= backpack['capacity']:
         print('Batoh je plný.')
@@ -99,7 +99,7 @@ def cmd_explore(param: str, room: dict, backpack: dict):
             print('Taký predmet tu nigde nevidím.')
 
 
-def cmd_inventory(line: str, room: dict, backpack: dict):
+def cmd_inventory(param: str, room: dict, backpack: dict):
     if backpack['items'] == []:
         print('Batoh je prázdny.')
     else:
@@ -108,7 +108,7 @@ def cmd_inventory(line: str, room: dict, backpack: dict):
             print(f'\t{item["name"]}')
 
 
-def cmd_commands(line: str, room: dict, backpack: dict):
+def cmd_commands(param: str, room: dict, backpack: dict):
     print('Dostupné príkazy v hre:')
     print('* inventar - zobrazí obsah batohu')
     print('* koniec - ukončí rozohratú hru')
@@ -121,13 +121,13 @@ def cmd_commands(line: str, room: dict, backpack: dict):
     print()
 
 
-def cmd_about(line: str, room: dict, backpack: dict):
+def cmd_about(param: str, room: dict, backpack: dict):
     print('Hru spáchal  (c)2021 mirek')
     print('Ďalší príbeh Indiana Jonesa sa odohráva v temnej komôrke.')
     print()
 
 
-def show_room(line: str = None, room: dict = None, backpack: dict = None):
+def show_room(param: str = None, room: dict = None, backpack: dict = None):
     """
     Prints room on the screen.
 
@@ -156,6 +156,7 @@ def show_room(line: str = None, room: dict = None, backpack: dict = None):
     print()
 
 
+# ! FIXME zamysliet sa nad jednopismenkovymi prikazmi
 def parse(line: str, commands: list) -> dict:
     # walk throught the list of commands
     for cmd in commands:
@@ -253,6 +254,19 @@ if __name__ == '__main__':
             'exec': cmd_explore,
         },
 
+        {
+            'name': 'vezmi',
+            'description': 'Vezme predmet z miestnosti do batohu.',
+            'aliases': ['vezmi', 'zober', 'take'],
+            'exec': cmd_take,
+        },
+
+        {
+            'name': 'poloz',
+            'description': 'Vyloží predme z batohu do aktuálnej miestnosti.',
+            'aliases': ['poloz', 'drop'],
+            'exec': cmd_drop,
+        },
     ]
 
     show_room(room=room)
