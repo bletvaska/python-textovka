@@ -33,7 +33,7 @@ world = [
         'exits': {
             'north': None,
             'south': None,
-            'east': None,
+            'east': 'pit',
             'west': None
         }
     },
@@ -45,6 +45,18 @@ world = [
         'exits': {
             'north': None,
             'south': 'chamber',
+            'east': None,
+            'west': None
+        }
+    },
+
+    {
+        'description': 'Je tu len veľká tma. Toto veru nevyzerá dobre...',
+        'name': 'pit',
+        'items': [],
+        'exits': {
+            'north': None,
+            'south': None,
             'east': None,
             'west': None
         }

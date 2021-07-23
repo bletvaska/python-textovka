@@ -19,6 +19,51 @@ def cmd_north(param: str, context: dict):
     show_room(context['room'])
 
 
+def cmd_south(param: str, context: dict):
+    room = context['room']
+    # 1. skontrolovat, ci sa na sever da dostat. ak nie vypisem, ze: tam sa neda ist
+    if room['exits']['south'] is None:
+        print('Tam sa nedá isť.')
+        return
+
+    # 2. zmenit aktualnu miestnost v kontexte
+    name = room['exits']['south']
+    context['room'] = get_room_by_name(context['world'], name)
+
+    # 3. zobrazim ju
+    show_room(context['room'])
+
+
+def cmd_east(param: str, context: dict):
+    room = context['room']
+    # 1. skontrolovat, ci sa na sever da dostat. ak nie vypisem, ze: tam sa neda ist
+    if room['exits']['east'] is None:
+        print('Tam sa nedá isť.')
+        return
+
+    # 2. zmenit aktualnu miestnost v kontexte
+    name = room['exits']['east']
+    context['room'] = get_room_by_name(context['world'], name)
+
+    # 3. zobrazim ju
+    show_room(context['room'])
+
+
+def cmd_west(param: str, context: dict):
+    room = context['room']
+    # 1. skontrolovat, ci sa na sever da dostat. ak nie vypisem, ze: tam sa neda ist
+    if room['exits']['west'] is None:
+        print('Tam sa nedá isť.')
+        return
+
+    # 2. zmenit aktualnu miestnost v kontexte
+    name = room['exits']['west']
+    context['room'] = get_room_by_name(context['world'], name)
+
+    # 3. zobrazim ju
+    show_room(context['room'])
+
+
 def cmd_look_around(param: str, context: dict):
     show_room(context['room'])
 

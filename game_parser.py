@@ -1,4 +1,4 @@
-from commands import cmd_about, cmd_commands, cmd_drop, cmd_explore, cmd_inventory, cmd_look_around, cmd_north, cmd_quit, cmd_take, cmd_use
+from commands import cmd_about, cmd_commands, cmd_drop, cmd_east, cmd_explore, cmd_inventory, cmd_look_around, cmd_north, cmd_quit, cmd_south, cmd_take, cmd_use, cmd_west
 
 commands = [
     {
@@ -69,7 +69,29 @@ commands = [
         'description': 'Presunie sa do miestnosti na sever.',
         'aliases': ['sever', 'north'],
         'exec': cmd_north
+    },
+
+    {
+        'name': 'juh',
+        'description': 'Presunie sa do miestnosti na sever.',
+        'aliases': ['juh', 'south'],
+        'exec': cmd_south
+    },
+
+    {
+        'name': 'vychod',
+        'description': 'Presunie sa do miestnosti na sever.',
+        'aliases': ['vychod', 'east'],
+        'exec': cmd_east
+    },
+
+    {
+        'name': 'zapad',
+        'description': 'Presunie sa do miestnosti na sever.',
+        'aliases': ['zapad', 'west'],
+        'exec': cmd_west
     }
+
 ]
 
 
