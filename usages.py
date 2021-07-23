@@ -26,6 +26,9 @@ def use_bucket(context: dict):
 
     # action
     # 1. vedro sa stane prazdnym (zostane na mieste, len sa zmeni jeho opis) a nepoužiteľným
+    bucket = get_item_by_name(room['items'] + backpack['items'], 'vedro')
+    bucket['description'] = 'Prázdne vedro.'
+    bucket['features'].remove('usable')
 
     # 2. dvere zmiznu z miestnosti
     # 3. objavi vychod z miestnosti - na sever
