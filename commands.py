@@ -1,7 +1,22 @@
 from usages import use_item
 
 from states import STATE_QUIT
-from helper import get_item_by_name, show_room
+from helper import get_item_by_name, get_room_by_name, show_room
+
+
+def cmd_north(param: str, context: dict):
+    room = context['room']
+    # 1. skontrolovat, ci sa na sever da dostat. ak nie vypisem, ze: tam sa neda ist
+    if room['exits']['north'] is None:
+        print('Tam sa nedá isť.')
+        return
+
+    # 2. zmenit aktualnu miestnost v kontexte
+    name = room['exits']['north']
+    context['room'] = get_room_by_name(context['world'], name)
+
+    # 3. zobrazim ju
+    show_room(context['room'])
 
 
 def cmd_look_around(param: str, context: dict):
