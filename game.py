@@ -22,7 +22,7 @@ def init_game(context: dict) -> None:
             {
                 'name': 'vedro',
                 'description': 'Vedro plné vody.',
-                'features': ['movable']
+                'features': ['movable', 'usable']
             },
             {
                 'name': 'kanister',

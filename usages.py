@@ -9,6 +9,24 @@ def use_item(context: dict, name: str):
         use_canister(context)
     elif name == 'zapalky':
         use_matches(context)
+    elif name == 'vedro':
+        use_bucket(context)
+
+
+def use_bucket(context: dict):
+    room = context['room']
+    backpack = context['backpack']
+
+    # prerequisities
+    # 1. v miestnosti su horiace dvere
+
+    # action
+    # 1. vedro sa stane prazdnym (zostane na mieste, len sa zmeni jeho opis)
+    # 2. dvere zmiznu z miestnosti
+    # 3. objavi vychod z miestnosti - na sever
+
+    # render
+    print('ta sa hram s vedrom')
 
 
 def use_matches(context: dict):
@@ -34,7 +52,8 @@ def use_matches(context: dict):
             return
 
         else:
-            print('Z krabičky si vytiahol poslednú zápalku. Nuž čo - do tretice šecko dobre. A škrtol si.')
+            print(
+                'Z krabičky si vytiahol poslednú zápalku. Nuž čo - do tretice šecko dobre. A škrtol si.')
 
     # action
     # door on fire
