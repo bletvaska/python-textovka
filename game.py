@@ -46,7 +46,12 @@ def init_game(context: dict) -> None:
                 'features': []
             }
         ],
-        'exits': []
+        'exits': {
+            'north': None,
+            'south': None,
+            'east': None,
+            'west': None
+        }
     }
 
     # initialize commands
