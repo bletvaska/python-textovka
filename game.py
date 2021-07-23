@@ -17,6 +17,8 @@
 """
 
 
+import json
+
 import game_parser
 from states import STATE_PLAYING
 from helper import get_room_by_name, show_room
@@ -71,6 +73,11 @@ if __name__ == '__main__':
     print('                                                     (c) 2021 mirek')
 
     show_room(context['room'])
+
+    # exporting world to file world.json
+    # file = open('world.json', 'w', encoding='utf-8')
+    with open('world.json', 'w', encoding='utf-8') as file:
+        json.dump(context['world'], file, ensure_ascii=False, indent=3)
 
     # input parser
     while context['state'] == STATE_PLAYING:
