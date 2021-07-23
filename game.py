@@ -22,7 +22,6 @@ import json
 import game_parser
 from states import STATE_PLAYING
 from helper import get_room_by_name, show_room
-from world import world
 
 
 def init_game(context: dict) -> None:
@@ -39,7 +38,8 @@ def init_game(context: dict) -> None:
     })
 
     # initialize world
-    context['world'] = world
+    with open('world.json', 'r') as file:
+        context['world'] = json.load(file)
 
     # initialize room
     context['room'] = get_room_by_name(context['world'], 'chamber')
@@ -76,8 +76,8 @@ if __name__ == '__main__':
 
     # exporting world to file world.json
     # file = open('world.json', 'w', encoding='utf-8')
-    with open('world.json', 'w', encoding='utf-8') as file:
-        json.dump(context['world'], file, ensure_ascii=False, indent=3)
+    # with open('world.json', 'w', encoding='utf-8') as file:
+    #     json.dump(context['world'], file, ensure_ascii=False, indent=3)
 
     # input parser
     while context['state'] == STATE_PLAYING:
