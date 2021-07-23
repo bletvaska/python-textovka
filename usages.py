@@ -31,7 +31,10 @@ def use_bucket(context: dict):
     bucket['features'].remove('usable')
 
     # 2. dvere zmiznu z miestnosti
+    room['items'].remove(door)
+
     # 3. objavi vychod z miestnosti - na sever
+    room['exits'].append('sever')
 
     # render
     print('ta sa hram s vedrom')

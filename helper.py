@@ -32,5 +32,9 @@ def show_room(room: dict):
     # print exits from the room
     if room['exits'] == []:
         print('Z tejto miestnosti neexistujú žiadne východy.')
+    else:
+        print('Východy z miestnosti:')
+        for exit in room['exits']:
+            print(f'\t{exit}')
 
     print()
