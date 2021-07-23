@@ -19,9 +19,14 @@ def use_bucket(context: dict):
 
     # prerequisities
     # 1. v miestnosti su horiace dvere
+    door = get_item_by_name(room['items'], 'horiace dvere')
+    if door is None:
+        print('Aj by som dačo popolieval, ale neni čo. Ani smädný nie som. Tak to nechám na neskôr.')
+        return
 
     # action
-    # 1. vedro sa stane prazdnym (zostane na mieste, len sa zmeni jeho opis)
+    # 1. vedro sa stane prazdnym (zostane na mieste, len sa zmeni jeho opis) a nepoužiteľným
+
     # 2. dvere zmiznu z miestnosti
     # 3. objavi vychod z miestnosti - na sever
 
