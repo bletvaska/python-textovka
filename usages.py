@@ -1,3 +1,4 @@
+from states import STATE_DEAD
 from helper import get_item_by_name
 import random
 
@@ -11,6 +12,26 @@ def use_item(context: dict, name: str):
         use_matches(context)
     elif name == 'vedro':
         use_bucket(context)
+    elif name == 'bic':
+        use_whip(context)
+
+
+def use_whip(context: dict):
+    room = context['room']
+
+    # prerequisities
+    # 1. musim byt v miestnosti pit
+    if room['name'] != 'pit':
+        print('Vzal si si do ruky svoj bič, rozohnal si sa a zaplieskal si s ním vo vzduchu. Síce ti nič nebolo, ale hneď ti je lepšie.')
+        return
+
+    # action
+    context['state'] = STATE_DEAD
+
+    # render
+    print('Si sa rozohnal v tej tme a pleskol si bičom. O niečo sa zachytil a ty si sa naň zavesil a začal si šplhať. O malú chvíľu (alebo skôr o 4m vyššie) čosi povolilo a 80 kíl živej váhy Indiana Jonesa sa zrúbalo dole. Dosť nešťastne sa to zrúbalo dole. Až tak, že ťa to stálo život.')
+    print('A tak končí legenda o Indianovi Jonesovi - v tmavej jame.')
+
 
 
 def use_bucket(context: dict):

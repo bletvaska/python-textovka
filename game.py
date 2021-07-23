@@ -30,6 +30,11 @@ def init_game(context: dict) -> None:
         'description': 'Nové tajmsy, husté čítanie na každý deň.',
         'features': ['movable', 'usable'],
     })
+    context['backpack']['items'].append({
+        'name': 'bic',
+        'description': 'Neoddeliteľná súčasť hrdinu Indiana Jonesa použiteľná v každom dobrodružstve.',
+        'features': ['movable', 'usable'],
+    })
 
     # initialize world
     context['world'] = world
