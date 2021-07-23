@@ -47,3 +47,9 @@ def show_room(room: dict):
                     print('\tzápad')
 
     print()
+
+
+def get_room_by_name(rooms: list, name: str) -> dict:
+    for room in rooms:
+        if room['name'] == name:
+            return room

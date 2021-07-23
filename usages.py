@@ -34,7 +34,7 @@ def use_bucket(context: dict):
     room['items'].remove(door)
 
     # 3. objavi vychod z miestnosti - na sever
-    room['exits']['north'] = 'chamber'
+    room['exits']['north'] = 'hall'
 
     # render
     print('Ta si sa rozohnal a celý obsah vedra si vylial na horiace dvere. Ten žiariaci plameň sa ti podarilo zahasiť a dvere sa pod tlakom rozpadli. Vyzerá to tak, že východ z tvojho väzenia je voľný.')

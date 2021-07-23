@@ -1,9 +1,27 @@
 #!/usr/bin/env python3
 
-from usages import use_newspaper
+"""
++---------+
+|         |
+|  hall   |
+|         |
++---------+                   N
+     |                        ^
+     |                    W < + > E
+     v                        v
++---------+                   S
+|         |
+| chamber |
+|         |
++---------+
+
+"""
+
+
 import game_parser
 from states import STATE_PLAYING
-from helper import show_room
+from helper import get_room_by_name, show_room
+from world import world
 
 
 def init_game(context: dict) -> None:
@@ -14,45 +32,11 @@ def init_game(context: dict) -> None:
         'features': ['movable', 'usable'],
     })
 
+    # initialize world
+    context['world'] = world
+
     # initialize room
-    context['room'] = {
-        'description': 'Nachádzaš v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? Okná tu nie sú žiadne, čo by ťa uistili o správnosti tohto predpokladu.',
-        'name': 'kobka',
-        'items': [
-            {
-                'name': 'vedro',
-                'description': 'Vedro plné vody.',
-                'features': ['movable', 'usable']
-            },
-            {
-                'name': 'kanister',
-                'description': 'Kanister plný benzínu.',
-                'features': ['movable', 'usable']
-            },
-            {
-                'name': 'zapalky',
-                'description': 'Zápalky na vatru.',
-                'features': ['movable', 'usable'],
-                'attempts': 3
-            },
-            {
-                'name': 'chladnicka',
-                'description': 'Chladnička značky Calex. Zvláštne znamenie: pokazená.',
-                'features': ['observable']
-            },
-            {
-                'name': 'dvere',
-                'description': 'Veľké masívne dubové dvere.',
-                'features': []
-            }
-        ],
-        'exits': {
-            'north': None,
-            'south': None,
-            'east': None,
-            'west': None
-        }
-    }
+    context['room'] = get_room_by_name(context['world'], 'chamber')
 
     # initialize commands
     context['commands'] += game_parser.commands
