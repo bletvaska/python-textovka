@@ -30,11 +30,20 @@ def show_room(room: dict):
             print(f'\t{item["name"]}')
 
     # print exits from the room
-    if room['exits'] == []:
-        print('Z tejto miestnosti neexistujú žiadne východy.')
+    if list(room['exits'].values()).count(None) == 4:
+        print('Z tejto miestnosti nevedú žiadne východy.')
     else:
         print('Východy z miestnosti:')
-        for exit in room['exits']:
-            print(f'\t{exit}')
+        exits = room['exits']
+        for exit in exits:
+            if exits[exit] is not None:
+                if exit == 'north':
+                    print('\tsever')
+                elif exit == 'south':
+                    print('\tjuh')
+                elif exit == 'east':
+                    print('\tvýchod')
+                elif exit == 'west':
+                    print('\tzápad')
 
     print()
