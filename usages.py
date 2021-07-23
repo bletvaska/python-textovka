@@ -21,20 +21,35 @@ def use_matches(context: dict):
         print('Aj by som dačo zapálil, ale zapáliť celú krabičku len tak... Tomu sa hovorí plytvanie.')
         return
 
+    matches = get_item_by_name(room['items'] + backpack['items'], 'zapalky')
+    if matches['attempts'] > 0:
+        matches['attempts'] -= 1
+
+        if matches['attempts'] == 2:
+            print('Vytiahol si jednu zápalku z krabičky, škrtol si a sa zlomila. Do mače, povedal si si pre seba. Už mi zostávajú len dve zápalky.')
+            return
+
+        elif matches['attempts'] == 1:
+            print('Vytiahol si druhú zápalku z krabičky, nadýchol si sa a škrtol si. Objavil sa plameň. Usmial si sa. A plameň zmizol. Zosmutnel si. Už mi zostáva len posledná zápalaka.')
+            return
+
+        else:
+            print('Z krabičky si vytiahol poslednú zápalku. Nuž čo - do tretice šecko dobre. A škrtol si.')
+
     # action
     # door on fire
     door['name'] = 'horiace dvere'
     door['description'] = 'Dvere s mohutným plameňom. Ten zrejme nebol súčasťou objednávky. Ani priblížiť, čo také teplo z nich sála'
 
     # remove matches
-    matches = get_item_by_name(room['items'] + backpack['items'], 'zapalky')
+
     if matches in room['items']:
         room['items'].remove(matches)
     else:
         backpack['items'].remove(matches)
 
     # render scene
-    print('Otvoril si krabičku zápaliek a jednou si škrtol. Priložil si ju k dverám, ktoré okamžite vzbĺkli. Neviem, či to bolo súčasťou tvojho zámeru, ale výsledok je teda mocný.')
+    print('Priložil si ju k dverám, ktoré okamžite vzbĺkli. Neviem, či to bolo súčasťou tvojho zámeru, ale výsledok je teda mocný.')
 
 
 def use_canister(context: dict):
