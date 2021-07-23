@@ -37,7 +37,7 @@ def use_bucket(context: dict):
     room['exits'].append('sever')
 
     # render
-    print('ta sa hram s vedrom')
+    print('Ta si sa rozohnal a celý obsah vedra si vylial na horiace dvere. Ten žiariaci plameň sa ti podarilo zahasiť a dvere sa pod tlakom rozpadli. Vyzerá to tak, že východ z tvojho väzenia je voľný.')
 
 
 def use_matches(context: dict):
