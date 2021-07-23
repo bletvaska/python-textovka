@@ -32,7 +32,7 @@ def init_game(context: dict) -> None:
             {
                 'name': 'zapalky',
                 'description': 'Zápalky na vatru.',
-                'features': ['movable']
+                'features': ['movable', 'usable']
             },
             {
                 'name': 'chladnicka',
