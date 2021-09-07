@@ -11,7 +11,16 @@ def look_around(room):
     else:
         print(f'Vidíš:')
         for item in room['items']:
-            print(f'\t* {item}')
+            print(f'\t* {item["name"]}')
+
+
+def examine(item):
+    print(f'skumam predmet {item}')
+
+    # if item in items:
+    #     print(items[item])
+    # else:
+    #     print('Taký predmet tu nikde nevidím.')
 
 
 STATE_QUIT = 0
@@ -21,7 +30,22 @@ room = {
     'name': 'dungeon',
     'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
                    'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
-    'items': ['kybel', 'hasiaci pristroj', 'zapalky']
+    'items': [
+        {
+            'name': 'kybel',
+            'description': 'Kýbel plný vody.'
+        },
+
+        {
+            'name': 'hasiaci pristroj',
+            'description': 'Ručný hasiaci prístroj plný. Značka - červený.'
+        },
+
+        {
+            'name': 'zapalky',
+            'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.'
+        }
+    ]
 }
 
 line = None
@@ -60,6 +84,14 @@ while state == STATE_PLAYING:
             print('V batohu máš:')
             for item in inventory:
                 print(f'\t* {item}')
+
+    elif line.startswith('preskumaj'):
+        item = line.split('preskumaj')[1].strip()
+
+        if len(item) == 0:
+            print('Neviem, aký predmet chceš preskúmať.')
+        else:
+            examine(item)
 
     else:
         print('Taký príkaz nepoznám.')
