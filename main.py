@@ -50,7 +50,12 @@ room = {
 
 line = None
 state = STATE_PLAYING
-inventory = ['Ucebnica jazyka Python']
+inventory = [
+    {
+        'name': 'Ucebnica jazyka Python',
+        'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.'
+    }
+]
 
 look_around(room)
 
@@ -83,7 +88,7 @@ while state == STATE_PLAYING:
         else:
             print('V batohu máš:')
             for item in inventory:
-                print(f'\t* {item}')
+                print(f'\t* {item["name"]}')
 
     elif line.startswith('preskumaj'):
         item = line.split('preskumaj')[1].strip()
