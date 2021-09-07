@@ -26,6 +26,7 @@ room = {
 
 line = None
 state = STATE_PLAYING
+inventory = ['Ucebnica jazyka Python']
 
 look_around(room)
 
@@ -43,6 +44,7 @@ while state == STATE_PLAYING:
         print('* o hre - zobrazí informácie o hre')
         print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
         print('* rozhliadni sa - zobrazí obsah miestnosti')
+        print('* inventar - zobrazí obsah batohu')
 
     elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
         print('ta koncime')
@@ -50,6 +52,14 @@ while state == STATE_PLAYING:
 
     elif line == 'rozhliadni sa':
         look_around(room)
+
+    elif line in ('inventar', 'inventory', 'i'):
+        if len(inventory) == 0:
+            print('Batoh je prázdny.')
+        else:
+            print('V batohu máš:')
+            for item in inventory:
+                print(f'\t* {item}')
 
     else:
         print('Taký príkaz nepoznám.')
