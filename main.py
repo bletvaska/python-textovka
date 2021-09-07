@@ -3,13 +3,21 @@
 STATE_QUIT = 0
 STATE_PLAYING = 1
 
-room = 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len úzky prameň ' \
-       'svetla. Masívne drevené dvere sú jediným východom z miestnosti. '
+room = {
+    'name': 'dungeon',
+    'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
+                   'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
+    'items': ['kybel', 'hasiaci pristroj', 'zapalky']
+}
 
 line = None
 state = STATE_PLAYING
 
-print(room)
+print(f'Nachádzaš sa v miestnosti {room["name"]}.\n'
+      f'{room["description"]}\n'
+      f'Vidíš:\n'
+      f'{room["items"]}')
+
 
 while state == STATE_PLAYING:
     line = input('> ').strip().lower()
@@ -31,7 +39,11 @@ while state == STATE_PLAYING:
         state = STATE_QUIT
 
     elif line == 'rozhliadni sa':
-        print(room)
+        print(f'Nachádzaš sa v miestnosti {room["name"]}.\n'
+              f'{room["description"]}\n'
+              f'Vidíš:\n'
+              f'{room["items"]}')
+
 
     else:
         print('Taký príkaz nepoznám.')
