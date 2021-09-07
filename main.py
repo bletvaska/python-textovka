@@ -71,6 +71,7 @@ while state == STATE_PLAYING:
 
         print('* koniec - ukončí rozohratú hru')
         print('* o hre - zobrazí informácie o hre')
+        print('* preskumaj - zobrazí informácie o zvolenom predmete')
         print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
         print('* rozhliadni sa - zobrazí obsah miestnosti')
         print('* inventar - zobrazí obsah batohu')
