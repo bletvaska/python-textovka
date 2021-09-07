@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+def look_around(room):
+    print(f'Nachádzaš sa v miestnosti {room["name"]}.')
+    print(f'{room["description"]}')
+    print(f'Vidíš:')
+    print(f'{room["items"]}')
+
+
 STATE_QUIT = 0
 STATE_PLAYING = 1
 
@@ -13,11 +20,7 @@ room = {
 line = None
 state = STATE_PLAYING
 
-print(f'Nachádzaš sa v miestnosti {room["name"]}.\n'
-      f'{room["description"]}\n'
-      f'Vidíš:\n'
-      f'{room["items"]}')
-
+look_around(room)
 
 while state == STATE_PLAYING:
     line = input('> ').strip().lower()
@@ -39,11 +42,7 @@ while state == STATE_PLAYING:
         state = STATE_QUIT
 
     elif line == 'rozhliadni sa':
-        print(f'Nachádzaš sa v miestnosti {room["name"]}.\n'
-              f'{room["description"]}\n'
-              f'Vidíš:\n'
-              f'{room["items"]}')
-
+        look_around(room)
 
     else:
         print('Taký príkaz nepoznám.')
