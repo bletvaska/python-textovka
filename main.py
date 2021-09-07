@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 
+# todo: typy parametrov, navratova hodnota
+# todo: dokumentacny retazec
 def look_around(room):
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
-    print(f'Vidíš:')
-    print(f'{room["items"]}')
+
+    if len(room['items']) == 0:
+        print('Nevidíš tu nič zaujímavé.')
+    else:
+        print(f'Vidíš:')
+        for item in room['items']:
+            print(f'\t* {item}')
 
 
 STATE_QUIT = 0
