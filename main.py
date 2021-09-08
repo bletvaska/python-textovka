@@ -18,6 +18,23 @@ def look_around(room):
             print(f'\t* {item["name"]}')
 
 
+def take():
+    """
+    Represents the TAKE command.
+
+    :return:
+    """
+
+    # ak sa napise prikaz VEZMI bez parametrov:
+    #      "Neviem, co chces zobrat"
+    # ak sa predmet v miestnosti nenachadza:
+    #      "Taky predmet tu nikde nevidim"
+    # inac:
+    #      "Predmet xxx si si vlozil do batohu"
+    pass
+
+
+
 def examine(name: str, room: dict, inventory: list) -> None:
     """
     Represents the examine command.
@@ -86,6 +103,7 @@ def main():
             print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
             print('* rozhliadni sa - zobrazí obsah miestnosti')
             print('* inventar - zobrazí obsah batohu')
+            print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
 
         elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
             print('ta koncime')
