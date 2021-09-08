@@ -4,9 +4,7 @@ import features
 import states
 
 
-# todo: typy parametrov, navratova hodnota
-# todo: dokumentacny retazec
-def look_around(room):
+def look_around(room: dict):
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
 
@@ -32,8 +30,10 @@ def take(name: str, room: dict, inventory: list) -> None:
     else:
         for item in room['items']:
             if item['name'] == name:
+                if len(inventory) == 2:
+                    print('Batoh je plný.')
                 # overit, ci sa da zobrat
-                if features.MOVABLE in item['features']:
+                elif features.MOVABLE in item['features']:
                     # vybrat ho z roomu
                     room['items'].remove(item)
 
