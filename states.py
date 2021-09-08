@@ -1,0 +1,2 @@
+QUIT = 0
+PLAYING = 1

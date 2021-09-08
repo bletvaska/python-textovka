@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-STATE_QUIT = 0
-STATE_PLAYING = 1
+import features
+import states
 
 
 # todo: typy parametrov, navratova hodnota
@@ -33,7 +33,7 @@ def take(name: str, room: dict, inventory: list) -> None:
         for item in room['items']:
             if item['name'] == name:
                 # overit, ci sa da zobrat
-                if 'movable' in item['features']:
+                if features.MOVABLE in item['features']:
                     # vybrat ho z roomu
                     room['items'].remove(item)
 
@@ -75,19 +75,19 @@ def main():
             {
                 'name': 'kybel',
                 'description': 'Kýbel plný vody.',
-                'features': ['movable']
+                'features': [features.MOVABLE, features.USABLE]
             },
 
             {
                 'name': 'hasiaci pristroj',
                 'description': 'Ručný hasiaci prístroj plný. Značka - červený.',
-                'features': ['movable']
+                'features': [features.MOVABLE, features.USABLE]
             },
 
             {
                 'name': 'zapalky',
                 'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.',
-                'features': ['movable']
+                'features': [features.MOVABLE, features.USABLE]
             },
 
             {
@@ -99,18 +99,18 @@ def main():
     }
 
     line = None
-    state = STATE_PLAYING
+    state = states.PLAYING
     inventory = [
         {
             'name': 'ucebnica jazyka python',
             'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.',
-            'features': ['movable']
+            'features': [features.MOVABLE, features.USABLE]
         }
     ]
 
     look_around(room)
 
-    while state == STATE_PLAYING:
+    while state == states.PLAYING:
         line = input('> ').strip().lower()
 
         if line == 'o hre':
@@ -131,7 +131,7 @@ def main():
 
         elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
             print('ta koncime')
-            state = STATE_QUIT
+            state = states.QUIT
 
         elif line == 'rozhliadni sa':
             look_around(room)
