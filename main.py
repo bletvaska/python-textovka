@@ -30,8 +30,11 @@ def take(name: str, room: dict, inventory: list) -> None:
     else:
         for item in room['items']:
             if item['name'] == name:
-                if len(inventory) == 2:
+                # overit, ci je batoh plny
+                # todo: zmeni konstantu na premennu
+                if len(inventory) >= 2:
                     print('Batoh je plný.')
+
                 # overit, ci sa da zobrat
                 elif features.MOVABLE in item['features']:
                     # vybrat ho z roomu
@@ -123,6 +126,7 @@ def main():
 
             print('* koniec - ukončí rozohratú hru')
             print('* o hre - zobrazí informácie o hre')
+            print('* poloz - vyberie predmet z batohu a položí ho do miestnosti')
             print('* preskumaj - zobrazí informácie o zvolenom predmete')
             print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
             print('* rozhliadni sa - zobrazí obsah miestnosti')
@@ -155,6 +159,9 @@ def main():
         elif line.startswith('vezmi'):
             name = line.split('vezmi')[1].strip()
             take(name, room, inventory)
+
+        elif line.startswith('poloz'):
+            pass
 
         else:
             print('Taký príkaz nepoznám.')
