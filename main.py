@@ -16,6 +16,24 @@ def look_around(room: dict):
             print(f'\t* {item["name"]}')
 
 
+def drop(name: str, room: dict, inventory: list) -> None:
+    if name == '':
+        print('Neviem, aký predmet chceš položiť.')
+    else:
+        for item in inventory:
+            if item['name'] == name:
+                # vybrat ho z inventaru
+                inventory.remove(item)
+
+                # polozit ho do miestnosti
+                room['items'].append(item)
+
+                print(f'Predmet {name} si vyložil do miestnosti.')
+                break
+        else:
+            print('Taký predmet u seba nemáš.')
+
+
 def take(name: str, room: dict, inventory: list) -> None:
     """
     Represents the TAKE command.
@@ -161,7 +179,8 @@ def main():
             take(name, room, inventory)
 
         elif line.startswith('poloz'):
-            pass
+            name = line.split('poloz')[1].strip()
+            drop(name, room, inventory)
 
         else:
             print('Taký príkaz nepoznám.')
