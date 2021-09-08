@@ -18,21 +18,30 @@ def look_around(room):
             print(f'\t* {item["name"]}')
 
 
-def take():
+def take(name: str, room: dict, inventory: list) -> None:
     """
     Represents the TAKE command.
 
-    :return:
+    :param name: the name of item do describe
+    :param room: the room object, where the player is currently in
+    :param inventory: the player's inventory
     """
 
-    # ak sa napise prikaz VEZMI bez parametrov:
-    #      "Neviem, co chces zobrat"
-    # ak sa predmet v miestnosti nenachadza:
-    #      "Taky predmet tu nikde nevidim"
-    # inac:
-    #      "Predmet xxx si si vlozil do batohu"
-    pass
+    if name == '':
+        print('Neviem, aký predmet chceš vziať.')
+    else:
+        for item in room['items']:
+            if item['name'] == name:
+                # vybrat ho z roomu
+                room['items'].remove(item)
 
+                # vlozit do batohu
+                inventory.append(item)
+
+                print(f'Predmet {name} si si vložil do batohu.')
+                break
+        else:
+            print('Taký predmet tu nikde nevidím.')
 
 
 def examine(name: str, room: dict, inventory: list) -> None:
@@ -127,6 +136,10 @@ def main():
                 print('Neviem, aký predmet chceš preskúmať.')
             else:
                 examine(name, room, inventory)
+
+        elif line.startswith('vezmi'):
+            name = line.split('vezmi')[1].strip()
+            take(name, room, inventory)
 
         else:
             print('Taký príkaz nepoznám.')
