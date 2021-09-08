@@ -32,13 +32,18 @@ def take(name: str, room: dict, inventory: list) -> None:
     else:
         for item in room['items']:
             if item['name'] == name:
-                # vybrat ho z roomu
-                room['items'].remove(item)
+                # overit, ci sa da zobrat
+                if 'movable' in item['features']:
+                    # vybrat ho z roomu
+                    room['items'].remove(item)
 
-                # vlozit do batohu
-                inventory.append(item)
+                    # vlozit do batohu
+                    inventory.append(item)
 
-                print(f'Predmet {name} si si vložil do batohu.')
+                    print(f'Predmet {name} si si vložil do batohu.')
+                else:
+                    print('Tento predmet sa nedá zobrať.')
+
                 break
         else:
             print('Taký predmet tu nikde nevidím.')
@@ -69,17 +74,26 @@ def main():
         'items': [
             {
                 'name': 'kybel',
-                'description': 'Kýbel plný vody.'
+                'description': 'Kýbel plný vody.',
+                'features': ['movable']
             },
 
             {
                 'name': 'hasiaci pristroj',
-                'description': 'Ručný hasiaci prístroj plný. Značka - červený.'
+                'description': 'Ručný hasiaci prístroj plný. Značka - červený.',
+                'features': ['movable']
             },
 
             {
                 'name': 'zapalky',
-                'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.'
+                'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.',
+                'features': ['movable']
+            },
+
+            {
+                'name': 'dvere',
+                'description': 'Veľké masívne drevené dvere. Zamknuté.',
+                'features': []
             }
         ]
     }
@@ -89,7 +103,8 @@ def main():
     inventory = [
         {
             'name': 'ucebnica jazyka python',
-            'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.'
+            'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.',
+            'features': ['movable']
         }
     ]
 
