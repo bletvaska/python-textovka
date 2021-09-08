@@ -14,13 +14,18 @@ def look_around(room):
             print(f'\t* {item["name"]}')
 
 
-def examine(item):
-    print(f'skumam predmet {item}')
+def examine(name: str) -> None:
+    """
+    Represents the examine command.
 
-    # if item in items:
-    #     print(items[item])
-    # else:
-    #     print('Taký predmet tu nikde nevidím.')
+    :param name: the name of item do describe
+    """
+    for item in room['items'] + inventory:
+        if item['name'] == name:
+            print(item['description'])
+            break
+    else:
+        print('Taký predmet tu nigde nevidím.')
 
 
 STATE_QUIT = 0
@@ -52,7 +57,7 @@ line = None
 state = STATE_PLAYING
 inventory = [
     {
-        'name': 'Ucebnica jazyka Python',
+        'name': 'ucebnica jazyka python',
         'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.'
     }
 ]
@@ -92,12 +97,12 @@ while state == STATE_PLAYING:
                 print(f'\t* {item["name"]}')
 
     elif line.startswith('preskumaj'):
-        item = line.split('preskumaj')[1].strip()
+        name = line.split('preskumaj')[1].strip()
 
-        if len(item) == 0:
+        if len(name) == 0:
             print('Neviem, aký predmet chceš preskúmať.')
         else:
-            examine(item)
+            examine(name)
 
     else:
         print('Taký príkaz nepoznám.')
