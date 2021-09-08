@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+STATE_QUIT = 0
+STATE_PLAYING = 1
+
+
 # todo: typy parametrov, navratova hodnota
 # todo: dokumentacny retazec
 def look_around(room):
@@ -14,12 +18,15 @@ def look_around(room):
             print(f'\t* {item["name"]}')
 
 
-def examine(name: str) -> None:
+def examine(name: str, room: dict, inventory: list) -> None:
     """
     Represents the examine command.
 
     :param name: the name of item do describe
+    :param room: the room object, where the player is currently in
+    :param inventory: the player's inventory
     """
+
     for item in room['items'] + inventory:
         if item['name'] == name:
             print(item['description'])
@@ -28,83 +35,86 @@ def examine(name: str) -> None:
         print('Taký predmet tu nigde nevidím.')
 
 
-STATE_QUIT = 0
-STATE_PLAYING = 1
+def main():
+    room = {
+        'name': 'dungeon',
+        'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
+                       'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
+        'items': [
+            {
+                'name': 'kybel',
+                'description': 'Kýbel plný vody.'
+            },
 
-room = {
-    'name': 'dungeon',
-    'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
-                   'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
-    'items': [
-        {
-            'name': 'kybel',
-            'description': 'Kýbel plný vody.'
-        },
+            {
+                'name': 'hasiaci pristroj',
+                'description': 'Ručný hasiaci prístroj plný. Značka - červený.'
+            },
 
-        {
-            'name': 'hasiaci pristroj',
-            'description': 'Ručný hasiaci prístroj plný. Značka - červený.'
-        },
+            {
+                'name': 'zapalky',
+                'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.'
+            }
+        ]
+    }
 
+    line = None
+    state = STATE_PLAYING
+    inventory = [
         {
-            'name': 'zapalky',
-            'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.'
+            'name': 'ucebnica jazyka python',
+            'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.'
         }
     ]
-}
 
-line = None
-state = STATE_PLAYING
-inventory = [
-    {
-        'name': 'ucebnica jazyka python',
-        'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.'
-    }
-]
+    look_around(room)
 
-look_around(room)
+    while state == STATE_PLAYING:
+        line = input('> ').strip().lower()
 
-while state == STATE_PLAYING:
-    line = input('> ').strip().lower()
+        if line == 'o hre':
+            print('Hru spáchal v (c) 2021 mirek.')
+            print(
+                'Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
 
-    if line == 'o hre':
-        print('Hru spáchal v (c) 2021 mirek.')
-        print('Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
+        elif line == 'prikazy':
+            print('Zoznam príkazov hry:')
 
-    elif line == 'prikazy':
-        print('Zoznam príkazov hry:')
+            print('* koniec - ukončí rozohratú hru')
+            print('* o hre - zobrazí informácie o hre')
+            print('* preskumaj - zobrazí informácie o zvolenom predmete')
+            print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
+            print('* rozhliadni sa - zobrazí obsah miestnosti')
+            print('* inventar - zobrazí obsah batohu')
 
-        print('* koniec - ukončí rozohratú hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* preskumaj - zobrazí informácie o zvolenom predmete')
-        print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
-        print('* rozhliadni sa - zobrazí obsah miestnosti')
-        print('* inventar - zobrazí obsah batohu')
+        elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
+            print('ta koncime')
+            state = STATE_QUIT
 
-    elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
-        print('ta koncime')
-        state = STATE_QUIT
+        elif line == 'rozhliadni sa':
+            look_around(room)
 
-    elif line == 'rozhliadni sa':
-        look_around(room)
+        elif line in ('inventar', 'inventory', 'i'):
+            if len(inventory) == 0:
+                print('Batoh je prázdny.')
+            else:
+                print('V batohu máš:')
+                for item in inventory:
+                    print(f'\t* {item["name"]}')
 
-    elif line in ('inventar', 'inventory', 'i'):
-        if len(inventory) == 0:
-            print('Batoh je prázdny.')
+        elif line.startswith('preskumaj'):
+            name = line.split('preskumaj')[1].strip()
+
+            if len(name) == 0:
+                print('Neviem, aký predmet chceš preskúmať.')
+            else:
+                examine(name, room, inventory)
+
         else:
-            print('V batohu máš:')
-            for item in inventory:
-                print(f'\t* {item["name"]}')
+            print('Taký príkaz nepoznám.')
 
-    elif line.startswith('preskumaj'):
-        name = line.split('preskumaj')[1].strip()
+    print('...koniec...')
 
-        if len(name) == 0:
-            print('Neviem, aký predmet chceš preskúmať.')
-        else:
-            examine(name)
 
-    else:
-        print('Taký príkaz nepoznám.')
-
-print('...koniec...')
+if __name__ == '__main__':
+    main()
