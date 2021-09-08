@@ -79,12 +79,15 @@ def examine(name: str, room: dict, inventory: list) -> None:
     :param inventory: the player's inventory
     """
 
-    for item in room['items'] + inventory:
-        if item['name'] == name:
-            print(item['description'])
-            break
+    if len(name) == 0:
+        print('Neviem, aký predmet chceš preskúmať.')
     else:
-        print('Taký predmet tu nigde nevidím.')
+        for item in room['items'] + inventory:
+            if item['name'] == name:
+                print(item['description'])
+                break
+        else:
+            print('Taký predmet tu nigde nevidím.')
 
 
 def main():
@@ -94,8 +97,8 @@ def main():
                        'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
         'items': [
             {
-                'name': 'kybel',
-                'description': 'Kýbel plný vody.',
+                'name': 'kanister',
+                'description': 'Kanister plný benzínu.',
                 'features': [features.MOVABLE, features.USABLE]
             },
 
@@ -168,11 +171,7 @@ def main():
 
         elif line.startswith('preskumaj'):
             name = line.split('preskumaj')[1].strip()
-
-            if len(name) == 0:
-                print('Neviem, aký predmet chceš preskúmať.')
-            else:
-                examine(name, room, inventory)
+            examine(name, room, inventory)
 
         elif line.startswith('vezmi'):
             name = line.split('vezmi')[1].strip()
