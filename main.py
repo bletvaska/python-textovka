@@ -4,7 +4,7 @@ import features
 import states
 
 
-def cmd_inventory(name: str, room: dict, inventory: list) -> None:
+def cmd_inventory(name: str, room: dict, inventory: list) -> str:
     if len(inventory) == 0:
         print('Batoh je prázdny.')
     else:
@@ -12,8 +12,10 @@ def cmd_inventory(name: str, room: dict, inventory: list) -> None:
         for item in inventory:
             print(f'\t* {item["name"]}')
 
+    return states.PLAYING
 
-def look_around(name: str, room: dict, inventory: list) -> None:
+
+def look_around(name: str, room: dict, inventory: list) -> str:
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
 
@@ -24,8 +26,10 @@ def look_around(name: str, room: dict, inventory: list) -> None:
         for item in room['items']:
             print(f'\t* {item["name"]}')
 
+    return states.PLAYING
 
-def drop(name: str, room: dict, inventory: list) -> None:
+
+def drop(name: str, room: dict, inventory: list) -> str:
     if name == '':
         print('Neviem, aký predmet chceš položiť.')
     else:
@@ -42,8 +46,10 @@ def drop(name: str, room: dict, inventory: list) -> None:
         else:
             print('Taký predmet u seba nemáš.')
 
+    return states.PLAYING
 
-def take(name: str, room: dict, inventory: list) -> None:
+
+def take(name: str, room: dict, inventory: list) -> str:
     """
     Represents the TAKE command.
 
@@ -78,8 +84,10 @@ def take(name: str, room: dict, inventory: list) -> None:
         else:
             print('Taký predmet tu nikde nevidím.')
 
+    return states.PLAYING
 
-def examine(name: str, room: dict, inventory: list) -> None:
+
+def examine(name: str, room: dict, inventory: list) -> str:
     """
     Represents the examine command.
 
@@ -97,6 +105,8 @@ def examine(name: str, room: dict, inventory: list) -> None:
                 break
         else:
             print('Taký predmet tu nigde nevidím.')
+
+    return states.PLAYING
 
 
 def parse(line: str, commands: list) -> tuple:
@@ -153,22 +163,31 @@ def main():
 
     look_around(None, room, None)
 
+    # game loop
     while state == states.PLAYING:
         line = input('> ').strip().lower()
 
-        # parser
+        # parse input line
         command, param = parse(line, cmds)
         if command is not None:
-            command['exec'](param, room, inventory)
+            state = command['exec'](param, room, inventory)
         else:
             print('Taký príkaz nepoznám.')
 
     print('...koniec...')
 
 
-def about(name: str, room: dict, inventory: list) -> None:
+def about(name: str, room: dict, inventory: list) -> str:
     print('Hru spáchal v (c) 2021 mirek.')
     print('Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
+
+    return states.PLAYING
+
+
+def quit_game(name: str, room: dict, inventory: list) -> str:
+    print('ta koncime')
+
+    return states.QUIT
 
 
 cmds = [
@@ -190,7 +209,7 @@ cmds = [
         'name': 'koniec',
         'aliases': ('quit', 'bye', 'q', 'ukoncit'),
         'description': 'ukončí rozohratú hru',
-        'exec': None
+        'exec': quit_game
     },
 
     {
@@ -230,11 +249,13 @@ cmds = [
 ]
 
 
-def commands(name: str, room: dict, inventory: list) -> None:
+def commands(name: str, room: dict, inventory: list) -> str:
     print('Zoznam príkazov hry:')
 
     for command in cmds:
         print(f'\t* {command["name"]} - {command["description"]}')
+
+    return states.PLAYING
 
 
 if __name__ == '__main__':
