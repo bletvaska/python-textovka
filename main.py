@@ -4,7 +4,7 @@ import features
 import states
 
 
-def cmd_inventory(inventory):
+def cmd_inventory(name: str, room: dict, inventory: list) -> None:
     if len(inventory) == 0:
         print('Batoh je prázdny.')
     else:
@@ -13,7 +13,7 @@ def cmd_inventory(inventory):
             print(f'\t* {item["name"]}')
 
 
-def look_around(room: dict):
+def look_around(name: str, room: dict, inventory: list) -> None:
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
 
@@ -141,46 +141,54 @@ def main():
         }
     ]
 
-    look_around(room)
+    look_around(None, room, None)
 
     while state == states.PLAYING:
         line = input('> ').strip().lower()
 
-        if line == 'o hre':
-            about()
-
-        elif line == 'prikazy':
-            commands()
-
-        elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
-            print('ta koncime')
-            state = states.QUIT
-
-        elif line == 'rozhliadni sa':
-            look_around(room)
-
-        elif line in ('inventar', 'inventory', 'i'):
-            cmd_inventory(inventory)
-
-        elif line.startswith('preskumaj'):
-            name = line.split('preskumaj')[1].strip()
-            examine(name, room, inventory)
-
-        elif line.startswith('vezmi'):
-            name = line.split('vezmi')[1].strip()
-            take(name, room, inventory)
-
-        elif line.startswith('poloz'):
-            name = line.split('poloz')[1].strip()
-            drop(name, room, inventory)
-
+        # parser
+        for command in cmds:
+            if line == command['name']:
+                command['exec']('parameter', room, inventory)
+                break
         else:
             print('Taký príkaz nepoznám.')
+
+        # if line == 'o hre':
+        #     about()
+        #
+        # elif line == 'prikazy':
+        #     commands()
+        #
+        # elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
+        #     print('ta koncime')
+        #     state = states.QUIT
+        #
+        # elif line == 'rozhliadni sa':
+        #     look_around(room)
+        #
+        # elif line in ('inventar', 'inventory', 'i'):
+        #     cmd_inventory(inventory)
+        #
+        # elif line.startswith('preskumaj'):
+        #     name = line.split('preskumaj')[1].strip()
+        #     examine(name, room, inventory)
+        #
+        # elif line.startswith('vezmi'):
+        #     name = line.split('vezmi')[1].strip()
+        #     take(name, room, inventory)
+        #
+        # elif line.startswith('poloz'):
+        #     name = line.split('poloz')[1].strip()
+        #     drop(name, room, inventory)
+        #
+        # else:
+        #     print('Taký príkaz nepoznám.')
 
     print('...koniec...')
 
 
-def about():
+def about(name: str, room: dict, inventory: list) -> None:
     print('Hru spáchal v (c) 2021 mirek.')
     print('Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
 
@@ -236,7 +244,7 @@ cmds = [
 ]
 
 
-def commands():
+def commands(name: str, room: dict, inventory: list) -> None:
     print('Zoznam príkazov hry:')
 
     for command in cmds:
