@@ -138,21 +138,10 @@ def main():
         line = input('> ').strip().lower()
 
         if line == 'o hre':
-            print('Hru spáchal v (c) 2021 mirek.')
-            print(
-                'Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
+            about()
 
         elif line == 'prikazy':
-            print('Zoznam príkazov hry:')
-
-            print('* koniec - ukončí rozohratú hru')
-            print('* o hre - zobrazí informácie o hre')
-            print('* poloz - vyberie predmet z batohu a položí ho do miestnosti')
-            print('* preskumaj - zobrazí informácie o zvolenom predmete')
-            print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
-            print('* rozhliadni sa - zobrazí obsah miestnosti')
-            print('* inventar - zobrazí obsah batohu')
-            print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
+            commands()
 
         elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
             print('ta koncime')
@@ -162,12 +151,7 @@ def main():
             look_around(room)
 
         elif line in ('inventar', 'inventory', 'i'):
-            if len(inventory) == 0:
-                print('Batoh je prázdny.')
-            else:
-                print('V batohu máš:')
-                for item in inventory:
-                    print(f'\t* {item["name"]}')
+            cmd_inventory(inventory)
 
         elif line.startswith('preskumaj'):
             name = line.split('preskumaj')[1].strip()
@@ -185,6 +169,53 @@ def main():
             print('Taký príkaz nepoznám.')
 
     print('...koniec...')
+
+
+def about():
+    print('Hru spáchal v (c) 2021 mirek.')
+    print('Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
+
+
+cmds = [
+    {
+        'name': 'preskumaj',
+        'exec': examine,
+        # 'param': 'kanister',
+        'description': 'zobrazí informácie o zvolenom predmete'
+    },
+
+    {
+        'name': 'poloz',
+        'exec': drop,
+        # 'param': 'kanister',
+        'description': 'vyberie predmet z batohu a položí ho do miestnosti'
+    }
+]
+
+
+def commands():
+    print('Zoznam príkazov hry:')
+
+    for command in cmds:
+        print(f'\t* {command["name"]} - {command["description"]}')
+
+    # print('* koniec - ukončí rozohratú hru')
+    # print('* o hre - zobrazí informácie o hre')
+    # print('* poloz - vyberie predmet z batohu a položí ho do miestnosti')
+    # print('* preskumaj - zobrazí informácie o zvolenom predmete')
+    # print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
+    # print('* rozhliadni sa - zobrazí obsah miestnosti')
+    # print('* inventar - zobrazí obsah batohu')
+    # print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
+
+
+def cmd_inventory(inventory):
+    if len(inventory) == 0:
+        print('Batoh je prázdny.')
+    else:
+        print('V batohu máš:')
+        for item in inventory:
+            print(f'\t* {item["name"]}')
 
 
 if __name__ == '__main__':
