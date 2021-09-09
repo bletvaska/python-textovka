@@ -148,42 +148,20 @@ def main():
 
         # parser
         for command in cmds:
-            if line == command['name']:
-                command['exec']('parameter', room, inventory)
+            if line.startswith(command['name']):
+                param = line.split(command['name'])[1].strip()
+                command['exec'](param, room, inventory)
                 break
         else:
             print('Taký príkaz nepoznám.')
 
-        # if line == 'o hre':
-        #     about()
-        #
-        # elif line == 'prikazy':
-        #     commands()
-        #
         # elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
         #     print('ta koncime')
         #     state = states.QUIT
         #
-        # elif line == 'rozhliadni sa':
-        #     look_around(room)
-        #
         # elif line in ('inventar', 'inventory', 'i'):
         #     cmd_inventory(inventory)
         #
-        # elif line.startswith('preskumaj'):
-        #     name = line.split('preskumaj')[1].strip()
-        #     examine(name, room, inventory)
-        #
-        # elif line.startswith('vezmi'):
-        #     name = line.split('vezmi')[1].strip()
-        #     take(name, room, inventory)
-        #
-        # elif line.startswith('poloz'):
-        #     name = line.split('poloz')[1].strip()
-        #     drop(name, room, inventory)
-        #
-        # else:
-        #     print('Taký príkaz nepoznám.')
 
     print('...koniec...')
 
