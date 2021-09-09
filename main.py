@@ -99,6 +99,16 @@ def examine(name: str, room: dict, inventory: list) -> None:
             print('Taký predmet tu nigde nevidím.')
 
 
+def parse(line: str, commands: list) -> tuple:
+    for command in commands:
+        for alias in command['aliases'] + (command['name'],):
+            if line.startswith(alias):
+                param = line.split(alias)[1].strip()
+                return (command, param)
+
+    return (None, None)
+
+
 def main():
     room = {
         'name': 'dungeon',
@@ -147,17 +157,9 @@ def main():
         line = input('> ').strip().lower()
 
         # parser
-        found = False
-        for command in cmds:
-            for alias in command['aliases'] + (command['name'],):
-                if line.startswith(alias):
-                    param = line.split(alias)[1].strip()
-                    command['exec'](param, room, inventory)
-                    found = True
-                    break
-
-            if found:
-                break
+        command, param = parse(line, cmds)
+        if command is not None:
+            command['exec'](param, room, inventory)
         else:
             print('Taký príkaz nepoznám.')
 
