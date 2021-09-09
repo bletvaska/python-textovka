@@ -4,6 +4,15 @@ import features
 import states
 
 
+def cmd_inventory(inventory):
+    if len(inventory) == 0:
+        print('Batoh je prázdny.')
+    else:
+        print('V batohu máš:')
+        for item in inventory:
+            print(f'\t* {item["name"]}')
+
+
 def look_around(room: dict):
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
@@ -180,15 +189,49 @@ cmds = [
     {
         'name': 'preskumaj',
         'exec': examine,
-        # 'param': 'kanister',
         'description': 'zobrazí informácie o zvolenom predmete'
     },
 
     {
         'name': 'poloz',
         'exec': drop,
-        # 'param': 'kanister',
         'description': 'vyberie predmet z batohu a položí ho do miestnosti'
+    },
+
+    {
+        'name': 'koniec',
+        'description': 'ukončí rozohratú hru',
+        'exec': None
+    },
+
+    {
+        'name': 'o hre',
+        'description': 'zobrazí informácie o hre',
+        'exec': about
+    },
+
+    {
+        'name': 'rozhliadni sa',
+        'description': 'zobrazí obsah miestnosti',
+        'exec': look_around
+    },
+
+    {
+        'name': 'inventar',
+        'description': 'zobrazí obsah batohu',
+        'exec': cmd_inventory
+    },
+
+    {
+        'name': 'vezmi',
+        'description': 'vezme predmet z miestnosti a vloží ho do batohu',
+        'exec': take
+    },
+
+    {
+        'name': 'prikazy',
+        'description': 'zobrazí zoznam príkazov dostupných v hre',
+        'exec': None  # commands
     }
 ]
 
@@ -198,24 +241,6 @@ def commands():
 
     for command in cmds:
         print(f'\t* {command["name"]} - {command["description"]}')
-
-    # print('* koniec - ukončí rozohratú hru')
-    # print('* o hre - zobrazí informácie o hre')
-    # print('* poloz - vyberie predmet z batohu a položí ho do miestnosti')
-    # print('* preskumaj - zobrazí informácie o zvolenom predmete')
-    # print('* prikazy - zobrazí zoznam príkazov dostupných v hre')
-    # print('* rozhliadni sa - zobrazí obsah miestnosti')
-    # print('* inventar - zobrazí obsah batohu')
-    # print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
-
-
-def cmd_inventory(inventory):
-    if len(inventory) == 0:
-        print('Batoh je prázdny.')
-    else:
-        print('V batohu máš:')
-        for item in inventory:
-            print(f'\t* {item["name"]}')
 
 
 if __name__ == '__main__':
