@@ -104,6 +104,32 @@ def examine(name: str, context: dict) -> None:
             print('Taký predmet tu nigde nevidím.')
 
 
+def use(name: str, context: dict) -> None:
+    """
+    Represents the examine command.
+
+    :param name: the name of item do describe
+    :param context: the game context
+    """
+
+    room = context['room']
+    inventory = context['inventory']
+
+    if len(name) == 0:
+        print('Neviem, aký predmet chceš použiť.')
+    else:
+        for item in room['items'] + inventory:
+            if item['name'] == name:
+                if features.USABLE not in item['features']:
+                    print('Tento predmet sa nedá použiť.')
+                    return
+                else:
+                    print(f'Snažím sa použiť predmet {name}')
+                    return
+        else:
+            print('Taký predmet tu nikde nevidím.')
+
+
 def about(name: str, context: dict) -> None:
     print('Hru spáchal v (c) 2021 mirek.')
     print('Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
@@ -176,5 +202,12 @@ commands = [
         'aliases': ('commands', 'help', 'pomoc'),
         'description': 'zobrazí zoznam príkazov dostupných v hre',
         'exec': None  # commands
+    },
+
+    {
+        'name': 'pouzi',
+        'aliases': ('pouzit', 'use'),
+        'description': 'použije zvolený predmet',
+        'exec': use
     }
 ]
