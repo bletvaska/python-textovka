@@ -147,21 +147,19 @@ def main():
         line = input('> ').strip().lower()
 
         # parser
+        found = False
         for command in cmds:
-            if line.startswith(command['name']):
-                param = line.split(command['name'])[1].strip()
-                command['exec'](param, room, inventory)
+            for alias in command['aliases'] + (command['name'],):
+                if line.startswith(alias):
+                    param = line.split(alias)[1].strip()
+                    command['exec'](param, room, inventory)
+                    found = True
+                    break
+
+            if found:
                 break
         else:
             print('Taký príkaz nepoznám.')
-
-        # elif line in ('koniec', 'quit', 'bye', 'q', 'ukoncit'):
-        #     print('ta koncime')
-        #     state = states.QUIT
-        #
-        # elif line in ('inventar', 'inventory', 'i'):
-        #     cmd_inventory(inventory)
-        #
 
     print('...koniec...')
 
@@ -174,48 +172,56 @@ def about(name: str, room: dict, inventory: list) -> None:
 cmds = [
     {
         'name': 'preskumaj',
+        'aliases': ('examine',),
         'exec': examine,
         'description': 'zobrazí informácie o zvolenom predmete'
     },
 
     {
         'name': 'poloz',
+        'aliases': ('drop',),
         'exec': drop,
         'description': 'vyberie predmet z batohu a položí ho do miestnosti'
     },
 
     {
         'name': 'koniec',
+        'aliases': ('quit', 'bye', 'q', 'ukoncit'),
         'description': 'ukončí rozohratú hru',
         'exec': None
     },
 
     {
         'name': 'o hre',
+        'aliases': ('about',),
         'description': 'zobrazí informácie o hre',
         'exec': about
     },
 
     {
         'name': 'rozhliadni sa',
+        'aliases': ('look around',),
         'description': 'zobrazí obsah miestnosti',
         'exec': look_around
     },
 
     {
         'name': 'inventar',
+        'aliases': ('inventory', 'i'),
         'description': 'zobrazí obsah batohu',
         'exec': cmd_inventory
     },
 
     {
         'name': 'vezmi',
+        'aliases': ('take',),
         'description': 'vezme predmet z miestnosti a vloží ho do batohu',
         'exec': take
     },
 
     {
         'name': 'prikazy',
+        'aliases': ('commands', 'help', 'pomoc'),
         'description': 'zobrazí zoznam príkazov dostupných v hre',
         'exec': None  # commands
     }
