@@ -153,7 +153,34 @@ def use(name: str, context: dict) -> None:
                         print(random.choice(_zen_of_python))
 
                     elif name == 'kanister':
-                        print('ta som odsroboval a trosku si snupol. Fajnovy. vysoko-oktanovy.')
+                        # aktualizovali sme kanister
+                        item['description'] = 'Prázdny kanister. Po pričuchnutí je ti to jasné - bol tu benzín.'
+                        item['features'].remove(features.USABLE)
+
+                        # aktualizujeme dvere
+                        for it in room['items']:
+                            if it['name'] == 'dvere':
+                                it[
+                                    'description'] = 'Dvere. Stále zamknuté, ale ako bonus sú poliate benzínom. Je ti jasné, kto za to môže.'
+                                break
+
+                        # a akcia
+                        print('Ta som odšroboval, rozohnal som sa a celý obsah kanistra som vylial na dvere. V '
+                              'miestnosti sa náhle rozľahol benzínový zápach. Proste vysoko-oktánová fajnotka.')
+
+                    elif name == 'zapalky':
+                        # musim byt v miestnosti s dverami, ktoer su poliate benzinom!!!
+
+                        # zmazeme/vyhodime zapalky z hry (bud z miestnosti alebo z batohu)
+
+                        # co sa stane s dverami:
+                        # zmena opisu
+                        # nazov: horiace dvere
+
+                        # akcia
+                        print()
+
+                        # todo: zapalky chytia az na tretikrat/posledna zapalka
 
                     else:
                         print(f'Snažím sa použiť predmet {name}')
