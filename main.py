@@ -4,18 +4,17 @@ import features
 import states
 
 
-def cmd_inventory(name: str, room: dict, inventory: list) -> str:
-    if len(inventory) == 0:
+def cmd_inventory(name: str, context: dict) -> None:
+    if len(context['inventory']) == 0:
         print('Batoh je prázdny.')
     else:
         print('V batohu máš:')
-        for item in inventory:
+        for item in context['inventory']:
             print(f'\t* {item["name"]}')
 
-    return states.PLAYING
 
-
-def look_around(name: str, room: dict, inventory: list) -> str:
+def look_around(name: str, context: dict) -> None:
+    room = context['room']
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
 
@@ -26,30 +25,26 @@ def look_around(name: str, room: dict, inventory: list) -> str:
         for item in room['items']:
             print(f'\t* {item["name"]}')
 
-    return states.PLAYING
 
-
-def drop(name: str, room: dict, inventory: list) -> str:
+def drop(name: str, context: dict) -> None:
     if name == '':
         print('Neviem, aký predmet chceš položiť.')
     else:
-        for item in inventory:
+        for item in context['inventory']:
             if item['name'] == name:
                 # vybrat ho z inventaru
-                inventory.remove(item)
+                context['inventory'].remove(item)
 
                 # polozit ho do miestnosti
-                room['items'].append(item)
+                context['room']['items'].append(item)
 
                 print(f'Predmet {name} si vyložil do miestnosti.')
                 break
         else:
             print('Taký predmet u seba nemáš.')
 
-    return states.PLAYING
 
-
-def take(name: str, room: dict, inventory: list) -> str:
+def take(name: str, context: dict) -> None:
     """
     Represents the TAKE command.
 
@@ -57,6 +52,9 @@ def take(name: str, room: dict, inventory: list) -> str:
     :param room: the room object, where the player is currently in
     :param inventory: the player's inventory
     """
+
+    room = context['room']
+    inventory = context['inventory']
 
     if name == '':
         print('Neviem, aký predmet chceš vziať.')
@@ -84,10 +82,8 @@ def take(name: str, room: dict, inventory: list) -> str:
         else:
             print('Taký predmet tu nikde nevidím.')
 
-    return states.PLAYING
 
-
-def examine(name: str, room: dict, inventory: list) -> str:
+def examine(name: str, context: dict) -> None:
     """
     Represents the examine command.
 
@@ -95,6 +91,9 @@ def examine(name: str, room: dict, inventory: list) -> str:
     :param room: the room object, where the player is currently in
     :param inventory: the player's inventory
     """
+
+    room = context['room']
+    inventory = context['inventory']
 
     if len(name) == 0:
         print('Neviem, aký predmet chceš preskúmať.')
@@ -105,8 +104,6 @@ def examine(name: str, room: dict, inventory: list) -> str:
                 break
         else:
             print('Taký predmet tu nigde nevidím.')
-
-    return states.PLAYING
 
 
 def parse(line: str, commands: list) -> tuple:
@@ -120,7 +117,73 @@ def parse(line: str, commands: list) -> tuple:
 
 
 def main():
-    room = {
+    context = {
+        'commands': None,
+        'inventory': None,
+        'state': states.PLAYING,
+        'room': None,
+        'world': None
+    }
+
+    context['commands'] = [
+        {
+            'name': 'preskumaj',
+            'aliases': ('examine',),
+            'exec': examine,
+            'description': 'zobrazí informácie o zvolenom predmete'
+        },
+
+        {
+            'name': 'poloz',
+            'aliases': ('drop',),
+            'exec': drop,
+            'description': 'vyberie predmet z batohu a položí ho do miestnosti'
+        },
+
+        {
+            'name': 'koniec',
+            'aliases': ('quit', 'bye', 'q', 'ukoncit'),
+            'description': 'ukončí rozohratú hru',
+            'exec': quit_game
+        },
+
+        {
+            'name': 'o hre',
+            'aliases': ('about',),
+            'description': 'zobrazí informácie o hre',
+            'exec': about
+        },
+
+        {
+            'name': 'rozhliadni sa',
+            'aliases': ('look around',),
+            'description': 'zobrazí obsah miestnosti',
+            'exec': look_around
+        },
+
+        {
+            'name': 'inventar',
+            'aliases': ('inventory', 'i'),
+            'description': 'zobrazí obsah batohu',
+            'exec': cmd_inventory
+        },
+
+        {
+            'name': 'vezmi',
+            'aliases': ('take',),
+            'description': 'vezme predmet z miestnosti a vloží ho do batohu',
+            'exec': take
+        },
+
+        {
+            'name': 'prikazy',
+            'aliases': ('commands', 'help', 'pomoc'),
+            'description': 'zobrazí zoznam príkazov dostupných v hre',
+            'exec': None  # commands
+        }
+    ]
+
+    context['room'] = {
         'name': 'dungeon',
         'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
                        'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
@@ -152,8 +215,8 @@ def main():
     }
 
     line = None
-    state = states.PLAYING
-    inventory = [
+
+    context['inventory'] = [
         {
             'name': 'ucebnica jazyka python',
             'description': 'Mocná učebnica jazyka Python od známeho Pytonistu Jana.',
@@ -161,101 +224,37 @@ def main():
         }
     ]
 
-    look_around(None, room, None)
+    look_around(None, context)
 
     # game loop
-    while state == states.PLAYING:
+    while context['state'] == states.PLAYING:
         line = input('> ').strip().lower()
 
         # parse input line
-        command, param = parse(line, cmds)
+        command, param = parse(line, context['commands'])
         if command is not None:
-            state = command['exec'](param, room, inventory)
+            command['exec'](param, context)
         else:
             print('Taký príkaz nepoznám.')
 
     print('...koniec...')
 
 
-def about(name: str, room: dict, inventory: list) -> str:
+def about(name: str, context: dict) -> None:
     print('Hru spáchal v (c) 2021 mirek.')
     print('Ďalšie dobrodužstvo Indiana Jonesa. Tentokrát sa pokúsi o únik zo skladu Košického Technického múzea.')
 
-    return states.PLAYING
 
-
-def quit_game(name: str, room: dict, inventory: list) -> str:
+def quit_game(name: str, context: dict) -> None:
     print('ta koncime')
-
-    return states.QUIT
-
-
-cmds = [
-    {
-        'name': 'preskumaj',
-        'aliases': ('examine',),
-        'exec': examine,
-        'description': 'zobrazí informácie o zvolenom predmete'
-    },
-
-    {
-        'name': 'poloz',
-        'aliases': ('drop',),
-        'exec': drop,
-        'description': 'vyberie predmet z batohu a položí ho do miestnosti'
-    },
-
-    {
-        'name': 'koniec',
-        'aliases': ('quit', 'bye', 'q', 'ukoncit'),
-        'description': 'ukončí rozohratú hru',
-        'exec': quit_game
-    },
-
-    {
-        'name': 'o hre',
-        'aliases': ('about',),
-        'description': 'zobrazí informácie o hre',
-        'exec': about
-    },
-
-    {
-        'name': 'rozhliadni sa',
-        'aliases': ('look around',),
-        'description': 'zobrazí obsah miestnosti',
-        'exec': look_around
-    },
-
-    {
-        'name': 'inventar',
-        'aliases': ('inventory', 'i'),
-        'description': 'zobrazí obsah batohu',
-        'exec': cmd_inventory
-    },
-
-    {
-        'name': 'vezmi',
-        'aliases': ('take',),
-        'description': 'vezme predmet z miestnosti a vloží ho do batohu',
-        'exec': take
-    },
-
-    {
-        'name': 'prikazy',
-        'aliases': ('commands', 'help', 'pomoc'),
-        'description': 'zobrazí zoznam príkazov dostupných v hre',
-        'exec': None  # commands
-    }
-]
+    context['state'] = states.QUIT
 
 
-def commands(name: str, room: dict, inventory: list) -> str:
+def commands(name: str, context: dict) -> None:
     print('Zoznam príkazov hry:')
 
-    for command in cmds:
+    for command in context['commands']:
         print(f'\t* {command["name"]} - {command["description"]}')
-
-    return states.PLAYING
 
 
 if __name__ == '__main__':
