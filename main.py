@@ -78,39 +78,7 @@ def main():
         }
     ]
 
-    context['room'] = {
-        'name': 'dungeon',
-        'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
-                       'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
-        'items': [
-            {
-                'name': 'kanister',
-                'description': 'Kanister plný benzínu.',
-                'features': [features.MOVABLE, features.USABLE]
-            },
-
-            {
-                'name': 'hasiaci pristroj',
-                'description': 'Ručný hasiaci prístroj plný. Značka - červený.',
-                'features': [features.MOVABLE, features.USABLE]
-            },
-
-            {
-                'name': 'zapalky',
-                'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.',
-                'features': [features.MOVABLE, features.USABLE],
-                'total': 3,
-            },
-
-            {
-                'name': 'dvere',
-                'description': 'Veľké masívne drevené dvere. Zamknuté.',
-                'features': [],
-                'state': 'zamknute'
-            }
-        ],
-
-    }
+    context['room'] = world[0]
 
     context['inventory'] = [
         {
