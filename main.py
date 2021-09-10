@@ -73,7 +73,7 @@ def main():
                 'east': 'dungeon',
                 'west': None,
                 'north': None,
-                'souhth': None
+                'south': None
             }
         }
     ]

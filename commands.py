@@ -27,6 +27,9 @@ def look_around(name: str, context: dict) -> None:
         for item in room['items']:
             print(f'\t* {item["name"]}')
 
+    # tuto vypisat vychody z miestnosti
+    # alebo: Z miestnosti nevedú žiadne východy. v pripade, ze ziadne vychody nie su
+
 
 def drop(name: str, context: dict) -> None:
     if name == '':
