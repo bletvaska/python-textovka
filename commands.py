@@ -3,6 +3,15 @@ import random
 import features
 import states
 
+
+def find_item(name: str, items: list):
+    for item in items:
+        if item['name'] == name:
+            return item
+
+    return None
+
+
 _zen_of_python = [
     'Beautiful is better than ugly.',
     'Explicit is better than implicit.',
@@ -158,39 +167,40 @@ def use(name: str, context: dict) -> None:
                         item['features'].remove(features.USABLE)
 
                         # aktualizujeme dvere
-                        for it in room['items']:
-                            if it['name'] == 'dvere' and it['state'] == 'zamknute':
-                                it['state'] = 'poliate'
-                                it['description'] = 'Dvere. Stále zamknuté, ale ako bonus sú poliate benzínom. Je ti jasné, kto za to môže.'
-                                break
+                        door = find_item('dvere', room['items'])
 
-                        # a akcia
-                        print('Ta som odšroboval, rozohnal som sa a celý obsah kanistra som vylial na dvere. V '
-                              'miestnosti sa náhle rozľahol benzínový zápach. Proste vysoko-oktánová fajnotka.')
+                        if door is not None and door['state'] == 'zamknute':
+                            door['state'] = 'poliate'
+                            door['description'] = 'Dvere. Stále zamknuté, ale ako bonus sú poliate benzínom. ' \
+                                                  'Je ti jasné, kto za to môže.'
+                            # a akcia
+                            print('Ta som odšroboval, rozohnal som sa a celý obsah kanistra som vylial na dvere. V '
+                                  'miestnosti sa náhle rozľahol benzínový zápach. Proste vysoko-oktánová fajnotka.')
+                        else:
+                            print('Zahrkal som kanistrom a uistil som sa, že je stále plný.')
 
                     elif name == 'zapalky':
                         # musim byt v miestnosti s dverami, ktore su poliate benzinom!!!
-                        door = None
-                        for it in room['items']:
-                            if it['name'] == 'dvere' and it['state'] == 'poliate':
-                                door = it
+                        door = find_item('dvere', room['items'])
+                        if door and door['state'] == 'poliate':
 
-                                # zmazeme/vyhodime zapalky z hry (bud z miestnosti alebo z batohu)
-                                if item in room['items']:
-                                    room['items'].remove(item)
-                                else:
-                                    inventory.remove(item)
+                            # zmazeme/vyhodime zapalky z hry (bud z miestnosti alebo z batohu)
+                            if item in room['items']:
+                                room['items'].remove(item)
+                            else:
+                                inventory.remove(item)
 
-                                # co sa stane s dverami:
-                                door['state'] = 'horiace'
-                                # zmena opisu
-                                door['description'] = 'Doteraz tie dvere iba voňali, teraz už aj horia. Zaujímavé, čo všetko sa dnes deje v tom svete.'
-                                # nazov: horiace dvere
-                                door['name'] = 'horiace dvere'
+                            # co sa stane s dverami:
+                            door['state'] = 'horiace'
+                            # zmena opisu
+                            door['description'] = 'Doteraz tie dvere iba voňali, teraz už aj horia. Zaujímavé, ' \
+                                                  'čo všetko sa dnes deje v tom svete.'
+                            # nazov: horiace dvere
+                            door['name'] = 'horiace dvere'
 
-                                # akcia
-                                print('Zahrkal si krabičkou zápaliek a jednu si z nej vytiahol. Nadýchol si sa, škrtol si a ona chytila. Usmial si sa a s úsmevom na tvári si horiacu zápalku voľne pohodil smerom k dverám. Tie neváhali a okamžite zbĺkli. Ten benzín urobil svoje.')
-                                break
+                            # akcia
+                            print(
+                                'Zahrkal si krabičkou zápaliek a jednu si z nej vytiahol. Nadýchol si sa, škrtol si a ona chytila. Usmial si sa a s úsmevom na tvári si horiacu zápalku voľne pohodil smerom k dverám. Tie neváhali a okamžite zbĺkli. Ten benzín urobil svoje.')
                         else:
                             print('Krabička zápaliek. Nič zaujímavé. Len na čo by som ich tak použil?')
 
@@ -198,27 +208,28 @@ def use(name: str, context: dict) -> None:
 
                     elif name == 'hasiaci pristroj':
                         # musia horiet dvere
-                        door = None
-                        for it in room['items']:
-                            if it['name'] == 'horiace dvere':
-                                # zmiznu dvere z miestnosti
-                                room['items'].remove(it)
+                        door = find_item('horiace dvere', room['items'])
+                        if door:
+                            # zmiznu dvere z miestnosti
+                            room['items'].remove(door)
 
-                                # hasiaci pristroj bude nepouzitelny
-                                item['features'].remove(features.USABLE)
+                            # hasiaci pristroj bude nepouzitelny
+                            item['features'].remove(features.USABLE)
 
-                                # zmenim mu opis na prazdny hasiaci pristroj
-                                item['description'] = 'Ručný hasiaci prístroj prázdny. Značka - červený.'
+                            # zmenim mu opis na prazdny hasiaci pristroj
+                            item['description'] = 'Ručný hasiaci prístroj prázdny. Značka - červený.'
 
-                                # akcia
-                                print('Zahasil si dvere. Tie sa vplyvom tlaku hasiacej zmesy rozpadli a uvoľnili ti východ z miestnosti.')
-                                break
+                            # akcia
+                            print(
+                                'Zahasil si dvere. Tie sa vplyvom tlaku hasiacej zmesy rozpadli a uvoľnili ti východ z miestnosti.')
                         else:
                             print('Aj by som nasnežil, ale nie je na čo.')
 
                     else:
                         print(f'Snažím sa použiť predmet {name}')
+
                 return
+
         else:
             print('Taký predmet tu nikde nevidím.')
 
