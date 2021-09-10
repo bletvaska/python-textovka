@@ -159,9 +159,9 @@ def use(name: str, context: dict) -> None:
 
                         # aktualizujeme dvere
                         for it in room['items']:
-                            if it['name'] == 'dvere':
-                                it[
-                                    'description'] = 'Dvere. Stále zamknuté, ale ako bonus sú poliate benzínom. Je ti jasné, kto za to môže.'
+                            if it['name'] == 'dvere' and it['state'] == 'zamknute':
+                                it['state'] = 'poliate'
+                                it['description'] = 'Dvere. Stále zamknuté, ale ako bonus sú poliate benzínom. Je ti jasné, kto za to môže.'
                                 break
 
                         # a akcia
@@ -169,16 +169,31 @@ def use(name: str, context: dict) -> None:
                               'miestnosti sa náhle rozľahol benzínový zápach. Proste vysoko-oktánová fajnotka.')
 
                     elif name == 'zapalky':
-                        # musim byt v miestnosti s dverami, ktoer su poliate benzinom!!!
+                        # musim byt v miestnosti s dverami, ktore su poliate benzinom!!!
+                        door = None
+                        for it in room['items']:
+                            if it['name'] == 'dvere' and it['state'] == 'poliate':
+                                door = it
 
-                        # zmazeme/vyhodime zapalky z hry (bud z miestnosti alebo z batohu)
+                                # zmazeme/vyhodime zapalky z hry (bud z miestnosti alebo z batohu)
+                                if item in room['items']:
+                                    room['items'].remove(item)
+                                else:
+                                    inventory.remove(item)
 
-                        # co sa stane s dverami:
-                        # zmena opisu
-                        # nazov: horiace dvere
+                                # co sa stane s dverami:
+                                door['state'] = 'horiace'
+                                # zmena opisu
+                                door['description'] = 'Doteraz tie dvere iba voňali, teraz už aj horia. Zaujímavé, čo všetko sa dnes deje v tom svete.'
+                                # nazov: horiace dvere
+                                door['name'] = 'horiace dvere'
 
-                        # akcia
-                        print()
+                                # akcia
+                                print('Zahrkal si krabičkou zápaliek a jednu si z nej vytiahol. Nadýchol si sa, škrtol si a ona chytila. Usmial si sa a s úsmevom na tvári si horiacu zápalku voľne pohodil smerom k dverám. Tie neváhali a okamžite zbĺkli. Ten benzín urobil svoje.')
+                                break
+                        else:
+                            print('Krabička zápaliek. Nič zaujímavé. Len na čo by som ich tak použil?')
+
 
                         # todo: zapalky chytia az na tretikrat/posledna zapalka
 

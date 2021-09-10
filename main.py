@@ -46,13 +46,15 @@ def main():
             {
                 'name': 'zapalky',
                 'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.',
-                'features': [features.MOVABLE, features.USABLE]
+                'features': [features.MOVABLE, features.USABLE],
+                'total': 3
             },
 
             {
                 'name': 'dvere',
                 'description': 'Veľké masívne drevené dvere. Zamknuté.',
-                'features': []
+                'features': [],
+                'state': 'zamknute'
             }
         ]
     }
