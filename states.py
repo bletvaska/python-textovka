@@ -1,2 +1,3 @@
 QUIT = 0
 PLAYING = 1
+WIN = 2
