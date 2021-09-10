@@ -3,6 +3,7 @@
 import features
 import states
 import commands
+import json
 
 
 def parse(line: str, commands: list) -> tuple:
@@ -24,59 +25,12 @@ def main():
         'world': None
     }
 
+    # load world
+    file = open('world.json', 'r', encoding='utf-8')
+    context['world'] = json.load(file)
+    file.close()
+
     context['commands'] = commands.commands
-    context['world'] = [
-        {
-            'name': 'dungeon',
-            'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
-                           'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
-            'items': [
-                {
-                    'name': 'kanister',
-                    'description': 'Kanister plný benzínu.',
-                    'features': [features.MOVABLE, features.USABLE]
-                },
-
-                {
-                    'name': 'hasiaci pristroj',
-                    'description': 'Ručný hasiaci prístroj plný. Značka - červený.',
-                    'features': [features.MOVABLE, features.USABLE]
-                },
-
-                {
-                    'name': 'zapalky',
-                    'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.',
-                    'features': [features.MOVABLE, features.USABLE],
-                    'total': 3,
-                },
-
-                {
-                    'name': 'dvere',
-                    'description': 'Veľké masívne drevené dvere. Zamknuté.',
-                    'features': [],
-                    'state': 'zamknute'
-                }
-            ],
-            'exits': {
-                'west': None,
-                'east': None,
-                'south': None,
-                'north': None
-            }
-        },
-
-        {
-            'name': 'garden',
-            'description': 'Pomerne zarastené hriadky niečoho, čo by sa dalo voľne nazvať záhradkou. Darí sa tu skorocelu a inej burine.',
-            'items': [],
-            'exits': {
-                'east': 'dungeon',
-                'west': None,
-                'north': None,
-                'south': None
-            }
-        }
-    ]
 
     context['room'] = context['world'][0]
 
@@ -113,7 +67,6 @@ def main():
         print("| |__| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \_|")
         print(" \____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___(_)")
         print("                  |___/                                                     ")
-
 
     print('...koniec...')
 
