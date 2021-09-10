@@ -25,7 +25,7 @@ def main():
     }
 
     context['commands'] = commands.commands
-    world = [
+    context['world'] = [
         {
             'name': 'dungeon',
             'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
@@ -58,7 +58,7 @@ def main():
                 }
             ],
             'exits': {
-                'west': 'garden',
+                'west': None,
                 'east': None,
                 'south': None,
                 'north': None
@@ -78,7 +78,7 @@ def main():
         }
     ]
 
-    context['room'] = world[0]
+    context['room'] = context['world'][0]
 
     context['inventory'] = [
         {

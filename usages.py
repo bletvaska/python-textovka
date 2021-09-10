@@ -99,6 +99,9 @@ def use_fire_extinguisher(item, context):
         # zmenim mu opis na prazdny hasiaci pristroj
         item['description'] = 'Ručný hasiaci prístroj prázdny. Značka - červený.'
 
+        # nastavim vychod z miestnosti
+        room['exits']['west'] = 'garden'
+
         # akcia
         print(
             'Zahasil si dvere. Tie sa vplyvom tlaku hasiacej zmesy rozpadli a uvoľnili ti východ z miestnosti.')
