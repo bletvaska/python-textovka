@@ -41,8 +41,6 @@ def look_around(name: str, context: dict) -> None:
             print(f'\t* {translation[ex]}')
 
 
-
-
 def drop(name: str, context: dict) -> None:
     if name == '':
         print('Neviem, aký predmet chceš položiť.')
@@ -202,6 +200,60 @@ def west(name: str, context: dict) -> None:
     look_around(None, context)
 
 
+def east(name: str, context: dict) -> None:
+    room = context['room']
+    # ak sa tam neda ist, tak vypis
+    if room['exits']['east'] is None:
+        print('Tam sa nedá ísť.')
+        return
+
+    # najdi miestnost na zapad od tejto
+    room_name = room['exits']['east']
+    target_room = get_room_by_name(room_name, context['world'])
+
+    # aktualizujeme room
+    context['room'] = target_room
+
+    # vojdeme do nej (rozhliadneme sa v nej)
+    look_around(None, context)
+
+
+def north(name: str, context: dict) -> None:
+    room = context['room']
+    # ak sa tam neda ist, tak vypis
+    if room['exits']['north'] is None:
+        print('Tam sa nedá ísť.')
+        return
+
+    # najdi miestnost na zapad od tejto
+    room_name = room['exits']['north']
+    target_room = get_room_by_name(room_name, context['world'])
+
+    # aktualizujeme room
+    context['room'] = target_room
+
+    # vojdeme do nej (rozhliadneme sa v nej)
+    look_around(None, context)
+
+
+def south(name: str, context: dict) -> None:
+    room = context['room']
+    # ak sa tam neda ist, tak vypis
+    if room['exits']['south'] is None:
+        print('Tam sa nedá ísť.')
+        return
+
+    # najdi miestnost na zapad od tejto
+    room_name = room['exits']['south']
+    target_room = get_room_by_name(room_name, context['world'])
+
+    # aktualizujeme room
+    context['room'] = target_room
+
+    # vojdeme do nej (rozhliadneme sa v nej)
+    look_around(None, context)
+
+
 commands = [
     {
         'name': 'preskumaj',
@@ -271,5 +323,26 @@ commands = [
         'aliases': ('west', 'w', 'z'),
         'description': 'prejde do miestnosti na zapad',
         'exec': west
+    },
+
+    {
+        'name': 'vychod',
+        'aliases': ('east', 'e', 'v'),
+        'description': 'prejde do miestnosti na vychod',
+        'exec': east
+    },
+
+    {
+        'name': 'sever',
+        'aliases': ('north', 'n', 's'),
+        'description': 'prejde do miestnosti na sever',
+        'exec': north
+    },
+
+    {
+        'name': 'juh',
+        'aliases': ('south', 'j'),
+        'description': 'prejde do miestnosti na juh',
+        'exec': south
     },
 ]
