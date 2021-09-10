@@ -194,8 +194,27 @@ def use(name: str, context: dict) -> None:
                         else:
                             print('Krabička zápaliek. Nič zaujímavé. Len na čo by som ich tak použil?')
 
-
                         # todo: zapalky chytia az na tretikrat/posledna zapalka
+
+                    elif name == 'hasiaci pristroj':
+                        # musia horiet dvere
+                        door = None
+                        for it in room['items']:
+                            if it['name'] == 'horiace dvere':
+                                # zmiznu dvere z miestnosti
+                                room['items'].remove(it)
+
+                                # hasiaci pristroj bude nepouzitelny
+                                item['features'].remove(features.USABLE)
+
+                                # zmenim mu opis na prazdny hasiaci pristroj
+                                item['description'] = 'Ručný hasiaci prístroj prázdny. Značka - červený.'
+
+                                # akcia
+                                print('Zahasil si dvere. Tie sa vplyvom tlaku hasiacej zmesy rozpadli a uvoľnili ti východ z miestnosti.')
+                                break
+                        else:
+                            print('Aj by som nasnežil, ale nie je na čo.')
 
                     else:
                         print(f'Snažím sa použiť predmet {name}')
