@@ -137,7 +137,7 @@ def use(name: str, context: dict) -> None:
 
     # pouzitie predmetov
     if name == 'ucebnica jazyka python':
-        usages.use_textbook()
+        usages.use_textbook(item, context)
 
     elif name == 'kanister':
         usages.use_can(item, context)

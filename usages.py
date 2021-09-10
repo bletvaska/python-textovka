@@ -4,7 +4,7 @@ import features
 from helper import find_item
 
 
-def use_textbook():
+def use_textbook(item, context):
     _zen_of_python = [
         'Beautiful is better than ugly.',
         'Explicit is better than implicit.',

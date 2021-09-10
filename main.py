@@ -25,6 +25,58 @@ def main():
     }
 
     context['commands'] = commands.commands
+    world = [
+        {
+            'name': 'dungeon',
+            'description': 'Nachádzaš sa v tmavej miestnosti. Každé okno je zvonku zabarikádované a do miestnosti preniká len '
+                           'úzky prameň svetla. Masívne drevené dvere sú jediným východom z miestnosti.',
+            'items': [
+                {
+                    'name': 'kanister',
+                    'description': 'Kanister plný benzínu.',
+                    'features': [features.MOVABLE, features.USABLE]
+                },
+
+                {
+                    'name': 'hasiaci pristroj',
+                    'description': 'Ručný hasiaci prístroj plný. Značka - červený.',
+                    'features': [features.MOVABLE, features.USABLE]
+                },
+
+                {
+                    'name': 'zapalky',
+                    'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.',
+                    'features': [features.MOVABLE, features.USABLE],
+                    'total': 3,
+                },
+
+                {
+                    'name': 'dvere',
+                    'description': 'Veľké masívne drevené dvere. Zamknuté.',
+                    'features': [],
+                    'state': 'zamknute'
+                }
+            ],
+            'exits': {
+                'west': 'garden',
+                'east': None,
+                'south': None,
+                'north': None
+            }
+        },
+
+        {
+            'name': 'garden',
+            'description': 'Pomerne zarastené hriadky niečoho, čo by sa dalo voľne nazvať záhradkou. Darí sa tu skorocelu a inej burine.',
+            'items': [],
+            'exits': {
+                'east': 'dungeon',
+                'west': None,
+                'north': None,
+                'souhth': None
+            }
+        }
+    ]
 
     context['room'] = {
         'name': 'dungeon',
@@ -47,7 +99,7 @@ def main():
                 'name': 'zapalky',
                 'description': 'Krabička zápaliek vyrobená ešte v Československu. Kvalitka.',
                 'features': [features.MOVABLE, features.USABLE],
-                'total': 3
+                'total': 3,
             },
 
             {
@@ -56,7 +108,8 @@ def main():
                 'features': [],
                 'state': 'zamknute'
             }
-        ]
+        ],
+
     }
 
     context['inventory'] = [
