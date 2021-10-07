@@ -5,6 +5,22 @@ STATE_QUIT = 1
 STATE_PLAYING = 2
 STATE_DEATH = 3
 
+
+def cmd_commands():
+    print('Dostupné príkazy v hre:')
+    print('* o hre - zobrazí informácie o hre')
+    print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza')
+    print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+    print('* koniec - ukončí hru')
+
+
+def cmd_about():
+    print('Indiana Jones a jeho Pythoňácke dobrodružstvo')
+    print('Nestarnúci hrdina Indiana Jones sa tentokrát ocitol sám pustý v škaredej miestnosti. A jedine '
+          'Pythoňácky programátori mu môžu zachrániť krk. Je to na tebe.')
+    print('\n(c) 2021 hru spáchal mirek')
+
+
 line = None
 game_state = STATE_PLAYING
 room = 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška ' \
@@ -23,20 +39,13 @@ while game_state == STATE_PLAYING:
         continue
 
     elif line in ('o hre', 'about'):
-        print('Indiana Jones a jeho Pythoňácke dobrodružstvo')
-        print('Nestarnúci hrdina Indiana Jones sa tentokrát ocitol sám pustý v škaredej miestnosti. A jedine '
-              'Pythoňácky programátori mu môžu zachrániť krk. Je to na tebe.')
-        print('\n(c) 2021 hru spáchal mirek')
+        cmd_about()
 
     elif line in ('rozhliadni sa', 'look around'):
         print(room)
 
     elif line in ('prikazy', 'commands', 'help', '?'):
-        print('Dostupné príkazy v hre:')
-        print('* o hre - zobrazí informácie o hre')
-        print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza')
-        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
-        print('* koniec - ukončí hru')
+        cmd_commands()
 
     elif line in ('koniec', 'quit', 'exit', 'q'):
         game_state = STATE_QUIT
