@@ -6,6 +6,16 @@ STATE_PLAYING = 2
 STATE_DEATH = 3
 
 
+def cmd_look_around(room):
+    """
+    Prints description about the room
+
+    Prints out the description about the room given as parameter.
+    :param room: room to describe
+    """
+    print(room)
+
+
 def cmd_commands():
     print('Dostupné príkazy v hre:')
     print('* o hre - zobrazí informácie o hre')
@@ -24,7 +34,7 @@ def cmd_about():
 line = None
 game_state = STATE_PLAYING
 room = 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška ' \
-       'a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto. '
+       'a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.'
 
 # game intro
 print('Indiana Jones')
@@ -42,7 +52,7 @@ while game_state == STATE_PLAYING:
         cmd_about()
 
     elif line in ('rozhliadni sa', 'look around'):
-        print(room)
+        cmd_look_around(room)
 
     elif line in ('prikazy', 'commands', 'help', '?'):
         cmd_commands()
