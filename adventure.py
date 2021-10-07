@@ -37,7 +37,7 @@ game_state = STATE_PLAYING
 room = {
     'name': 'dungeon',
     'description': 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.',
-    'items': [],
+    'items': ['noviny', 'vedro', 'zapalky', 'kanister', 'dvere'],
     'exits': []
 }
 
