@@ -13,7 +13,8 @@ def cmd_look_around(room):
     Prints out the description about the room given as parameter.
     :param room: room to describe
     """
-    print(room)
+    print(f'Nachádzaš sa v miestnosti {room["name"]}')
+    print(room['description'])
 
 
 def cmd_commands():
@@ -43,7 +44,7 @@ room = {
 # game intro
 print('Indiana Jones')
 print('alebo veľké Pythoňácke dobrodružstvo')
-print(room)
+cmd_look_around(room)
 
 # game loop
 while game_state == STATE_PLAYING:
