@@ -6,7 +6,7 @@ STATE_PLAYING = 2
 STATE_DEATH = 3
 
 
-def cmd_look_around(room):
+def cmd_look_around(room: dict):
     """
     Prints description about the room
 
@@ -17,7 +17,7 @@ def cmd_look_around(room):
     print(room['description'])
 
     # print items in the room
-    if room['items'] == []:
+    if room['items'] == []:  # len(room['items'] == 0
         print('Nevidíš tu nič zvláštne.')
     else:
         print("Vidíš:")
@@ -45,7 +45,37 @@ game_state = STATE_PLAYING
 room = {
     'name': 'dungeon',
     'description': 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.',
-    'items': ['noviny', 'vedro', 'zapalky', 'kanister', 'dvere'],
+    'items': [
+        {
+            'name': 'noviny',
+            'description': 'dennik sme s autorskou strankou sama marca',
+            'features': ['movable', 'usable'],
+        },
+
+        {
+            'name': 'vedro',
+            'description': 'Vedro plné vody.',
+            'features': ['movable', 'usable']
+        },
+
+        {
+            'name': 'zapalky',
+            'description': 'Krabička so zápalkami.',
+            'features': ['movable', 'usable']
+        },
+
+        {
+            'name': 'kanister',
+            'description': 'Vysokooktánový benzín tvorí obsah tohto kanistra. Kvalitka za rozumnú cenu.',
+            'features': ['usable', 'movable']
+        },
+
+        {
+            'name': 'dvere',
+            'description': 'Masívne dubové dvere. Zamknuté.',
+            'features': []
+        }
+    ],
     'exits': []
 }
 
