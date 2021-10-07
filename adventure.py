@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 
+# premenne definujuce rozny stav hry
+STATE_QUIT = 1
+STATE_PLAYING = 2
+STATE_DEATH = 3
+
 line = None
+game_state = STATE_PLAYING
 
 print('Indiana Jones')
 
 print('Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a '
       'krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.')
 
-while line != 'koniec':
+while game_state == STATE_PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
     if len(line) == 0:  # line == ''
@@ -31,5 +37,10 @@ while line != 'koniec':
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
         print('* koniec - ukončí hru')
 
+    elif line in ('koniec', 'quit', 'exit', 'q'):
+        game_state = STATE_QUIT
+
     else:
         print('Tento príkaz nepoznám.')
+
+print('Končíme.')
