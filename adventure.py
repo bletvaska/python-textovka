@@ -33,8 +33,12 @@ def cmd_about():
 
 line = None
 game_state = STATE_PLAYING
-room = 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška ' \
-       'a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.'
+room = {
+    'name': 'dungeon',
+    'description': 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.',
+    'items': [],
+    'exits': []
+}
 
 # game intro
 print('Indiana Jones')
