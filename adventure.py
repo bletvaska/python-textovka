@@ -7,12 +7,15 @@ STATE_DEATH = 3
 
 line = None
 game_state = STATE_PLAYING
+room = 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška ' \
+       'a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto. '
 
+# game intro
 print('Indiana Jones')
+print('alebo veľké Pythoňácke dobrodružstvo')
+print(room)
 
-print('Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a '
-      'krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.')
-
+# game loop
 while game_state == STATE_PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
@@ -26,9 +29,7 @@ while game_state == STATE_PLAYING:
         print('\n(c) 2021 hru spáchal mirek')
 
     elif line in ('rozhliadni sa', 'look around'):
-        print('Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. '
-              'Valaška a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce '
-              'miesto.')
+        print(room)
 
     elif line in ('prikazy', 'commands', 'help', '?'):
         print('Dostupné príkazy v hre:')
