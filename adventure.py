@@ -6,8 +6,23 @@ STATE_PLAYING = 2
 STATE_DEATH = 3
 
 
-def cmd_explore(room: dict):
-    pass
+def cmd_explore(room: dict, line: str):
+    item_name = line.removeprefix('preskumaj').strip()
+
+    # is there name given?
+    if item_name == '':
+        print('Neviem čo chceš preskúmať.')
+        return
+
+    # if item not in room items
+    for item in room['items']:
+        if item['name'] == item_name:
+            print(item['description'])
+            return
+
+    # if no such item available
+    print('Taký predmet tu nikde nevidím.')
+
 
 def cmd_look_around(room: dict):
     """
@@ -107,20 +122,7 @@ while game_state == STATE_PLAYING:
         game_state = STATE_QUIT
 
     elif line.startswith('preskumaj'):
-        item_name = line.removeprefix('preskumaj').strip()
-
-        # is there name given?
-        if item_name == '':
-            print('Neviem čo chceš preskúmať.')
-
-        # if item not in room items
-        else:
-            for item in room['items']:
-                if item['name'] == item_name:
-                    print(item['description'])
-                    break
-            else:
-                print('Taký predmet tu nikde nevidím.')
+        cmd_explore(room, line)
 
     else:
         print('Tento príkaz nepoznám.')
