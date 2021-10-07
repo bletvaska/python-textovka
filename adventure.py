@@ -16,6 +16,14 @@ def cmd_look_around(room):
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room['description'])
 
+    # print items in the room
+    if room['items'] == []:
+        print('Nevidíš tu nič zvláštne.')
+    else:
+        print("Vidíš:")
+        for item in room['items']:
+            print(f'\t* {item}')
+
 
 def cmd_commands():
     print('Dostupné príkazy v hre:')
