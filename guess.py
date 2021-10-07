@@ -1,48 +1,37 @@
 #!/usr/bin/env python3
 from random import randint
 
-# 8. sprav funkciu, play_game(). a v nej sa odohrá jedna partia hry.
-def play_game(secret=11):
-    """
-    Plays a signle round of game.
 
-    This function runs a one round of a game. Goal is to find the secret number.
-
-    :param secret: the secret number to find
-    """
-
-    # 1. pozdravis - myslim si cislo od 1 do 20
+def play_game(secret):
     print('Myslím si číslo od 1 do 20.')
     tip = None
-    attempts = 1
+    count = 0
 
-    # 6. hraj, kym neuhadnes
-    # 7. mas na to 5 pokusov a ked neuhadnes, tak vypis na obrazovku: Ta ty si jaká lama.
-    while attempts <= 5:
-        attempts += 1
+    while secret != tip and count < 5:
+        tip = input(f"Tvoj {count + 1}. tip: ")
+        tip = int(tip)
+        count += 1
 
-        # 2. opytaj sa hraca na jeho tip
-        s_tip = input('Tvoj tip: ')
-        tip = int(s_tip)
-
-        # 3. ak je tajne cislo mensie ako hracove, tak vypise na obrazovku: Hmm... Moje číslo je menšie ako tvoje.
-        if secret < tip:
-            print('Hmmm... Moje číslo je menšie ako tvoje.')
-
-        # 4. ak je tajne cislo vacsie ako hracove, tak vypise na obrazovku: Hmm... Moje číslo je väčšie ako tvoje.
-        elif secret > tip:
-            print('Hmmm... Moje číslo je väčšie ako tvoje.')
-
-        # 5. ak je tajne cislo rovne s hracovym, tak vypis: Ta ty genius.
+        if tip > secret:
+            print(f'Hmm... Moje číslo je menšie ako {tip}.')
+        elif tip < secret:
+            print(f'Hmm... Moje číslo je väčšie ako {tip}.')
         else:
-            print('Ta ty genius!')
+            print(f'Ta ty genius!!!')
             break
-
     else:
-        print(f'Ta ty si jaká lama. Moje tajné číslo bolo {secret}.')
+        print('ta ty jaka lama. sa nauc pajton najprv, hej?')
 
 
-if __name__ == '__main__':
-    secret = randint(1, 20)
-    play_game(secret)
-    print('the end')
+playing = True
+play_game(randint(1, 20))
+while playing == True:
+    choice = input('Chceš hrať túto mocnú hru ešte raz? (a/n) ')
+    if choice == 'a':
+        play_game(randint(1, 20))
+    else:
+        playing = False
+
+print(
+    'Ta díky, že si si zahral túto mocnú hru. Prosím podpor nádejného autora svojím malým príspevkom na účet SK123456789008765433121. Bude ti vďačný za každý tvoj príspevok nad 100 evry. Keď nepošleš, nech ťa svokra skára.')
+print('(c) 2021 spáchal mirek')
