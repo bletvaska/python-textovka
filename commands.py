@@ -47,8 +47,6 @@ def cmd_inventory(room: dict, line: str, backpack: list):
 
 
 def cmd_explore(room: dict, item_name: str, backpack: list):
-    # item_name = line.removeprefix('preskumaj').strip()
-
     # is there name given?
     if item_name == '':
         print('Neviem čo chceš preskúmať.')
@@ -128,6 +126,27 @@ def cmd_about(room: dict, line: str, backpack: list):
 
 commands = [
     {
+        'name': 'vezmi',
+        'description': 'vezme predmet z miestnosti a vloží si ho do batohu',
+        'aliases': ('take',),
+        'exec': cmd_take
+    },
+
+    {
+        'name': 'poloz',
+        'description': 'vyloží predmet z batohu do miestnosti',
+        'aliases': ('drop',),
+        'exec': cmd_drop
+    },
+
+    {
+        'name': 'prikazy',
+        'description': 'zobrazí zoznam príkazov použiteľných v hre',
+        'aliases': ('commands', 'help', 'pomoc', '?'),
+        'exec': cmd_commands
+    },
+
+    {
         'name': 'o hre',
         'description': 'zobrazí informácie o hre',
         'aliases': ('about',),
@@ -146,6 +165,13 @@ commands = [
         'description': 'preskúma zvolený predmet',
         'aliases': ('explore',),
         'exec': cmd_explore
+    },
+
+    {
+        'name': 'inventar',
+        'description': 'vypíše obsah hráčovho batohu',
+        'aliases': ('inventory','i'),
+        'exec': cmd_inventory
     }
 ]
 
