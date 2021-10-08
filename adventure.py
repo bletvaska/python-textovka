@@ -50,7 +50,7 @@ def play_game():
     # game intro
     print('Indiana Jones')
     print('alebo veľké Pythoňácke dobrodružstvo')
-    cmd_look_around(room)
+    cmd_look_around(room, None, None)
 
     # game loop
     while game_state == states.PLAYING:
