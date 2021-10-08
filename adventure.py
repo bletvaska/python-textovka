@@ -6,16 +6,26 @@ from commands import parse, cmd_look_around
 
 
 def play_game():
-    backpack = [
+    # init game
+    context = {
+        'backpack': {
+            'items': [],
+            'capacity': 2
+        },
+        'room': None,
+        'world': {},
+        'state': states.PLAYING
+    }
+
+    context['backpack']['items'].append(
         {
             'name': 'noviny',
             'description': 'dennik sme s autorskou strankou sama marca',
             'features': [MOVABLE, USABLE],
-        },
-    ]
+        }
+    )
 
-    game_state = states.PLAYING
-    room = {
+    context['room'] = {
         'name': 'dungeon',
         'description': 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.',
         'items': [
@@ -49,10 +59,10 @@ def play_game():
     # game intro
     print('Indiana Jones')
     print('alebo veľké Pythoňácke dobrodružstvo')
-    cmd_look_around(room, None, None)
+    cmd_look_around(context, None)
 
     # game loop
-    while game_state == states.PLAYING:
+    while context['state'] == states.PLAYING:
         line = input('> ').lstrip().rstrip().lower()
 
         # empty input?
@@ -64,35 +74,10 @@ def play_game():
         if cmd is None:
             print('Tento príkaz nepoznám.')
         else:
-            cmd['exec'](room, arg, backpack)
+            cmd['exec'](context, arg)
 
-
-        # elif line in ('o hre', 'about'):
-        #     cmd_about()
-        #
-        # elif line in ('rozhliadni sa', 'look around'):
-        #     cmd_look_around(room)
-        #
         # elif line in ('prikazy', 'commands', 'help', '?'):
         #     cmd_commands()
-        #
-        # elif line in ('koniec', 'quit', 'exit', 'q'):
-        #     game_state = states.QUIT
-        #
-        # elif line.startswith('preskumaj'):
-        #     cmd_explore(room, line, backpack)
-        #
-        # elif line.startswith('poloz'):
-        #     cmd_drop(room, line, backpack)
-        #
-        # elif line.startswith('vezmi'):
-        #     cmd_take(room, line, backpack)
-        #
-        # elif line in ('inventar', 'inventory', 'i'):
-        #     cmd_inventory(backpack)
-        #
-        # else:
-        #     print('Tento príkaz nepoznám.')
 
     print('Končíme.')
 

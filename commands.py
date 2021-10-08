@@ -1,8 +1,11 @@
 from features import MOVABLE, USABLE
+import states
 
 
-def cmd_take(room: dict, line: str, backpack: list):
-    item_name = line.removeprefix('vezmi').strip()
+def cmd_take(context: dict, arg: str):
+    item_name = arg
+    room = context['room']
+    backpack = context['backpack']['items']
 
     # is there name given?
     if item_name == '':
@@ -15,7 +18,7 @@ def cmd_take(room: dict, line: str, backpack: list):
             # is item movable?
             if MOVABLE in item['features']:
                 # is backpack full?
-                if len(backpack) >= 2:
+                if len(backpack) >= context['backpack']['capacity']:
                     print('Batoh je plný.')
                     return
 
@@ -37,7 +40,9 @@ def cmd_take(room: dict, line: str, backpack: list):
     print('Taký predmet tu nikde nevidím.')
 
 
-def cmd_inventory(room: dict, line: str, backpack: list):
+def cmd_inventory(context: dict, arg: str):
+    backpack = context['backpack']['items']
+
     if backpack == []:
         print('Batoh je prázdny.')
     else:
@@ -46,7 +51,11 @@ def cmd_inventory(room: dict, line: str, backpack: list):
             print(f'\t* {item["name"]}')
 
 
-def cmd_explore(room: dict, item_name: str, backpack: list):
+def cmd_explore(context: dict, arg: str):
+    item_name = arg
+    backpack = context['backpack']['items']
+    room = context['room']
+
     # is there name given?
     if item_name == '':
         print('Neviem čo chceš preskúmať.')
@@ -62,8 +71,10 @@ def cmd_explore(room: dict, item_name: str, backpack: list):
     print('Taký predmet tu nikde nevidím.')
 
 
-def cmd_drop(room: dict, line: str, backpack: list):
-    item_name = line.removeprefix('poloz').strip()
+def cmd_drop(context: dict, arg: str):
+    item_name = arg
+    backpack = context['backpack']['items']
+    room = context['room']
 
     # is there name given?
     if item_name == '':
@@ -87,13 +98,15 @@ def cmd_drop(room: dict, line: str, backpack: list):
     print('Taký predmet u seba nemáš.')
 
 
-def cmd_look_around(room: dict, line: str, backpack: list):
+def cmd_look_around(context: dict, arg: str):
     """
     Prints description about the room
 
     Prints out the description about the room given as parameter.
     :param room: room to describe
     """
+    room = context['room']
+
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room['description'])
 
@@ -106,7 +119,7 @@ def cmd_look_around(room: dict, line: str, backpack: list):
             print(f'\t* {item["name"]}')
 
 
-def cmd_commands(room: dict, line: str, backpack: list):
+def cmd_commands(context: dict, arg: str):
     print('Dostupné príkazy v hre:')
     print('* inventar - zobrazí obsah hráčovho batoha')
     print('* koniec - ukončí hru')
@@ -117,11 +130,15 @@ def cmd_commands(room: dict, line: str, backpack: list):
     print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
 
 
-def cmd_about(room: dict, line: str, backpack: list):
+def cmd_about(context: dict, arg: str):
     print('Indiana Jones a jeho Pythoňácke dobrodružstvo')
     print('Nestarnúci hrdina Indiana Jones sa tentokrát ocitol sám pustý v škaredej miestnosti. A jedine '
           'Pythoňácky programátori mu môžu zachrániť krk. Je to na tebe.')
     print('\n(c) 2021 hru spáchal mirek')
+
+
+def cmd_quit(context: dict, arg: str):
+    context['state'] = states.QUIT
 
 
 commands = [
@@ -170,8 +187,15 @@ commands = [
     {
         'name': 'inventar',
         'description': 'vypíše obsah hráčovho batohu',
-        'aliases': ('inventory','i'),
+        'aliases': ('inventory', 'i'),
         'exec': cmd_inventory
+    },
+
+    {
+        'name': 'koniec',
+        'description': 'ukončí hru',
+        'aliases': ('quit', 'exit', 'q', 'bye', 'end'),
+        'exec': cmd_quit
     }
 ]
 
