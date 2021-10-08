@@ -30,6 +30,32 @@ def cmd_explore(room: dict, line: str, backpack: list):
     print('Taký predmet tu nikde nevidím.')
 
 
+def cmd_drop(room: dict, line: str, backpack: list):
+    item_name = line.removeprefix('poloz').strip()
+
+    # is there name given?
+    if item_name == '':
+        print('Neviem čo chceš položiť.')
+        return
+
+    # if item not in backpack
+    for item in backpack:
+        if item['name'] == item_name:
+            # remove item from backpack
+            backpack.remove(item)
+
+            # drop item in the room
+            room['items'].append(item)
+
+            # print out
+            print(f'Predmet {item["name"]} si položil do miestnosti.')
+            return
+
+    # if no such item available
+    print('Taký predmet u seba nemáš.')
+
+
+
 def cmd_look_around(room: dict):
     """
     Prints description about the room
@@ -54,6 +80,7 @@ def cmd_commands():
     print('* inventar - zobrazí obsah hráčovho batoha')
     print('* koniec - ukončí hru')
     print('* o hre - zobrazí informácie o hre')
+    print('* poloz - vyloží predmet z batohu do miestnosti')
     print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
     print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza')
 
@@ -132,6 +159,9 @@ def play_game():
 
         elif line.startswith('preskumaj'):
             cmd_explore(room, line, backpack)
+
+        elif line.startswith('poloz'):
+            cmd_drop(room, line, backpack)
 
         elif line in ('inventar', 'inventory', 'i'):
             cmd_inventory(backpack)
