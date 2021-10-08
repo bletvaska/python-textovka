@@ -37,7 +37,7 @@ def cmd_take(room: dict, line: str, backpack: list):
     print('Taký predmet tu nikde nevidím.')
 
 
-def cmd_inventory(backpack: list):
+def cmd_inventory(room: dict, line: str, backpack: list):
     if backpack == []:
         print('Batoh je prázdny.')
     else:
@@ -89,7 +89,7 @@ def cmd_drop(room: dict, line: str, backpack: list):
     print('Taký predmet u seba nemáš.')
 
 
-def cmd_look_around(room: dict):
+def cmd_look_around(room: dict, line: str, backpack: list):
     """
     Prints description about the room
 
@@ -108,7 +108,7 @@ def cmd_look_around(room: dict):
             print(f'\t* {item["name"]}')
 
 
-def cmd_commands():
+def cmd_commands(room: dict, line: str, backpack: list):
     print('Dostupné príkazy v hre:')
     print('* inventar - zobrazí obsah hráčovho batoha')
     print('* koniec - ukončí hru')
@@ -119,8 +119,27 @@ def cmd_commands():
     print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
 
 
-def cmd_about():
+def cmd_about(room: dict, line: str, backpack: list):
     print('Indiana Jones a jeho Pythoňácke dobrodružstvo')
     print('Nestarnúci hrdina Indiana Jones sa tentokrát ocitol sám pustý v škaredej miestnosti. A jedine '
           'Pythoňácky programátori mu môžu zachrániť krk. Je to na tebe.')
     print('\n(c) 2021 hru spáchal mirek')
+
+
+commands = [
+    {
+        'name': 'o hre',
+        'description': 'zobrazí informácie o hre',
+        'aliases': ('about',),
+        'arg': None,
+        'exec': cmd_about
+    },
+
+    {
+        'name': 'rozhliadni sa',
+        'description': 'zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza',
+        'aliases': ('look around',),
+        'arg': None,
+        'exec': cmd_look_around
+    }
+]
