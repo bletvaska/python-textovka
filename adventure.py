@@ -2,8 +2,7 @@
 
 import states
 from features import MOVABLE, USABLE
-from commands import cmd_look_around, cmd_take, cmd_about, cmd_inventory, cmd_commands, cmd_take, cmd_drop, cmd_explore
-from commands import commands
+from commands import parse, cmd_look_around
 
 
 def play_game():
@@ -61,13 +60,11 @@ def play_game():
             continue
 
         # parse
-        for cmd in commands:
-            if line == cmd['name']:
-                print(f'spustam {cmd}')
-                cmd['exec'](room, line, backpack)
-                continue
-        else:
+        (cmd, arg) = parse(line)
+        if cmd is None:
             print('Tento príkaz nepoznám.')
+        else:
+            cmd['exec'](room, arg, backpack)
 
 
         # elif line in ('o hre', 'about'):

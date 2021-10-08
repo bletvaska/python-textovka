@@ -46,8 +46,8 @@ def cmd_inventory(room: dict, line: str, backpack: list):
             print(f'\t* {item["name"]}')
 
 
-def cmd_explore(room: dict, line: str, backpack: list):
-    item_name = line.removeprefix('preskumaj').strip()
+def cmd_explore(room: dict, item_name: str, backpack: list):
+    # item_name = line.removeprefix('preskumaj').strip()
 
     # is there name given?
     if item_name == '':
@@ -131,7 +131,6 @@ commands = [
         'name': 'o hre',
         'description': 'zobrazí informácie o hre',
         'aliases': ('about',),
-        'arg': None,
         'exec': cmd_about
     },
 
@@ -139,7 +138,27 @@ commands = [
         'name': 'rozhliadni sa',
         'description': 'zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza',
         'aliases': ('look around',),
-        'arg': None,
         'exec': cmd_look_around
+    },
+
+    {
+        'name': 'preskumaj',
+        'description': 'preskúma zvolený predmet',
+        'aliases': ('explore',),
+        'exec': cmd_explore
     }
 ]
+
+
+def parse(line: str) -> dict:
+    for cmd in commands:
+
+        aliases = list(cmd['aliases'])
+        aliases.append(cmd['name'])
+
+        for alias in aliases:
+            if line.startswith(alias):
+                arg = line.removeprefix(alias).strip()
+                return (cmd, arg)
+
+    return (None, None)
