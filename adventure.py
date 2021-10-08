@@ -15,7 +15,13 @@ def cmd_take(room: dict, line: str, backpack: list):
     # if item not in backpack
     for item in room['items']:
         if item['name'] == item_name:
+            # is item movable?
             if MOVABLE in item['features']:
+                # is backpack full?
+                if len(backpack) >= 2:
+                    print('Batoh je plný.')
+                    return
+
                 # remove item from room
                 room['items'].remove(item)
 
