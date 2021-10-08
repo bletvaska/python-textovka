@@ -3,6 +3,15 @@
 import states
 
 
+def cmd_inventory(backpack: list):
+    if backpack == []:
+        print('Batoh je prázdny.')
+    else:
+        print("V batohu máš:")
+        for item in backpack:
+            print(f'\t* {item["name"]}')
+
+
 def cmd_explore(room: dict, line: str):
     item_name = line.removeprefix('preskumaj').strip()
 
@@ -42,10 +51,11 @@ def cmd_look_around(room: dict):
 
 def cmd_commands():
     print('Dostupné príkazy v hre:')
-    print('* o hre - zobrazí informácie o hre')
-    print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza')
-    print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+    print('* inventar - zobrazí obsah hráčovho batoha')
     print('* koniec - ukončí hru')
+    print('* o hre - zobrazí informácie o hre')
+    print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+    print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza')
 
 
 def cmd_about():
@@ -56,18 +66,19 @@ def cmd_about():
 
 
 def play_game():
-    line = None
+    backpack = [
+        {
+            'name': 'noviny',
+            'description': 'dennik sme s autorskou strankou sama marca',
+            'features': ['movable', 'usable'],
+        },
+    ]
+
     game_state = states.PLAYING
     room = {
         'name': 'dungeon',
         'description': 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.',
         'items': [
-            {
-                'name': 'noviny',
-                'description': 'dennik sme s autorskou strankou sama marca',
-                'features': ['movable', 'usable'],
-            },
-
             {
                 'name': 'vedro',
                 'description': 'Vedro plné vody.',
@@ -121,6 +132,9 @@ def play_game():
 
         elif line.startswith('preskumaj'):
             cmd_explore(room, line)
+
+        elif line in ('inventar', 'inventory', 'i'):
+            cmd_inventory(backpack)
 
         else:
             print('Tento príkaz nepoznám.')
