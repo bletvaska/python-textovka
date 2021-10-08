@@ -1,0 +1,2 @@
+MOVABLE = 'movable'
+USABLE = 'usable'

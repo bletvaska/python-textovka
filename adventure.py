@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import states
+from features import MOVABLE, USABLE
 
 
 def cmd_take(room: dict, line: str, backpack: list):
@@ -121,7 +122,7 @@ def play_game():
         {
             'name': 'noviny',
             'description': 'dennik sme s autorskou strankou sama marca',
-            'features': ['movable', 'usable'],
+            'features': [MOVABLE, USABLE],
         },
     ]
 
@@ -133,19 +134,19 @@ def play_game():
             {
                 'name': 'vedro',
                 'description': 'Vedro plné vody.',
-                'features': ['movable', 'usable']
+                'features': [MOVABLE, USABLE]
             },
 
             {
                 'name': 'zapalky',
                 'description': 'Krabička so zápalkami.',
-                'features': ['movable', 'usable']
+                'features': [MOVABLE, USABLE]
             },
 
             {
                 'name': 'kanister',
                 'description': 'Vysokooktánový benzín tvorí obsah tohto kanistra. Kvalitka za rozumnú cenu.',
-                'features': ['usable', 'movable']
+                'features': [MOVABLE, USABLE]
             },
 
             {
