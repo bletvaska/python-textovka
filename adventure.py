@@ -12,7 +12,7 @@ def cmd_inventory(backpack: list):
             print(f'\t* {item["name"]}')
 
 
-def cmd_explore(room: dict, line: str):
+def cmd_explore(room: dict, line: str, backpack: list):
     item_name = line.removeprefix('preskumaj').strip()
 
     # is there name given?
@@ -21,7 +21,7 @@ def cmd_explore(room: dict, line: str):
         return
 
     # if item not in room items
-    for item in room['items']:
+    for item in room['items'] + backpack:
         if item['name'] == item_name:
             print(item['description'])
             return
@@ -131,7 +131,7 @@ def play_game():
             game_state = states.QUIT
 
         elif line.startswith('preskumaj'):
-            cmd_explore(room, line)
+            cmd_explore(room, line, backpack)
 
         elif line in ('inventar', 'inventory', 'i'):
             cmd_inventory(backpack)
