@@ -3,6 +3,31 @@
 import states
 
 
+def cmd_take(room: dict, line: str, backpack: list):
+    item_name = line.removeprefix('vezmi').strip()
+
+    # is there name given?
+    if item_name == '':
+        print('Neviem čo chceš zobrať.')
+        return
+
+    # if item not in backpack
+    for item in room['items']:
+        if item['name'] == item_name:
+            # remove item from room
+            room['items'].remove(item)
+
+            # drop item in the backpack
+            backpack.append(item)
+
+            # print out
+            print(f'Predmet {item["name"]} si si vložil do batohu.')
+            return
+
+    # if no such item available
+    print('Taký predmet tu nikde nevidím.')
+
+
 def cmd_inventory(backpack: list):
     if backpack == []:
         print('Batoh je prázdny.')
@@ -53,7 +78,6 @@ def cmd_drop(room: dict, line: str, backpack: list):
 
     # if no such item available
     print('Taký predmet u seba nemáš.')
-
 
 
 def cmd_look_around(room: dict):
@@ -162,6 +186,9 @@ def play_game():
 
         elif line.startswith('poloz'):
             cmd_drop(room, line, backpack)
+
+        elif line.startswith('vezmi'):
+            cmd_take(room, line, backpack)
 
         elif line in ('inventar', 'inventory', 'i'):
             cmd_inventory(backpack)
