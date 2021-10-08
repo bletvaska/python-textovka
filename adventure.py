@@ -15,14 +15,19 @@ def cmd_take(room: dict, line: str, backpack: list):
     # if item not in backpack
     for item in room['items']:
         if item['name'] == item_name:
-            # remove item from room
-            room['items'].remove(item)
+            if MOVABLE in item['features']:
+                # remove item from room
+                room['items'].remove(item)
 
-            # drop item in the backpack
-            backpack.append(item)
+                # drop item in the backpack
+                backpack.append(item)
 
-            # print out
-            print(f'Predmet {item["name"]} si si vložil do batohu.')
+                # print out
+                print(f'Predmet {item["name"]} si si vložil do batohu.')
+
+            else:
+                print('Tento predmet sa nedá zobrať.')
+
             return
 
     # if no such item available
