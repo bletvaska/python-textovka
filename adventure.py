@@ -119,6 +119,7 @@ def cmd_commands():
     print('* poloz - vyloží predmet z batohu do miestnosti')
     print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
     print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza')
+    print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
 
 
 def cmd_about():
