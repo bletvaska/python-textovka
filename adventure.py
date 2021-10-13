@@ -77,9 +77,6 @@ def play_game():
         else:
             cmd['exec'](context, arg)
 
-        # elif line in ('prikazy', 'commands', 'help', '?'):
-        #     cmd_commands()
-
     print('Končíme.')
 
 

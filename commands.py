@@ -1,7 +1,7 @@
 from features import MOVABLE, USABLE
 import states
 from utils import get_item_by_name
-from usages import use_canister, use_matches
+from usages import use_canister, use_matches, use_bucket
 
 
 def cmd_take(context: dict, arg: str):
@@ -161,12 +161,15 @@ def cmd_use(context: dict, arg: str):
         return
 
     # using the item
+    # item['exec'](context, item)
     if item_name == 'kanister':
         use_canister(context, item)
 
     elif item_name == 'zapalky':
         use_matches(context, item)
 
+    elif item_name == 'vedro':
+        use_bucket(context, item)
 
     else:
         # print(f'Použil si predmet {item["name"]}')

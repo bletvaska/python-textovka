@@ -2,6 +2,18 @@ from utils import get_item_by_name
 from features import USABLE
 
 
+def use_bucket(context, bucket):
+    # init
+
+    # scenario
+    # 1. aktualizujeme vedro
+    #    - je prazdne
+    #    - nebude pouzitelne
+    # 2. zmazem dvere z miestnosti/hry
+    # 3. ???
+    # 4. rendering - ta si uhasil dvere a sa rozpadli
+
+
 def use_matches(context, matches):
     # init
     room = context['room']
