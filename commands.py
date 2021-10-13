@@ -120,6 +120,26 @@ def cmd_look_around(context: dict, arg: str):
         for item in room['items']:
             print(f'\t* {item["name"]}')
 
+    # print exits
+    exits = []
+    for _exit in room['exits']:
+        if room['exits'][_exit] is not None:
+            exits.append(_exit)
+
+    if exits == []:
+        print('Z miestnosti nevedú žiadne východy.')
+    else:
+        print('Môžeš ísť:')
+        for ex in exits:
+            if ex == 'north':
+                print('\t* sever')
+            if ex == 'south':
+                print('\t* juh')
+            if ex == 'east':
+                print('\t* východ')
+            if ex == 'west':
+                print('\t* západ')
+
 
 def cmd_commands(context: dict, arg: str):
     print('Dostupné príkazy v hre:')

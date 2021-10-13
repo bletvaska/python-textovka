@@ -55,7 +55,7 @@ def play_game():
             }
         ],
         'exits': {
-            'east': 'garden',
+            'east': None,
             'west': None,
             'north': None,
             'south': None
