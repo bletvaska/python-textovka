@@ -24,7 +24,7 @@ def use_bucket(context, bucket):
     room['items'].remove(door)
 
     # 4. nastavim pred z miestnosti na vychod do garden
-    room['exits']['east'] = get_room_by_name('garden', context['world'])
+    room['exits']['east'] = 'garden'
 
     # 5. rendering - ta si uhasil dvere a sa rozpadli
     print('Teplo v miestnosti narastalo a ty si sa nestíhal chladiť chlípaním vody z vedra. Osvietila ťa ale spásna myšlienka a obsah vedra si vyvrátil smerom na dvere v plameňoch. Vody bolo dostatok na to, aby sa plameň uhasil, ale bolo jej dosť na to, aby sa horiace dvere pod jej tlakom rozpadli. Horenisko halí hustá hmla.')

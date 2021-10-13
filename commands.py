@@ -1,6 +1,6 @@
 from features import MOVABLE, USABLE
 import states
-from utils import get_item_by_name
+from utils import get_item_by_name, get_room_by_name
 from usages import use_canister, use_matches, use_bucket
 
 
@@ -197,14 +197,20 @@ def cmd_use(context: dict, arg: str):
 
 
 def cmd_east(context: dict, arg: str):
-    # overim, ze ci sa na vychod da ist
+    room = context['room']
 
+    # overim, ze ci sa na vychod da ist
     # ak sa neda, tak vypisem spravu
-    # Tam sa nedá ísť.
+    if room['exits']['east'] is None:
+        print('Tam sa nedá ísť.')
+        return
 
     # v opacnom pripade:
     # * zmenim aktualnu miestnost (na vychodnu)
+    context['room'] = get_room_by_name(room['exits']['east'], context['world'])
+
     # * rozhlaidnem sa v nej
+    cmd_look_around(context, None)
 
 
 commands = [
