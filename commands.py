@@ -141,6 +141,30 @@ def cmd_quit(context: dict, arg: str):
     context['state'] = states.QUIT
 
 
+def cmd_use(context: dict, arg: str):
+    item_name = arg
+    backpack = context['backpack']['items']
+    room = context['room']
+
+    # is there name given?
+    if item_name == '':
+        print('Neviem čo chceš použiť.')
+        return
+
+    # if item available?
+    for item in backpack + room['items']:
+        if item['name'] == item_name:
+            # is item usable?
+            if USABLE in item['features']:
+                print(f'Použil si predmet {item["name"]}')
+            else:
+                print('Tento predmet sa nedá použiť')
+            return
+
+    # if no such item available
+    print('Taký predmet tu nikde nevidím.')
+
+
 commands = [
     {
         'name': 'vezmi',
@@ -196,6 +220,13 @@ commands = [
         'description': 'ukončí hru',
         'aliases': ('quit', 'exit', 'q', 'bye', 'end'),
         'exec': cmd_quit
+    },
+
+    {
+        'name': 'pouzi',
+        'description': 'použije zvolený predmet',
+        'aliases': ('use',),
+        'exec': cmd_use
     }
 ]
 
