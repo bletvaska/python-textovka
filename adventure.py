@@ -54,7 +54,12 @@ def play_game():
                 'state': None
             }
         ],
-        'exits': []
+        'exits': {
+            'east': 'garden',
+            'west': None,
+            'north': None,
+            'south': None
+        }
     }
 
     # game intro
