@@ -1,5 +1,6 @@
 from features import MOVABLE, USABLE
 import states
+from utils import get_item_by_name
 
 
 def cmd_take(context: dict, arg: str):
@@ -12,32 +13,33 @@ def cmd_take(context: dict, arg: str):
         print('Neviem čo chceš zobrať.')
         return
 
-    # if item not in backpack
-    for item in room['items']:
-        if item['name'] == item_name:
-            # is item movable?
-            if MOVABLE in item['features']:
-                # is backpack full?
-                if len(backpack) >= context['backpack']['capacity']:
-                    print('Batoh je plný.')
-                    return
+    item = get_item_by_name(item_name, room['items'])
 
-                # remove item from room
-                room['items'].remove(item)
+    # if no such item in room
+    if item is None:
+        print('Taký predmet tu nikde nevidím.')
+        return
 
-                # drop item in the backpack
-                backpack.append(item)
+    # is item movable?
+    if MOVABLE not in item['features']:
+        print('Tento predmet sa nedá zobrať.')
+        return
 
-                # print out
-                print(f'Predmet {item["name"]} si si vložil do batohu.')
+    # is backpack full?
+    if len(backpack) >= context['backpack']['capacity']:
+        print('Batoh je plný.')
+        return
 
-            else:
-                print('Tento predmet sa nedá zobrať.')
+    # take item
 
-            return
+    # remove item from room
+    room['items'].remove(item)
 
-    # if no such item available
-    print('Taký predmet tu nikde nevidím.')
+    # drop item in the backpack
+    backpack.append(item)
+
+    # print out
+    print(f'Predmet {item["name"]} si si vložil do batohu.')
 
 
 def cmd_inventory(context: dict, arg: str):
@@ -61,14 +63,14 @@ def cmd_explore(context: dict, arg: str):
         print('Neviem čo chceš preskúmať.')
         return
 
-    # if item not in room items
-    for item in room['items'] + backpack:
-        if item['name'] == item_name:
-            print(item['description'])
-            return
+    # find item by name
+    item = get_item_by_name(item_name, room['items'] + backpack)
 
     # if no such item available
-    print('Taký predmet tu nikde nevidím.')
+    if item is None:
+        print('Taký predmet tu nikde nevidím.')
+    else:
+        print(item['description'])
 
 
 def cmd_drop(context: dict, arg: str):
@@ -81,21 +83,20 @@ def cmd_drop(context: dict, arg: str):
         print('Neviem čo chceš položiť.')
         return
 
-    # if item not in backpack
-    for item in backpack:
-        if item['name'] == item_name:
-            # remove item from backpack
-            backpack.remove(item)
-
-            # drop item in the room
-            room['items'].append(item)
-
-            # print out
-            print(f'Predmet {item["name"]} si položil do miestnosti.')
-            return
-
     # if no such item available
-    print('Taký predmet u seba nemáš.')
+    item = get_item_by_name(item_name, backpack)
+    if item is None:
+        print('Taký predmet u seba nemáš.')
+        return
+
+    # remove item from backpack
+    backpack.remove(item)
+
+    # drop item in the room
+    room['items'].append(item)
+
+    # print out
+    print(f'Predmet {item["name"]} si položil do miestnosti.')
 
 
 def cmd_look_around(context: dict, arg: str):
@@ -135,14 +136,6 @@ def cmd_about(context: dict, arg: str):
 
 def cmd_quit(context: dict, arg: str):
     context['state'] = states.QUIT
-
-
-def get_item_by_name(name: str, items: list) -> dict:
-    for item in items:
-        if item['name'] == name:
-            return item
-
-    # return None
 
 
 def cmd_use(context: dict, arg: str):
