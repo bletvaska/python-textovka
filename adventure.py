@@ -3,63 +3,26 @@
 import states
 from features import MOVABLE, USABLE
 from commands import parse, cmd_look_around
+from world import world
+from utils import get_room_by_name
 
 
 def play_game():
     # init game
     context = {
         'backpack': {
-            'items': [],
+            'items': [
+                {
+                    'name': 'noviny',
+                    'description': 'dennik sme s autorskou strankou sama marca',
+                    'features': [MOVABLE, USABLE],
+                }
+            ],
             'capacity': 2
         },
-        'room': None,
-        'world': {},
+        'room': get_room_by_name('dungeon', world),
+        'world': world,
         'state': states.PLAYING
-    }
-
-    context['backpack']['items'].append(
-        {
-            'name': 'noviny',
-            'description': 'dennik sme s autorskou strankou sama marca',
-            'features': [MOVABLE, USABLE],
-        }
-    )
-
-    context['room'] = {
-        'name': 'dungeon',
-        'description': 'Nachádzaš sa v tmavej miestnosti, kde sa po stenách nachádzajú hieroglify z obdobia Juraja Jánošíka. Valaška a krpce sú najščastejším motívom, ktorý vidíš na vyrytých postavách na stene. Stiesňujúce miesto.',
-        'items': [
-            {
-                'name': 'vedro',
-                'description': 'Vedro plné vody.',
-                'features': [MOVABLE, USABLE]
-            },
-
-            {
-                'name': 'zapalky',
-                'description': 'Krabička so zápalkami.',
-                'features': [MOVABLE, USABLE]
-            },
-
-            {
-                'name': 'kanister',
-                'description': 'Vysokooktánový benzín tvorí obsah tohto kanistra. Kvalitka za rozumnú cenu.',
-                'features': [MOVABLE, USABLE]
-            },
-
-            {
-                'name': 'dvere',
-                'description': 'Masívne dubové dvere. Zamknuté.',
-                'features': [],
-                'state': None
-            }
-        ],
-        'exits': {
-            'east': None,
-            'west': None,
-            'north': None,
-            'south': None
-        }
     }
 
     # game intro
