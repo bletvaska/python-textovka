@@ -1,7 +1,7 @@
 from features import MOVABLE, USABLE
 import states
 from utils import get_item_by_name
-from usages import use_canister
+from usages import use_canister, use_matches
 
 
 def cmd_take(context: dict, arg: str):
@@ -165,28 +165,8 @@ def cmd_use(context: dict, arg: str):
         use_canister(context, item)
 
     elif item_name == 'zapalky':
-        # 1. overim, ci su dvere poliate benzinom
-        #    - ci su dvere v stave 'wet'
-        door = get_item_by_name('dvere', room['items'])
-        if door['state'] != 'wet':
-            print('Zahrkal si krabičkou pri ušku, aby si sa uistil, že nie je prázdna. Usmial si sa.')
-            return
+        use_matches(context, item)
 
-        # 2. aktualizujem zapalky
-        #    - odstranim ich z hry
-        if item in room['items']:
-            room['items'].remove(item)
-        else:
-            backpack.remove(item)
-
-        # 3. aktualizujem dvere
-        #    - zmenim description - dvere v plamenoch
-        #    - zmenim stav na 'on fire'
-        door['description'] = 'Dvere v plameňoch.'
-        door['state'] = 'on fire'
-
-        # 4. renderujem scenu - skrtol si zapalkou a dvere zacali horiet
-        print('Otvoril si krabičku a vytiahol si z nej jedinú zápalku. Nadýchol si sa a škrtol si. Miestnosť sa okamžite rozžiarila. Síce nie tvojim šarmantným úsmevom, ale plamenňom, ktorý oakmžite zachvátil dvere nasiaknuté vysokooktánovým benzínom. Nejedno srdce pyromana by teraz vzplanulo radosťou.')
 
     else:
         # print(f'Použil si predmet {item["name"]}')
