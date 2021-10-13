@@ -196,6 +196,17 @@ def cmd_use(context: dict, arg: str):
         raise NotImplementedError(f'Usage of item "{item["name"]}" was not yet implemented')
 
 
+def cmd_east(context: dict, arg: str):
+    # overim, ze ci sa na vychod da ist
+
+    # ak sa neda, tak vypisem spravu
+    # Tam sa nedá ísť.
+
+    # v opacnom pripade:
+    # * zmenim aktualnu miestnost (na vychodnu)
+    # * rozhlaidnem sa v nej
+
+
 commands = [
     {
         'name': 'vezmi',
@@ -258,6 +269,13 @@ commands = [
         'description': 'použije zvolený predmet',
         'aliases': ('use',),
         'exec': cmd_use
+    },
+
+    {
+        'name': 'vychod',
+        'description': 'prejde do miestnosti na východ od aktuálnej',
+        'aliases': ('east', 'v'),
+        'exec': cmd_east
     }
 ]
 
