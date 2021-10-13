@@ -137,6 +137,14 @@ def cmd_quit(context: dict, arg: str):
     context['state'] = states.QUIT
 
 
+def get_item_by_name(name: str, items: list) -> dict:
+    for item in items:
+        if item['name'] == name:
+            return item
+
+    # return None
+
+
 def cmd_use(context: dict, arg: str):
     item_name = arg
     backpack = context['backpack']['items']
@@ -147,44 +155,38 @@ def cmd_use(context: dict, arg: str):
         print('Neviem čo chceš použiť.')
         return
 
-    # if item available?
-    # canister = get_item_by_name('kanister', room['items'] + backpack)
-    # if canister is None:
-    # else:
+    # is there such item?
+    item = get_item_by_name(item_name, backpack + room['items'])
+    if item is None:
+        print('Taký predmet tu nikde nevidím.')
+        return
 
-    for item in backpack + room['items']:
-        if item['name'] == item_name:
-            # is item usable?
-            if USABLE in item['features']:
-                if item_name == 'kanister':
-                    # 1. aktualizujem dvere:
-                    #    - description dvere su poliate benzinom
-                    # get_item_by_name(name, list)
+    # is item usable?
+    if USABLE not in item['features']:
+        print('Tento predmet sa nedá použiť')
+        return
 
-                    # door = get_item_by_name('dvere', room['items'])
-                    for i in room['items']:
-                        if i['name'] == 'dvere':
-                            i['description'] = 'Masívne dubové dvere dôkladne nasiaknuté vysokooktánovým benzínom.'
-                            break
+    # using the item
+    if item_name == 'kanister':
+        # 1. aktualizujem dvere:
+        #    - description dvere su poliate benzinom
+        door = get_item_by_name('dvere', room['items'])
+        door['description'] = 'Masívne dubové dvere dôkladne nasiaknuté vysokooktánovým benzínom.'
 
-                    # 2. aktualizujem kanister
-                    #    - description - prazdny kanister
-                    #    - features - nebude USABLE
-                    canister = item
-                    canister['name'] = 'prazdny kanister'
-                    canister['description'] = 'Prázdny kanister od benzínu.'
-                    canister['features'].remove(USABLE)
+        # 2. aktualizujem kanister
+        #    - description - prazdny kanister
+        #    - features - nebude USABLE
+        canister = item
+        canister['name'] = 'prazdny kanister'
+        canister['description'] = 'Prázdny kanister od benzínu.'
+        canister['features'].remove(USABLE)
 
-                    # 3. render - vylejem kanister na dvere
-                    print('Odšroboval si zátku kanistra a celý jeho obsah si vylial na dvere. Veľmi dôkladne si ich pooblieval a v miestnosti sa rozľahla vôňa vysokooktánového benzínu. Srdce nejedného feťáka by v tejto chvíli zaplesalo Blahom.')
-                else:
-                    print(f'Použil si predmet {item["name"]}')
-            else:
-                print('Tento predmet sa nedá použiť')
-            return
+        # 3. render - vylejem kanister na dvere
+        print(
+            'Odšroboval si zátku kanistra a celý jeho obsah si vylial na dvere. Veľmi dôkladne si ich pooblieval a v miestnosti sa rozľahla vôňa vysokooktánového benzínu. Srdce nejedného feťáka by v tejto chvíli zaplesalo Blahom.')
 
-    # if no such item available
-    print('Taký predmet tu nikde nevidím.')
+    else:
+        print(f'Použil si predmet {item["name"]}')
 
 
 commands = [
