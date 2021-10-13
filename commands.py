@@ -121,13 +121,9 @@ def cmd_look_around(context: dict, arg: str):
 
 def cmd_commands(context: dict, arg: str):
     print('Dostupné príkazy v hre:')
-    print('* inventar - zobrazí obsah hráčovho batoha')
-    print('* koniec - ukončí hru')
-    print('* o hre - zobrazí informácie o hre')
-    print('* poloz - vyloží predmet z batohu do miestnosti')
-    print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
-    print('* rozhliadni sa - zobrazí opis miestnosti, v ktorej sa hráč aktuálne nachádza')
-    print('* vezmi - vezme predmet z miestnosti a vloží ho do batohu')
+
+    for cmd in commands:
+        print(f'* {cmd["name"]} - {cmd["description"]}')
 
 
 def cmd_about(context: dict, arg: str):
@@ -152,11 +148,37 @@ def cmd_use(context: dict, arg: str):
         return
 
     # if item available?
+    # canister = get_item_by_name('kanister', room['items'] + backpack)
+    # if canister is None:
+    # else:
+
     for item in backpack + room['items']:
         if item['name'] == item_name:
             # is item usable?
             if USABLE in item['features']:
-                print(f'Použil si predmet {item["name"]}')
+                if item_name == 'kanister':
+                    # 1. aktualizujem dvere:
+                    #    - description dvere su poliate benzinom
+                    # get_item_by_name(name, list)
+
+                    # door = get_item_by_name('dvere', room['items'])
+                    for i in room['items']:
+                        if i['name'] == 'dvere':
+                            i['description'] = 'Masívne dubové dvere dôkladne nasiaknuté vysokooktánovým benzínom.'
+                            break
+
+                    # 2. aktualizujem kanister
+                    #    - description - prazdny kanister
+                    #    - features - nebude USABLE
+                    canister = item
+                    canister['name'] = 'prazdny kanister'
+                    canister['description'] = 'Prázdny kanister od benzínu.'
+                    canister['features'].remove(USABLE)
+
+                    # 3. render - vylejem kanister na dvere
+                    print('Odšroboval si zátku kanistra a celý jeho obsah si vylial na dvere. Veľmi dôkladne si ich pooblieval a v miestnosti sa rozľahla vôňa vysokooktánového benzínu. Srdce nejedného feťáka by v tejto chvíli zaplesalo Blahom.')
+                else:
+                    print(f'Použil si predmet {item["name"]}')
             else:
                 print('Tento predmet sa nedá použiť')
             return
