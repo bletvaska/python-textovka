@@ -7,7 +7,11 @@ def get_item_by_name(name: str, items: list) -> dict:
 
 
 def get_room_by_name(name: str, world: list) -> dict:
-    pass
+    for room in world:
+        if room['name'] == name:
+            return room
+
+    # return None
 
 
 
