@@ -40,7 +40,7 @@ world = [
 
     {
         'name': 'garden',
-        'description': '',
+        'description': 'Zarastené ohradené miestečko naozaj len zdiaľky pripomína to, čím kedysi bolo - záhradkou. Tá je aktuálne značne neudržiavaná a miesto reďkoviek a mrkviečik tu vidieť len lopúchy, bodliaky a žihľavu.',
         'items': [],
         'exits': {
             'north': None,
