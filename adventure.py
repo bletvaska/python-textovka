@@ -50,7 +50,8 @@ def play_game():
             {
                 'name': 'dvere',
                 'description': 'Masívne dubové dvere. Zamknuté.',
-                'features': []
+                'features': [],
+                'state': None
             }
         ],
         'exits': []
