@@ -1,3 +1,5 @@
+import random
+
 from utils import get_item_by_name, get_room_by_name
 from features import USABLE
 
@@ -27,7 +29,8 @@ def use_bucket(context, bucket):
     room['exits']['east'] = 'garden'
 
     # 5. rendering - ta si uhasil dvere a sa rozpadli
-    print('Teplo v miestnosti narastalo a ty si sa nestíhal chladiť chlípaním vody z vedra. Osvietila ťa ale spásna myšlienka a obsah vedra si vyvrátil smerom na dvere v plameňoch. Vody bolo dostatok na to, aby sa plameň uhasil, ale bolo jej dosť na to, aby sa horiace dvere pod jej tlakom rozpadli. Horenisko halí hustá hmla.')
+    print(
+        'Teplo v miestnosti narastalo a ty si sa nestíhal chladiť chlípaním vody z vedra. Osvietila ťa ale spásna myšlienka a obsah vedra si vyvrátil smerom na dvere v plameňoch. Vody bolo dostatok na to, aby sa plameň uhasil, ale bolo jej dosť na to, aby sa horiace dvere pod jej tlakom rozpadli. Horenisko halí hustá hmla.')
 
 
 def use_matches(context, matches):
@@ -81,3 +84,16 @@ def use_canister(context, canister):
     # 3. render - vylejem kanister na dvere
     print(
         'Odšroboval si zátku kanistra a celý jeho obsah si vylial na dvere. Veľmi dôkladne si ich pooblieval a v miestnosti sa rozľahla vôňa vysokooktánového benzínu. Srdce nejedného feťáka by v tejto chvíli zaplesalo Blahom.')
+
+
+def use_newspaper(context, newspaper):
+    print('Včerajšie vydanie Denníka N. Čo nové sa deje vo svete? Zalistoval si a… je to tu…')
+
+    titles = [
+        "Exminister Drucker: Hlas a Smer stratili obsah a pridali sa k antisystému",
+        "Mal som dobré známky, tak som z dediny na severe Vietnamu mohol prísť do Komárna",
+        "Newsfilter: Kažimír odkázal prezidentke, že on nikam neodchádza",
+        "Ekonomický newsfilter: Distribučky sa vzbúrili, Sulík nemá na výber, škody zaplatí štát"
+    ]
+
+    print(random.choice(titles))
