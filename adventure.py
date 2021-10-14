@@ -17,7 +17,9 @@ import config
 
 def _post_world_to_parse(world: dict):
     payload = {
-        "world": world
+        "world": world,
+        "backpack": [],
+        "start_room": ''
     }
 
     # TODO: not secure
@@ -54,6 +56,13 @@ def _load_world_from_file():
     return world
 
 
+def _save_world_to_file(world: dict):
+    # save the world
+    file = open('world.json', 'w')
+    json.dump(world, file, ensure_ascii=False, indent=4)
+    file.close()
+
+
 def _get_world_from_parse(object_id: str) -> dict:
     headers = {
         'X-Parse-Application-Id': config.app_id,
@@ -72,14 +81,10 @@ def _get_world_from_parse(object_id: str) -> dict:
 
 def play_game():
     # init game
-
-    # save the world
-    # file = open('world.json', 'w')
-    # json.dump(world, file, ensure_ascii=False, indent=4)
-    # file.close()
-
+    # load world from file
     # world = _load_world_from_file()
-    # _post_world_to_parse(world)
+
+    # download world from parse.com
     world = _get_world_from_parse('SgojO2UAvw')
 
     # create context
