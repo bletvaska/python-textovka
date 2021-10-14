@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 
+# standardne moduly
 import json
 
+# tretostranove moduly
+
+# moje moduly
 import states
 from features import MOVABLE, USABLE
 from commands import parse, cmd_look_around
