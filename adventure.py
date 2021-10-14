@@ -45,7 +45,18 @@ def play_game():
         else:
             cmd['exec'](context, arg)
 
-    print('Končíme.')
+        # check room name
+        if context['room']['name'] == 'garden':
+            print("__        __   _ _   ____                   _ ")
+            print("\\ \\      / /__| | | |  _ \\  ___  _ __   ___| |")
+            print(" \\ \\ /\\ / / _ \\ | | | | | |/ _ \\| '_ \\ / _ \\ |")
+            print("  \\ V  V /  __/ | | | |_| | (_) | | | |  __/_|")
+            print("   \\_/\\_/ \\___|_|_| |____/ \\___/|_| |_|\\___(_)")
+            print()
+
+            context['state'] = states.WIN
+
+    print('(c) 2021 spáchal mirek ako výsledný projekt hustého akvaristicko-teraristického školenia.')
 
 
 if __name__ == '__main__':
