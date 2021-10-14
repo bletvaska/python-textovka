@@ -209,9 +209,59 @@ def cmd_east(context: dict, arg: str):
     # * zmenim aktualnu miestnost (na vychodnu)
     context['room'] = get_room_by_name(room['exits']['east'], context['world'])
 
-    # * rozhlaidnem sa v nej
+    # * rozhliadnem sa v nej
     cmd_look_around(context, None)
 
+
+def cmd_west(context: dict, arg: str):
+    room = context['room']
+
+    # overim, ze ci sa na zapad da ist
+    # ak sa neda, tak vypisem spravu
+    if room['exits']['west'] is None:
+        print('Tam sa nedá ísť.')
+        return
+
+    # v opacnom pripade:
+    # * zmenim aktualnu miestnost (na zapadnu)
+    context['room'] = get_room_by_name(room['exits']['west'], context['world'])
+
+    # * rozhliadnem sa v nej
+    cmd_look_around(context, None)
+
+
+def cmd_north(context: dict, arg: str):
+    room = context['room']
+
+    # overim, ze ci sa na sever da ist
+    # ak sa neda, tak vypisem spravu
+    if room['exits']['north'] is None:
+        print('Tam sa nedá ísť.')
+        return
+
+    # v opacnom pripade:
+    # * zmenim aktualnu miestnost (na severnu)
+    context['room'] = get_room_by_name(room['exits']['north'], context['world'])
+
+    # * rozhliadnem sa v nej
+    cmd_look_around(context, None)
+
+
+def cmd_south(context: dict, arg: str):
+    room = context['room']
+
+    # overim, ze ci sa na juh da ist
+    # ak sa neda, tak vypisem spravu
+    if room['exits']['south'] is None:
+        print('Tam sa nedá ísť.')
+        return
+
+    # v opacnom pripade:
+    # * zmenim aktualnu miestnost (na juznu)
+    context['room'] = get_room_by_name(room['exits']['south'], context['world'])
+
+    # * rozhliadnem sa v nej
+    cmd_look_around(context, None)
 
 commands = [
     {
@@ -282,6 +332,27 @@ commands = [
         'description': 'prejde do miestnosti na východ od aktuálnej',
         'aliases': ('east', 'v'),
         'exec': cmd_east
+    },
+
+    {
+        'name': 'zapad',
+        'description': 'prejde do miestnosti na západ od aktuálnej',
+        'aliases': ('west', 'z'),
+        'exec': cmd_west
+    },
+
+    {
+        'name': 'sever',
+        'description': 'prejde do miestnosti na sever od aktuálnej',
+        'aliases': ('north', 's'),
+        'exec': cmd_north
+    },
+
+    {
+        'name': 'juh',
+        'description': 'prejde do miestnosti na juh od aktuálnej',
+        'aliases': ('south', 'j'),
+        'exec': cmd_south
     }
 ]
 
