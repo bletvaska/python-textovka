@@ -253,6 +253,7 @@ def cmd_save(context: dict, arg: str):
         return
 
     if arg == 'cloud':
+        # da sa ulozit aj cely context, pretoze je slovnik
         payload = {
             "history": context['history']
         }
@@ -266,6 +267,8 @@ def cmd_save(context: dict, arg: str):
         with requests.post(f'{config.base_url}/history', headers=headers, json=payload) as response:
             data = response.json()
             print(f'Tvoja pozícia má kľúč "{data["objectId"]}".')
+
+        return
 
     # save to file
     try:
