@@ -1,5 +1,8 @@
 import json
 
+import requests
+
+import config
 from features import MOVABLE, USABLE
 import states
 from utils import get_item_by_name, get_room_by_name
@@ -249,6 +252,22 @@ def cmd_save(context: dict, arg: str):
         print('Neviem, kam chceš stav hry uložiť.')
         return
 
+    if arg == 'cloud':
+        payload = {
+            "history": context['history']
+        }
+
+        headers = {
+            'X-Parse-Application-Id': config.app_id,
+            'X-Parse-REST-API-Key': config.rest_api_key,
+            'Content-Type': 'application/json'
+        }
+
+        with requests.post(f'{config.base_url}/history', headers=headers, json=payload) as response:
+            data = response.json()
+            print(f'Tvoja pozícia má kľúč "{data["objectId"]}".')
+
+    # save to file
     try:
         with open(arg, 'w') as file:
             json.dump(context['history'], file)

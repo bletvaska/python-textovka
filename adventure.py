@@ -29,7 +29,7 @@ def _post_world_to_parse(world: dict):
         'Content-Type': 'application/json'
     }
 
-    with requests.post(config.base_url, headers=headers, json=payload) as response:
+    with requests.post(f'{config.base_url}/worlds', headers=headers, json=payload) as response:
         print(response.status_code)
         print(response.json())
 
@@ -69,7 +69,7 @@ def _get_world_from_parse(object_id: str) -> dict:
         'X-Parse-REST-API-Key': config.rest_api_key,
     }
 
-    with requests.get(f'{config.base_url}/{object_id}', headers=headers) as response:
+    with requests.get(f'{config.base_url}/worlds/{object_id}', headers=headers) as response:
         if response.status_code != 200:
             print('CHYBA: Chyba pri sťahovaní mapy z internetu.')
             print(response.json())
