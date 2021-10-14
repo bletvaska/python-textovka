@@ -18,8 +18,22 @@ def play_game():
     # file.close()
 
     # load the world
-    with open('world.json', 'r') as file:
-        world = json.load(file)
+    try:
+        with open('world.json', 'r') as file:
+            world = json.load(file)
+
+    except FileNotFoundError as ex:
+        print('CHYBA: Súbor so svetom "world.json" sa nenašiel. Hra sa preto nedá spustiť a bude ukončená.')
+        quit(1)
+
+    except PermissionError as ex:
+        print("CHYBA: Prístup odopretý.")
+        quit(1)
+
+    except Exception as ex:
+        print('CHYBA: Neznáma chyba.')
+        print(f'CHYBA: {ex}')
+        quit(1)
 
     # create context
     context = {
