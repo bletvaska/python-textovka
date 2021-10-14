@@ -4,6 +4,7 @@
 import json
 
 # tretostranove moduly
+import requests
 
 # moje moduly
 import states
@@ -11,19 +12,30 @@ from features import MOVABLE, USABLE
 from commands import parse, cmd_look_around
 # from world import world
 from utils import get_room_by_name
+import config
 
 
-def play_game():
-    # init game
+def _post_world_to_parse(world: dict):
+    payload = {
+        "world": world
+    }
 
-    # save the world
-    # file = open('world.json', 'w')
-    # json.dump(world, file, ensure_ascii=False, indent=4)
-    # file.close()
+    # TODO: not secure
+    headers = {
+        'X-Parse-Application-Id': config.app_id,
+        'X-Parse-REST-API-Key': config.rest_api_key,
+        'Content-Type': 'application/json'
+    }
 
+    with requests.post(config.base_url, headers=headers, json=payload) as response:
+        print(response.status_code)
+        print(response.json())
+
+
+def _load_world_from_file():
     # load the world
     try:
-        with open('world.json', 'r') as file:
+        with open('world.ascii.json', 'r') as file:
             world = json.load(file)
 
     except FileNotFoundError as ex:
@@ -38,6 +50,37 @@ def play_game():
         print('CHYBA: Neznáma chyba.')
         print(f'CHYBA: {ex}')
         quit(1)
+
+    return world
+
+
+def _get_world_from_parse(object_id: str) -> dict:
+    headers = {
+        'X-Parse-Application-Id': config.app_id,
+        'X-Parse-REST-API-Key': config.rest_api_key,
+    }
+
+    with requests.get(f'{config.base_url}/{object_id}', headers=headers) as response:
+        if response.status_code != 200:
+            print('CHYBA: Chyba pri sťahovaní mapy z internetu.')
+            print(response.json())
+            quit(2)
+
+        data = response.json()
+        return data['world']
+
+
+def play_game():
+    # init game
+
+    # save the world
+    # file = open('world.json', 'w')
+    # json.dump(world, file, ensure_ascii=False, indent=4)
+    # file.close()
+
+    # world = _load_world_from_file()
+    # _post_world_to_parse(world)
+    world = _get_world_from_parse('SgojO2UAvw')
 
     # create context
     context = {
