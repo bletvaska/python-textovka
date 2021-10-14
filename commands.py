@@ -1,3 +1,5 @@
+import json
+
 from features import MOVABLE, USABLE
 import states
 from utils import get_item_by_name, get_room_by_name
@@ -32,6 +34,7 @@ def cmd_take(context: dict, arg: str):
         return
 
     # take item
+    context['history'].append(f'VEZMI {item_name}')
 
     # remove item from room
     room['items'].remove(item)
@@ -89,6 +92,9 @@ def cmd_drop(context: dict, arg: str):
     if item is None:
         print('Taký predmet u seba nemáš.')
         return
+
+    # update history
+    context['history'].append(f'POLOZ {item_name}')
 
     # remove item from backpack
     backpack.remove(item)
@@ -181,6 +187,9 @@ def cmd_use(context: dict, arg: str):
         return
 
     # using the item
+    # update history
+    context['history'].append(f'POUZI {item_name}')
+
     # item['exec'](context, item)
     if item_name == 'kanister':
         use_canister(context, item)
@@ -208,6 +217,9 @@ def _go(context: dict, direction: str):
         print('Tam sa nedá ísť.')
         return
 
+    # update history
+    context['history'].append(direction)
+
     # v opacnom pripade:
     # * zmenim aktualnu miestnost na novu
     context['room'] = get_room_by_name(room['exits'][direction], context['world'])
@@ -230,6 +242,19 @@ def cmd_north(context: dict, arg: str):
 
 def cmd_south(context: dict, arg: str):
     _go(context, 'south')
+
+
+def cmd_save(context: dict, arg: str):
+    if arg == '':
+        print('Neviem, kam chceš stav hry uložiť.')
+        return
+
+    try:
+        with open(arg, 'w') as file:
+            json.dump(context['history'], file)
+    except Exception as ex:
+        print('CHYBA: Chyba pri zápise do súboru.')
+        print(f'CHYBA: {ex}')
 
 
 commands = [
@@ -322,6 +347,13 @@ commands = [
         'description': 'prejde do miestnosti na juh od aktuálnej',
         'aliases': ('south', 'j'),
         'exec': cmd_south
+    },
+
+    {
+        'name': 'uloz',
+        'description': 'uloží stav rozohratej hry do súboru',
+        'aliases': ('ulozit', 'save'),
+        'exec': cmd_save
     }
 ]
 

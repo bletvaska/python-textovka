@@ -101,7 +101,8 @@ def play_game():
         },
         'room': get_room_by_name('dungeon', world),
         'world': world,
-        'state': states.PLAYING
+        'state': states.PLAYING,
+        'history': []
     }
 
     # game intro
