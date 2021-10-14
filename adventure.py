@@ -1,14 +1,27 @@
 #!/usr/bin/env python3
 
+import json
+
 import states
 from features import MOVABLE, USABLE
 from commands import parse, cmd_look_around
-from world import world
+# from world import world
 from utils import get_room_by_name
 
 
 def play_game():
     # init game
+
+    # save the world
+    # file = open('world.json', 'w')
+    # json.dump(world, file, ensure_ascii=False, indent=4)
+    # file.close()
+
+    # load the world
+    with open('world.json', 'r') as file:
+        world = json.load(file)
+
+    # create context
     context = {
         'backpack': {
             'items': [
