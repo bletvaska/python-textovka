@@ -56,7 +56,7 @@ def play_game():
 
             context['state'] = states.WIN
 
-    print('(c) 2021 spáchal mirek ako výsledný projekt hustého akvaristicko-teraristického školenia.')
+    print('(c) 2021 spáchal mirek ako výsledný projekt hustého akvaristicko-teraristického školenia')
 
 
 if __name__ == '__main__':
