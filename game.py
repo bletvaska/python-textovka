@@ -34,6 +34,7 @@ def show_room(room: Dict):
 if __name__ == '__main__':
     # init game
     game_state = states.PLAYING
+    backpack = ['figa borova', 'minca']
     room = {
         'name': 'dungeon',
         'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
@@ -84,6 +85,15 @@ if __name__ == '__main__':
         # render room
         elif line in ("rozhliadni sa", "look around", "kukaj het"):
             show_room(room)
+
+        # show inventory
+        elif line in ("inventar", "i", "inventory", 'batoh'):
+            if backpack == []:
+                print("Batoh je prázdny.")
+            else:
+                print("V batohu máš:")
+                for item in backpack:
+                    print(f"* {item}")
 
         # unknown commands
         else:
