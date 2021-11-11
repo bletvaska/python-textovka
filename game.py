@@ -12,18 +12,18 @@ if __name__ == '__main__':
 
     # main loop
     line = None
-    while line != 'koniec':
+    while line not in ('koniec', 'quit', 'bye', 'q'):
         # normalizing string
         line = input('> ').lower().strip()
 
-        if line in ('', 'koniec'):
+        if line in ('', 'koniec', 'quit', 'bye', 'q'):
             continue
 
-        elif line == 'o hre':
+        elif line in ('o hre', 'about', '?'):
             print('(c)2021 created by mirek')
             print('Ďalšie veľké dobrodružstvo Indiana Jonesa. Tentokrá zápasí s jazykom Python v tmavej miestnosti.')
 
-        elif line == 'prikazy':
+        elif line in ('prikazy', 'commands', 'help', 'pomoc'):
             print('Zoznam príkazov v hre:')
             print('* koniec - ukončí rozohratú hru')
             print('* o hre - zobrazí informácie o hre')
