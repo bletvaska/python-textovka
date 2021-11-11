@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 if __name__ == '__main__':
+    # banner
     print(" ___           _ _                         _                       ")
     print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ")
     print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
@@ -8,4 +9,12 @@ if __name__ == '__main__':
     print("|___|_| |_|\__,_|_|\__,_|_| |_|\__,_|  \___/ \___/|_| |_|\___||___/")
     print("                       and his Great Escape                        ")
     print()
-           
+
+    # main loop
+    line = None
+    while line != 'koniec':
+        # normalizing string
+        line = input('> ').lower().strip()
+
+    print('(c)2021 by mirek mocný programátor')
+
