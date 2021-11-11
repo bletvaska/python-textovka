@@ -11,8 +11,18 @@ def show_room(room: Dict):
     room or special string, when there is no exit from the room.
     :param room: the room to print info about
     """
+    # type checking
+    if type(room) is not dict:
+        raise TypeError('Room is not of type dictionary.')
+
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
+
+    if room["exits"] == []:
+        print("Z tejto miestnosti nevedú žiadne východy.")
+
+    if room["items"] == []:
+        print("Nevidíš tu nič zvláštne.")
 
     # return None
 
