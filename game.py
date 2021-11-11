@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 import states
 
+
+def show_room(room):
+    print(f'Nachádzaš sa v miestnosti {room["name"]}.')
+    print(f'{room["description"]}')
+
+
 room = {
     'name': 'dungeon',
     'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
@@ -21,8 +27,7 @@ if __name__ == '__main__':
     print()
 
     # rendering the dark room
-    print('Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, čo dáva'
-          'tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo hlavou.')
+    show_room(room)
 
     # main loop
     game_state = states.PLAYING
@@ -49,13 +54,11 @@ if __name__ == '__main__':
             print('* koniec - ukončí rozohratú hru')
             print('* o hre - zobrazí informácie o hre')
             print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
+            print('* rozhliadni sa - vypíše opis miestnosti, v ktorej sa hráč práve nachádza')
 
         # render room
         elif line in ("rozhliadni sa", "look around", "kukaj het"):
-            print('Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, čo '
-                  'dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo '
-                  'hlavou.')
-
+            show_room(room)
 
         # unknown commands
         else:
