@@ -1,22 +1,34 @@
 #!/usr/bin/env python3
 import states
+from typing import Dict
 
 
-def show_room(room):
+def show_room(room: Dict):
+    """
+    Show content of the room.
+    The function shows name and description of the room. It also prints the list of items, which are in the room, or
+    the information about there are no items in the room. Finally, it prints out also list of available exits from the
+    room or special string, when there is no exit from the room.
+    :param room: the room to print info about
+    """
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
 
+    # return None
 
-room = {
-    'name': 'dungeon',
-    'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
-                   'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo '
-                   'hlavou.',
-    'items': [],
-    'exits': []
-}
 
 if __name__ == '__main__':
+    # init game
+    game_state = states.PLAYING
+    room = {
+        'name': 'dungeon',
+        'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
+                       'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo '
+                       'hlavou.',
+        'items': [],
+        'exits': []
+    }
+
     # banner
     print(" ___           _ _                         _                       ")
     print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ")
@@ -30,7 +42,6 @@ if __name__ == '__main__':
     show_room(room)
 
     # main loop
-    game_state = states.PLAYING
     while game_state == states.PLAYING:
         # normalizing string
         line = input('> ').lower().strip()
