@@ -23,6 +23,10 @@ def show_room(room: Dict):
 
     if room["items"] == []:
         print("Nevidíš tu nič zvláštne.")
+    else:
+        print(f"Vidíš: {', '.join(room['items'])}")
+        # for item in room['items']:
+        #     print(f"* {item}")
 
     # return None
 
@@ -35,7 +39,7 @@ if __name__ == '__main__':
         'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
                        'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo '
                        'hlavou.',
-        'items': [],
+        'items': ['kanister', 'zapalky', 'hasiaci pristroj', 'noviny'],
         'exits': []
     }
 
