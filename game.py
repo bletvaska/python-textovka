@@ -16,5 +16,15 @@ if __name__ == '__main__':
         # normalizing string
         line = input('> ').lower().strip()
 
+        if line in ('', 'koniec'):
+            continue
+
+        elif line == 'o hre':
+            print('(c)2021 created by mirek')
+            print('Ďalšie veľké dobrodružstvo Indiana Jonesa. Tentokrá zápasí s jazykom Python v tmavej miestnosti.')
+
+        else:
+            print('Taký príkaz nepoznám.')
+
     print('(c)2021 by mirek mocný programátor')
 
