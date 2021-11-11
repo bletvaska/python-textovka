@@ -1,37 +1,36 @@
 #!/usr/bin/env python3
-from random import randint
+import random
 
 
-def play_game(secret):
-    print('Myslím si číslo od 1 do 20.')
+def play_game(secret=7):
+    print('Myslím si číslo od "1" do "20".')
     tip = None
-    count = 0
+    counter = 5
 
-    while secret != tip and count < 5:
-        tip = input(f"Tvoj {count + 1}. tip: ")
+    while counter > 0 and tip != secret:
+        tip = input('Tvoj tip: ')
         tip = int(tip)
-        count += 1
 
-        if tip > secret:
-            print(f'Hmm... Moje číslo je menšie ako {tip}.')
-        elif tip < secret:
-            print(f'Hmm... Moje číslo je väčšie ako {tip}.')
+        if secret > tip:
+            print('Hmm… Moje číslo je väčšie ako tvoje.')
+            counter -= 1
+        elif secret < tip:
+            print('Hmm… Moje číslo je menšie ako tvoje.')
+            counter -= 1
         else:
-            print(f'Ta ty genius!!!')
+            print('Ta ty genius.')
             break
     else:
-        print('ta ty jaka lama. sa nauc pajton najprv, hej?')
+        print(f'Ta ty si lama. Ta si to neuhadol. Moje tajne cislo je {secret}.')
 
 
-playing = True
-play_game(randint(1, 20))
-while playing == True:
-    choice = input('Chceš hrať túto mocnú hru ešte raz? (a/n) ')
-    if choice == 'a':
-        play_game(randint(1, 20))
-    else:
-        playing = False
+# def main():
+if __name__ == '__main__':
+    playing = 'a'
 
-print(
-    'Ta díky, že si si zahral túto mocnú hru. Prosím podpor nádejného autora svojím malým príspevkom na účet SK123456789008765433121. Bude ti vďačný za každý tvoj príspevok nad 100 evry. Keď nepošleš, nech ťa svokra skára.')
-print('(c) 2021 spáchal mirek')
+    while playing in ('a', 'ano', 'y', 'yes'):
+        play_game(random.randint(1, 20))
+        playing = input('Chces hrat znova? (a/n) ').lstrip().rstrip().lower()
+
+    print(
+        'Ta tuto mocnu hru spachal zacinajuci herny vyvojar mirek. Ak ho cches podporit, tak cvakni na ucet SK1234567890.')

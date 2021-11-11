@@ -1,2 +1,0 @@
-MOVABLE = 'movable'
-USABLE = 'usable'
