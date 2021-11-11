@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 import states
 
+room = {
+    'name': 'dungeon',
+    'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
+                   'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo '
+                   'hlavou.',
+    'items': [],
+    'exits': []
+}
+
 if __name__ == '__main__':
     # banner
     print(" ___           _ _                         _                       ")
@@ -12,7 +21,8 @@ if __name__ == '__main__':
     print()
 
     # rendering the dark room
-    print('Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo hlavou.')
+    print('Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, čo dáva'
+          'tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo hlavou.')
 
     # main loop
     game_state = states.PLAYING
@@ -39,6 +49,13 @@ if __name__ == '__main__':
             print('* koniec - ukončí rozohratú hru')
             print('* o hre - zobrazí informácie o hre')
             print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
+
+        # render room
+        elif line in ("rozhliadni sa", "look around", "kukaj het"):
+            print('Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, čo '
+                  'dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo '
+                  'hlavou.')
+
 
         # unknown commands
         else:
