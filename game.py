@@ -23,6 +23,12 @@ if __name__ == '__main__':
             print('(c)2021 created by mirek')
             print('Ďalšie veľké dobrodružstvo Indiana Jonesa. Tentokrá zápasí s jazykom Python v tmavej miestnosti.')
 
+        elif line == 'prikazy':
+            print('Zoznam príkazov v hre:')
+            print('* koniec - ukončí rozohratú hru')
+            print('* o hre - zobrazí informácie o hre')
+            print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
+
         else:
             print('Taký príkaz nepoznám.')
 
