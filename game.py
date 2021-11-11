@@ -11,6 +11,9 @@ if __name__ == '__main__':
     print("                       and his Great Escape                        ")
     print()
 
+    # rendering the dark room
+    print('Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo hlavou.')
+
     # main loop
     game_state = states.PLAYING
     while game_state == states.PLAYING:
