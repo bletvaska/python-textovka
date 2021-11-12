@@ -91,6 +91,7 @@ if __name__ == '__main__':
             print('Zoznam príkazov v hre:')
             print('* koniec - ukončí rozohratú hru')
             print('* o hre - zobrazí informácie o hre')
+            print('* poloz - polozi zvoleny predmet v miestnosti')
             print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
             print('* rozhliadni sa - vypíše opis miestnosti, v ktorej sa hráč práve nachádza')
             print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
@@ -108,6 +109,28 @@ if __name__ == '__main__':
                 for item in backpack:
                     print(f"   * {item['name']}")
 
+        # drop item
+        elif line.startswith('poloz'):
+            name = line.split('poloz')[1].strip()
+
+            # if the name was not entered
+            if name == '':
+                print('Neviem, čo chceš položiť.')
+
+            else:
+                # search for item in room items
+                for item in backpack:
+                    if name == item['name']:
+                        # take item
+                        backpack.remove(item)
+                        room['items'].append(item)
+                        print(f'Do miestnosti si položil predmet {name}.')
+                        break
+
+                # item not found
+                else:
+                    print('Taký predmet pri sebe nemáš.')
+
         # take item
         elif line.startswith('vezmi'):
             name = line.split('vezmi')[1].strip()
@@ -115,7 +138,6 @@ if __name__ == '__main__':
             # if the name was not entered
             if name == '':
                 print('Neviem, čo chceš zobrať.')
-
 
             else:
                 # search for item in room items
