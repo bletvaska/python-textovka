@@ -81,6 +81,7 @@ if __name__ == '__main__':
             print('* o hre - zobrazí informácie o hre')
             print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
             print('* rozhliadni sa - vypíše opis miestnosti, v ktorej sa hráč práve nachádza')
+            print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
 
         # render room
         elif line in ("rozhliadni sa", "look around", "kukaj het"):
