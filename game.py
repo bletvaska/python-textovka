@@ -2,7 +2,8 @@
 import states
 from typing import Dict
 
-from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
+from commands import cmd_about, cmd_commands
+from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door, MOVABLE
 
 
 def show_room(room: Dict):
@@ -84,18 +85,11 @@ if __name__ == '__main__':
 
         # about game
         elif line in ('o hre', 'about', 'info', '?'):
-            print('(c)2021 created by mirek')
-            print('Ďalšie veľké dobrodružstvo Indiana Jonesa. Tentokrát zápasí s jazykom Python v tmavej miestnosti.')
+            cmd_about()
 
         # show commands
         elif line in ('prikazy', 'commands', 'help', 'pomoc'):
-            print('Zoznam príkazov v hre:')
-            print('* koniec - ukončí rozohratú hru')
-            print('* o hre - zobrazí informácie o hre')
-            print('* poloz - polozi zvoleny predmet v miestnosti')
-            print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
-            print('* rozhliadni sa - vypíše opis miestnosti, v ktorej sa hráč práve nachádza')
-            print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
+            cmd_commands()
 
         # render room
         elif line in ("rozhliadni sa", "look around", "kukaj het"):
@@ -143,11 +137,16 @@ if __name__ == '__main__':
             else:
                 # search for item in room items
                 for item in room['items']:
+                    # found item
                     if name == item['name']:
-                        # take item
-                        room['items'].remove(item)
-                        backpack.append(item)
-                        print(f'Do batohu si si vložil predmet {name}.')
+                        # is the item movable?
+                        if MOVABLE in item['features']:
+                            # take item
+                            room['items'].remove(item)
+                            backpack.append(item)
+                            print(f'Do batohu si si vložil predmet {name}.')
+                        else:
+                            print('Tento predmet sa nedá vziať.')
                         break
 
                 # item not found
