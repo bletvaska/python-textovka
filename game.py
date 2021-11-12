@@ -26,9 +26,9 @@ def show_room(room: Dict):
     if room["items"] == []:
         print("Nevidíš tu nič zvláštne.")
     else:
-        print(f"Vidíš: {', '.join(room['items'])}")
-        # for item in room['items']:
-        #     print(f"* {item}")
+        # print(f"Vidíš: {', '.join(room['items'])}")
+        for item in room['items']:
+            print(f"   * {item['name']}")
 
     # return None
 
@@ -106,7 +106,7 @@ if __name__ == '__main__':
             else:
                 print("V batohu máš:")
                 for item in backpack:
-                    print(f"* {item}")
+                    print(f"   * {item['name']}")
 
         # take item
         elif line.startswith('vezmi'):
@@ -116,15 +116,20 @@ if __name__ == '__main__':
             if name == '':
                 print('Neviem, čo chceš zobrať.')
 
-            # if not in room
-            elif name not in room['items']:
-                print('Taký predmet tu nikde nevidím.')
 
-            # take item
             else:
-                room['items'].remove(name)
-                backpack.append(name)
-                print(f'Do batohu si si vložil predmet {name}.')
+                # search for item in room items
+                for item in room['items']:
+                    if name == item['name']:
+                        # take item
+                        room['items'].remove(item)
+                        backpack.append(item)
+                        print(f'Do batohu si si vložil predmet {name}.')
+                        break
+
+                # item not found
+                else:
+                    print('Taký predmet tu nikde nevidím.')
 
         # unknown commands
         else:
