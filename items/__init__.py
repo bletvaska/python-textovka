@@ -4,3 +4,4 @@ from .figa import figa
 from .fire_extinguisher import fire_extinguisher
 from .matches import matches
 from .newspaper import newspaper
+from .door import door

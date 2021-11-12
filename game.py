@@ -2,7 +2,7 @@
 import states
 from typing import Dict
 
-from items import figa, coin, canister, matches, fire_extinguisher, newspaper
+from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
 
 
 def show_room(room: Dict):
@@ -51,7 +51,8 @@ if __name__ == '__main__':
             canister,
             matches,
             fire_extinguisher,
-            newspaper
+            newspaper,
+            door
         ],
         'exits': []
     }
