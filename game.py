@@ -3,7 +3,7 @@ import states
 from typing import Dict
 
 from commands import cmd_about, cmd_commands, cmd_show_inventory, cmd_drop_item, cmd_take_item, cmd_quit
-from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door, MOVABLE
+from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
 
 
 def show_room(room: Dict):
@@ -38,13 +38,16 @@ if __name__ == '__main__':
     # init game
     context = {
         'state': states.PLAYING,
-        'backpack': [],
+        'backpack': {
+            'items': [],
+            'max': 2,
+        },
         'world': {},
         'room': {}
     }
 
-    context['backpack'].append(figa)
-    context['backpack'].append(coin)
+    context['backpack']['items'].append(figa)
+    context['backpack']['items'].append(coin)
 
     context['room'] = {
         'name': 'dungeon',

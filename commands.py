@@ -18,11 +18,11 @@ def cmd_commands(context):
 
 
 def cmd_show_inventory(context):
-    if context['backpack'] == []:
+    if context['backpack']['items'] == []:
         print("Batoh je prázdny.")
     else:
         print("V batohu máš:")
-        for item in context['backpack']:
+        for item in context['backpack']['items']:
             print(f"   * {item['name']}")
 
 
@@ -37,10 +37,10 @@ def cmd_drop_item(line, context):
 
     else:
         # search for item in room items
-        for item in backpack:
+        for item in backpack['items']:
             if name == item['name']:
                 # take item
-                backpack.remove(item)
+                backpack['items'].remove(item)
                 room['items'].append(item)
                 print(f'Do miestnosti si položil predmet {name}.')
                 break
@@ -66,10 +66,15 @@ def cmd_take_item(line, context):
             if name == item['name']:
                 # is the item movable?
                 if MOVABLE in item['features']:
-                    # take item
-                    room['items'].remove(item)
-                    backpack.append(item)
-                    print(f'Do batohu si si vložil predmet {name}.')
+                    # is backpack full?
+                    if len(backpack['items']) >= backpack['max']:
+                        print('Batoh je plný')
+                        break
+                    else:
+                        # take item
+                        room['items'].remove(item)
+                        backpack['items'].append(item)
+                        print(f'Do batohu si si vložil predmet {name}.')
                 else:
                     print('Tento predmet sa nedá vziať.')
                 break
