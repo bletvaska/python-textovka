@@ -38,8 +38,8 @@ if __name__ == '__main__':
     room = {
         'name': 'dungeon',
         'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
-                       'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti prebleslo '
-                       'hlavou.',
+                       'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti '
+                       'prebleslo hlavou.',
         'items': ['kanister', 'zapalky', 'hasiaci pristroj', 'noviny'],
         'exits': []
     }
@@ -47,9 +47,9 @@ if __name__ == '__main__':
     # banner
     print(" ___           _ _                         _                       ")
     print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ")
-    print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
-    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\__ \\")
-    print("|___|_| |_|\__,_|_|\__,_|_| |_|\__,_|  \___/ \___/|_| |_|\___||___/")
+    print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
+    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\")
+    print("|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/")
     print("                       and his Great Escape                        ")
     print()
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
             continue
 
         # quit game
-        elif line in ('koniec', 'quit', 'bye', 'q'):
+        elif line in ('koniec', 'quit', 'bye', 'q', 'exit'):
             game_state = states.QUIT
 
         # about game
@@ -94,6 +94,24 @@ if __name__ == '__main__':
                 print("V batohu máš:")
                 for item in backpack:
                     print(f"* {item}")
+
+        # take item
+        elif line.startswith('vezmi'):
+            name = line.split('vezmi')[1].strip()
+
+            # if the name was not entered
+            if name == '':
+                print('Neviem, čo chceš zobrať.')
+
+            # if not in room
+            elif name not in room['items']:
+                print('Taký predmet tu nikde nevidím.')
+
+            # take item
+            else:
+                room['items'].remove(name)
+                backpack.append(name)
+                print(f'Do batohu si si vložil predmet {name}.')
 
         # unknown commands
         else:
