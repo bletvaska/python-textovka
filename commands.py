@@ -1,5 +1,5 @@
 import states
-from helpers import get_item_by_name
+from helpers import get_item_by_name, show_room
 from items import MOVABLE
 
 
@@ -108,3 +108,7 @@ def cmd_examine_item(line: str, context: dict):
 
 def cmd_quit(context: dict):
     context['state'] = states.QUIT
+
+
+def cmd_look_around(context: dict):
+    show_room(context['room'])
