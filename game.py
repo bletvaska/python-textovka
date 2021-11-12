@@ -34,13 +34,49 @@ def show_room(room: Dict):
 if __name__ == '__main__':
     # init game
     game_state = states.PLAYING
-    backpack = ['figa borova', 'minca']
+
+    backpack = [
+        {
+            'name': 'figa borova',
+            'description': 'Borová figa. Čo viac k tomu dodať.',
+            'features': ['movable']
+        },
+        {
+            'name': 'minca',
+            'description': 'Zlatá minca.',
+            'features': ['movable']
+        }
+    ]
+
     room = {
         'name': 'dungeon',
         'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
                        'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti '
                        'prebleslo hlavou.',
-        'items': ['kanister', 'zapalky', 'hasiaci pristroj', 'noviny'],
+        'items': [
+            {
+                'name': 'kanister',
+                'description': 'Veľký 25L kanister. Odšroboval si veko a nadýchol si sa. Benzín. Vysokooktánový. Isto '
+                               'zo Slovnaftu.',
+                'features': ['movable', 'usable']
+            },
+            {
+                'name': 'zapalky',
+                'description': 'Safety match zápalky. Zahrkal si krabičkou a po jej otvorení si našiel len tri.',
+                'features': ['movable', 'usable']
+            },
+            {
+                'name': 'hasiaci pristroj',
+                'description': 'Červená nádoba snehového hasiaceho prístroja. Plomba dáva vedieť, že ešte nebol '
+                               'použitý.',
+                'features': ['movable', 'usable']
+            },
+            {
+                'name': 'noviny',
+                'description': 'Bravíčko do každej domácnosti.',
+                'features': ['movable', 'usable']
+            }
+        ],
         'exits': []
     }
 
