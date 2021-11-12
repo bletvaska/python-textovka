@@ -13,12 +13,13 @@ def cmd_commands(context):
     print('* koniec - ukončí rozohratú hru')
     print('* o hre - zobrazí informácie o hre')
     print('* poloz - polozi zvoleny predmet v miestnosti')
+    print('* preskumaj - vypise opis daneho predmetu')
     print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
     print('* rozhliadni sa - vypíše opis miestnosti, v ktorej sa hráč práve nachádza')
     print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
 
 
-def cmd_show_inventory(context):
+def cmd_show_inventory(context: dict):
     if context['backpack']['items'] == []:
         print("Batoh je prázdny.")
     else:
@@ -27,7 +28,7 @@ def cmd_show_inventory(context):
             print(f"   * {item['name']}")
 
 
-def cmd_drop_item(line, context):
+def cmd_drop_item(line: str, context: dict):
     backpack = context['backpack']
     room = context['room']
     name = line.split('poloz')[1].strip()
@@ -51,7 +52,7 @@ def cmd_drop_item(line, context):
     print(f'Do miestnosti si položil predmet {name}.')
 
 
-def cmd_take_item(line, context):
+def cmd_take_item(line: str, context: dict):
     backpack = context['backpack']
     room = context['room']
     name = line.split('vezmi')[1].strip()
@@ -85,5 +86,25 @@ def cmd_take_item(line, context):
     print(f'Do batohu si si vložil predmet {name}.')
 
 
-def cmd_quit(context):
+def cmd_examine_item(line, context):
+    name = line.split('preskumaj')[1].strip()
+
+    # if the name was not entered
+    if name == '':
+        print('Neviem, čo chceš preskúmať.')
+        return
+
+    # search for item in room items
+    item = get_item_by_name(name, context['room']['items'] + context['backpack']['items'])
+
+    # item not found
+    if item is None:
+        print('Taký predmet tu nikde nevidím.')
+        return
+
+    # show item description
+    print(item['description'])
+
+
+def cmd_quit(context: dict):
     context['state'] = states.QUIT

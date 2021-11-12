@@ -2,7 +2,8 @@
 import states
 from typing import Dict
 
-from commands import cmd_about, cmd_commands, cmd_show_inventory, cmd_drop_item, cmd_take_item, cmd_quit
+from commands import cmd_about, cmd_commands, cmd_show_inventory, cmd_drop_item, cmd_take_item, cmd_quit, \
+    cmd_examine_item
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
 
 
@@ -112,6 +113,10 @@ if __name__ == '__main__':
         # take item
         elif line.startswith('vezmi'):
             cmd_take_item(line, context)
+
+        # examine item
+        elif line.startswith('preskumaj'):
+            cmd_examine_item(line, context)
 
         # unknown commands
         else:
