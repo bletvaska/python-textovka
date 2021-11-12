@@ -1,4 +1,5 @@
 import states
+from helpers import get_item_by_name
 from items import MOVABLE
 
 
@@ -34,20 +35,20 @@ def cmd_drop_item(line, context):
     # if the name was not entered
     if name == '':
         print('Neviem, čo chceš položiť.')
+        return
 
-    else:
-        # search for item in room items
-        for item in backpack['items']:
-            if name == item['name']:
-                # take item
-                backpack['items'].remove(item)
-                room['items'].append(item)
-                print(f'Do miestnosti si položil predmet {name}.')
-                break
+    # search for item in backpack items
+    item = get_item_by_name(name, backpack['items'])
 
-        # item not found
-        else:
-            print('Taký predmet pri sebe nemáš.')
+    # item not found
+    if item is None:
+        print('Taký predmet pri sebe nemáš.')
+        return
+
+    # drop item
+    backpack['items'].remove(item)
+    room['items'].append(item)
+    print(f'Do miestnosti si položil predmet {name}.')
 
 
 def cmd_take_item(line, context):
@@ -58,30 +59,30 @@ def cmd_take_item(line, context):
     # if the name was not entered
     if name == '':
         print('Neviem, čo chceš zobrať.')
+        return
 
-    else:
-        # search for item in room items
-        for item in room['items']:
-            # found item
-            if name == item['name']:
-                # is the item movable?
-                if MOVABLE in item['features']:
-                    # is backpack full?
-                    if len(backpack['items']) >= backpack['max']:
-                        print('Batoh je plný')
-                        break
-                    else:
-                        # take item
-                        room['items'].remove(item)
-                        backpack['items'].append(item)
-                        print(f'Do batohu si si vložil predmet {name}.')
-                else:
-                    print('Tento predmet sa nedá vziať.')
-                break
+    # search for item in room items
+    item = get_item_by_name(name, room['items'])
 
-        # item not found
-        else:
-            print('Taký predmet tu nikde nevidím.')
+    # item not found
+    if item is None:
+        print('Taký predmet tu nikde nevidím.')
+        return
+
+    # is the item movable?
+    if MOVABLE not in item['features']:
+        print('Tento predmet sa nedá vziať.')
+        return
+
+    # is backpack full?
+    if len(backpack['items']) >= backpack['max']:
+        print('Batoh je plný')
+        return
+
+    # take item
+    room['items'].remove(item)
+    backpack['items'].append(item)
+    print(f'Do batohu si si vložil predmet {name}.')
 
 
 def cmd_quit(context):
