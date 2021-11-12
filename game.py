@@ -2,7 +2,7 @@
 import states
 from typing import Dict
 
-from commands import cmd_about, cmd_commands
+from commands import cmd_about, cmd_commands, cmd_show_inventory, cmd_drop_item, cmd_take_item, cmd_quit
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door, MOVABLE
 
 
@@ -36,14 +36,17 @@ def show_room(room: Dict):
 
 if __name__ == '__main__':
     # init game
-    game_state = states.PLAYING
+    context = {
+        'state': states.PLAYING,
+        'backpack': [],
+        'world': {},
+        'room': {}
+    }
 
-    backpack = [
-        figa,
-        coin
-    ]
+    context['backpack'].append(figa)
+    context['backpack'].append(coin)
 
-    room = {
+    context['room'] = {
         'name': 'dungeon',
         'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
                        'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti '
@@ -68,10 +71,10 @@ if __name__ == '__main__':
     print()
 
     # rendering the dark room
-    show_room(room)
+    show_room(context['room'])
 
     # main loop
-    while game_state == states.PLAYING:
+    while context['state'] == states.PLAYING:
         # normalizing string
         line = input('> ').lower().strip()
 
@@ -81,77 +84,31 @@ if __name__ == '__main__':
 
         # quit game
         elif line in ('koniec', 'quit', 'bye', 'q', 'exit'):
-            game_state = states.QUIT
+            cmd_quit(context)
 
         # about game
         elif line in ('o hre', 'about', 'info', '?'):
-            cmd_about()
+            cmd_about(context)
 
         # show commands
         elif line in ('prikazy', 'commands', 'help', 'pomoc'):
-            cmd_commands()
+            cmd_commands(context)
 
         # render room
         elif line in ("rozhliadni sa", "look around", "kukaj het"):
-            show_room(room)
+            show_room(context['room'])
 
         # show inventory
         elif line in ("inventar", "i", "inventory", 'batoh'):
-            if backpack == []:
-                print("Batoh je prázdny.")
-            else:
-                print("V batohu máš:")
-                for item in backpack:
-                    print(f"   * {item['name']}")
+            cmd_show_inventory(context)
 
         # drop item
         elif line.startswith('poloz'):
-            name = line.split('poloz')[1].strip()
-
-            # if the name was not entered
-            if name == '':
-                print('Neviem, čo chceš položiť.')
-
-            else:
-                # search for item in room items
-                for item in backpack:
-                    if name == item['name']:
-                        # take item
-                        backpack.remove(item)
-                        room['items'].append(item)
-                        print(f'Do miestnosti si položil predmet {name}.')
-                        break
-
-                # item not found
-                else:
-                    print('Taký predmet pri sebe nemáš.')
+            cmd_drop_item(line, context)
 
         # take item
         elif line.startswith('vezmi'):
-            name = line.split('vezmi')[1].strip()
-
-            # if the name was not entered
-            if name == '':
-                print('Neviem, čo chceš zobrať.')
-
-            else:
-                # search for item in room items
-                for item in room['items']:
-                    # found item
-                    if name == item['name']:
-                        # is the item movable?
-                        if MOVABLE in item['features']:
-                            # take item
-                            room['items'].remove(item)
-                            backpack.append(item)
-                            print(f'Do batohu si si vložil predmet {name}.')
-                        else:
-                            print('Tento predmet sa nedá vziať.')
-                        break
-
-                # item not found
-                else:
-                    print('Taký predmet tu nikde nevidím.')
+            cmd_take_item(line, context)
 
         # unknown commands
         else:
