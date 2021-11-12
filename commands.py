@@ -3,12 +3,12 @@ from helpers import get_item_by_name
 from items import MOVABLE
 
 
-def cmd_about(context):
+def cmd_about(context: dict):
     print('(c)2021 created by mirek')
     print('Ďalšie veľké dobrodružstvo Indiana Jonesa. Tentokrát zápasí s jazykom Python v tmavej miestnosti.')
 
 
-def cmd_commands(context):
+def cmd_commands(context: dict):
     print('Zoznam príkazov v hre:')
     print('* koniec - ukončí rozohratú hru')
     print('* o hre - zobrazí informácie o hre')
@@ -86,7 +86,7 @@ def cmd_take_item(line: str, context: dict):
     print(f'Do batohu si si vložil predmet {name}.')
 
 
-def cmd_examine_item(line, context):
+def cmd_examine_item(line: str, context: dict):
     name = line.split('preskumaj')[1].strip()
 
     # if the name was not entered
