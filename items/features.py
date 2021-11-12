@@ -1,0 +1,2 @@
+MOVABLE = 1
+USABLE = 2
