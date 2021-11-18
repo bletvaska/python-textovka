@@ -24,7 +24,8 @@ if __name__ == '__main__':
             cmd_examine,
             cmd_quit,
             cmd_look_around,
-            cmd_commands
+            cmd_commands,
+            cmd_use
         ]
     }
 
