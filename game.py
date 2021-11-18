@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import states
 
-from commands import commands
 from helpers import show_room
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
+from commands import commands
 
 
 def parse(line: str, commands: list) -> tuple:
@@ -13,7 +13,7 @@ def parse(line: str, commands: list) -> tuple:
                 param = line.split(alias)[1].strip()
                 return cmd, param
 
-    # return None
+    return (None, None)
 
 
 if __name__ == '__main__':
