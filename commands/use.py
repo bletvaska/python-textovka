@@ -24,7 +24,10 @@ def _exec(context: dict, param: str):
         return
 
     # use item
-    print(f'Používam predmet {name}.')
+    item['use'](context)
+
+    # else:
+    #     print(f'Používam predmet {name}.')
 
 
 cmd = {
