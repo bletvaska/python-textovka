@@ -10,14 +10,8 @@ def cmd_about(context: dict, param: str):
 
 def cmd_commands(context: dict, param: str):
     print('Zoznam príkazov v hre:')
-    print('* inventar - zobrazí obsah batohu')
-    print('* koniec - ukončí rozohratú hru')
-    print('* o hre - zobrazí informácie o hre')
-    print('* poloz - polozi zvoleny predmet v miestnosti')
-    print('* preskumaj - vypise opis daneho predmetu')
-    print('* prikazy - zobrazí príkazy, ktoré sa dajú použiť v hre')
-    print('* rozhliadni sa - vypíše opis miestnosti, v ktorej sa hráč práve nachádza')
-    print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
+    for cmd in commands:
+        print(f'* {cmd["name"]} - {cmd["description"]}')
 
 
 def cmd_show_inventory(context: dict, param: str):
