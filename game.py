@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import states
-from typing import Dict
 
 from commands import cmd_about, cmd_commands, cmd_show_inventory, cmd_drop_item, cmd_take_item, cmd_quit, \
     cmd_examine_item, cmd_look_around

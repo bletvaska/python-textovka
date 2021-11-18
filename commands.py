@@ -10,6 +10,7 @@ def cmd_about(context: dict):
 
 def cmd_commands(context: dict):
     print('Zoznam príkazov v hre:')
+    print('* inventar - zobrazí obsah batohu')
     print('* koniec - ukončí rozohratú hru')
     print('* o hre - zobrazí informácie o hre')
     print('* poloz - polozi zvoleny predmet v miestnosti')
@@ -112,3 +113,62 @@ def cmd_quit(context: dict):
 
 def cmd_look_around(context: dict):
     show_room(context['room'])
+
+
+commands = [
+    {
+        'name': 'o hre',
+        'description': 'zobrazí informácie o hre',
+        'aliases': ('about', 'info', '?'),
+        'exec': cmd_about,
+    },
+
+    {
+        'name': 'inventar',
+        'description': 'zobrazí obsah batohu',
+        'aliases': ("i", "inventory", 'batoh'),
+        'exec': cmd_show_inventory,
+    },
+
+    {
+        'name': 'koniec',
+        'description': 'ukončí rozohratú hru',
+        'aliases': ('quit', 'bye', 'q', 'exit',),
+        'exec': cmd_quit,
+    },
+
+    {
+        'name': 'prikazy',
+        'description': 'zobrazí príkazy, ktoré sa dajú použiť v hre',
+        'aliases': ('commands', 'help', 'pomoc',),
+        'exec': cmd_commands,
+    },
+
+    {
+        'name': "rozhliadni sa",
+        'description': 'vypíše opis miestnosti, v ktorej sa hráč práve nachádza',
+        'aliases': ("look around", "kukaj het"),
+        'exec': cmd_look_around,
+    },
+
+    {
+        'name': "poloz",
+        'description': 'položí zvolený predmet v miestnosti',
+        'aliases': ("drop",),
+        'exec': cmd_drop_item,
+    },
+
+    {
+        'name': "vezmi",
+        'description': 'vezme predmet z miestnosti a vloží si ho do batohu',
+        'aliases': ("take",),
+        'exec': cmd_take_item,
+    },
+
+    {
+        'name': "preskumaj",
+        'description': 'zobrazí opis daného predmetu',
+        'aliases': ("examine",),
+        'exec': cmd_examine_item,
+    },
+]
