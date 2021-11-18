@@ -2,9 +2,17 @@
 import states
 
 from commands import cmd_about, cmd_commands, cmd_show_inventory, cmd_drop_item, cmd_take_item, cmd_quit, \
-    cmd_examine_item, cmd_look_around
+    cmd_examine_item, cmd_look_around, commands
 from helpers import show_room
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
+
+
+def parse(line: str, commands: list) -> dict:
+    for cmd in commands:
+        if line.startswith(cmd['name']):
+            return cmd
+
+    # return None
 
 
 if __name__ == '__main__':
@@ -58,41 +66,48 @@ if __name__ == '__main__':
         if line == '':
             continue
 
-        # quit game
-        elif line in ('koniec', 'quit', 'bye', 'q', 'exit'):
-            cmd_quit(context)
+        command = parse(line, commands)
+        if command is None:
+            print('Taký príkaz nepoznám.')
+        else:
+            callback = command['exec']
+            callback(context)
 
-        # about game
-        elif line in ('o hre', 'about', 'info', '?'):
-            cmd_about(context)
-
-        # show commands
-        elif line in ('prikazy', 'commands', 'help', 'pomoc'):
-            cmd_commands(context)
-
-        # render room
-        elif line in ("rozhliadni sa", "look around", "kukaj het"):
-            cmd_look_around(context)
-
-        # show inventory
-        elif line in ("inventar", "i", "inventory", 'batoh'):
-            cmd_show_inventory(context)
-
-        # drop item
-        elif line.startswith('poloz'):
-            cmd_drop_item(line, context)
-
-        # take item
-        elif line.startswith('vezmi'):
-            cmd_take_item(line, context)
-
-        # examine item
-        elif line.startswith('preskumaj'):
-            cmd_examine_item(line, context)
+        # # quit game
+        # elif line in ('koniec', 'quit', 'bye', 'q', 'exit'):
+        #     cmd_quit(context)
+        #
+        # # about game
+        # elif line in ('o hre', 'about', 'info', '?'):
+        #     cmd_about(context)
+        #
+        # # show commands
+        # elif line in ('prikazy', 'commands', 'help', 'pomoc'):
+        #     cmd_commands(context)
+        #
+        # # render room
+        # elif line in ("rozhliadni sa", "look around", "kukaj het"):
+        #     cmd_look_around(context)
+        #
+        # # show inventory
+        # elif line in ("inventar", "i", "inventory", 'batoh'):
+        #     cmd_show_inventory(context)
+        #
+        # # drop item
+        # elif line.startswith('poloz'):
+        #     cmd_drop_item(line, context)
+        #
+        # # take item
+        # elif line.startswith('vezmi'):
+        #     cmd_take_item(line, context)
+        #
+        # # examine item
+        # elif line.startswith('preskumaj'):
+        #     cmd_examine_item(line, context)
 
         # unknown commands
-        else:
-            print('Taký príkaz nepoznám.')
+        # else:
+        #     print('Taký príkaz nepoznám.')
 
     # game credits
     print('(c)2021 by mirek mocný programátor')
