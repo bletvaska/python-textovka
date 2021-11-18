@@ -6,7 +6,7 @@ from .features import MOVABLE, USABLE
 def _use(context: dict) -> None:
     # check
     door = get_item_by_name('dvere', context['room']['items'])
-    if door is not None and door['state'] != SOAKED:
+    if door is None or door['state'] != SOAKED:
         print('Priložil si si krabičku k ušku a zahrkal si s ňou. Stále sa v nej niečo nachádza.')
         return
 

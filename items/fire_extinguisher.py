@@ -8,7 +8,7 @@ def _use(context: dict) -> None:
 
     # check
     door = get_item_by_name('horiace dvere', room['items'])
-    if not (door is not None and door['state'] == BURNING):
+    if door is None or door['state'] != BURNING:
         print('Skontroloval si nálepku a plombu na prístroji. Platnosť do 4.7.1957')
         return
 
