@@ -31,11 +31,15 @@ def show_room(room: dict):
 
     if room["exits"] == []:
         print("Z tejto miestnosti nevedú žiadne východy.")
+    else:
+        print('Možné východy z miestnosti:')
+        for ex in room['exits']:
+            print(f"   * {ex}")
 
     if room["items"] == []:
         print("Nevidíš tu nič zvláštne.")
     else:
-        # print(f"Vidíš: {', '.join(room['items'])}")
+        print(f"Vidíš:")  # {', '.join(room['items'])}")
         for item in room['items']:
             print(f"   * {item['name']}")
 
