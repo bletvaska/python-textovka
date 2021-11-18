@@ -3,17 +3,7 @@ import states
 
 from helpers import show_room
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
-from commands import commands
-
-
-def parse(line: str, commands: list) -> tuple:
-    for cmd in commands:
-        for alias in cmd['aliases'] + (cmd['name'],):
-            if line.startswith(alias):
-                param = line.split(alias)[1].strip()
-                return cmd, param
-
-    return (None, None)
+from commands import *
 
 
 if __name__ == '__main__':
@@ -25,7 +15,17 @@ if __name__ == '__main__':
             'max': 2,
         },
         'world': {},
-        'room': {}
+        'room': {},
+        'commands': [
+            cmd_about,
+            cmd_inventory,
+            cmd_drop,
+            cmd_take,
+            cmd_examine,
+            cmd_quit,
+            cmd_look_around,
+            cmd_commands
+        ]
     }
 
     context['backpack']['items'].append(figa)
@@ -67,12 +67,14 @@ if __name__ == '__main__':
         if line == '':
             continue
 
-        command, param = parse(line, commands)
+        command, param = parse(line, context)
         if command is None:
             print('Taký príkaz nepoznám.')
         else:
             callback = command['exec']
             callback(context, param)
+
+        # check game win
 
     # game credits
     print('(c)2021 by mirek mocný programátor')

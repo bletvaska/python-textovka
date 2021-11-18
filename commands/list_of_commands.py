@@ -1,9 +1,6 @@
-from . import commands
-
-
 def _exec(context: dict, param: str):
     print('Zoznam príkazov v hre:')
-    for cmd in commands:
+    for cmd in context['commands']:
         print(f'* {cmd["name"]} - {cmd["description"]}')
 
 
