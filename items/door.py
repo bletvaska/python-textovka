@@ -1,5 +1,6 @@
 SOAKED = 'soaked'
 NORMAL = 'normal'
+BURNING = 'burning'
 
 door = {
     'name': 'dvere',
