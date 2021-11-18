@@ -3,12 +3,12 @@ from helpers import get_item_by_name, show_room
 from items import MOVABLE
 
 
-def cmd_about(context: dict):
+def cmd_about(context: dict, param: str):
     print('(c)2021 created by mirek')
     print('Ďalšie veľké dobrodružstvo Indiana Jonesa. Tentokrát zápasí s jazykom Python v tmavej miestnosti.')
 
 
-def cmd_commands(context: dict):
+def cmd_commands(context: dict, param: str):
     print('Zoznam príkazov v hre:')
     print('* inventar - zobrazí obsah batohu')
     print('* koniec - ukončí rozohratú hru')
@@ -20,7 +20,7 @@ def cmd_commands(context: dict):
     print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
 
 
-def cmd_show_inventory(context: dict):
+def cmd_show_inventory(context: dict, param: str):
     if context['backpack']['items'] == []:
         print("Batoh je prázdny.")
     else:
@@ -29,10 +29,10 @@ def cmd_show_inventory(context: dict):
             print(f"   * {item['name']}")
 
 
-def cmd_drop_item(line: str, context: dict):
+def cmd_drop_item(context: dict, param: str):
     backpack = context['backpack']
     room = context['room']
-    name = line.split('poloz')[1].strip()
+    name = param
 
     # if the name was not entered
     if name == '':
@@ -53,10 +53,9 @@ def cmd_drop_item(line: str, context: dict):
     print(f'Do miestnosti si položil predmet {name}.')
 
 
-def cmd_take_item(line: str, context: dict):
+def cmd_take_item(context: dict, name: str):
     backpack = context['backpack']
     room = context['room']
-    name = line.split('vezmi')[1].strip()
 
     # if the name was not entered
     if name == '':
@@ -87,8 +86,8 @@ def cmd_take_item(line: str, context: dict):
     print(f'Do batohu si si vložil predmet {name}.')
 
 
-def cmd_examine_item(line: str, context: dict):
-    name = line.split('preskumaj')[1].strip()
+def cmd_examine_item(context: dict, param: str):
+    name = param
 
     # if the name was not entered
     if name == '':
@@ -107,11 +106,11 @@ def cmd_examine_item(line: str, context: dict):
     print(item['description'])
 
 
-def cmd_quit(context: dict):
+def cmd_quit(context: dict, param: str):
     context['state'] = states.QUIT
 
 
-def cmd_look_around(context: dict):
+def cmd_look_around(context: dict, param: str):
     show_room(context['room'])
 
 

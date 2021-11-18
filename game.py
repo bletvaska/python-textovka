@@ -7,10 +7,12 @@ from helpers import show_room
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
 
 
-def parse(line: str, commands: list) -> dict:
+def parse(line: str, commands: list) -> tuple:
     for cmd in commands:
-        if line.startswith(cmd['name']):
-            return cmd
+        for alias in cmd['aliases'] + (cmd['name'],):
+            if line.startswith(alias):
+                param = line.split(alias)[1].strip()
+                return cmd, param
 
     # return None
 
@@ -66,12 +68,12 @@ if __name__ == '__main__':
         if line == '':
             continue
 
-        command = parse(line, commands)
+        command, param = parse(line, commands)
         if command is None:
             print('Taký príkaz nepoznám.')
         else:
             callback = command['exec']
-            callback(context)
+            callback(context, param)
 
         # # quit game
         # elif line in ('koniec', 'quit', 'bye', 'q', 'exit'):
