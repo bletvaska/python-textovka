@@ -6,7 +6,7 @@
       {
         "name": "dvere",
         "description": "Veľké masívne dubové dvere. Len tak niečo a niekto s nimi nepohne, keď sú zamknuté. A to teda sú.",
-        "features": [],
+        "features": ["dvere", "noviny", "hasiaci pristroj"],
         "state": "normal"
       }
     ],

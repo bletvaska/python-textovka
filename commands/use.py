@@ -27,6 +27,9 @@ def _exec(context: dict, param: str):
     if 'use' not in item:
         raise NotImplementedError()
 
+    # save to history
+    context['history'].append(f'{cmd["name"]} {param}')
+
     # use item
     item['use'](context)
 

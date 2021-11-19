@@ -26,6 +26,7 @@ if __name__ == '__main__':
             'items': [],
             'max': 2,
         },
+        'history': [],
         'world': world,
         'room': room,  # get_room_by_name(world, 'dungeon'),
         'commands': [

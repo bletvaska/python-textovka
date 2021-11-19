@@ -29,6 +29,9 @@ def _exec(context: dict, name: str):
         print('Batoh je plný')
         return
 
+    # save to history
+    context['history'].append(f'{cmd["name"]} {name}')
+
     # take item
     room['items'].remove(item)
     backpack['items'].append(item)

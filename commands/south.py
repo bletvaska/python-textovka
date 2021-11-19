@@ -6,6 +6,10 @@ def _exec(context: dict, param: str):
     if name is None:
         print('Tam sa nedá ísť.')
     else:
+        # save to history
+        context['history'].append(f'{cmd["name"]} {param}')
+
+        # go south
         print('Kráčaš na juh.')
         room = get_room_by_name(context['world'], name)
         context['room'] = room

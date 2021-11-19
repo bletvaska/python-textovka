@@ -19,6 +19,9 @@ def _exec(context: dict, param: str):
         print('Taký predmet pri sebe nemáš.')
         return
 
+    # save to history
+    context['history'].append(f'{cmd["name"]} {param}')
+
     # drop item
     backpack['items'].remove(item)
     room['items'].append(item)
