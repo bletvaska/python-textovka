@@ -7,7 +7,8 @@ from commands import *
 # from world import world
 import json
 
-if __name__ == '__main__':
+
+def init_game():
     # init game
     with open('world.json', 'r', encoding='utf-8') as file:
         world = json.load(file)
@@ -44,11 +45,18 @@ if __name__ == '__main__':
             cmd_south,
             cmd_north,
             cmd_save,
+            cmd_load,
         ]
     }
 
     context['backpack']['items'].append(figa)
     context['backpack']['items'].append(coin)
+
+    return context
+
+
+if __name__ == '__main__':
+    context = init_game()
 
     # serialization
     # import json
