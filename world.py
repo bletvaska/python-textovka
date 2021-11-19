@@ -8,10 +8,10 @@ world = [
                        'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti '
                        'prebleslo hlavou.',
         'items': [
-            canister,
-            matches,
-            fire_extinguisher,
-            newspaper,
+            # canister,
+            # matches,
+            # fire_extinguisher,
+            # newspaper,
             door
         ],
         'exits': {
