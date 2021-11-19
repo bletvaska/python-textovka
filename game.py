@@ -4,7 +4,6 @@ import states
 from helpers import show_room, get_room_by_name
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper
 from commands import *
-# from world import world
 import json
 
 
