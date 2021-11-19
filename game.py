@@ -25,13 +25,13 @@ if __name__ == '__main__':
             cmd_quit,
             cmd_look_around,
             cmd_commands,
-            cmd_use
+            cmd_use,
+            cmd_west
         ]
     }
 
     context['backpack']['items'].append(figa)
     context['backpack']['items'].append(coin)
-
 
     # banner
     print(" ___           _ _                         _                       ")
