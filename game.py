@@ -44,7 +44,12 @@ if __name__ == '__main__':
             newspaper,
             door
         ],
-        'exits': []
+        'exits': {
+            'west': 'dungeon',
+            'south': 'hell',
+            'north': 'heaven',
+            'east': None
+        }
     }
 
     # banner

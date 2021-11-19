@@ -23,11 +23,12 @@ def _exec(context: dict, param: str):
         print('Tento predmet sa nedá použiť.')
         return
 
+    # check if item has use key
+    if 'use' not in item:
+        raise NotImplementedError()
+
     # use item
     item['use'](context)
-
-    # else:
-    #     print(f'Používam predmet {name}.')
 
 
 cmd = {

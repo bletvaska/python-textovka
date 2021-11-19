@@ -29,11 +29,31 @@ def show_room(room: dict):
     print(f'Nachádzaš sa v miestnosti {room["name"]}.')
     print(f'{room["description"]}')
 
-    if room["exits"] == []:
+    exits = []
+    # if room['exits']['north'] is not None:
+    #     exits.append('sever')
+    # if room['exits']['south'] is not None:
+    #     exits.append('juh')
+    # if room['exits']['east'] is not None:
+    #     exits.append('východ')
+    # if room['exits']['west'] is not None:
+    #     exits.append('západ')
+
+    translator = {
+        'north': 'sever',
+        'south': 'juh',
+        'west': 'západ',
+        'east': 'východ'
+    }
+    for key in room['exits']:
+        if room['exits'][key] is not None:
+            exits.append(translator[key])
+
+    if exits == []:
         print("Z tejto miestnosti nevedú žiadne východy.")
     else:
         print('Možné východy z miestnosti:')
-        for ex in room['exits']:
+        for ex in exits:
             print(f"   * {ex}")
 
     if room["items"] == []:

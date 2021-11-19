@@ -4,6 +4,6 @@ from .figa import figa
 from .fire_extinguisher import fire_extinguisher
 from .matches import matches
 from .newspaper import newspaper
-from .door import door
+from .door import normal as door
 
 from .features import MOVABLE, USABLE

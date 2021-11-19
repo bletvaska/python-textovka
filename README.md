@@ -5,9 +5,19 @@ introduction to python by creating the text based adventure game (interactive fi
 ## World Map
 
 ```
-                                          N
+               +--------+ 
+               | Heaven |
+               +--------+
+                   ^
+                   |
+                   v                      N
 +---------+    +--------+                 ^
 | Dungeon |<-->| Garden |             W < + > E
 +---------+    +--------+                 v
-                                          S
+                   ^                      S
+                   |
+                   v
+               +--------+
+               |  Hell  |
+               +--------+    
 ```
