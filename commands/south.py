@@ -2,19 +2,19 @@ from helpers import show_room, get_room_by_name
 
 
 def _exec(context: dict, param: str):
-    name = context['room']['exits']['west']
+    name = context['room']['exits']['south']
     if name is None:
         print('Tam sa nedá ísť.')
     else:
-        print('Kráčaš na západ.')
+        print('Kráčaš na juh.')
         room = get_room_by_name(context['world'], name)
         context['room'] = room
         show_room(room)
 
 
 cmd = {
-    'name': "zapad",
-    'description': 'presunie sa do miestnosti na západ, ak sa tým smerom da ísť.',
-    'aliases': ("west",),
+    'name': "juh",
+    'description': 'presunie sa do miestnosti na juh, ak sa tým smerom da ísť.',
+    'aliases': ("south",),
     'exec': _exec,
 }

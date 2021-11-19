@@ -26,7 +26,10 @@ if __name__ == '__main__':
             cmd_look_around,
             cmd_commands,
             cmd_use,
-            cmd_west
+            cmd_west,
+            cmd_east,
+            cmd_south,
+            cmd_north,
         ]
     }
 

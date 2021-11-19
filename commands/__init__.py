@@ -8,5 +8,8 @@ from .look_around import cmd as cmd_look_around
 from .list_of_commands import cmd as cmd_commands
 from .use import cmd as cmd_use
 from .west import cmd as cmd_west
+from .east import cmd as cmd_east
+from .south import cmd as cmd_south
+from .north import cmd as cmd_north
 
 from .parser import parse
