@@ -4,7 +4,7 @@ import states
 from helpers import show_room
 from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
 from commands import *
-
+from world import world
 
 if __name__ == '__main__':
     # init game
@@ -14,8 +14,8 @@ if __name__ == '__main__':
             'items': [],
             'max': 2,
         },
-        'world': {},
-        'room': {},
+        'world': world,
+        'room': get_room_by_name(world, 'dungeon'),
         'commands': [
             cmd_about,
             cmd_inventory,
@@ -32,25 +32,6 @@ if __name__ == '__main__':
     context['backpack']['items'].append(figa)
     context['backpack']['items'].append(coin)
 
-    context['room'] = {
-        'name': 'dungeon',
-        'description': 'Nachádzaš sa v tmavej zatuchnutej miestnosti. Na kamenných stenách sa nenachádza žiadne okno, '
-                       'čo dáva tušiť, že si niekoľko metrov pod zemou. Žeby košický hrad? Aj to je možné, ti '
-                       'prebleslo hlavou.',
-        'items': [
-            canister,
-            matches,
-            fire_extinguisher,
-            newspaper,
-            door
-        ],
-        'exits': {
-            'west': 'dungeon',
-            'south': 'hell',
-            'north': 'heaven',
-            'east': None
-        }
-    }
 
     # banner
     print(" ___           _ _                         _                       ")
