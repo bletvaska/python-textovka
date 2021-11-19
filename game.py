@@ -29,23 +29,7 @@ def init_game():
         'history': [],
         'world': world,
         'room': room,  # get_room_by_name(world, 'dungeon'),
-        'commands': [
-            cmd_about,
-            cmd_inventory,
-            cmd_drop,
-            cmd_take,
-            cmd_examine,
-            cmd_quit,
-            cmd_look_around,
-            cmd_commands,
-            cmd_use,
-            cmd_west,
-            cmd_east,
-            cmd_south,
-            cmd_north,
-            cmd_save,
-            cmd_load,
-        ]
+        'commands': []
     }
 
     context['backpack']['items'].append(figa)
@@ -56,6 +40,23 @@ def init_game():
 
 if __name__ == '__main__':
     context = init_game()
+    context['commands'] = [
+        cmd_about,
+        cmd_inventory,
+        cmd_drop,
+        cmd_take,
+        cmd_examine,
+        cmd_quit,
+        cmd_look_around,
+        cmd_commands,
+        cmd_use,
+        cmd_west,
+        cmd_east,
+        cmd_south,
+        cmd_north,
+        cmd_save,
+        cmd_load,
+    ]
 
     # serialization
     # import json
