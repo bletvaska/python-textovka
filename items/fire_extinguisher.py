@@ -22,7 +22,7 @@ def _use(context: dict) -> None:
         'description'] = 'Prázdny hasiaci prístroj. Veľmi užitočný ako ťažítko na papiere na pracovnom stole.'
 
     # make exit from room to west
-    room['exits'].append('západ')
+    room['exits']['east'] = 'garden'
 
     # render
     print('Ako správny požiarnik si neváhal, odstránil si plombu z hasiaceho prístroja a udrel '

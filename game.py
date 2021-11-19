@@ -15,7 +15,7 @@ if __name__ == '__main__':
             'max': 2,
         },
         'world': world,
-        'room': get_room_by_name(world, 'garden'),
+        'room': get_room_by_name(world, 'dungeon'),
         'commands': [
             cmd_about,
             cmd_inventory,
