@@ -9,7 +9,7 @@ import json
 
 if __name__ == '__main__':
     # init game
-    with open('world.json', 'r') as file:
+    with open('world.json', 'r', encoding='utf-8') as file:
         world = json.load(file)
     # file.close()
 
@@ -43,6 +43,7 @@ if __name__ == '__main__':
             cmd_east,
             cmd_south,
             cmd_north,
+            cmd_save,
         ]
     }
 
@@ -51,7 +52,7 @@ if __name__ == '__main__':
 
     # serialization
     # import json
-    # file = open('world.json', 'w+')
+    # file = open('world.json', 'w+', encoding='utf-8')
     # json.dump(context['world'], file, indent=4, ensure_ascii=False)
     # file.close()
 

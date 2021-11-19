@@ -11,5 +11,6 @@ from .west import cmd as cmd_west
 from .east import cmd as cmd_east
 from .south import cmd as cmd_south
 from .north import cmd as cmd_north
+from .save import cmd as cmd_save
 
 from .parser import parse

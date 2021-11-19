@@ -7,7 +7,7 @@ def _exec(context: dict, param: str):
         print('Tam sa nedá ísť.')
     else:
         # save to history
-        context['history'].append(f'{cmd["name"]} {param}')
+        context['history'].append(f'{cmd["name"]}')
 
         # go south
         print('Kráčaš na juh.')
