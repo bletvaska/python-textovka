@@ -83,6 +83,24 @@ if __name__ == '__main__':
             callback(context, param)
 
         # check game win
+        if context['room']['name'] == 'heaven':
+            context['state'] = states.WIN
+
+        elif context['room']['name'] == 'hell':
+            context['state'] = states.DEAD
+
+    # final animation
+    # when player wins
+    if context['state'] == states.WIN:
+        print("__        __   _ _   ____                   _")
+        print("\\ \\      / /__| | | |  _ \\  ___  _ __   ___| |")
+        print(" \\ \\ /\\ / / _ \\ | | | | | |/ _ \\| '_ \\ / _ \\ |")
+        print("  \\ V  V /  __/ | | | |_| | (_) | | | |  __/_|")
+        print("   \\_/\\_/ \\___|_|_| |____/ \\___/|_| |_|\\___(_)")
+
+    # when player dies
+    elif context['state'] == states.DEAD:
+        print('You are dead!')
 
     # game credits
     print('(c)2021 by mirek mocný programátor')
