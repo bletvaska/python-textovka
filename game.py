@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import states
 
-from helpers import show_room
-from items import figa, coin, canister, matches, fire_extinguisher, newspaper, door
+from helpers import show_room, get_room_by_name
+from items import figa, coin
 from commands import *
 from world import world
 
@@ -15,7 +15,7 @@ if __name__ == '__main__':
             'max': 2,
         },
         'world': world,
-        'room': get_room_by_name(world, 'dungeon'),
+        'room': get_room_by_name(world, 'garden'),
         'commands': [
             cmd_about,
             cmd_inventory,

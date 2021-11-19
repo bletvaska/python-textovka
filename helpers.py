@@ -1,6 +1,19 @@
 from typing import List
 
 
+def get_room_by_name(world: List[dict], name: str) -> dict:
+    # check if name was given
+    if not name:
+        raise ValueError('Name is empty.')
+
+    # search for room by name
+    for room in world:
+        if room['name'] == name:
+            return room
+
+    # return None
+
+
 def get_item_by_name(name: str, items: List[dict]) -> dict:
     # check if name was given
     if not name:
