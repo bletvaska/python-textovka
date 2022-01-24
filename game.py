@@ -6,7 +6,16 @@ print(__name__)
 
 
 def play_game():
-    print('Indiana Jones and his Great Escape')
+    print(' ___           _ _                         _                       ')
+    print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ')
+    print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
+    print(' | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\__ \\')
+    print('|___|_| |_|\__,_|_|\__,_|_| |_|\__,_|  \___/ \___/|_| |_|\___||___/')
+    print('             Indiana Jones and his Great Escape')
+
+    print('Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. '
+          'Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že '
+          'sa nachádzaš v podzemí.')
 
     game_state = states.PLAYING
 
