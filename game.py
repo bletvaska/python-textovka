@@ -2,40 +2,47 @@
 
 import states
 
+print(__name__)
 
-print('Indiana Jones and his Great Escape')
 
-game_state = states.PLAYING
+def play_game():
+    print('Indiana Jones and his Great Escape')
 
-while game_state == states.PLAYING:
+    game_state = states.PLAYING
 
-    # normalizing input string
-    line = input('> ').lower().lstrip().rstrip()
+    while game_state == states.PLAYING:
 
-    # empty input?
-    if line == '':
-        continue
+        # normalizing input string
+        line = input('> ').lower().lstrip().rstrip()
 
-    # about game
-    elif line in ('o hre', 'about', 'info'):
-        print('Ďalšie dobrodružstvo Indiana Jonesa. Tentkrát sa snaží ujsť z uzavretej kobky pod zemou.')
-        print('Túto hru spáchal v 2022 (c) mirek.')
+        # empty input?
+        if line == '':
+            continue
 
-    # list of commands
-    elif line in ('prikazy', 'commands', 'help', '?'):
-        print('Zoznam dostupných príkazov:')
-        print('* koniec - ukončí rozohratú hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* prikazy - zobrazí zoznam príkazov hry')
+        # about game
+        elif line in ('o hre', 'about', 'info'):
+            print('Ďalšie dobrodružstvo Indiana Jonesa. Tentkrát sa snaží ujsť z uzavretej kobky pod zemou.')
+            print('Túto hru spáchal v 2022 (c) mirek.')
 
-    # quit game
-    elif line in ('koniec', 'quit', 'q', 'bye'):
-        line = input('Naozaj chceš skončiť? (a/n) ').lower().lstrip().rstrip()
-        if line == 'a':
-            game_state = states.QUIT
+        # list of commands
+        elif line in ('prikazy', 'commands', 'help', '?'):
+            print('Zoznam dostupných príkazov:')
+            print(' * koniec - ukončí rozohratú hru')
+            print(' * o hre - zobrazí informácie o hre')
+            print(' * prikazy - zobrazí zoznam príkazov hry')
 
-    # unknown command
-    else:
-        print('Taký príkaz nepoznám.')
+        # quit game
+        elif line in ('koniec', 'quit', 'q', 'bye'):
+            line = input('Naozaj chceš skončiť? (a/n) ').lower().lstrip().rstrip()
+            if line == 'a':
+                game_state = states.QUIT
 
-print('Created by (c)2022 mirek')
+        # unknown command
+        else:
+            print('Taký príkaz nepoznám.')
+
+    print('Created by (c)2022 mirek')
+
+
+if __name__ == '__main__':
+    play_game()
