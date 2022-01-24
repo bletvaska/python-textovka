@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
+# from states import 
+import states
+
 
 print('Indiana Jones and his Great Escape')
 
-line = None
+game_state = states.PLAYING
 
-while line not in ('koniec', 'quit', 'q', 'bye'):
+while game_state == states.PLAYING:
 
     line = input('> ').lower().lstrip().rstrip()
 
@@ -22,7 +25,7 @@ while line not in ('koniec', 'quit', 'q', 'bye'):
     elif line in ('koniec', 'quit', 'q', 'bye'):
         line = input('Naozaj chceš skončiť? (a/n) ').lower().lstrip().rstrip()
         if line == 'a':
-            line = 'koniec'
+            game_state = states.QUIT
 
     else:
         print('Taký príkaz nepoznám.')
