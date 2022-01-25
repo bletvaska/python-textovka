@@ -136,6 +136,24 @@ def play_game():
             if line == "a":
                 game_state = states.QUIT
 
+        # take item
+        elif line.startswith(('vezmi', 'take')):
+            name = line.split(sep='vezmi')[1].lstrip()
+ 
+            if len(name) == 0:
+                print('Neviem, aký predmet chceš vziať.')
+ 
+            else:
+                if name in room['items']:
+                    room['items'].remove(name)
+ 
+                    backpack.append(name)
+ 
+                    print(f'Do batohu si vložil predmet {name}.')
+ 
+                else:
+                    print('Taký predmet tu nikde nevidím.')
+
         # unknown command
         else:
             print("Taký príkaz nepoznám.")
