@@ -23,16 +23,17 @@ def show_room(room: dict):
     print(f"Nachádzaš sa v miestnosti {room['name']}")
     print(room["description"])
 
+    # show exits
     if len(room["exits"]) == 0:
         print("Z tejto miestnosti nevedú žiadne východy.")
 
+    # show items
     if len(room['items']) == 0:
         print("Nenachadzaju sa tu ziadne predmety")
-    elif len(room['items']) != 0:
+    else:
         print("Vidíš: ")
         for item in room['items']:
             print(f'   {item}')
-
 
     # return None
 
