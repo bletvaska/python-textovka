@@ -32,7 +32,7 @@ def show_room(room: dict):
     else:
         print("Vidíš: ")
         for item in room["items"]:
-            print(f"   {item}")
+            print(f"   {item['name']}")
 
     # return None
 
@@ -177,13 +177,12 @@ def play_game():
                 print("Neviem, aký predmet chceš vziať.")
 
             else:
-                if name in room["items"]:
-                    room["items"].remove(name)
-
-                    backpack.append(name)
-
-                    print(f"Do batohu si vložil predmet {name}.")
-
+                for item in room['items']:
+                    if name == item['name']:
+                        room["items"].remove(item)
+                        backpack.append(item)
+                        print(f"Do batohu si vložil predmet {name}.")
+                        break
                 else:
                     print("Taký predmet tu nikde nevidím.")
 
