@@ -14,7 +14,9 @@ def show_room(room: dict):
 
     # type check for room
     if type(room) is not dict:
-        raise TypeError(f'Inapropriate type for room. Expected dict, but "{type(room)}" was given.')
+        raise TypeError(
+            f'Inapropriate type for room. Expected dict, but "{type(room)}" was given.'
+        )
 
     print(f"Nachádzaš sa v miestnosti {room['name']}")
     print(room["description"])
@@ -36,6 +38,7 @@ def show_room(room: dict):
 
 def play_game():
 
+    # game initialization
     room = {
         "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
         "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
@@ -44,7 +47,10 @@ def play_game():
         "exits": [],
         "name": "dungeon",
     }
+    backpack = ["minca", "noviny", "figa borova"]
+    game_state = states.PLAYING
 
+    # intro banner
     print(" ___           _ _                         _                       ")
     print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ")
     print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
@@ -53,9 +59,7 @@ def play_game():
     print("             Indiana Jones and his Great Escape")
     print()
 
-    show_room('jano je makac')
-
-    game_state = states.PLAYING
+    show_room(room)
 
     while game_state == states.PLAYING:
 
@@ -86,6 +90,15 @@ def play_game():
         # look around
         elif line in ("rozhliadni sa", "look around"):
             show_room(room)
+
+        # inventory
+        elif line in ("inventar", "i", "inventory"):
+            if backpack == []:
+                print("Batoh je prázdny.")
+            else:
+                print("V batohu máš:")
+                for item in backpack:
+                    print(f" * {item}")
 
         # quit game
         elif line in ("koniec", "quit", "q", "bye"):
