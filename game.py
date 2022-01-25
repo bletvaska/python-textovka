@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from turtle import back
+from features import MOVABLE, USABLE
 import states
 
 
@@ -37,13 +38,6 @@ def show_room(room: dict):
     # return None
 
 
-item = {
-    "name": "name of item",
-    "description": "description of item",
-    "features": ["movable", "usable", "observable"],
-}
-
-
 def play_game():
 
     # game initialization
@@ -55,7 +49,7 @@ def play_game():
             {
                 "name": "kanister",
                 "description": "Veľký 10 litrový kanister žltej farby. Značka: plný vysokooktánového výborne horľavého benzínu.",
-                "features": ["movable", "usable"],
+                "features": [MOVABLE, USABLE],
             },
             {
                 "name": "dvere",
@@ -65,12 +59,12 @@ def play_game():
             {
                 "name": "zapalky",
                 "description": "Bezpečnostné zápalky. Zrejme kúpené v Bille.",
-                "features": ["movable", "usable"],
+                "features": [MOVABLE, USABLE],
             },
             {
                 "name": "vedro",
                 "description": "12 litrové vedro plné vody. V niektorých končinách nazývané aj kýbľom.",
-                "features": ["movable", "usable"],
+                "features": [MOVABLE, USABLE],
             },
         ],
         "exits": [],
@@ -80,7 +74,7 @@ def play_game():
         {
             "name": "noviny",
             "description": "Košické tajmsy. Dnešné, ešte teplé vydanie.",
-            "features": ["movable"],
+            "features": [MOVABLE],
         }
     ]
     game_state = states.PLAYING
@@ -119,7 +113,7 @@ def play_game():
                 # poloz minca
                 # > Predmet minca si položil v miestnosti.
                 for item in backpack:
-                    if name == item['name']:
+                    if name == item["name"]:
                         # zmaz ho z batohu
                         backpack.remove(item)
 
@@ -182,11 +176,16 @@ def play_game():
                 print("Neviem, aký predmet chceš vziať.")
 
             else:
-                for item in room['items']:
-                    if name == item['name']:
-                        room["items"].remove(item)
-                        backpack.append(item)
-                        print(f"Do batohu si vložil predmet {name}.")
+                for item in room["items"]:
+                    if name == item["name"]:
+                        if MOVABLE in item["features"]:
+                            room["items"].remove(item)
+                            backpack.append(item)
+                            print(f"Do batohu si vložil predmet {name}.")
+
+                        else:
+                            print("Tento predmet sa nedá zobrať.")
+
                         break
                 else:
                     print("Taký predmet tu nikde nevidím.")
