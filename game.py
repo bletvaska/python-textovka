@@ -143,12 +143,15 @@ def play_game():
         # list of commands
         elif line in ("prikazy", "commands", "help", "?"):
             print("Zoznam dostupných príkazov:")
+            print("  * inventar - vypíše obsah batohu")
             print("  * koniec - ukončí rozohratú hru")
             print("  * o hre - zobrazí informácie o hre")
+            print("  * poloz - vylozi predmet z batohu do aktuálnej miestnosti")
             print("  * prikazy - zobrazí zoznam príkazov hry")
             print(
                 "  * rozhliadni sa - Vypise popis miestnosti, kde sa prave nachadzas."
             )
+            print("  * vezmi - vezme predmet a miestnosti a vloží si ho do batohu")
 
         # look around
         elif line in ("rozhliadni sa", "look around"):
