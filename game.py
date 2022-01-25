@@ -2,6 +2,21 @@
 
 import states
 
+room = {
+    "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
+    "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
+    "sa nachádzaš v podzemí.",
+    "items": (),
+    "exits": (),
+    "name": "dungeon",
+}
+
+
+def show_room(room):
+    # Nachádzaš sa v miestnosti NAME
+    # DESCRIPTION
+    pass
+
 
 def play_game():
     print(" ___           _ _                         _                       ")
@@ -12,11 +27,8 @@ def play_game():
     print("             Indiana Jones and his Great Escape")
     print()
 
-    print(
-        "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
-        "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
-        "sa nachádzaš v podzemí."
-    )
+    # print(room['description'])
+    show_room(room)
 
     game_state = states.PLAYING
 
@@ -42,15 +54,14 @@ def play_game():
             print("  * koniec - ukončí rozohratú hru")
             print("  * o hre - zobrazí informácie o hre")
             print("  * prikazy - zobrazí zoznam príkazov hry")
-            print("  * rozhliadni sa - Vypise popis miestnosti, kde sa prave nachadzas.")
+            print(
+                "  * rozhliadni sa - Vypise popis miestnosti, kde sa prave nachadzas."
+            )
 
         # look around
         elif line in ("rozhliadni sa", "look around"):
-            print(
-                "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
-                "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
-                "sa nachádzaš v podzemí."
-            )
+            # print(room['description'])
+            show_room(room)
 
         # quit game
         elif line in ("koniec", "quit", "q", "bye"):
