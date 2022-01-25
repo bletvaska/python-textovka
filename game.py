@@ -6,8 +6,8 @@ room = {
     "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
     "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
     "sa nachádzaš v podzemí.",
-    "items": (),
-    "exits": (),
+    "items": ['kanister', 'zapalky', 'vedro'],
+    "exits": [],
     "name": "dungeon",
 }
 
@@ -23,6 +23,17 @@ def show_room(room: dict):
     print(f"Nachádzaš sa v miestnosti {room['name']}")
     print(room["description"])
 
+    if len(room["exits"]) == 0:
+        print("Z tejto miestnosti nevedú žiadne východy.")
+
+    if len(room['items']) == 0:
+        print("Nenachadzaju sa tu ziadne predmety")
+    elif len(room['items']) != 0:
+        print("Vidíš: ")
+        for item in room['items']:
+            print(f'   {item}')
+
+
     # return None
 
 
@@ -37,7 +48,6 @@ def play_game():
 
     # print(room['description'])
     show_room(room)
-    show_room()
 
     game_state = states.PLAYING
 
