@@ -118,15 +118,17 @@ def play_game():
             else:
                 # poloz minca
                 # > Predmet minca si položil v miestnosti.
-                if name in backpack:
-                    # zmaz ho z batohu
-                    backpack.remove(name)
+                for item in backpack:
+                    if name == item['name']:
+                        # zmaz ho z batohu
+                        backpack.remove(item)
 
-                    # poloz ho do miestnosti
-                    room["items"].append(name)
+                        # poloz ho do miestnosti
+                        room["items"].append(item)
 
-                    # render
-                    print(f"Do miestnosti si vyložil predmet {name}.")
+                        # render
+                        print(f"Do miestnosti si vyložil predmet {name}.")
+                        break
 
                 else:
                     # poloz autobus
@@ -164,7 +166,7 @@ def play_game():
             else:
                 print("V batohu máš:")
                 for item in backpack:
-                    print(f" * {item}")
+                    print(f" * {item['name']}")
 
         # quit game
         elif line in ("koniec", "quit", "q", "bye"):
