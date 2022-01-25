@@ -12,10 +12,18 @@ room = {
 }
 
 
-def show_room(room):
-    # Nachádzaš sa v miestnosti NAME
-    # DESCRIPTION
-    pass
+def show_room(room: dict):
+    """
+    Shows the room description
+
+    This function shows the room description, which contains the room name,
+    room description, items in room and list of exists.
+    :param room: the room to show description about
+    """
+    print(f"Nachádzaš sa v miestnosti {room['name']}")
+    print(room["description"])
+
+    # return None
 
 
 def play_game():
@@ -29,6 +37,7 @@ def play_game():
 
     # print(room['description'])
     show_room(room)
+    show_room()
 
     game_state = states.PLAYING
 
