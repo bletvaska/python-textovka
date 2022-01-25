@@ -2,15 +2,6 @@
 
 import states
 
-room = {
-    "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
-    "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
-    "sa nachádzaš v podzemí.",
-    "items": ['kanister', 'zapalky', 'vedro'],
-    "exits": [],
-    "name": "dungeon",
-}
-
 
 def show_room(room: dict):
     """
@@ -20,6 +11,11 @@ def show_room(room: dict):
     room description, items in room and list of exists.
     :param room: the room to show description about
     """
+
+    # type check for room
+    if type(room) is not dict:
+        raise TypeError(f'Inapropriate type for room. Expected dict, but "{type(room)}" was given.')
+
     print(f"Nachádzaš sa v miestnosti {room['name']}")
     print(room["description"])
 
@@ -28,17 +24,27 @@ def show_room(room: dict):
         print("Z tejto miestnosti nevedú žiadne východy.")
 
     # show items
-    if len(room['items']) == 0:
+    if len(room["items"]) == 0:
         print("Nenachadzaju sa tu ziadne predmety")
     else:
         print("Vidíš: ")
-        for item in room['items']:
-            print(f'   {item}')
+        for item in room["items"]:
+            print(f"   {item}")
 
     # return None
 
 
 def play_game():
+
+    room = {
+        "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
+        "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
+        "sa nachádzaš v podzemí.",
+        "items": ["kanister", "zapalky", "vedro"],
+        "exits": [],
+        "name": "dungeon",
+    }
+
     print(" ___           _ _                         _                       ")
     print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ")
     print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
@@ -47,8 +53,7 @@ def play_game():
     print("             Indiana Jones and his Great Escape")
     print()
 
-    # print(room['description'])
-    show_room(room)
+    show_room('jano je makac')
 
     game_state = states.PLAYING
 
@@ -80,7 +85,6 @@ def play_game():
 
         # look around
         elif line in ("rozhliadni sa", "look around"):
-            # print(room['description'])
             show_room(room)
 
         # quit game
