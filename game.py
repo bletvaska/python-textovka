@@ -37,6 +37,13 @@ def show_room(room: dict):
     # return None
 
 
+item = {
+    "name": "name of item",
+    "description": "description of item",
+    "features": ["movable", "usable", "observable"],
+}
+
+
 def play_game():
 
     # game initialization
@@ -44,11 +51,38 @@ def play_game():
         "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
         "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
         "sa nachádzaš v podzemí.",
-        "items": ["kanister", "zapalky", "vedro"],
+        "items": [
+            {
+                "name": "kanister",
+                "description": "Veľký 10 litrový kanister žltej farby. Značka: plný vysokooktánového výborne horľavého benzínu.",
+                "features": ["movable", "usable"],
+            },
+            {
+                "name": "dvere",
+                "description": "Veľké masívne dubové dvere. Zamknuté. Asi zvonka.",
+                "features": [],
+            },
+            {
+                "name": "zapalky",
+                "description": "Bezpečnostné zápalky. Zrejme kúpené v Bille.",
+                "features": ["movable", "usable"],
+            },
+            {
+                "name": "vedro",
+                "description": "12 litrové vedro plné vody. V niektorých končinách nazývané aj kýbľom.",
+                "features": ["movable", "usable"],
+            },
+        ],
         "exits": [],
         "name": "dungeon",
     }
-    backpack = ["minca", "noviny", "figa borova"]
+    backpack = [
+        {
+            "name": "noviny",
+            "description": "Košické tajmsy. Dnešné, ešte teplé vydanie.",
+            "features": ["movable"],
+        }
+    ]
     game_state = states.PLAYING
 
     # intro banner
@@ -73,13 +107,13 @@ def play_game():
             continue
 
         # drop item
-        elif line.startswith(('poloz', 'drop')):
-            name = line.split(sep='poloz')[1].lstrip()
+        elif line.startswith(("poloz", "drop")):
+            name = line.split(sep="poloz")[1].lstrip()
 
             # poloz
             # > Neviem, čo chceš položiť.
             if len(name) == 0:
-                print('Neviem, aký predmet chceš položiť.')
+                print("Neviem, aký predmet chceš položiť.")
 
             else:
                 # poloz minca
@@ -89,16 +123,15 @@ def play_game():
                     backpack.remove(name)
 
                     # poloz ho do miestnosti
-                    room['items'].append(name)
+                    room["items"].append(name)
 
                     # render
-                    print(f'Do miestnosti si vyložil predmet {name}.')
+                    print(f"Do miestnosti si vyložil predmet {name}.")
 
                 else:
                     # poloz autobus
                     # > Taký predmet pri sebe nemáš.
-                    print('Taký predmet pri sebe nemáš.')
-
+                    print("Taký predmet pri sebe nemáš.")
 
         # about game
         elif line in ("o hre", "about", "info"):
@@ -137,22 +170,22 @@ def play_game():
                 game_state = states.QUIT
 
         # take item
-        elif line.startswith(('vezmi', 'take')):
-            name = line.split(sep='vezmi')[1].lstrip()
- 
+        elif line.startswith(("vezmi", "take")):
+            name = line.split(sep="vezmi")[1].lstrip()
+
             if len(name) == 0:
-                print('Neviem, aký predmet chceš vziať.')
- 
+                print("Neviem, aký predmet chceš vziať.")
+
             else:
-                if name in room['items']:
-                    room['items'].remove(name)
- 
+                if name in room["items"]:
+                    room["items"].remove(name)
+
                     backpack.append(name)
- 
-                    print(f'Do batohu si vložil predmet {name}.')
- 
+
+                    print(f"Do batohu si vložil predmet {name}.")
+
                 else:
-                    print('Taký predmet tu nikde nevidím.')
+                    print("Taký predmet tu nikde nevidím.")
 
         # unknown command
         else:
