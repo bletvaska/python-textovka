@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from turtle import back
 import states
 
 
@@ -66,9 +67,38 @@ def play_game():
         # normalizing input string
         line = input("> ").lower().lstrip().rstrip()
 
+        # parser
         # empty input?
         if line == "":
             continue
+
+        # drop item
+        elif line.startswith(('poloz', 'drop')):
+            name = line.split(sep='poloz')[1].lstrip()
+
+            # poloz
+            # > Neviem, čo chceš položiť.
+            if len(name) == 0:
+                print('Neviem, aký predmet chceš položiť.')
+
+            else:
+                # poloz minca
+                # > Predmet minca si položil v miestnosti.
+                if name in backpack:
+                    # zmaz ho z batohu
+                    backpack.remove(name)
+
+                    # poloz ho do miestnosti
+                    room['items'].append(name)
+
+                    # render
+                    print(f'Do miestnosti si vyložil predmet {name}.')
+
+                else:
+                    # poloz autobus
+                    # > Taký predmet pri sebe nemáš.
+                    print('Taký predmet pri sebe nemáš.')
+
 
         # about game
         elif line in ("o hre", "about", "info"):
