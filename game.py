@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
+from commands import cmd_about
 from items import bucket, canister, door, matches, newspaper
 from items.features import MOVABLE
-from helpers import get_item_by_name, show_room
+from helpers import banner, get_item_by_name, show_room
 import states
 
 
@@ -26,14 +27,7 @@ def play_game():
     game_state = states.PLAYING
 
     # intro banner
-    print(" ___           _ _                         _                       ")
-    print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ")
-    print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
-    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\__ \\")
-    print("|___|_| |_|\__,_|_|\__,_|_| |_|\__,_|  \___/ \___/|_| |_|\___||___/")
-    print("             Indiana Jones and his Great Escape")
-    print()
-
+    banner()
     show_room(room)
 
     while game_state == states.PLAYING:
@@ -74,10 +68,8 @@ def play_game():
 
         # about game
         elif line in ("o hre", "about", "info"):
-            print(
-                "Ďalšie dobrodružstvo Indiana Jonesa. Tentkrát sa snaží ujsť z uzavretej kobky pod zemou."
-            )
-            print("Túto hru spáchal v 2022 (c) mirek.")
+            cmd_about()
+
 
         # examine item
         elif line.startswith("preskumaj"):
