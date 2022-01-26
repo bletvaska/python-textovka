@@ -51,16 +51,16 @@ class Quit:
             context.state = states.QUIT
 
 
-def cmd_commands(context: Context, line: str):
-    print("Zoznam dostupných príkazov:")
-    print("  * inventar - vypíše obsah batohu")
-    print("  * koniec - ukončí rozohratú hru")
-    print("  * o hre - zobrazí informácie o hre")
-    print("  * poloz - vylozi predmet z batohu do aktuálnej miestnosti")
-    print("  * preskumaj - zobrazí opis zvoleného predmetu")
-    print("  * prikazy - zobrazí zoznam príkazov hry")
-    print("  * rozhliadni sa - Vypise popis miestnosti, kde sa prave nachadzas.")
-    print("  * vezmi - vezme predmet a miestnosti a vloží si ho do batohu")
+@dataclass(frozen=True)
+class ListOfCommands:
+    name: str = "prikazy"
+    description: str = "vypíše zoznam príkazov"
+
+    def exec(self, context: Context, name: str):
+        print("Zoznam dostupných príkazov:")
+
+        for command in commands:
+            print(f"  * {command.name} - {command.description}")
 
 
 @dataclass(frozen=True)
@@ -165,4 +165,5 @@ commands = [
     TakeItem(),
     ExamineItem(),
     DropItem(),
+    ListOfCommands(),
 ]
