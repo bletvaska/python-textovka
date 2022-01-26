@@ -1,5 +1,6 @@
 from helpers import get_item_by_name
 from items.features import MOVABLE
+import states
 
 
 def cmd_about():
@@ -88,3 +89,9 @@ def cmd_drop(room, backpack, line):
 
             # render
             print(f"Do miestnosti si vyložil predmet {name}.")
+
+
+def cmd_quit():
+    line = input("Naozaj chceš skončiť? (a/n) ").lower().lstrip().rstrip()
+    if line == "a":
+        game_state = states.QUIT

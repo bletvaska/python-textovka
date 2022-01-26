@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 
-from commands import cmd_about, cmd_commands, cmd_drop, cmd_examine, cmd_inventory, cmd_take
+from commands import (
+    cmd_about,
+    cmd_commands,
+    cmd_drop,
+    cmd_examine,
+    cmd_inventory,
+    cmd_quit,
+    cmd_take,
+)
 from items import bucket, canister, door, matches, newspaper
 from items.features import MOVABLE
 from helpers import banner, get_item_by_name, show_room
@@ -66,9 +74,7 @@ def play_game():
 
         # quit game
         elif line in ("koniec", "quit", "q", "bye"):
-            line = input("Naozaj chceš skončiť? (a/n) ").lower().lstrip().rstrip()
-            if line == "a":
-                game_state = states.QUIT
+            cmd_quit()
 
         # take item
         elif line.startswith(("vezmi", "take")):
