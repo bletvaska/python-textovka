@@ -1,7 +1,57 @@
-from helpers import get_item_by_name
+from dataclasses import dataclass, field
+from typing import List
+from helpers import get_item_by_name, show_room
 from items.features import MOVABLE
 from models import Context
 import states
+
+
+# command = {"description": str, "aliases": list, "name": str, "exec": function}
+
+
+# @dataclass
+# class Command:
+#     description: str
+#     aliases: list
+#     name: str
+
+#     def exec():
+#         pass
+
+
+@dataclass(frozen=True)
+class About:
+    name: str = "o hre"
+    description: str = "zobrazí informácie o hre"
+
+    def exec(self, context: Context):
+        print(
+            "Ďalšie dobrodružstvo Indiana Jonesa. Tentkrát sa snaží ujsť z uzavretej kobky pod zemou."
+        )
+        print("Túto hru spáchal v 2022 (c) mirek.")
+
+
+@dataclass(frozen=True)
+class LookAround:
+    name: str = "rozhliadni sa"
+    description: str = "Vypise popis miestnosti, kde sa prave nachadzas."
+
+    def exec(self, context: Context):
+        show_room(context.room)
+
+
+@dataclass(frozen=True)
+class Quit:
+    name: str = "koniec"
+    description: str = "ukončí rozohratú hru"
+
+    def exec(self, context: Context):
+        line = input("Naozaj chceš skončiť? (a/n) ").lower().lstrip().rstrip()
+        if line == "a":
+            context.state = states.QUIT
+
+
+commands = [About(), LookAround(), Quit()]
 
 
 def cmd_about(context: Context, line: str):
