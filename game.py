@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
 from turtle import back
+from items.newspaper import newspaper
+from items.bucket import bucket
+from items.matches import matches
+from items.door import door
 from items.canister import canister
 from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name, show_room
@@ -17,31 +21,15 @@ def play_game():
         "sa nachádzaš v podzemí.",
         "items": [
             canister,
-            {
-                "name": "dvere",
-                "description": "Veľké masívne dubové dvere. Zamknuté. Asi zvonka.",
-                "features": [],
-            },
-            {
-                "name": "zapalky",
-                "description": "Bezpečnostné zápalky. Zrejme kúpené v Bille.",
-                "features": [MOVABLE, USABLE],
-            },
-            {
-                "name": "vedro",
-                "description": "12 litrové vedro plné vody. V niektorých končinách nazývané aj kýbľom.",
-                "features": [MOVABLE, USABLE],
-            },
+            door,
+            matches,
+            bucket,
         ],
         "exits": [],
         "name": "dungeon",
     }
     backpack = [
-        {
-            "name": "noviny",
-            "description": "Košické tajmsy. Dnešné, ešte teplé vydanie.",
-            "features": [MOVABLE],
-        }
+        newspaper
     ]
     game_state = states.PLAYING
 
