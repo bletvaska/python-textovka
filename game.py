@@ -5,6 +5,14 @@ from features import MOVABLE, USABLE
 import states
 
 
+def get_item_by_name(name: str, items: dict):
+    for item in items:
+        if name == item["name"]:
+            return item
+
+    # return None
+
+
 def show_room(room: dict):
     """
     Shows the room description
@@ -143,14 +151,12 @@ def play_game():
             if len(name) == 0:
                 print("Neviem, čo chceš preskúmať.")
 
-            else:
-                for item in backpack + room['items']:
-                    if name == item["name"]:
-                        print(item['description'])
-                        break
+            item = get_item_by_name(name, backpack + room["items"])
 
-                else:
-                    print("Tento predmet tu nikde nevidím.")
+            if item is None:
+                print("Tento predmet tu nikde nevidím.")
+            else:
+                print(item["description"])
 
         # list of commands
         elif line in ("prikazy", "commands", "help", "?"):
@@ -159,6 +165,7 @@ def play_game():
             print("  * koniec - ukončí rozohratú hru")
             print("  * o hre - zobrazí informácie o hre")
             print("  * poloz - vylozi predmet z batohu do aktuálnej miestnosti")
+            print("  * preskumaj - zobrazí opis zvoleného predmetu")
             print("  * prikazy - zobrazí zoznam príkazov hry")
             print(
                 "  * rozhliadni sa - Vypise popis miestnosti, kde sa prave nachadzas."
