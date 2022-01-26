@@ -1,16 +1,17 @@
 from helpers import get_item_by_name
 from items.features import MOVABLE
+from models import Context
 import states
 
 
-def cmd_about():
+def cmd_about(context: Context, line: str):
     print(
         "Ďalšie dobrodružstvo Indiana Jonesa. Tentkrát sa snaží ujsť z uzavretej kobky pod zemou."
     )
     print("Túto hru spáchal v 2022 (c) mirek.")
 
 
-def cmd_commands():
+def cmd_commands(context: Context, line: str):
     print("Zoznam dostupných príkazov:")
     print("  * inventar - vypíše obsah batohu")
     print("  * koniec - ukončí rozohratú hru")
@@ -22,16 +23,16 @@ def cmd_commands():
     print("  * vezmi - vezme predmet a miestnosti a vloží si ho do batohu")
 
 
-def cmd_inventory(backpack: list):
-    if backpack == []:
+def cmd_inventory(context: Context, line: str):
+    if context.backpack == []:
         print("Batoh je prázdny.")
     else:
         print("V batohu máš:")
-        for item in backpack:
+        for item in context.backpack:
             print(f" * {item['name']}")
 
 
-def cmd_take(room, backpack, line):
+def cmd_take(context: Context, line: str):
     name = line.split(sep="vezmi")[1].lstrip()
 
     # if no item was given, then quit
@@ -39,7 +40,7 @@ def cmd_take(room, backpack, line):
         print("Neviem, aký predmet chceš vziať.")
         return
 
-    item = get_item_by_name(name, room["items"])
+    item = get_item_by_name(name, context.room["items"])
 
     # if item was not found, then quit
     if item is None:
@@ -52,12 +53,12 @@ def cmd_take(room, backpack, line):
         return
 
     # action
-    room["items"].remove(item)
-    backpack.append(item)
+    context.room["items"].remove(item)
+    context.backpack.append(item)
     print(f"Do batohu si vložil predmet {name}.")
 
 
-def cmd_examine(room, backpack, line):
+def cmd_examine(context: Context, line: str):
     name = line.split(sep="preskumaj")[1].lstrip()
 
     # if no item was given, then quit
@@ -65,7 +66,7 @@ def cmd_examine(room, backpack, line):
         print("Neviem, čo chceš preskúmať.")
         return
 
-    item = get_item_by_name(name, backpack + room["items"])
+    item = get_item_by_name(name, context.backpack + context.room["items"])
 
     # if item was not found, then quit
     if item is None:
@@ -76,7 +77,7 @@ def cmd_examine(room, backpack, line):
     print(item["description"])
 
 
-def cmd_drop(room: dict, backpack, line):
+def cmd_drop(context: Context, line: str):
     name = line.split(sep="poloz")[1].lstrip()
 
     # if no item was given, then quit
@@ -85,7 +86,7 @@ def cmd_drop(room: dict, backpack, line):
         return
 
     # find item by name
-    item = get_item_by_name(name, backpack)
+    item = get_item_by_name(name, context.backpack)
 
     # if no item found, then quit
     if item is None:
@@ -93,18 +94,16 @@ def cmd_drop(room: dict, backpack, line):
         return
 
     # poloz ho do miestnosti
-    room["items"].append(item)
+    context.room["items"].append(item)
 
     # zmaz ho z batohu
-    backpack.remove(item)
+    context.backpack.remove(item)
 
     # render
     print(f"Do miestnosti si vyložil predmet {name}.")
 
 
-def cmd_quit(game_state: str):
+def cmd_quit(context: Context, line: str):
     line = input("Naozaj chceš skončiť? (a/n) ").lower().lstrip().rstrip()
     if line == "a":
-        return states.QUIT
-    else:
-        return game_state
+        context.state = states.QUIT
