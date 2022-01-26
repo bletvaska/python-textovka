@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 from turtle import back
-from features import MOVABLE, USABLE
+from items.canister import canister
+from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name, show_room
 import states
 
@@ -15,11 +16,7 @@ def play_game():
         "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
         "sa nachádzaš v podzemí.",
         "items": [
-            {
-                "name": "kanister",
-                "description": "Veľký 10 litrový kanister žltej farby. Značka: plný vysokooktánového výborne horľavého benzínu.",
-                "features": [MOVABLE, USABLE],
-            },
+            canister,
             {
                 "name": "dvere",
                 "description": "Veľké masívne dubové dvere. Zamknuté. Asi zvonka.",
