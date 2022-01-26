@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from commands import cmd_about
+from commands import cmd_about, cmd_commands, cmd_drop, cmd_examine, cmd_inventory, cmd_take
 from items import bucket, canister, door, matches, newspaper
 from items.features import MOVABLE
 from helpers import banner, get_item_by_name, show_room
@@ -42,62 +42,19 @@ def play_game():
 
         # drop item
         elif line.startswith(("poloz", "drop")):
-            name = line.split(sep="poloz")[1].lstrip()
-
-            # poloz
-            # > Neviem, čo chceš položiť.
-            if len(name) == 0:
-                print("Neviem, aký predmet chceš položiť.")
-
-            else:
-                # poloz minca
-                # > Predmet minca si položil v miestnosti.
-                item = get_item_by_name(name, backpack)
-
-                if item is None:
-                    print("Taký predmet pri sebe nemáš.")
-                else:
-                    # poloz ho do miestnosti
-                    room["items"].append(item)
-
-                    # zmaz ho z batohu
-                    backpack.remove(item)
-
-                    # render
-                    print(f"Do miestnosti si vyložil predmet {name}.")
+            cmd_drop(room, backpack, line)
 
         # about game
         elif line in ("o hre", "about", "info"):
             cmd_about()
 
-
         # examine item
         elif line.startswith("preskumaj"):
-            name = line.split(sep="preskumaj")[1].lstrip()
-
-            if len(name) == 0:
-                print("Neviem, čo chceš preskúmať.")
-            else:
-                item = get_item_by_name(name, backpack + room["items"])
-
-                if item is None:
-                    print("Tento predmet tu nikde nevidím.")
-                else:
-                    print(item["description"])
+            cmd_examine(room, backpack, line)
 
         # list of commands
         elif line in ("prikazy", "commands", "help", "?"):
-            print("Zoznam dostupných príkazov:")
-            print("  * inventar - vypíše obsah batohu")
-            print("  * koniec - ukončí rozohratú hru")
-            print("  * o hre - zobrazí informácie o hre")
-            print("  * poloz - vylozi predmet z batohu do aktuálnej miestnosti")
-            print("  * preskumaj - zobrazí opis zvoleného predmetu")
-            print("  * prikazy - zobrazí zoznam príkazov hry")
-            print(
-                "  * rozhliadni sa - Vypise popis miestnosti, kde sa prave nachadzas."
-            )
-            print("  * vezmi - vezme predmet a miestnosti a vloží si ho do batohu")
+            cmd_commands()
 
         # look around
         elif line in ("rozhliadni sa", "look around"):
@@ -105,12 +62,7 @@ def play_game():
 
         # inventory
         elif line in ("inventar", "i", "inventory"):
-            if backpack == []:
-                print("Batoh je prázdny.")
-            else:
-                print("V batohu máš:")
-                for item in backpack:
-                    print(f" * {item['name']}")
+            cmd_inventory(backpack)
 
         # quit game
         elif line in ("koniec", "quit", "q", "bye"):
@@ -120,23 +72,7 @@ def play_game():
 
         # take item
         elif line.startswith(("vezmi", "take")):
-            name = line.split(sep="vezmi")[1].lstrip()
-
-            if len(name) == 0:
-                print("Neviem, aký predmet chceš vziať.")
-
-            else:
-                item = get_item_by_name(name, room["items"])
-
-                if item is not None:
-                    if MOVABLE in item["features"]:
-                        room["items"].remove(item)
-                        backpack.append(item)
-                        print(f"Do batohu si vložil predmet {name}.")
-                    else:
-                        print("Tento predmet sa nedá zobrať.")
-                else:
-                    print("Taký predmet tu nikde nevidím.")
+            cmd_take(room, backpack, line)
 
         # unknown command
         else:
