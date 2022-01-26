@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 
-from turtle import back
-from items.newspaper import newspaper
-from items.bucket import bucket
-from items.matches import matches
-from items.door import door
-from items.canister import canister
-from items.features import MOVABLE, USABLE
+from items import bucket, canister, door, matches, newspaper
+from items.features import MOVABLE
 from helpers import get_item_by_name, show_room
 import states
-
 
 
 def play_game():
@@ -28,9 +22,7 @@ def play_game():
         "exits": [],
         "name": "dungeon",
     }
-    backpack = [
-        newspaper
-    ]
+    backpack = [newspaper]
     game_state = states.PLAYING
 
     # intro banner
