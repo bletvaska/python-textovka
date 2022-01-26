@@ -34,38 +34,49 @@ def cmd_inventory(backpack: list):
 def cmd_take(room, backpack, line):
     name = line.split(sep="vezmi")[1].lstrip()
 
+    # if no item was given, then quit
     if len(name) == 0:
         print("Neviem, aký predmet chceš vziať.")
+        return
 
-    else:
-        item = get_item_by_name(name, room["items"])
+    item = get_item_by_name(name, room["items"])
 
-        if item is not None:
-            if MOVABLE in item["features"]:
-                room["items"].remove(item)
-                backpack.append(item)
-                print(f"Do batohu si vložil predmet {name}.")
-            else:
-                print("Tento predmet sa nedá zobrať.")
-        else:
-            print("Taký predmet tu nikde nevidím.")
+    # if item was not found, then quit
+    if item is None:
+        print("Taký predmet tu nikde nevidím.")
+        return
+
+    # if item is now movable, then quit
+    if MOVABLE not in item["features"]:
+        print("Tento predmet sa nedá zobrať.")
+        return
+
+    # action
+    room["items"].remove(item)
+    backpack.append(item)
+    print(f"Do batohu si vložil predmet {name}.")
 
 
 def cmd_examine(room, backpack, line):
     name = line.split(sep="preskumaj")[1].lstrip()
 
+    # if no item was given, then quit
     if len(name) == 0:
         print("Neviem, čo chceš preskúmať.")
-    else:
-        item = get_item_by_name(name, backpack + room["items"])
+        return
 
-        if item is None:
-            print("Tento predmet tu nikde nevidím.")
-        else:
-            print(item["description"])
+    item = get_item_by_name(name, backpack + room["items"])
+
+    # if item was not found, then quit
+    if item is None:
+        print("Tento predmet tu nikde nevidím.")
+        return
+
+    # action
+    print(item["description"])
 
 
-def cmd_drop(room, backpack, line):
+def cmd_drop(room: dict, backpack, line):
     name = line.split(sep="poloz")[1].lstrip()
 
     # if no item was given, then quit
@@ -91,7 +102,9 @@ def cmd_drop(room, backpack, line):
     print(f"Do miestnosti si vyložil predmet {name}.")
 
 
-def cmd_quit():
+def cmd_quit(game_state: str):
     line = input("Naozaj chceš skončiť? (a/n) ").lower().lstrip().rstrip()
     if line == "a":
-        game_state = states.QUIT
+        return states.QUIT
+    else:
+        return game_state

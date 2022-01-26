@@ -74,7 +74,7 @@ def play_game():
 
         # quit game
         elif line in ("koniec", "quit", "q", "bye"):
-            cmd_quit()
+            game_state = cmd_quit(game_state)
 
         # take item
         elif line.startswith(("vezmi", "take")):
