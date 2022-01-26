@@ -1,15 +1,6 @@
 #!/usr/bin/env python3
 
-from commands import (
-    cmd_about,
-    cmd_commands,
-    cmd_drop,
-    cmd_examine,
-    cmd_inventory,
-    cmd_quit,
-    cmd_take,
-    commands
-)
+from commands import commands
 from items import bucket, canister, door, matches, newspaper
 from helpers import banner, show_room
 from models import Context
@@ -52,7 +43,8 @@ def play_game():
         # parser
         for command in commands:
             if line.startswith(command.name):
-                command.exec(context)
+                param = line.split(sep=command.name)[1].lstrip()
+                command.exec(context, param)
                 break
         else:
             print('Taký príkaz nepoznám.')
