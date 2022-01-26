@@ -120,22 +120,19 @@ def play_game():
             else:
                 # poloz minca
                 # > Predmet minca si položil v miestnosti.
-                for item in backpack:
-                    if name == item["name"]:
-                        # zmaz ho z batohu
-                        backpack.remove(item)
+                item = get_item_by_name(name, backpack)
 
-                        # poloz ho do miestnosti
-                        room["items"].append(item)
-
-                        # render
-                        print(f"Do miestnosti si vyložil predmet {name}.")
-                        break
-
-                else:
-                    # poloz autobus
-                    # > Taký predmet pri sebe nemáš.
+                if item is None:
                     print("Taký predmet pri sebe nemáš.")
+                else:
+                    # poloz ho do miestnosti
+                    room["items"].append(item)
+
+                    # zmaz ho z batohu
+                    backpack.remove(item)
+
+                    # render
+                    print(f"Do miestnosti si vyložil predmet {name}.")
 
         # about game
         elif line in ("o hre", "about", "info"):
@@ -145,18 +142,18 @@ def play_game():
             print("Túto hru spáchal v 2022 (c) mirek.")
 
         # examine item
-        elif line.startswith(("preskumaj")):
+        elif line.startswith("preskumaj"):
             name = line.split(sep="preskumaj")[1].lstrip()
 
             if len(name) == 0:
                 print("Neviem, čo chceš preskúmať.")
-
-            item = get_item_by_name(name, backpack + room["items"])
-
-            if item is None:
-                print("Tento predmet tu nikde nevidím.")
             else:
-                print(item["description"])
+                item = get_item_by_name(name, backpack + room["items"])
+
+                if item is None:
+                    print("Tento predmet tu nikde nevidím.")
+                else:
+                    print(item["description"])
 
         # list of commands
         elif line in ("prikazy", "commands", "help", "?"):
