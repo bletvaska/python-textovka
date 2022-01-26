@@ -59,7 +59,7 @@ class ListOfCommands:
     def exec(self, context: Context, name: str):
         print("Zoznam dostupných príkazov:")
 
-        for command in commands:
+        for command in list_of_commands:
             print(f"  * {command.name} - {command.description}")
 
 
@@ -157,7 +157,7 @@ class DropItem:
         print(f"Do miestnosti si vyložil predmet {name}.")
 
 
-commands = [
+list_of_commands = [
     About(),
     LookAround(),
     Quit(),

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from commands import commands
+from commands import list_of_commands
 from items import bucket, canister, door, matches, newspaper
 from helpers import banner, show_room
 from models import Context
@@ -41,7 +41,7 @@ def play_game():
             continue
 
         # parser
-        for command in commands:
+        for command in list_of_commands:
             if line.startswith(command.name):
                 param = line.split(sep=command.name)[1].lstrip()
                 command.exec(context, param)
