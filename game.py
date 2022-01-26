@@ -196,17 +196,15 @@ def play_game():
                 print("Neviem, aký predmet chceš vziať.")
 
             else:
-                for item in room["items"]:
-                    if name == item["name"]:
-                        if MOVABLE in item["features"]:
-                            room["items"].remove(item)
-                            backpack.append(item)
-                            print(f"Do batohu si vložil predmet {name}.")
+                item = get_item_by_name(name, room['items'])
 
-                        else:
-                            print("Tento predmet sa nedá zobrať.")
-
-                        break
+                if item is not None:
+                    if MOVABLE in item["features"]:
+                        room["items"].remove(item)
+                        backpack.append(item)
+                        print(f"Do batohu si vložil predmet {name}.")
+                    else:
+                        print("Tento predmet sa nedá zobrať.")
                 else:
                     print("Taký predmet tu nikde nevidím.")
 
