@@ -6,19 +6,6 @@ from models import Context
 import states
 
 
-# command = {"description": str, "aliases": list, "name": str, "exec": function}
-
-
-# @dataclass
-# class Command:
-#     description: str
-#     aliases: list
-#     name: str
-
-#     def exec():
-#         pass
-
-
 @dataclass(frozen=True)
 class About:
     name: str = "o hre"
