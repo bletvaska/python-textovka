@@ -68,27 +68,27 @@ def cmd_examine(room, backpack, line):
 def cmd_drop(room, backpack, line):
     name = line.split(sep="poloz")[1].lstrip()
 
-    # poloz
-    # > Neviem, čo chceš položiť.
+    # if no item was given, then quit
     if len(name) == 0:
         print("Neviem, aký predmet chceš položiť.")
+        return
 
-    else:
-        # poloz minca
-        # > Predmet minca si položil v miestnosti.
-        item = get_item_by_name(name, backpack)
+    # find item by name
+    item = get_item_by_name(name, backpack)
 
-        if item is None:
-            print("Taký predmet pri sebe nemáš.")
-        else:
-            # poloz ho do miestnosti
-            room["items"].append(item)
+    # if no item found, then quit
+    if item is None:
+        print("Taký predmet pri sebe nemáš.")
+        return
 
-            # zmaz ho z batohu
-            backpack.remove(item)
+    # poloz ho do miestnosti
+    room["items"].append(item)
 
-            # render
-            print(f"Do miestnosti si vyložil predmet {name}.")
+    # zmaz ho z batohu
+    backpack.remove(item)
+
+    # render
+    print(f"Do miestnosti si vyložil predmet {name}.")
 
 
 def cmd_quit():
