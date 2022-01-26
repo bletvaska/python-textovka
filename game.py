@@ -136,6 +136,22 @@ def play_game():
             )
             print("Túto hru spáchal v 2022 (c) mirek.")
 
+        # examine item
+        elif line.startswith(("preskumaj")):
+            name = line.split(sep="preskumaj")[1].lstrip()
+
+            if len(name) == 0:
+                print("Neviem, čo chceš preskúmať.")
+
+            else:
+                for item in backpack + room['items']:
+                    if name == item["name"]:
+                        print(item['description'])
+                        break
+
+                else:
+                    print("Tento predmet tu nikde nevidím.")
+
         # list of commands
         elif line in ("prikazy", "commands", "help", "?"):
             print("Zoznam dostupných príkazov:")
