@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-from ast import AsyncFunctionDef
-from dataclasses import dataclass
-from typing import List
 from commands import (
     cmd_about,
     cmd_commands,
@@ -13,8 +10,7 @@ from commands import (
     cmd_take,
 )
 from items import bucket, canister, door, matches, newspaper
-from items.features import MOVABLE
-from helpers import banner, get_item_by_name, show_room
+from helpers import banner, show_room
 from models import Context
 import states
 
