@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 
-from commands import list_of_commands
+from commands import (
+    About,
+    LookAround,
+    Quit,
+    Inventory,
+    TakeItem,
+    ExamineItem,
+    DropItem,
+    ListOfCommands,
+)
 from items import bucket, canister, door, matches, newspaper
 from helpers import banner, show_room
 from models import Context
@@ -25,6 +34,16 @@ def play_game():
         },
         backpack=[newspaper],
         world={},
+        commands=[
+            About(),
+            LookAround(),
+            Quit(),
+            Inventory(),
+            TakeItem(),
+            ExamineItem(),
+            DropItem(),
+            ListOfCommands(),
+        ],
     )
 
     # intro banner
@@ -41,7 +60,7 @@ def play_game():
             continue
 
         # parser
-        for command in list_of_commands:
+        for command in context.commands:
             if line.startswith(command.name):
                 param = line.split(sep=command.name)[1].lstrip()
                 command.exec(context, param)
