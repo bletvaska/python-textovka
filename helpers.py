@@ -35,7 +35,7 @@ def show_room(room: dict):
     for exit in room['exits']:
         if room['exits'][exit] is not None:
             exits.append(exit)
-    # exits = [exit for exit in room['exits'] if exit is not None]
+    # exits = [exit for exit in room['exits'] if room['exits'][exit] is not None]
 
     if len(exits) == 0:
         print("Z tejto miestnosti nevedú žiadne východy.")
