@@ -46,6 +46,21 @@ class UseItem:
             print(random.choice(headlines))
 
         elif name == 'kanister':
+            # scenario
+
+            # 1. usability check
+            # * v miestnosti musia byt dvere!
+            #   ak tam dvere nie su, vypise sa na obrazovku ftipna sprava: Vzal si kanister do ruky, trošku si zaposiloval a uľavil si si sprostým slovom (ako mirek). Hneď sa cítiš lepšie.
+
+            # 2. action
+            # aktualizacia dveri
+            # * zmeni sa opis na obliate dvere
+            # * zmeni sa stav dveri z NORMAL na SOAKED
+            # aktualizujeme kanister
+            # * stane sa nepouzitelnym - vymaze sa USABLE zo zoznamu ficur
+            # * zmenime mu opis -
+
+            # 3. render
             print('ta lejem benzin na dvere')
 
         elif name == 'zapalky':
