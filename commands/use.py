@@ -45,5 +45,14 @@ class UseItem:
 
             print(random.choice(headlines))
 
+        elif name == 'kanister':
+            print('ta lejem benzin na dvere')
+
+        elif name == 'zapalky':
+            print('ta skrtam zapalky a podpalujem dvere nasiaknute benzinom')
+
+        elif name == 'vedro':
+            print('ta hasim horiace dvere vedrom s vodou a tie sa rozpadnu')
+
         else:
-            print(f"POuzivam dajako predmet {name}.")
+            raise NotImplementedError(f'Usage of item {name} was not yet implemented.')
