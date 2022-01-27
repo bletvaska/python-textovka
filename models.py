@@ -6,6 +6,6 @@ import states
 class Context:
     room: dict
     world: dict
-    backpack: list
+    backpack: list[dict]
     commands: list
     state: str = states.PLAYING

@@ -9,6 +9,7 @@ from commands import (
     ExamineItem,
     DropItem,
     ListOfCommands,
+    UseItem
 )
 from items import bucket, canister, door, matches, newspaper
 from helpers import banner, show_room
@@ -36,13 +37,14 @@ def play_game():
         world={},
         commands=[
             About(),
+            DropItem(),
+            ExamineItem(),
+            Inventory(),
+            ListOfCommands(),
             LookAround(),
             Quit(),
-            Inventory(),
             TakeItem(),
-            ExamineItem(),
-            DropItem(),
-            ListOfCommands(),
+            UseItem()
         ],
     )
 

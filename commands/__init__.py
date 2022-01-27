@@ -6,3 +6,4 @@ from .look_around import LookAround
 from .quit import Quit
 from .take_item import TakeItem
 from .about import About
+from .use import UseItem
