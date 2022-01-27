@@ -31,10 +31,12 @@ def show_room(room: dict):
         'east': 'východ',
         'west': 'západ'
     }
+
     exits = []
     for exit in room['exits']:
         if room['exits'][exit] is not None:
             exits.append(exit)
+    # list comprehension example
     # exits = [exit for exit in room['exits'] if room['exits'][exit] is not None]
 
     if len(exits) == 0:
