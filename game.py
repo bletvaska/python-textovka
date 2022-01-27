@@ -30,7 +30,12 @@ def play_game():
                 matches,
                 bucket,
             ],
-            "exits": [],
+            "exits": {
+                'north': None,
+                'south': 'zahradka',
+                'east': None,
+                'west': 'nebo'
+            },
             "name": "dungeon",
         },
         backpack=[newspaper],

@@ -25,8 +25,23 @@ def show_room(room: dict):
     print(room["description"])
 
     # show exits
-    if len(room["exits"]) == 0:
+    translate = {
+        'north': 'sever',
+        'south': 'juh',
+        'east': 'východ',
+        'west': 'západ'
+    }
+    exits = []
+    for exit in room['exits']:
+        if room['exits'][exit] is not None:
+            exits.append(exit)
+
+    if len(exits) == 0:
         print("Z tejto miestnosti nevedú žiadne východy.")
+    else:
+        print('Môžeš ísť:')
+        for exit in exits:
+            print(f' * {translate[exit]}')
 
     # show items
     if len(room["items"]) == 0:
