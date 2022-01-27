@@ -6,6 +6,15 @@ def get_item_by_name(name: str, items: dict):
     # return None
 
 
+def get_room_by_name(name: str, world: list):
+    for room in world:
+        if name == room['name']:
+            return room
+
+    # return None
+
+
+
 def show_room(room: dict):
     """
     Shows the room description

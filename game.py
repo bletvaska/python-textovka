@@ -12,34 +12,18 @@ from commands import (
     UseItem
 )
 from items import bucket, canister, door, matches, newspaper
-from helpers import banner, show_room
+from helpers import banner, get_room_by_name, show_room
 from models import Context
 import states
+from world import world
 
 
 def play_game():
     # context
     context = Context(
-        room={
-            "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. "
-            "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
-            "sa nachádzaš v podzemí.",
-            "items": [
-                canister,
-                door,
-                matches,
-                bucket,
-            ],
-            "exits": {
-                'north': None,
-                'south': None,
-                'east': None,
-                'west': None
-            },
-            "name": "dungeon",
-        },
+        room=get_room_by_name('dungeon', world),
         backpack=[newspaper],
-        world={},
+        world=world,
         commands=[
             About(),
             DropItem(),
