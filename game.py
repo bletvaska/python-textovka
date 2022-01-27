@@ -32,9 +32,9 @@ def play_game():
             ],
             "exits": {
                 'north': None,
-                'south': 'zahradka',
+                'south': None,
                 'east': None,
-                'west': 'nebo'
+                'west': None
             },
             "name": "dungeon",
         },

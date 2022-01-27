@@ -29,7 +29,7 @@ def _use(context: Context):
     bucket["features"].remove(USABLE)
     # aktualizujeme miestnost
     # * vytvorime vychod z miestnosti
-    context.room["exits"].append("vychod")
+    context.room["exits"]['east'] = 'garden'
 
     # 3. render
     print(
