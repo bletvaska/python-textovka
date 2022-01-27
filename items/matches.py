@@ -9,6 +9,8 @@ def _use(context: Context):
     # v miestnosti su dvere
     # * dvere su obliate benzinom - su v stave SOAKED
     # ak dvere nie su v miestnosti alebo su v inom stave, tak hlaska na obrazovku
+    # pocitadlo == 0?
+    # * ak nie, tak znizim o 1 a vypisem hlasku: 'Si skrtol a nic'
 
     # 2. action
     # aktualizujem dvere
@@ -27,5 +29,6 @@ matches = {
     "name": "zapalky",
     "description": "Bezpečnostné zápalky. Zrejme kúpené v Bille.",
     "features": [MOVABLE, USABLE],
+    'counter': 3,
     "use": _use,
 }
