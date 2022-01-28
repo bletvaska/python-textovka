@@ -25,7 +25,7 @@ import json
 
 def play_game():
     # load world
-    with open('assets/world.json', 'r') as file:
+    with open('assets/world.json', 'r', encoding='utf-8') as file:
         world = json.load(file)
         dungeon = get_room_by_name('dungeon', world)
         dungeon['items'].append(canister)
