@@ -2,6 +2,7 @@
 
 from commands import (
     About,
+    East,
     LookAround,
     Quit,
     Inventory,
@@ -27,6 +28,7 @@ def play_game():
         commands=[
             About(),
             DropItem(),
+            East(),
             ExamineItem(),
             Inventory(),
             ListOfCommands(),

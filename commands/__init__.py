@@ -7,3 +7,4 @@ from .quit import Quit
 from .take_item import TakeItem
 from .about import About
 from .use import UseItem
+from .east import East
