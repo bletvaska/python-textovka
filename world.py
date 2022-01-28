@@ -7,10 +7,10 @@ world = [
         "Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že "
         "sa nachádzaš v podzemí.",
         "items": [
-            canister,
+            # canister,
             door,
-            matches,
-            bucket,
+            # matches,
+            # bucket,
         ],
         "exits": {"north": None, "south": None, "east": None, "west": None},
         "name": "dungeon",

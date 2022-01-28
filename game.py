@@ -19,10 +19,21 @@ from items import bucket, canister, door, matches, newspaper
 from helpers import banner, get_room_by_name, show_room
 from models import Context
 import states
-from world import world
+import json
+# from world import world
 
 
 def play_game():
+    # load world
+    file = open('assets/world.json', 'r')
+    world = json.load(file)
+    dungeon = get_room_by_name('dungeon', world)
+    dungeon['items'].append(canister)
+    # dungeon['items'].append(door)
+    dungeon['items'].append(matches)
+    dungeon['items'].append(bucket)
+    file.close()
+
     # context
     context = Context(
         room=get_room_by_name("dungeon", world),
@@ -85,4 +96,7 @@ def play_game():
 
 
 if __name__ == "__main__":
+    # file = open('assets/world.json', 'w')
+    # json.dump(world, file, ensure_ascii=False, indent=4)
+    # file.close()
     play_game()

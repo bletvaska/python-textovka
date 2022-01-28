@@ -1,0 +1,53 @@
+[
+    {
+        "description": "Nachádzaš sa v tmavej miestnosti, v ktorej rozhodne chýbajú okná. Je tu značne šero a vlhko. Chladné kamenné steny dávajú tušiť, že sa nachádzaš v podzemí.",
+        "items": [
+            {
+                "name": "dvere",
+                "description": "Veľké masívne dubové dvere. Zamknuté. Asi zvonka.",
+                "features": [],
+                "state": 1
+            }
+        ],
+        "exits": {
+            "north": null,
+            "south": null,
+            "east": null,
+            "west": null
+        },
+        "name": "dungeon"
+    },
+    {
+        "name": "garden",
+        "description": "Neudržiavaná plocha, ktorá sa pred pár rokmi určite nazývala záhradkou. Tuto boli asi zemiaky a tuto hľa asi aj krumpeľe.",
+        "items": [],
+        "exits": {
+            "north": "heaven",
+            "south": "hell",
+            "east": null,
+            "west": "dungeon"
+        }
+    },
+    {
+        "name": "heaven",
+        "description": "Dvojnásobné RAMky. Dvojnásobné platy. Smiech a džavot naokolo. No to musí byť Dojč... Nebo.",
+        "items": [],
+        "exits": {
+            "north": null,
+            "south": "garden",
+            "east": null,
+            "west": null
+        }
+    },
+    {
+        "name": "hell",
+        "description": "Ta teplo tu je. Začínam sa topiť vo vlastnej šťave. Ale aj v cudzej. Plač a škrípanie zubov. Python vo verzii 2.7.",
+        "items": [],
+        "exits": {
+            "north": null,
+            "south": null,
+            "east": null,
+            "west": null
+        }
+    }
+]
