@@ -8,3 +8,6 @@ from .take_item import TakeItem
 from .about import About
 from .use import UseItem
 from .east import East
+from .west import West
+from .north import North
+from .south import South

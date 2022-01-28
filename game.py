@@ -10,7 +10,10 @@ from commands import (
     ExamineItem,
     DropItem,
     ListOfCommands,
-    UseItem
+    UseItem,
+    West,
+    North,
+    South
 )
 from items import bucket, canister, door, matches, newspaper
 from helpers import banner, get_room_by_name, show_room
@@ -33,9 +36,12 @@ def play_game():
             Inventory(),
             ListOfCommands(),
             LookAround(),
+            North(),
             Quit(),
+            South(),
             TakeItem(),
-            UseItem()
+            UseItem(),
+            West()
         ],
     )
 
