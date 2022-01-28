@@ -13,7 +13,7 @@ from commands import (
     UseItem,
     West,
     North,
-    South
+    South,
 )
 from items import bucket, canister, door, matches, newspaper
 from helpers import banner, get_room_by_name, show_room
@@ -25,7 +25,7 @@ from world import world
 def play_game():
     # context
     context = Context(
-        room=get_room_by_name('dungeon', world),
+        room=get_room_by_name("dungeon", world),
         backpack=[newspaper],
         world=world,
         commands=[
@@ -41,7 +41,7 @@ def play_game():
             South(),
             TakeItem(),
             UseItem(),
-            West()
+            West(),
         ],
     )
 
@@ -66,6 +66,20 @@ def play_game():
                 break
         else:
             print("Taký príkaz nepoznám.")
+            continue
+
+        # state evaluation
+        if context.room["name"] == "heaven":
+            context.state = states.WINNER
+            print(
+                "Ta aj svarny archeolog Indiana Jones sa nakoniec dostal do neba. Gratulujeme."
+            )
+
+        elif context.room["name"] == "hell":
+            context.state = states.DEAD
+            print(
+                "Ta ani taky svarny archeolog ako je Indiana Jones sa nedokaze dostat z pruseru, ktorym je peklo. Je to pre neho Game Over."
+            )
 
     print("Created by (c)2022 mirek")
 
