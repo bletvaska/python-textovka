@@ -22,10 +22,8 @@ from models import Context
 import states
 import json
 
-# from world import world
 
-
-def play_game():
+def init_game():
     # load world
     with open("assets/world.json", "r", encoding="utf-8") as file:
         world = json.load(file)
@@ -59,6 +57,10 @@ def play_game():
         ],
     )
 
+    return context
+
+
+def play_game(context: Context):
     # intro banner
     banner()
     show_room(context.room)
@@ -99,4 +101,5 @@ def play_game():
 
 
 if __name__ == "__main__":
-    play_game()
+    context = init_game()
+    play_game(context)
