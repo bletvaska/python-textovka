@@ -11,11 +11,12 @@ from commands import (
     DropItem,
     ListOfCommands,
     UseItem,
-    West,
     North,
+    Save,
     South,
+    West,
 )
-from items import bucket, canister, door, matches, newspaper
+from items import bucket, canister, matches, newspaper
 from helpers import banner, get_room_by_name, show_room
 from models import Context
 import states
@@ -50,6 +51,7 @@ def play_game():
             LookAround(),
             North(),
             Quit(),
+            Save(),
             South(),
             TakeItem(),
             UseItem(),
@@ -93,7 +95,6 @@ def play_game():
                 "Ta ani taky svarny archeolog ako je Indiana Jones sa nedokaze dostat z pruseru, ktorym je peklo. Je to pre neho Game Over."
             )
 
-    print(context.history)
     print("Created by (c)2022 mirek")
 
 
