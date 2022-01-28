@@ -98,7 +98,4 @@ def play_game():
 
 
 if __name__ == "__main__":
-    # file = open('assets/world.json', 'w')
-    # json.dump(world, file, ensure_ascii=False, indent=4)
-    # file.close()
     play_game()

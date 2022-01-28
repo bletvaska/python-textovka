@@ -31,3 +31,6 @@ class DropItem:
 
         # render
         print(f"Do miestnosti si vyložil predmet {name}.")
+
+        # save command to history
+        context.history.append(f"poloz {name}")

@@ -32,3 +32,6 @@ class TakeItem:
         context.room["items"].remove(item)
         context.backpack.append(item)
         print(f"Do batohu si vložil predmet {name}.")
+
+        # save command to history
+        context.history.append(f'vezmi {name}')

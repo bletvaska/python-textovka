@@ -16,3 +16,6 @@ class East:
         else:
             context.room = get_room_by_name(context.room["exits"]["east"], world)
             show_room(context.room)
+
+            # save command to history
+            context.history.append("vychod")
