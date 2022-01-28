@@ -9,5 +9,3 @@ door = {
     "features": [],
     "state": NORMAL,
 }
-
-

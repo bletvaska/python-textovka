@@ -25,14 +25,13 @@ import json
 
 def play_game():
     # load world
-    file = open('assets/world.json', 'r')
-    world = json.load(file)
-    dungeon = get_room_by_name('dungeon', world)
-    dungeon['items'].append(canister)
-    # dungeon['items'].append(door)
-    dungeon['items'].append(matches)
-    dungeon['items'].append(bucket)
-    file.close()
+    with open('assets/world.json', 'r') as file:
+        world = json.load(file)
+        dungeon = get_room_by_name('dungeon', world)
+        dungeon['items'].append(canister)
+        # dungeon['items'].append(door)
+        dungeon['items'].append(matches)
+        dungeon['items'].append(bucket)
 
     # context
     context = Context(
