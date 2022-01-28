@@ -20,24 +20,26 @@ from helpers import banner, get_room_by_name, show_room
 from models import Context
 import states
 import json
+
 # from world import world
 
 
 def play_game():
     # load world
-    with open('assets/world.json', 'r', encoding='utf-8') as file:
+    with open("assets/world.json", "r", encoding="utf-8") as file:
         world = json.load(file)
-        dungeon = get_room_by_name('dungeon', world)
-        dungeon['items'].append(canister)
+        dungeon = get_room_by_name("dungeon", world)
+        dungeon["items"].append(canister)
         # dungeon['items'].append(door)
-        dungeon['items'].append(matches)
-        dungeon['items'].append(bucket)
+        dungeon["items"].append(matches)
+        dungeon["items"].append(bucket)
 
     # context
     context = Context(
         room=get_room_by_name("dungeon", world),
         backpack=[newspaper],
         world=world,
+        history=[],
         commands=[
             About(),
             DropItem(),
@@ -91,6 +93,7 @@ def play_game():
                 "Ta ani taky svarny archeolog ako je Indiana Jones sa nedokaze dostat z pruseru, ktorym je peklo. Je to pre neho Game Over."
             )
 
+    print(context.history)
     print("Created by (c)2022 mirek")
 
 

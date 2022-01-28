@@ -32,15 +32,8 @@ class UseItem:
             return
 
         # action
+        context.history.append(f'pouzi {name}')
 
         # read newspaper
         item['use'](context)
 
-        # elif name == 'zapalky':
-        #     print('ta skrtam zapalky a podpalujem dvere nasiaknute benzinom')
-
-        # elif name == 'vedro':
-        #     print('ta hasim horiace dvere vedrom s vodou a tie sa rozpadnu')
-
-        # else:
-        #     raise NotImplementedError(f'Usage of item {name} was not yet implemented.')
