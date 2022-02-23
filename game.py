@@ -33,11 +33,24 @@ def main():
     # game init
     game_state = states.PLAYING
 
+    room = {
+        "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
+                       'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
+                       'flóru.',
+        "items": 'bicik, prazdne sedadla',
+        "exits": {
+            'north': 'zahradka',
+            'south': None,
+            'east': None,
+            'west': None
+        },
+        "name": 'miestnost',
+    }
+
     # intro
     intro()
 
-    print('Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá vankúšikmi. Tiež '
-          'ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a flóru.')
+    print(room)
 
     # game loop
     while game_state == states.PLAYING:
@@ -58,8 +71,7 @@ def main():
             print('* rozhliadni sa - zobrazí opis miestnosti')
 
         elif line in ('rozhliadni sa', 'look around'):
-            print('Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
-                  'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a flóru.')
+            print(room)
 
         elif line in ('koniec', 'quit', 'q', 'bye'):
             x = input('Naozaj chceš skončiť? (a/n) ').strip().lower()
