@@ -33,6 +33,27 @@ def show_room(room):
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room["description"])
 
+    # show exits
+    # check if there is any exit
+    some_exit = False
+    for ex in room['exits']:
+        if room['exits'][ex] is not None:
+            some_exit = True
+            break
+
+    if some_exit is False:
+        print('Z miestnosti nevedú žiadne východy.')
+    else:
+        print('Možné východy z miestnosti:')
+        if room["exits"]["north"] is not None:
+            print('* sever')
+        if room["exits"]["south"] is not None:
+            print('* juh')
+        if room["exits"]["east"] is not None:
+            print('* východ')
+        if room["exits"]["west"] is not None:
+            print('* západ')
+
 
 def main():
     # game init
@@ -46,7 +67,7 @@ def main():
         "exits": {
             'north': 'zahradka',
             'south': None,
-            'east': None,
+            'east': 'jaskyna',
             'west': None
         },
         "name": 'miestnost',
