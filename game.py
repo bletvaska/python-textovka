@@ -70,9 +70,11 @@ def show_room(room: dict) -> None:
     if len(room['items']) == 0:
         print('Nevidíš tu nič zvláštne.')
     else:
-        print('Vidíš:')
-        for item in room['items']:
-            print(f' * {item}')
+        # print('Vidíš:')
+        # for item in room['items']:
+        #     print(f' * {item}')
+
+        print('Vidíš:', ', '.join(room['items']))
 
     # return None
 
@@ -85,7 +87,7 @@ def main():
         "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
                        'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
                        'flóru.',
-        "items": ['bicik', 'prazdne sedadla'],
+        "items": ['bicik', 'prazdne sedadla', 'dennik n'],
         "exits": {
             'north': 'zahradka',
             'south': None,
