@@ -36,6 +36,9 @@ def main():
     # intro
     intro()
 
+    print('Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá vankúšikmi. Tiež '
+          'ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a flóru.')
+
     # game loop
     while game_state == states.PLAYING:
         line = input('> ').lstrip().rstrip().lower()
@@ -47,11 +50,16 @@ def main():
             print('Ďalšie napínavé dobrodružstvo Indiana Jonesa. Tentokrát sa Indy ...')
             print('Túto nadupanú hru spáchal (c) mirek')
 
-        elif line in ('prikazy', 'commands', 'help', '?'):
+        elif line in ('prikazy', 'commands', 'help', '?',):
             print('Dostupné príkazy v hre:')
             print('* o hre - zobrazí informácie o hre')
             print('* koniec - ukončí hru')
             print('* prikazy - zobrazí zoznam aktuálne dostupných príkazov')
+            print('* rozhliadni sa - zobrazí opis miestnosti')
+
+        elif line in ('rozhliadni sa', 'look around'):
+            print('Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
+                  'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a flóru.')
 
         elif line in ('koniec', 'quit', 'q', 'bye'):
             x = input('Naozaj chceš skončiť? (a/n) ').strip().lower()
