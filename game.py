@@ -36,7 +36,8 @@ def show_room(room: dict) -> None:
     This function shows the content of the room: it's name, description, exits and items, which are located in the room.
     @param room: the room to show
     """
-    if type(room) != dict:
+    if not isinstance(room, dict):
+        # if type(room) != dict:
         raise TypeError('Room is not of type dictionary.')
 
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
@@ -61,9 +62,17 @@ def show_room(room: dict) -> None:
         print('Z miestnosti nevedú žiadne východy.')
     else:
         print('Možné východy z miestnosti:')
-        for ex in room['exits']:
-            if room['exits'][ex] is not None:
-                print(f' * {translation[ex]}')
+        for exit in room['exits']:
+            if room['exits'][exit] is not None:
+                print(f' * {translation[exit]}')
+
+    # print items
+    if len(room['items']) == 0:
+        print('Nevidíš tu nič zvláštne.')
+    else:
+        print('Vidíš:')
+        for item in room['items']:
+            print(f' * {item}')
 
     # return None
 
@@ -76,7 +85,7 @@ def main():
         "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
                        'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
                        'flóru.',
-        "items": 'bicik, prazdne sedadla',
+        "items": ['bicik', 'prazdne sedadla'],
         "exits": {
             'north': 'zahradka',
             'south': None,
