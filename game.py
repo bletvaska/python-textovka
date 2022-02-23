@@ -29,7 +29,16 @@ def outro():
     print('(at least 100 Euros). He will create something.')
 
 
-def show_room(room):
+def show_room(room: dict) -> None:
+    """
+    Shows the content of the room
+
+    This function shows the content of the room: it's name, description, exits and items, which are located in the room.
+    @param room: the room to show
+    """
+    if type(room) != dict:
+        raise TypeError('Room is not of type dictionary.')
+
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room["description"])
 
@@ -55,6 +64,8 @@ def show_room(room):
         for ex in room['exits']:
             if room['exits'][ex] is not None:
                 print(f' * {translation[ex]}')
+
+    # return None
 
 
 def main():
