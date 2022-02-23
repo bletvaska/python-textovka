@@ -29,21 +29,7 @@ def outro():
     print('(at least 100 Euros). He will create something.')
 
 
-def show_room():
-    room = {
-        "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
-                       'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
-                       'flóru.',
-        "items": 'bicik, prazdne sedadla',
-        "exits": {
-            'north': 'zahradka',
-            'south': None,
-            'east': None,
-            'west': None
-        },
-        "name": 'vazenie',
-    }
-
+def show_room(room):
     print(f'Nachádzaš sa v miestnosti {room["name"]}')
     print(room["description"])
 
@@ -69,7 +55,7 @@ def main():
     # intro
     intro()
 
-    show_room()
+    show_room(room)
 
     # game loop
     while game_state == states.PLAYING:
@@ -90,7 +76,7 @@ def main():
             print('* rozhliadni sa - zobrazí opis miestnosti')
 
         elif line in ('rozhliadni sa', 'look around'):
-            show_room()
+            show_room(room)
 
         elif line in ('koniec', 'quit', 'q', 'bye'):
             x = input('Naozaj chceš skončiť? (a/n) ').strip().lower()
