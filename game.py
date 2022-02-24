@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from items import newspaper
+from items import newspaper, door, bucket, canister, matches
 
 
 def intro():
@@ -71,11 +71,11 @@ def show_room(room: dict) -> None:
     if len(room['items']) == 0:
         print('Nevidíš tu nič zvláštne.')
     else:
-        # print('Vidíš:')
-        # for item in room['items']:
-        #     print(f' * {item}')
+        print('Vidíš:')
+        for item in room['items']:
+            print(f' * {item.name}')
 
-        print('Vidíš:', ', '.join(room['items']))
+        # print('Vidíš:', ', '.join(room['items']))
 
     # return None
 
@@ -84,12 +84,19 @@ def main():
     # game init
     game_state = states.PLAYING
 
-    backpack = [newspaper]
+    backpack = [
+        matches
+    ]
     room = {
         "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
                        'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
                        'flóru.',
-        "items": ['bicik', 'prazdne sedadla', 'dennik n'],
+        "items": [
+            door,
+            bucket,
+            newspaper,
+            canister
+        ],
         "exits": {
             'north': 'zahradka',
             'south': None,
