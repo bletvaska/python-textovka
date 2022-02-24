@@ -79,10 +79,20 @@ def show_room(room: dict) -> None:
     # return None
 
 
+def cmd_inventory(backpack: list):
+    if len(backpack) == 0:
+        print('Batoh je prázdny.')
+    else:
+        print('V batohu máš:')
+        for item in backpack:
+            print(f' * {item}')
+
+
 def main():
     # game init
     game_state = states.PLAYING
 
+    backpack = ['minca', 'dennik n']
     room = {
         "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
                        'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
@@ -116,6 +126,7 @@ def main():
         elif line in ('prikazy', 'commands', 'help', '?',):
             print('Dostupné príkazy v hre:')
             print('* o hre - zobrazí informácie o hre')
+            print('* inventar - zobrazí obsah batohu')
             print('* koniec - ukončí hru')
             print('* prikazy - zobrazí zoznam aktuálne dostupných príkazov')
             print('* rozhliadni sa - zobrazí opis miestnosti')
@@ -129,6 +140,9 @@ def main():
                 game_state = states.QUIT
             else:
                 print('Tak hráme ďalej...')
+
+        elif line in ('inventar', 'inventory', 'i'):
+            cmd_inventory(backpack)
 
         else:
             print('Taký príkaz nepoznám.')
