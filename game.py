@@ -3,6 +3,8 @@ import states
 from items import newspaper, door, bucket, canister, matches
 
 
+
+
 def intro():
     """
     Shows intro.
