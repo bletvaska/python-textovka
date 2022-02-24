@@ -4,6 +4,14 @@ from items import newspaper, door, bucket, canister, matches
 from items.features import MOVABLE
 
 
+def get_item_by_name(name: str, items: list):
+    for item in items:
+        if name == item.name:
+            return item
+
+    # return None
+
+
 def intro():
     """
     Shows intro.
@@ -161,19 +169,19 @@ def main():
 
             # je v batohu?
             else:
-                for item in backpack:
-                    if name == item.name:
-                        # vymazem z batohu
-                        backpack.remove(item)
+                item = get_item_by_name(name, backpack)
 
-                        # vlozim do miestnosti
-                        room['items'].append(item)
-
-                        # render
-                        print(f'Do miestnosti si položil predmet {name}.')
-                        break
-                else:
+                if item is None:
                     print('Taký predmet pri sebe nemáš.')
+                else:
+                    # vymazem z batohu
+                    backpack.remove(item)
+
+                    # vlozim do miestnosti
+                    room['items'].append(item)
+
+                    # render
+                    print(f'Do miestnosti si položil predmet {name}.')
 
         elif line.startswith('vezmi'):
             name = line.split('vezmi')[1].strip()
@@ -184,23 +192,22 @@ def main():
 
             # je v miestnosti?
             else:
-                for item in room['items']:
-                    if name == item.name:
-                        # je prenositelny?
-                        if MOVABLE in item.features:
-                            # vymazem z miestnosti
-                            room['items'].remove(item)
-
-                            # vlozim do batohu
-                            backpack.append(item)
-
-                            # render
-                            print(f'Do batohu si si vložil predmet {name}.')
-                        else:
-                            print('Tento predmet sa nedá zobrať.')
-                        break
-                else:
+                item = get_item_by_name(name, room['items'])
+                if item is None:
                     print('Taký predmet tu nikde nevidím.')
+                else:
+                    # je prenositelny?
+                    if MOVABLE in item.features:
+                        # vymazem z miestnosti
+                        room['items'].remove(item)
+
+                        # vlozim do batohu
+                        backpack.append(item)
+
+                        # render
+                        print(f'Do batohu si si vložil predmet {name}.')
+                    else:
+                        print('Tento predmet sa nedá zobrať.')
 
         elif line.startswith('preskumaj'):
             name = line.split('preskumaj')[1].strip()
@@ -210,12 +217,12 @@ def main():
                 print('Neviem čo chceš preskúmať.')
 
             else:
-                for item in room['items'] + backpack:
-                    if name == item.name:
-                        print(item.description)
-                        break
-                else:
+                item = get_item_by_name(name, room['items'] + backpack)
+
+                if item is None:
                     print('Taký predmet tu nikde nevidím.')
+                else:
+                    print(item.description)
 
         else:
             print('Taký príkaz nepoznám.')
