@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import states
 from items import newspaper, door, bucket, canister, matches
+from items.features import MOVABLE
 
 
 def intro():
@@ -167,10 +168,37 @@ def main():
                         room['items'].append(item)
 
                         # render
-                        print(f'Do miestnosti si položil predmet {name}')
+                        print(f'Do miestnosti si položil predmet {name}.')
                         break
                 else:
                     print('Taký predmet pri sebe nemáš.')
+
+        elif line.startswith('vezmi'):
+            name = line.split('vezmi')[1].strip()
+
+            # bol zadany nazov predmetu?
+            if name == '':
+                print('Neviem, čo chceš vziať.')
+
+            # je v miestnosti?
+            else:
+                for item in room['items']:
+                    if name == item.name:
+                        # je prenositelny?
+                        if MOVABLE in item.features:
+                            # vymazem z miestnosti
+                            room['items'].remove(item)
+
+                            # vlozim do batohu
+                            backpack.append(item)
+
+                            # render
+                            print(f'Do batohu si si vložil predmet {name}.')
+                        else:
+                            print('Tento predmet sa nedá zobrať.')
+                        break
+                else:
+                    print('Taký predmet tu nikde nevidím.')
 
         else:
             print('Taký príkaz nepoznám.')
@@ -181,5 +209,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
