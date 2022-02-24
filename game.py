@@ -128,6 +128,7 @@ def main():
             print('* o hre - zobrazí informácie o hre')
             print('* inventar - zobrazí obsah batohu')
             print('* koniec - ukončí hru')
+            print('* poloz - vylozi predmet z batohu do miestnosti')
             print('* prikazy - zobrazí zoznam aktuálne dostupných príkazov')
             print('* rozhliadni sa - zobrazí opis miestnosti')
 
@@ -143,6 +144,25 @@ def main():
 
         elif line in ('inventar', 'inventory', 'i'):
             cmd_inventory(backpack)
+
+        elif line.startswith('poloz'):
+            name = line.split('poloz')[1].strip()
+            print(f'vykladam predmet "{name}"')
+
+            # bol zadany nazov predmetu?
+            if name == '':
+                print('Neviem, čo chceš položiť.')
+
+            # je v batohu?
+            elif name not in backpack:
+                print('Taký predmet pri sebe nemáš.')
+
+            # vymazem z batohu
+
+            # vlozim do miestnosti
+
+            # Do miestnosti si položil predmet {name}
+
 
         else:
             print('Taký príkaz nepoznám.')
