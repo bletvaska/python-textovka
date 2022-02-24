@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import states
+from items import newspaper
 
 
 def intro():
@@ -79,20 +80,11 @@ def show_room(room: dict) -> None:
     # return None
 
 
-def cmd_inventory(backpack: list):
-    if len(backpack) == 0:
-        print('Batoh je prázdny.')
-    else:
-        print('V batohu máš:')
-        for item in backpack:
-            print(f' * {item}')
-
-
 def main():
     # game init
     game_state = states.PLAYING
 
-    backpack = ['minca', 'dennik n']
+    backpack = [newspaper]
     room = {
         "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
                        'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
@@ -143,7 +135,12 @@ def main():
                 print('Tak hráme ďalej...')
 
         elif line in ('inventar', 'inventory', 'i'):
-            cmd_inventory(backpack)
+            if len(backpack) == 0:
+                print('Batoh je prázdny.')
+            else:
+                print('V batohu máš:')
+                for item in backpack:
+                    print(f' * {item.name}')
 
         elif line.startswith('poloz'):
             name = line.split('poloz')[1].strip()
