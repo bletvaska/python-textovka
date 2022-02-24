@@ -147,7 +147,6 @@ def main():
 
         elif line.startswith('poloz'):
             name = line.split('poloz')[1].strip()
-            print(f'vykladam predmet "{name}"')
 
             # bol zadany nazov predmetu?
             if name == '':
@@ -157,12 +156,15 @@ def main():
             elif name not in backpack:
                 print('Taký predmet pri sebe nemáš.')
 
-            # vymazem z batohu
+            else:
+                # vymazem z batohu
+                backpack.remove(name)
 
-            # vlozim do miestnosti
+                # vlozim do miestnosti
+                room['items'].append(name)
 
-            # Do miestnosti si položil predmet {name}
-
+                # render
+                print(f'Do miestnosti si položil predmet {name}')
 
         else:
             print('Taký príkaz nepoznám.')
