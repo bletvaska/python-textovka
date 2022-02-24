@@ -129,8 +129,10 @@ def main():
             print('* inventar - zobrazí obsah batohu')
             print('* koniec - ukončí hru')
             print('* poloz - vylozi predmet z batohu do miestnosti')
+            print('* preskumaj - zobrazí opis zvoleného predmetu')
             print('* prikazy - zobrazí zoznam aktuálne dostupných príkazov')
             print('* rozhliadni sa - zobrazí opis miestnosti')
+            print('* vezmi - vloží predmet do batohu')
 
         elif line in ('rozhliadni sa', 'look around'):
             show_room(room)
@@ -196,6 +198,21 @@ def main():
                             print(f'Do batohu si si vložil predmet {name}.')
                         else:
                             print('Tento predmet sa nedá zobrať.')
+                        break
+                else:
+                    print('Taký predmet tu nikde nevidím.')
+
+        elif line.startswith('preskumaj'):
+            name = line.split('preskumaj')[1].strip()
+
+            # bol zadany nazov predmetu?
+            if len(name) == 0:
+                print('Neviem čo chceš preskúmať.')
+
+            else:
+                for item in room['items'] + backpack:
+                    if name == item.name:
+                        print(item.description)
                         break
                 else:
                     print('Taký predmet tu nikde nevidím.')
