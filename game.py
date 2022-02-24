@@ -3,8 +3,6 @@ import states
 from items import newspaper, door, bucket, canister, matches
 
 
-
-
 def intro():
     """
     Shows intro.
@@ -87,7 +85,7 @@ def main():
     game_state = states.PLAYING
 
     backpack = [
-        matches
+        matches,
     ]
     room = {
         "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
@@ -159,18 +157,20 @@ def main():
                 print('Neviem, čo chceš položiť.')
 
             # je v batohu?
-            elif name not in backpack:
-                print('Taký predmet pri sebe nemáš.')
-
             else:
-                # vymazem z batohu
-                backpack.remove(name)
+                for item in backpack:
+                    if name == item.name:
+                        # vymazem z batohu
+                        backpack.remove(item)
 
-                # vlozim do miestnosti
-                room['items'].append(name)
+                        # vlozim do miestnosti
+                        room['items'].append(item)
 
-                # render
-                print(f'Do miestnosti si položil predmet {name}')
+                        # render
+                        print(f'Do miestnosti si položil predmet {name}')
+                        break
+                else:
+                    print('Taký predmet pri sebe nemáš.')
 
         else:
             print('Taký príkaz nepoznám.')
