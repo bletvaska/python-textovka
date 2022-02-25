@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 from .command import Command
@@ -7,7 +7,7 @@ from .command import Command
 @dataclass
 class About(Command):
     name: str = 'o hre'
-    # aliases: List = ['about']
+    # aliases: List[str] = field(default_factory=['about'])
     description: str = 'zobrazí informácie o hre'
 
     def exec(self, room: dict, backpack: list):

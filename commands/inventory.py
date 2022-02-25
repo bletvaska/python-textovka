@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import List
 
 from .command import Command
 
@@ -6,7 +7,7 @@ from .command import Command
 @dataclass
 class Inventory(Command):
     name: str = 'inventar'
-    # aliases: list
+    # aliases: List[str] = field(default_factory=['inventory', 'i'])
     description: str = 'zobrazí obsah hráčovho batoha'
 
     def exec(self, room: dict, backpack: list):

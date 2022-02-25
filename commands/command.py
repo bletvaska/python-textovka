@@ -1,10 +1,11 @@
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
 class Command:
     name: str
-    # aliases: list
+    # aliases: List[str]
     description: str
 
     def exec(self, room: dict, backpack: list):

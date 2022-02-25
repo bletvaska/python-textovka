@@ -33,6 +33,14 @@ def outro():
     print('(at least 100 Euros). He will create something.')
 
 
+def parse(line: str, commands):
+    for command in commands:
+        if command.name == line:
+            return command
+
+    # return None
+
+
 def main():
     # game init
     game_state = states.PLAYING
@@ -77,14 +85,12 @@ def main():
         if line == '':
             continue  # pass
 
-        # parser
-        for command in commands:
-            if command.name == line:
-                command.exec(room, backpack)
-                break
-        else:
+        # parse line
+        cmd = parse(line, commands)
+        if cmd is None:
             print('Taký príkaz nepoznám.')
-
+        else:
+            cmd.exec(room, backpack)
 
         # elif line in ('o hre', 'about', 'info'):
         #     print('Ďalšie napínavé dobrodružstvo Indiana Jonesa. Tentokrát sa Indy ...')
