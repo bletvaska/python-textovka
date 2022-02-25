@@ -74,18 +74,18 @@ def main():
             },
             "name": 'miestnost',
         },
-    )
 
-    commands = [
-        About(),
-        Commands(),
-        Drop(),
-        Examine(),
-        Inventory(),
-        LookAround(),
-        Quit(),
-        Take()
-    ]
+        commands=[
+            About(),
+            Commands(),
+            Drop(),
+            Examine(),
+            Inventory(),
+            LookAround(),
+            Quit(),
+            Take()
+        ]
+    )
 
     # intro
     intro()
@@ -101,21 +101,10 @@ def main():
 
         # parse line
         try:
-            cmd, param = parse(line, commands)
+            cmd, param = parse(line, context.commands)
             cmd.exec(context, param)
         except TypeError:
             print('Taký príkaz nepoznám.')
-
-        # elif line in ('prikazy', 'commands', 'help', '?',):
-        #     print('Dostupné príkazy v hre:')
-        #     print('* o hre - zobrazí informácie o hre')
-        #     print('* inventar - zobrazí obsah batohu')
-        #     print('* koniec - ukončí hru')
-        #     print('* poloz - vylozi predmet z batohu do miestnosti')
-        #     print('* preskumaj - zobrazí opis zvoleného predmetu')
-        #     print('* prikazy - zobrazí zoznam aktuálne dostupných príkazov')
-        #     print('* rozhliadni sa - zobrazí opis miestnosti')
-        #     print('* vezmi - vloží predmet do batohu')
 
     # credits
     outro()
