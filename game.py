@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Inventory, LookAround
+from commands import About, Inventory, LookAround, Quit
+from context import Context
 from helper import show_room, get_item_by_name
 from items import newspaper, door, bucket, canister, matches
 from items.features import MOVABLE
@@ -43,43 +44,45 @@ def parse(line: str, commands):
 
 def main():
     # game init
-    game_state = states.PLAYING
-
-    backpack = [
-        matches,
-    ]
-    room = {
-        "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
-                       'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
-                       'flóru.',
-        "items": [
-            door,
-            bucket,
-            newspaper,
-            canister
+    context = Context(
+        backpack=[
+            matches,
         ],
-        "exits": {
-            'north': 'zahradka',
-            'south': None,
-            'east': 'jaskyna',
-            'west': None
+
+        room={
+            "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
+                           'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
+                           'flóru.',
+            "items": [
+                door,
+                bucket,
+                newspaper,
+                canister
+            ],
+            "exits": {
+                'north': 'zahradka',
+                'south': None,
+                'east': 'jaskyna',
+                'west': None
+            },
+            "name": 'miestnost',
         },
-        "name": 'miestnost',
-    }
+    )
 
     commands = [
         About(),
         Inventory(),
-        LookAround()
+        LookAround(),
+        Quit()
     ]
 
     # intro
     intro()
 
-    show_room(room)
+    show_room(context.room)
 
     # game loop
-    while game_state == states.PLAYING:
+    while context.game_state == states.PLAYING:
         line = input('> ').lstrip().rstrip().lower()
 
         if line == '':
@@ -90,7 +93,7 @@ def main():
         if cmd is None:
             print('Taký príkaz nepoznám.')
         else:
-            cmd.exec(room, backpack)
+            cmd.exec(context)
 
         # elif line in ('o hre', 'about', 'info'):
         #     print('Ďalšie napínavé dobrodružstvo Indiana Jonesa. Tentokrát sa Indy ...')

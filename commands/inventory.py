@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
+from context import Context
 from .command import Command
 
 
@@ -10,10 +11,10 @@ class Inventory(Command):
     # aliases: List[str] = field(default_factory=['inventory', 'i'])
     description: str = 'zobrazí obsah hráčovho batoha'
 
-    def exec(self, room: dict, backpack: list):
-        if len(backpack) == 0:
+    def exec(self, context: Context):
+        if len(context.backpack) == 0:
             print('Batoh je prázdny.')
         else:
             print('V batohu máš:')
-            for item in backpack:
+            for item in context.backpack:
                 print(f' * {item.name}')

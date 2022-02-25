@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 # moje vlastne importy/moduly
 from typing import List
 
+from context import Context
 from helper import show_room
 from .command import Command
 
@@ -16,5 +17,5 @@ class LookAround(Command):
     # aliases: List[str] = field(default_factory=['look around'])
     description: str = 'zobrazí opis miestnosti'
 
-    def exec(self, room: dict, backpack: list):
-        show_room(room)
+    def exec(self, context: Context):
+        show_room(context.room)

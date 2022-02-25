@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
+from context import Context
+
 
 @dataclass
 class Command:
@@ -8,7 +10,7 @@ class Command:
     # aliases: List[str]
     description: str
 
-    def exec(self, room: dict, backpack: list):
+    def exec(self, context: Context):
         raise NotImplementedError('Command was not yet implemented.')
 
     def __str__(self):

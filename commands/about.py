@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
+from context import Context
 from .command import Command
 
 
@@ -10,6 +11,6 @@ class About(Command):
     # aliases: List[str] = field(default_factory=['about'])
     description: str = 'zobrazí informácie o hre'
 
-    def exec(self, room: dict, backpack: list):
+    def exec(self, context: Context):
         print('Ďalšie napínavé dobrodružstvo Indiana Jonesa. Tentokrát sa Indy ...')
         print('Túto nadupanú hru spáchal (c) mirek')
