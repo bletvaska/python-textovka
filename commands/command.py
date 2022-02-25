@@ -4,7 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Command:
     name: str
-    aliases: list
+    # aliases: list
     description: str
 
     def exec(self):
