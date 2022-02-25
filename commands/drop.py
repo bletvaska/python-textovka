@@ -32,4 +32,3 @@ class Drop(Command):
 
                 # render
                 print(f'Do miestnosti si položil predmet {param}.')
-

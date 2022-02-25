@@ -47,7 +47,7 @@ def parse(line: str, commands):
             param = line.split(command.name)[1].strip()
             return command, param
 
-    return None, None
+    # return None, None
 
 
 def main():
@@ -96,14 +96,14 @@ def main():
 
         if line == '':
             continue  # pass
-        # cmd.name  arg (name)
-        # poloz     konvalinka
+
         # parse line
-        cmd, param = parse(line, commands)
-        if cmd is None:
-            print('Taký príkaz nepoznám.')
-        else:
+        try:
+            cmd, param = parse(line, commands)
             cmd.exec(context, param)
+        except TypeError:
+            print('Taký príkaz nepoznám.')
+
 
         #
         # elif line in ('prikazy', 'commands', 'help', '?',):
@@ -118,8 +118,6 @@ def main():
         #     print('* vezmi - vloží predmet do batohu')
         #
         #
-        # elif line.startswith('poloz'):
-
         #
         # elif line.startswith('vezmi'):
         #     name = line.split('vezmi')[1].strip()
@@ -162,8 +160,6 @@ def main():
         #         else:
         #             print(item.description)
         #
-        # else:
-        #     print('Taký príkaz nepoznám.')
 
     # credits
     outro()
