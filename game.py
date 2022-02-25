@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Inventory, LookAround, Quit
+from commands import About, Inventory, LookAround, Quit, Drop
 from context import Context
-from helper import show_room, get_item_by_name
+from helpers import show_room, get_item_by_name
 from items import newspaper, door, bucket, canister, matches
 from items.features import MOVABLE
 
@@ -35,11 +35,19 @@ def outro():
 
 
 def parse(line: str, commands):
-    for command in commands:
-        if command.name == line:
-            return command
+    """
+    Parse the command from input
 
-    # return None
+    @param line: input from the user
+    @param commands: list of commands
+    @return: tuple with cmd and it's param, or None otherwise
+    """
+    for command in commands:
+        if line.startswith(command.name):
+            param = line.split(command.name)[1].strip()
+            return command, param
+
+    return None, None
 
 
 def main():
@@ -71,6 +79,7 @@ def main():
 
     commands = [
         About(),
+        Drop(),
         Inventory(),
         LookAround(),
         Quit()
@@ -87,17 +96,15 @@ def main():
 
         if line == '':
             continue  # pass
-
+        # cmd.name  arg (name)
+        # poloz     konvalinka
         # parse line
-        cmd = parse(line, commands)
+        cmd, param = parse(line, commands)
         if cmd is None:
             print('Taký príkaz nepoznám.')
         else:
-            cmd.exec(context)
+            cmd.exec(context, param)
 
-        # elif line in ('o hre', 'about', 'info'):
-        #     print('Ďalšie napínavé dobrodružstvo Indiana Jonesa. Tentokrát sa Indy ...')
-        #     print('Túto nadupanú hru spáchal (c) mirek')
         #
         # elif line in ('prikazy', 'commands', 'help', '?',):
         #     print('Dostupné príkazy v hre:')
@@ -110,46 +117,9 @@ def main():
         #     print('* rozhliadni sa - zobrazí opis miestnosti')
         #     print('* vezmi - vloží predmet do batohu')
         #
-        # elif line in ('rozhliadni sa', 'look around'):
-        #     show_room(room)
-        #
-        # elif line in ('koniec', 'quit', 'q', 'bye'):
-        #     x = input('Naozaj chceš skončiť? (a/n) ').strip().lower()
-        #     if x in ('a', 'ano', 'y', 'yes'):
-        #         game_state = states.QUIT
-        #     else:
-        #         print('Tak hráme ďalej...')
-        #
-        # elif line in ('inventar', 'inventory', 'i'):
-        #     if len(backpack) == 0:
-        #         print('Batoh je prázdny.')
-        #     else:
-        #         print('V batohu máš:')
-        #         for item in backpack:
-        #             print(f' * {item.name}')
         #
         # elif line.startswith('poloz'):
-        #     name = line.split('poloz')[1].strip()
-        #
-        #     # bol zadany nazov predmetu?
-        #     if name == '':
-        #         print('Neviem, čo chceš položiť.')
-        #
-        #     # je v batohu?
-        #     else:
-        #         item = get_item_by_name(name, backpack)
-        #
-        #         if item is None:
-        #             print('Taký predmet pri sebe nemáš.')
-        #         else:
-        #             # vymazem z batohu
-        #             backpack.remove(item)
-        #
-        #             # vlozim do miestnosti
-        #             room['items'].append(item)
-        #
-        #             # render
-        #             print(f'Do miestnosti si položil predmet {name}.')
+
         #
         # elif line.startswith('vezmi'):
         #     name = line.split('vezmi')[1].strip()

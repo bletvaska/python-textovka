@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from typing import List
 
 from context import Context
-from helper import show_room
+from helpers import show_room
 from .command import Command
 
 
@@ -17,5 +17,5 @@ class LookAround(Command):
     # aliases: List[str] = field(default_factory=['look around'])
     description: str = 'zobrazí opis miestnosti'
 
-    def exec(self, context: Context):
+    def exec(self, context: Context, param: str):
         show_room(context.room)

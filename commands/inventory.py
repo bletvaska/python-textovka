@@ -11,7 +11,7 @@ class Inventory(Command):
     # aliases: List[str] = field(default_factory=['inventory', 'i'])
     description: str = 'zobrazí obsah hráčovho batoha'
 
-    def exec(self, context: Context):
+    def exec(self, context: Context, param: str):
         if len(context.backpack) == 0:
             print('Batoh je prázdny.')
         else:

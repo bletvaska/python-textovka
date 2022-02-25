@@ -10,7 +10,7 @@ class Command:
     # aliases: List[str]
     description: str
 
-    def exec(self, context: Context):
+    def exec(self, context: Context, param: str):
         raise NotImplementedError('Command was not yet implemented.')
 
     def __str__(self):
