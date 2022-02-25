@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 
 from helpers import get_item_by_name
-from items.features import MOVABLE, USABLE
+from items.features import USABLE
 from .command import Command
 from context import Context
 
@@ -32,3 +32,4 @@ class Use(Command):
 
         # use item
         print(f'Snažím sa použiť predmet {param}.')
+        item.use()

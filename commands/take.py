@@ -30,6 +30,7 @@ class Take(Command):
             print('Tento predmet sa nedá zobrať.')
             return
 
+        # vezmi!
         # vymazem z miestnosti
         context.room['items'].remove(item)
 
