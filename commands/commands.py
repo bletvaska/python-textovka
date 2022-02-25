@@ -12,5 +12,8 @@ class Commands(Command):
     description: str = 'vypíše zoznam príkazov hry'
 
     def exec(self, context: Context, param: str):
-        raise NotImplementedError('Command was not yet implemented.')
+        print('Zoznam príkazov hry:')
 
+        for command in context.commands:
+            # print(f' * {command.name} - {command.description}')
+            print(f' * {command}')

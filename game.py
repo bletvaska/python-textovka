@@ -89,7 +89,6 @@ def main():
 
     # intro
     intro()
-
     show_room(context.room)
 
     # game loop
