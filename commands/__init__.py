@@ -6,3 +6,4 @@ from .inventory import Inventory
 from .look_around import LookAround
 from .quit import Quit
 from .take import Take
+from .use import Use

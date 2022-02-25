@@ -17,22 +17,24 @@ class Take(Command):
         # bol zadany nazov predmetu?
         if param == '':
             print('Neviem, čo chceš vziať.')
+            return
 
         # je v miestnosti?
-        else:
-            item = get_item_by_name(param, context.room['items'])
-            if item is None:
-                print('Taký predmet tu nikde nevidím.')
-            else:
-                # je prenositelny?
-                if MOVABLE in item.features:
-                    # vymazem z miestnosti
-                    context.room['items'].remove(item)
+        item = get_item_by_name(param, context.room['items'])
+        if item is None:
+            print('Taký predmet tu nikde nevidím.')
+            return
 
-                    # vlozim do batohu
-                    context.backpack.append(item)
+        # je prenositelny?
+        if MOVABLE not in item.features:
+            print('Tento predmet sa nedá zobrať.')
+            return
 
-                    # render
-                    print(f'Do batohu si si vložil predmet {param}.')
-                else:
-                    print('Tento predmet sa nedá zobrať.')
+        # vymazem z miestnosti
+        context.room['items'].remove(item)
+
+        # vlozim do batohu
+        context.backpack.append(item)
+
+        # render
+        print(f'Do batohu si si vložil predmet {param}.')

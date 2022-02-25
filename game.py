@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take
+from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use
 from context import Context
 from helpers import show_room
 from items import newspaper, door, bucket, canister, matches
@@ -83,7 +83,8 @@ def main():
             Inventory(),
             LookAround(),
             Quit(),
-            Take()
+            Take(),
+            Use(),
         ]
     )
 
