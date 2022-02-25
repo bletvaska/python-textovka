@@ -77,12 +77,13 @@ def main():
         if line == '':
             continue  # pass
 
-        cmd = None
-        # magic
-        if cmd is None:
-            print('Taký príkaz nepoznám.')
+        # parser
+        for command in commands:
+            if command.name == line:
+                command.exec(room, backpack)
+                break
         else:
-            cmd.exec()
+            print('Taký príkaz nepoznám.')
 
 
         # elif line in ('o hre', 'about', 'info'):

@@ -14,5 +14,5 @@ class LookAround(Command):
     # aliases: list
     description: str = 'zobrazí opis miestnosti'
 
-    def exec(self, room: dict):
+    def exec(self, room: dict, backpack: list):
         show_room(room)

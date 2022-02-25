@@ -9,7 +9,7 @@ class Inventory(Command):
     # aliases: list
     description: str = 'zobrazí obsah hráčovho batoha'
 
-    def exec(self, backpack: list):
+    def exec(self, room: dict, backpack: list):
         if len(backpack) == 0:
             print('Batoh je prázdny.')
         else:

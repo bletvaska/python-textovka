@@ -7,7 +7,7 @@ class Command:
     # aliases: list
     description: str
 
-    def exec(self):
+    def exec(self, room: dict, backpack: list):
         raise NotImplementedError('Command was not yet implemented.')
 
     def __str__(self):

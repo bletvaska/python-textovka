@@ -10,6 +10,6 @@ class About(Command):
     # aliases: List = ['about']
     description: str = 'zobrazí informácie o hre'
 
-    def exec(self):
+    def exec(self, room: dict, backpack: list):
         print('Ďalšie napínavé dobrodružstvo Indiana Jonesa. Tentokrát sa Indy ...')
         print('Túto nadupanú hru spáchal (c) mirek')
