@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Inventory, LookAround, Quit, Drop
+from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take
 from context import Context
-from helpers import show_room, get_item_by_name
+from helpers import show_room
 from items import newspaper, door, bucket, canister, matches
-from items.features import MOVABLE
 
 
 def intro():
@@ -47,7 +46,7 @@ def parse(line: str, commands):
             param = line.split(command.name)[1].strip()
             return command, param
 
-    # return None, None
+    # return None
 
 
 def main():
@@ -79,10 +78,13 @@ def main():
 
     commands = [
         About(),
+        Commands(),
         Drop(),
+        Examine(),
         Inventory(),
         LookAround(),
-        Quit()
+        Quit(),
+        Take()
     ]
 
     # intro
@@ -104,8 +106,6 @@ def main():
         except TypeError:
             print('Taký príkaz nepoznám.')
 
-
-        #
         # elif line in ('prikazy', 'commands', 'help', '?',):
         #     print('Dostupné príkazy v hre:')
         #     print('* o hre - zobrazí informácie o hre')
@@ -116,50 +116,6 @@ def main():
         #     print('* prikazy - zobrazí zoznam aktuálne dostupných príkazov')
         #     print('* rozhliadni sa - zobrazí opis miestnosti')
         #     print('* vezmi - vloží predmet do batohu')
-        #
-        #
-        #
-        # elif line.startswith('vezmi'):
-        #     name = line.split('vezmi')[1].strip()
-        #
-        #     # bol zadany nazov predmetu?
-        #     if name == '':
-        #         print('Neviem, čo chceš vziať.')
-        #
-        #     # je v miestnosti?
-        #     else:
-        #         item = get_item_by_name(name, room['items'])
-        #         if item is None:
-        #             print('Taký predmet tu nikde nevidím.')
-        #         else:
-        #             # je prenositelny?
-        #             if MOVABLE in item.features:
-        #                 # vymazem z miestnosti
-        #                 room['items'].remove(item)
-        #
-        #                 # vlozim do batohu
-        #                 backpack.append(item)
-        #
-        #                 # render
-        #                 print(f'Do batohu si si vložil predmet {name}.')
-        #             else:
-        #                 print('Tento predmet sa nedá zobrať.')
-        #
-        # elif line.startswith('preskumaj'):
-        #     name = line.split('preskumaj')[1].strip()
-        #
-        #     # bol zadany nazov predmetu?
-        #     if len(name) == 0:
-        #         print('Neviem čo chceš preskúmať.')
-        #
-        #     else:
-        #         item = get_item_by_name(name, room['items'] + backpack)
-        #
-        #         if item is None:
-        #             print('Taký predmet tu nikde nevidím.')
-        #         else:
-        #             print(item.description)
-        #
 
     # credits
     outro()
