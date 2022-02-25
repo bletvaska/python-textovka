@@ -1,5 +1,6 @@
 import random
 
+from context import Context
 from .features import USABLE, MOVABLE
 
 name = 'noviny'
@@ -12,7 +13,7 @@ features = [
 ]
 
 
-def use():
+def use(context: Context):
     print('Zalistoval si si v novinách a začítal si sa')
 
     headlines = [

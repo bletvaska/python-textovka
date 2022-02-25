@@ -32,4 +32,4 @@ class Use(Command):
 
         # use item
         print(f'Snažím sa použiť predmet {param}.')
-        item.use()
+        item.use(context)
