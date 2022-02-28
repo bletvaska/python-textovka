@@ -25,7 +25,7 @@ world = {
         'description': 'Značne neudržiavané miesto, ktoré zrejme kedysi bolo záhradkou.',
         'items': [],
         "exits": {
-            'north': None,
+            'north': 'hangár',
             'south': 'priekopa',
             'east': 'kobka',
             'west': None
@@ -44,6 +44,18 @@ world = {
             'east': None,
             'west': None
         },
+    },
 
+    'hangár': {
+        'name': 'hangár',
+        'description': 'Nachádzaš sa v priestor známeho leteckého dopravcu značky Aeroflot, ktorý ťa určite dopraví '
+                       'bezpečne domov.',
+        'items': [],
+        'exits': {
+            'north': None,
+            'south': 'záhradka',
+            'east': None,
+            'west': None
+        }
     }
 }
