@@ -1,0 +1,46 @@
+{
+    "kobka": {
+        "description": "Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a flóru.",
+        "items": ["vedro", "kanister", "dvere"],
+        "exits": {
+            "north": null,
+            "south": null,
+            "east": null,
+            "west": null
+        },
+        "name": "kobka"
+    },
+    "záhradka": {
+        "name": "záhradka",
+        "description": "Značne neudržiavané miesto, ktoré zrejme kedysi bolo záhradkou.",
+        "items": [],
+        "exits": {
+            "north": "hangár",
+            "south": "priekopa",
+            "east": "kobka",
+            "west": null
+        }
+    },
+    "priekopa": {
+        "name": "priekopa",
+        "description": "Nedával si si pozor a rovno si čľupol medzi aligátory. Čo tu robia na Slovensku také ušľachtilé tvory? Pomyslel si si. Čo tu robí taký výdatný štyridsiatnik? Pomysleli si oni. A nerozmýšľali o tom dlho.",
+        "items": [],
+        "exits": {
+            "north": null,
+            "south": null,
+            "east": null,
+            "west": null
+        }
+    },
+    "hangár": {
+        "name": "hangár",
+        "description": "Nachádzaš sa v priestor známeho leteckého dopravcu značky Aeroflot, ktorý ťa určite dopraví bezpečne domov.",
+        "items": [],
+        "exits": {
+            "north": null,
+            "south": "záhradka",
+            "east": null,
+            "west": null
+        }
+    }
+}

@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
+import json
+
 import states
 from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use, West, South, North, East
 from context import Context
 from helpers import show_room
-from items import matches
-from world import world
+from items import matches, door, bucket, newspaper, canister
+
+
+# from world import world
 
 
 def intro():
@@ -52,6 +56,15 @@ def parse(line: str, commands):
 
 def main():
     # game init
+    with open('assets/world.json', 'r') as file:
+        world = json.load(file)
+        world['kobka']['items'] += [
+            door,
+            bucket,
+            newspaper,
+            canister
+        ]
+
     context = Context(
         world=world,
 
