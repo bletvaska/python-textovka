@@ -7,6 +7,7 @@ from .inventory import Inventory
 from .look_around import LookAround
 from .north import North
 from .quit import Quit
+from .save import Save
 from .south import South
 from .take import Take
 from .use import Use

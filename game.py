@@ -2,7 +2,8 @@
 import json
 
 import states
-from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use, West, South, North, East
+from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use, West, South, North, East, \
+    Save
 from context import Context
 from helpers import show_room
 from items import matches, door, bucket, newspaper, canister
@@ -82,6 +83,7 @@ def main():
             LookAround(),
             North(),
             Quit(),
+            Save(),
             South(),
             Take(),
             Use(),

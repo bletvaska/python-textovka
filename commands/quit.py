@@ -16,6 +16,5 @@ class Quit(Command):
         line = input('Naozaj chceš skončiť? (a/n) ').strip().lower()
         if line in ('a', 'ano', 'y', 'yes'):
             context.game_state = states.QUIT
-            print(context.history)
         else:
             print('Tak hráme ďalej...')
