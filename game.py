@@ -67,12 +67,12 @@ def main():
                 canister
             ],
             "exits": {
-                'north': 'zahradka',
+                'north': None,
                 'south': None,
-                'east': 'jaskyna',
+                'east': None,
                 'west': None
             },
-            "name": 'miestnost',
+            "name": 'kobka',
         },
 
         commands=[

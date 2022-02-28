@@ -31,5 +31,4 @@ class Use(Command):
             return
 
         # use item
-        print(f'Snažím sa použiť predmet {param}.')
         item.use(context)
