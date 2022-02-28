@@ -26,9 +26,24 @@ world = {
         'items': [],
         "exits": {
             'north': None,
-            'south': None,
+            'south': 'priekopa',
             'east': 'kobka',
             'west': None
         },
+    },
+
+    'priekopa': {
+        'name': 'priekopa',
+        'description': 'Nedával si si pozor a rovno si čľupol medzi aligátory. Čo tu robia na Slovensku také '
+                       'ušľachtilé tvory? Pomyslel si si. Čo tu robí taký výdatný štyridsiatnik? Pomysleli si oni. '
+                       'A nerozmýšľali o tom dlho.',
+        'items': [],
+        "exits": {
+            'north': None,
+            'south': None,
+            'east': None,
+            'west': None
+        },
+
     }
 }
