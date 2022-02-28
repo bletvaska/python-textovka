@@ -5,6 +5,7 @@ import states
 
 @dataclass
 class Context:
+    world: dict
     room: dict
     backpack: list
     commands: list

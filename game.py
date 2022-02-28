@@ -4,6 +4,7 @@ from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands
 from context import Context
 from helpers import show_room
 from items import newspaper, door, bucket, canister, matches
+from world import world
 
 
 def intro():
@@ -52,28 +53,13 @@ def parse(line: str, commands):
 def main():
     # game init
     context = Context(
+        world=world,
+
         backpack=[
             matches,
         ],
 
-        room={
-            "description": 'Nachádzaš sa v miestnosti plnej ružových slonov. Aby si si neublížil, tak stena je pokrytá '
-                           'vankúšikmi. Tiež ružovými. Žiadne okno ti neposkytne rozkošný pohľad na vonkajšiu faunu a '
-                           'flóru.',
-            "items": [
-                door,
-                bucket,
-                newspaper,
-                canister
-            ],
-            "exits": {
-                'north': None,
-                'south': None,
-                'east': None,
-                'west': None
-            },
-            "name": 'kobka',
-        },
+        room=world['kobka'],
 
         commands=[
             About(),
