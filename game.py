@@ -94,9 +94,11 @@ def main():
             cmd, param = parse(line, context.commands)
             cmd.exec(context, param)
 
-            # check special states
+            # set state according to the current room
             if context.room['name'] == 'priekopa':
                 context.game_state = states.DEATH
+            elif context.room['name'] == 'hangár':
+                context.game_state = states.WIN
         except TypeError:
             print('Taký príkaz nepoznám.')
 
@@ -104,6 +106,10 @@ def main():
     if context.game_state == states.DEATH:
         print('Ani taký slávny dobrodruh ako Indiana Jones nezvládne chúťky slovenských aligátorov. Tvoja púť sa '
               'skončila v žalúdku niekoľkých z nich.')
+
+    elif context.game_state == states.WIN:
+        print('Pohodlne si sa usadil na sedadle značne nepohodlného lietadla a užil si si let smerom do Moskvy.')
+        print('Ďalšie dobrodružstvo neohrozeného dobrodruha Indiana Jonesa sa tým skončilo.')
 
     # credits
     outro()
