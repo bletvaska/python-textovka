@@ -25,6 +25,7 @@ def use(context: Context):
     # * polejeme dvere
     #   - aktualizujeme dvere - description, name
     door.description = 'Veľké masívne drevené dvere nasiaknuté kvalitným vysokooktánovým 95% benzínom.'
+    door.state = door.SOAKED_STATE
 
     # * aktualizujeme kanister
     #   - kanister uz nebude USABLE
