@@ -23,3 +23,6 @@ class North(Command):
         # prejdem na sever
         context.room = context.world[room_name]
         show_room(context.room)
+
+        # append to history
+        context.history.append(self.name)

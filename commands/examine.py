@@ -16,11 +16,12 @@ class Examine(Command):
         # bol zadany nazov predmetu?
         if len(param) == 0:
             print('Neviem čo chceš preskúmať.')
+            return
 
-        else:
-            item = get_item_by_name(param, context.room['items'] + context.backpack)
+        item = get_item_by_name(param, context.room['items'] + context.backpack)
 
-            if item is None:
-                print('Taký predmet tu nikde nevidím.')
-            else:
-                print(item.description)
+        if item is None:
+            print('Taký predmet tu nikde nevidím.')
+            return
+
+        print(item.description)

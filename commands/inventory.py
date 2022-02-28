@@ -14,7 +14,8 @@ class Inventory(Command):
     def exec(self, context: Context, param: str):
         if len(context.backpack) == 0:
             print('Batoh je prázdny.')
-        else:
-            print('V batohu máš:')
-            for item in context.backpack:
-                print(f' * {item.name}')
+            return
+
+        print('V batohu máš:')
+        for item in context.backpack:
+            print(f' * {item.name}')

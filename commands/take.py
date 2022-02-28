@@ -39,3 +39,6 @@ class Take(Command):
 
         # render
         print(f'Do batohu si si vložil predmet {param}.')
+
+        # append to history
+        context.history.append(f'{self.name} {param}')

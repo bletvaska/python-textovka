@@ -7,8 +7,8 @@ from context import Context
 from helpers import show_room
 from items import matches, door, bucket, newspaper, canister
 
-
 # from world import world
+from world import world
 
 
 def intro():
@@ -56,24 +56,22 @@ def parse(line: str, commands):
 
 def main():
     # game init
-    with open('assets/world.json', 'r') as file:
-        world = json.load(file)
-        world['kobka']['items'] += [
-            door,
-            bucket,
-            newspaper,
-            canister
-        ]
+    # with open('assets/world.json', 'r') as file:
+    #     world = json.load(file)
+    #     world['kobka']['items'] += [
+    #         door,
+    #         bucket,
+    #         newspaper,
+    #         canister
+    #     ]
 
     context = Context(
+        history=[],
         world=world,
-
         backpack=[
             matches,
         ],
-
         room=world['kobka'],
-
         commands=[
             About(),
             Commands(),

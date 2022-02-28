@@ -16,19 +16,23 @@ class Drop(Command):
         # bol zadany nazov predmetu?
         if param == '':
             print('Neviem, čo chceš položiť.')
+            return
 
         # je v batohu?
-        else:
-            item = get_item_by_name(param, context.backpack)
+        item = get_item_by_name(param, context.backpack)
 
-            if item is None:
-                print('Taký predmet pri sebe nemáš.')
-            else:
-                # vymazem z batohu
-                context.backpack.remove(item)
+        if item is None:
+            print('Taký predmet pri sebe nemáš.')
+            return
 
-                # vlozim do miestnosti
-                context.room['items'].append(item)
+        # vymazem z batohu
+        context.backpack.remove(item)
 
-                # render
-                print(f'Do miestnosti si položil predmet {param}.')
+        # vlozim do miestnosti
+        context.room['items'].append(item)
+
+        # render
+        print(f'Do miestnosti si položil predmet {param}.')
+
+        # append to history
+        context.history.append(f'{self.name} {param}')

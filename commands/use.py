@@ -30,5 +30,8 @@ class Use(Command):
             print('Tento predmet sa nedá použiť.')
             return
 
+        # append to history
+        context.history.append(f'{self.name} {param}')
+
         # use item
         item.use(context)
