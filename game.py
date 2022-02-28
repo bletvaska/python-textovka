@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use, West
+from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use, West, South, North, East
 from context import Context
 from helpers import show_room
 from items import matches
@@ -65,10 +65,13 @@ def main():
             About(),
             Commands(),
             Drop(),
+            East(),
             Examine(),
             Inventory(),
             LookAround(),
+            North(),
             Quit(),
+            South(),
             Take(),
             Use(),
             West(),
