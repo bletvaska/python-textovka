@@ -15,7 +15,7 @@ world = {
             'north': None,
             'south': None,
             'east': None,
-            'west': None
+            'west': 'zahradka'
         },
         "name": 'kobka',
     },

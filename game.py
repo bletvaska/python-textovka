@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use
+from commands import About, Inventory, LookAround, Quit, Drop, Examine, Commands, Take, Use, West
 from context import Context
 from helpers import show_room
-from items import newspaper, door, bucket, canister, matches
+from items import matches
 from world import world
 
 
@@ -71,6 +71,7 @@ def main():
             Quit(),
             Take(),
             Use(),
+            West(),
         ]
     )
 
