@@ -15,19 +15,19 @@ world = {
             'north': None,
             'south': None,
             'east': None,
-            'west': 'zahradka'
+            'west': None
         },
         "name": 'kobka',
     },
 
-    'zahradka': {
+    'záhradka': {
         'name': 'záhradka',
         'description': 'Značne neudržiavané miesto, ktoré zrejme kedysi bolo záhradkou.',
         'items': [],
         "exits": {
             'north': None,
             'south': None,
-            'east': None,
+            'east': 'kobka',
             'west': None
         },
     }

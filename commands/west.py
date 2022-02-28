@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
+from helpers import show_room
 from .command import Command
 from context import Context
 
@@ -12,5 +13,13 @@ class West(Command):
     description: str = 'presunie sa do miestnosti na západ od aktuálnej'
 
     def exec(self, context: Context, param: str):
-        raise NotImplementedError('Command was not yet implemented.')
+        room_name = context.room['exits']['west']
 
+        # je na zapad prechod?
+        if room_name is None:
+            print('Tam sa nedá ísť.')
+            return
+
+        # prejdem na zapad
+        context.room = context.world[room_name]
+        show_room(context.room)
