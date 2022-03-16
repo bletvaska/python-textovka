@@ -16,7 +16,7 @@ def _go(context: Context, direction: str):
 
     # v opacnom pripade:
     # * zmenim aktualnu miestnost na novu
-    context['room'] = get_room_by_name(room['exits'][direction], context['world'])
+    context.room = get_room_by_name(room['exits'][direction], context.world)
 
     # * rozhliadnem sa v nej
     show_room(context.room)
