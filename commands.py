@@ -22,6 +22,24 @@ class Command:
         return f'{self.name} - {self.description}'
 
 
+@dataclass
+class About(Command):
+    name: str = 'o hre'
+    description: str = 'zobrazí informácie o hre'
+
+    def exec(self, context: dict, arg: str):
+        print('Indiana Jones a jeho Pythoňácke dobrodružstvo')
+        print('Nestarnúci hrdina Indiana Jones sa tentokrát ocitol sám pustý v škaredej miestnosti. A jedine '
+              'Pythoňácky programátori mu môžu zachrániť krk. Je to na tebe.\n')
+        print('(c) 2021 hru spáchal mirek')
+
+
+@dataclass
+class Take(Command):
+    name: str = 'vezmi'
+    description: str = 'vezme predmet z miestnosti a vloží si ho do batohu'
+
+
 def cmd_take(context: dict, arg: str):
     item_name = arg
     room = context['room']
@@ -405,4 +423,3 @@ def parse(line: str) -> dict:
                 return (cmd, arg)
 
     return (None, None)
-
