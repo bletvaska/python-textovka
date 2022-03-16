@@ -17,25 +17,8 @@ from features import MOVABLE, USABLE
 from utils import get_room_by_name, show_room
 import config
 
-commands = [
-    About(),
-    Commands(),
-    Drop(),
-    East(),
-    Explore(),
-    Inventory(),
-    LookAround(),
-    North(),
-    Quit(),
-    Save(),
-    South(),
-    Take(),
-    Use(),
-    West(),
-]
 
-
-def parse(line: str) -> dict:
+def parse(line: str, commands: list) -> dict:
     for cmd in commands:
         if line.startswith(cmd.name):
             arg = line.removeprefix(cmd.name).strip()
@@ -131,7 +114,23 @@ def play_game():
         'room': get_room_by_name('dungeon', world),
         'world': world,
         'state': states.PLAYING,
-        'history': []
+        'history': [],
+        'commands': [
+            About(),
+            Commands(),
+            Drop(),
+            East(),
+            Explore(),
+            Inventory(),
+            LookAround(),
+            North(),
+            Quit(),
+            Save(),
+            South(),
+            Take(),
+            Use(),
+            West(),
+        ]
     }
 
     # game intro
@@ -148,7 +147,7 @@ def play_game():
             continue
 
         # parse
-        (cmd, arg) = parse(line)
+        (cmd, arg) = parse(line, context['commands'])
         if cmd is None:
             print('Tento príkaz nepoznám.')
         else:
@@ -165,7 +164,7 @@ def play_game():
 
             context['state'] = states.WIN
 
-    print('(c) 2021 spáchal mirek ako výsledný projekt hustého akvaristicko-teraristického školenia')
+    print('(c) 2021-2022 spáchal mirek ako výsledný projekt hustého akvaristicko-teraristického školenia')
 
 
 if __name__ == '__main__':

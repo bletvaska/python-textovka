@@ -9,4 +9,7 @@ class Commands(Command):
     description: str = 'vypíše zoznam príkazov v hre'
 
     def exec(self, context: dict, arg: str):
-        print('zoznam prikazov:')
+        print('Zoznam príkazov:')
+
+        for cmd in context['commands']:
+            print(cmd)
