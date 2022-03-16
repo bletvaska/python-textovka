@@ -12,4 +12,4 @@ class Commands(Command):
         print('Zoznam príkazov:')
 
         for cmd in context['commands']:
-            print(cmd)
+            print(f'  {cmd}')

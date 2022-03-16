@@ -12,3 +12,4 @@ from .south import South
 from .take import Take
 from .use import Use
 from .west import West
+from .command import Command

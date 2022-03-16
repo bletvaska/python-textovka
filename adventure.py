@@ -10,9 +10,9 @@ import requests
 import states
 from commands import About, Commands, Drop, Explore, Inventory, LookAround, Quit, Save, Take, Use, South, North, East, \
     West
+from context import Context
 
 from features import MOVABLE, USABLE
-# from commands import parse, cmd_look_around
 # from world import world
 from utils import get_room_by_name, show_room
 import config
