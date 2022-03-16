@@ -8,11 +8,35 @@ import requests
 
 # moje moduly
 import states
+from commands import About, Commands, Drop, Explore, Inventory, LookAround, Quit, Save, Take, Use
+
 from features import MOVABLE, USABLE
-from commands import parse, cmd_look_around
+# from commands import parse, cmd_look_around
 # from world import world
 from utils import get_room_by_name
 import config
+
+commands = [
+    About(),
+    Commands(),
+    Drop(),
+    Explore(),
+    Inventory(),
+    LookAround(),
+    Quit(),
+    Save(),
+    Take(),
+    Use()
+]
+
+
+def parse(line: str) -> dict:
+    for cmd in commands:
+        if line.startswith(cmd.name):
+            arg = line.removeprefix(cmd.name).strip()
+            return (cmd, arg)
+
+    return (None, None)
 
 
 def _post_world_to_parse(world: dict):
@@ -108,7 +132,7 @@ def play_game():
     # game intro
     print('Indiana Jones')
     print('alebo veľké Pythoňácke dobrodružstvo')
-    cmd_look_around(context, None)
+    # cmd_look_around(context, None)
 
     # game loop
     while context['state'] == states.PLAYING:
@@ -123,7 +147,7 @@ def play_game():
         if cmd is None:
             print('Tento príkaz nepoznám.')
         else:
-            cmd['exec'](context, arg)
+            cmd.exec(context, arg)
 
         # check room name
         if context['room']['name'] == 'garden':
