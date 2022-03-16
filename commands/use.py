@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from context import Context
 from features import USABLE
 from usages import use_canister, use_matches, use_bucket, use_newspaper
 from utils import get_item_by_name
@@ -11,10 +12,10 @@ class Use(Command):
     name: str = 'pouzi'
     description: str = 'použije zvolený predmet'
 
-    def exec(self, context: dict, arg: str):
+    def exec(self, context: Context, arg: str):
         item_name = arg
-        backpack = context['backpack']['items']
-        room = context['room']
+        backpack = context.backpack['items']
+        room = context.room
 
         # is there name given?
         if item_name == '':
@@ -34,7 +35,7 @@ class Use(Command):
 
         # using the item
         # update history
-        context['history'].append(f'POUZI {item_name}')
+        context.history.append(f'POUZI {item_name}')
 
         # item['exec'](context, item)
         if item_name == 'kanister':

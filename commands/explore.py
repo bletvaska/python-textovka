@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from context import Context
 from utils import get_item_by_name
 from .command import Command
 
@@ -9,10 +10,10 @@ class Explore(Command):
     name: str = 'preskumaj'
     description: str = 'zobrazí opis predmetu'
 
-    def exec(self, context: dict, arg: str):
+    def exec(self, context: Context, arg: str):
         item_name = arg
-        backpack = context['backpack']['items']
-        room = context['room']
+        backpack = context.backpack['items']
+        room = context.room
 
         # is there name given?
         if item_name == '':

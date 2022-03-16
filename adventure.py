@@ -100,8 +100,8 @@ def play_game():
     world = _get_world_from_parse('SgojO2UAvw')
 
     # create context
-    context = {
-        'backpack': {
+    context = Context(
+        backpack={
             'items': [
                 {
                     'name': 'noviny',
@@ -111,11 +111,10 @@ def play_game():
             ],
             'capacity': 2
         },
-        'room': get_room_by_name('dungeon', world),
-        'world': world,
-        'state': states.PLAYING,
-        'history': [],
-        'commands': [
+        room=get_room_by_name('dungeon', world),
+        world=world,
+        history=[],
+        commands=[
             About(),
             Commands(),
             Drop(),
@@ -131,15 +130,15 @@ def play_game():
             Use(),
             West(),
         ]
-    }
+    )
 
     # game intro
     print('Indiana Jones')
     print('alebo veľké Pythoňácke dobrodružstvo')
-    show_room(context['room'])
+    show_room(context.room)
 
     # game loop
-    while context['state'] == states.PLAYING:
+    while context.state == states.PLAYING:
         line = input('> ').lstrip().rstrip().lower()
 
         # empty input?
@@ -147,14 +146,14 @@ def play_game():
             continue
 
         # parse
-        (cmd, arg) = parse(line, context['commands'])
+        (cmd, arg) = parse(line, context.commands)
         if cmd is None:
             print('Tento príkaz nepoznám.')
         else:
             cmd.exec(context, arg)
 
         # check room name
-        if context['room']['name'] == 'garden':
+        if context.room['name'] == 'garden':
             print("__        __   _ _   ____                   _ ")
             print("\\ \\      / /__| | | |  _ \\  ___  _ __   ___| |")
             print(" \\ \\ /\\ / / _ \\ | | | | | |/ _ \\| '_ \\ / _ \\ |")
@@ -162,7 +161,7 @@ def play_game():
             print("   \\_/\\_/ \\___|_|_| |____/ \\___/|_| |_|\\___(_)")
             print()
 
-            context['state'] = states.WIN
+            context.state = states.WIN
 
     print('(c) 2021-2022 spáchal mirek ako výsledný projekt hustého akvaristicko-teraristického školenia')
 

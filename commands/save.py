@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 import requests
 
+from context import Context
 from .command import Command
 import config
 
@@ -12,7 +13,7 @@ class Save(Command):
     name: str = 'uloz'
     description: str = 'uloží rozohratú hru'
 
-    def exec(self, context: dict, arg: str):
+    def exec(self, context: Context, arg: str):
         if arg == '':
             print('Neviem, kam chceš stav hry uložiť.')
             return
@@ -20,7 +21,7 @@ class Save(Command):
         if arg == 'cloud':
             # da sa ulozit aj cely context, pretoze je slovnik
             payload = {
-                "history": context['history']
+                "history": context.history
             }
 
             headers = {
@@ -38,7 +39,7 @@ class Save(Command):
         # save to file
         try:
             with open(arg, 'w') as file:
-                json.dump(context['history'], file)
+                json.dump(context.history, file)
         except Exception as ex:
             print('CHYBA: Chyba pri zápise do súboru.')
             print(f'CHYBA: {ex}')

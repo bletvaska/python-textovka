@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from context import Context
 from utils import get_item_by_name
 from .command import Command
 
@@ -9,10 +10,10 @@ class Drop(Command):
     name: str = 'poloz'
     description: str = 'položí predmet z batohu do aktuálnej miestnosti'
 
-    def exec(self, context: dict, arg: str):
+    def exec(self, context: Context, arg: str):
         item_name = arg
-        backpack = context['backpack']['items']
-        room = context['room']
+        backpack = context.backpack['items']
+        room = context.room
 
         # is there name given?
         if item_name == '':
@@ -26,7 +27,7 @@ class Drop(Command):
             return
 
         # update history
-        context['history'].append(f'POLOZ {item_name}')
+        context.history.append(f'POLOZ {item_name}')
 
         # remove item from backpack
         backpack.remove(item)

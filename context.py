@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import List
 
 import states
-from commands import Command
 
 
 @dataclass
@@ -11,5 +10,5 @@ class Context:
     room: dict
     world: dict
     history: List[str]
-    commands: List[Command]
+    commands: List
     state: int = states.PLAYING

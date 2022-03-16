@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from context import Context
 from .command import Command
 
 
@@ -8,8 +9,8 @@ class Inventory(Command):
     name: str = 'inventar'
     description: str = 'zobrazí obsah hráčovho batohu'
 
-    def exec(self, context: dict, arg: str):
-        backpack = context['backpack']['items']
+    def exec(self, context: Context, arg: str):
+        backpack = context.backpack['items']
 
         if backpack == []:
             print('Batoh je prázdny.')
