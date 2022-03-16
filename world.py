@@ -1,4 +1,4 @@
-from features import *
+from items.features import *
 
 world = [
     {

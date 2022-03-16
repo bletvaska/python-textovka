@@ -11,8 +11,9 @@ import states
 from commands import About, Commands, Drop, Explore, Inventory, LookAround, Quit, Save, Take, Use, South, North, East, \
     West
 from context import Context
+from items import Newspaper
 
-from features import MOVABLE, USABLE
+from items.features import MOVABLE, USABLE
 # from world import world
 from utils import get_room_by_name, show_room
 import config
@@ -103,11 +104,12 @@ def play_game():
     context = Context(
         backpack={
             'items': [
-                {
-                    'name': 'noviny',
-                    'description': 'dennik sme s autorskou strankou sama marca',
-                    'features': [MOVABLE, USABLE],
-                }
+                Newspaper()
+                # {
+                #     'name': 'noviny',
+                #     'description': 'dennik sme s autorskou strankou sama marca',
+                #     'features': [MOVABLE, USABLE],
+                # }
             ],
             'capacity': 2
         },

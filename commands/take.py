@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from context import Context
-from features import MOVABLE
+from items.features import MOVABLE
 from utils import get_item_by_name
 from .command import Command
 

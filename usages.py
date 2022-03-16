@@ -1,7 +1,7 @@
 import random
 
-from utils import get_item_by_name, get_room_by_name
-from features import USABLE
+from utils import get_item_by_name
+from items.features import USABLE
 
 
 def use_bucket(context, bucket):
