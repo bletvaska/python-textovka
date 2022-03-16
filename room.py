@@ -19,3 +19,41 @@ class Room:
             self.exits[Directions.NORTH] = None
         if Directions.SOUTH not in self.exits:
             self.exits[Directions.SOUTH] = None
+
+    def show(self):
+        """
+        Prints description about the room
+
+        Prints out the description about the room given as parameter.
+        :param room: room to describe
+        """
+        print(f'Nachádzaš sa v miestnosti {self.name}')
+        print(self.description)
+
+        # print items in the room
+        if self.items == []:  # len(room['items'] == 0
+            print('Nevidíš tu nič zvláštne.')
+        else:
+            print("Vidíš:")
+            for item in self.items:
+                print(f'\t* {item.name}')
+
+        # print exits
+        exits = []
+        for _exit in self.exits:
+            if self.exits[_exit] is not None:
+                exits.append(_exit)
+
+        if exits == []:
+            print('Z miestnosti nevedú žiadne východy.')
+        else:
+            print('Môžeš ísť:')
+            for ex in exits:
+                if ex == 'north':
+                    print('\t* sever')
+                if ex == 'south':
+                    print('\t* juh')
+                if ex == 'east':
+                    print('\t* východ')
+                if ex == 'west':
+                    print('\t* západ')

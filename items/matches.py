@@ -21,15 +21,15 @@ class Matches(Item):
 
         # 1. overim, ci su dvere poliate benzinom
         #    - ci su dvere v stave 'wet'
-        door = get_item_by_name('dvere', room['items'])
+        door = get_item_by_name('dvere', room.items)
         if door.state != 'wet':
             print('Zahrkal si krabičkou pri ušku, aby si sa uistil, že nie je prázdna. Usmial si sa.')
             return
 
         # 2. aktualizujem zapalky
         #    - odstranim ich z hry
-        if self in room['items']:
-            room['items'].remove(self)
+        if self in room.items:
+            room.items.remove(self)
         else:
             backpack.remove(self)
 

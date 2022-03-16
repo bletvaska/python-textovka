@@ -1,5 +1,5 @@
 from context import Context
-from utils import get_room_by_name, show_room
+from utils import get_room_by_name
 
 
 def _go(context: Context, direction: str):
@@ -7,7 +7,7 @@ def _go(context: Context, direction: str):
 
     # overim, ze ci sa na dany smer da ist
     # ak sa neda, tak vypisem spravu
-    if room['exits'][direction] is None:
+    if direction not in room.exits or room.exits[direction] is None:
         print('Tam sa nedá ísť.')
         return
 
@@ -16,7 +16,7 @@ def _go(context: Context, direction: str):
 
     # v opacnom pripade:
     # * zmenim aktualnu miestnost na novu
-    context.room = get_room_by_name(room['exits'][direction], context.world)
+    context.room = get_room_by_name(room.exits[direction], context.world)
 
     # * rozhliadnem sa v nej
-    show_room(context.room)
+    context.room.show()

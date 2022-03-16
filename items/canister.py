@@ -20,7 +20,7 @@ class Canister(Item):
 
         # 1. aktualizujem dvere:
         #    - description dvere su poliate benzinom
-        door = get_item_by_name('dvere', room['items'])
+        door = get_item_by_name('dvere', room.items)
         door.description = 'Masívne dubové dvere dôkladne nasiaknuté vysokooktánovým benzínom.'
         door.state = 'wet'
 

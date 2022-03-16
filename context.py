@@ -2,12 +2,13 @@ from dataclasses import dataclass
 from typing import List
 
 import states
+from room import Room
 
 
 @dataclass
 class Context:
     backpack: dict
-    room: dict
+    room: Room
     world: dict
     history: List[str]
     commands: List

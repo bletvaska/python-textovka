@@ -22,7 +22,7 @@ class Use(Command):
             return
 
         # is there such item?
-        item = get_item_by_name(item_name, backpack + room['items'])
+        item = get_item_by_name(item_name, backpack + room.items)
         if item is None:
             print('Taký predmet tu nikde nevidím.')
             return

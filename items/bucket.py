@@ -17,7 +17,7 @@ class Bucket(Item):
     def use(self, context: Context):
         # init
         room = context.room
-        door = get_item_by_name('horiace dvere', room['items'])
+        door = get_item_by_name('horiace dvere', room.items)
 
         # scenario
         # 1. overim, ci su dvere v stave 'on fire'
@@ -33,10 +33,10 @@ class Bucket(Item):
         self.features.remove(USABLE)
 
         # 3. zmazem dvere z miestnosti/hry
-        room['items'].remove(door)
+        room.items.remove(door)
 
         # 4. nastavim pred z miestnosti na vychod do garden
-        room['exits']['east'] = 'garden'
+        room.exits['east'] = 'garden'
 
         # 5. rendering - ta si uhasil dvere a sa rozpadli
         print('Teplo v miestnosti narastalo a ty si sa nestíhal chladiť chlípaním vody z vedra. Osvietila ťa ale '

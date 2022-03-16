@@ -15,7 +15,7 @@ from items import Newspaper
 
 from items.features import MOVABLE, USABLE
 # from world import world
-from utils import get_room_by_name, show_room
+from utils import get_room_by_name
 import config
 from world import world
 
@@ -138,7 +138,7 @@ def play_game():
     # game intro
     print('Indiana Jones')
     print('alebo veľké Pythoňácke dobrodružstvo')
-    show_room(context.room)
+    context.room.show()
 
     # game loop
     while context.state == states.PLAYING:
@@ -156,7 +156,7 @@ def play_game():
             cmd.exec(context, arg)
 
         # check room name
-        if context.room['name'] == 'garden':
+        if context.room.name == 'garden':
             print("__        __   _ _   ____                   _ ")
             print("\\ \\      / /__| | | |  _ \\  ___  _ __   ___| |")
             print(" \\ \\ /\\ / / _ \\ | | | | | |/ _ \\| '_ \\ / _ \\ |")
