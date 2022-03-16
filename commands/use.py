@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 from context import Context
 from items.features import USABLE
+from items.mixins import UsableMixin
 from usages import use_canister, use_matches, use_bucket, use_newspaper
 from utils import get_item_by_name
 from .command import Command
@@ -37,19 +38,21 @@ class Use(Command):
         # update history
         context.history.append(f'POUZI {item_name}')
 
-        # item['exec'](context, item)
-        if item_name == 'kanister':
-            use_canister(context, item)
-
-        elif item_name == 'zapalky':
-            use_matches(context, item)
-
-        elif item_name == 'vedro':
-            use_bucket(context, item)
-
-        elif item_name == 'noviny':
-            use_newspaper(context, item)
-
-        else:
-            # print(f'Použil si predmet {item["name"]}')
-            raise NotImplementedError(f'Usage of item "{item.name}" was not yet implemented')
+        item.use(context)
+        #
+        # # item['exec'](context, item)
+        # if item_name == 'kanister':
+        #     use_canister(context, item)
+        #
+        # elif item_name == 'zapalky':
+        #     use_matches(context, item)
+        #
+        # elif item_name == 'vedro':
+        #     use_bucket(context, item)
+        #
+        # elif item_name == 'noviny':
+        #     use_newspaper(context, item)
+        #
+        # else:
+        #     # print(f'Použil si predmet {item["name"]}')
+        #     raise NotImplementedError(f'Usage of item "{item.name}" was not yet implemented')
