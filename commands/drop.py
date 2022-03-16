@@ -36,4 +36,4 @@ class Drop(Command):
         room['items'].append(item)
 
         # print out
-        print(f'Predmet {item["name"]} si položil do miestnosti.')
+        print(f'Predmet {item.name} si položil do miestnosti.')

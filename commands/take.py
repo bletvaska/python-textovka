@@ -29,9 +29,9 @@ class Take(Command):
             return
 
         # is item movable?
-        if MOVABLE not in item['features']:
-            print('Tento predmet sa nedá zobrať.')
-            return
+        # if MOVABLE not in item['features']:
+        #     print('Tento predmet sa nedá zobrať.')
+        #     return
 
         # is backpack full?
         if len(backpack) >= context.backpack['capacity']:
@@ -48,4 +48,4 @@ class Take(Command):
         backpack.append(item)
 
         # print out
-        print(f'Predmet {item["name"]} si si vložil do batohu.')
+        print(f'Predmet {item.name} si si vložil do batohu.')

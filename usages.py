@@ -6,7 +6,7 @@ from items.features import USABLE
 
 def use_bucket(context, bucket):
     # init
-    room = context['room']
+    room = context.room
     door = get_item_by_name('horiace dvere', room['items'])
 
     # scenario

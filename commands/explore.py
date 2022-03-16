@@ -27,4 +27,4 @@ class Explore(Command):
         if item is None:
             print('Taký predmet tu nikde nevidím.')
         else:
-            print(item['description'])
+            print(item.description)

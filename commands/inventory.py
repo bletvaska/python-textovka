@@ -17,4 +17,4 @@ class Inventory(Command):
         else:
             print("V batohu máš:")
             for item in backpack:
-                print(f'\t* {item["name"]}')
+                print(f'\t* {item.name}')

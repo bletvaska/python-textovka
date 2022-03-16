@@ -1,6 +1,6 @@
 def get_item_by_name(name: str, items: list) -> dict:
     for item in items:
-        if item['name'] == name:
+        if item.name == name:
             return item
 
     # return None
@@ -30,7 +30,7 @@ def show_room(room: dict):
     else:
         print("Vidíš:")
         for item in room['items']:
-            print(f'\t* {item["name"]}')
+            print(f'\t* {item.name}')
 
     # print exits
     exits = []

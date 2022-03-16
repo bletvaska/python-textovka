@@ -17,6 +17,7 @@ from items.features import MOVABLE, USABLE
 # from world import world
 from utils import get_room_by_name, show_room
 import config
+from world import world
 
 
 def parse(line: str, commands: list) -> dict:
@@ -98,7 +99,7 @@ def play_game():
     # world = _load_world_from_file()
 
     # download world from parse.com
-    world = _get_world_from_parse('SgojO2UAvw')
+    # world = _get_world_from_parse('SgojO2UAvw')
 
     # create context
     context = Context(
