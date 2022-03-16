@@ -1,4 +1,5 @@
 import json
+from dataclasses import dataclass
 
 import requests
 
@@ -7,6 +8,18 @@ from features import MOVABLE, USABLE
 import states
 from utils import get_item_by_name, get_room_by_name
 from usages import use_canister, use_matches, use_bucket, use_newspaper
+
+
+@dataclass
+class Command:
+    name: str
+    description: str
+
+    def exec(self, context: dict, arg: str):
+        raise NotImplementedError(f'Execution of command "{self.name}" was not yet implemented.')
+
+    def __str__(self):
+        return f'{self.name} - {self.description}'
 
 
 def cmd_take(context: dict, arg: str):
@@ -392,3 +405,4 @@ def parse(line: str) -> dict:
                 return (cmd, arg)
 
     return (None, None)
+
