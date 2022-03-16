@@ -34,25 +34,8 @@ class Use(Command):
             print('Tento predmet sa nedá použiť')
             return
 
-        # using the item
         # update history
         context.history.append(f'POUZI {item_name}')
 
+        # use item
         item.use(context)
-        #
-        # # item['exec'](context, item)
-        # if item_name == 'kanister':
-        #     use_canister(context, item)
-        #
-        # elif item_name == 'zapalky':
-        #     use_matches(context, item)
-        #
-        # elif item_name == 'vedro':
-        #     use_bucket(context, item)
-        #
-        # elif item_name == 'noviny':
-        #     use_newspaper(context, item)
-        #
-        # else:
-        #     # print(f'Použil si predmet {item["name"]}')
-        #     raise NotImplementedError(f'Usage of item "{item.name}" was not yet implemented')
