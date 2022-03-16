@@ -9,4 +9,6 @@ from .item import Item
 class Newspaper(Item):
     name: str = 'noviny'
     description: str = 'dennik sme s autorskou strankou sama marca'
-    # features: List[str] = field(default_factory=list)
+
+    def __post_init__(self):
+        self.features += [MOVABLE, USABLE]

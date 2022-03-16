@@ -29,9 +29,9 @@ class Use(Command):
             return
 
         # is item usable?
-        # if USABLE not in item['features']:
-        #     print('Tento predmet sa nedá použiť')
-        #     return
+        if USABLE not in item.features:
+            print('Tento predmet sa nedá použiť')
+            return
 
         # using the item
         # update history
