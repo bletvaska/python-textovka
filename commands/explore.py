@@ -26,5 +26,7 @@ class Explore(Command):
         # if no such item available
         if item is None:
             print('Taký predmet tu nikde nevidím.')
-        else:
-            print(item.description)
+            return
+
+        # explore item
+        print(item.description)

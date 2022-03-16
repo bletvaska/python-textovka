@@ -2,8 +2,6 @@ from dataclasses import dataclass
 
 from context import Context
 from items.features import USABLE
-from items.mixins import UsableMixin
-from usages import use_canister, use_matches, use_bucket, use_newspaper
 from utils import get_item_by_name
 from .command import Command
 
