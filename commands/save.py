@@ -40,6 +40,7 @@ class Save(Command):
         try:
             with open(arg, 'w') as file:
                 json.dump(context.history, file)
+                print(f'Hra bola úspešne uložená do súboru "{arg}".')
         except Exception as ex:
             print('CHYBA: Chyba pri zápise do súboru.')
             print(f'CHYBA: {ex}')
