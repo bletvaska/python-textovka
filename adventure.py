@@ -8,25 +8,30 @@ import requests
 
 # moje moduly
 import states
-from commands import About, Commands, Drop, Explore, Inventory, LookAround, Quit, Save, Take, Use
+from commands import About, Commands, Drop, Explore, Inventory, LookAround, Quit, Save, Take, Use, South, North, East, \
+    West
 
 from features import MOVABLE, USABLE
 # from commands import parse, cmd_look_around
 # from world import world
-from utils import get_room_by_name
+from utils import get_room_by_name, show_room
 import config
 
 commands = [
     About(),
     Commands(),
     Drop(),
+    East(),
     Explore(),
     Inventory(),
     LookAround(),
+    North(),
     Quit(),
     Save(),
+    South(),
     Take(),
-    Use()
+    Use(),
+    West(),
 ]
 
 
@@ -132,7 +137,7 @@ def play_game():
     # game intro
     print('Indiana Jones')
     print('alebo veľké Pythoňácke dobrodružstvo')
-    # cmd_look_around(context, None)
+    show_room(context['room'])
 
     # game loop
     while context['state'] == states.PLAYING:
