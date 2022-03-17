@@ -1,5 +1,8 @@
 from directions import Directions
-from items import Bucket, Matches, Door, Canister
+from items.bucket import Bucket
+from items.canister import Canister
+from items.door import Door
+from items.matches import Matches
 from room import Room
 
 world = [

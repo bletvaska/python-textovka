@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from context import Context
 
@@ -7,6 +7,7 @@ from context import Context
 class Command:
     name: str
     description: str
+    aliases: list = field(default_factory=list)
 
     def exec(self, context: Context, arg: str):
         raise NotImplementedError(f'Execution of command "{self.name}" was not yet implemented.')

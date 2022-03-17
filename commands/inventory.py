@@ -9,6 +9,9 @@ class Inventory(Command):
     name: str = 'inventar'
     description: str = 'zobrazí obsah hráčovho batohu'
 
+    def __post_init__(self):
+        self.aliases += ['inventory', 'i']
+
     def exec(self, context: Context, arg: str):
         backpack = context.backpack['items']
 

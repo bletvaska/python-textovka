@@ -10,6 +10,9 @@ class Explore(Command):
     name: str = 'preskumaj'
     description: str = 'zobrazí opis predmetu'
 
+    def __post_init__(self):
+        self.aliases += ['preskumat', 'examine']
+
     def exec(self, context: Context, arg: str):
         item_name = arg
         backpack = context.backpack['items']
@@ -21,7 +24,7 @@ class Explore(Command):
             return
 
         # find item by name
-        item = get_item_by_name(item_name, room['items'] + backpack)
+        item = get_item_by_name(item_name, room.items + backpack)
 
         # if no such item available
         if item is None:

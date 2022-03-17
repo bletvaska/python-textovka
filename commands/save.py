@@ -13,6 +13,10 @@ class Save(Command):
     name: str = 'uloz'
     description: str = 'uloží rozohratú hru'
 
+    def __post_init__(self):
+        self.aliases += ['save', 'ulozit']
+
+
     def exec(self, context: Context, arg: str):
         if arg == '':
             print('Neviem, kam chceš stav hry uložiť.')

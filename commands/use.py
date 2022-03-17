@@ -11,6 +11,9 @@ class Use(Command):
     name: str = 'pouzi'
     description: str = 'použije zvolený predmet'
 
+    def __post_init__(self):
+        self.aliases += ['use', 'pouzit']
+
     def exec(self, context: Context, arg: str):
         item_name = arg
         backpack = context.backpack['items']

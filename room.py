@@ -49,11 +49,11 @@ class Room:
         else:
             print('Môžeš ísť:')
             for ex in exits:
-                if ex == 'north':
+                if ex == Directions.NORTH:
                     print('\t* sever')
-                if ex == 'south':
+                if ex == Directions.SOUTH:
                     print('\t* juh')
-                if ex == 'east':
+                if ex == Directions.EAST:
                     print('\t* východ')
-                if ex == 'west':
+                if ex == Directions.WEST:
                     print('\t* západ')

@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 import states
@@ -10,6 +10,6 @@ class Context:
     backpack: dict
     room: Room
     world: dict
-    history: List[str]
-    commands: List
+    commands: list
     state: int = states.PLAYING
+    history: List[str] = field(default_factory=list)

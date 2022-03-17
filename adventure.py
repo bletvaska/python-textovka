@@ -4,27 +4,43 @@
 import json
 
 # tretostranove moduly
+from typing import List
+
 import requests
 
 # moje moduly
 import states
-from commands import About, Commands, Drop, Explore, Inventory, LookAround, Quit, Save, Take, Use, South, North, East, \
-    West
+from commands.about import About
+from commands.command import Command
+from commands.commands import Commands
+from commands.drop import Drop
+from commands.east import East
+from commands.explore import Explore
+from commands.inventory import Inventory
+from commands.look_around import LookAround
+from commands.north import North
+from commands.quit import Quit
+from commands.save import Save
+from commands.south import South
+from commands.take import Take
+from commands.use import Use
+from commands.west import West
 from context import Context
-from items import Newspaper
 
-from items.features import MOVABLE, USABLE
-# from world import world
+from items.newspaper import Newspaper
 from utils import get_room_by_name
 import config
 from world import world
 
 
-def parse(line: str, commands: list) -> dict:
+def parse(line: str, commands: List[Command]) -> tuple:
     for cmd in commands:
-        if line.startswith(cmd.name):
-            arg = line.removeprefix(cmd.name).strip()
-            return (cmd, arg)
+        aliases = [cmd.name] + cmd.aliases
+
+        for alias in aliases:
+            if line.startswith(alias):
+                arg = line.removeprefix(alias).strip()
+                return (cmd, arg)
 
     return (None, None)
 
@@ -106,17 +122,11 @@ def play_game():
         backpack={
             'items': [
                 Newspaper()
-                # {
-                #     'name': 'noviny',
-                #     'description': 'dennik sme s autorskou strankou sama marca',
-                #     'features': [MOVABLE, USABLE],
-                # }
             ],
             'capacity': 2
         },
         room=get_room_by_name('dungeon', world),
         world=world,
-        history=[],
         commands=[
             About(),
             Commands(),

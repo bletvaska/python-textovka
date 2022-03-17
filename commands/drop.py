@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from context import Context
 from utils import get_item_by_name
+from context import Context
 from .command import Command
 
 
@@ -9,6 +9,9 @@ from .command import Command
 class Drop(Command):
     name: str = 'poloz'
     description: str = 'položí predmet z batohu do aktuálnej miestnosti'
+
+    def __post_init__(self):
+        self.aliases += ['poloz']
 
     def exec(self, context: Context, arg: str):
         item_name = arg

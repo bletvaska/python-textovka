@@ -9,6 +9,9 @@ class Commands(Command):
     name: str = 'prikazy'
     description: str = 'vypíše zoznam príkazov v hre'
 
+    def __post_init__(self):
+        self.aliases += ['commands', 'help']
+
     def exec(self, context: Context, arg: str):
         print('Zoznam príkazov:')
 

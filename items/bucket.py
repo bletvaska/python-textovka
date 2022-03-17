@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 
 from context import Context
+from directions import Directions
 from utils import get_item_by_name
-from .features import MOVABLE, USABLE
 from .item import Item
+from .features import MOVABLE, USABLE
 
 
 @dataclass
@@ -36,7 +37,7 @@ class Bucket(Item):
         room.items.remove(door)
 
         # 4. nastavim pred z miestnosti na vychod do garden
-        room.exits['east'] = 'garden'
+        room.exits[Directions.EAST] = 'garden'
 
         # 5. rendering - ta si uhasil dvere a sa rozpadli
         print('Teplo v miestnosti narastalo a ty si sa nestíhal chladiť chlípaním vody z vedra. Osvietila ťa ale '

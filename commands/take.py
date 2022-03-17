@@ -11,6 +11,9 @@ class Take(Command):
     name: str = 'vezmi'
     description: str = 'vezme predmet z miestnosti a vloží si ho do batohu'
 
+    def __post_init__(self):
+        self.aliases += ['take', 'zober']
+
     def exec(self, context: Context, arg: str):
         item_name = arg
         room = context.room

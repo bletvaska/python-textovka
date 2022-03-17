@@ -1,8 +1,9 @@
 from context import Context
+from directions import Directions
 from utils import get_room_by_name
 
 
-def _go(context: Context, direction: str):
+def _go(context: Context, direction: Directions):
     room = context.room
 
     # overim, ze ci sa na dany smer da ist
