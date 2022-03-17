@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from backpack import FullBackpack
 from context import Context
 from items.features import MOVABLE
 from utils import get_item_by_name
@@ -36,19 +37,22 @@ class Take(Command):
             print('Tento predmet sa nedá zobrať.')
             return
 
-        # is backpack full?
-        if len(backpack) >= context.backpack['capacity']:
+        try:
+            # is backpack full?
+            # if len(backpack) >= context.backpack['capacity']:
+            #     print('Batoh je plný.')
+            #     return
+
+            # drop item in the backpack
+            backpack.append(item)
+
+            # take item
+            context.history.append(f'VEZMI {item_name}')
+
+            # remove item from room
+            room.items.remove(item)
+
+            # print out
+            print(f'Predmet {item.name} si si vložil do batohu.')
+        except FullBackpack:
             print('Batoh je plný.')
-            return
-
-        # take item
-        context.history.append(f'VEZMI {item_name}')
-
-        # remove item from room
-        room['items'].remove(item)
-
-        # drop item in the backpack
-        backpack.append(item)
-
-        # print out
-        print(f'Predmet {item.name} si si vložil do batohu.')
