@@ -48,3 +48,12 @@ class Backpack:
             raise FullBackpack('Backpack is full.')
 
         self.items.append(item)
+
+    def __str__(self):
+        if self.items == []:
+            return 'Batoh je prázdny.'
+        else:
+            output = "V batohu máš:\n"
+            for item in self.items:
+                output += f'\t* {item.name}'
+            return output
