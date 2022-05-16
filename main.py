@@ -15,11 +15,19 @@ def main():
     while line != 'koniec':
         line = input('> ').lstrip().rstrip().lower()
 
-        # o hre
+        # about, info, ?
         if line == 'o hre':
             print('(c)2022 created by mire(c) z koši(c)')
             print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
 
+        # commands, help
+        elif line == 'prikazy' or line == 'help':
+            print('Zoznam príkazov v hre:')
+            print('* koniec - skončenie programu')
+            print('* o hre - vypíše info o hre')
+            print('* prikazy - vypíše zoznam príkazov')
+
+        # quit, exit, q, bye
         elif line not in ('koniec', ''):
             print('Taký príkaz nepoznám.')
 
