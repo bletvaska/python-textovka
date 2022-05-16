@@ -9,14 +9,18 @@ def main():
     print('                        and his Great Escape')
     print()
 
-    line = None
+    # game init
+    game_state = 'playing'
 
     # game loop
-    while line not in ('koniec', 'quit', 'exit', 'q', 'bye'):
+    while game_state == 'playing':
         line = input('> ').lstrip().rstrip().lower()
 
+        if line == '':
+            continue
+
         # about, info, ?
-        if line in ('o hre', 'about', 'info', '?'):
+        elif line in ('o hre', 'about', 'info', '?'):
             print('(c)2022 created by mire(c) z koši(c)')
             print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
 
@@ -28,7 +32,10 @@ def main():
             print('* prikazy - vypíše zoznam príkazov')
 
         # quit, exit, q, bye
-        elif line not in ('koniec', 'quit', 'exit', 'q', 'bye', ''):
+        elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
+            game_state = 'quit'
+
+        else:
             print('Taký príkaz nepoznám.')
 
     print('>> koniec')
