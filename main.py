@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import states
+
 
 def main():
     print(" ___           _ _                         _")
@@ -10,10 +12,10 @@ def main():
     print()
 
     # game init
-    game_state = 'playing'
+    game_state = states.PLAYING
 
     # game loop
-    while game_state == 'playing':
+    while game_state == states.PLAYING:
         line = input('> ').lstrip().rstrip().lower()
 
         if line == '':
@@ -33,7 +35,7 @@ def main():
 
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
-            game_state = 'quit'
+            game_state = states.QUIT
 
         else:
             print('Taký príkaz nepoznám.')
