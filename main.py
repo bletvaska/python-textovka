@@ -35,7 +35,13 @@ def main():
 
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
-            game_state = states.QUIT
+            print('Naozaj chceš skončiť? (a/n)')
+            line = input('> ').lower().strip()
+            if line in ('a', 'ano', 'y', 'yes'):
+                print('Dakujem, ze si si zahral tuto fantasticku hru. Príď aj nabudúce.')
+                game_state = states.QUIT
+            else:
+                continue
 
         else:
             print('Taký príkaz nepoznám.')
