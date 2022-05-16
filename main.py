@@ -10,8 +10,9 @@ def main():
     print()
 
     line = None
+    # game loop
     while line != 'koniec':
-        line = input('> ')
+        line = input('> ').lstrip().rstrip().lower()
 
 
 if __name__ == '__main__':
