@@ -10,11 +10,16 @@ def main():
     print()
 
     line = None
+
     # game loop
     while line != 'koniec':
         line = input('> ').lstrip().rstrip().lower()
 
+        # o hre
+        if line == 'o hre':
+            print('(c)2022 created by mire(c) z koši(c)')
+            print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
+
 
 if __name__ == '__main__':
     main()
-
