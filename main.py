@@ -20,6 +20,11 @@ def main():
             print('(c)2022 created by mire(c) z koši(c)')
             print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
 
+        elif line not in ('koniec', ''):
+            print('Taký príkaz nepoznám.')
+
+    print('>> koniec')
+
 
 if __name__ == '__main__':
     main()
