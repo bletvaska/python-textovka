@@ -9,6 +9,10 @@ def main():
     print('                        and his Great Escape')
     print()
 
+    line = None
+    while line != 'koniec':
+        line = input('> ')
+
 
 if __name__ == '__main__':
     main()
