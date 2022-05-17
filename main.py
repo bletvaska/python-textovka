@@ -2,7 +2,7 @@
 import states
 
 
-def main():
+def intro():
     print(" ___           _ _                         _")
     print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___")
     print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
@@ -11,6 +11,13 @@ def main():
     print('                        and his Great Escape')
     print()
 
+
+def outro():
+    print('(c)2022 by mirek')
+    print('See you soon.')
+
+
+def main():
     # game init
     game_state = states.PLAYING
 
@@ -36,7 +43,7 @@ def main():
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
             print('Naozaj chceš skončiť? (a/n)')
-            line = input('> ').lower().strip()
+            line = input('>> ').lower().strip()
             if line in ('a', 'ano', 'y', 'yes'):
                 print('Dakujem, ze si si zahral tuto fantasticku hru. Príď aj nabudúce.')
                 game_state = states.QUIT
@@ -46,8 +53,8 @@ def main():
         else:
             print('Taký príkaz nepoznám.')
 
-    print('>> koniec')
-
 
 if __name__ == '__main__':
+    intro()
     main()
+    outro()
