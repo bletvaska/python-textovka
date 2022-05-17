@@ -55,7 +55,10 @@ def outro():
 def main():
     # game init
     game_state = states.PLAYING
-    backpack = ['bic', 'revolver']
+    backpack = [
+        'bic',
+        'revolver'
+    ]
 
     room = Room(name='dungeon',
                 description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
@@ -94,6 +97,7 @@ def main():
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
             print('Zoznam príkazov v hre:')
+            print('* inventar - zobrazí obsah hráčovho batohu')
             print('* koniec - skončenie programu')
             print('* o hre - vypíše info o hre')
             print('* prikazy - vypíše zoznam príkazov')
@@ -108,6 +112,15 @@ def main():
                 game_state = states.QUIT
             else:
                 continue
+
+        # inventory
+        elif line in ('inventar', 'i', 'inventory'):
+            if len(backpack) == 0:
+                print('Batoh je prázdny.')
+            else:
+                print('V batohu máš:')
+                for item in backpack:
+                    print(f'* {item}')
 
         else:
             print('Taký príkaz nepoznám.')
