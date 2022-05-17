@@ -6,10 +6,10 @@ import states
 
 @dataclass
 class Room:
-    exits: str
-    items: str
-    description: str
     name: str
+    description: str
+    exits: str = None
+    items: str = None
 
 
 def intro():
@@ -37,9 +37,13 @@ def main():
     # game init
     game_state = states.PLAYING
 
-    print('Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
-          'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
-          'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.')
+    room = Room(name='dungeon',
+                description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
+                            'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
+                            'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.'
+                )
+
+    print(room.description)
 
     # game loop
     while game_state == states.PLAYING:
@@ -50,9 +54,7 @@ def main():
 
         # rozhliadni sa, look around
         elif line in ('rozhliadni sa', 'look around'):
-            print('Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
-                  'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
-                  'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.')
+            print(room.description)
 
         # about, info, ?
         elif line in ('o hre', 'about', 'info', '?'):
