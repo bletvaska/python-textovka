@@ -16,6 +16,12 @@ class Room:
         print(self.description)
 
         # show items
+        if len(self.items) == 0:
+            print('Nevídiš tu nič zvláštne.')
+        else:
+            print('Vidíš:')
+            for item in self.items:
+                print(f'  {item}')
 
 
 def intro():
@@ -47,7 +53,12 @@ def main():
                 description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
                             'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
                             'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.',
-                items=['zapalky', 'vedro', 'kanister', 'dvere']
+                items=[
+                    'zapalky',
+                    'vedro',
+                    'kanister',
+                    'dvere'
+                ]
                 )
 
     room.show()
