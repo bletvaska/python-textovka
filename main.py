@@ -1,5 +1,15 @@
 #!/usr/bin/env python
+from dataclasses import dataclass
+
 import states
+
+
+@dataclass
+class Room:
+    exits: str
+    items: str
+    description: str
+    name: str
 
 
 def intro():
@@ -27,7 +37,7 @@ def main():
     # game init
     game_state = states.PLAYING
 
-    print('Nachádzaš sa v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
+    print('Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
           'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
           'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.')
 
@@ -37,6 +47,12 @@ def main():
 
         if line == '':
             continue
+
+        # rozhliadni sa, look around
+        elif line in ('rozhliadni sa', 'look around'):
+            print('Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
+                  'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
+                  'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.')
 
         # about, info, ?
         elif line in ('o hre', 'about', 'info', '?'):
@@ -49,6 +65,7 @@ def main():
             print('* koniec - skončenie programu')
             print('* o hre - vypíše info o hre')
             print('* prikazy - vypíše zoznam príkazov')
+            print('* rozhliadni sa - vypíše opis aktuálnej miestnosti')
 
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
