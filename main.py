@@ -11,10 +11,9 @@ class Room:
     exits: str = None
     items: str = None
 
-
-def show_room(room: Room):
-    print("Nachádzaš sa v miestnosti", room.name, '.')
-    print(room.description)
+    def show(self):
+        print(f'Nachádzaš sa v miestnosti {self.name}.')
+        print(self.description)
 
 
 def intro():
@@ -48,7 +47,7 @@ def main():
                             'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.'
                 )
 
-    show_room(room)
+    room.show()
 
     # game loop
     while game_state == states.PLAYING:
@@ -59,7 +58,7 @@ def main():
 
         # rozhliadni sa, look around
         elif line in ('rozhliadni sa', 'look around'):
-            show_room(room)
+            room.show()
 
         # about, info, ?
         elif line in ('o hre', 'about', 'info', '?'):
