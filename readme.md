@@ -16,6 +16,8 @@ Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov o�
 * práca s textovými súbormi
 * práca so základnými údajovými typmi a kolekciami
 * moduly a balíky
+* type hints
+* dátové triedy (dataclasses)
 
 
 ## World Map

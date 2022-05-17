@@ -8,12 +8,14 @@ import states
 class Room:
     name: str
     description: str
+    items: list[str]
     exits: str = None
-    items: str = None
 
     def show(self):
         print(f'Nachádzaš sa v miestnosti {self.name}.')
         print(self.description)
+
+        # show items
 
 
 def intro():
@@ -44,7 +46,8 @@ def main():
     room = Room(name='dungeon',
                 description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
                             'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
-                            'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.'
+                            'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.',
+                items=['zapalky', 'vedro', 'kanister', 'dvere']
                 )
 
     room.show()
