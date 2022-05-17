@@ -94,12 +94,38 @@ def main():
             print('(c)2022 created by mire(c) z koši(c)')
             print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
 
+        # drop item
+        elif line.startswith('poloz'):
+            # extraction of item to drop
+            name = line.split('poloz')[1].lstrip()
+
+            # if no item was entered...
+            if len(name) == 0:  # name == ''
+                print('Neviem, čo chceš položiť.')
+
+            else:
+                # is the item in backpack?
+                if name not in backpack:
+                    print('Taký predmet pri sebe nemáš.')
+
+                else:
+                    # drop item
+                    # remove item from backpack
+                    backpack.remove(name)
+
+                    # add item to room items
+                    room.items.append(name)
+
+                    # render
+                    print(f'Do miestnosti si položil predmet {name}.')
+
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
             print('Zoznam príkazov v hre:')
             print('* inventar - zobrazí obsah hráčovho batohu')
             print('* koniec - skončenie programu')
             print('* o hre - vypíše info o hre')
+            print('* poloz - položí predmet z batohu do aktuálnej miestnosti')
             print('* prikazy - vypíše zoznam príkazov')
             print('* rozhliadni sa - vypíše opis aktuálnej miestnosti')
 
