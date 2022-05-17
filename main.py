@@ -9,7 +9,7 @@ class Room:
     name: str
     description: str
     items: list[str]
-    exits: str = None
+    exits: list[str]
 
     def show(self):
         print(f'Nachádzaš sa v miestnosti {self.name}.')
@@ -19,9 +19,16 @@ class Room:
         if len(self.items) == 0:
             print('Nevídiš tu nič zvláštne.')
         else:
-            print('Vidíš:')
-            for item in self.items:
-                print(f'  {item}')
+            print('Vidíš: ', end='')
+            print(', '.join(self.items))
+
+        # show exits
+        if len(self.exits) == 0:
+            print('Z miestnosti nevedú žiadne východy.')
+        else:
+            print('Východy z miestnosti:')
+            for ext in self.exits:
+                print(f'  {ext}')
 
 
 def intro():
@@ -58,6 +65,10 @@ def main():
                     'vedro',
                     'kanister',
                     'dvere'
+                ],
+                exits=[
+                    'sever',
+                    'juh'
                 ]
                 )
 
