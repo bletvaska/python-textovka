@@ -55,6 +55,7 @@ def outro():
 def main():
     # game init
     game_state = states.PLAYING
+    backpack = ['bic', 'revolver']
 
     room = Room(name='dungeon',
                 description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
