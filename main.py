@@ -3,6 +3,9 @@ import states
 
 
 def intro():
+    """
+    Shows the intro screen of the game.
+    """
     print(" ___           _ _                         _")
     print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___")
     print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
@@ -13,6 +16,9 @@ def intro():
 
 
 def outro():
+    """
+    Shows the outro screen of the game.
+    """
     print('(c)2022 by mirek')
     print('See you soon.')
 
@@ -20,6 +26,10 @@ def outro():
 def main():
     # game init
     game_state = states.PLAYING
+
+    print('Nachádzaš sa v tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
+          'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
+          'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.')
 
     # game loop
     while game_state == states.PLAYING:
