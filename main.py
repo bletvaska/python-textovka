@@ -119,6 +119,31 @@ def main():
                     # render
                     print(f'Do miestnosti si položil predmet {name}.')
 
+        # take item
+        elif line.startswith('vezmi'):
+            # extraction of item to vezmi
+            name = line.split('vezmi')[1].lstrip()
+
+            # if no item was entered...
+            if name == '':
+                print('Neviem, co chceš zobrať.')
+
+            else:
+                # is the item in miestnost?
+                if name not in room.items:
+                    print('Taký predmet tu nevidím.')
+
+                else:
+                    # vezmi item
+                    # vezmi item z miestnosti
+                    room.items.remove(name)
+
+                    # add item to backpack items
+                    backpack.append(name)
+
+                    # render
+                    print(f'Predmet {name} si si vložil do batohu.')
+
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
             print('Zoznam príkazov v hre:')
@@ -128,6 +153,7 @@ def main():
             print('* poloz - položí predmet z batohu do aktuálnej miestnosti')
             print('* prikazy - vypíše zoznam príkazov')
             print('* rozhliadni sa - vypíše opis aktuálnej miestnosti')
+            print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
 
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
