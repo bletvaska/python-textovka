@@ -12,7 +12,7 @@ EXPLORABLE = 3
 class Item:
     name: str
     description: str
-    features: list
+    features: list[int]
 
 
 @dataclass
@@ -30,8 +30,10 @@ class Room:
         if len(self.items) == 0:
             print('Nevídiš tu nič zvláštne.')
         else:
-            print('Vidíš: ', end='')
-            print(', '.join(self.items))
+            print('Vidíš: ')
+            # print(', '.join(self.items))
+            for item in self.items:
+                print(f'  {item.name}')
 
         # show exits
         if len(self.exits) == 0:
@@ -73,10 +75,18 @@ def main():
                             'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
                             'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.',
                 items=[
-                    Item(name='zapalky', description='Štandardné zápalky. Tri.', features=[MOVABLE, USABLE]),
-                    Item(name='vedro', description='Vedro plné vody. Ťažko povedať, či aj pitnej.', features=[MOVABLE, USABLE]),
-                    Item(name='kanister', description='Veľký 25l kanister. Po odšróbovaní vrchnáka si zistil, že je to benzín. Kvalitka. 98 oktánov.', features=[USABLE, MOVABLE]),
-                    Item(name='dvere', description='Veľké dubové dvere. Zamknuté.', features=[])
+                    Item(name='zapalky',
+                         description='Štandardné zápalky. Tri.',
+                         features=[MOVABLE, USABLE]),
+                    Item(name='vedro',
+                         description='Vedro plné vody. Ťažko povedať, či aj pitnej.',
+                         features=[MOVABLE, USABLE]),
+                    Item(name='kanister',
+                         description='Veľký 25l kanister. Po odšróbovaní vrchnáka si zistil, že je to benzín. Kvalitka. 98 oktánov.',
+                         features=[USABLE, MOVABLE]),
+                    Item(name='dvere',
+                         description='Veľké dubové dvere. Zamknuté.',
+                         features=[])
                 ],
                 exits=[
                     'sever',
@@ -137,20 +147,26 @@ def main():
                 print('Neviem, co chceš zobrať.')
 
             else:
-                # is the item in miestnost?
-                if name not in room.items:
+                # is the item in room?
+                item = None
+                for it in room.items:
+                    if name == it.name:
+                        item = it
+                        break
+
+                if item is None:
                     print('Taký predmet tu nevidím.')
 
                 else:
                     # vezmi item
                     # vezmi item z miestnosti
-                    room.items.remove(name)
+                    room.items.remove(item)
 
                     # add item to backpack items
-                    backpack.append(name)
+                    backpack.append(item)
 
                     # render
-                    print(f'Predmet {name} si si vložil do batohu.')
+                    print(f'Predmet {item.name} si si vložil do batohu.')
 
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
@@ -180,7 +196,7 @@ def main():
             else:
                 print('V batohu máš:')
                 for item in backpack:
-                    print(f'* {item}')
+                    print(f'* {item.name}')
 
         else:
             print('Taký príkaz nepoznám.')
