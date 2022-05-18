@@ -1,16 +1,17 @@
 from dataclasses import dataclass
 
 import states
+from context import Context
 
 
 @dataclass
 class Quit:
     name: str = 'koniec'
-    description: str = 'skončenie programu'
+    description: str = 'ukončí hru'
 
-    def exec(self, game_state):
+    def exec(self, line, context: Context):
         print('Naozaj chceš skončiť? (a/n)')
         line = input('>> ').lower().strip()
         if line in ('a', 'ano', 'y', 'yes'):
             print('Dakujem, ze si si zahral tuto fantasticku hru. Príď aj nabudúce.')
-            game_state = states.QUIT
+            context.game_state = states.QUIT

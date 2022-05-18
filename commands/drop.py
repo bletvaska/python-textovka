@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from context import Context
 from helpers import get_item_by_name
 
 
@@ -8,7 +9,7 @@ class Drop:
     name: str = 'poloz'
     description: str = 'položí predmet z batohu do aktuálnej miestnosti'
 
-    def exec(self, line, backpack, room):
+    def exec(self, line: str, context: Context):
         # extraction of item to drop
         name = line.split('poloz')[1].lstrip()
 
@@ -18,7 +19,7 @@ class Drop:
 
         else:
             # is the item in backpack?
-            item = get_item_by_name(name, backpack)
+            item = get_item_by_name(name, context.backpack)
 
             if item is None:
                 print('Taký predmet pri sebe nemáš.')
@@ -26,10 +27,10 @@ class Drop:
             else:
                 # drop item
                 # remove item from backpack
-                backpack.remove(item)
+                context.backpack.remove(item)
 
                 # add item to room items
-                room.items.append(item)
+                context.current_room.items.append(item)
 
                 # render
                 print(f'Do miestnosti si položil predmet {item.name}.')

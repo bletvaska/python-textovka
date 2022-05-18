@@ -8,6 +8,7 @@ from commands.inventory import Inventory
 from commands.lookaround import LookAround
 from commands.quit import Quit
 from commands.take import Take
+from context import Context
 from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name
 from items.item import Item
@@ -37,8 +38,8 @@ def outro():
 
 def main():
     # game init
-    game_state = states.PLAYING
-    backpack = []
+    # game_state = states.PLAYING
+    # backpack = []
 
     room = Room(name='dungeon',
                 description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
@@ -63,11 +64,11 @@ def main():
                     'juh'
                 ]
                 )
-
-    room.show()
+    context = Context(current_room=room)
+    context.current_room.show()
 
     # game loop
-    while game_state == states.PLAYING:
+    while context.game_state == states.PLAYING:
         line = input('> ').lstrip().rstrip().lower()
 
         if line == '':
@@ -76,34 +77,34 @@ def main():
         # rozhliadni sa, look around
         elif line in ('rozhliadni sa', 'look around'):
             cmd = LookAround()
-            cmd.exec(room)
+            cmd.exec(line, context)
 
         # about, info, ?
         elif line in ('o hre', 'about', 'info', '?'):
             cmd = About()
-            cmd.exec()
+            cmd.exec(line, context)
 
         # drop item
         elif line.startswith('poloz'):
             cmd = Drop()
-            cmd.exec(line, backpack, room)
+            cmd.exec(line, context)
 
         # take item
         elif line.startswith('vezmi'):
-            Take().exec(line, room, backpack)
+            Take().exec(line, context)
 
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
-            Commands().exec()
+            Commands().exec(line, context)
 
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
-            Quit().exec(game_state)
+            Quit().exec(line, context)
 
         # inventory
         elif line in ('inventar', 'i', 'inventory'):
             cmd = Inventory()
-            cmd.exec(backpack)
+            cmd.exec(line, context)
 
         else:
             print('Taký príkaz nepoznám.')

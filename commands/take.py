@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from context import Context
 from helpers import get_item_by_name
 from items.features import MOVABLE
 
@@ -9,7 +10,10 @@ class Take:
     name: str = 'vezmi'
     description: str = 'vezme predmet z miestnosti a vloží si ho do batohu'
 
-    def exec(self, line, room, backpack):
+    def exec(self, line: str, context: Context):
+        backpack = context.backpack
+        room = context.current_room
+
         # extraction of item to vezmi
         name = line.split('vezmi')[1].lstrip()
 

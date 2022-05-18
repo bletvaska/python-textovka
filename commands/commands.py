@@ -6,7 +6,7 @@ class Commands:
     name: str = 'prikazy'
     description: str = 'vypíše zoznam príkazov'
 
-    def exec(self):
+    def exec(self, line, context):
         print('Zoznam príkazov v hre:')
         print('* inventar - zobrazí obsah hráčovho batohu')
         print('* koniec - skončenie programu')
