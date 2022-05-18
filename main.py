@@ -2,6 +2,7 @@
 
 import states
 from commands.about import About
+from commands.commands import Commands
 from commands.drop import Drop
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
@@ -92,14 +93,7 @@ def main():
 
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
-            print('Zoznam príkazov v hre:')
-            print('* inventar - zobrazí obsah hráčovho batohu')
-            print('* koniec - skončenie programu')
-            print('* o hre - vypíše info o hre')
-            print('* poloz - položí predmet z batohu do aktuálnej miestnosti')
-            print('* prikazy - vypíše zoznam príkazov')
-            print('* rozhliadni sa - vypíše opis aktuálnej miestnosti')
-            print('* vezmi - vezme predmet z miestnosti a vloží si ho do batohu')
+            Commands().exec()
 
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
