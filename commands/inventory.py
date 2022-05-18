@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
 
 from context import Context
-from items.item import Item
 
 
 @dataclass

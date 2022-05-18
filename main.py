@@ -10,7 +10,6 @@ from commands.quit import Quit
 from commands.take import Take
 from context import Context
 from items.features import MOVABLE, USABLE
-from helpers import get_item_by_name
 from items.item import Item
 from room import Room
 
@@ -38,9 +37,6 @@ def outro():
 
 def main():
     # game init
-    # game_state = states.PLAYING
-    # backpack = []
-
     room = Room(name='dungeon',
                 description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
                             'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
