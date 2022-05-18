@@ -171,15 +171,20 @@ def main():
                     print('Taký predmet tu nevidím.')
 
                 else:
-                    # vezmi item
-                    # vezmi item z miestnosti
-                    room.items.remove(item)
+                    # is it movable?
+                    if MOVABLE not in item.features:
+                        print('Tento predmet sa nedá zobrať.')
 
-                    # add item to backpack items
-                    backpack.append(item)
+                    else:
+                        # vezmi item
+                        # vezmi item z miestnosti
+                        room.items.remove(item)
 
-                    # render
-                    print(f'Predmet {item.name} si si vložil do batohu.')
+                        # add item to backpack items
+                        backpack.append(item)
+
+                        # render
+                        print(f'Predmet {item.name} si si vložil do batohu.')
 
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
