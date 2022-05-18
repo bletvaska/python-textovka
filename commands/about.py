@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 class About:
     name: str = 'o hre'
     description: str = 'vypíše info o hre'
-    # aliases: list[str] = field(default_factory=['o hre', 'about', 'info', '?'])
+    aliases: list[str] = field(default_factory=lambda: ['o hre', 'about', 'info', '?'])
 
     def exec(self):
         print('(c)2022 created by mire(c) z koši(c)')
