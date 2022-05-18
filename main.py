@@ -5,6 +5,7 @@ from commands.about import About
 from commands.drop import Drop
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
+from commands.take import Take
 from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name
 from items.item import Item
@@ -87,35 +88,7 @@ def main():
 
         # take item
         elif line.startswith('vezmi'):
-            # extraction of item to vezmi
-            name = line.split('vezmi')[1].lstrip()
-
-            # if no item was entered...
-            if name == '':
-                print('Neviem, co chceš zobrať.')
-
-            else:
-                # is the item in room?
-                item = get_item_by_name(name, room.items)
-
-                if item is None:
-                    print('Taký predmet tu nevidím.')
-
-                else:
-                    # is it movable?
-                    if MOVABLE not in item.features:
-                        print('Tento predmet sa nedá zobrať.')
-
-                    else:
-                        # vezmi item
-                        # vezmi item z miestnosti
-                        room.items.remove(item)
-
-                        # add item to backpack items
-                        backpack.append(item)
-
-                        # render
-                        print(f'Predmet {item.name} si si vložil do batohu.')
+            Take().exec(line, room, backpack)
 
         # commands, help
         elif line in ('prikazy', 'help', 'commands'):
