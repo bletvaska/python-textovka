@@ -3,6 +3,7 @@
 import states
 from commands.about import About
 from commands.inventory import Inventory
+from commands.lookaround import LookAround
 from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name
 from items.item import Item
@@ -70,7 +71,8 @@ def main():
 
         # rozhliadni sa, look around
         elif line in ('rozhliadni sa', 'look around'):
-            room.show()
+            cmd = LookAround()
+            cmd.exec(room)
 
         # about, info, ?
         elif line in ('o hre', 'about', 'info', '?'):
