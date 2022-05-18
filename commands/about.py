@@ -8,4 +8,5 @@ class About:
     # aliases: list[str] = field(default_factory=['o hre', 'about', 'info', '?'])
 
     def exec(self):
-        pass
+        print('(c)2022 created by mire(c) z koši(c)')
+        print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
