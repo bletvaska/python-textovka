@@ -2,6 +2,7 @@
 
 import states
 from commands.about import About
+from commands.drop import Drop
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
 from items.features import MOVABLE, USABLE
@@ -81,30 +82,8 @@ def main():
 
         # drop item
         elif line.startswith('poloz'):
-            # extraction of item to drop
-            name = line.split('poloz')[1].lstrip()
-
-            # if no item was entered...
-            if len(name) == 0:  # name == ''
-                print('Neviem, čo chceš položiť.')
-
-            else:
-                # is the item in backpack?
-                item = get_item_by_name(name, backpack)
-
-                if item is None:
-                    print('Taký predmet pri sebe nemáš.')
-
-                else:
-                    # drop item
-                    # remove item from backpack
-                    backpack.remove(item)
-
-                    # add item to room items
-                    room.items.append(item)
-
-                    # render
-                    print(f'Do miestnosti si položil predmet {item.name}.')
+            cmd = Drop()
+            cmd.exec(line, backpack, room)
 
         # take item
         elif line.startswith('vezmi'):
