@@ -6,6 +6,7 @@ from commands.commands import Commands
 from commands.drop import Drop
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
+from commands.quit import Quit
 from commands.take import Take
 from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name
@@ -97,13 +98,7 @@ def main():
 
         # quit, exit, q, bye
         elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
-            print('Naozaj chceš skončiť? (a/n)')
-            line = input('>> ').lower().strip()
-            if line in ('a', 'ano', 'y', 'yes'):
-                print('Dakujem, ze si si zahral tuto fantasticku hru. Príď aj nabudúce.')
-                game_state = states.QUIT
-            else:
-                continue
+            Quit().exec(game_state)
 
         # inventory
         elif line in ('inventar', 'i', 'inventory'):
