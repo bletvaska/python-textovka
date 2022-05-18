@@ -19,7 +19,7 @@ class Item:
 class Room:
     name: str
     description: str
-    items: list[str]
+    items: list[Item]
     exits: list[str]
 
     def show(self):
