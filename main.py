@@ -123,19 +123,25 @@ def main():
 
             else:
                 # is the item in backpack?
-                if name not in backpack:
+                item = None
+                for it in backpack:
+                    if name == it.name:
+                        item = it
+                        break
+
+                if item is None:
                     print('Taký predmet pri sebe nemáš.')
 
                 else:
                     # drop item
                     # remove item from backpack
-                    backpack.remove(name)
+                    backpack.remove(item)
 
                     # add item to room items
-                    room.items.append(name)
+                    room.items.append(item)
 
                     # render
-                    print(f'Do miestnosti si položil predmet {name}.')
+                    print(f'Do miestnosti si položil predmet {item.name}.')
 
         # take item
         elif line.startswith('vezmi'):
