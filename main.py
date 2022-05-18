@@ -44,6 +44,21 @@ class Room:
                 print(f'  {ext}')
 
 
+def get_item_by_name(name: str, items: list[Item]) -> Item | None:
+    # def get_item_by_name(name, items):
+    """
+    Returns the item found in list of items by it's name.
+    :param name: name of the item to find
+    :param items: list of items
+    :return: item, if found, None otherwise
+    """
+    for item in items:
+        if name == item.name:
+            return item
+
+    return None  # default behaviour
+
+
 def intro():
     """
     Shows the intro screen of the game.
@@ -123,11 +138,7 @@ def main():
 
             else:
                 # is the item in backpack?
-                item = None
-                for it in backpack:
-                    if name == it.name:
-                        item = it
-                        break
+                item = get_item_by_name(name, backpack)
 
                 if item is None:
                     print('Taký predmet pri sebe nemáš.')
@@ -154,11 +165,7 @@ def main():
 
             else:
                 # is the item in room?
-                item = None
-                for it in room.items:
-                    if name == it.name:
-                        item = it
-                        break
+                item = get_item_by_name(name, room.items)
 
                 if item is None:
                     print('Taký predmet tu nevidím.')
