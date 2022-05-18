@@ -3,6 +3,17 @@ from dataclasses import dataclass
 
 import states
 
+MOVABLE = 1
+USABLE = 2
+EXPLORABLE = 3
+
+
+@dataclass
+class Item:
+    name: str
+    description: str
+    features: list
+
 
 @dataclass
 class Room:
@@ -55,20 +66,17 @@ def outro():
 def main():
     # game init
     game_state = states.PLAYING
-    backpack = [
-        'bic',
-        'revolver'
-    ]
+    backpack = []
 
     room = Room(name='dungeon',
                 description='Nachádzaš sa vo veľmi tmavej miestnosti. Kamenné múry dávajú tušiť, že sa'
                             'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
                             'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.',
                 items=[
-                    'zapalky',
-                    'vedro',
-                    'kanister',
-                    'dvere'
+                    Item(name='zapalky', description='Štandardné zápalky. Tri.', features=[MOVABLE, USABLE]),
+                    Item(name='vedro', description='Vedro plné vody. Ťažko povedať, či aj pitnej.', features=[MOVABLE, USABLE]),
+                    Item(name='kanister', description='Veľký 25l kanister. Po odšróbovaní vrchnáka si zistil, že je to benzín. Kvalitka. 98 oktánov.', features=[USABLE, MOVABLE]),
+                    Item(name='dvere', description='Veľké dubové dvere. Zamknuté.', features=[])
                 ],
                 exits=[
                     'sever',
