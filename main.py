@@ -2,17 +2,12 @@
 from dataclasses import dataclass
 
 import states
+from helpers import get_item_by_name
+from items import Item
 
 MOVABLE = 1
 USABLE = 2
 EXPLORABLE = 3
-
-
-@dataclass
-class Item:
-    name: str
-    description: str
-    features: list[int]
 
 
 @dataclass
@@ -42,21 +37,6 @@ class Room:
             print('Východy z miestnosti:')
             for ext in self.exits:
                 print(f'  {ext}')
-
-
-def get_item_by_name(name: str, items: list[Item]) -> Item | None:
-    # def get_item_by_name(name, items):
-    """
-    Returns the item found in list of items by it's name.
-    :param name: name of the item to find
-    :param items: list of items
-    :return: item, if found, None otherwise
-    """
-    for item in items:
-        if name == item.name:
-            return item
-
-    return None  # default behaviour
 
 
 def intro():
