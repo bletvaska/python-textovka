@@ -1,4 +1,4 @@
-from items import Item
+from items.item import Item
 
 
 def get_item_by_name(name: str, items: list[Item]) -> Item | None:

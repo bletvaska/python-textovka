@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from items import Item
+from items.item import Item
 
 
 @dataclass

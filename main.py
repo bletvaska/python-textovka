@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+
 import states
-from features import MOVABLE, USABLE
+from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name
-from items import Item
+from items.item import Item
 from room import Room
 
 
