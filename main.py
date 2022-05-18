@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import states
+from commands.about import About
+from commands.inventory import Inventory
 from items.features import MOVABLE, USABLE
 from helpers import get_item_by_name
 from items.item import Item
@@ -72,8 +74,8 @@ def main():
 
         # about, info, ?
         elif line in ('o hre', 'about', 'info', '?'):
-            print('(c)2022 created by mire(c) z koši(c)')
-            print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
+            cmd = About()
+            cmd.exec()
 
         # drop item
         elif line.startswith('poloz'):
@@ -157,12 +159,8 @@ def main():
 
         # inventory
         elif line in ('inventar', 'i', 'inventory'):
-            if len(backpack) == 0:
-                print('Batoh je prázdny.')
-            else:
-                print('V batohu máš:')
-                for item in backpack:
-                    print(f'* {item.name}')
+            cmd = Inventory()
+            cmd.exec(backpack)
 
         else:
             print('Taký príkaz nepoznám.')
