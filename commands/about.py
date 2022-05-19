@@ -1,10 +1,11 @@
 from dataclasses import dataclass, field
 
+from commands.command import Command
 from context import Context
 
 
 @dataclass
-class About:
+class About(Command):
     name: str = 'o hre'
     description: str = 'vypíše info o hre'
     aliases: list[str] = field(default_factory=lambda: ['o hre', 'about', 'info', '?'])

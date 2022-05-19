@@ -1,11 +1,12 @@
 from dataclasses import dataclass
 
+from commands.command import Command
 from context import Context
 from helpers import get_item_by_name
 
 
 @dataclass
-class Drop:
+class Drop(Command):
     name: str = 'poloz'
     description: str = 'položí predmet z batohu do aktuálnej miestnosti'
 

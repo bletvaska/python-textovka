@@ -1,11 +1,12 @@
 from dataclasses import dataclass
 
 import states
+from commands.command import Command
 from context import Context
 
 
 @dataclass
-class Quit:
+class Quit(Command):
     name: str = 'koniec'
     description: str = 'ukončí hru'
 

@@ -1,10 +1,11 @@
 from dataclasses import dataclass, field
 
+from commands.command import Command
 from context import Context
 
 
 @dataclass
-class Inventory:
+class Inventory(Command):
     name: str = 'inventar'
     description: str = 'zobrazí obsah hráčovho batohu'
     aliases: list[str] = field(default_factory=lambda: ['inventory', 'i'])

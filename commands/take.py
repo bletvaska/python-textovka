@@ -1,12 +1,13 @@
 from dataclasses import dataclass
 
+from commands.command import Command
 from context import Context
 from helpers import get_item_by_name
 from items.features import MOVABLE
 
 
 @dataclass
-class Take:
+class Take(Command):
     name: str = 'vezmi'
     description: str = 'vezme predmet z miestnosti a vloží si ho do batohu'
 

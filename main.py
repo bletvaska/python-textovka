@@ -64,18 +64,17 @@ def main():
                     'juh'
                 ]
                 )
-    context = Context(current_room=room)
+    context = Context(current_room=room,
+                      commands=[
+                          About(),
+                          Commands(),
+                          Drop(),
+                          Inventory(),
+                          LookAround(),
+                          Quit(),
+                          Take()
+                      ])
     context.current_room.show()
-
-    commands = [
-        About(),
-        Commands(),
-        Drop(),
-        Inventory(),
-        LookAround(),
-        Quit(),
-        Take()
-    ]
 
     # game loop
     while context.game_state == states.PLAYING:
@@ -84,7 +83,7 @@ def main():
         if line == '':
             continue
 
-        cmd = parse(line, commands)
+        cmd = parse(line, context.commands)
 
         if cmd is None:
             print('Taký príkaz nepoznám.')
