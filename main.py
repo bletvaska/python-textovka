@@ -9,8 +9,12 @@ from commands.lookaround import LookAround
 from commands.quit import Quit
 from commands.take import Take
 from context import Context
+from items.bucket import Bucket
+from items.canister import Canister
+from items.door import Door
 from items.features import MOVABLE, USABLE
 from items.item import Item
+from items.matches import Matches
 from room import Room
 
 
@@ -42,18 +46,10 @@ def main():
                             'nachádzaš v nejakej kamennej kobke. Žeby podzemie hradu v Grunwalde? '
                             'Okná tu nie sú žiadne, čo by ťa uistilo o správnosti tohto predpokladu.',
                 items=[
-                    Item(name='zapalky',
-                         description='Štandardné zápalky. Tri.',
-                         features=[MOVABLE, USABLE]),
-                    Item(name='vedro',
-                         description='Vedro plné vody. Ťažko povedať, či aj pitnej.',
-                         features=[MOVABLE, USABLE]),
-                    Item(name='kanister',
-                         description='Veľký 25l kanister. Po odšróbovaní vrchnáka si zistil, že je to benzín. Kvalitka. 98 oktánov.',
-                         features=[USABLE, MOVABLE]),
-                    Item(name='dvere',
-                         description='Veľké dubové dvere. Zamknuté.',
-                         features=[])
+                    Matches(),
+                    Bucket(),
+                    Canister(),
+                    Door()
                 ],
                 exits=[
                     'sever',
