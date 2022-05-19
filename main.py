@@ -2,6 +2,7 @@
 
 import states
 from commands.about import About
+from commands.command import Command
 from commands.commands import Commands
 from commands.drop import Drop
 from commands.inventory import Inventory
@@ -35,6 +36,10 @@ def outro():
     """
     print('(c)2022 by mirek')
     print('See you soon.')
+
+
+def parse(line: str, commands: list[Command]):
+    pass
 
 
 def main():
@@ -74,12 +79,19 @@ def main():
         if line == '':
             continue
 
-        for cmd in commands:
-            if line.startswith(cmd.name):
-                cmd.exec(line, context)
-                break
-        else:
+        cmd = parse(line, commands)
+
+        if cmd is None:
             print('Taký príkaz nepoznám.')
+        else:
+            cmd.exec(line, context)
+
+        # for cmd in commands:
+        #     if line.startswith(cmd.name):
+        #         cmd.exec(line, context)
+        #         break
+        # else:
+        #     print('Taký príkaz nepoznám.')
 
 
 if __name__ == '__main__':
