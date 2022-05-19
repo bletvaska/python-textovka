@@ -9,6 +9,6 @@ class About:
     description: str = 'vypíše info o hre'
     aliases: list[str] = field(default_factory=lambda: ['o hre', 'about', 'info', '?'])
 
-    def exec(self, line: str, context: Context):
+    def exec(self, context: Context):
         print('(c)2022 created by mire(c) z koši(c)')
         print('Ďaľšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')

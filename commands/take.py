@@ -10,36 +10,35 @@ class Take:
     name: str = 'vezmi'
     description: str = 'vezme predmet z miestnosti a vloží si ho do batohu'
 
-    def exec(self, line: str, context: Context):
+    def exec(self, context: Context):
+        # init
         backpack = context.backpack
         room = context.current_room
-
-        # extraction of item to vezmi
-        name = line.split('vezmi')[1].lstrip()
+        name = self.param
 
         # if no item was entered...
         if name == '':
             print('Neviem, co chceš zobrať.')
+            return
 
-        else:
-            # is the item in room?
-            item = get_item_by_name(name, room.items)
+        # is the item in room?
+        item = get_item_by_name(name, room.items)
 
-            if item is None:
-                print('Taký predmet tu nevidím.')
+        if item is None:
+            print('Taký predmet tu nevidím.')
+            return
 
-            else:
-                # is it movable?
-                if MOVABLE not in item.features:
-                    print('Tento predmet sa nedá zobrať.')
+        # is it movable?
+        if MOVABLE not in item.features:
+            print('Tento predmet sa nedá zobrať.')
+            return
 
-                else:
-                    # vezmi item
-                    # vezmi item z miestnosti
-                    room.items.remove(item)
+        # vezmi item
+        # vezmi item z miestnosti
+        room.items.remove(item)
 
-                    # add item to backpack items
-                    backpack.append(item)
+        # add item to backpack items
+        backpack.append(item)
 
-                    # render
-                    print(f'Predmet {item.name} si si vložil do batohu.')
+        # render
+        print(f'Predmet {item.name} si si vložil do batohu.')

@@ -9,7 +9,7 @@ class Quit:
     name: str = 'koniec'
     description: str = 'ukončí hru'
 
-    def exec(self, line, context: Context):
+    def exec(self, context: Context):
         print('Naozaj chceš skončiť? (a/n)')
         line = input('>> ').lower().strip()
         if line in ('a', 'ano', 'y', 'yes'):

@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 
+from context import Context
+
 
 @dataclass
 class Commands:
     name: str = 'prikazy'
     description: str = 'vypíše zoznam príkazov'
 
-    def exec(self, line, context):
+    def exec(self, context: Context):
         print('Zoznam príkazov v hre:')
         print('* inventar - zobrazí obsah hráčovho batohu')
         print('* koniec - skončenie programu')

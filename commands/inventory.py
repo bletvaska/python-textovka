@@ -9,7 +9,7 @@ class Inventory:
     description: str = 'zobrazí obsah hráčovho batohu'
     aliases: list[str] = field(default_factory=lambda: ['inventory', 'i'])
 
-    def exec(self, line, context: Context):
+    def exec(self, context: Context):
         if len(context.backpack) == 0:
             print('Batoh je prázdny.')
         else:

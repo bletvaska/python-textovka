@@ -41,6 +41,7 @@ def outro():
 def parse(line: str, commands: list[Command]):
     for cmd in commands:
         if line.startswith(cmd.name):
+            cmd.param = line.split(cmd.name)[1].lstrip()
             return cmd
 
     # return None
@@ -88,7 +89,7 @@ def main():
         if cmd is None:
             print('Taký príkaz nepoznám.')
         else:
-            cmd.exec(line, context)
+            cmd.exec(context)
 
 
 if __name__ == '__main__':
