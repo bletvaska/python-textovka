@@ -8,4 +8,4 @@ class Command:
     # aliases: list[str]
 
     def exec(self, context):
-        pass
+        raise NotImplementedError('Execution of the command was not yet implemented.')

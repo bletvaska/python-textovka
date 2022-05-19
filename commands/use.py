@@ -9,7 +9,7 @@ from items.features import USABLE
 @dataclass
 class Use(Command):
     name: str = 'pouzi'
-    description = 'použije zvolený predmet'
+    description: str = 'použije zvolený predmet'
 
     def exec(self, context: Context):
         # init
