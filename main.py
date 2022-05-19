@@ -12,8 +12,6 @@ from context import Context
 from items.bucket import Bucket
 from items.canister import Canister
 from items.door import Door
-from items.features import MOVABLE, USABLE
-from items.item import Item
 from items.matches import Matches
 from room import Room
 
