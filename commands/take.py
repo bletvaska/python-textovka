@@ -19,7 +19,7 @@ class Take(Command):
 
         # if no item was entered...
         if name == '':
-            print('Neviem, co chceš zobrať.')
+            print('Neviem, aký predmet chceš zobrať.')
             return
 
         # is the item in room?

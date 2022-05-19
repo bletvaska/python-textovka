@@ -10,11 +10,13 @@ from commands.inventory import Inventory
 from commands.lookaround import LookAround
 from commands.quit import Quit
 from commands.take import Take
+from commands.use import Use
 from context import Context
 from items.bucket import Bucket
 from items.canister import Canister
 from items.door import Door
 from items.matches import Matches
+from items.newspaper import Newspaper
 from room import Room
 
 
@@ -74,8 +76,10 @@ def main():
                           Inventory(),
                           LookAround(),
                           Quit(),
-                          Take()
+                          Take(),
+                          Use()
                       ])
+    context.backpack.append(Newspaper())
     context.current_room.show()
 
     # game loop
