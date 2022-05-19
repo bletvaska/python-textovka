@@ -57,6 +57,16 @@ def main():
     context = Context(current_room=room)
     context.current_room.show()
 
+    commands = [
+        About(),
+        Commands(),
+        Drop(),
+        Inventory(),
+        LookAround(),
+        Quit(),
+        Take()
+    ]
+
     # game loop
     while context.game_state == states.PLAYING:
         line = input('> ').lstrip().rstrip().lower()
@@ -64,38 +74,10 @@ def main():
         if line == '':
             continue
 
-        # rozhliadni sa, look around
-        elif line in ('rozhliadni sa', 'look around'):
-            cmd = LookAround()
-            cmd.exec(line, context)
-
-        # about, info, ?
-        elif line in ('o hre', 'about', 'info', '?'):
-            cmd = About()
-            cmd.exec(line, context)
-
-        # drop item
-        elif line.startswith('poloz'):
-            cmd = Drop()
-            cmd.exec(line, context)
-
-        # take item
-        elif line.startswith('vezmi'):
-            Take().exec(line, context)
-
-        # commands, help
-        elif line in ('prikazy', 'help', 'commands'):
-            Commands().exec(line, context)
-
-        # quit, exit, q, bye
-        elif line in ('koniec', 'quit', 'exit', 'q', 'bye'):
-            Quit().exec(line, context)
-
-        # inventory
-        elif line in ('inventar', 'i', 'inventory'):
-            cmd = Inventory()
-            cmd.exec(line, context)
-
+        for cmd in commands:
+            if line.startswith(cmd.name):
+                cmd.exec(line, context)
+                break
         else:
             print('Taký príkaz nepoznám.')
 
