@@ -30,15 +30,18 @@ def main():
 
 
 def scrape_data():
+    # scrape data
     settings = get_settings()
     response = requests.get(url.format(settings.units, settings.query, settings.appid))
 
-    if response.status_code == 200:
-        return response.json()
-    else:
+    # exit on error http status code
+    if response.status_code != 200:
         print(f'Error: HTTP status code is {response.status_code}.',
               file=stderr)
         quit(1)
+
+    # return data as dictionary
+    return response.json()
 
 
 def process_data():
