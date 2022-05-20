@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from pathlib import Path
 from sys import stderr
 
 import requests
@@ -21,6 +22,7 @@ class Settings(BaseSettings):
     appid: str
     query: str = 'kosice,sk'
     units: str = 'metric'
+    csv_report: Path = 'report.csv'
 
     class Config:
         env_file = '.env'
@@ -69,6 +71,8 @@ def process_data(data: dict) -> Measurement:
 
 
 def export_data(entry: Measurement):
+    settings = get_settings()
+    print(settings)
     pass
 
 
