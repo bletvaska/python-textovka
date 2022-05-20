@@ -6,7 +6,10 @@ import requests
 from pydantic import BaseSettings, BaseModel
 
 url = 'http://api.openweathermap.org/data/2.5/weather?units={}&q={}&appid={}'
-
+proxies = {
+    'http': 'http://localhost:3128',
+    'https': 'https://localhost:3128'
+}
 
 class Measurement(BaseModel):
     timestamp: int
@@ -55,16 +58,16 @@ def main():
 def scrape_data() -> dict:
     # scrape data
     settings = get_settings()
-    response = requests.get(url.format(settings.units, settings.query, settings.appid))
 
-    # exit on error http status code
-    if response.status_code != 200:
-        print(f'Error: HTTP status code is {response.status_code}.',
-              file=stderr)
-        quit(1)
+    with requests.get(url.format(settings.units, settings.query, settings.appid), proxies=proxies) as response:
+        # exit on error http status code
+        if response.status_code != 200:
+            print(f'Error: HTTP status code is {response.status_code}.',
+                  file=stderr)
+            quit(1)
 
-    # return data as dictionary
-    return response.json()
+        # return data as dictionary
+        return response.json()
 
 
 def process_data(data: dict) -> Measurement:
