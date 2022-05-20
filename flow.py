@@ -2,9 +2,19 @@
 from sys import stderr
 
 import requests
-from pydantic import BaseSettings
+from pydantic import BaseSettings, BaseModel
 
 url = 'http://api.openweathermap.org/data/2.5/weather?units={}&q={}&appid={}'
+
+
+class WeatherEntry(BaseModel):
+    timestamp: int
+    temperature: float
+    pressure: int
+    humidity: int
+    wind_speed: float
+    wind_deg: int
+    icon: str
 
 
 class Settings(BaseSettings):
@@ -25,11 +35,11 @@ def get_settings() -> Settings:
 
 def main():
     raw_data = scrape_data()
-    process_data(raw_data)
-    export_data()
+    entry = process_data(raw_data)
+    export_data(entry)
 
 
-def scrape_data():
+def scrape_data() -> dict:
     # scrape data
     settings = get_settings()
     response = requests.get(url.format(settings.units, settings.query, settings.appid))
@@ -44,11 +54,21 @@ def scrape_data():
     return response.json()
 
 
-def process_data(data: dict):
-    pass
+def process_data(data: dict) -> WeatherEntry:
+    entry = WeatherEntry(
+        timestamp=data['dt'],
+        temperature=data['main']['temp'],
+        pressure=data['main']['pressure'],
+        humidity=data['main']['humidity'],
+        wind_speed=data['wind']['speed'],
+        wind_deg=data['wind']['deg'],
+        icon=data['weather'][0]['icon']
+    )
+
+    return entry
 
 
-def export_data():
+def export_data(entry: WeatherEntry):
     pass
 
 
