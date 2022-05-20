@@ -7,10 +7,6 @@ import requests
 from pydantic import BaseSettings, BaseModel
 
 url = 'http://api.openweathermap.org/data/2.5/weather'
-proxies = {
-    'http': 'http://localhost:3128',
-    'https': 'https://localhost:3128'
-}
 
 
 class Measurement(BaseModel):
@@ -66,6 +62,11 @@ def scrape_data() -> dict:
         'units': settings.units,
         'q': settings.query,
         'appid': settings.appid
+    }
+
+    proxies = {
+        'http': 'http://localhost:3128',
+        'https': 'https://localhost:3128'
     }
 
     with requests.get(url, params=params, proxies=proxies) as response:
