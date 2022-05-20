@@ -24,8 +24,8 @@ def get_settings() -> Settings:
 
 
 def main():
-    scrape_data()
-    process_data()
+    raw_data = scrape_data()
+    process_data(raw_data)
     export_data()
 
 
@@ -44,7 +44,7 @@ def scrape_data():
     return response.json()
 
 
-def process_data():
+def process_data(data: dict):
     pass
 
 
