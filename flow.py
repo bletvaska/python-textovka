@@ -17,6 +17,17 @@ class Measurement(BaseModel):
     wind_deg: int
     icon: str
 
+    def csv(self, sep=','):
+        return (
+            f'{self.timestamp}{sep}'
+            f'{self.temperature}{sep}'
+            f'{self.pressure}{sep}'
+            f'{self.humidity}{sep}'
+            f'{self.wind_speed}{sep}'
+            f'{self.wind_deg}{sep}'
+            f'{self.icon}'
+        )
+
 
 class Settings(BaseSettings):
     appid: str
@@ -72,9 +83,9 @@ def process_data(data: dict) -> Measurement:
 
 def export_data(entry: Measurement):
     settings = get_settings()
-    file = open(settings.csv_report, 'a')
-    print(f'{entry.timestamp},{entry.humidity},{entry.pressure},{entry.temperature},{entry.wind_deg},{entry.wind_speed},{entry.icon}', file=file)
-    file.close()
+
+    with open(settings.csv_report, 'a') as file:
+        print(entry.csv(), file=file)
 
 
 if __name__ == '__main__':
