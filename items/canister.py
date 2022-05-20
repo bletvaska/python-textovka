@@ -16,6 +16,6 @@ class Canister(Item):
         # check if door is in the room
         door = get_item_by_name('dvere', context.current_room)
         if door is None:
-            print(
-                'Vzal si kanister do ruky, trošku si zaposiloval a uľavil si si sprostým slovom. Hneď sa cítiš lepšie.')
+            print('Vzal si kanister do ruky, trošku si zaposiloval a uľavil si si sprostým slovom. '
+                  'Hneď sa cítiš lepšie.')
             return

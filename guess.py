@@ -2,6 +2,7 @@
 
 import random
 
+
 def play_game(secret=13):
     print('Myslím si číslo od 1 do 20.')
 
