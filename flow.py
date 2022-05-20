@@ -2,14 +2,16 @@
 from pathlib import Path
 from sys import stderr
 
+import dotenv
 import requests
 from pydantic import BaseSettings, BaseModel
 
-url = 'http://api.openweathermap.org/data/2.5/weather?units={}&q={}&appid={}'
+url = 'http://api.openweathermap.org/data/2.5/weather'
 proxies = {
     'http': 'http://localhost:3128',
     'https': 'https://localhost:3128'
 }
+
 
 class Measurement(BaseModel):
     timestamp: int
@@ -59,7 +61,14 @@ def scrape_data() -> dict:
     # scrape data
     settings = get_settings()
 
-    with requests.get(url.format(settings.units, settings.query, settings.appid), proxies=proxies) as response:
+    # prepare
+    params = {
+        'units': settings.units,
+        'q': settings.query,
+        'appid': settings.appid
+    }
+
+    with requests.get(url, params=params, proxies=proxies) as response:
         # exit on error http status code
         if response.status_code != 200:
             print(f'Error: HTTP status code is {response.status_code}.',
