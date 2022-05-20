@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from sys import stderr
+
 import requests
 from pydantic import BaseSettings
 
@@ -21,8 +23,6 @@ def get_settings() -> Settings:
     return settings
 
 
-# pip install pydantic
-
 def main():
     scrape_data()
     process_data()
@@ -32,7 +32,13 @@ def main():
 def scrape_data():
     settings = get_settings()
     response = requests.get(url.format(settings.units, settings.query, settings.appid))
-    print(response.status_code)
+
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f'Error: HTTP status code is {response.status_code}.',
+              file=stderr)
+        quit(1)
 
 
 def process_data():
