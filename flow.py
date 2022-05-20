@@ -72,8 +72,9 @@ def process_data(data: dict) -> Measurement:
 
 def export_data(entry: Measurement):
     settings = get_settings()
-    print(settings)
-    pass
+    file = open(settings.csv_report, 'a')
+    print(f'{entry.timestamp},{entry.humidity},{entry.pressure},{entry.temperature},{entry.wind_deg},{entry.wind_speed},{entry.icon}', file=file)
+    file.close()
 
 
 if __name__ == '__main__':
