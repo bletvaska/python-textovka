@@ -1,10 +1,27 @@
 #!/usr/bin/env python
 import requests
+from pydantic import BaseSettings
 
-appid = '08f5d8fd385c443eeff6608c643e0bc5'
-query = 'kosice,sk'
-url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&q={}&appid={}'
+url = 'http://api.openweathermap.org/data/2.5/weather?units={}&q={}&appid={}'
 
+
+class Settings(BaseSettings):
+    appid: str
+    query: str = 'kosice,sk'
+    units: str = 'metric'
+
+    class Config:
+        env_file = '.env'
+        env_file_encoding = 'utf-8'
+        env_prefix = 'flow_'
+
+
+def get_settings() -> Settings:
+    settings = Settings()
+    return settings
+
+
+# pip install pydantic
 
 def main():
     scrape_data()
@@ -13,7 +30,8 @@ def main():
 
 
 def scrape_data():
-    response = requests.get(url.format(query, appid))
+    settings = get_settings()
+    response = requests.get(url.format(settings.units, settings.query, settings.appid))
     print(response.status_code)
 
 
