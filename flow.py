@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 from pathlib import Path
 from sys import stderr
 
@@ -65,8 +66,8 @@ def scrape_data() -> dict:
     }
 
     proxies = {
-        'http': 'http://localhost:3128',
-        'https': 'https://localhost:3128'
+        'http': os.getenv('HTTP_PROXY', ''),
+        'https': os.getenv('HTTPS_PROXY', '')
     }
 
     with requests.get(url, params=params, proxies=proxies) as response:
