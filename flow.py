@@ -7,7 +7,7 @@ from pydantic import BaseSettings, BaseModel
 url = 'http://api.openweathermap.org/data/2.5/weather?units={}&q={}&appid={}'
 
 
-class WeatherEntry(BaseModel):
+class Measurement(BaseModel):
     timestamp: int
     temperature: float
     pressure: int
@@ -54,8 +54,8 @@ def scrape_data() -> dict:
     return response.json()
 
 
-def process_data(data: dict) -> WeatherEntry:
-    entry = WeatherEntry(
+def process_data(data: dict) -> Measurement:
+    entry = Measurement(
         timestamp=data['dt'],
         temperature=data['main']['temp'],
         pressure=data['main']['pressure'],
@@ -68,7 +68,7 @@ def process_data(data: dict) -> WeatherEntry:
     return entry
 
 
-def export_data(entry: WeatherEntry):
+def export_data(entry: Measurement):
     pass
 
 
