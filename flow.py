@@ -1,9 +1,9 @@
 #!/usr/bin/env python
+
 import os
 from pathlib import Path
 from sys import stderr
 
-import dotenv
 import requests
 from pydantic import BaseSettings, BaseModel
 

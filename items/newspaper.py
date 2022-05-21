@@ -13,7 +13,7 @@ class Newspaper(Item):
     features: list[int] = field(default_factory=lambda: [MOVABLE, USABLE])
     headlines = [
         'Tenkrát poprvé: Moje prvé kroky s Pajtonom',
-        'Ako som si doma vytetoval logo Pajtonu na pliecko',
+        'Ako som si doma vytetovala logo Pajtonu na pliecko',
         'Je Python single?',
         'Rubrika pre emancipovaných mužov: Pečieme s Viktorom',
         'Viktorove rady: Ako dobre vymastiť pekáč'
