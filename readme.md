@@ -6,6 +6,7 @@ Kurz pre všetkých, ktorí sa chcú naučiť základy programovania v jazyku Py
 
 Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov očakáva, že majú skúsenosť aspoň so základmi programovani alebo skriptovania v inom jazyku.
 
+
 ## Preberané témy
 
 * štandardný vstup a výstup
