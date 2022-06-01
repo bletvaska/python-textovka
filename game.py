@@ -17,4 +17,11 @@ while line != 'koniec':
         print('Ďalšie dobrodružstvo Indiana Jonesa. Tentokrát je jeho úlohou uniknúť z podzmeného väzenia, '
               'v ktorom sa náhodou ocitol.')
 
+    elif line == 'koniec':
+        # pass
+        continue
+
+    else:
+        print('Tento príkaz nepoznám.')
+
 print('Dobru chut.')
