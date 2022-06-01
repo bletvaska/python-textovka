@@ -10,6 +10,6 @@ print('                         and his Great Escape')
 
 line = None
 while line != 'koniec':
-    line = input('> ')
+    line = input('> ').lower().lstrip().rstrip()
 
 print('Dobru chut.')
