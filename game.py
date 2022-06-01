@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import states
 
 print(' ___           _ _                         _')
 print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___')
@@ -8,8 +9,9 @@ print('|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/
 
 print('                         and his Great Escape')
 
-line = None
-while line != 'koniec':
+game_state = states.PLAYING
+
+while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()
 
     if line == '':  # len(line) == 0
@@ -28,6 +30,7 @@ while line != 'koniec':
 
     elif line == 'koniec':
         # pass
+        game_state = states.QUIT
         continue
 
     else:
