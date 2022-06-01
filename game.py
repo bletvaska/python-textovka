@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 import states
+from helpers import intro, outro
 
-print(' ___           _ _                         _')
-print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___')
-print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
-print(' | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\')
-print('|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/')
-
-print('                         and his Great Escape')
-
+intro()
 game_state = states.PLAYING
 
 while game_state == states.PLAYING:
@@ -40,4 +34,4 @@ while game_state == states.PLAYING:
     else:
         print('Tento príkaz nepoznám.')
 
-print('Dobru chut.')
+outro()
