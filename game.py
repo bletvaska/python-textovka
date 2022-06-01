@@ -12,7 +12,10 @@ line = None
 while line != 'koniec':
     line = input('> ').lower().lstrip().rstrip()
 
-    if line == 'o hre':
+    if line == '':  # len(line) == 0
+        continue
+
+    elif line == 'o hre':
         print('(c)2022 created by mighty mire(c) the programmer')
         print('Ďalšie dobrodružstvo Indiana Jonesa. Tentokrát je jeho úlohou uniknúť z podzmeného väzenia, '
               'v ktorom sa náhodou ocitol.')
