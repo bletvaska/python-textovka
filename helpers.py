@@ -1,4 +1,7 @@
 def intro():
+    """
+    The game intro banner.
+    """
     print(' ___           _ _                         _')
     print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___')
     print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
@@ -9,4 +12,7 @@ def intro():
 
 
 def outro():
+    """
+    The game outro banner.
+    """
     print('Dobru chut.')
