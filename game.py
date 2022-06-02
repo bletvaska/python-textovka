@@ -30,6 +30,22 @@ while game_state == states.PLAYING:
         print('Ďalšie dobrodružstvo Indiana Jonesa. Tentokrát je jeho úlohou uniknúť z podzmeného väzenia, '
               'v ktorom sa náhodou ocitol.')
 
+    elif line.startswith('pouzi'):
+        name = line.split('pouzi')[1].lstrip()
+
+        # check if there is something to examine 😉
+        if name == '':
+            print('Neviem, čo chceš použiť.')
+        else:
+            # check if item is in backpack
+            for item in backpack:
+                # show item description
+                if item.name == name:
+                    print(f'Používam predmet {item.name}.')
+                    break
+            else:
+                print('Taký predmet tu nikde nevidím.')
+
     elif line.startswith('preskumaj'):
         name = line.split('preskumaj')[1].lstrip()
 
@@ -51,6 +67,7 @@ while game_state == states.PLAYING:
         print('* inventar - zobrazí obsah hráčovho batohu')
         print('* koniec - ukončí rozohratú hru')
         print('* o hre - zobrazí informácie o hre')
+        print('* pouzi - použije zvolený predmet')
         print('* preskumaj - zobrazí opis zvoleného predmetu')
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
 
