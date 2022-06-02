@@ -32,7 +32,11 @@ while game_state == states.PLAYING:
         if name == '':
             print('Neviem, aký predmet chceš preskúmať.')
         else:
-            print(f'ta skumam predmet {name}')
+            # check if item is in backpack
+            if name not in backpack:
+                print('Taký predmet pri sebe nemáš.')
+            else:
+                print(f'ta skumam predmet {name}')
 
     elif line == 'prikazy':
         print('Dostupné príkazy v hre:')
