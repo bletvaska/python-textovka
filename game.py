@@ -36,6 +36,7 @@ while game_state == states.PLAYING:
             if name not in backpack:
                 print('Taký predmet pri sebe nemáš.')
             else:
+                # show item description
                 if name == 'bic':
                     print('Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.')
                 elif name == 'revolver':
