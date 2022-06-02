@@ -16,3 +16,11 @@ def outro():
     The game outro banner.
     """
     print('Dobru chut.')
+
+
+def get_item_by_name(name, items):
+    for item in items:
+        if name == item.name:
+            return item
+
+    # return None

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from helpers import intro, outro
+from helpers import intro, outro, get_item_by_name
 from items import Whip, Revolver, Newspaper
 
 intro()
@@ -38,13 +38,11 @@ while game_state == states.PLAYING:
             print('Neviem, čo chceš použiť.')
         else:
             # check if item is in backpack
-            for item in backpack:
-                # show item description
-                if item.name == name:
-                    print(f'Používam predmet {item.name}.')
-                    break
-            else:
+            item = get_item_by_name(name, backpack)
+            if item is None:
                 print('Taký predmet tu nikde nevidím.')
+            else:
+                print(f'Používam predmet {item.name}.')
 
     elif line.startswith('preskumaj'):
         name = line.split('preskumaj')[1].lstrip()
@@ -54,13 +52,11 @@ while game_state == states.PLAYING:
             print('Neviem, aký predmet chceš preskúmať.')
         else:
             # check if item is in backpack
-            for item in backpack:
-                # show item description
-                if item.name == name:
-                    print(item.description)
-                    break
-            else:
+            item = get_item_by_name(name, backpack)
+            if item is None:
                 print('Taký predmet pri sebe nemáš.')
+            else:
+                print(item.description)
 
     elif line == 'prikazy':
         print('Dostupné príkazy v hre:')
