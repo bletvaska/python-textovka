@@ -1,3 +1,6 @@
+from items import Item
+
+
 def intro():
     """
     The game intro banner.
@@ -18,7 +21,17 @@ def outro():
     print('Dobru chut.')
 
 
-def get_item_by_name(name, items):
+def get_item_by_name(name: str, items: list[Item]) -> Item | None:
+    """
+    Returns the item from the list by its name.
+
+    This function returns the item object, which is located in the list given by
+    items parameter. If the item is found, then it is returned. If it is not found,
+    None is returned.
+    :param name: the name of the item to find
+    :param items: list of items
+    :return: item, if found or None otherwise
+    """
     for item in items:
         if name == item.name:
             return item
