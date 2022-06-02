@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import states
 from helpers import intro, outro
-from items import Item
+from items import Whip, Revolver, Newspaper
 
 intro()
 game_state = states.PLAYING
 backpack = [
-    Item('bic', 'Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.'),
-    Item('revolver', 'Štandardný revolver značky Smis-end-Weson'),
-    Item('noviny', 'Posledné vydanie Bravíčka. To najlepšie čítanie pre každého chovateľa Pytóna.')
+    Whip(),
+    Revolver(),
+    Newspaper()
 ]
 
 while game_state == states.PLAYING:
