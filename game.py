@@ -36,7 +36,12 @@ while game_state == states.PLAYING:
             if name not in backpack:
                 print('Taký predmet pri sebe nemáš.')
             else:
-                print(f'ta skumam predmet {name}')
+                if name == 'bic':
+                    print('Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.')
+                elif name == 'revolver':
+                    print('Štandardný revolver značky Smis-end-Weson')
+                elif name == 'noviny':
+                    print('Posledné vydanie Bravíčka. To najlepšie čítanie pre každého chovateľa Pytóna.')
 
     elif line == 'prikazy':
         print('Dostupné príkazy v hre:')
