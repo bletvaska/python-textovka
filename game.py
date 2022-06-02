@@ -18,7 +18,7 @@ while game_state == states.PLAYING:
         else:
             print('V batohu máš:')
             for item in backpack:
-                print('* ', item)
+                print(f'* {item}')
 
     elif line == 'o hre':
         print('(c)2022 created by mighty mire(c) the programmer')
