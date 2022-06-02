@@ -4,12 +4,21 @@ from helpers import intro, outro
 
 intro()
 game_state = states.PLAYING
+backpack = ['bic', 'revolver', 'noviny']
 
 while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()
 
     if line == '':  # len(line) == 0
         continue
+
+    elif line == 'inventar':
+        if backpack == []:  # len(backpack) == 0:
+            print('Batoh je prázdny.')
+        else:
+            print('V batohu máš:')
+            for item in backpack:
+                print('* ', item)
 
     elif line == 'o hre':
         print('(c)2022 created by mighty mire(c) the programmer')
@@ -18,6 +27,7 @@ while game_state == states.PLAYING:
 
     elif line == 'prikazy':
         print('Dostupné príkazy v hre:')
+        print('* inventar - zobrazí obsah hráčovho batohu')
         print('* koniec - ukončí rozohratú hru')
         print('* o hre - zobrazí informácie o hre')
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
