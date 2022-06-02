@@ -23,11 +23,11 @@ class Newspaper:
         print('Aaaa Bravíčko. Zalistoval si čerstvým vydaním tohto legendárneho časopisu každého správneho Pytonistu '
               'a píšu...')
 
-        headlines = [
+        headlines = (
             'Python 3.11 bude vydany v piatok 13.',
             'Spravny Pythonista pouziva len Python >= 3.7',
             'import this'
-        ]
+        )
 
         print(random.choice(headlines))
 
