@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 import states
 from helpers import intro, outro
+from items import Item
 
 intro()
 game_state = states.PLAYING
-backpack = ['bic', 'revolver', 'noviny']
+backpack = [
+    Item('bic', 'Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.'),
+    Item('revolver', 'Štandardný revolver značky Smis-end-Weson'),
+    Item('noviny', 'Posledné vydanie Bravíčka. To najlepšie čítanie pre každého chovateľa Pytóna.')
+]
 
 while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()
@@ -18,7 +23,7 @@ while game_state == states.PLAYING:
         else:
             print('V batohu máš:')
             for item in backpack:
-                print(f'* {item}')
+                print(f'* {item.name}')
 
     elif line == 'o hre':
         print('(c)2022 created by mighty mire(c) the programmer')
@@ -33,16 +38,13 @@ while game_state == states.PLAYING:
             print('Neviem, aký predmet chceš preskúmať.')
         else:
             # check if item is in backpack
-            if name not in backpack:
-                print('Taký predmet pri sebe nemáš.')
-            else:
+            for item in backpack:
                 # show item description
-                if name == 'bic':
-                    print('Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.')
-                elif name == 'revolver':
-                    print('Štandardný revolver značky Smis-end-Weson')
-                elif name == 'noviny':
-                    print('Posledné vydanie Bravíčka. To najlepšie čítanie pre každého chovateľa Pytóna.')
+                if item.name == name:
+                    print(item.description)
+                    break
+            else:
+                print('Taký predmet pri sebe nemáš.')
 
     elif line == 'prikazy':
         print('Dostupné príkazy v hre:')
