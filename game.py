@@ -27,7 +27,12 @@ while game_state == states.PLAYING:
 
     elif line.startswith('preskumaj'):
         name = line.split('preskumaj')[1].lstrip()
-        print(f'ta skumam predmet {name}')
+
+        # check if there is something to examine ;)
+        if name == '':
+            print('Neviem, aký predmet chceš preskúmať.')
+        else:
+            print(f'ta skumam predmet {name}')
 
     elif line == 'prikazy':
         print('Dostupné príkazy v hre:')
