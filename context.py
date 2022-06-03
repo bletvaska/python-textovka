@@ -8,6 +8,6 @@ from items.item import Item
 
 @dataclass
 class Context:
-    commands: List[Command]
-    backpack: List[Item] = field(default_factory=lambda: [])
+    commands: List[Command] = field(default_factory=list)
+    backpack: List[Item] = field(default_factory=list)
     game_state: str = states.PLAYING

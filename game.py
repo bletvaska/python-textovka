@@ -12,23 +12,29 @@ from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
 
-# game init
 intro()
 
-context = Context(commands=[
+# game init
+context = Context()
+
+# list of commands initialization
+context.commands = [
     About(),
     Commands(),
     Examine(),
     Inventory(),
     Quit(),
     Use()
-], backpack=[
+]
+
+# backpack initialization
+context.backpack = [
     Whip(),
     Revolver(),
     Newspaper()
-])
+]
 
-
+# main loop
 while context.game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()
 
