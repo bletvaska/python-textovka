@@ -4,22 +4,29 @@ from commands.about import About
 from commands.commands import Commands
 from commands.inventory import Inventory
 from commands.quit import Quit
+from context import Context
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
 
-
+# game init
 intro()
-game_state = states.PLAYING
-backpack = [
+
+context = Context(commands=[
+    About(),
+    Commands(),
+    Inventory(),
+    Quit()
+], backpack=[
     Whip(),
     Revolver(),
     Newspaper()
-]
+])
 
-while game_state == states.PLAYING:
+
+while context.game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()
 
     if line == '':  # len(line) == 0
@@ -27,11 +34,11 @@ while game_state == states.PLAYING:
 
     elif line == 'inventar':
         cmd = Inventory()
-        cmd.exec(backpack)
+        cmd.exec(context)
 
     elif line == 'o hre':
         cmd = About()
-        cmd.exec()
+        cmd.exec(context)
 
     elif line.startswith('pouzi'):
         name = line.split('pouzi')[1].lstrip()
@@ -41,7 +48,7 @@ while game_state == states.PLAYING:
             print('Neviem, čo chceš použiť.')
         else:
             # check if item is in backpack
-            item = get_item_by_name(name, backpack)
+            item = get_item_by_name(name, context.backpack)
             if item is None:
                 print('Taký predmet tu nikde nevidím.')
             else:
@@ -58,17 +65,17 @@ while game_state == states.PLAYING:
             print('Neviem, aký predmet chceš preskúmať.')
         else:
             # check if item is in backpack
-            item = get_item_by_name(name, backpack)
+            item = get_item_by_name(name, context.backpack)
             if item is None:
                 print('Taký predmet pri sebe nemáš.')
             else:
                 print(item.description)
 
     elif line == 'prikazy':
-        Commands().exec()
+        Commands().exec(context)
 
     elif line == 'koniec':
-        Quit().exec(game_state)
+        Quit().exec(context)
 
     else:
         print('Tento príkaz nepoznám.')
