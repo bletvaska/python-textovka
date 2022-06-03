@@ -37,7 +37,8 @@ while context.game_state == states.PLAYING:
 
     for command in context.commands:
         if line.startswith(command.name):
-            command.exec(context, line)
+            name = line.split(command.name)[1].lstrip()
+            command.exec(context, name)
             break
 
     else:

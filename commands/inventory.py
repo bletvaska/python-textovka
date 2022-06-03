@@ -11,7 +11,7 @@ class Inventory(Command):
     name: str = 'inventar'
     description: str = 'zobrazí obsah hráčovho batohu'
 
-    def exec(self, context: Context, line: str):
+    def exec(self, context: Context, name: str):
         if context.backpack == []:  # len(backpack) == 0:
             print('Batoh je prázdny.')
         else:
