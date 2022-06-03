@@ -2,6 +2,7 @@
 import states
 from commands.about import About
 from commands.commands import Commands
+from commands.inventory import Inventory
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
@@ -23,12 +24,8 @@ while game_state == states.PLAYING:
         continue
 
     elif line == 'inventar':
-        if backpack == []:  # len(backpack) == 0:
-            print('Batoh je prázdny.')
-        else:
-            print('V batohu máš:')
-            for item in backpack:
-                print(f'* {item.name}')
+        cmd = Inventory()
+        cmd.exec(backpack)
 
     elif line == 'o hre':
         cmd = About()
