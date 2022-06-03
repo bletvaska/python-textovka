@@ -10,7 +10,7 @@ class Use(Command):
     name: str = 'pouzi'
     description: str = 'použije zvolený predmet'
 
-    def exec(self, context, line):
+    def exec(self, context, line: str):
         name = line.split('pouzi')[1].lstrip()
 
         # check if there is something to examine

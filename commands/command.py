@@ -7,5 +7,5 @@ class Command:
     description: str
     # aliases: list
 
-    def exec(self, context):
+    def exec(self, context, line):
         raise NotImplementedError('Command execution was not yet implemented.')

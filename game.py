@@ -35,25 +35,10 @@ while context.game_state == states.PLAYING:
     if line == '':  # len(line) == 0
         continue
 
-    elif line == 'inventar':
-        cmd = Inventory()
-        cmd.exec(context)
-
-    elif line == 'o hre':
-        cmd = About()
-        cmd.exec(context)
-
-    elif line.startswith('pouzi'):
-        Use().exec(context, line)
-
-    elif line.startswith('preskumaj'):
-        Examine().exec(context, line)
-
-    elif line == 'prikazy':
-        Commands().exec(context)
-
-    elif line == 'koniec':
-        Quit().exec(context)
+    for command in context.commands:
+        if line.startswith(command.name):
+            command.exec(context, line)
+            break
 
     else:
         print('Tento príkaz nepoznám.')
