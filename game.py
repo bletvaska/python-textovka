@@ -3,11 +3,13 @@ import states
 from commands.about import About
 from commands.commands import Commands
 from commands.inventory import Inventory
+from commands.quit import Quit
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
+
 
 intro()
 game_state = states.PLAYING
@@ -66,13 +68,7 @@ while game_state == states.PLAYING:
         Commands().exec()
 
     elif line == 'koniec':
-        confirm = input('Naozaj chceš skončiť? (ano/nie) ').strip().lower()
-        if confirm in ('ano', 'áno', 'a', 'yes', 'y'):
-            game_state = states.QUIT
-            print('Ďakujem, že si si zahral túto fantastickú hru.')
-        else:
-            print('Tak nabudúce dávaj pozor na to, čo si skutočne želáš.')
-        continue
+        Quit().exec(game_state)
 
     else:
         print('Tento príkaz nepoznám.')
