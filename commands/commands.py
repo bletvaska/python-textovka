@@ -11,9 +11,5 @@ class Commands(Command):
 
     def exec(self, context: Context):
         print('Dostupné príkazy v hre:')
-        print('* inventar - zobrazí obsah hráčovho batohu')
-        print('* koniec - ukončí rozohratú hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* pouzi - použije zvolený predmet')
-        print('* preskumaj - zobrazí opis zvoleného predmetu')
-        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+        for command in context.commands:
+            print(f'* {command.name} - {command.description}')
