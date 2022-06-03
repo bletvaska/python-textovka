@@ -2,6 +2,7 @@
 import states
 from commands.about import About
 from commands.commands import Commands
+from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.quit import Quit
 from context import Context
@@ -17,6 +18,7 @@ intro()
 context = Context(commands=[
     About(),
     Commands(),
+    Examine(),
     Inventory(),
     Quit()
 ], backpack=[
@@ -43,7 +45,7 @@ while context.game_state == states.PLAYING:
     elif line.startswith('pouzi'):
         name = line.split('pouzi')[1].lstrip()
 
-        # check if there is something to examine 😉
+        # check if there is something to examine
         if name == '':
             print('Neviem, čo chceš použiť.')
         else:
@@ -58,18 +60,7 @@ while context.game_state == states.PLAYING:
                     print(f'Tento predmet sa nedá použiť.')
 
     elif line.startswith('preskumaj'):
-        name = line.split('preskumaj')[1].lstrip()
-
-        # check if there is something to examine ;)
-        if name == '':
-            print('Neviem, aký predmet chceš preskúmať.')
-        else:
-            # check if item is in backpack
-            item = get_item_by_name(name, context.backpack)
-            if item is None:
-                print('Taký predmet pri sebe nemáš.')
-            else:
-                print(item.description)
+        Examine().exec(context, line)
 
     elif line == 'prikazy':
         Commands().exec(context)
