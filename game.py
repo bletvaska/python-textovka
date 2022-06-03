@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import states
 from commands.about import About
+from commands.commands import Commands
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
@@ -65,13 +66,7 @@ while game_state == states.PLAYING:
                 print(item.description)
 
     elif line == 'prikazy':
-        print('Dostupné príkazy v hre:')
-        print('* inventar - zobrazí obsah hráčovho batohu')
-        print('* koniec - ukončí rozohratú hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* pouzi - použije zvolený predmet')
-        print('* preskumaj - zobrazí opis zvoleného predmetu')
-        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+        Commands().exec()
 
     elif line == 'koniec':
         confirm = input('Naozaj chceš skončiť? (ano/nie) ').strip().lower()

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from .command import Command
+# from commands.command import Command
 
 
 @dataclass
