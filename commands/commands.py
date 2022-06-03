@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from context import Context
 from .command import Command
 
 
@@ -8,7 +9,7 @@ class Commands(Command):
     name: str = 'prikazy'
     description: str = 'zobrazí zoznam dostupných príkazov v hre'
 
-    def exec(self, context):
+    def exec(self, context: Context):
         print('Dostupné príkazy v hre:')
         print('* inventar - zobrazí obsah hráčovho batohu')
         print('* koniec - ukončí rozohratú hru')

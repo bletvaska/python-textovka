@@ -1,7 +1,5 @@
 from dataclasses import dataclass
 
-from context import Context
-
 
 @dataclass
 class Command:
@@ -9,5 +7,5 @@ class Command:
     description: str
     # aliases: list
 
-    def exec(self, context: Context):
+    def exec(self, context):
         raise NotImplementedError('Command execution was not yet implemented.')

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 import states
+from context import Context
 from .command import Command
 
 
@@ -9,7 +10,7 @@ class Quit(Command):
     name: str = 'koniec'
     description: str = 'ukončí rozohratú hru'
 
-    def exec(self, context):
+    def exec(self, context: Context):
         confirm = input('Naozaj chceš skončiť? (ano/nie) ').strip().lower()
         if confirm in ('ano', 'áno', 'a', 'yes', 'y'):
             context.game_state = states.QUIT
