@@ -1,3 +1,5 @@
+from typing import List
+
 from items.item import Item
 
 
@@ -21,7 +23,7 @@ def outro():
     print('Dobru chut.')
 
 
-def get_item_by_name(name: str, items: list[Item]) -> Item | None:
+def get_item_by_name(name: str, items: List[Item]) -> Item | None:
     """
     Returns the item from the list by its name.
 

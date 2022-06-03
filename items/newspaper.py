@@ -1,5 +1,6 @@
 import random
 from dataclasses import dataclass, field
+from typing import List
 
 from items.features import MOVABLE, USABLE
 
@@ -8,7 +9,7 @@ from items.features import MOVABLE, USABLE
 class Newspaper:
     name: str = 'noviny'
     description: str = 'Posledné vydanie Bravíčka. To najlepšie čítanie pre každého chovateľa Pytóna.'
-    features: list[int] = field(default_factory=lambda: [MOVABLE, USABLE])
+    features: List[int] = field(default_factory=lambda: [MOVABLE, USABLE])
 
     def use(self):
         print('Aaaa Bravíčko. Zalistoval si čerstvým vydaním tohto legendárneho časopisu každého správneho Pytonistu '
