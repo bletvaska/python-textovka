@@ -3,10 +3,11 @@ from dataclasses import dataclass, field
 from typing import List
 
 from items.features import MOVABLE, USABLE
+from items.item import Item
 
 
 @dataclass
-class Newspaper:
+class Newspaper(Item):
     name: str = 'noviny'
     description: str = 'Posledné vydanie Bravíčka. To najlepšie čítanie pre každého chovateľa Pytóna.'
     features: List[int] = field(default_factory=lambda: [MOVABLE, USABLE])

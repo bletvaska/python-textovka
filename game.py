@@ -7,8 +7,7 @@ from commands.inventory import Inventory
 from commands.quit import Quit
 from commands.use import Use
 from context import Context
-from helpers import intro, outro, get_item_by_name
-from items.features import USABLE
+from helpers import intro, outro
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
