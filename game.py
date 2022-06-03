@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import states
 from helpers import intro, outro, get_item_by_name
-from items import Whip, Revolver, Newspaper
+from items import Whip, Revolver, Newspaper, USABLE
 
 intro()
 game_state = states.PLAYING
@@ -42,7 +42,10 @@ while game_state == states.PLAYING:
             if item is None:
                 print('Taký predmet tu nikde nevidím.')
             else:
-                print(f'Používam predmet {item.name}.')
+                if USABLE in item.features:
+                    item.use()
+                else:
+                    print(f'Tento predmet sa nedá použiť.')
 
     elif line.startswith('preskumaj'):
         name = line.split('preskumaj')[1].lstrip()
