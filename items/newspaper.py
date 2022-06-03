@@ -1,23 +1,7 @@
-from dataclasses import dataclass, field
 import random
+from dataclasses import dataclass, field
 
-MOVABLE = 1
-USABLE = 2
-EXPLORABLE = 3
-
-
-@dataclass
-class Item:
-    name: str
-    description: str
-    features: list[int]
-
-
-@dataclass
-class Whip:
-    name: str = 'bic'
-    description: str = 'Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.'
-    features: list[int] = field(default_factory=lambda: [MOVABLE])
+from items.features import MOVABLE, USABLE
 
 
 @dataclass
@@ -37,10 +21,3 @@ class Newspaper:
         )
 
         print(random.choice(headlines))
-
-
-@dataclass
-class Revolver:
-    name: str = 'revolver'
-    description: str = 'Štandardný revolver značky Smis-end-Weson'
-    features: list[int] = field(default_factory=lambda: [MOVABLE])

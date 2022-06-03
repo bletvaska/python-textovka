@@ -1,4 +1,4 @@
-from items import Item
+from items.item import Item
 
 
 def intro():

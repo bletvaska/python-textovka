@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import states
 from helpers import intro, outro, get_item_by_name
-from items import Whip, Revolver, Newspaper, USABLE
+from items.features import USABLE
+from items.newspaper import Newspaper
+from items.revolver import Revolver
+from items.whip import Whip
 
 intro()
 game_state = states.PLAYING
