@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import states
+from commands.about import About
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
@@ -29,9 +30,8 @@ while game_state == states.PLAYING:
                 print(f'* {item.name}')
 
     elif line == 'o hre':
-        print('(c)2022 created by mighty mire(c) the programmer')
-        print('Ďalšie dobrodružstvo Indiana Jonesa. Tentokrát je jeho úlohou uniknúť z podzmeného väzenia, '
-              'v ktorom sa náhodou ocitol.')
+        cmd = About()
+        cmd.exec()
 
     elif line.startswith('pouzi'):
         name = line.split('pouzi')[1].lstrip()
