@@ -15,11 +15,27 @@ from items.matches import Matches
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
+from room import Room
 
 intro()
 
 # game init
-context = Context()
+room = Room(
+    name='dungeon',
+    description='Chladná kamenná miestnosť, v ktorej nie sú žiadne okná.',
+    items=[
+        Door(),
+        Newspaper(),
+        Bucket(),
+        Canister(),
+        Matches()
+    ]
+)
+
+# create context
+context = Context(
+    current_room=room
+)
 
 # list of commands initialization
 context.commands = [
@@ -33,13 +49,8 @@ context.commands = [
 
 # backpack initialization
 context.backpack = [
-    Whip(),
-    Revolver(),
-    Newspaper(),
-    Bucket(),
-    Canister(),
-    Door(),
-    Matches()
+    # Whip(),
+    # Revolver(),
 ]
 
 # main loop
