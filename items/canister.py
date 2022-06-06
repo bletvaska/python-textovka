@@ -23,18 +23,14 @@ class Canister(Item):
 
         # act
         # oblejem dvere - aktualizujeme opis dveri
-        #
-        # Masivne veľké dubové dvere plne nasiaknuté vysokooktánovým benzínom.
-        #
-        #
+        door.description = 'Masivne veľké dubové dvere plne nasiaknuté vysokooktánovým benzínom.'
+
         # kanister bude prazdny - aktualizujeme opis kanistru
-        #
-        # Prázdny 10L kanister.
-        #
-        #
+        self.description = 'Prázdny 10L kanister.'
+
         # kanister bude nepouzitelny - odstranime vlastnost USABLE
-        #
-        #
-        # # renderd
-        #
-        # Odsroboval si vrchnák na kanistri a celý jeho vysokooktánový obsah si vylial na masívne dubové dvere. Ani kvapka nevyšla nazmar.
+        self.features.remove(USABLE)
+
+        # renderd
+        print('Odsroboval si vrchnák na kanistri a celý jeho vysokooktánový obsah si vylial na masívne dubové dvere. '
+              'Ani kvapka nevyšla nazmar.')
