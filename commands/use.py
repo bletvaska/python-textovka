@@ -21,6 +21,6 @@ class Use(Command):
                 print('Taký predmet tu nikde nevidím.')
             else:
                 if USABLE in item.features:
-                    item.use()
+                    item.use(context)
                 else:
                     print(f'Tento predmet sa nedá použiť.')
