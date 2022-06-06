@@ -23,7 +23,9 @@ class Room:
         print()
 
         # print items in room
-        print('Vidíš:')
-        for item in self.items:
-            print(f'  {item.name}')
-
+        if self.items != []:
+            print('Vidíš:')
+            for item in self.items:
+                print(f'  {item.name}')
+        else:
+            print('Nevidíš tu nič zaujímavé.')

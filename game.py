@@ -24,11 +24,11 @@ room = Room(
     name='dungeon',
     description='Stojíš uprostred chladnej kamennej miestnosti, v ktorej nie sú žiadne okná.',
     items=[
-        Door(),
-        Newspaper(),
-        Bucket(),
-        Canister(),
-        Matches()
+        # Door(),
+        # Newspaper(),
+        # Bucket(),
+        # Canister(),
+        # Matches()
     ]
 )
 
