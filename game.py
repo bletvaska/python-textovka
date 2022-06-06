@@ -22,7 +22,7 @@ intro()
 # game init
 room = Room(
     name='dungeon',
-    description='Chladná kamenná miestnosť, v ktorej nie sú žiadne okná.',
+    description='Stojíš uprostred chladnej kamennej miestnosti, v ktorej nie sú žiadne okná.',
     items=[
         Door(),
         Newspaper(),
@@ -52,6 +52,8 @@ context.backpack = [
     # Whip(),
     # Revolver(),
 ]
+
+print(context.current_room.description)
 
 # main loop
 while context.game_state == states.PLAYING:
