@@ -6,6 +6,7 @@ from helpers import get_item_by_name
 from items.door import BURNING
 from items.features import MOVABLE, USABLE
 from items.item import Item
+from states import WINNER
 
 
 @dataclass
@@ -18,7 +19,7 @@ class Bucket(Item):
         # arrange
         # v batohu/miestnosti sa nachadzaju dvere poliate benzinom
         door = get_item_by_name('horiace dvere', context.backpack)
-        if door is None or door.state != BURNING:
+        if door is None or door.state != BURNING:  # door.name != 'horiace dvere':
             print('Sklonil si sa nad vedro s vodou a chlipol si si. Poprevaloval si si vodu v ustach'
                   ' a vyplul si ju naspat. Na neskor.')
             return
@@ -30,6 +31,9 @@ class Bucket(Item):
 
         # aktualizujeme dvere - odstranime z hry
         context.backpack.remove(door)
+
+        # aktualizujem stav hry
+        context.game_state = WINNER
 
         # render
         print('Rozohnal si sa a cely obsah vedra si vylial na horiace dvere. Tie sa pod tarchou vody a vdaka '
