@@ -11,7 +11,7 @@ class Newspaper(Item):
     name: str = 'noviny'
     description: str = 'Posledné vydanie Bravíčka. To najlepšie čítanie pre každého chovateľa Pytóna.'
     features: List[int] = field(default_factory=lambda: [MOVABLE, USABLE])
-    headline: List[str] = field(default_factory=lambda: [
+    headlines: List[str] = field(default_factory=lambda: [
         'Python 3.11 bude vydany v piatok 13.',
         'Spravny Pythonista pouziva len Python >= 3.7',
         'import this'

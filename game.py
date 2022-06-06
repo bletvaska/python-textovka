@@ -8,6 +8,10 @@ from commands.quit import Quit
 from commands.use import Use
 from context import Context
 from helpers import intro, outro
+from items.bucket import Bucket
+from items.canister import Canister
+from items.door import Door
+from items.matches import Matches
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
@@ -31,7 +35,11 @@ context.commands = [
 context.backpack = [
     Whip(),
     Revolver(),
-    Newspaper()
+    Newspaper(),
+    Bucket(),
+    Canister(),
+    Door(),
+    Matches()
 ]
 
 # main loop
