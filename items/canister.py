@@ -3,6 +3,7 @@ from typing import List
 
 from context import Context
 from helpers import get_item_by_name
+from items.door import SOAKED
 from items.features import MOVABLE, USABLE
 from items.item import Item
 
@@ -24,6 +25,7 @@ class Canister(Item):
         # act
         # oblejem dvere - aktualizujeme opis dveri
         door.description = 'Masivne veľké dubové dvere plne nasiaknuté vysokooktánovým benzínom.'
+        door.state = SOAKED
 
         # kanister bude prazdny - aktualizujeme opis kanistru
         self.description = 'Prázdny 10L kanister.'
