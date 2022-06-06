@@ -17,3 +17,13 @@ class Room:
         Vidíš:
           {items}
         """
+
+        # print room description
+        print(self.description)
+        print()
+
+        # print items in room
+        print('Vidíš:')
+        for item in self.items:
+            print(f'  {item.name}')
+
