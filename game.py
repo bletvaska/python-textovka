@@ -7,7 +7,7 @@ from commands.inventory import Inventory
 from commands.quit import Quit
 from commands.use import Use
 from context import Context
-from helpers import intro, outro
+from helpers import intro, outro, congratulations
 from items.bucket import Bucket
 from items.canister import Canister
 from items.door import Door
@@ -57,5 +57,8 @@ while context.game_state == states.PLAYING:
 
     else:
         print('Tento príkaz nepoznám.')
+
+if context.game_state == states.WINNER:
+    congratulations()
 
 outro()
