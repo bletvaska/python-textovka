@@ -9,3 +9,11 @@ class Room:
     name: str
     description: str
     items: List[Item] = field(default_factory=list)
+
+    def show(self):
+        """
+        {description}
+
+        Vidíš:
+          {items}
+        """

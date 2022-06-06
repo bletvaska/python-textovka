@@ -53,7 +53,7 @@ context.backpack = [
     # Revolver(),
 ]
 
-print(context.current_room.description)
+context.current_room.show()
 
 # main loop
 while context.game_state == states.PLAYING:
