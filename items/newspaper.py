@@ -17,7 +17,7 @@ class Newspaper(Item):
         'import this'
     ])
 
-    def use(self):
+    def use(self, context):
         print('Aaaa Bravíčko. Zalistoval si čerstvým vydaním tohto legendárneho časopisu každého správneho Pytonistu '
               'a píšu...')
 
