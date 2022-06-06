@@ -16,7 +16,7 @@ class Canister(Item):
 
     def use(self, context: Context):
         # arrange
-        # ak sa dvere v batohu/miestnosti nenachadzaju, tak vypiseme:
+        # ak sa dvere v miestnosti nenachadzaju, tak vypiseme:
         door = get_item_by_name('dvere', context.current_room.items)
         if door is None:
             print('Odsroboval si vrchnak na kanistri a nasal si vonu kvalitneho vysokooktanoveho benzinu.')

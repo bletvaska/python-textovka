@@ -17,7 +17,7 @@ class Bucket(Item):
 
     def use(self, context: Context):
         # arrange
-        # v batohu/miestnosti sa nachadzaju dvere poliate benzinom
+        # v miestnosti sa nachadzaju dvere poliate benzinom
         door = get_item_by_name('horiace dvere', context.current_room.items)
         if door is None or door.state != BURNING:  # door.name != 'horiace dvere':
             print('Sklonil si sa nad vedro s vodou a chlipol si si. Poprevaloval si si vodu v ustach'
