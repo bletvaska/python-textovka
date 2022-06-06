@@ -24,11 +24,10 @@ room = Room(
     name='dungeon',
     description='Stojíš uprostred chladnej kamennej miestnosti, v ktorej nie sú žiadne okná.',
     items=[
-        # Door(),
-        # Newspaper(),
-        # Bucket(),
-        # Canister(),
-        # Matches()
+        Door(),
+        Bucket(),
+        Canister(),
+        Matches()
     ]
 )
 
@@ -51,6 +50,7 @@ context.commands = [
 context.backpack = [
     # Whip(),
     # Revolver(),
+    Newspaper(),
 ]
 
 context.current_room.show()

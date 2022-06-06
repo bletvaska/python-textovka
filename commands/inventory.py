@@ -1,8 +1,6 @@
 from dataclasses import dataclass
-from typing import List
 
 from context import Context
-from items.item import Item
 from .command import Command
 
 
