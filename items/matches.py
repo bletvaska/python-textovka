@@ -17,7 +17,7 @@ class Matches(Item):
     def use(self, context: Context):
         # arrange
         # v batohu/miestnosti sa nachadzaju dvere poliate benzinom
-        door = get_item_by_name('dvere', context.backpack)
+        door = get_item_by_name('dvere', context.current_room.items)
         if door is None or door.state != SOAKED:
             print('Zahrkal si krabickou od zapaliek, aby si sa uistil, ze v nej nieco je. '
                   'A fakt - su v nej tri zapalky.')
