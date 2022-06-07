@@ -9,6 +9,10 @@ class Room:
     name: str
     description: str
     items: List[Item] = field(default_factory=list)
+    west: str = None
+    east: str = None
+    north: str = None
+    south: str = None
 
     def show(self):
         """
