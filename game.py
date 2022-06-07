@@ -10,7 +10,7 @@ from commands.quit import Quit
 from commands.take import Take
 from commands.use import Use
 from context import Context
-from helpers import intro, outro, congratulations
+from helpers import intro, outro, congratulations, get_room_by_name
 from items.newspaper import Newspaper
 from world import world
 
@@ -18,7 +18,7 @@ intro()
 
 # create context
 context = Context(
-    current_room=world[0]
+    current_room=get_room_by_name('dungeon', world)
 )
 
 # list of commands initialization

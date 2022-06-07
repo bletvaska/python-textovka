@@ -1,6 +1,7 @@
 from typing import List
 
 from items.item import Item
+from room import Room
 
 
 def intro():
@@ -37,7 +38,15 @@ def congratulations():
     print()
 
 
-def get_item_by_name(name: str, items: List[Item]) -> Item | None:
+def get_room_by_name(name: str, rooms: List[Room]) -> Room:  # | None:
+    for room in rooms:
+        if name == room.name:
+            return room
+
+    # return None
+
+
+def get_item_by_name(name: str, items: List[Item]) -> Item:  # | None:
     """
     Returns the item from the list by its name.
 
