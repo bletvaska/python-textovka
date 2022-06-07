@@ -33,3 +33,9 @@ class Room:
                 print(f'  {item.name}')
         else:
             print('Nevidíš tu nič zaujímavé.')
+
+        # print exits from the room
+        # Možné východy z miestnosti:
+        #   východ
+        #
+        # Z miestnosti nevedú žiadne východy.
