@@ -31,36 +31,43 @@ class Room:
         else:
             print('Nevidíš tu nič zaujímavé.')
 
-        # print exits from the room
-        if self.north is None and self.south is None and self.east is None and self.west is None:
-            print('Z miestnosti nevedú žiadne východy.')
-        else:
-            print('Možné východy z miestnosti:')
-            if self.north is not None:
-                print('  sever')
-            if self.east is not None:
-                print('  východ')
-            if self.west is not None:
-                print('  západ')
-            if self.south is not None:
-                print('  juh')
-
-        # directions = []
-        # if self.north is not None:
-        #     directions.append('sever')
-        # if self.south is not None:
-        #     directions.append('juh')
-        # if self.east is not None:
-        #     directions.append('východ')
-        # if self.west is not None:
-        #     directions.append('západ')
-        #
-        # if len(directions) == 0:
+        # # print exits from the room
+        # if self.north is None and self.south is None and self.east is None and self.west is None:
         #     print('Z miestnosti nevedú žiadne východy.')
         # else:
         #     print('Možné východy z miestnosti:')
-        #     for direction in directions:
-        #         print(f'  {direction}')
+        #     if self.north is not None:
+        #         print('  sever')
+        #     if self.east is not None:
+        #         print('  východ')
+        #     if self.west is not None:
+        #         print('  západ')
+        #     if self.south is not None:
+        #         print('  juh')
+
+        # print exits from the room
+        directions = []
+        if self.north is not None:
+            directions.append('sever')
+        if self.south is not None:
+            directions.append('juh')
+        if self.east is not None:
+            directions.append('východ')
+        if self.west is not None:
+            directions.append('západ')
+
+        if len(directions) == 0:
+            print('Z miestnosti nevedú žiadne východy.')
+        else:
+            if len(directions) == 1:
+                print(f'Môžeš ísť na {directions[0]}.')
+            else:
+                print('Môžeš ísť na',
+                      ', '.join(directions[:-1]),
+                      f'a {directions[-1]}.')
+
+            # for direction in directions:
+            #     print(f'  {direction}')
 
         # directions = {
         #     'north': None,
