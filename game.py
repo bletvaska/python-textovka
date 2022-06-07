@@ -10,6 +10,7 @@ from commands.lookaround import LookAround
 from commands.quit import Quit
 from commands.take import Take
 from commands.use import Use
+from commands.west import West
 from context import Context
 from helpers import intro, outro, congratulations, get_room_by_name
 from items.newspaper import Newspaper
@@ -34,7 +35,8 @@ context.commands = [
     LookAround(),
     Quit(),
     Take(),
-    Use()
+    Use(),
+    West(),
 ]
 
 # backpack initialization
