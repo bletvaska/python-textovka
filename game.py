@@ -18,6 +18,7 @@ intro()
 
 # create context
 context = Context(
+    world=world,
     current_room=get_room_by_name('dungeon', world)
 )
 
