@@ -3,6 +3,7 @@ import states
 from commands.about import About
 from commands.commands import Commands
 from commands.drop import Drop
+from commands.east import East
 from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
@@ -27,6 +28,7 @@ context.commands = [
     About(),
     Commands(),
     Drop(),
+    East(),
     Examine(),
     Inventory(),
     LookAround(),
@@ -37,8 +39,6 @@ context.commands = [
 
 # backpack initialization
 context.backpack = [
-    # Whip(),
-    # Revolver(),
     Newspaper(),
 ]
 
