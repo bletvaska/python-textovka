@@ -11,30 +11,14 @@ from commands.take import Take
 from commands.use import Use
 from context import Context
 from helpers import intro, outro, congratulations
-from items.bucket import Bucket
-from items.canister import Canister
-from items.door import Door
-from items.matches import Matches
 from items.newspaper import Newspaper
-from room import Room
+from world import world
 
 intro()
 
-# game init
-room = Room(
-    name='dungeon',
-    description='Stojíš uprostred chladnej kamennej miestnosti, v ktorej nie sú žiadne okná.',
-    items=[
-        Door(),
-        Bucket(),
-        Canister(),
-        Matches()
-    ]
-)
-
 # create context
 context = Context(
-    current_room=room
+    current_room=world[0]
 )
 
 # list of commands initialization
