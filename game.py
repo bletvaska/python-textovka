@@ -14,7 +14,7 @@ from commands.take import Take
 from commands.use import Use
 from commands.west import West
 from context import Context
-from helpers import intro, outro, congratulations, get_room_by_name
+from helpers import intro, outro, congratulations, get_room_by_name, rip
 from items.newspaper import Newspaper
 from world import world
 
@@ -66,7 +66,16 @@ while context.game_state == states.PLAYING:
     else:
         print('Tento príkaz nepoznám.')
 
+    # check if in heaven
+    if context.current_room.name == 'heaven':
+        context.game_state = states.WINNER
+    elif context.current_room.name == 'hell':
+        context.game_state = states.DEATH
+
+# evaluation of final game states
 if context.game_state == states.WINNER:
     congratulations()
+elif context.game_state == states.DEATH:
+    rip()
 
 outro()

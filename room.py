@@ -62,7 +62,6 @@ class Room:
         #     for direction in directions:
         #         print(f'  {direction}')
 
-
         # directions = {
         #     'north': None,
         #     'south': None,
