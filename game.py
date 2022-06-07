@@ -6,6 +6,7 @@ from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
 from commands.quit import Quit
+from commands.take import Take
 from commands.use import Use
 from context import Context
 from helpers import intro, outro, congratulations
@@ -14,8 +15,6 @@ from items.canister import Canister
 from items.door import Door
 from items.matches import Matches
 from items.newspaper import Newspaper
-from items.revolver import Revolver
-from items.whip import Whip
 from room import Room
 
 intro()
@@ -45,6 +44,7 @@ context.commands = [
     Inventory(),
     LookAround(),
     Quit(),
+    Take(),
     Use()
 ]
 
