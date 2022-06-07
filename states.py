@@ -6,3 +6,6 @@ QUIT = 'quit'
 
 # when successfully win game
 WINNER = 'winner'
+
+# when player dies
+DEATH = 'death'
