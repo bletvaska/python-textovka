@@ -16,7 +16,7 @@ world = [
             Canister(),
             Matches()
         ],
-        east='garden',
+        # east='garden',
     ),
 
     Room(

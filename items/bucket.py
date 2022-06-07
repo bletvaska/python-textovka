@@ -32,8 +32,9 @@ class Bucket(Item):
         # aktualizujeme dvere - odstranime z hry
         context.current_room.items.remove(door)
 
-        # aktualizujem stav hry
-        context.game_state = WINNER
+        # otvorim prechod z aktualnej miestnosti do zahradky
+        context.current_room.east = 'garden'
+        # context.game_state = WINNER
 
         # render
         print('Rozohnal si sa a cely obsah vedra si vylial na horiace dvere. Tie sa pod tarchou vody a vdaka '
