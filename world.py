@@ -14,5 +14,11 @@ world = [
             Canister(),
             Matches()
         ]
+    ),
+
+    Room(
+        name='garden',
+        description=('Malá evidentne neudržiavaná záhradka. '
+                     'Tá burina, čo tu rastie, mali asi pôvodne byť záhony pre fazuľku.')
     )
 ]

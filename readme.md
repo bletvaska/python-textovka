@@ -19,14 +19,25 @@ Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov o�
 * moduly a balíky
 * type hints
 * dátové triedy (dataclasses)
+* defenzívne programovanie
 
 
 ## World Map
 
 ```
-                                          N
+               +--------+
+               | Heaven |
+               +--------+
+                   ^
+                   |
+                   v                      N
 +---------+    +--------+                 ^
 | Dungeon |<-->| Garden |             W < + > E
 +---------+    +--------+                 v
-                                          S
+                    ^                     S
+                    |
+                    v
+                 +------+
+                 | Hell |
+                 +------+
 ```
