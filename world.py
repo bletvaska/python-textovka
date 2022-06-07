@@ -27,6 +27,20 @@ world = [
             Whip(),
             Revolver(),
         ],
-        west='dungeon'
+        west='dungeon',
+        south='hell',
+        north='heaven'
+    ),
+
+    Room(
+        name='hell',
+        description='Tmavá, nijako neupravená miestnosť. Odvšadiaľ počuť len plač a škrípanie zubov.',
+        north='garden'
+    ),
+
+    Room(
+        name='heaven',
+        description='Samé obláčiky a zvieratká. Ambient režim ako vyšitý.',
+        south='garden'
     )
 ]
