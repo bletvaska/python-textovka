@@ -2,6 +2,7 @@
 import states
 from commands.about import About
 from commands.commands import Commands
+from commands.drop import Drop
 from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
@@ -40,6 +41,7 @@ context = Context(
 context.commands = [
     About(),
     Commands(),
+    Drop(),
     Examine(),
     Inventory(),
     LookAround(),
