@@ -18,64 +18,70 @@ from helpers import intro, outro, congratulations, get_room_by_name, rip
 from items.newspaper import Newspaper
 from world import world
 
-intro()
 
-# create context
-context = Context(
-    world=world,
-    current_room=get_room_by_name('dungeon', world)
-)
+def main():
+    intro()
 
-# list of commands initialization
-context.commands = [
-    About(),
-    Commands(),
-    Drop(),
-    East(),
-    Examine(),
-    Inventory(),
-    LookAround(),
-    North(),
-    Quit(),
-    South(),
-    Take(),
-    Use(),
-    West(),
-]
+    # create context
+    context = Context(
+        world=world,
+        current_room=get_room_by_name('dungeon', world)
+    )
 
-# backpack initialization
-context.backpack = [
-    Newspaper(),
-]
+    # list of commands initialization
+    context.commands = [
+        About(),
+        Commands(),
+        Drop(),
+        East(),
+        Examine(),
+        Inventory(),
+        LookAround(),
+        North(),
+        Quit(),
+        South(),
+        Take(),
+        Use(),
+        West(),
+    ]
 
-context.current_room.show()
+    # backpack initialization
+    context.backpack = [
+        Newspaper(),
+    ]
 
-# main loop
-while context.game_state == states.PLAYING:
-    line = input('> ').lower().lstrip().rstrip()
+    context.current_room.show()
 
-    if line == '':  # len(line) == 0
-        continue
+    # main loop
+    while context.game_state == states.PLAYING:
+        line = input('> ').lower().lstrip().rstrip()
 
-    for command in context.commands:
-        if line.startswith(command.name):
-            name = line.split(command.name)[1].lstrip()
-            command.exec(context, name)
-            break
+        if line == '':  # len(line) == 0
+            continue
 
-    else:
-        print('Tento príkaz nepoznám.')
+        for command in context.commands:
+            if line.startswith(command.name):
+                name = line.split(command.name)[1].lstrip()
+                command.exec(context, name)
+                break
 
-    # check if in heaven
-    if context.current_room.name == 'heaven':
-        context.game_state = states.WINNER
-    elif context.current_room.name == 'hell':
-        context.game_state = states.DEATH
+        else:
+            print('Tento príkaz nepoznám.')
 
-# evaluation of final game states
-if context.game_state == states.WINNER:
-    congratulations()
-elif context.game_state == states.DEATH:
-    rip()
+        # check if in heaven
+        if context.current_room.name == 'heaven':
+            context.game_state = states.WINNER
+        elif context.current_room.name == 'hell':
+            context.game_state = states.DEATH
 
-outro()
+    # evaluation of final game states
+    if context.game_state == states.WINNER:
+        congratulations()
+    elif context.game_state == states.DEATH:
+        rip()
+
+    outro()
+
+
+if __name__ == '__main__':
+    main()
