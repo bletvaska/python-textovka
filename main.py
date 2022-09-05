@@ -32,3 +32,12 @@ if __name__ == '__main__':
 
         elif line == 'pomoc':
             print('Ta pomôž si sám.')
+
+        elif line == 'koniec':
+            # continue
+            # pass
+            break
+
+        else:
+            print('Taký príkaz nepoznám.')
+
