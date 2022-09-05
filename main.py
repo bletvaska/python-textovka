@@ -9,4 +9,6 @@ if __name__ == '__main__':
     print('          Indiana Jones and his Great U-boat Escape')
     print()
 
-
+    line = None
+    while line != 'koniec':
+        line = input('> ')
