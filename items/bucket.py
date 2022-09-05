@@ -3,10 +3,9 @@ from typing import List
 
 from context import Context
 from helpers import get_item_by_name
-from items.door import BURNING
-from items.features import MOVABLE, USABLE
-from items.item import Item
-from states import WINNER
+from .door import BURNING
+from .features import MOVABLE, USABLE
+from .item import Item
 
 
 @dataclass
