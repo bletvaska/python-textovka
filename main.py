@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import states
 
 if __name__ == '__main__':
     print(" ___           _ _                         _                       ")
@@ -10,8 +11,8 @@ if __name__ == '__main__':
     print()
 
     # game loop
-    line = None
-    while line != 'koniec':
+    game_state = states.PLAYING
+    while game_state == states.PLAYING:
         # normalize input string
         line = input('> ').lower().lstrip().rstrip()
 
@@ -34,10 +35,10 @@ if __name__ == '__main__':
             print('Ta pomôž si sám.')
 
         elif line == 'koniec':
-            # continue
-            # pass
-            break
+            choice = input('Naozaj chceš skončiť? (a/n) ').lower().lstrip().rstrip()
+            if choice == 'a':
+                print("Ďakujem, že si si zahral túto špica hru. Stav sa aj nabudúce.")
+                game_state = states.QUIT
 
         else:
             print('Taký príkaz nepoznám.')
-
