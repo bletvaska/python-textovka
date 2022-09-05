@@ -9,7 +9,13 @@ if __name__ == '__main__':
     print('          Indiana Jones and his Great U-boat Escape')
     print()
 
+    # game loop
     line = None
     while line != 'koniec':
         # normalize input string
         line = input('> ').lower().lstrip().rstrip()
+
+        if line == 'o hre':
+            print('Túto megašupabombašpica hru vytvoril v (c)2022 mladý nádejný a atraktívny programátor mirek')
+            print('Hra je ďaľším pokračovaním nestarnúceho dobrodruha Indiana Jonesa. Tentokrát je jeho úlohou dostať '
+                  'sa zo zajatia fašistickej ponorky.')
