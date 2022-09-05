@@ -11,4 +11,5 @@ if __name__ == '__main__':
 
     line = None
     while line != 'koniec':
-        line = input('> ')
+        # normalize input string
+        line = input('> ').lower().lstrip().rstrip()
