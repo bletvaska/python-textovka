@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import states
 from helpers import intro, outro
-from item import Item
+from revolver import Revolver
+from whip import Whip
 
 if __name__ == '__main__':
     intro()
@@ -9,8 +10,8 @@ if __name__ == '__main__':
     # game init
     game_state = states.PLAYING
     backpack = [
-        Item(name='bic', description='Tvoj neoceniteľný pomocník..!', features=[]),
-        Item(name='revolver', description='Sedemkomorový revolver značky Smith&Wesson.', features=[])
+        Whip(),
+        Revolver()
     ]
 
     # game loop

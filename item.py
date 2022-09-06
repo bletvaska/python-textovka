@@ -5,4 +5,4 @@ from dataclasses import dataclass
 class Item:
     name: str
     description: str
-    features: list
+    # features: list
