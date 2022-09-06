@@ -5,8 +5,11 @@ from helpers import intro, outro
 if __name__ == '__main__':
     intro()
 
-    # game loop
+    # game init
     game_state = states.PLAYING
+    backpack = ['bic', 'revolver']
+
+    # game loop
     while game_state == states.PLAYING:
         # normalize input string
         line = input('> ').lower().lstrip().rstrip()
@@ -34,6 +37,11 @@ if __name__ == '__main__':
             choice = input('Naozaj chceš skončiť? (a/n) ').lower().lstrip().rstrip()
             if choice == 'a':
                 game_state = states.QUIT
+
+        elif line == 'inventar':
+            print('V batohu máš:')
+            for item in backpack:
+                print(f'* {item}')
 
         else:
             print('Taký príkaz nepoznám.')
