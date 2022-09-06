@@ -2,12 +2,24 @@
 import states
 from helpers import intro, outro
 
+whip = {
+    'name': 'bic',
+    'description': 'Tvoj neoceniteľný pomocník..!',
+    'features':  ['presuvatelny', 'pouzitelny']
+}
+
+revolver = {
+    'name': 'revolver',
+    'description': 'Sedemkomorový revolver značky Smith&Wesson.',
+    'features':  ['presuvatelny', 'pouzitelny']
+}
+
 if __name__ == '__main__':
     intro()
 
     # game init
     game_state = states.PLAYING
-    backpack = ['bic', 'revolver']
+    backpack = [whip, revolver]
 
     # game loop
     while game_state == states.PLAYING:
