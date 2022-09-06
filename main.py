@@ -1,16 +1,7 @@
 #!/usr/bin/env python3
-from dataclasses import dataclass
-
 import states
 from helpers import intro, outro
-
-
-@dataclass
-class Item:
-    name: str
-    description: str
-    features: list
-
+from item import Item
 
 if __name__ == '__main__':
     intro()
