@@ -1,17 +1,28 @@
 #!/usr/bin/env python3
+from dataclasses import dataclass
+
 import states
 from helpers import intro, outro
+
+
+@dataclass
+class Item:
+    name: str
+    description: str
+    features: list
+
 
 whip = {
     'name': 'bic',
     'description': 'Tvoj neoceniteľný pomocník..!',
-    'features':  ['presuvatelny', 'pouzitelny']
+    'features': ['presuvatelny', 'pouzitelny']
 }
 
 revolver = {
     'name': 'revolver',
     'description': 'Sedemkomorový revolver značky Smith&Wesson.',
-    'features':  ['presuvatelny', 'pouzitelny']
+    'features': ['presuvatelny', 'pouzitelny'],
+    'shootOnly': ['hitler', 'wilhelm', 'jano']
 }
 
 if __name__ == '__main__':
@@ -66,18 +77,12 @@ if __name__ == '__main__':
             if item_name == '':  # len(item_name) == 0
                 print('Neviem, aký predmet chceš preskúmať.')
             else:
-                found = False
                 for item in backpack:
                     if item['name'] == item_name:
-                        print(f'ta skumam {item["name"]}')
-                        found = True
+                        print(item['description'])
                         break
-
-                if not found:
-                    print('taky nemas')
-
-                # else:
-                #     print('Taký predmet pri sebe nemáš.')
+                else:
+                    print('Taký predmet pri sebe nemáš.')
 
         else:
             print('Taký príkaz nepoznám.')
