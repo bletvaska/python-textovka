@@ -12,25 +12,15 @@ class Item:
     features: list
 
 
-whip = {
-    'name': 'bic',
-    'description': 'Tvoj neoceniteľný pomocník..!',
-    'features': ['presuvatelny', 'pouzitelny']
-}
-
-revolver = {
-    'name': 'revolver',
-    'description': 'Sedemkomorový revolver značky Smith&Wesson.',
-    'features': ['presuvatelny', 'pouzitelny'],
-    'shootOnly': ['hitler', 'wilhelm', 'jano']
-}
-
 if __name__ == '__main__':
     intro()
 
     # game init
     game_state = states.PLAYING
-    backpack = [whip, revolver]
+    backpack = [
+        Item(name='bic', description='Tvoj neoceniteľný pomocník..!', features=[]),
+        Item(name='revolver', description='Sedemkomorový revolver značky Smith&Wesson.', features=[])
+    ]
 
     # game loop
     while game_state == states.PLAYING:
@@ -69,7 +59,7 @@ if __name__ == '__main__':
             else:
                 print('V batohu máš:')
                 for item in backpack:
-                    print(f'* {item["name"]}')
+                    print(f'* {item.name}')
 
         elif line.startswith('preskumaj'):
             item_name = line.split('preskumaj', maxsplit=1)[1].lstrip()
@@ -78,8 +68,8 @@ if __name__ == '__main__':
                 print('Neviem, aký predmet chceš preskúmať.')
             else:
                 for item in backpack:
-                    if item['name'] == item_name:
-                        print(item['description'])
+                    if item.name == item_name:
+                        print(item.description)
                         break
                 else:
                     print('Taký predmet pri sebe nemáš.')
