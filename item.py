@@ -5,4 +5,4 @@ from dataclasses import dataclass, field
 class Item:
     name: str
     description: str
-    features: list[int] = field(default_factory=list)
+    features: list[int] = field(default_factory=list)  # list[int] = []
