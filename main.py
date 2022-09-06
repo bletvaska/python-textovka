@@ -39,9 +39,24 @@ if __name__ == '__main__':
                 game_state = states.QUIT
 
         elif line == 'inventar':
-            print('V batohu máš:')
-            for item in backpack:
-                print(f'* {item}')
+            if len(backpack) == 0:  # backpack == []
+                print('Batoh je prázdny.')
+            else:
+                print('V batohu máš:')
+                for item in backpack:
+                    print(f'* {item}')
+
+        elif line.startswith('preskumaj'):
+            item_name = line.split('preskumaj', maxsplit=1)[1].lstrip()
+
+            if item_name == '':  # len(item_name) == 0
+                print('Neviem, aký predmet chceš preskúmať.')
+            else:
+                if item_name in backpack:
+                    print(f'ta skumam {item_name}')
+                else:
+                    print('Taký predmet pri sebe nemáš.')
+                # print('Tvoj neoceniteľný pomocník..!')
 
         else:
             print('Taký príkaz nepoznám.')
