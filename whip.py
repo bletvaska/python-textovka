@@ -7,4 +7,4 @@ from item import Item
 class Whip(Item):
     name: str = 'bic'
     description: str = 'Tvoj neoceniteľný pomocník..!'
-    # features: list = [MOVABLE, USABLE]
+    # features: list[int] = [MOVABLE, USABLE]
