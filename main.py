@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import states
 from helpers import intro, outro
-from revolver import Revolver
-from whip import Whip
+from items.revolver import Revolver
+from items.whip import Whip
 
 if __name__ == '__main__':
     intro()
