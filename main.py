@@ -1,19 +1,6 @@
 #!/usr/bin/env python3
 import states
-
-
-def intro():
-    """
-    Shows the intro screen of the game.
-    """
-    print(" ___           _ _                         _                       ")
-    print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ")
-    print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
-    print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\")
-    print("|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/")
-    print('          Indiana Jones and his Great U-boat Escape')
-    print()
-
+from helpers import intro, outro
 
 if __name__ == '__main__':
     intro()
@@ -29,6 +16,7 @@ if __name__ == '__main__':
             continue
 
         elif line == 'o hre':
+            intro()
             print('Túto megašupabombašpica hru vytvoril v (c)2022 mladý nádejný a atraktívny programátor mirek')
             print('Hra je ďaľším pokračovaním nestarnúceho dobrodruha Indiana Jonesa. Tentokrát je jeho úlohou dostať '
                   'sa zo zajatia fašistickej ponorky.')
@@ -45,8 +33,9 @@ if __name__ == '__main__':
         elif line == 'koniec':
             choice = input('Naozaj chceš skončiť? (a/n) ').lower().lstrip().rstrip()
             if choice == 'a':
-                print("Ďakujem, že si si zahral túto špica hru. Stav sa aj nabudúce.")
                 game_state = states.QUIT
 
         else:
             print('Taký príkaz nepoznám.')
+
+    outro()
