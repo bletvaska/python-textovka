@@ -58,7 +58,7 @@ if __name__ == '__main__':
             else:
                 print('V batohu máš:')
                 for item in backpack:
-                    print(f'* {item}')
+                    print(f'* {item["name"]}')
 
         elif line.startswith('preskumaj'):
             item_name = line.split('preskumaj', maxsplit=1)[1].lstrip()
@@ -66,11 +66,18 @@ if __name__ == '__main__':
             if item_name == '':  # len(item_name) == 0
                 print('Neviem, aký predmet chceš preskúmať.')
             else:
-                if item_name in backpack:
-                    print(f'ta skumam {item_name}')
-                else:
-                    print('Taký predmet pri sebe nemáš.')
-                # print('Tvoj neoceniteľný pomocník..!')
+                found = False
+                for item in backpack:
+                    if item['name'] == item_name:
+                        print(f'ta skumam {item["name"]}')
+                        found = True
+                        break
+
+                if not found:
+                    print('taky nemas')
+
+                # else:
+                #     print('Taký predmet pri sebe nemáš.')
 
         else:
             print('Taký príkaz nepoznám.')
