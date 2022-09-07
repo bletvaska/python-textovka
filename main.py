@@ -62,12 +62,11 @@ if __name__ == '__main__':
             if item_name == '':  # len(item_name) == 0
                 print('Neviem, aký predmet chceš preskúmať.')
             else:
-                for item in backpack:
-                    if item.name == item_name:
-                        print(item.description)
-                        break
-                else:
+                item = get_item_by_name(item_name, backpack)
+                if item is None:
                     print('Taký predmet pri sebe nemáš.')
+                else:
+                    print(item.description)
 
         elif line.startswith('pouzi'):
             item_name = line.split('pouzi', maxsplit=1)[1].lstrip()
