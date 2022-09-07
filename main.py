@@ -4,7 +4,7 @@ import states
 from commands.about import About
 from commands.commands import Commands
 from commands.quit import Quit
-from context import Context
+from gamecontext import GameContext
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
@@ -16,7 +16,7 @@ def main():
     intro()
 
     # game init
-    context = Context(
+    context = GameContext(
         game_state = states.PLAYING,
         backpack = [
             Whip(),
