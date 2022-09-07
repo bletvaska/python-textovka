@@ -3,6 +3,7 @@
 import states
 from commands.about import About
 from commands.commands import Commands
+from commands.inventory import Inventory
 from commands.quit import Quit
 from gamecontext import GameContext
 from helpers import intro, outro, get_item_by_name
@@ -17,15 +18,16 @@ def main():
 
     # game init
     context = GameContext(
-        game_state = states.PLAYING,
-        backpack = [
+        game_state=states.PLAYING,
+        backpack=[
             Whip(),
             Revolver(),
             Newspaper()
         ],
-        commands = [
+        commands=[
             About(),
             Commands(),
+            Inventory(),
             Quit()
         ]
     )
@@ -45,37 +47,6 @@ def main():
                 break
         else:
             print('Tento príkaz nepoznám.')
-
-        # elif line == 'o hre':
-        #     intro()
-        #     print('Túto megašupabombašpica hru vytvoril v (c)2022 mladý nádejný a atraktívny programátor mirek')
-        #     print('Hra je ďaľším pokračovaním nestarnúceho dobrodruha Indiana Jonesa. Tentokrát je jeho úlohou dostať '
-        #           'sa zo zajatia fašistickej ponorky.')
-        #
-        # elif line == 'prikazy':
-        #     print('V hre je možné použiť tieto príkazy:')
-        #     print('* inventar - zobrazí obsah batohu')
-        #     print('* koniec - ukončí rozohratú hru')
-        #     print('* o hre - zobrazí informácie o hre')
-        #     print('* pouzi - použije zvolený predmet')
-        #     print('* preskumaj - preskúma zvolený predmet')
-        #     print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
-        #
-        # elif line == 'pomoc':
-        #     print('Ta pomôž si sám.')
-        #
-        # elif line == 'koniec':
-        #     choice = input('Naozaj chceš skončiť? (a/n) ').lower().lstrip().rstrip()
-        #     if choice == 'a':
-        #         game_state = states.QUIT
-        #
-        # elif line == 'inventar':
-        #     if len(backpack) == 0:  # backpack == []
-        #         print('Batoh je prázdny.')
-        #     else:
-        #         print('V batohu máš:')
-        #         for item in backpack:
-        #             print(f'* {item.name}')
         #
         # elif line.startswith('preskumaj'):
         #     item_name = line.split('preskumaj', maxsplit=1)[1].lstrip()
@@ -103,9 +74,6 @@ def main():
         #                 print('Tento predmet sa nedá použiť.')
         #             else:
         #                 item.use()
-        #
-        # else:
-        #     print('Taký príkaz nepoznám.')
 
     outro()
 
