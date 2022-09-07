@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import states
 from helpers import intro, outro
+from items.features import USABLE
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
@@ -75,8 +76,12 @@ if __name__ == '__main__':
             else:
                 for item in backpack:
                     if item.name == item_name:
-                        print(f'pouzivam predmet {item.name}')
+                        if USABLE in item.features:
+                            print(f'pouzivam predmet {item.name}')
+                        else:
+                            print('Tento predmet sa nedá použiť.')
                         break
+
                 else:
                     print('Taký predmet tu nikde nevidím.')
 
