@@ -7,5 +7,5 @@ class Command:
     description: str
     parameter: str = None
 
-    def exec(self):
+    def exec(self, context):
         raise NotImplementedError('This command has not execution part.')

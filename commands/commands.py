@@ -8,7 +8,7 @@ class Commands(Command):
     name: str = 'prikazy'
     description: str = 'zobrazí zoznam dostupných príkazov v hre'
 
-    def exec(self):
+    def exec(self, context):
         print('V hre je možné použiť tieto príkazy:')
         print('* inventar - zobrazí obsah batohu')
         print('* koniec - ukončí rozohratú hru')

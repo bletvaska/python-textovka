@@ -4,6 +4,7 @@ import states
 from commands.about import About
 from commands.commands import Commands
 from commands.quit import Quit
+from context import Context
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
@@ -15,20 +16,22 @@ def main():
     intro()
 
     # game init
-    game_state = states.PLAYING
-    backpack = [
-        Whip(),
-        Revolver(),
-        Newspaper()
-    ]
-    commands = [
-        About(),
-        Commands(),
-        Quit()
-    ]
+    context = Context(
+        game_state = states.PLAYING,
+        backpack = [
+            Whip(),
+            Revolver(),
+            Newspaper()
+        ],
+        commands = [
+            About(),
+            Commands(),
+            Quit()
+        ]
+    )
 
     # game loop
-    while game_state == states.PLAYING:
+    while context.game_state == states.PLAYING:
         # normalize input string
         line = input('> ').lower().lstrip().rstrip()
 
@@ -36,9 +39,9 @@ def main():
             # pass
             continue
 
-        for command in commands:
+        for command in context.commands:
             if command.name == line:
-                command.exec()
+                command.exec(context)
                 break
         else:
             print('Tento príkaz nepoznám.')

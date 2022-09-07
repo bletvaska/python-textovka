@@ -9,7 +9,7 @@ class About(Command):
     name: str = 'o hre'
     description: str = 'zobrazí informácie o hre'
 
-    def exec(self):
+    def exec(self, context):
         intro()
         print('Túto megašupabombašpica hru vytvoril v (c)2022 mladý nádejný a atraktívny programátor mirek')
         print('Hra je ďaľším pokračovaním nestarnúceho dobrodruha Indiana Jonesa. Tentokrát je jeho úlohou dostať '
