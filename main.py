@@ -6,7 +6,8 @@ from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
 
-if __name__ == '__main__':
+
+def main():
     intro()
 
     # game init
@@ -87,3 +88,7 @@ if __name__ == '__main__':
             print('Taký príkaz nepoznám.')
 
     outro()
+
+
+if __name__ == '__main__':
+    main()
