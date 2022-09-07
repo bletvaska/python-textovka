@@ -22,3 +22,11 @@ def outro():
     print('(c)2022 by mirek')
 
     # return None
+
+
+def get_item_by_name(name, items):
+    for item in items:
+        if item.name == name:
+            return item
+
+    # return None

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from helpers import intro, outro
+from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
 from items.newspaper import Newspaper
 from items.revolver import Revolver
@@ -74,16 +74,15 @@ if __name__ == '__main__':
             if item_name == '':
                 print('Neviem čo chceš použiť.')
             else:
-                for item in backpack:
-                    if item.name == item_name:
-                        if USABLE in item.features:
-                            print(f'pouzivam predmet {item.name}')
-                        else:
-                            print('Tento predmet sa nedá použiť.')
-                        break
+                item = get_item_by_name(item_name, backpack)
 
-                else:
+                if item is None:
                     print('Taký predmet tu nikde nevidím.')
+                else:
+                    if USABLE not in item.features:
+                        print('Tento predmet sa nedá použiť.')
+                    else:
+                        print(f'pouzivam predmet {item.name}')
 
         else:
             print('Taký príkaz nepoznám.')
