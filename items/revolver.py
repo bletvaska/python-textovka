@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
+from .features import MOVABLE
 from .item import Item
 
 
@@ -7,4 +8,4 @@ from .item import Item
 class Revolver(Item):
     name: str = 'revolver'
     description: str = 'Sedemkomorový revolver značky Smith&Wesson.'
-    # features: list =[MOVABLE, USABLE]
+    features: list[int] = field(default_factory=lambda: [MOVABLE])

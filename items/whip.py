@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
+from .features import MOVABLE
 from .item import Item
 
 
@@ -7,4 +8,4 @@ from .item import Item
 class Whip(Item):
     name: str = 'bic'
     description: str = 'Tvoj neoceniteľný pomocník..!'
-    # features: list[int] = [MOVABLE, USABLE]
+    features: list[int] = field(default_factory=lambda: [MOVABLE])
