@@ -68,6 +68,18 @@ if __name__ == '__main__':
                 else:
                     print('Taký predmet pri sebe nemáš.')
 
+        elif line.startswith('pouzi'):
+            item_name = line.split('pouzi', maxsplit=1)[1].lstrip()
+            if item_name == '':
+                print('Neviem čo chceš použiť.')
+            else:
+                for item in backpack:
+                    if item.name == item_name:
+                        print(f'pouzivam predmet {item.name}')
+                        break
+                else:
+                    print('Taký predmet tu nikde nevidím.')
+
         else:
             print('Taký príkaz nepoznám.')
 
