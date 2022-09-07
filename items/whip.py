@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from .features import MOVABLE
+from .features import MOVABLE, USABLE
 from .item import Item
 
 

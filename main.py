@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import states
 from helpers import intro, outro, get_item_by_name
 from items.features import USABLE
@@ -38,6 +39,7 @@ def main():
             print('* inventar - zobrazí obsah batohu')
             print('* koniec - ukončí rozohratú hru')
             print('* o hre - zobrazí informácie o hre')
+            print('* pouzi - použije zvolený predmet')
             print('* preskumaj - preskúma zvolený predmet')
             print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
 
@@ -82,7 +84,7 @@ def main():
                     if USABLE not in item.features:
                         print('Tento predmet sa nedá použiť.')
                     else:
-                        print(f'pouzivam predmet {item.name}')
+                        item.use()
 
         else:
             print('Taký príkaz nepoznám.')
