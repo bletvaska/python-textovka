@@ -8,11 +8,13 @@ from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.lookaround import LookAround
 from commands.quit import Quit
+from commands.take import Take
 from commands.use import Use
 from gamecontext import GameContext
 from helpers import intro, outro
 from items.newspaper import Newspaper
 from items.revolver import Revolver
+from items.seats import EmptySeats
 from items.whip import Whip
 from rooms.room import Room
 
@@ -27,7 +29,8 @@ def main():
                     'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
                     'že?) ',
         items = [
-            Newspaper()
+            Newspaper(),
+            EmptySeats()
         ]
     )
 
@@ -45,6 +48,7 @@ def main():
             Inventory(),
             LookAround(),
             Quit(),
+            Take(),
             Use()
         ],
         current_room=room
