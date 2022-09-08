@@ -5,6 +5,7 @@ from commands.about import About
 from commands.commands import Commands
 from commands.examine import Examine
 from commands.inventory import Inventory
+from commands.lookaround import LookAround
 from commands.quit import Quit
 from commands.use import Use
 from gamecontext import GameContext
@@ -38,6 +39,7 @@ def main():
             Commands(),
             Examine(),
             Inventory(),
+            LookAround(),
             Quit(),
             Use()
         ],
