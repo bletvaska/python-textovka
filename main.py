@@ -25,13 +25,13 @@ def main():
                     'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
                     'že?) '
     )
+    room.items.append(Newspaper())
 
     context = GameContext(
         game_state=states.PLAYING,
         backpack=[
             Whip(),
-            Revolver(),
-            Newspaper()
+            Revolver()
         ],
         commands=[
             About(),

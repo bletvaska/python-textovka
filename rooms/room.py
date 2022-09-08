@@ -18,4 +18,16 @@ class Room:
     # down: str
 
     def show(self):
+        # room description
         print(self.description)
+        print()
+
+        # items in room
+        if self.items == []:
+            print('Nevidíš tu nič zvláštne.')
+        else:
+            print('Vidíš:')
+            for item in self.items:
+                print(f'* {item.name}')
+
+        print()
