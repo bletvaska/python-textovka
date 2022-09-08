@@ -14,7 +14,7 @@ class Use(Command):
         if self.parameter == '':
             print('Neviem čo chceš použiť.')
         else:
-            item = get_item_by_name(self.parameter, context.backpack)
+            item = get_item_by_name(self.parameter, context.backpack + context.current_room.items)
 
             if item is None:
                 print('Taký predmet tu nikde nevidím.')
