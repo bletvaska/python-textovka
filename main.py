@@ -17,23 +17,13 @@ from items.revolver import Revolver
 from items.seats import EmptySeats
 from items.whip import Whip
 from rooms.room import Room
+from world import world
 
 
 def main():
     intro()
 
     # game init
-    room = Room(
-        name='v lietadle',
-        description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu nádherný '
-                    'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
-                    'že?) ',
-        items = [
-            Newspaper(),
-            EmptySeats()
-        ]
-    )
-
     context = GameContext(
         game_state=states.PLAYING,
         backpack=[
@@ -51,7 +41,7 @@ def main():
             Take(),
             Use()
         ],
-        current_room=room
+        current_room=world[0]
     )
 
     # show room
