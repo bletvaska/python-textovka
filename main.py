@@ -3,6 +3,7 @@
 import states
 from commands.about import About
 from commands.commands import Commands
+from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.quit import Quit
 from gamecontext import GameContext
@@ -27,6 +28,7 @@ def main():
         commands=[
             About(),
             Commands(),
+            Examine(),
             Inventory(),
             Quit()
         ]
@@ -42,23 +44,15 @@ def main():
             continue
 
         for command in context.commands:
-            if command.name == line:
+            if line.startswith(command.name):
+                param = line.split(command.name, maxsplit=1)[1].lstrip()
+                command.parameter = param
                 command.exec(context)
                 break
         else:
             print('Tento príkaz nepoznám.')
         #
-        # elif line.startswith('preskumaj'):
-        #     item_name = line.split('preskumaj', maxsplit=1)[1].lstrip()
-        #
-        #     if item_name == '':  # len(item_name) == 0
-        #         print('Neviem, aký predmet chceš preskúmať.')
-        #     else:
-        #         item = get_item_by_name(item_name, backpack)
-        #         if item is None:
-        #             print('Taký predmet pri sebe nemáš.')
-        #         else:
-        #             print(item.description)
+
         #
         # elif line.startswith('pouzi'):
         #     item_name = line.split('pouzi', maxsplit=1)[1].lstrip()
