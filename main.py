@@ -6,9 +6,9 @@ from commands.commands import Commands
 from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.quit import Quit
+from commands.use import Use
 from gamecontext import GameContext
-from helpers import intro, outro, get_item_by_name
-from items.features import USABLE
+from helpers import intro, outro
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
@@ -30,7 +30,8 @@ def main():
             Commands(),
             Examine(),
             Inventory(),
-            Quit()
+            Quit(),
+            Use()
         ]
     )
 
@@ -51,23 +52,6 @@ def main():
                 break
         else:
             print('Tento príkaz nepoznám.')
-        #
-
-        #
-        # elif line.startswith('pouzi'):
-        #     item_name = line.split('pouzi', maxsplit=1)[1].lstrip()
-        #     if item_name == '':
-        #         print('Neviem čo chceš použiť.')
-        #     else:
-        #         item = get_item_by_name(item_name, backpack)
-        #
-        #         if item is None:
-        #             print('Taký predmet tu nikde nevidím.')
-        #         else:
-        #             if USABLE not in item.features:
-        #                 print('Tento predmet sa nedá použiť.')
-        #             else:
-        #                 item.use()
 
     outro()
 

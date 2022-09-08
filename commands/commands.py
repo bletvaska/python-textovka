@@ -13,5 +13,3 @@ class Commands(Command):
 
         for command in context.commands:
             print(f'* {command.name} - {command.description}')
-
-        # print('* pouzi - použije zvolený predmet')
