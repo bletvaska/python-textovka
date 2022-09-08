@@ -12,7 +12,7 @@ from commands.quit import Quit
 from commands.take import Take
 from commands.use import Use
 from gamecontext import GameContext
-from helpers import intro, outro
+from helpers import intro, outro, get_room_by_name
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.seats import EmptySeats
@@ -43,7 +43,7 @@ def main():
             Take(),
             Use()
         ],
-        current_room=world[0]
+        current_room=get_room_by_name('v lietadle', world)
     )
 
     # show room
