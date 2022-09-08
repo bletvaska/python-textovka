@@ -16,7 +16,7 @@ class Take(Command):
             print('Neviem čo chceš vziať.')
             return
 
-            # search for item by name
+        # search for item by name
         item = get_item_by_name(self.parameter, context.current_room.items)
 
         # wat item found?
