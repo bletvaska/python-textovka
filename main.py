@@ -12,12 +12,19 @@ from helpers import intro, outro
 from items.newspaper import Newspaper
 from items.revolver import Revolver
 from items.whip import Whip
+from rooms.room import Room
 
 
 def main():
     intro()
 
     # game init
+    room = Room(
+        name='v lietadle',
+        description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu nádherný '
+                    'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
+                    'že?) '
+    )
     context = GameContext(
         game_state=states.PLAYING,
         backpack=[
