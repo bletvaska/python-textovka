@@ -3,6 +3,7 @@
 import states
 from commands.about import About
 from commands.commands import Commands
+from commands.down import Down
 from commands.drop import Drop
 from commands.examine import Examine
 from commands.inventory import Inventory
@@ -33,6 +34,7 @@ def main():
         commands=[
             About(),
             Commands(),
+            Down(),
             Drop(),
             Examine(),
             Inventory(),

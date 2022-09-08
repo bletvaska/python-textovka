@@ -30,3 +30,11 @@ def get_item_by_name(name, items):
             return item
 
     # return None
+
+
+def get_room_by_name(name, rooms):
+    for room in rooms:
+        if room.name == name:
+            return room
+
+    # return None
