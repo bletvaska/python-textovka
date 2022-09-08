@@ -11,8 +11,10 @@ world = [
         items=[
             Newspaper(),
             EmptySeats()
-        ]
+        ],
+        down='vo vzduchu'
     ),
+
     Room(
         name='vo vzduchu',
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '

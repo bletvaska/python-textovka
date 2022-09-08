@@ -9,13 +9,13 @@ class Room:
     description: str
     items: list[Item] = field(default_factory=list)  # list[Item] = []
 
-    # exits: list[]
-    # north: str
-    # south: str
-    # east: str
-    # west: str
-    # up: str
-    # down: str
+    # exits/directions
+    down: str = None
+    up: str = None
+    north: str = None
+    south: str = None
+    east: str = None
+    west: str = None
 
     def show(self):
         # room description
