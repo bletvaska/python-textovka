@@ -44,6 +44,9 @@ def main():
         current_room=room
     )
 
+    # show room
+    context.current_room.show()
+
     # game loop
     while context.game_state == states.PLAYING:
         # normalize input string

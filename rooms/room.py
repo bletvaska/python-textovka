@@ -8,6 +8,7 @@ class Room:
     name: str
     description: str
     items: list[Item] = field(default_factory=list)  # list[Item] = []
+
     # exits: list[]
     # north: str
     # south: str
@@ -15,3 +16,6 @@ class Room:
     # west: str
     # up: str
     # down: str
+
+    def show(self):
+        print(self.description)
