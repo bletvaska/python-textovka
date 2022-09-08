@@ -25,6 +25,7 @@ def main():
                     'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
                     'že?) '
     )
+
     context = GameContext(
         game_state=states.PLAYING,
         backpack=[
@@ -39,7 +40,8 @@ def main():
             Inventory(),
             Quit(),
             Use()
-        ]
+        ],
+        current_room=room
     )
 
     # game loop
