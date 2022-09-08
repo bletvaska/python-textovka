@@ -13,7 +13,7 @@ class Examine(Command):
         if self.parameter == '':  # len(item_name) == 0
             print('Neviem, aký predmet chceš preskúmať.')
         else:
-            item = get_item_by_name(self.parameter, context.backpack)
+            item = get_item_by_name(self.parameter, context.current_room.items + context.backpack)
             if item is None:
                 print('Taký predmet pri sebe nemáš.')
             else:
