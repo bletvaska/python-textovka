@@ -34,6 +34,7 @@ world = [
                     'úplne inak, ako v lietadle).',
         south='oaza'
     ),
+
     Room(
         name='oaza',
         description='Si v malej oáze uprostred púšte. Pri malom jazierku stojí palma s niekoľkými kokosovými orechmi. '
@@ -45,6 +46,7 @@ world = [
             # kokosova palma
         ]
     ),
+
     Room(
         name='pred taborom',
         description='Stojíš pri plote z ostnatého drôtu. Na juhu je brána, ktorá vedie do vojenského tábora. Na '

@@ -70,6 +70,12 @@ def main():
                 param = line.split(command.name, maxsplit=1)[1].lstrip()
                 command.parameter = param
                 command.exec(context)
+
+                # check if indiana jones is not in a death room
+                if context.current_room.name == 'smrt vo vzduchu':
+                    print('Stal si sa zakladateľom športového odvetvia, ktoré vojde do histórie ako skok hlboký.')
+                    context.game_state = states.DEATH_BY_FREE_FALL
+
                 break
         else:
             print('Tento príkaz nepoznám.')
