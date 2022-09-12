@@ -10,7 +10,7 @@ from .item import Item
 class Parachute(Item):
     name: str = 'padak'
     description: str = 'Obyčajný padák MADE IN U.S.A. 1933'
-    features: list[str] = field(default_factory=lambda: [MOVABLE, USABLE])
+    features: list[int] = field(default_factory=lambda: [MOVABLE, USABLE])
 
     def use(self, context):
         # check conditions

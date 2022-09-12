@@ -17,6 +17,9 @@ class Room:
     east: str = None
     west: str = None
 
+    def on_enter(self, context):
+        pass
+
     def show(self):
         # room description
         print(self.description)

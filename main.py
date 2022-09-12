@@ -83,7 +83,9 @@ def main():
                         print('Vojak si ťa so záujmom prehliadol a zastrelil ťa...')
                         context.game_state = states.SHOT_BY_NAZI_GUARD
                     else:
-                        print('Keď ťa vojak uvidel, otvoril ti bránu. (Hlupkák!)')
+                        if context.current_room.south is None:
+                            context.current_room.south = 'uprostred tabora'
+                            print('Keď ťa vojak uvidel, otvoril ti bránu. (Hlupkák!)')
 
                 break
         else:

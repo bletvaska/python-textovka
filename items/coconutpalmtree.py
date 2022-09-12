@@ -9,7 +9,7 @@ from .naziuniform import NaziUniform
 class CoconutPalmTree(Item):
     name: str = 'kokosova palma'
     description: str = 'Zdá sa, že na jej plody nedosiahneš.'
-    features: list[str] = field(default_factory=lambda: [EXAMINABLE])
+    features: list[int] = field(default_factory=lambda: [EXAMINABLE])
 
     def examine(self, context):
         # action
