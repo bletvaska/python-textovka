@@ -10,14 +10,12 @@ from commands.inventory import Inventory
 from commands.lookaround import LookAround
 from commands.quit import Quit
 from commands.take import Take
+from commands.up import Up
 from commands.use import Use
 from gamecontext import GameContext
 from helpers import intro, outro, get_room_by_name
-from items.newspaper import Newspaper
 from items.revolver import Revolver
-from items.seats import EmptySeats
 from items.whip import Whip
-from rooms.room import Room
 from world import world
 
 
@@ -41,6 +39,7 @@ def main():
             LookAround(),
             Quit(),
             Take(),
+            Up(),
             Use()
         ],
         current_room=get_room_by_name('v lietadle', world)

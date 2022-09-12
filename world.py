@@ -12,12 +12,14 @@ world = [
             Newspaper(),
             EmptySeats()
         ],
-        down='vo vzduchu'
+        down='vo vzduchu',
     ),
 
     Room(
         name='vo vzduchu',
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
-                    'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor. '
+                    'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
+        up='v lietadle'
+
     )
 ]
