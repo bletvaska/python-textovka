@@ -43,7 +43,9 @@ rooms = [
         north='miesto pristatia',
         south='pred taborom',
         items=[
-            # kokosova palma
+            # name: kokosova palma
+            # description: Zdá sa, že na jej plody nedosiahneš.
+            # preskumaj: Pod koreňmi palmy si objavil ukrytú uniformu.
         ]
     ),
 
