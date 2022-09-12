@@ -1,3 +1,4 @@
+from items.coconutpalmtree import CoconutPalmTree
 from items.newspaper import Newspaper
 from items.seats import EmptySeats
 from rooms.room import Room
@@ -43,9 +44,7 @@ rooms = [
         north='miesto pristatia',
         south='pred taborom',
         items=[
-            # name: kokosova palma
-            # description: Zdá sa, že na jej plody nedosiahneš.
-            # preskumaj: Pod koreňmi palmy si objavil ukrytú uniformu.
+            CoconutPalmTree()
         ]
     ),
 
@@ -55,5 +54,4 @@ rooms = [
                     'blízkej strážnej veži hliadkuje nemecký vojak. Na severe vidíš za piesočnou dunou vrch palmy.',
         north='oaza'
     )
-
 ]
