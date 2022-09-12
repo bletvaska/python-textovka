@@ -12,7 +12,7 @@ world = [
             Newspaper(),
             EmptySeats()
         ],
-        down='vo vzduchu',
+        north='vo vzduchu',
     ),
 
     Room(
