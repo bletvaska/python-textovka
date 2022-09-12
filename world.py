@@ -19,8 +19,15 @@ world = [
         name='vo vzduchu',
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
                     'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
-        # up='v lietadle'
+        down='smrt vo vzduchu'
     ),
+
+    Room(
+        name='smrt vo vzduchu',
+        description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
+                    'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
+    ),
+
     Room(
         name='miesto pristatia',
         description='Si na púšti, ktorá sa vyznačuje predovšetkým tým, že je pustá. (Je zaujímavé, že to tu vyzerá '
