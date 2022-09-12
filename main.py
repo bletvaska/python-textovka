@@ -17,7 +17,7 @@ from commands.up import Up
 from commands.use import Use
 from commands.west import West
 from gamecontext import GameContext
-from helpers import intro, outro, get_room_by_name
+from helpers import intro, outro, get_room_by_name, get_item_by_name
 from items.revolver import Revolver
 from items.whip import Whip
 from world import rooms
@@ -75,6 +75,13 @@ def main():
                 if context.current_room.name == 'smrt vo vzduchu':
                     print('Stal si sa zakladateľom športového odvetvia, ktoré vojde do histórie ako skok hlboký.')
                     context.game_state = states.DEATH_BY_FREE_FALL
+
+                # check if indiana jones is wearing uniform in front of nazi camp
+                elif context.current_room.name == 'pred taborom':
+                    uniform = get_item_by_name('nemecka uniforma (oblecena)', context.backpack)
+                    if uniform is None:
+                        print('Vojak si ťa so záujmom prehliadol a zastrelil ťa...')
+                        context.game_state = states.SHOT_BY_NAZI_GUARD
 
                 break
         else:

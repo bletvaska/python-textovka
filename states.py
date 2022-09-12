@@ -6,3 +6,6 @@ QUIT = 'quit'
 
 # when no parachute was used
 DEATH_BY_FREE_FALL = 'death by free fall'
+
+# when entering camp without uniform
+SHOT_BY_NAZI_GUARD = 'shot by nazi guard'
