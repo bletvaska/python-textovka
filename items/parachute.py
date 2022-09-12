@@ -21,6 +21,7 @@ class Parachute(Item):
         # action
         room = get_room_by_name('miesto pristatia', world.rooms)
         context.current_room = room
+        self.features.remove(USABLE)
 
         # render
         print('Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...')
