@@ -2,7 +2,7 @@ from items.newspaper import Newspaper
 from items.seats import EmptySeats
 from rooms.room import Room
 
-world = [
+rooms = [
     Room(
         name='v lietadle',
         description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu nádherný '

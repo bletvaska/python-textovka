@@ -20,7 +20,7 @@ from gamecontext import GameContext
 from helpers import intro, outro, get_room_by_name
 from items.revolver import Revolver
 from items.whip import Whip
-from world import world
+from world import rooms
 
 
 def main():
@@ -50,7 +50,7 @@ def main():
             Use(),
             West()
         ],
-        current_room=get_room_by_name('v lietadle', world)
+        current_room=get_room_by_name('v lietadle', rooms)
     )
 
     # show room

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from helpers import get_room_by_name
-from world import world
+from world import rooms
 from .command import Command
 
 
@@ -19,6 +19,6 @@ class North(Command):
             return
 
         # lets move to north
-        room = get_room_by_name(target_room, world)
+        room = get_room_by_name(target_room, rooms)
         context.current_room = room
         room.show()

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from helpers import get_room_by_name
-from world import world
+from world import rooms
 from .command import Command
 
 
@@ -19,7 +19,7 @@ class Down(Command):
             return
 
         # let's go
-        context.current_room = get_room_by_name(target_room, world)
+        context.current_room = get_room_by_name(target_room, rooms)
 
         # show room
         context.current_room.show()

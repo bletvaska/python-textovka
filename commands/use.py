@@ -22,4 +22,4 @@ class Use(Command):
                 if USABLE not in item.features:
                     print('Tento predmet sa nedá použiť.')
                 else:
-                    item.use()
+                    item.use(context)
