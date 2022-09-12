@@ -82,6 +82,8 @@ def main():
                     if uniform is None:
                         print('Vojak si ťa so záujmom prehliadol a zastrelil ťa...')
                         context.game_state = states.SHOT_BY_NAZI_GUARD
+                    else:
+                        print('Keď ťa vojak uvidel, otvoril ti bránu. (Hlupkák!)')
 
                 break
         else:

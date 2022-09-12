@@ -53,5 +53,22 @@ rooms = [
         description='Stojíš pri plote z ostnatého drôtu. Na juhu je brána, ktorá vedie do vojenského tábora. Na '
                     'blízkej strážnej veži hliadkuje nemecký vojak. Na severe vidíš za piesočnou dunou vrch palmy.',
         north='oaza'
+    ),
+
+    Room(
+        name='uprostred tabora',
+        description='Stojíš uprostred vyľudneného vojenského tábora. Na severe je brána vedúca von do púšte. Na '
+                    'západe je malý stan, ktorý slúži ako sklad. Na východe je veliteľov stan.',
+        north='pred taborom',
+        east='velitelov stan'
+    ),
+
+    Room(
+        name='velitelov stan',
+        description='Si vo veliteľovom stane. Je tu značný neporiadok. Všade dookola je množstvo smetí.',
+        west='uprostred tabora',
+        items=[
+            # HeavyChest()
+        ]
     )
 ]

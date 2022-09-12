@@ -18,3 +18,7 @@ class NaziUniform(Item):
 
         # render
         print('Obliekol si si uniformu... Padne ti ako uliata.')
+
+    def examine(self, context):
+        # description: Veľký mosadzný kľúč, zrejme od nejakej truhly.
+        print('V jednom jej vrecku si objavil kľúč!')
