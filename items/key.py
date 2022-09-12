@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 
+import states
 from helpers import get_item_by_name
 from .diamond import Diamond
 from .dictionary import Dictionary
