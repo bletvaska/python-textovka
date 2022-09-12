@@ -1,4 +1,5 @@
 from items.coconutpalmtree import CoconutPalmTree
+from items.heavy_chest import HeavyChest
 from items.newspaper import Newspaper
 from items.seats import EmptySeats
 from rooms.room import Room
@@ -68,7 +69,7 @@ rooms = [
         description='Si vo veliteľovom stane. Je tu značný neporiadok. Všade dookola je množstvo smetí.',
         west='uprostred tabora',
         items=[
-            # HeavyChest()
+            HeavyChest()
         ]
     )
 ]
