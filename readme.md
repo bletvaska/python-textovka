@@ -25,19 +25,4 @@ Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov o�
 ## World Map
 
 ```
-               +--------+
-               | Heaven |
-               +--------+
-                   ^
-                   |
-                   v                      N
-+---------+    +--------+                 ^
-| Dungeon |<-->| Garden |             W < + > E
-+---------+    +--------+                 v
-                    ^                     S
-                    |
-                    v
-                 +------+
-                 | Hell |
-                 +------+
 ```
