@@ -2,9 +2,10 @@
 
 ## Day 1
 
-* [The basics](100-basics.md)
-* [Program flow](110-program.flow.md)
+* [The Basics](100-basics.md)
+* [Program Flow](110-program.flow.md)
 * [Game State](120-game.state.md)
+* [Creating of Own Functions](125-own.functions.md)
 * [Inventory](130-inventory.md)
 
 ## Day 2
