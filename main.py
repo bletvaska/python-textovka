@@ -50,7 +50,7 @@ def main():
             Use(),
             West()
         ],
-        current_room=get_room_by_name('miesto pristatia', rooms)
+        current_room=get_room_by_name('v lietadle', rooms)
     )
 
     # show room
