@@ -2,17 +2,15 @@
 
 Stav hry.
 
+
 ## Goals
 
 1. Vytvoriť vlastný modul.
-
 2. Použitie obsahu vlastného modulu vo vlastnom programe.
-
 3. Vytvoriť vlastnú funkciu bez parametra.
 
 
 ## Content
-
 
 ### Game State
 
@@ -59,7 +57,7 @@ Následne už len upravíme podmienku v cykle hlavnej slučky:
 
 ```python
 while game_state == STATE_PLAYING:
-pass
+    pass
 ```
 
 A upravíme tiež kód v ošetrení príkazu `koniec`:
@@ -105,7 +103,7 @@ if __name__ == '__main__':
             game_state = states.QUIT
 
         # about game
-        elif line == 'o hre'::
+        elif line == 'o hre':
             print('(c)2022 created by mirek')
             print('Ďalšie veľké dobrodružstvo Indiana Jonesa. Tentokrát zápasí s jazykom Python v tmavej miestnosti.')
 
@@ -134,42 +132,6 @@ class GameState(Enum):
     PLAYING = 1
     END = 2
 ```
-
-
-
-### Own Functions
-
-1. Vytvorte funkciu `intro()`, pomocou ktorej zobrazíte úvodný banner hry.
-
-
-    ```python
-    def intro():
-        """
-        Shows the intro screen of the game.
-        """
-        print(" ___           _ _                         _")
-        print("|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___")
-        print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|")
-        print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\")
-        print("|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/")
-        print('                        and his Great Escape')
-        print()
-    ```
-
-
-2. Vytvorte funkciu `outro()` alebo `credits()`, pomocou ktorej zobrazíte záverečné titulky hry.
-
-    ```python
-    def outro():
-        """
-        Shows the outro screen of the game.
-        """
-        print('(c)2022 by mirek')
-        print('See you soon.')
-    ```
-
-
-3. Funkcie `outro()` a `intro()` umiestnite do samostatného modulu `helpers.py`.
 
 
 ### Additional Tasks
