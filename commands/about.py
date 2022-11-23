@@ -8,5 +8,5 @@ class About(Command):
     name: str = 'o hre'
     description: str = 'zobrazí informácie o hre'
 
-    def exec(self, context):
+    def exec(self, context, param):
         print('Hru Indiana Jones 2 napísal mladý nádejný programátor v jazyku Python - mirek v roku 2022.')

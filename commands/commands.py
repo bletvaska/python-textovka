@@ -10,7 +10,7 @@ class Commands(Command):
     description: str = 'zobrazí dostupné príkazy v hre'
 
     # methods
-    def exec(self, context):
+    def exec(self, context, param):
         print('V hre je možné použiť tieto príkazy:')
 
         for command in context.commands:

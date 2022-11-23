@@ -13,6 +13,6 @@ class Command:
     description: str
 
     # behavior / methods
-    def exec(self, context: GameContext):
+    def exec(self, context: GameContext, param: str):
         #! FIXME exception
         print('vykonavam prikaz')
