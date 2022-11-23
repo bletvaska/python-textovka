@@ -1,8 +1,13 @@
 from dataclasses import dataclass
 
+from states import STATE_QUIT
+
 
 @dataclass
 class Command:
+    """
+    Describes every command in game.
+    """
     # fields
     name: str
     description: str
@@ -50,9 +55,16 @@ class Inventory(Command):
             print('V batohu máš:')
             for item in backpack:
                 print(item)
-# * prikazy
-#   * opis
-#   * nazov
-#   * aliasy
-#   // * parameter (vezmi revolver)
-#   + vykonanie prikazu(item)
+
+
+@dataclass
+class Quit(Command):
+    # fields
+    name: str = 'koniec'
+    description: str = 'ukončí hru'
+
+    # methods
+    def exec(self):
+        choice = input('Naozaj chceš ukončiť hru? (y/n) ').lstrip().rstrip().lower()
+        if choice in ('y', 'yes', 'a', 'ano'):
+            game_state = STATE_QUIT
