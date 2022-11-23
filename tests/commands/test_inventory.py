@@ -1,6 +1,7 @@
 import pytest
 
 from commands.inventory import Inventory
+from game_context import GameContext
 
 
 @pytest.fixture
@@ -17,15 +18,18 @@ def test_when_created_then_expect_specific_description(cmd):
 
 
 def test_when_backpack_is_empty_then_expect_specific_message_on_stdout(cmd, capsys):
-    cmd.exec([])
+    context = GameContext(backpack=[])
+    cmd.exec(context)
     captured = capsys.readouterr()
 
     assert captured.out == 'Batoh je prázdny.\n'
 
 
 def test_when_backpack_has_items_then_print_its_content_on_stdout(cmd, capsys):
-    backpack = ['revolver', 'bic']
-    cmd.exec(backpack)
+    context = GameContext(backpack=['revolver', 'bic'])
+    cmd.exec(context)
     captured = capsys.readouterr()
 
-    assert captured.out == 'V batohu máš:\nrevolver\nbic\n'
+    assert captured.out == ('V batohu máš:\n'
+                            '* revolver\n'
+                            '* bic\n')
