@@ -25,7 +25,7 @@ class About(Command):
 class Commands(Command):
     # fields
     name: str = 'prikazy'
-    description: str = 'zobrazí dostupné príkazy v hred'
+    description: str = 'zobrazí dostupné príkazy v hre'
 
     # methods
     def exec(self):
