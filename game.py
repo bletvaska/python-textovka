@@ -8,9 +8,13 @@ game_state = STATE_PLAYING
 backpack = ['revolver', 'bic']
 
 while game_state == STATE_PLAYING:
-    line = input('> ')
+    line = input('> ').lstrip().rstrip().lower()
 
-    if line == 'o hre':
+    if line == '':
+        continue
+        # pass
+
+    elif line == 'o hre':
         print('Hru Indiana Jones 2 napísal mladý nádejný programátor v jazyku Python - mirek v roku 2022.')
 
     elif line == 'prikazy':
@@ -21,7 +25,7 @@ while game_state == STATE_PLAYING:
         print('* prikazy - zoznam dostupných príkazov v hre')
 
     elif line == 'koniec':
-        choice = input('Naozaj chceš ukončiť hru? (y/n) ')
+        choice = input('Naozaj chceš ukončiť hru? (y/n) ').lstrip().rstrip().lower()
         if choice in ('y', 'yes', 'a', 'ano'):
             game_state = STATE_QUIT
 
