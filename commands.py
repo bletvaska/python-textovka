@@ -35,6 +35,21 @@ class Commands(Command):
         print('* o hre - zobrazi informacie o hre')
         print('* prikazy - zoznam dostupných príkazov v hre')
 
+
+@dataclass
+class Inventory(Command):
+    # fields
+    name: str = 'inventar'
+    description: str = 'zobrazí obsah hráčovho batohu'
+
+    # methods
+    def exec(self, backpack: list):
+        if len(backpack) == 0:
+            print('Batoh je prázdny.')
+        else:
+            print('V batohu máš:')
+            for item in backpack:
+                print(item)
 # * prikazy
 #   * opis
 #   * nazov
