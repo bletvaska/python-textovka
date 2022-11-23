@@ -1,3 +1,6 @@
+# Command Dataclass
+
+```python
 from dataclasses import dataclass
 
 
@@ -11,6 +14,7 @@ class Command:
     description: str
 
     # behavior / methods
-    def exec(self, backpack, commands):
-        #! FIXME exception
+    def exec(self, backpack):
+        # ! FIXME exception
         print('vykonavam prikaz')
+```

@@ -6,25 +6,6 @@ from commands.quit import Quit
 from helpers import intro, outro
 from states import STATE_PLAYING, STATE_QUIT
 
-
-# main building blocks
-
-# * miestnosti (lokacia, place)
-#   * opis
-#   * zoznam predmetov v miestnosti
-#   * nazov
-#   * vychody (susedia)
-
-
-# * predmety
-#   * nazov
-#   * opis
-#   * vlastnosti
-#   + pouzitie predmetu()
-#   + preskumanie predmetu()
-
-# kde sa nachadzam
-
 intro()
 game_state = STATE_PLAYING
 backpack = ['revolver', 'bic']
@@ -44,7 +25,7 @@ while game_state == STATE_PLAYING:
 
     for command in commands:
         if line == command.name:
-            command.exec(backpack)
+            command.exec(backpack, commands)
             break
     else:
         print('Tento príkaz nepoznám.')
