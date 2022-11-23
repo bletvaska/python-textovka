@@ -11,7 +11,7 @@ class Quit(Command):
     description: str = 'ukončí hru'
 
     # methods
-    def exec(self, backpack, commands):
-        choice = input('Naozaj chceš ukončiť hru? (y/n) ').lstrip().rstrip().lower()
+    def exec(self, context):
+        choice = input('Naozaj chceš ukončiť hru? (a/n) ').lstrip().rstrip().lower()
         if choice in ('y', 'yes', 'a', 'ano'):
-            game_state = STATE_QUIT
+            context.game_state = STATE_QUIT

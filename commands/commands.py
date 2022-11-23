@@ -10,8 +10,8 @@ class Commands(Command):
     description: str = 'zobrazí dostupné príkazy v hre'
 
     # methods
-    def exec(self, backpack, commands):
+    def exec(self, context):
         print('V hre je možné použiť tieto príkazy:')
 
-        for command in commands:
+        for command in context.commands:
             print(f'* {command.name} - {command.description}')
