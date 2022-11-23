@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from helpers import intro, outro
 from states import STATE_PLAYING, STATE_QUIT
-from dataclasses import dataclass
 
 
 # main building blocks
