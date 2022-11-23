@@ -1,7 +1,26 @@
 #!/usr/bin/env python
 from helpers import intro, outro
 from states import STATE_PLAYING, STATE_QUIT
+from dataclasses import dataclass
 
+
+# main building blocks
+
+# * miestnosti (lokacia, place)
+#   * opis
+#   * zoznam predmetov v miestnosti
+#   * nazov
+#   * vychody (susedia)
+
+
+# * predmety
+#   * nazov
+#   * opis
+#   * vlastnosti
+#   + pouzitie predmetu()
+#   + preskumanie predmetu()
+
+# kde sa nachadzam
 
 intro()
 game_state = STATE_PLAYING
