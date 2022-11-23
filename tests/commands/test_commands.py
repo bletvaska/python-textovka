@@ -1,6 +1,6 @@
 import pytest
 
-from commands import Commands
+from commands.commands import Commands
 
 
 @pytest.fixture

@@ -1,6 +1,6 @@
 import pytest
 
-from commands import Inventory
+from commands.inventory import Inventory
 
 
 @pytest.fixture
