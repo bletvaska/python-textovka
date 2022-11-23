@@ -1,5 +1,12 @@
 # Command Dataclass
 
+## Module `commands.py`
+
+* vytvoríme samostatný modul s názvom `commands.py`, do ktorého presunieme implementáciu všetkých príkazov
+
+
+## Command Dataclass
+
 ```python
 from dataclasses import dataclass
 

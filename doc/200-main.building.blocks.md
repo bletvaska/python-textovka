@@ -15,14 +15,19 @@ kazda miestnost ma tieto vlastnosti:
 * zoznam predmetov v miestnosti
 * zoznam vychodov (susedia)
 
+
 ## O predmetoch
 
-# * predmety
-#   * nazov
-#   * opis
-#   * vlastnosti
-#   + pouzitie predmetu()
-#   + preskumanie predmetu()
+kazdy predmet ma tieto vlastnosti:
+
+* nazov
+* opis
+* vlastnosti
+
+v zavislosti od otho, co bude mozne s predmetom robit, budu mat niektore predmety aj specialne metody:
+
++ pouzitie predmetu()
++ preskumanie predmetu()
 
 
 ## O prikazoch
