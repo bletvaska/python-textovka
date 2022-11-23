@@ -11,6 +11,6 @@ class Command:
     description: str
 
     # behavior / methods
-    def exec(self):
+    def exec(self, backpack):
         #! FIXME exception
         print('vykonavam prikaz')

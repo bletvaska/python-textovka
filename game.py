@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+from commands.about import About
+from commands.commands import Commands
+from commands.inventory import Inventory
+from commands.quit import Quit
 from helpers import intro, outro
 from states import STATE_PLAYING, STATE_QUIT
 
@@ -24,38 +28,25 @@ from states import STATE_PLAYING, STATE_QUIT
 intro()
 game_state = STATE_PLAYING
 backpack = ['revolver', 'bic']
+commands = [
+    About(),
+    Commands(),
+    Inventory(),
+    Quit()
+]
 
 while game_state == STATE_PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
-    if line == '':
+    if line == '':  # len(line) == 0
         continue
         # pass
 
-    elif line == 'o hre':
-        print('Hru Indiana Jones 2 napísal mladý nádejný programátor v jazyku Python - mirek v roku 2022.')
+    for command in commands:
+        if line == command.name:
+            command.exec(backpack)
 
-    elif line == 'prikazy':
-        print('V hre je možné použiť tieto príkazy:')
-        print('* inventar - zobrazi obsah hráčovho batohu')
-        print('* koniec - ukončí hru')
-        print('* o hre - zobrazi informacie o hre')
-        print('* prikazy - zoznam dostupných príkazov v hre')
-
-    elif line == 'koniec':
-        choice = input('Naozaj chceš ukončiť hru? (y/n) ').lstrip().rstrip().lower()
-        if choice in ('y', 'yes', 'a', 'ano'):
-            game_state = STATE_QUIT
-
-    elif line == 'inventar':
-        if len(backpack) == 0:
-            print('Batoh je prázdny.')
-        else:
-            print('V batohu máš:')
-            for item in backpack:
-                print(item)
-
-    else:
-        print('Tento príkaz nepoznám.')
+    # else:
+    #     print('Tento príkaz nepoznám.')
 
 outro()
