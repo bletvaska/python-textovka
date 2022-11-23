@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from commands.about import About
 from commands.commands import Commands
+from commands.help import Help
 from commands.inventory import Inventory
 from commands.quit import Quit
 from game_context import GameContext
@@ -13,6 +14,7 @@ context = GameContext(
     commands=[
         About(),
         Commands(),
+        Help(),
         Inventory(),
         Quit()
     ]
