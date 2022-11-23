@@ -45,8 +45,8 @@ while game_state == STATE_PLAYING:
     for command in commands:
         if line == command.name:
             command.exec(backpack)
-
-    # else:
-    #     print('Tento príkaz nepoznám.')
+            break
+    else:
+        print('Tento príkaz nepoznám.')
 
 outro()
