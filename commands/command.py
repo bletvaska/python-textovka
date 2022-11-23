@@ -12,4 +12,5 @@ class Command:
 
     # behavior / methods
     def exec(self):
+        #! FIXME exception
         print('vykonavam prikaz')
