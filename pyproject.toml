@@ -17,3 +17,15 @@ faker = "^15.3.3"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+addopts = [
+    "--html=reports/report.html",
+    "--self-contained-html",
+#    "--cov=bank",
+#    "--cov-report=html:reports/coverage/",
+#    "--cov-report=term",
+]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

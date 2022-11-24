@@ -26,6 +26,9 @@ def outro():
 
 
 def parse_line(line: str, commands: list[Command]) -> Command | None:
+    """
+    Returns command object based on the input entered by user.
+    """
     for command in commands:
         if line.startswith(command.name):
             command.param = line.split(command.name, maxsplit=1)[1].lstrip()
@@ -35,4 +38,11 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
 
 
 def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
-    pass
+    """
+    Returns room by its name.
+    """
+    for room in rooms:
+        if room.name == name:
+            return room
+
+    return None  # default

@@ -22,7 +22,16 @@ Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov o�
 * defenzívne programovanie
 
 
+## Literatúra
+
+* [Začínáme programovat v jazyku Python](https://www.martinus.sk/?uItem=1455785) - Kurz programovania v jazyku Python od [Ruda Pecinovského](http://rudolf.pecinovsky.cz/). Zhodou okolností tiež robí textovku, aj keď iným spôsobom.
+* [Python – Kompletní příručka jazyka pro verzi 3.10](https://www.martinus.sk/?uItem=1429819) - Kniha venovaná jazyku Python verzie 3.10.
+
+
 ## World Map
 
 ```
++------------+
+| v lietadle |
++------------+
 ```
