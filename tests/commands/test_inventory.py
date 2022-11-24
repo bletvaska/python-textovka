@@ -19,7 +19,7 @@ def test_when_created_then_expect_specific_description(cmd):
 
 def test_when_backpack_is_empty_then_expect_specific_message_on_stdout(cmd, capsys):
     context = GameContext(backpack=[])
-    cmd.exec(context, None)
+    cmd.exec(context)
     captured = capsys.readouterr()
 
     assert captured.out == 'Batoh je prázdny.\n'
@@ -27,7 +27,7 @@ def test_when_backpack_is_empty_then_expect_specific_message_on_stdout(cmd, caps
 
 def test_when_backpack_has_items_then_print_its_content_on_stdout(cmd, capsys):
     context = GameContext(backpack=['revolver', 'bic'])
-    cmd.exec(context, None)
+    cmd.exec(context)
     captured = capsys.readouterr()
 
     assert captured.out == ('V batohu máš:\n'

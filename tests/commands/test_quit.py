@@ -25,7 +25,7 @@ def test_when_created_then_expect_specific_description(cmd):
 def test_when_no_is_entered_then_game_state_remains_playing(cmd, choice):
     sys.stdin = io.StringIO(f'{choice}\n')
     context = GameContext()
-    cmd.exec(context, None)
+    cmd.exec(context)
 
     assert context.game_state == STATE_PLAYING
 
@@ -34,6 +34,6 @@ def test_when_no_is_entered_then_game_state_remains_playing(cmd, choice):
 def test_when_yes_is_entered_then_game_state_changes_to_quit(cmd, choice):
     sys.stdin = io.StringIO(f'{choice}\n')
     context = GameContext()
-    cmd.exec(context, None)
+    cmd.exec(context)
 
     assert context.game_state == STATE_QUIT

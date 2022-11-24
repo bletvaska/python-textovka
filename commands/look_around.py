@@ -9,4 +9,4 @@ class LookAround(Command):
     description: str = 'rozhliadne sa v aktuálnej miestnosti'
 
     def exec(self, context):
-        pass
+        print(room.description)

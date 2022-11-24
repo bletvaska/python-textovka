@@ -3,6 +3,7 @@ from commands.about import About
 from commands.commands import Commands
 from commands.help import Help
 from commands.inventory import Inventory
+from commands.look_around import LookAround
 from commands.quit import Quit
 from game_context import GameContext
 from helpers import intro, outro, parse_line
@@ -18,6 +19,7 @@ context = GameContext(
         Commands(),
         Help(),
         Inventory(),
+        LookAround(),
         Quit()
     ]
 )
