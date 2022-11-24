@@ -1,4 +1,5 @@
 from commands.command import Command
+from room import Room
 
 
 def intro():
@@ -31,3 +32,7 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
             return command
 
     return None  # default
+
+
+def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
+    pass

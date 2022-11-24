@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from helpers import get_room_by_name
 from .command import Command
 
 

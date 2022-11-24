@@ -1,14 +1,13 @@
 from dataclasses import dataclass, field
 
-import world
 from room import Room
 from states import STATE_PLAYING
 
 
 @dataclass
 class GameContext:
-    current_room: str = 'v lietadle'
-    rooms: list[Room] = world.rooms
+    current_room: str
+    rooms: list[Room] = field(default_factory=list)
     backpack: list[str] = field(default_factory=list)
     commands: list = field(default_factory=list)
     game_state: str = STATE_PLAYING
