@@ -1,5 +1,7 @@
 from dataclasses import dataclass, field
 
+from directions import DOWN, UP, EAST, WEST, SOUTH, NORTH
+
 
 @dataclass
 class Room:
@@ -9,17 +11,23 @@ class Room:
     exits: dict = field(default_factory=dict)
 
     def show(self):
-        """
-        Nachádzaš sa v miestnosti {self.name}
-        {self.description}
-        Z tejto miestnosti nevedú žiadne východy.
-        """
+        print(f'Nachádzaš sa v miestnosti {self.name}.\n')
+        print(f'{self.description}\n')
+        if len(self.exits) == 0:
+            print('Z tejto miestnosti nevedú žiadne východy.')
+        else:
+            print('Možné východy z miestnosti:')
+            if DOWN in self.exits:
+                print(f'* dolu')
+            if UP in self.exits:
+                print(f'* hore')
+            if EAST in self.exits:
+                print(f'* východ')
+            if WEST in self.exits:
+                print(f'* západ')
+            if SOUTH in self.exits:
+                print(f'* juh')
+            if NORTH in self.exits:
+                print(f'* sever')
 
-        """
-        Nachádzaš sa v miestnosti {name}
-        {description}
-        Možné východy z miestnosti::
-        * sever
-        """
-
-        pass
+        print()

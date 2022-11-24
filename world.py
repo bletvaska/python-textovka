@@ -1,4 +1,4 @@
-from directions import DOWN
+from directions import DOWN, UP
 from room import Room
 
 rooms = [
@@ -8,7 +8,8 @@ rooms = [
                     'kľud, pretože motory sú vypnuté a na palube nie je okrem teba živá duša. (Celkom zaujímavá '
                     'situácia, že?)',
         exits={
-            DOWN: 'vo vzduchu'
+            DOWN: 'vo vzduchu',
+            UP: 'do oblakoch'
         },
     ),
     Room(
