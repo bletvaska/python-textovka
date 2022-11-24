@@ -17,12 +17,12 @@ rooms = [
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
                     'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
         exits={
-            directions.DOWN: 'smrt vo vzduchu'
+            directions.DOWN: 'smrt volnym padom'
         }
     ),
 
     Room(
-        name='smrt vo vzduchu',
+        name='smrt volnym padom',
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
                     'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
     ),
