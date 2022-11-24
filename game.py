@@ -2,6 +2,7 @@
 import world
 from commands.about import About
 from commands.commands import Commands
+from commands.down import Down
 from commands.help import Help
 from commands.inventory import Inventory
 from commands.look_around import LookAround
@@ -20,6 +21,7 @@ context = GameContext(
     commands=[
         About(),
         Commands(),
+        Down(),
         Help(),
         Inventory(),
         LookAround(),
