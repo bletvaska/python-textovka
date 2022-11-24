@@ -30,7 +30,7 @@ context = GameContext(
 room = get_room_by_name(context.current_room, context.rooms)
 
 # game loop
-print(room.description)
+room.show()
 
 while context.game_state == STATE_PLAYING:
     line = input('> ').lstrip().rstrip().lower()
