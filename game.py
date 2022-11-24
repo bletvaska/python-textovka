@@ -33,14 +33,4 @@ while context.game_state == STATE_PLAYING:
     else:
         command.exec(context)
 
-
-
-    # for command in context.commands:
-    #     if line.startswith(command.name):
-    #         param = line.split(command.name, maxsplit=1)[1].lstrip()
-    #         command.exec(context, param)
-    #         break
-    # else:
-    #     print('Tento príkaz nepoznám.')
-
 outro()
