@@ -24,12 +24,7 @@ context = GameContext(
     ]
 )
 
-room = Room(
-    name='v lietadle',
-    description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu nádherný '
-                'kľud, pretože motory sú vypnuté a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
-                'že?)'
-)
+room = get_room_by_name('v lietadle', context.rooms)
 
 # game loop
 print(room.description)
