@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "textovka"
+version = "0.1.0"
+description = "Project for Python 101 training."
+authors = ["Miroslav Biňas <miroslav.binas@tuke.sk>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.6.0"
+pytest = "^7.2.0"
+faker = "^15.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
