@@ -11,6 +11,7 @@ from states import STATE_PLAYING
 
 intro()
 
+# game initialization
 context = GameContext(
     commands=[
         About(),
@@ -27,6 +28,9 @@ room = Room(
                 'kľud, pretože motory sú vypnuté a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
                 'že?)'
 )
+
+# game loop
+print(room.description)
 
 while context.game_state == STATE_PLAYING:
     line = input('> ').lstrip().rstrip().lower()
