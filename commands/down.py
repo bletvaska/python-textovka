@@ -11,8 +11,14 @@ class Down(Command):
     description: str = 'presunie sa do miestnosti dolu od aktuálnej'
 
     def exec(self, context):
+        # get current room by its name
         room = get_room_by_name(context.current_room, context.rooms)
+
+        # is there exit going down?
         if DOWN in room.exits:
-            print('idem dolu')
+            context.current_room = room.exits[DOWN]
+            room = get_room_by_name(context.current_room, context.rooms)
+            room.show()
+
         else:
             print('Tam sa nedá ísť.')
