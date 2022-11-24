@@ -5,7 +5,7 @@ from commands.help import Help
 from commands.inventory import Inventory
 from commands.quit import Quit
 from game_context import GameContext
-from helpers import intro, outro
+from helpers import intro, outro, parse_line
 from states import STATE_PLAYING
 
 intro()
@@ -27,12 +27,20 @@ while context.game_state == STATE_PLAYING:
         continue
         # pass
 
-    for command in context.commands:
-        if line.startswith(command.name):
-            param = line.split(command.name, maxsplit=1)[1].lstrip()
-            command.exec(context, param)
-            break
-    else:
+    command = parse_line(line, context.commands)
+    if command is None:
         print('Tento príkaz nepoznám.')
+    else:
+        command.exec(context, '')
+
+
+
+    # for command in context.commands:
+    #     if line.startswith(command.name):
+    #         param = line.split(command.name, maxsplit=1)[1].lstrip()
+    #         command.exec(context, param)
+    #         break
+    # else:
+    #     print('Tento príkaz nepoznám.')
 
 outro()
