@@ -27,13 +27,7 @@ def outro():
 def parse_line(line: str, commands: list[Command]) -> Command | None:
     for command in commands:
         if line.startswith(command.name):
+            command.param = line.split(command.name, maxsplit=1)[1].lstrip()
             return command
 
     return None  # default
-
-    #         param = line.split(command.name, maxsplit=1)[1].lstrip()
-    #         command.exec(context, param)
-    #         break
-    # else:
-    #     print('Tento príkaz nepoznám.')
-

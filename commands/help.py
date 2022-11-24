@@ -8,9 +8,9 @@ class Help(Command):
     name: str = 'pomoc'
     description: str = 'zobrazí pomocníka ku zvolenému príkazu'
 
-    def exec(self, context, param):
+    def exec(self, context):
         for command in context.commands:
-            if command.name == param:
+            if command.name == self.param:
                 print(f'{command.name} - {command.description}')
                 break
         else:

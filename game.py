@@ -31,7 +31,7 @@ while context.game_state == STATE_PLAYING:
     if command is None:
         print('Tento príkaz nepoznám.')
     else:
-        command.exec(context, '')
+        command.exec(context)
 
 
 
