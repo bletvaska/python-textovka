@@ -1,5 +1,5 @@
 from commands.command import Command
-from room import Room
+from rooms.room import Room
 
 
 def intro():

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import world
+from rooms import world
 from commands.about import About
 from commands.commands import Commands
 from commands.down import Down

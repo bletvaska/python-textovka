@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from room import Room
+from rooms.room import Room
 from states import STATE_PLAYING
 
 

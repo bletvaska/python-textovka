@@ -2,9 +2,15 @@
 
 rozsah: 5 dní
 
-Kurz pre všetkých, ktorí sa chcú naučiť základy programovania v jazyku Python. Počas kurzu účastníci postupne vytvoria jednoduchú textovú adventúru, ktorá bude mať rozsah zhruba 400 až 600 riadkov kódu. Popri tom sa prakticky zoznámia so všetkými základnými konštrukciami jazyka, ako aj s organizáciou projektu do modulov a balíkov.
+Kurz pre všetkých, ktorí sa chcú naučiť základy programovania v jazyku Python. Počas kurzu účastníci postupne
+vytvoria jednoduchú textovú adventúru, ktorá bude mať rozsah zhruba 400 až 600 riadkov kódu. Popri tom sa prakticky
+zoznámia so všetkými základnými konštrukciami jazyka, ako aj s organizáciou projektu do modulov a balíkov.
 
-Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov očakáva, že majú skúsenosť aspoň so základmi programovani alebo skriptovania v inom jazyku.
+Textová adventúra, ktorá sa vytvára počas kurzu, je remake-om klasickej textovky Indiana Jones 2 od Františka Fuku z
+roku 198x.
+
+Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov očakáva, že majú skúsenosť aspoň so základmi
+programovani alebo skriptovania v inom jazyku.
 
 
 ## Preberané témy

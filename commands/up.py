@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-import directions
+from rooms import directions
 from helpers import get_room_by_name
 from .command import Command
 
