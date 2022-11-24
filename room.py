@@ -1,9 +1,9 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
 class Room:
     name: str
     description: str
-    items: list
-    exits: list  # TODO ????
+    items: list = field(default_factory=list)
+    exits: list = field(default_factory=list)  # TODO ????
