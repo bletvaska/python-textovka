@@ -3,13 +3,17 @@ import world
 from commands.about import About
 from commands.commands import Commands
 from commands.down import Down
+from commands.east import East
 from commands.help import Help
 from commands.inventory import Inventory
 from commands.look_around import LookAround
+from commands.north import North
 from commands.quit import Quit
+from commands.south import South
+from commands.up import Up
+from commands.west import West
 from game_context import GameContext
 from helpers import intro, outro, parse_line, get_room_by_name
-from room import Room
 from states import STATE_PLAYING
 
 intro()
@@ -22,10 +26,15 @@ context = GameContext(
         About(),
         Commands(),
         Down(),
+        East(),
         Help(),
         Inventory(),
         LookAround(),
-        Quit()
+        North(),
+        Quit(),
+        South(),
+        Up(),
+        West()
     ]
 )
 

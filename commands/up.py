@@ -6,17 +6,17 @@ from .command import Command
 
 
 @dataclass
-class Down(Command):
-    name: str = 'dolu'
-    description: str = 'presunie sa do miestnosti dolu od aktuálnej'
+class Up(Command):
+    name: str = 'hore'
+    description: str = 'presunie sa do miestnosti hore od aktuálnej'
 
     def exec(self, context):
         # get current room by its name
         room = get_room_by_name(context.current_room, context.rooms)
 
         # is there exit going down?
-        if directions.DOWN in room.exits:
-            context.current_room = room.exits[directions.DOWN]
+        if directions.UP in room.exits:
+            context.current_room = room.exits[directions.UP]
             room = get_room_by_name(context.current_room, context.rooms)
             room.show()
 

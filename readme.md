@@ -34,4 +34,9 @@ Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov o�
 +------------+
 | v lietadle |
 +------------+
+      |
+      v
++------------+
+| vo vzduchu |
++------------+
 ```
