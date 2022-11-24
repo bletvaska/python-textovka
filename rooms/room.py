@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from directions import DOWN, UP, EAST, WEST, SOUTH, NORTH
+from .directions import DOWN, UP, EAST, WEST, SOUTH, NORTH
 
 
 @dataclass

@@ -1,5 +1,5 @@
-import directions
-from rooms.room import Room
+from . import directions
+from .room import Room
 
 rooms = [
     Room(
