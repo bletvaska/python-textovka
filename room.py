@@ -6,4 +6,4 @@ class Room:
     name: str
     description: str
     items: list = field(default_factory=list)
-    exits: list = field(default_factory=list)  # TODO ????
+    exits: dict = field(default_factory=dict)

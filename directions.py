@@ -1,0 +1,6 @@
+UP = 'up'
+DOWN = 'down'
+NORTH = 'north'
+SOUTH = 'south'
+EAST = 'east'
+WEST = 'west'
