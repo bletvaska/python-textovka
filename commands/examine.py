@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_room_by_name, get_current_room
+from helpers import get_room_by_name, get_current_room, get_item_by_name
 from .command import Command
 
 
@@ -15,20 +15,14 @@ class Examine(Command):
             print("Neviem, čo chceš preskúmať.")
             return
 
-        item = get_item_by_name(self.param, room.items)
-
-        # if item is in backpack
-        for item in context.backpack:
-            if item.name == self.param:
-                print(item.description)
-                return
-
-        # if item is in room
+        # search for item
         room = get_current_room(context)
-        for item in room.items:
-            if item.name == self.param:
-                print(item.description)
-                return
+        item = get_item_by_name(self.param, context.backpack + room.items)
 
-        # no such item found
-        print("Taký predmet tu nikde nevidím.")
+        # was found?
+        if item is None:
+            print("Taký predmet tu nikde nevidím.")
+            return
+
+        # render
+        print(item.description)
