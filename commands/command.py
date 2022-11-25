@@ -14,6 +14,6 @@ class Command:
     param: str = None
 
     # behavior / methods
-    def exec(self, context: GameContext):
+    def exec(self, context: GameContext) -> None:
         #! FIXME exception
         print('vykonavam prikaz')

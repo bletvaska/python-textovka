@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_room_by_name
+from helpers import get_room_by_name, get_current_room
 from .command import Command
 
 
@@ -22,7 +22,7 @@ class Examine(Command):
                 return
 
         # if item is in room
-        room = get_room_by_name(context.current_room, context.rooms)
+        room = get_current_room(context)
         for item in room.items:
             if item.name == self.param:
                 print(item.description)

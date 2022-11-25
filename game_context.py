@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 
+from items.item import Item
 from rooms.room import Room
 from states import STATE_PLAYING
 
@@ -8,6 +9,6 @@ from states import STATE_PLAYING
 class GameContext:
     current_room: str
     rooms: list[Room] = field(default_factory=list)
-    backpack: list[str] = field(default_factory=list)
+    backpack: list[Item] = field(default_factory=list)
     commands: list = field(default_factory=list)
     game_state: str = STATE_PLAYING
