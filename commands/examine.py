@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 
 from helpers import get_room_by_name, get_current_room, get_item_by_name
+from items.features import EXAMINABLE
+from items.parachute import Parachute
 from .command import Command
 
 
@@ -26,3 +28,7 @@ class Examine(Command):
 
         # render
         print(item.description)
+
+        # is item examinable?
+        if EXAMINABLE in item.features:
+            item.examine(context)
