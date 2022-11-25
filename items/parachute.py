@@ -23,4 +23,7 @@ class Parachute(Item):
         room = get_current_room(context)
         room.show()
 
+        # remove usability
+        self.features.remove(USABLE)
+
         return True

@@ -1,3 +1,4 @@
+from items.coconut_palm_tree import CoconutPalmTree
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from . import directions
@@ -48,6 +49,7 @@ rooms = [
             directions.NORTH: 'miesto pristatia',
             directions.SOUTH: 'pred taborom',
         },
+        items=[CoconutPalmTree()]
     ),
 
     Room(
