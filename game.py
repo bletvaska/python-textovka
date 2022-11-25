@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from commands.drop import Drop
 from commands.examine import Examine
 from commands.take import Take
 from items.whip import Whip
@@ -29,6 +30,7 @@ context = GameContext(
         About(),
         Commands(),
         Down(),
+        Drop(),
         East(),
         Examine(),
         Help(),

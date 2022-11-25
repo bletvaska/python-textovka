@@ -6,7 +6,7 @@
 * [Program Flow](110-program.flow.md)
 * [Game State](120-game.state.md)
 * [Creating of Own Functions](125-own.functions.md)
-* [Inventory](130-inventory.md)
+* ~~[Inventory](130-inventory.md)~~
 
 
 ## Day 2: The Commands
@@ -32,6 +32,17 @@
 
 
 ## Day 4: The Items
+
+* [Dataclass for Generic Item](400-item.representation.md)
+* [Item _Whip_](405-whip.md)
+* [Item _Empty Seats_](410-empty.seats.md)
+* Command `inventory`
+* [Place Created Items into Room](415-items.in.room.md)
+* [Command `examine`](420-examine.md)
+* [Command `take`](430-take.item.md)
+* [Command `drop`](440-drop.item.md)
+* Extended Item Examination
+* [Command `use`](460-use.item.md)
 
 
 ## Day 5

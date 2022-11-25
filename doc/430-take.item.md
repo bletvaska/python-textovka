@@ -1,4 +1,4 @@
-# Prikaz `vezmi`
+# Príkaz `vezmi`
 
 Vytvorte triedu `Take`, ktorá bude reprezentovať príkaz `vezmi`. Tento príkaz vezme predmet z miestnosti a vloží ho
 do hráčovho batohu.
@@ -39,7 +39,8 @@ Príkaz musí spĺňať nasledovné podmienky:
      Do batohu si vložil predmet bic.
      ```
 
-## Riesenie
+
+## Riešenie
 
 ```python
 from dataclasses import dataclass
