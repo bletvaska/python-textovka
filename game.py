@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from items.whip import Whip
+from commands.examine import Examine
 from rooms import world
 from commands.about import About
 from commands.commands import Commands
@@ -28,6 +28,7 @@ context = GameContext(
         Commands(),
         Down(),
         East(),
+        Examine(),
         Help(),
         Inventory(),
         LookAround(),
