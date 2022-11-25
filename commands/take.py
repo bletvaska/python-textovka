@@ -10,4 +10,6 @@ class Take(Command):
 
     def exec(self, context):
         # if no item was entered
-        pass
+        if self.param == '':
+            print("Neviem, čo chceš zobrať.")
+            return

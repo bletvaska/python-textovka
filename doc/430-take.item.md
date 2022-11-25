@@ -1,4 +1,4 @@
-# Prikaz `vezmi predmet`
+# Prikaz `vezmi`
 
 Vytvorte triedu `Take`, ktorá bude reprezentovať príkaz `vezmi`. Tento príkaz vezme predmet z miestnosti a vloží ho
 do hráčovho batohu.
