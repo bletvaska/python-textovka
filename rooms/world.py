@@ -1,3 +1,4 @@
+from items.empty_seats import EmptySeats
 from items.whip import Whip
 from . import directions
 from .room import Room
@@ -11,7 +12,7 @@ rooms = [
         exits={
             directions.DOWN: 'vo vzduchu'
         },
-        items=[Whip()]
+        items=[Whip(), EmptySeats()]
     ),
 
     Room(
