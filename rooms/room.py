@@ -11,8 +11,21 @@ class Room:
     exits: dict = field(default_factory=dict)
 
     def show(self):
+        # room name and description
         print(f'Nachádzaš sa v miestnosti {self.name}.\n')
         print(f'{self.description}\n')
+
+        # items
+        if len(self.items) == 0:
+            print('Nevidíš tu nič zvláštne.')
+        else:
+            print('Vidíš:')
+            for item in self.items:
+                print(f'* {item.name}')
+
+        print()
+
+        # exits
         if len(self.exits) == 0:
             print('Z tejto miestnosti nevedú žiadne východy.')
         else:

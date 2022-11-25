@@ -10,7 +10,7 @@ def item():
 
 
 def test_when_created_then_expect_specific_name(item):
-    assert item == 'bic'
+    assert item.name == 'bic'
 
 
 def test_when_created_then_expect_specific_description(item):
