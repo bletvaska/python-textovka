@@ -3,6 +3,7 @@ from items.empty_seats import EmptySeats
 from items.whip import Whip
 from . import directions
 from .at_enemy_gate import AtEnemyGate
+from .free_fall import FreeFall
 from .room import Room
 
 rooms = [
@@ -26,7 +27,7 @@ rooms = [
         }
     ),
 
-    Room(
+    FreeFall(
         name='smrt volnym padom',
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
                     'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',

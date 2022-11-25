@@ -66,11 +66,4 @@ while context.game_state == STATE_PLAYING:
     else:
         command.exec(context)
 
-    # check game state
-    if context.current_room == 'smrt volnym padom':
-        context.game_state = DEATH_BY_FREE_FALL
-
-if context.game_state == DEATH_BY_FREE_FALL:
-    print('Ta si spadol a zabil sa bez padaka')
-
 outro()
