@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from helpers import get_current_room
 from .command import Command
 
 
@@ -13,3 +14,12 @@ class Take(Command):
         if self.param == '':
             print("Neviem, čo chceš zobrať.")
             return
+
+        # if item is in room
+        room = get_current_room(context)
+        for item in room.items:
+            if item.name == self.param:
+                print(item.description)
+                return
+
+        print('Taký predmet tu nikde nevidím.')

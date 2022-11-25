@@ -24,6 +24,14 @@ Príkaz musí spĺňať nasledovné podmienky:
      Taký predmet tu nikde nevidím.
      ```
 
+   * Ak sa jedná o predmet, ktorý nemá nastavenú vlastnosť `MOVABLE`, tak vypíšte na obrazovku správu `Tento predmet
+     sa nedá zobrať.`:
+
+     ```
+     > vezmi prazdne sedadla
+     Tento predmet sa nedá zobrať.
+     ```
+
    * Ak hráč úspešne vloží predmet do batohu, tak vypíšte na obrazovku správu:
 
      ```
