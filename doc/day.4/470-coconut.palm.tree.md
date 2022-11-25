@@ -4,6 +4,7 @@ V miestnosti `oáza` sa nachádza kokosová palma. Na jej plody síce Indiana Jo
 pod ňou nájde zachovalú nemeckú uniformu. A aby to nebolo všetko, po preskúmaní nemeckej uniformy v nej nájdeme
 mosadzný kľúčik.
 
+
 ## Mosadzný kľúčik
 
 Začneme teda vytvorením mosadzného kľúčika. Ten bude mať tieto vlastnosti:

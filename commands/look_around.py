@@ -11,4 +11,4 @@ class LookAround(Command):
 
     def exec(self, context):
         room = get_room_by_name(context.current_room, context.rooms)
-        room.show()
+        room.show(context)

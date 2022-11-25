@@ -22,4 +22,10 @@ class NaziUniform(Item):
         print('V jednom jej vrecku si objavil kľúč!')
 
     def use(self, context):
-        return False
+        # action
+        self.name = 'nemecka uniforma (oblecena)'
+
+        # render
+        print('Obliekol si si uniformu... Padne ti ako uliata.')
+
+        return True

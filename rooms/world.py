@@ -2,6 +2,7 @@ from items.coconut_palm_tree import CoconutPalmTree
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from . import directions
+from .at_enemy_gate import AtEnemyGate
 from .room import Room
 
 rooms = [
@@ -52,7 +53,7 @@ rooms = [
         items=[CoconutPalmTree()]
     ),
 
-    Room(
+    AtEnemyGate(
         name='pred taborom',
         description='Stojíš pri plote z ostnatého drôtu. Na juhu je brána, ktorá vedie do vojenského tábora. Na '
                     'blízkej strážnej veži hliadkuje nemecký vojak. Na severe vidíš za piesočnou dunou vrch palmy.',

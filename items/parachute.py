@@ -21,7 +21,7 @@ class Parachute(Item):
         context.current_room = 'miesto pristatia'
         print('Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...')
         room = get_current_room(context)
-        room.show()
+        room.show(context)
 
         # remove usability
         self.features.remove(USABLE)

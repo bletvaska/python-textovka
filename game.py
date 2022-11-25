@@ -18,8 +18,8 @@ from commands.south import South
 from commands.up import Up
 from commands.west import West
 from game_context import GameContext
-from helpers import intro, outro, parse_line, get_room_by_name
-from states import STATE_PLAYING, DEATH_BY_FREE_FALL
+from helpers import intro, outro, parse_line, get_room_by_name, get_item_by_name
+from states import STATE_PLAYING, DEATH_BY_FREE_FALL, SHOT_BY_ENEMY
 
 intro()
 
@@ -49,7 +49,7 @@ context = GameContext(
 
 room = get_room_by_name(context.current_room, context.rooms)
 
-room.show()
+room.show(context)
 
 # game loop
 while context.game_state == STATE_PLAYING:

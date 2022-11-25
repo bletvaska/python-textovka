@@ -18,7 +18,7 @@ class North(Command):
         if directions.NORTH in room.exits:
             context.current_room = room.exits[directions.NORTH]
             room = get_room_by_name(context.current_room, context.rooms)
-            room.show()
+            room.show(context)
 
         else:
             print('Tam sa nedá ísť.')
