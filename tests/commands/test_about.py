@@ -5,7 +5,7 @@ from commands.about import About
 
 @pytest.fixture
 def cmd():
-    return About()
+    yield About()
 
 
 def test_when_created_then_expect_specific_name(cmd):

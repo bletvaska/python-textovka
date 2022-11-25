@@ -7,7 +7,7 @@ from items.whip import Whip
 
 @pytest.fixture
 def cmd():
-    return Inventory()
+    yield Inventory()
 
 
 def test_when_created_then_expect_specific_name(cmd):

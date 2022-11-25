@@ -64,7 +64,7 @@ rooms = [
     ),
 
     Room(
-        name='uprostred tabora',
+        name='v tabore',
         description='Stojíš uprostred vyľudneného vojenského tábora. Na severe je brána vedúca von do púšte. Na '
                     'západe je malý stan, ktorý slúži ako sklad. Na východe je veliteľov stan.',
         exits={
@@ -77,7 +77,7 @@ rooms = [
         name='velitelov stan',
         description='Si vo veliteľovom stane. Je tu značný neporiadok. Všade dookola je množstvo smetí.',
         exits={
-            directions.WEST: 'uprostred tabora',
+            directions.WEST: 'v tabore',
         },
     )
 ]

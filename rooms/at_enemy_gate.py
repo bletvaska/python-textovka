@@ -21,7 +21,7 @@ class AtEnemyGate(Room):
         else:
             # action
             room = get_current_room(context)
-            room.exits[directions.SOUTH] = 'uprostred tabora'
+            room.exits[directions.SOUTH] = 'v tabore'
 
             # render
             print('Keď ťa vojak uvidel, otvoril ti bránu. (Hlupák!)')
