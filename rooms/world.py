@@ -1,3 +1,4 @@
+from items.whip import Whip
 from . import directions
 from .room import Room
 
@@ -9,7 +10,8 @@ rooms = [
                     'že?) ',
         exits={
             directions.DOWN: 'vo vzduchu'
-        }
+        },
+        items=[Whip()]
     ),
 
     Room(

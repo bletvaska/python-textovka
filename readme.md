@@ -45,4 +45,9 @@ programovani alebo skriptovania v inom jazyku.
 +------------+
 | vo vzduchu |
 +------------+
+      |
+      v
++------------+
+| volny pad  |
++------------+
 ```
