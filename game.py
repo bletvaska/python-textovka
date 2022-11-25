@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from items.whip import Whip
 from rooms import world
 from commands.about import About
 from commands.commands import Commands
@@ -35,7 +36,7 @@ context = GameContext(
         South(),
         Up(),
         West()
-    ]
+    ],
 )
 
 room = get_room_by_name(context.current_room, context.rooms)
