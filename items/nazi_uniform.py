@@ -1,7 +1,9 @@
 from dataclasses import dataclass, field
 
+from helpers import get_current_room
 from items.features import MOVABLE, USABLE, EXAMINABLE
 from items.item import Item
+from items.key import Key
 
 
 @dataclass
@@ -12,7 +14,8 @@ class NaziUniform(Item):
 
     def examine(self, context):
         # action
-
+        room = get_current_room(context)
+        room.items.append(Key())
         self.features.remove(EXAMINABLE)
 
         # render
