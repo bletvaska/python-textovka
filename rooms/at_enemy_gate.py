@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
-from helpers import get_item_by_name
+from helpers import get_item_by_name, get_current_room
 from states import SHOT_BY_ENEMY
+from . import directions
 from .room import Room
 
 
@@ -12,7 +13,15 @@ class AtEnemyGate(Room):
 
         # is indy wearing a uniform?
         if uniform is None:
-            print('Vojak si ťa so záujmom prehliadol a zastrelil ťa.')
+            # action
             context.game_state = SHOT_BY_ENEMY
+
+            # render
+            print('Vojak si ťa so záujmom prehliadol a zastrelil ťa.')
         else:
+            # action
+            room = get_current_room(context)
+            room.exits[directions.SOUTH] = 'uprostred tabora'
+
+            # render
             print('Keď ťa vojak uvidel, otvoril ti bránu. (Hlupák!)')
