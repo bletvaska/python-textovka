@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from helpers import get_current_room
+from items.features import MOVABLE
 from .command import Command
 
 
@@ -19,7 +20,16 @@ class Take(Command):
         room = get_current_room(context)
         for item in room.items:
             if item.name == self.param:
-                print(item.description)
+                # is item movable?
+                if MOVABLE not in item.features:
+                    print('Tento predmet sa nedá zobrať.')
+                    return
+
+                # take item
+                room.items.remove(item)
+                context.backpack.append(item)
+
+                print(f'Do batohu si si vložil {item.name}.')
                 return
 
         print('Taký predmet tu nikde nevidím.')
