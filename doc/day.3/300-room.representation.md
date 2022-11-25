@@ -2,10 +2,10 @@
 
 kazda miestnost ma tieto vlastnosti:
 
-* nazov - jedinecny nazov miestnosti, ktorym vieme miestnost odlisit od ostatnych miestnosti v hre
-* opis -
+* názov - jedinečný názov miestnosti, ktorym vieme miestnost odlisit od ostatnych miestnosti v hre
+* opis - opis miestnosti
 * zoznam predmetov v miestnosti
-* zoznam vychodov (susedia)
+* zoznam východov (susedia)
 
 
 ```python

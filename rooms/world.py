@@ -5,7 +5,6 @@ from . import directions
 from .at_enemy_gate import AtEnemyGate
 from .free_fall import FreeFall
 from .room import Room
-
 rooms = [
     Room(
         name='v lietadle',
@@ -23,61 +22,76 @@ rooms = [
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
                     'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
         exits={
-            directions.DOWN: 'smrt volnym padom'
+            directions.DOWN: 'voľný pád'
         }
     ),
 
     FreeFall(
-        name='smrt volnym padom',
+        name='voľný pád',
         description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
                     'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
     ),
 
     Room(
-        name='miesto pristatia',
+        name='púšť',
         description='Si na púšti, ktorá sa vyznačuje predovšetkým tým, že je pustá. (Je zaujímavé, že to tu vyzerá '
                     'úplne inak, ako v lietadle).',
         exits={
-            directions.SOUTH: 'oaza'
+            directions.SOUTH: 'oáza',
+            directions.NORTH: 'púšť',
+            directions.EAST: 'púšť',
+            directions.WEST: 'púšť',
         }
     ),
 
     Room(
-        name='oaza',
+        name='oáza',
         description='Si v malej oáze uprostred púšte. Pri malom jazierku stojí palma s niekoľkými kokosovými orechmi. '
                     'Nič moc. Zaujímavejšie je, že kúsok odtiaľto smerom na juh je plot z ostnatého drôtu s bránou a '
                     'strážnou vežou.',
         exits={
-            directions.NORTH: 'miesto pristatia',
-            directions.SOUTH: 'pred taborom',
+            directions.SOUTH: 'pred táborom',
+            directions.NORTH: 'púšť',
+            directions.EAST: 'púšť',
+            directions.WEST: 'púšť',
         },
         items=[CoconutPalmTree()]
     ),
 
     AtEnemyGate(
-        name='pred taborom',
+        name='pred táborom',
         description='Stojíš pri plote z ostnatého drôtu. Na juhu je brána, ktorá vedie do vojenského tábora. Na '
                     'blízkej strážnej veži hliadkuje nemecký vojak. Na severe vidíš za piesočnou dunou vrch palmy.',
         exits={
-            directions.NORTH: 'oaza'
+            directions.NORTH: 'oáza'
         }
     ),
 
     Room(
-        name='v tabore',
+        name='v tábore',
         description='Stojíš uprostred vyľudneného vojenského tábora. Na severe je brána vedúca von do púšte. Na '
                     'západe je malý stan, ktorý slúži ako sklad. Na východe je veliteľov stan.',
         exits={
-            directions.NORTH: 'pred taborom',
-            directions.EAST: 'velitelov stan'
+            directions.NORTH: 'pred táborom',
+            directions.EAST: 'veliteľov stan',
+            directions.WEST: 'malý stan'
         }
     ),
 
     Room(
-        name='velitelov stan',
+        name='veliteľov stan',
         description='Si vo veliteľovom stane. Je tu značný neporiadok. Všade dookola je množstvo smetí.',
         exits={
-            directions.WEST: 'v tabore',
+            directions.WEST: 'v tábore',
         },
+    ),
+
+    Room(
+        name='malý stan',
+        description='Si v malom stane. Je tu hromada neužitočných harabúrd.',
+        exits={
+            directions.EAST: 'v tábore'
+        }
     )
 ]
+

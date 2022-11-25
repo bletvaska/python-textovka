@@ -18,7 +18,7 @@ class Parachute(Item):
             return False
 
         # use item
-        context.current_room = 'miesto pristatia'
+        context.current_room = 'púšť'
         print('Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...')
         room = get_current_room(context)
         room.show(context)
