@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from helpers import get_room_by_name
 from .command import Command
 
 
@@ -21,5 +22,11 @@ class Examine(Command):
                 return
 
         # if item is in room
+        room = get_room_by_name(context.current_room, context.rooms)
+        for item in room.items:
+            if item.name == self.param:
+                print(item.description)
+                return
 
+        # no such item found
         print("Taký predmet tu nikde nevidím.")

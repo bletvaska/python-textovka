@@ -39,7 +39,6 @@ context = GameContext(
         Up(),
         West()
     ],
-    backpack=[Whip()]
 )
 
 room = get_room_by_name(context.current_room, context.rooms)
