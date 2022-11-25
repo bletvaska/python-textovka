@@ -2,6 +2,7 @@
 from commands.drop import Drop
 from commands.examine import Examine
 from commands.take import Take
+from commands.use import Use
 from items.whip import Whip
 from rooms import world
 from commands.about import About
@@ -41,6 +42,7 @@ context = GameContext(
         South(),
         Take(),
         Up(),
+        Use(),
         West()
     ],
 )

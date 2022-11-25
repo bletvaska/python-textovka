@@ -9,7 +9,7 @@ from items.parachute import Parachute
 @dataclass
 class EmptySeats(Item):
     name: str = 'prazdne sedadla'
-    description: str = 'Obvyklé letecké sedadlá.'
+    description: str = 'Obyčajné letecké sedadlá.'
     features: list = field(default_factory=lambda: [EXAMINABLE])
 
     def examine(self, context):
