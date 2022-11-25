@@ -19,5 +19,6 @@ def game_context():
             Inventory(),
             LookAround(),
             Quit()
-        ]
+        ],
+        current_room='v lietadle'
     )
