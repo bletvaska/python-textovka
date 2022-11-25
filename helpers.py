@@ -1,5 +1,6 @@
 from commands.command import Command
 from game_context import GameContext
+from items.item import Item
 from rooms.room import Room
 
 
@@ -54,3 +55,11 @@ def get_current_room(context: GameContext) -> Room:
     Returns current room.
     """
     return get_room_by_name(context.current_room, context.rooms)
+
+
+def get_item_by_name(name: str, items: list[Item]) -> Item | None:
+    for item in items:
+        if item.name == name:
+            return item
+
+    return None  # default

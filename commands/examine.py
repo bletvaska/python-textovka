@@ -15,6 +15,8 @@ class Examine(Command):
             print("Neviem, čo chceš preskúmať.")
             return
 
+        item = get_item_by_name(self.param, room.items)
+
         # if item is in backpack
         for item in context.backpack:
             if item.name == self.param:
