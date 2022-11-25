@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from commands.examine import Examine
+from commands.take import Take
 from items.whip import Whip
 from rooms import world
 from commands.about import About
@@ -36,6 +37,7 @@ context = GameContext(
         North(),
         Quit(),
         South(),
+        Take(),
         Up(),
         West()
     ],

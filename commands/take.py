@@ -9,4 +9,5 @@ class Take(Command):
     description: str = 'vezme predmet z miestnosti a vloží ho do batohu'
 
     def exec(self, context):
+        # if no item was entered
         pass
