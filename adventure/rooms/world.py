@@ -1,11 +1,12 @@
 from items.coconut_palm_tree import CoconutPalmTree
 from items.empty_seats import EmptySeats
 from items.whip import Whip
-from . import directions
+from rooms import directions
 from .at_enemy_gate import AtEnemyGate
 from .free_fall import FreeFall
 from .in_plane import InPlane
 from .room import Room
+
 rooms = [
     InPlane(
         name='v lietadle',
@@ -86,4 +87,3 @@ rooms = [
         }
     )
 ]
-

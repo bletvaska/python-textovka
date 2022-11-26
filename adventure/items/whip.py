@@ -1,5 +1,5 @@
-from items.features import MOVABLE, USABLE
-from items.item import Item
+from .features import MOVABLE, USABLE
+from .item import Item
 
 
 class Whip(Item):

@@ -1,4 +1,4 @@
-from states import DEATH_BY_FREE_FALL
+import states
 from .room import Room
 
 
@@ -11,4 +11,4 @@ class FreeFall(Room):
         # too many steps?
         if self.steps > 1:
             print('Stal si sa zakladateľom športového odvetvia, ktoré vojde do histórie ako skok hlboký.')
-            context.game_state = DEATH_BY_FREE_FALL
+            context.game_state = states.DEATH_BY_FREE_FALL

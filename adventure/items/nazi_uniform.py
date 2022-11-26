@@ -1,6 +1,6 @@
-from items.features import MOVABLE, USABLE, EXAMINABLE
-from items.item import Item
-from items.key import Key
+from .features import MOVABLE, USABLE, EXAMINABLE
+from .item import Item
+from .key import Key
 
 
 class NaziUniform(Item):

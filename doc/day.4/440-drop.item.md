@@ -36,7 +36,7 @@ Príkaz musí spĺňať nasledovné podmienky:
 ```python
 from dataclasses import dataclass
 
-from helpers import get_current_room, get_item_by_name
+from adventure.helpers import get_current_room, get_item_by_name
 from .command import Command
 
 

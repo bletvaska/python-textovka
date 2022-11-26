@@ -11,8 +11,8 @@ Vytvorte predmet padák.
 ```python
 from dataclasses import dataclass, field
 
-from items.features import MOVABLE, USABLE, EXAMINABLE
-from items.item import Item
+from adventure.items import MOVABLE, USABLE, EXAMINABLE
+from adventure.items.item import Item
 
 
 @dataclass

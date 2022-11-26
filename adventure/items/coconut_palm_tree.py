@@ -1,6 +1,6 @@
-from items.features import EXAMINABLE
-from items.item import Item
-from items.nazi_uniform import NaziUniform
+from .features import EXAMINABLE
+from .item import Item
+from .nazi_uniform import NaziUniform
 
 
 class CoconutPalmTree(Item):

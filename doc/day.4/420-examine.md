@@ -20,11 +20,10 @@ Vytvorte príkaz `preskumaj`, pomocou ktorého zobrazíte opis zvoleného predme
    Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.
    ```
 
-
 ```python
 from dataclasses import dataclass
 
-from helpers import get_current_room, get_item_by_name
+from adventure.helpers import get_current_room, get_item_by_name
 from .command import Command
 
 

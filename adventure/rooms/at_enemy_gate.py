@@ -1,5 +1,5 @@
 from helpers import get_item_by_name
-from states import SHOT_BY_ENEMY
+import states
 from . import directions
 from .room import Room
 
@@ -11,7 +11,7 @@ class AtEnemyGate(Room):
         # is indy wearing a uniform?
         if uniform is None:
             # action
-            context.game_state = SHOT_BY_ENEMY
+            context.game_state = states.SHOT_BY_ENEMY
 
             # render
             print('Vojak si ťa so záujmom prehliadol a zastrelil ťa.')

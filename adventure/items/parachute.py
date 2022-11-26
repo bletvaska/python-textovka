@@ -1,6 +1,6 @@
 from helpers import get_room_by_name
-from items.features import MOVABLE, USABLE
-from items.item import Item
+from .features import MOVABLE, USABLE
+from .item import Item
 
 
 class Parachute(Item):

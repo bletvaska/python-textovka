@@ -1,5 +1,5 @@
 from helpers import get_item_by_name
-from items.features import MOVABLE, USABLE
+from items.features import USABLE
 from .command import Command
 
 

@@ -1,6 +1,6 @@
-from items.features import EXAMINABLE
-from items.item import Item
-from items.parachute import Parachute
+from .features import EXAMINABLE
+from .item import Item
+from .parachute import Parachute
 
 
 class EmptySeats(Item):

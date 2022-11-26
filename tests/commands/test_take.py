@@ -1,6 +1,5 @@
 import pytest
 
-from commands.about import About
 from commands.take import Take
 
 

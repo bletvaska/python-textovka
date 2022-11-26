@@ -83,7 +83,7 @@ A adekvátne aktualizujeme aj kód:
 
 ```python
 #!/usr/bin/env python3
-import states
+from adventure import states
 
 if __name__ == '__main__':
     print('Indiana Jones and his Great Escape')

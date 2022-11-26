@@ -18,8 +18,8 @@ Jeho základná implementácia (bez použitia) sa bude nachádzať v balíčku `
 ```python
 from dataclasses import dataclass, field
 
-from items.features import MOVABLE, USABLE
-from items.item import Item
+from adventure.items import MOVABLE, USABLE
+from adventure.items.item import Item
 
 
 @dataclass
@@ -49,29 +49,29 @@ vyzerať takto:
 ```python
 from dataclasses import dataclass, field
 
-from helpers import get_current_room
-from items.features import MOVABLE, USABLE, EXAMINABLE
-from items.item import Item
-from items.key import Key
+from adventure.helpers import get_current_room
+from adventure.items import MOVABLE, USABLE, EXAMINABLE
+from adventure.items.item import Item
+from adventure.items import Key
 
 
 @dataclass
 class NaziUniform(Item):
-    name: str = 'nemecka uniforma'
-    description: str = 'Zachovalá dôstojnícka uniforma.'
-    features: list = field(default_factory=lambda: [MOVABLE, USABLE, EXAMINABLE])
+   name: str = 'nemecka uniforma'
+   description: str = 'Zachovalá dôstojnícka uniforma.'
+   features: list = field(default_factory=lambda: [MOVABLE, USABLE, EXAMINABLE])
 
-    def examine(self, context):
-        # action
-        room = get_current_room(context)
-        room.items.append(Key())
-        self.features.remove(EXAMINABLE)
+   def examine(self, context):
+      # action
+      room = get_current_room(context)
+      room.items.append(Key())
+      self.features.remove(EXAMINABLE)
 
-        # render
-        print('V jednom jej vrecku si objavil kľúč!')
+      # render
+      print('V jednom jej vrecku si objavil kľúč!')
 
-    def use(self, context):
-        return False
+   def use(self, context):
+      return False
 ```
 
 
@@ -92,26 +92,26 @@ vyzerať nasledovne:
 ```python
 from dataclasses import dataclass, field
 
-from helpers import get_current_room
-from items.features import EXAMINABLE
-from items.item import Item
-from items.nazi_uniform import NaziUniform
+from adventure.helpers import get_current_room
+from adventure.items import EXAMINABLE
+from adventure.items.item import Item
+from adventure.items import NaziUniform
 
 
 @dataclass
 class CoconutPalmTree(Item):
-    name: str = 'kokosova palma'
-    description: str = 'Zdá sa, že na jej plody nedosiahneš.'
-    features: list = field(default_factory=lambda: [EXAMINABLE])
+   name: str = 'kokosova palma'
+   description: str = 'Zdá sa, že na jej plody nedosiahneš.'
+   features: list = field(default_factory=lambda: [EXAMINABLE])
 
-    def examine(self, context):
-        # action
-        room = get_current_room(context)
-        room.items.append(NaziUniform())
-        self.features.remove(EXAMINABLE)
+   def examine(self, context):
+      # action
+      room = get_current_room(context)
+      room.items.append(NaziUniform())
+      self.features.remove(EXAMINABLE)
 
-        # render
-        print('Pod koreňmi palmy si objavil ukrytú uniformu.')
+      # render
+      print('Pod koreňmi palmy si objavil ukrytú uniformu.')
 ```
 
 Nakoniec je potrebné kokosovú palmu pridať do miestnosti s názvom `oaza`.

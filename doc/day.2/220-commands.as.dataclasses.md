@@ -48,7 +48,7 @@ class Commands(Command):
 ```python
 from dataclasses import dataclass
 
-from states import QUIT
+from adventure.states import QUIT
 from .command import Command
 
 

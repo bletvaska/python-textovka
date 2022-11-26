@@ -1,7 +1,6 @@
 import pytest
 
 from commands.inventory import Inventory
-from game_context import GameContext
 from items.whip import Whip
 
 

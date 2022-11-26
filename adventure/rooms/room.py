@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from pydantic import BaseModel
 
 if TYPE_CHECKING:
-    from game_context import GameContext
+    from adventure.game_context import GameContext
 from . import directions
 
 

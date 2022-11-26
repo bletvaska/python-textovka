@@ -1,5 +1,5 @@
-import pytest
-
+#!/usr/bin/env python
+import states
 from commands.about import About
 from commands.commands import Commands
 from commands.down import Down
@@ -16,15 +16,17 @@ from commands.take import Take
 from commands.up import Up
 from commands.use import Use
 from commands.west import West
-
-from game_context import GameContext
-from helpers import get_room_by_name
 from rooms import world
+from game_context import GameContext
+from helpers import intro, outro, parse_line, get_room_by_name
 
 
-@pytest.fixture
-def game_context():
+def main():
+    intro()
+
+    # game initialization
     context = GameContext(
+        rooms=world.rooms,
         commands=[
             About(),
             Commands(),
@@ -43,9 +45,29 @@ def game_context():
             Use(),
             West()
         ],
-        rooms=world.rooms
     )
 
-    context.current_room = get_room_by_name('v lietadle', context.rooms)
+    room = context.current_room = get_room_by_name('v lietadle', context.rooms)
+    room.show()
 
-    yield context
+    # game loop
+    while context.game_state == states.PLAYING:
+        line = input('> ').lstrip().rstrip().lower()
+
+        if line == '':  # len(line) == 0
+            continue
+            # pass
+
+        # parse command line
+        command = parse_line(line, context.commands)
+        if command is None:
+            print('Tento príkaz nepoznám.')
+        else:
+            command.exec(context)
+            context.current_room.act(context)
+
+    outro()
+
+
+if __name__ == '__main__':
+    main()

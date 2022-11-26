@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "textovka"
+name = "adventure"
 version = "0.1.0"
 description = "Project for Python 101 training."
 authors = ["Miroslav Biňas <miroslav.binas@tuke.sk>"]
@@ -21,10 +21,12 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.pytest.ini_options]
-addopts = [
-]
+addopts = []
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 markers = [
     "wip: work in progress",
 ]
+
+#[tool.poetry.scripts]
+#indy2 = 'adventure.game:main'

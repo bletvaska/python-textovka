@@ -9,8 +9,8 @@ Vytvorte predmet prázdne sedadlá, ktorý bude mať:
 ```python
 from dataclasses import dataclass, field
 
-from items.features import EXAMINABLE
-from items.item import Item
+from adventure.items import EXAMINABLE
+from adventure.items.item import Item
 
 
 @dataclass
