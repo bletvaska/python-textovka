@@ -1,13 +1,10 @@
-from dataclasses import dataclass
-
 from .command import Command
 
 
-@dataclass
 class Inventory(Command):
     # fields
-    name: str = 'inventar'
-    description: str = 'zobrazí obsah hráčovho batohu'
+    name = 'inventar'
+    description = 'zobrazí obsah hráčovho batohu'
 
     # methods
     def exec(self, context):

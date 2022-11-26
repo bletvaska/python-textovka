@@ -13,7 +13,7 @@ class Parachute(Item):
 
     def use(self, context) -> bool:
         # check usage conditions
-        if context.current_room.name != 'vo vzduchu':
+        if context.current_room.name != 'voľný pád':
             return False
 
         # use item

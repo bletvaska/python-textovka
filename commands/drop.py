@@ -1,13 +1,10 @@
-from dataclasses import dataclass
-
 from helpers import get_item_by_name
 from .command import Command
 
 
-@dataclass
 class Drop(Command):
-    name: str = 'poloz'
-    description: str = 'vyberie zvolený predmet z batohu a položí ho do aktuálnej miestnosti'
+    name = 'poloz'
+    description = 'vyberie zvolený predmet z batohu a položí ho do aktuálnej miestnosti'
 
     def exec(self, context):
         # if no item was entered

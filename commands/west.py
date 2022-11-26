@@ -1,14 +1,11 @@
-from dataclasses import dataclass
-
 from rooms import directions
 from helpers import get_room_by_name
 from .command import Command
 
 
-@dataclass
 class West(Command):
-    name: str = 'zapad'
-    description: str = 'presunie sa do miestnosti na západ od aktuálnej'
+    name = 'zapad'
+    description = 'presunie sa do miestnosti na západ od aktuálnej'
 
     def exec(self, context):
         # get current room

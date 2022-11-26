@@ -1,14 +1,11 @@
-from dataclasses import dataclass
-
 from states import STATE_QUIT
 from .command import Command
 
 
-@dataclass
 class Quit(Command):
     # fields
-    name: str = 'koniec'
-    description: str = 'ukončí hru'
+    name = 'koniec'
+    description = 'ukončí hru'
 
     # methods
     def exec(self, context):

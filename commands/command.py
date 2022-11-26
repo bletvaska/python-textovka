@@ -1,10 +1,9 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
 from game_context import GameContext
 
 
-@dataclass
-class Command:
+class Command(BaseModel):
     """
     Describes every command in game.
     """

@@ -1,14 +1,11 @@
-from dataclasses import dataclass
-
 from helpers import get_item_by_name
 from items.features import EXAMINABLE
 from .command import Command
 
 
-@dataclass
 class Examine(Command):
-    name: str = 'preskumaj'
-    description: str = 'zobrazí informácie o zvolenom predmete'
+    name = 'preskumaj'
+    description = 'zobrazí informácie o zvolenom predmete'
 
     def exec(self, context):
         # if no item was entered

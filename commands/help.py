@@ -1,12 +1,9 @@
-from dataclasses import dataclass
-
 from .command import Command
 
 
-@dataclass
 class Help(Command):
-    name: str = 'pomoc'
-    description: str = 'zobrazí pomocníka ku zvolenému príkazu'
+    name = 'pomoc'
+    description = 'zobrazí pomocníka ku zvolenému príkazu'
 
     def exec(self, context):
         for command in context.commands:

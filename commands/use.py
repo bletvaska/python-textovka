@@ -1,14 +1,11 @@
-from dataclasses import dataclass
-
 from helpers import get_item_by_name
 from items.features import MOVABLE, USABLE
 from .command import Command
 
 
-@dataclass
 class Use(Command):
-    name: str = 'pouzi'
-    description: str = 'použije zvolený predmet'
+    name = 'pouzi'
+    description = 'použije zvolený predmet'
 
     def exec(self, context):
         # if no item was entered
