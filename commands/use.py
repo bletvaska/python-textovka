@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_current_room, get_item_by_name
+from helpers import get_item_by_name
 from items.features import MOVABLE, USABLE
 from .command import Command
 
@@ -17,8 +17,7 @@ class Use(Command):
             return
 
         # search for item in room
-        room = get_current_room(context)
-        item = get_item_by_name(self.param, room.items + context.backpack)
+        item = get_item_by_name(self.param, context.current_room.items + context.backpack)
 
         # was item found?
         if item is None:

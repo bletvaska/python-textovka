@@ -17,14 +17,13 @@ from commands.south import South
 from commands.up import Up
 from commands.west import West
 from game_context import GameContext
-from helpers import intro, outro, parse_line, get_current_room
+from helpers import intro, outro, parse_line, get_room_by_name
 from states import STATE_PLAYING
 
 intro()
 
 # game initialization
 context = GameContext(
-    current_room='v lietadle',
     rooms=world.rooms,
     commands=[
         About(),
@@ -46,8 +45,7 @@ context = GameContext(
     ],
 )
 
-room = get_current_room(context)
-
+room = context.current_room = get_room_by_name('v lietadle', context.rooms)
 room.show()
 
 # game loop
@@ -64,7 +62,6 @@ while context.game_state == STATE_PLAYING:
         print('Tento príkaz nepoznám.')
     else:
         command.exec(context)
-        room = get_current_room(context)
-        room.act(context)
+        context.current_room.act(context)
 
 outro()

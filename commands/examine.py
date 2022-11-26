@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_current_room, get_item_by_name
+from helpers import get_item_by_name
 from items.features import EXAMINABLE
 from .command import Command
 
@@ -17,8 +17,7 @@ class Examine(Command):
             return
 
         # search for item
-        room = get_current_room(context)
-        item = get_item_by_name(self.param, context.backpack + room.items)
+        item = get_item_by_name(self.param, context.backpack + context.current_room.items)
 
         # was found?
         if item is None:

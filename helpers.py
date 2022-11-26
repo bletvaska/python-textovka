@@ -51,11 +51,11 @@ def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
     return None  # default
 
 
-def get_current_room(context: GameContext) -> Room:
-    """
-    Returns current room.
-    """
-    return get_room_by_name(context.current_room, context.rooms)
+# def get_current_room(context: GameContext) -> Room:
+#     """
+#     Returns current room.
+#     """
+#     return get_room_by_name(context.current_room, context.rooms)
 
 
 def get_item_by_name(name: str, items: list[Item]) -> Item | None:

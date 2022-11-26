@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 
-from helpers import get_current_room
 from items.features import EXAMINABLE
 from items.item import Item
 from items.nazi_uniform import NaziUniform
@@ -14,8 +13,7 @@ class CoconutPalmTree(Item):
 
     def examine(self, context):
         # action
-        room = get_current_room(context)
-        room.items.append(NaziUniform())
+        context.current_room.items.append(NaziUniform())
         self.features.remove(EXAMINABLE)
 
         # render

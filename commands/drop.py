@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_current_room, get_item_by_name
+from helpers import get_item_by_name
 from .command import Command
 
 
@@ -16,7 +16,6 @@ class Drop(Command):
             return
 
         # search for item in room
-        room = get_current_room(context)
         item = get_item_by_name(self.param, context.backpack)
 
         # was item found?
@@ -26,7 +25,7 @@ class Drop(Command):
 
         # drop item
         context.backpack.remove(item)
-        room.items.append(item)
+        context.current_room.items.append(item)
 
         # render
         print(f'Do miestnosti si položil {item.name}.')

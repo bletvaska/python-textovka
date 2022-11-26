@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_item_by_name, get_current_room
+from helpers import get_item_by_name
 from states import SHOT_BY_ENEMY
 from . import directions
 from .room import Room
@@ -20,8 +20,7 @@ class AtEnemyGate(Room):
             print('Vojak si ťa so záujmom prehliadol a zastrelil ťa.')
         else:
             # action
-            room = get_current_room(context)
-            room.exits[directions.SOUTH] = 'v tabore'
+            context.current_room.exits[directions.SOUTH] = 'v tábore'
 
             # render
             print('Keď ťa vojak uvidel, otvoril ti bránu. (Hlupák!)')

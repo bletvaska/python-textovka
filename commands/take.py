@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_current_room, get_item_by_name
+from helpers import get_item_by_name
 from items.features import MOVABLE
 from .command import Command
 
@@ -17,8 +17,7 @@ class Take(Command):
             return
 
         # search for item in room
-        room = get_current_room(context)
-        item = get_item_by_name(self.param, room.items)
+        item = get_item_by_name(self.param, context.current_room.items)
 
         # was item found?
         if item is None:
@@ -31,7 +30,7 @@ class Take(Command):
             return
 
         # take item
-        room.items.remove(item)
+        context.current_room.items.remove(item)
         context.backpack.append(item)
 
         # render

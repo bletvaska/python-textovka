@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 
-from helpers import get_current_room
 from items.features import EXAMINABLE
 from items.item import Item
 from items.parachute import Parachute
@@ -14,8 +13,7 @@ class EmptySeats(Item):
 
     def examine(self, context):
         # add parachute to current room
-        room = get_current_room(context)
-        room.items.append(Parachute())
+        context.current_room.items.append(Parachute())
 
         # remove EXAMINABLE from list of features
         self.features.remove(EXAMINABLE)

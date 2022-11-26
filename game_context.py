@@ -7,7 +7,7 @@ from states import STATE_PLAYING
 
 @dataclass
 class GameContext:
-    current_room: str
+    current_room: Room = None
     rooms: list[Room] = field(default_factory=list)
     backpack: list[Item] = field(default_factory=list)
     commands: list = field(default_factory=list)

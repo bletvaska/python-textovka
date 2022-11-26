@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from helpers import get_current_room
+from helpers import get_room_by_name
 from items.features import MOVABLE, USABLE, EXAMINABLE
 from items.item import Item
 
@@ -13,15 +13,13 @@ class Parachute(Item):
 
     def use(self, context) -> bool:
         # check usage conditions
-        room = get_current_room(context)
-        if room.name != 'vo vzduchu':
+        if context.current_room.name != 'vo vzduchu':
             return False
 
         # use item
-        context.current_room = 'púšť'
+        context.current_room = get_room_by_name('púšť', context.rooms)
         print('Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...')
-        room = get_current_room(context)
-        room.show()
+        context.current_room.show()
 
         # remove usability
         self.features.remove(USABLE)
