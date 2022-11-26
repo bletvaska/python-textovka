@@ -1,14 +1,13 @@
-from dataclasses import dataclass, field
+from pydantic import BaseModel
 
 from . import directions
 
 
-@dataclass
-class Room:
+class Room(BaseModel):
     name: str
     description: str
-    items: list = field(default_factory=list)
-    exits: dict = field(default_factory=dict)
+    items: list = []
+    exits: dict = {}
 
     def act(self, context):
         pass

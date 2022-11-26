@@ -1,10 +1,7 @@
-from dataclasses import dataclass
-
 import states
 from .room import Room
 
 
-@dataclass
 class InPlane(Room):
     steps: int = 0
 

@@ -1,10 +1,7 @@
-from dataclasses import dataclass
-
 from states import DEATH_BY_FREE_FALL
 from .room import Room
 
 
-@dataclass
 class FreeFall(Room):
     steps: int = 0
 

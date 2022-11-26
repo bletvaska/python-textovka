@@ -1,12 +1,9 @@
-from dataclasses import dataclass
-
 from helpers import get_item_by_name
 from states import SHOT_BY_ENEMY
 from . import directions
 from .room import Room
 
 
-@dataclass
 class AtEnemyGate(Room):
     def act(self, context):
         uniform = get_item_by_name('nemecka uniforma (oblecena)', context.backpack)
