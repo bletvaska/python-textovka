@@ -15,5 +15,4 @@ class Command:
 
     # behavior / methods
     def exec(self, context: GameContext) -> None:
-        #! FIXME exception
-        print('vykonavam prikaz')
+        raise NotImplemented(f'Príkaz {self.name} ešte nebol implementovaný.')

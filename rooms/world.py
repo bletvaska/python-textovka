@@ -13,18 +13,9 @@ rooms = [
                     'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
                     'že?) ',
         exits={
-            directions.DOWN: 'vo vzduchu'
+            directions.DOWN: 'voľný pád'
         },
         items=[Whip(), EmptySeats()]
-    ),
-
-    Room(
-        name='vo vzduchu',
-        description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
-                    'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
-        exits={
-            directions.DOWN: 'voľný pád'
-        }
     ),
 
     FreeFall(

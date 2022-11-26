@@ -14,6 +14,8 @@
 * [Main Building Blocks of the Game](day.2/200-main.building.blocks.md)
 * About Dataclasses
 * [Dataclass for Abstract Command](day.2/210-dataclass.command.md)
+* Raising an Exception
+* Stack Trace
 * [Command `about`](day.2/220-commands.as.dataclasses.md)
 * [Command `commands`](day.2/220-commands.as.dataclasses.md)
 * [Command `quit`](day.2/220-commands.as.dataclasses.md)

@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from .directions import DOWN, UP, EAST, WEST, SOUTH, NORTH
+from . import directions
 
 
 @dataclass
@@ -33,17 +33,17 @@ class Room:
             print('Z tejto miestnosti nevedú žiadne východy.')
         else:
             print('Možné východy z miestnosti:')
-            if DOWN in self.exits:
+            if directions.DOWN in self.exits:
                 print(f'* dolu')
-            if UP in self.exits:
+            if directions.UP in self.exits:
                 print(f'* hore')
-            if EAST in self.exits:
+            if directions.EAST in self.exits:
                 print(f'* východ')
-            if WEST in self.exits:
+            if directions.WEST in self.exits:
                 print(f'* západ')
-            if SOUTH in self.exits:
+            if directions.SOUTH in self.exits:
                 print(f'* juh')
-            if NORTH in self.exits:
+            if directions.NORTH in self.exits:
                 print(f'* sever')
 
         print()
