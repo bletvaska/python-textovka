@@ -2,9 +2,9 @@
 
 znacky:
 
-* `commands`
-* `items`
-* `rooms`
+* `commands` - znackou je oznaceny kazdy prikaz
+* `items` - znackou je oznaceny kazdy predmet
+* `rooms` - znackou je oznacena kazda miestnost
 
 ## Todo
 

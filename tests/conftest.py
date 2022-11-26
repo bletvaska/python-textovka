@@ -22,7 +22,7 @@ from helpers import get_room_by_name
 from rooms import world
 
 
-@pytest.fixture
+@pytest.fixture(scope='function')
 def game_context():
     context = GameContext(
         commands=[

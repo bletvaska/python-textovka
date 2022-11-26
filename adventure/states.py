@@ -12,3 +12,5 @@ SHOT_BY_ENEMY = 'shot by enemy'
 
 # indiana jones solves all puzzles and won the game
 WELL_DONE = 'well done'
+
+PLANE_CRASH = 'plane crash'

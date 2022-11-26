@@ -13,4 +13,4 @@ class InPlane(Room):
         if self.steps > 3:
             print('Lietadlo šťastne pristálo (strmhlavo). Je mi to ľúto, ale ani taký profesionál ako je Indiana '
                   'Jones nemohol prežiť podobnú radostnú udalosť.')
-            context.game_state = states.QUIT
+            context.game_state = states.PLANE_CRASH
