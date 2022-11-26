@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from helpers import get_room_by_name
+from helpers import get_current_room
 from .command import Command
 
 
@@ -10,5 +10,5 @@ class LookAround(Command):
     description: str = 'rozhliadne sa v aktuálnej miestnosti'
 
     def exec(self, context):
-        room = get_room_by_name(context.current_room, context.rooms)
-        room.show(context)
+        room = get_current_room(context)
+        room.show()

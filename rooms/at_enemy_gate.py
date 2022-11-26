@@ -8,7 +8,7 @@ from .room import Room
 
 @dataclass
 class AtEnemyGate(Room):
-    def on_enter(self, context):
+    def act(self, context):
         uniform = get_item_by_name('nemecka uniforma (oblecena)', context.backpack)
 
         # is indy wearing a uniform?

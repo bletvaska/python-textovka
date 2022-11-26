@@ -3,7 +3,6 @@ from commands.drop import Drop
 from commands.examine import Examine
 from commands.take import Take
 from commands.use import Use
-from items.whip import Whip
 from rooms import world
 from commands.about import About
 from commands.commands import Commands
@@ -18,8 +17,8 @@ from commands.south import South
 from commands.up import Up
 from commands.west import West
 from game_context import GameContext
-from helpers import intro, outro, parse_line, get_room_by_name, get_item_by_name
-from states import STATE_PLAYING, DEATH_BY_FREE_FALL, SHOT_BY_ENEMY
+from helpers import intro, outro, parse_line, get_current_room
+from states import STATE_PLAYING
 
 intro()
 
@@ -47,9 +46,9 @@ context = GameContext(
     ],
 )
 
-room = get_room_by_name(context.current_room, context.rooms)
+room = get_current_room(context)
 
-room.show(context)
+room.show()
 
 # game loop
 while context.game_state == STATE_PLAYING:
@@ -65,5 +64,7 @@ while context.game_state == STATE_PLAYING:
         print('Tento príkaz nepoznám.')
     else:
         command.exec(context)
+        room = get_current_room(context)
+        room.act(context)
 
 outro()

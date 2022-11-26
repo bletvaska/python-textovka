@@ -10,10 +10,10 @@ class Room:
     items: list = field(default_factory=list)
     exits: dict = field(default_factory=dict)
 
-    def on_enter(self, context):
+    def act(self, context):
         pass
 
-    def show(self, context):
+    def show(self):
         # room name and description
         print(f'Nachádzaš sa v miestnosti {self.name}.\n')
         print(f'{self.description}\n')
@@ -47,5 +47,3 @@ class Room:
                 print(f'* sever')
 
         print()
-
-        self.on_enter(context)

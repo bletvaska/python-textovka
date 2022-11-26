@@ -4,9 +4,10 @@ from items.whip import Whip
 from . import directions
 from .at_enemy_gate import AtEnemyGate
 from .free_fall import FreeFall
+from .in_plane import InPlane
 from .room import Room
 rooms = [
-    Room(
+    InPlane(
         name='v lietadle',
         description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu nádherný '
                     'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
