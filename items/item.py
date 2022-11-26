@@ -1,8 +1,7 @@
-from dataclasses import dataclass, field
+from pydantic import BaseModel
 
 
-@dataclass
-class Item:
+class Item(BaseModel):
     name: str
     description: str
-    features: list = field(default_factory=list)
+    features: list = []

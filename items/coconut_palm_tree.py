@@ -1,15 +1,12 @@
-from dataclasses import dataclass, field
-
 from items.features import EXAMINABLE
 from items.item import Item
 from items.nazi_uniform import NaziUniform
 
 
-@dataclass
 class CoconutPalmTree(Item):
-    name: str = 'kokosova palma'
-    description: str = 'Zdá sa, že na jej plody nedosiahneš.'
-    features: list = field(default_factory=lambda: [EXAMINABLE])
+    name = 'kokosova palma'
+    description = 'Zdá sa, že na jej plody nedosiahneš.'
+    features = [EXAMINABLE]
 
     def examine(self, context):
         # action

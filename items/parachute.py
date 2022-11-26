@@ -1,15 +1,12 @@
-from dataclasses import dataclass, field
-
 from helpers import get_room_by_name
-from items.features import MOVABLE, USABLE, EXAMINABLE
+from items.features import MOVABLE, USABLE
 from items.item import Item
 
 
-@dataclass
 class Parachute(Item):
-    name: str = 'padak'
-    description: str = 'Obyčajný padák. Made in U.S.A. 1933'
-    features: list = field(default_factory=lambda: [MOVABLE, USABLE])
+    name = 'padak'
+    description = 'Obyčajný padák. Made in U.S.A. 1933'
+    features = [MOVABLE, USABLE]
 
     def use(self, context) -> bool:
         # check usage conditions

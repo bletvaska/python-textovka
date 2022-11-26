@@ -1,15 +1,12 @@
-from dataclasses import dataclass, field
-
 from items.features import MOVABLE, USABLE, EXAMINABLE
 from items.item import Item
 from items.key import Key
 
 
-@dataclass
 class NaziUniform(Item):
-    name: str = 'nemecka uniforma'
-    description: str = 'Zachovalá dôstojnícka uniforma.'
-    features: list = field(default_factory=lambda: [MOVABLE, USABLE, EXAMINABLE])
+    name = 'nemecka uniforma'
+    description = 'Zachovalá dôstojnícka uniforma.'
+    features = [MOVABLE, USABLE, EXAMINABLE]
 
     def examine(self, context):
         # action

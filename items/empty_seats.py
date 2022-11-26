@@ -1,15 +1,12 @@
-from dataclasses import dataclass, field
-
 from items.features import EXAMINABLE
 from items.item import Item
 from items.parachute import Parachute
 
 
-@dataclass
 class EmptySeats(Item):
-    name: str = 'prazdne sedadla'
-    description: str = 'Obyčajné letecké sedadlá.'
-    features: list = field(default_factory=lambda: [EXAMINABLE])
+    name = 'prazdne sedadla'
+    description = 'Obyčajné letecké sedadlá.'
+    features = [EXAMINABLE]
 
     def examine(self, context):
         # add parachute to current room
