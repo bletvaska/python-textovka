@@ -1,14 +1,13 @@
-from dataclasses import dataclass, field
+from pydantic import BaseModel
 
 from items.item import Item
 from rooms.room import Room
-from states import STATE_PLAYING
+from states import PLAYING
 
 
-@dataclass
-class GameContext:
+class GameContext(BaseModel):
     current_room: Room = None
-    rooms: list[Room] = field(default_factory=list)
-    backpack: list[Item] = field(default_factory=list)
-    commands: list = field(default_factory=list)
-    game_state: str = STATE_PLAYING
+    rooms: list[Room] = []
+    backpack: list[Item] = []
+    commands: list = []
+    game_state: str = PLAYING

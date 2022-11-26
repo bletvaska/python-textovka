@@ -19,7 +19,7 @@ def test_when_created_then_expect_specific_description(cmd):
 
 
 def test_when_backpack_is_empty_then_expect_specific_message_on_stdout(cmd, capsys, game_context):
-    game_context.backpack = []
+    # game_context.backpack = []
     cmd.exec(game_context)
     captured = capsys.readouterr()
 

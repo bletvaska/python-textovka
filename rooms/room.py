@@ -1,5 +1,9 @@
+from typing import TYPE_CHECKING
+
 from pydantic import BaseModel
 
+if TYPE_CHECKING:
+    from game_context import GameContext
 from . import directions
 
 
@@ -9,7 +13,7 @@ class Room(BaseModel):
     items: list = []
     exits: dict = {}
 
-    def act(self, context):
+    def act(self, context: 'GameContext'):
         pass
 
     def show(self):

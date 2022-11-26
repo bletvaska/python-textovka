@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import states
 from commands.drop import Drop
 from commands.examine import Examine
 from commands.take import Take
@@ -18,7 +19,6 @@ from commands.up import Up
 from commands.west import West
 from game_context import GameContext
 from helpers import intro, outro, parse_line, get_room_by_name
-from states import STATE_PLAYING
 
 intro()
 
@@ -49,7 +49,7 @@ room = context.current_room = get_room_by_name('v lietadle', context.rooms)
 room.show()
 
 # game loop
-while context.game_state == STATE_PLAYING:
+while context.game_state == states.PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
     if line == '':  # len(line) == 0

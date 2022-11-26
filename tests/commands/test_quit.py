@@ -5,7 +5,7 @@ import pytest
 
 from commands.quit import Quit
 from game_context import GameContext
-from states import STATE_PLAYING, STATE_QUIT
+from states import PLAYING, QUIT
 
 
 @pytest.fixture
@@ -26,7 +26,7 @@ def test_when_no_is_entered_then_game_state_remains_playing(cmd, choice, game_co
     sys.stdin = io.StringIO(f'{choice}\n')
     cmd.exec(game_context)
 
-    assert game_context.game_state == STATE_PLAYING
+    assert game_context.game_state == PLAYING
 
 @pytest.mark.wip
 @pytest.mark.parametrize("choice", ['ano', 'a', 'yes', 'y'])
@@ -34,4 +34,4 @@ def test_when_yes_is_entered_then_game_state_changes_to_quit(cmd, choice, game_c
     sys.stdin = io.StringIO(f'{choice}\n')
     cmd.exec(game_context)
 
-    assert game_context.game_state == STATE_QUIT
+    assert game_context.game_state == QUIT

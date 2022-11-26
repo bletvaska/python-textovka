@@ -48,7 +48,7 @@ class Commands(Command):
 ```python
 from dataclasses import dataclass
 
-from states import STATE_QUIT
+from states import QUIT
 from .command import Command
 
 
@@ -62,5 +62,5 @@ class Quit(Command):
     def exec(self, context, param):
         choice = input('Naozaj chceš ukončiť hru? (a/n) ').lstrip().rstrip().lower()
         if choice in ('y', 'yes', 'a', 'ano'):
-            context.game_state = STATE_QUIT
+            context.game_state = QUIT
 ```
