@@ -3,6 +3,8 @@ import pytest
 from commands.up import Up
 from helpers import parse_line
 
+pytestmark = [pytest.mark.commands, pytest.mark.up]
+
 
 @pytest.fixture
 def cmd():

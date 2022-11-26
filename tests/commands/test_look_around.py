@@ -2,10 +2,12 @@ import pytest
 
 from commands.look_around import LookAround
 
+pytestmark = [pytest.mark.commands, pytest.mark.look_around]
+
 
 @pytest.fixture
 def cmd():
-    return LookAround()
+    yield LookAround()
 
 
 def test_when_created_then_expect_specific_name(cmd):

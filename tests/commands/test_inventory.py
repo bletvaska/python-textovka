@@ -3,6 +3,8 @@ import pytest
 from commands.inventory import Inventory
 from items.whip import Whip
 
+pytestmark = [pytest.mark.commands, pytest.mark.inventory]
+
 
 @pytest.fixture
 def cmd():

@@ -6,10 +6,12 @@ import pytest
 from commands.quit import Quit
 import states
 
+pytestmark = [pytest.mark.commands, pytest.mark.quit]
+
 
 @pytest.fixture
 def cmd():
-    return Quit()
+    yield Quit()
 
 
 def test_when_created_then_expect_specific_name(cmd):
@@ -26,6 +28,7 @@ def test_when_no_is_entered_then_game_state_remains_playing(cmd, choice, game_co
     cmd.exec(game_context)
 
     assert game_context.game_state == states.PLAYING
+
 
 @pytest.mark.wip
 @pytest.mark.parametrize("choice", ['ano', 'a', 'yes', 'y'])

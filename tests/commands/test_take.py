@@ -2,6 +2,8 @@ import pytest
 
 from commands.take import Take
 
+pytestmark = [pytest.mark.commands, pytest.mark.take]
+
 
 @pytest.fixture
 def cmd():

@@ -3,10 +3,11 @@ import pytest
 from commands.about import About
 
 
-@pytest.mark.items
-class TestAbout:
+@pytest.mark.commands
+@pytest.mark.about
+class TestSuiteAbout:
 
-    @pytest.fixture
+    @pytest.fixture(scope='class')
     def cmd(self):
         yield About()
 

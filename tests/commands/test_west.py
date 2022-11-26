@@ -3,6 +3,8 @@ import pytest
 from commands.west import West
 from helpers import get_room_by_name, parse_line
 
+pytestmark = [pytest.mark.commands, pytest.mark.west]
+
 
 @pytest.fixture
 def cmd():
@@ -15,7 +17,6 @@ def test_when_created_then_expect_specific_name(cmd):
 
 def test_when_created_then_expect_specific_description(cmd):
     assert cmd.description == 'presunie sa do miestnosti na západ od aktuálnej'
-
 
 
 def test_when_moves_to_west_then_new_room_must_be_on_west_from_actual(cmd, game_context):

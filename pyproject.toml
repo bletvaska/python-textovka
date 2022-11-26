@@ -22,7 +22,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 addopts = []
-testpaths = ["tests"]
+testpaths = ["tests/"]
 python_files = ["test_*.py"]
 markers = [
     "wip: work in progress",

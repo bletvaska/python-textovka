@@ -3,6 +3,8 @@ import pytest
 from commands.north import North
 from helpers import get_room_by_name, parse_line
 
+pytestmark = [pytest.mark.commands, pytest.mark.north]
+
 
 @pytest.fixture
 def cmd():
