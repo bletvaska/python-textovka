@@ -1,22 +1,22 @@
 import pytest
 
 from items.features import USABLE, MOVABLE
-from items.key import Key
+from items.showel import Showel
 
 
 @pytest.mark.items
-@pytest.mark.key
-class TestSuiteKey:
+@pytest.mark.showel
+class TestSuiteShowel:
 
     @pytest.fixture
     def item(self):
-        yield Key()
+        yield Showel()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'kluc'
+        assert item.name == 'lopata'
 
     def test_when_created_then_expect_specific_description(self, item):
-        assert item.description == 'Veľký mosadzný kľúč, zrejme od nejakej truhly.'
+        assert item.description == 'Je to zázrak, že ešte drží pohromade...'
 
     def test_when_created_then_expect_features_movable_and_usable(self, item):
         # arrange

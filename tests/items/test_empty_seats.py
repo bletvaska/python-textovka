@@ -9,7 +9,7 @@ from items.features import EXAMINABLE
 @pytest.mark.empty_seats
 class TestSuiteParachute:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield EmptySeats()
 

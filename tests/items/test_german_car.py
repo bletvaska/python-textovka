@@ -9,7 +9,7 @@ from items.german_car import GermanCar
 @pytest.mark.german_car
 class TestSuiteGermanCar:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield GermanCar()
 

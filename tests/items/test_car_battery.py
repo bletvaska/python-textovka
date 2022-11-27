@@ -1,16 +1,14 @@
 import pytest
 
-from helpers import parse_line, get_room_by_name, get_item_by_name
 from items.car_battery import CarBattery
-from items.coconut_palm_tree import CoconutPalmTree
-from items.features import EXAMINABLE, MOVABLE
+from items.features import MOVABLE
 
 
 @pytest.mark.items
 @pytest.mark.car_battery
 class TestSuiteCarBattery:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield CarBattery()
 

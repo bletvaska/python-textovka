@@ -7,7 +7,7 @@ from items.heavy_chest import HeavyChest
 @pytest.mark.heavy_chest
 class TestSuiteHeavyChest:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield HeavyChest()
 

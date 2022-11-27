@@ -1,15 +1,14 @@
 import pytest
 
 from items.diamond import Diamond
-from items.features import USABLE, MOVABLE
-from items.whip import Whip
+from items.features import MOVABLE
 
 
 @pytest.mark.items
 @pytest.mark.diamond
 class TestSuiteDiamond:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield Diamond()
 

@@ -9,7 +9,7 @@ from items.features import EXAMINABLE
 @pytest.mark.coconut_palm_tree
 class TestSuiteCoconutPalmTree:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield CoconutPalmTree()
 

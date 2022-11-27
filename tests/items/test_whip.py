@@ -1,6 +1,6 @@
 import pytest
 
-from items.features import USABLE, MOVABLE
+from items.features import MOVABLE
 from items.whip import Whip
 
 
@@ -8,7 +8,7 @@ from items.whip import Whip
 @pytest.mark.whip
 class TestSuiteWhip:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield Whip()
 

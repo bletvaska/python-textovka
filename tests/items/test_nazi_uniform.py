@@ -9,7 +9,7 @@ from items.nazi_uniform import NaziUniform
 @pytest.mark.nazi_uniform
 class TestSuiteNaziUniform:
 
-    @pytest.fixture(scope='class')
+    @pytest.fixture
     def item(self):
         yield NaziUniform()
 
