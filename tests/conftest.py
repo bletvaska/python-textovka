@@ -19,11 +19,11 @@ from commands.west import West
 
 from game_context import GameContext
 from helpers import get_room_by_name
+from rooms.world import load_world
 
 
 @pytest.fixture(scope='function')
 def game_context():
-    from rooms import world
     context = GameContext(
         commands=[
             About(),
@@ -43,7 +43,7 @@ def game_context():
             Use(),
             West()
         ],
-        rooms=world.rooms
+        rooms=load_world()
     )
 
     context.current_room = get_room_by_name('v lietadle', context)

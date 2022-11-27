@@ -17,9 +17,9 @@ from commands.take import Take
 from commands.up import Up
 from commands.use import Use
 from commands.west import West
-from rooms import world
 from game_context import GameContext
 from helpers import intro, outro, parse_line, get_room_by_name
+from rooms.world import load_world
 
 
 def main():
@@ -27,7 +27,7 @@ def main():
 
     # game initialization
     context = GameContext(
-        rooms=world.rooms,
+        rooms=load_world(),
         commands=[
             About(),
             Commands(),
