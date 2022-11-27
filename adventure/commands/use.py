@@ -30,3 +30,6 @@ class Use(Command):
         status = item.use(context)
         if status is False:
             print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')
+        else:
+            # append command to history
+            context.history.append(f'{self.name} {self.param}')

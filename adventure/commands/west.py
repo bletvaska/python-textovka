@@ -15,6 +15,7 @@ class West(Command):
         if directions.WEST in room.exits:
             context.current_room = get_room_by_name(room.exits[directions.WEST], context.rooms)
             context.current_room.show()
+            context.history.append(self.name)
 
         else:
             print('Tam sa nedá ísť.')

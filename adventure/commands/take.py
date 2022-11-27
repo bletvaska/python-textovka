@@ -32,3 +32,6 @@ class Take(Command):
 
         # render
         print(f'Do batohu si si vložil {item.name}.')
+
+        # append command to history
+        context.history.append(f'{self.name} {self.param}')

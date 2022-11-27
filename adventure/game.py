@@ -11,6 +11,7 @@ from commands.inventory import Inventory
 from commands.look_around import LookAround
 from commands.north import North
 from commands.quit import Quit
+from commands.save import Save
 from commands.south import South
 from commands.take import Take
 from commands.up import Up
@@ -39,6 +40,7 @@ def main():
             LookAround(),
             North(),
             Quit(),
+            Save(),
             South(),
             Take(),
             Up(),

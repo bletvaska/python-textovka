@@ -26,3 +26,6 @@ class Drop(Command):
 
         # render
         print(f'Do miestnosti si položil {item.name}.')
+
+        # append command to history
+        context.history.append(f'{self.name} {self.param}')

@@ -11,3 +11,4 @@ class GameContext(BaseModel):
     backpack: list[Item] = []
     commands: list = []
     game_state: str = PLAYING
+    history: list[str] = []

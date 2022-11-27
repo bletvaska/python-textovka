@@ -15,6 +15,7 @@ class Down(Command):
         if directions.DOWN in room.exits:
             context.current_room = get_room_by_name(room.exits[directions.DOWN], context.rooms)
             context.current_room.show()
+            context.history.append(self.name)
 
         else:
             print('Tam sa nedá ísť.')
