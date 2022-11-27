@@ -19,9 +19,12 @@ class TestSuiteNaziUniform:
     def test_when_created_then_expect_specific_description(self, item):
         assert item.description == 'Zachovalá dôstojnícka uniforma.'
 
-    @pytest.mark.parametrize("feature", [MOVABLE, USABLE])
-    def test_when_created_then_expect_features_movable_and_usable(self, item, feature):
-        assert feature in item.features, f'Feature {feature} should be in item.'
+    def test_when_created_then_expect_features_movable_and_usable(self, item):
+        # arrange
+        expected = [MOVABLE, USABLE, EXAMINABLE]
+
+        # assert
+        assert set(item.features) == set(expected), f'Item should have following features: {expected}.'
 
     def test_when_examined_then_key_should_appear_room(self, item, game_context):
         # arrange

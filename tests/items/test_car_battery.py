@@ -1,22 +1,24 @@
 import pytest
 
-from items.features import USABLE, MOVABLE
-from items.whip import Whip
+from helpers import parse_line, get_room_by_name, get_item_by_name
+from items.car_battery import CarBattery
+from items.coconut_palm_tree import CoconutPalmTree
+from items.features import EXAMINABLE, MOVABLE
 
 
 @pytest.mark.items
-@pytest.mark.whip
-class TestSuiteWhip:
+@pytest.mark.car_battery
+class TestSuiteCarBattery:
 
     @pytest.fixture(scope='class')
     def item(self):
-        yield Whip()
+        yield CarBattery()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'bic'
+        assert item.name == 'automobilova bateria', 'Incorrect name.'
 
     def test_when_created_then_expect_specific_description(self, item):
-        assert item.description == 'Tvoj neoceniteľný pomocník..!'
+        assert item.description == 'Ešte je trochu nabitá.', 'Incorrect description.'
 
     def test_when_created_then_expect_features_movable_and_usable(self, item):
         # arrange
