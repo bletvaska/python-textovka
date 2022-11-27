@@ -14,10 +14,10 @@ class TestSuiteNaziUniform:
         yield NaziUniform()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'nemecka uniforma'
+        assert item.name == 'nemecka uniforma', 'Incorrect name.'
 
     def test_when_created_then_expect_specific_description(self, item):
-        assert item.description == 'Zachovalá dôstojnícka uniforma.'
+        assert item.description == 'Zachovalá dôstojnícka uniforma.', 'Incorrect description.'
 
     def test_when_created_then_expect_features_movable_and_usable(self, item):
         # arrange
