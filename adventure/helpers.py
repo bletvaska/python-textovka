@@ -1,4 +1,5 @@
 from commands.command import Command
+from game_context import GameContext
 from items.item import Item
 from rooms.room import Room
 
@@ -27,11 +28,11 @@ def outro():
     print('See you soon.')
 
 
-def parse_line(line: str, commands: list[Command]) -> Command | None:
+def parse_line(line: str, context: GameContext) -> Command | None:
     """
     Returns command object based on the input entered by user.
     """
-    for command in commands:
+    for command in context.commands:
         if line.startswith(command.name):
             command.param = line.split(command.name, maxsplit=1)[1].lstrip()
             return command
@@ -39,11 +40,11 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
     return None  # default
 
 
-def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
+def get_room_by_name(name: str, context: GameContext) -> Room | None:
     """
     Returns room by its name.
     """
-    for room in rooms:
+    for room in context.rooms:
         if room.name == name:
             return room
 

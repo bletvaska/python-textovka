@@ -46,6 +46,6 @@ def game_context():
         rooms=world.rooms
     )
 
-    context.current_room = get_room_by_name('v lietadle', context.rooms)
+    context.current_room = get_room_by_name('v lietadle', context)
 
     yield context

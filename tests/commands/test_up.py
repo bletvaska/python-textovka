@@ -21,7 +21,7 @@ def test_when_created_then_expect_specific_description(cmd):
 
 def test_if_there_is_no_room_up_then_current_room_remains_after_going_up(cmd, game_context):
     # act
-    command = parse_line(cmd.name, game_context.commands)
+    command = parse_line(cmd.name, game_context)
     command.exec(game_context)
 
     # assert
@@ -30,7 +30,7 @@ def test_if_there_is_no_room_up_then_current_room_remains_after_going_up(cmd, ga
 
 def test_if_there_is_no_room_up_then_error_message_should_appear(cmd, game_context, capsys):
     # act
-    command = parse_line(cmd.name, game_context.commands)
+    command = parse_line(cmd.name, game_context)
     command.exec(game_context)
     captured = capsys.readouterr()
 

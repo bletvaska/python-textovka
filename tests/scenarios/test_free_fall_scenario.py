@@ -20,7 +20,7 @@ def scenario():
 def test_when_free_fall_scenario_is_entered_then_game_state_should_be_death_by_free_fall(scenario, game_context):
     # act
     for line in scenario:
-        command = parse_line(line, game_context.commands)
+        command = parse_line(line, game_context)
         command.exec(game_context)
         game_context.current_room.act(game_context)
 

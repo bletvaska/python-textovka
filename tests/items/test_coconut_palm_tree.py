@@ -18,7 +18,6 @@ class TestSuiteCoconutPalmTree:
     def test_when_created_then_expect_specific_description(self, item):
         assert item.description == 'Zdá sa, že na jej plody nedosiahneš.'
 
-    @pytest.mark.wip
     @pytest.mark.parametrize("feature", [EXAMINABLE])
     def test_when_created_then_expect_features_movable_and_usable(self, item, feature):
         assert feature in item.features, f'Feature {feature} should be in item.'

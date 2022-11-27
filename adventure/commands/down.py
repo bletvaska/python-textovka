@@ -13,7 +13,7 @@ class Down(Command):
 
         # is there exit going down?
         if directions.DOWN in room.exits:
-            context.current_room = get_room_by_name(room.exits[directions.DOWN], context.rooms)
+            context.current_room = get_room_by_name(room.exits[directions.DOWN], context)
             context.current_room.show()
             context.history.append(self.name)
 

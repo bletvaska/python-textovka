@@ -13,7 +13,7 @@ class South(Command):
 
         # is there exit going down?
         if directions.SOUTH in room.exits:
-            context.current_room = get_room_by_name(room.exits[directions.SOUTH], context.rooms)
+            context.current_room = get_room_by_name(room.exits[directions.SOUTH], context)
             context.current_room.show()
             context.history.append(self.name)
 

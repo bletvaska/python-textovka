@@ -49,7 +49,7 @@ def main():
         ],
     )
 
-    room = context.current_room = get_room_by_name('v lietadle', context.rooms)
+    room = context.current_room = get_room_by_name('v lietadle', context)
     room.show()
 
     # game loop
@@ -61,7 +61,7 @@ def main():
             # pass
 
         # parse command line
-        command = parse_line(line, context.commands)
+        command = parse_line(line, context)
         if command is None:
             print('Tento príkaz nepoznám.')
         else:
