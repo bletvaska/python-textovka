@@ -15,7 +15,7 @@ class AtEnemyGate(Room):
 
             # render
             print('Vojak si ťa so záujmom prehliadol a zastrelil ťa.')
-        else:
+        elif directions.SOUTH not in context.current_room.exits:
             # action
             context.current_room.exits[directions.SOUTH] = 'v tábore'
 

@@ -1,5 +1,9 @@
 from items.coconut_palm_tree import CoconutPalmTree
 from items.empty_seats import EmptySeats
+from items.german_car import GermanCar
+from items.heavy_chest import HeavyChest
+from items.mobile_radiostation import MobileRadiostation
+from items.showel import Showel
 from items.whip import Whip
 from rooms import directions
 from .at_enemy_gate import AtEnemyGate
@@ -9,8 +13,6 @@ from .room import Room
 
 
 def load_world() -> list[Room]:
-
-
     return [
         InPlane(
             name='v lietadle',
@@ -72,7 +74,10 @@ def load_world() -> list[Room]:
                 directions.NORTH: 'pred táborom',
                 directions.EAST: 'veliteľov stan',
                 directions.WEST: 'malý stan'
-            }
+            },
+            items=[
+                GermanCar()
+            ]
         ),
 
         Room(
@@ -81,6 +86,9 @@ def load_world() -> list[Room]:
             exits={
                 directions.WEST: 'v tábore',
             },
+            items=[
+                HeavyChest()
+            ]
         ),
 
         Room(
@@ -88,6 +96,21 @@ def load_world() -> list[Room]:
             description='Si v malom stane. Je tu hromada neužitočných harabúrd.',
             exits={
                 directions.EAST: 'v tábore'
+            },
+            items=[
+                Showel(),
+                MobileRadiostation()
+            ]
+        ),
+
+        Room(
+            name='podzemie',
+            description='Stojíš na kamenných dlaždiciach pod dierou vedúcou von z podzemia. Steny sú pomalované '
+                        'výjavmi zo života egyptských bohov.',
+            exits={
+                directions.UP: 'oáza',
+                # directions.EAST: '',
+                # directions.SOUTH: ''
             }
         )
     ]
