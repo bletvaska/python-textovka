@@ -48,4 +48,3 @@ class TestSuiteCoconutPalmTree:
 
         # assert
         assert EXAMINABLE not in item.features, 'Empty seats are still examinable.'
-

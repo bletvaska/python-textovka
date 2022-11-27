@@ -6,7 +6,7 @@ from items.whip import Whip
 
 @pytest.mark.items
 @pytest.mark.whip
-class TestSuiteWhip():
+class TestSuiteWhip:
 
     @pytest.fixture(scope='class')
     def item(self):
