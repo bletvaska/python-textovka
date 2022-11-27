@@ -30,7 +30,6 @@ def test_when_no_is_entered_then_game_state_remains_playing(cmd, choice, game_co
     assert game_context.game_state == states.PLAYING
 
 
-@pytest.mark.wip
 @pytest.mark.parametrize("choice", ['ano', 'a', 'yes', 'y'])
 def test_when_yes_is_entered_then_game_state_changes_to_quit(cmd, choice, game_context):
     sys.stdin = io.StringIO(f'{choice}\n')
