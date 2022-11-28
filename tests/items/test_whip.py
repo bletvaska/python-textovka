@@ -1,6 +1,6 @@
 import pytest
 
-from items.features import MOVABLE
+from items.features import MOVABLE, USABLE
 from items.whip import Whip
 
 
@@ -20,7 +20,7 @@ class TestSuiteWhip:
 
     def test_when_created_then_expect_features_movable_and_usable(self, item):
         # arrange
-        expected = [MOVABLE]
+        expected = [MOVABLE, USABLE]
 
         # assert
         assert set(item.features) == set(expected), f'Item should have following features: {expected}.'

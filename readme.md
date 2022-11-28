@@ -62,8 +62,17 @@ programovaní alebo skriptovania v inom jazyku.
 
 
                  +--------------+
-                 |   podzemie   |
+                 |   podzemie   |<-->
                  +--------------+
-
+                        ^
+                        v
+                 +-------------------+
+             <-->| prázdna miestnosť |
+                 +-------------------+
+                        ^
+                        v
+                 +--------------+
+                 |   komôrka    |
+                 +--------------+
 
 ```

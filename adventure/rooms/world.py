@@ -1,4 +1,5 @@
 from items.coconut_palm_tree import CoconutPalmTree
+from items.diamond_on_ceiling import DiamondOnCeiling
 from items.empty_seats import EmptySeats
 from items.german_car import GermanCar
 from items.heavy_chest import HeavyChest
@@ -110,7 +111,30 @@ def load_world() -> list[Room]:
             exits={
                 directions.UP: 'oáza',
                 # directions.EAST: '',
-                # directions.SOUTH: ''
+                directions.SOUTH: 'prázdna miestnosť'
             }
+        ),
+
+        Room(
+            name='prázdna miestnosť',
+            description='Stojíš uprostred miestnosti, ktorá je úplne prázdna (jasný príklad toho, že autorovi už '
+                        'dochádzajú inšpirácie).',
+            exits={
+                directions.NORTH: 'podzemie',
+                directions.SOUTH: 'komôrka',
+                directions.WEST: '',
+            }
+        ),
+
+        Room(
+            name='komôrka',
+            description='Si v malej komôrke, ktorej steny sú vyzdobené rozličnými náboženskými motívmi (Bohovia, '
+                        'zvieratá, bojovníci, mŕtvoly, atď.).',
+            exits={
+                directions.NORTH: 'prázdna miestnosť'
+            },
+            items=[
+                DiamondOnCeiling()
+            ]
         )
     ]
