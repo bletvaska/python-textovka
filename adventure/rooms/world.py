@@ -11,6 +11,7 @@ from .at_enemy_gate import AtEnemyGate
 from .free_fall import FreeFall
 from .in_plane import InPlane
 from .room import Room
+from .yellow_fog import YellowFog
 
 
 def load_world() -> list[Room]:
@@ -122,7 +123,7 @@ def load_world() -> list[Room]:
             exits={
                 directions.NORTH: 'podzemie',
                 directions.SOUTH: 'komôrka',
-                directions.WEST: '',
+                directions.WEST: 'chodba',
             }
         ),
 
@@ -136,5 +137,20 @@ def load_world() -> list[Room]:
             items=[
                 DiamondOnCeiling()
             ]
+        ),
+
+        Room(
+            name='chodba',
+            description='Stojíš na začiatku širokej chodby, ktorá pokračuje na západ do podivnej žltej hmly. Pri '
+                        'stene leží rozpadnutá ľudská kostra, nad ktorou je v stene vyrytý nápis "2Z1S1V".',
+            exits={
+                directions.EAST: 'prázdna miestnosť',
+                directions.WEST: 'žltá hmla'
+            }
+        ),
+
+        YellowFog(
+            name='žltá hmla',
+            description='Si v žltej hmle.',
         )
     ]
