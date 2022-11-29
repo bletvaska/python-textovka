@@ -1,4 +1,5 @@
 from items.coconut_palm_tree import CoconutPalmTree
+from items.diamond import Diamond
 from items.diamond_on_ceiling import DiamondOnCeiling
 from items.empty_seats import EmptySeats
 from items.german_car import GermanCar
@@ -152,5 +153,22 @@ def load_world() -> list[Room]:
         YellowFog(
             name='žltá hmla',
             description='Si v žltej hmle.',
+            exits={
+                directions.EAST: 'chodba',
+                directions.WEST: 'žltá hmla',
+                directions.SOUTH: 'žltá hmla',
+                directions.NORTH: 'žltá hmla',
+            }
+        ),
+
+        Room(
+            name='koniec chodby',
+            description='Si na konci chodby.',
+            exits={
+                directions.WEST: 'žltá hmla'
+            },
+            items=[
+                Diamond()
+            ]
         )
     ]
