@@ -19,6 +19,7 @@ from commands.use import Use
 from commands.west import West
 from game_context import GameContext
 from helpers import intro, outro, parse_line, get_room_by_name
+from items.dictionary import Dictionary
 from rooms.world import load_world
 
 
@@ -49,7 +50,9 @@ def main():
         ],
     )
 
-    room = context.current_room = get_room_by_name('v lietadle', context)
+    # room = context.current_room = get_room_by_name('v lietadle', context)
+    # context.backpack.append(Dictionary())
+    room = context.current_room = get_room_by_name('podzemie', context)
     room.show()
 
     # game loop

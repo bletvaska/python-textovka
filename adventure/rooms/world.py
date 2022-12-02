@@ -7,6 +7,7 @@ from items.heavy_chest import HeavyChest
 from items.mobile_radiostation import MobileRadiostation
 from items.showel import Showel
 from items.whip import Whip
+from items.writing_on_wall import WritingOnWall
 from rooms import directions
 from .at_enemy_gate import AtEnemyGate
 from .free_fall import FreeFall
@@ -112,7 +113,7 @@ def load_world() -> list[Room]:
                         'výjavmi zo života egyptských bohov.',
             exits={
                 directions.UP: 'oáza',
-                # directions.EAST: '',
+                directions.EAST: 'uzka chodba',
                 directions.SOUTH: 'prázdna miestnosť'
             }
         ),
@@ -166,6 +167,41 @@ def load_world() -> list[Room]:
             description='Si na konci chodby.',
             exits={
                 directions.WEST: 'žltá hmla'
+            },
+            items=[
+                Diamond()
+            ]
+        ),
+
+        Room(
+            name='uzka chodba',
+            description='Si v úzkej západno-východnej chodbe.',
+            items=[
+                Diamond(),
+                WritingOnWall()
+            ],
+            exits={
+                directions.WEST: 'podzemie',
+                directions.EAST: 'oltar'
+            }
+        ),
+
+        Room(
+            name='oltar',
+            description='Stojíš pri veľkom oltári z čistého krištáľu. Z oltára vychádza modré svetlo vrhajúce tiene '
+                        'na steny miestnosti. Na západe je vchod do úzkej chodby a na severe, za závesmi pavučín, '
+                        'vidíš v stene výklenok.',
+            exits={
+                directions.WEST: 'uzka chodba',
+                directions.NORTH: 'vyklenok'
+            }
+        ),
+
+        Room(
+            name='vyklenok',
+            description='Si v malom vyklenku. Na juh od teba stoji oltar.',
+            exits={
+                directions.SOUTH: 'oltar'
             },
             items=[
                 Diamond()

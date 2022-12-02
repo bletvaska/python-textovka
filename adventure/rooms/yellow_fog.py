@@ -28,5 +28,3 @@ class YellowFog(Room):
             self.track = ''
         else:
             self.exits[directions.EAST] = 'chodba'
-
-        print(f'>> {self.track}')
