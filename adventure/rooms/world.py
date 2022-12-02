@@ -9,6 +9,7 @@ from items.showel import Showel
 from items.whip import Whip
 from items.writing_on_wall import WritingOnWall
 from rooms import directions
+from .altar import Altar
 from .at_enemy_gate import AtEnemyGate
 from .free_fall import FreeFall
 from .in_plane import InPlane
@@ -186,7 +187,7 @@ def load_world() -> list[Room]:
             }
         ),
 
-        Room(
+        Altar(
             name='oltar',
             description='Stojíš pri veľkom oltári z čistého krištáľu. Z oltára vychádza modré svetlo vrhajúce tiene '
                         'na steny miestnosti. Na západe je vchod do úzkej chodby a na severe, za závesmi pavučín, '
