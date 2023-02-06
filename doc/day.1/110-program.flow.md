@@ -57,7 +57,6 @@ Vytvorenie hernej slučky a prvých príkazov.
     ```python
     > prikazy
     V hre je možné použiť tieto príkazy:
-    * koniec - ukončí rozohratú hru
     * o hre - zobrazí informácie o hre
     * prikazy - zobrazí zoznam dostupných príkazov v hre
     ```
