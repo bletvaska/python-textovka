@@ -1,6 +1,6 @@
 import pytest
 
-from commands.about import About
+from commands import About
 
 pytestmark = [pytest.mark.commands, pytest.mark.about]
 

@@ -1,6 +1,6 @@
 import pytest
 
-from commands.command import Command
+from commands import Command
 from helpers import parse_line
 
 

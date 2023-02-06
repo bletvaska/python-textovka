@@ -1,21 +1,21 @@
 import pytest
 
-from commands.about import About
-from commands.commands import Commands
-from commands.down import Down
-from commands.drop import Drop
-from commands.east import East
-from commands.examine import Examine
-from commands.help import Help
-from commands.inventory import Inventory
-from commands.look_around import LookAround
-from commands.north import North
-from commands.quit import Quit
-from commands.south import South
-from commands.take import Take
-from commands.up import Up
-from commands.use import Use
-from commands.west import West
+from commands import About
+from commands import Commands
+from commands import Down
+from commands import Drop
+from commands import East
+from commands import Examine
+from commands import Help
+from commands import Inventory
+from commands import LookAround
+from commands import North
+from commands import Quit
+from commands import South
+from commands import Take
+from commands import Up
+from commands import Use
+from commands import West
 
 pytestmark = [pytest.mark.commands, pytest.mark.help]
 

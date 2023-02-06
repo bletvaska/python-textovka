@@ -1,6 +1,6 @@
 import pytest
 
-from commands.east import East
+from commands import East
 from helpers import get_room_by_name, parse_line
 
 pytestmark = [pytest.mark.commands, pytest.mark.east]

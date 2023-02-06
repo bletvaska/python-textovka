@@ -1,6 +1,6 @@
 import pytest
 
-from commands.up import Up
+from commands import Up
 from helpers import parse_line
 
 pytestmark = [pytest.mark.commands, pytest.mark.up]

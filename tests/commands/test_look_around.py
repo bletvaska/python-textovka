@@ -1,6 +1,6 @@
 import pytest
 
-from commands.look_around import LookAround
+from commands import LookAround
 
 pytestmark = [pytest.mark.commands, pytest.mark.look_around]
 
