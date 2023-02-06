@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import states
+from commands import About, Commands, Quit
 from helpers import intro, outro
 
 intro()
@@ -12,19 +13,13 @@ while game_state == states.PLAYING:
         pass
 
     elif line == 'o hre':
-        print('(c)2023 created by mirek')
-        print('Dalšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
+        About().exec()
 
     elif line == 'prikazy':
-        print('V hre je možné použiť tieto príkazy:')
-        print('* koniec - ukončí rozohratú hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+        Commands().exec()
 
     elif line == 'koniec':
-        choice = input('Naozaj chceš ukončiť túto hru? (a/n) ').lower().lstrip().rstrip()
-        if choice in ('ano', 'a', 'yes', 'y'):
-            game_state = states.QUIT
+        Quit().exec()
 
     else:
         print('Taký príkaz nepoznám.')
