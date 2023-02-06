@@ -149,7 +149,7 @@ Vytvorenie hernej slučky a prvých príkazov.
             pass
 
         elif line == 'o hre':
-            print('(c)2022 created by mirek')
+            print('(c)2023 created by mirek')
             print('Ďalšie dobrodružstvo Indiana Jonesa tentokrát vytvorené v jazyku Python.')
 
         elif line == 'prikazy':
@@ -198,7 +198,7 @@ Vytvorenie hernej slučky a prvých príkazov.
 
     ```python
     elif line == 'koniec':
-        choice = input('Naozaj chceš skončiť? ([a]/n)? ')
+        choice = input('Naozaj chceš skončiť? (a/n)? ')
         if choice in ('a', 'ano', 'y', 'yes', ''):
             print('Dakujem, ze si si zahral tuto fantasticku hru. Príď aj nabudúce.')
         else:

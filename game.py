@@ -1,9 +1,10 @@
 #!/usr/bin/env python
+import states
 
 print('Indiana Jones a jeho najväčšie Pythonovské dobrodružstvo')
-line = None
+game_state = states.PLAYING
 
-while line != 'koniec':
+while game_state == states.PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
     if line == '':  # len(line) == 0
@@ -22,12 +23,7 @@ while line != 'koniec':
     elif line == 'koniec':
         choice = input('Naozaj chceš ukončiť túto hru? (a/n) ').lower().lstrip().rstrip()
         if choice in ('ano', 'a', 'yes', 'y'):
-            break
-        elif choice == 'nie':
-            line = None
-        else:
-            print('Zle zadaná hodnota.')
-            line = None
+            game_state = states.QUIT
 
     else:
         print('Taký príkaz nepoznám.')
