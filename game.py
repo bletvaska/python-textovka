@@ -1,7 +1,17 @@
 #!/usr/bin/env python
 import states
+from pyfiglet import Figlet
 
-print('Indiana Jones a jeho najväčšie Pythonovské dobrodružstvo')
+
+def intro():
+    figlet = Figlet()
+    banner = figlet.renderText('Indiana Jones')
+    print(banner)
+    print('                        and his Great Python Adventure')
+    print()
+
+
+intro()
 game_state = states.PLAYING
 
 while game_state == states.PLAYING:
