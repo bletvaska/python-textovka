@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 import states
-from pyfiglet import Figlet
-
-
-def intro():
-    figlet = Figlet()
-    banner = figlet.renderText('Indiana Jones')
-    print(banner)
-    print('                        and his Great Python Adventure')
-    print()
-
+from helpers import intro, outro
 
 intro()
 game_state = states.PLAYING
@@ -38,4 +29,4 @@ while game_state == states.PLAYING:
     else:
         print('Taký príkaz nepoznám.')
 
-print('koniec')
+outro()
