@@ -38,7 +38,7 @@ class Commands(Command):
     name = 'prikazy'
     description = 'zobrazí zoznam dostupných príkazov v hre'
 
-    def exec(self, room, commands):
+    def exec(self, room, commands: list[Command]):
         print('V hre je možné použiť tieto príkazy:')
 
         for command in commands:
