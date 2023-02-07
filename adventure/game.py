@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import states
-from commands import About, Commands, Quit
+from commands import About, Commands, Quit, LookAround
 from helpers import intro, outro
 from rooms import Room
 
@@ -12,6 +12,7 @@ game_state = states.PLAYING
 commands = [
     About(),
     Commands(),
+    LookAround(),
     Quit()
 ]
 current_room = Room(name='v lietadle',

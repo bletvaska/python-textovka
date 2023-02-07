@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 import states
+from game import current_room
 
 
 class Command(BaseModel):
@@ -42,6 +43,7 @@ class Commands(Command):
         print('* koniec - ukončí rozohratú hru')
         print('* o hre - zobrazí informácie o hre')
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+        print('* rozhliadni sa - rozhliadne sa v aktuálnej miesnosti')
 
         return states.PLAYING
 
@@ -56,3 +58,17 @@ class Quit(Command):
             return states.QUIT
 
         return states.PLAYING
+
+
+class LookAround(Command):
+    name = 'rozhliadni sa'
+    description = 'rozhliadne sa v aktuálnej miestnosti'
+
+    def exec(self):
+        print(current_room.description)
+        if current_room.items != []:  # len(current_room.items) > 0
+            print('Vidíš:')
+            for item in current_room.items:
+                print(f'  {item}')
+        else:
+            print('Nevidíš tu nič zvláštne.')
