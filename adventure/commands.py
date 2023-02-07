@@ -12,7 +12,7 @@ class Command(BaseModel):
     description: str
 
     # methods
-    def exec(self):
+    def exec(self) -> str:
         raise NotImplementedError('This method was not yet implemented.')
 
 
@@ -26,6 +26,8 @@ class About(Command):
     def exec(self):
         print('(c)2023 created by mirek')
         print('Dalšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
+
+        return states.PLAYING
 
 
 class Commands(Command):
@@ -41,6 +43,8 @@ class Commands(Command):
         print('* o hre - zobrazí informácie o hre')
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
 
+        return states.PLAYING
+
 
 class Quit(Command):
     name = 'koniec'
@@ -49,4 +53,6 @@ class Quit(Command):
     def exec(self):
         choice = input('Naozaj chceš ukončiť túto hru? (a/n) ').lower().lstrip().rstrip()
         if choice in ('ano', 'a', 'yes', 'y'):
-            game_state = states.QUIT
+            return states.QUIT
+
+        return states.PLAYING

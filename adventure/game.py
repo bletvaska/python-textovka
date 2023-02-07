@@ -6,6 +6,7 @@ from helpers import intro, outro
 intro()
 game_state = states.PLAYING
 
+# game loop
 while game_state == states.PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
@@ -13,13 +14,13 @@ while game_state == states.PLAYING:
         pass
 
     elif line == 'o hre':
-        About().exec()
+        game_state = About().exec()
 
     elif line == 'prikazy':
-        Commands().exec()
+        game_state = Commands().exec()
 
     elif line == 'koniec':
-        Quit().exec()
+        game_state = Quit().exec()
 
     else:
         print('Taký príkaz nepoznám.')
