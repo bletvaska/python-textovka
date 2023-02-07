@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 
+from items.item import Item
+
 
 class Room(BaseModel):
     # fields
     name: str
     description: str
-    items = []  # : list
+    items: list[Item] = []  # : list
     exits = []  #: list
 
     def show(self):
@@ -16,6 +18,6 @@ class Room(BaseModel):
         if self.items != []:  # len(current_room.items) > 0
             print('Vidíš:')
             for item in self.items:
-                print(f'  {item}')
+                print(f'  {item.name}')
         else:
             print('Nevidíš tu nič zvláštne.')

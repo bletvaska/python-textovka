@@ -3,6 +3,8 @@
 import states
 from commands import About, Commands, Quit, LookAround
 from helpers import intro, outro
+from items.empty_seats import EmptySeats
+from items.whip import Whip
 from rooms import Room
 
 
@@ -20,7 +22,7 @@ def main():
                         description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. '
                                     'Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba '
                                     'živej duše. (Celkom zaujímavá situácia, že áno?)',
-                        items=['bič', 'prázdne sedadlá'],
+                        items=[Whip(), EmptySeats()],
                         exits=[])
 
     # show room
