@@ -34,7 +34,7 @@ while game_state == states.PLAYING:
 
     for command in commands:
         if command.name == line:
-            game_state = command.exec()
+            game_state = command.exec(current_room)
             break
     else:
         print('Taký príkaz nepoznám.')
