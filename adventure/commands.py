@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 import states
-from game import current_room
 
 
 class Command(BaseModel):
@@ -65,10 +64,11 @@ class LookAround(Command):
     description = 'rozhliadne sa v aktuálnej miestnosti'
 
     def exec(self):
-        print(current_room.description)
-        if current_room.items != []:  # len(current_room.items) > 0
-            print('Vidíš:')
-            for item in current_room.items:
-                print(f'  {item}')
-        else:
-            print('Nevidíš tu nič zvláštne.')
+        pass
+        # print(current_room.description)
+        # if current_room.items != []:  # len(current_room.items) > 0
+        #     print('Vidíš:')
+        #     for item in current_room.items:
+        #         print(f'  {item}')
+        # else:
+        #     print('Nevidíš tu nič zvláštne.')

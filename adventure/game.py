@@ -23,13 +23,7 @@ current_room = Room(name='v lietadle',
                     exits=[])
 
 # show room
-print(current_room.description)
-if current_room.items != []:  # len(current_room.items) > 0
-    print('Vidíš:')
-    for item in current_room.items:
-        print(f'  {item}')
-else:
-    print('Nevidíš tu nič zvláštne.')
+current_room.show()
 
 # game loop
 while game_state == states.PLAYING:

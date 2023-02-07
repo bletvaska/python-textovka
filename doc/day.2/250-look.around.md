@@ -17,8 +17,46 @@ Vidíš:
   prázdne sedadlá
 ```
 
-## Riešenie
+## Pokus o riešenie
+
+
 
 ```python
+class LookAround(Command):
+    name = 'rozhliadni sa'
+    description = 'rozhliadne sa v aktuálnej miestnosti'
 
+    def exec(self):
+        print(current_room.description)
+        if current_room.items != []:  # len(current_room.items) > 0
+            print('Vidíš:')
+            for item in current_room.items:
+                print(f'  {item}')
+        else:
+            print('Nevidíš tu nič zvláštne.')
 ```
+
+Lenže nebude fungovať, pretože premenná `current_room` nie je v tomto kontexte definovaná.
+
+
+## Aktualizácia triedy `Room`
+
+V triede `Room` vytvorte metódu `.show()`, pomocou ktorej "vykreslíte" obsah miestnosti na obrazovku.
+
+```python
+from pydantic import BaseModel
+
+
+class Room(BaseModel):
+    # fields
+    name: str
+    description: str
+    items = []  # : list
+    exits = []  #: list
+
+    def show(self):
+        pass
+```
+
+
+## Aktualizácia príkazu `rozhliadni sa`
