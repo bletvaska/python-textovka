@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
 import states
-from commands.about import About
-from commands.commands import Commands
-from commands.quit import Quit
-from commands.look_around import LookAround
+from commands import About, Commands, Quit, LookAround
 from helpers import intro, outro
 from rooms import Room
 
