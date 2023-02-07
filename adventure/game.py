@@ -3,25 +3,28 @@ import states
 from commands import About, Commands, Quit
 from helpers import intro, outro
 
+# intro
 intro()
+
+# init
 game_state = states.PLAYING
+commands = [
+    About(),
+    Commands(),
+    Quit()
+]
 
 # game loop
 while game_state == states.PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
     if line == '':  # len(line) == 0
-        pass
+        continue
 
-    elif line == 'o hre':
-        game_state = About().exec()
-
-    elif line == 'prikazy':
-        game_state = Commands().exec()
-
-    elif line == 'koniec':
-        game_state = Quit().exec()
-
+    for command in commands:
+        if command.name == line:
+            game_state = command.exec()
+            break
     else:
         print('Taký príkaz nepoznám.')
 
