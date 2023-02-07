@@ -12,21 +12,25 @@
 * [Command `about`](day.1/160-commands.as.dataclasses.md)
 * [Command `commands`](day.1/160-commands.as.dataclasses.md)
 * [Command `quit`](day.1/160-commands.as.dataclasses.md)
+* Daily Cheat Sheet
 
 
 ## Day 2: The Commands
 
 * Raising an Exception
-* Stack Trace
+* Working with Lists
 * Parsing Commands
+* Dataclass for Generic Room
+* Creating New Room
+* Daily Cheat Sheet
+
+* Stack Trace
 * Game Context
 * ~~[Inventory](day.2/999-inventory.md)~~
 
 
 ## Day 3: The World
 
-* Dataclass for Generic Room
-* Creating New Room
 * Command `look around` and `__str__()` Method
 * The World and Connected Rooms
 * Command `down`
