@@ -5,22 +5,22 @@
 * [The Basics](day.1/100-basics.md)
 * [Program Flow](day.1/110-program.flow.md)
 * [Game State](day.1/120-game.state.md)
-* [Creating of Own Functions](day.1/125-own.functions.md)
-* ~~[Inventory](day.1/130-inventory.md)~~
+* [Creating of Own Functions](day.1/130-own.functions.md)
+* [Main Building Blocks of the Game](day.1/140-main.building.blocks.md)
+* About Dataclasses
+* [Dataclass for Abstract Command](day.1/150-dataclass.command.md)
+* [Command `about`](day.1/160-commands.as.dataclasses.md)
+* [Command `commands`](day.1/160-commands.as.dataclasses.md)
+* [Command `quit`](day.1/160-commands.as.dataclasses.md)
 
 
 ## Day 2: The Commands
 
-* [Main Building Blocks of the Game](day.2/200-main.building.blocks.md)
-* About Dataclasses
-* [Dataclass for Abstract Command](day.2/210-dataclass.command.md)
 * Raising an Exception
 * Stack Trace
-* [Command `about`](day.2/220-commands.as.dataclasses.md)
-* [Command `commands`](day.2/220-commands.as.dataclasses.md)
-* [Command `quit`](day.2/220-commands.as.dataclasses.md)
 * Parsing Commands
 * Game Context
+* ~~[Inventory](day.2/999-inventory.md)~~
 
 
 ## Day 3: The World
