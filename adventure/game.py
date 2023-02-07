@@ -2,6 +2,7 @@
 import states
 from commands import About, Commands, Quit
 from helpers import intro, outro
+from rooms import Room
 
 # intro
 intro()
@@ -13,6 +14,7 @@ commands = [
     Commands(),
     Quit()
 ]
+current_room = Room(name='v lietadle', description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej duše. (Celkom zaujímavá situácia, že áno?)', items=['bič', 'prázdne sedadlá'], exits=[])
 
 # game loop
 while game_state == states.PLAYING:

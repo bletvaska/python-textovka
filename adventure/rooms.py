@@ -5,6 +5,6 @@ class Room(BaseModel):
     # fields
     name: str
     description: str
-    items: list
-    exits: list
-    
+    items = []  # : list
+    exits = []  #: list
+
