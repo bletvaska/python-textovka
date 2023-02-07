@@ -14,7 +14,21 @@ commands = [
     Commands(),
     Quit()
 ]
-current_room = Room(name='v lietadle', description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej duše. (Celkom zaujímavá situácia, že áno?)', items=['bič', 'prázdne sedadlá'], exits=[])
+current_room = Room(name='v lietadle',
+                    description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je '
+                                'tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej '
+                                'duše. (Celkom zaujímavá situácia, že áno?)',
+                    items=['bič', 'prázdne sedadlá'],
+                    exits=[])
+
+# show room
+print(current_room.description)
+if current_room.items != []:  # len(current_room.items) > 0
+    print('Vidíš:')
+    for item in current_room.items:
+        print(f'  {item}')
+else:
+    print('Nevidíš tu nič zvláštne.')
 
 # game loop
 while game_state == states.PLAYING:
