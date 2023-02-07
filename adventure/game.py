@@ -15,6 +15,7 @@ commands = [
     LookAround(),
     Quit()
 ]
+
 current_room = Room(name='v lietadle',
                     description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je '
                                 'tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej '
@@ -34,7 +35,7 @@ while game_state == states.PLAYING:
 
     for command in commands:
         if command.name == line:
-            game_state = command.exec(current_room)
+            game_state = command.exec(current_room, commands)
             break
     else:
         print('Taký príkaz nepoznám.')

@@ -32,4 +32,6 @@ v zavislosti od otho, co bude mozne s predmetom robit, budu mat niektore predmet
 
 ## O prikazoch
 
+![Diagram tried](http://yuml.me/ki/edit/15102d10)
+
 # kde sa nachadzam
