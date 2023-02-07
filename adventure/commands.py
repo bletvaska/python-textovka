@@ -13,7 +13,7 @@ class Command(BaseModel):
 
     # methods
     def exec(self):
-        print('vykonavam prikaz ', self.name)
+        raise NotImplementedError('This method was not yet implemented.')
 
 
 class About(Command):
