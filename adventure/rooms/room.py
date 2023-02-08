@@ -10,6 +10,9 @@ class Room(BaseModel):
     items: list[Item] = []  # : list
     exits = []  #: list
 
+    def act(self, context):
+        pass
+
     def show(self):
         """
         Shows the current room.

@@ -7,7 +7,7 @@ from context import Context
 from helpers import intro, outro
 from items.empty_seats import EmptySeats
 from items.whip import Whip
-from rooms import Room
+from rooms.in_plane import InPlane
 
 
 def main():
@@ -24,12 +24,12 @@ def main():
             Take(),
         ],
 
-        current_room=Room(name='v lietadle',
-                          description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. '
-                                      'Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba '
-                                      'živej duše. (Celkom zaujímavá situácia, že áno?)',
-                          items=[EmptySeats(), Whip()],
-                          exits=[])
+        current_room=InPlane(name='v lietadle',
+                             description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. '
+                                         'Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba '
+                                         'živej duše. (Celkom zaujímavá situácia, že áno?)',
+                             items=[EmptySeats(), Whip()],
+                             exits=[])
     )
 
     # show room
@@ -47,6 +47,7 @@ def main():
                 param = line.split(command.name)[1].strip()
                 command.param = param
                 command.exec(context)
+                context.current_room.act(context)
                 break
         else:
             print('Taký príkaz nepoznám.')
