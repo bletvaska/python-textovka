@@ -1,5 +1,7 @@
 from pyfiglet import Figlet
 
+from items.item import Item
+
 
 def intro():
     """
@@ -11,6 +13,8 @@ def intro():
     print('                        and his Great Python Adventure')
     print()
 
+    # return None
+
 
 def outro():
     """
@@ -18,3 +22,13 @@ def outro():
     """
     print('(c)2023 by mirek')
     print('Thanks for playing')
+
+    # return None
+
+
+def get_item_by_name(name: str, items: list[Item]) -> Item | None:
+    for item in items:
+        if item.name == name:
+            return item
+
+    # return None
