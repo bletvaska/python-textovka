@@ -25,9 +25,10 @@ def main():
                           description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. '
                                       'Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba '
                                       'živej duše. (Celkom zaujímavá situácia, že áno?)',
-                          items=[Whip(), EmptySeats()],
+                          items=[EmptySeats()],
                           exits=[])
     )
+    context.backpack.append(Whip())
 
     # show room
     context.current_room.show()

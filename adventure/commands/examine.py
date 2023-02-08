@@ -17,4 +17,9 @@ class Examine(Command):
                     print(item.description)
                     break
             else:
-                print('Taký predmet pri sebe nemáš.')
+                for item in context.current_room.items:
+                    if item.name == self.param:
+                        print(item.description)
+                        break
+                else:
+                    print('Taký predmet tu nikde nevidím.')
