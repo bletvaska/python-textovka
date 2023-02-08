@@ -1,4 +1,5 @@
 from helpers import get_item_by_name
+from items.features import EXPLORABLE
 from .command import Command
 
 
@@ -22,3 +23,7 @@ class Examine(Command):
 
         # render
         print(item.description)
+
+        # is item explorable?
+        if EXPLORABLE in item.features:
+            item.explore(context)
