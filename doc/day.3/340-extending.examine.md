@@ -9,17 +9,14 @@ vypadne a potom zabezpečíme, aby ten padák po preskúmaní naozaj vypadol.
 Vytvorte predmet padák.
 
 ```python
-from dataclasses import dataclass, field
-
-from adventure.items import MOVABLE, USABLE, EXAMINABLE
-from adventure.items.item import Item
+from items.features import MOVABLE, USABLE, EXAMINABLE
+from items.item import Item
 
 
-@dataclass
 class Parachute(Item):
     name: str = 'padak'
     description: str = 'Obyčajný padák. Made in U.S.A. 1933'
-    features: list = field(default_factory=lambda: [MOVABLE, USABLE])
+    features = [MOVABLE, USABLE]
 ```
 
 
