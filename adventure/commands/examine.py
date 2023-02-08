@@ -19,6 +19,6 @@ class Examine(Command):
         if item is None:
             print('Taký predmet tu nikde nevidím.')
             return
-        
+
         # render
         print(item.description)
