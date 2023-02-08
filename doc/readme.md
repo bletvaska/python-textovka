@@ -22,32 +22,35 @@
 * Parsing Commands
 * Dataclass for Generic Room
 * Creating New Room
+* Command `look around` and `__str__()` Method
+* [Dataclass for Generic Item](day.2/400-item.representation.md)
+* [Item _Whip_](day.2/405-whip.md)
+* [Item _Empty Seats_](day.2/410-empty.seats.md)
 * Daily Cheat Sheet
 
 * Stack Trace
-* Game Context
-* ~~[Inventory](day.3/310-inventory.md)~~
+
+
 
 
 ## Day 3: The World
 
-* Command `look around` and `__str__()` Method
-* The World and Connected Rooms
-* Command `down`
-* Commands `north`, `south`, `east` and `west`
+* Backpack and Game Context
+* [Inventory](day.3/310-inventory.md)
+* [Command `examine`](day.3/320-examine.md)
+* Extended Item Examination
+* Item Parachute
+* [Command `take`](day.3/360-take.item.md)
+* [Command `drop`](day.3/370-drop.item.md)
+
 
 
 ## Day 4: The Items
 
-* [Dataclass for Generic Item](day.2/400-item.representation.md)
-* [Item _Whip_](day.2/405-whip.md)
-* [Item _Empty Seats_](day.2/410-empty.seats.md)
-* Command `inventory`
+* The World and Connected Rooms
+* Command `down`
+* Commands `north`, `south`, `east` and `west`
 * [Place Created Items into Room](day.2/415-items.in.room.md)
-* [Command `examine`](day.3/320-examine.md)
-* [Command `take`](day.3/430-take.item.md)
-* [Command `drop`](day.4/440-drop.item.md)
-* Extended Item Examination
 * [Command `use`](day.4/460-use.item.md)
 
 

@@ -2,6 +2,7 @@
 
 import states
 from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take
+from commands.drop import Drop
 from context import Context
 from helpers import intro, outro
 from items.empty_seats import EmptySeats
@@ -15,6 +16,7 @@ def main():
         commands=[
             About(),
             Commands(),
+            Drop(),
             Examine(),
             Inventory(),
             LookAround(),
