@@ -5,18 +5,21 @@ Vytvorte príkaz `preskumaj`, pomocou ktorého zobrazíte opis zvoleného predme
 * Ak predmet nebol v príkaze uvedený, vypíšte na obrazovku správu:
 
    ```
+   > preskumaj
    Neviem, čo chceš preskúmať.
    ```
 
 * Ak hráč napíše názov predmetu, ktorý sa v batohu nenachádza, vypíšte na obrazovku správu:
 
    ```
+   > preskumaj elektricka
    Taký predmet pri sebe nemáš.
    ```
 
 * Ak hráč napíše názov predmetu, ktorý sa v batohu nachádza, tak na obrazovku vypíšte jeho opis
 
    ```
+   > preskumaj bic
    Tvoj neoceniteľný kamarát na každom jednom dobrodužstve.
    ```
 

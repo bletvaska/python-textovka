@@ -26,7 +26,7 @@
 
 * Stack Trace
 * Game Context
-* ~~[Inventory](day.2/999-inventory.md)~~
+* ~~[Inventory](day.3/300-inventory.md)~~
 
 
 ## Day 3: The World
@@ -39,12 +39,12 @@
 
 ## Day 4: The Items
 
-* [Dataclass for Generic Item](day.4/400-item.representation.md)
-* [Item _Whip_](day.4/405-whip.md)
-* [Item _Empty Seats_](day.4/410-empty.seats.md)
+* [Dataclass for Generic Item](day.2/400-item.representation.md)
+* [Item _Whip_](day.2/405-whip.md)
+* [Item _Empty Seats_](day.2/410-empty.seats.md)
 * Command `inventory`
-* [Place Created Items into Room](day.4/415-items.in.room.md)
-* [Command `examine`](day.4/420-examine.md)
+* [Place Created Items into Room](day.2/415-items.in.room.md)
+* [Command `examine`](day.3/420-examine.md)
 * [Command `take`](day.4/430-take.item.md)
 * [Command `drop`](day.4/440-drop.item.md)
 * Extended Item Examination

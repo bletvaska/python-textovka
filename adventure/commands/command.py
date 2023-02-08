@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from rooms import Room
+from context import Context
 
 
 class Command(BaseModel):
@@ -12,5 +12,5 @@ class Command(BaseModel):
     description: str
 
     # methods
-    def exec(self, room: Room, commands: list) -> str:
+    def exec(self, context: Context) -> str:
         raise NotImplementedError('This method was not yet implemented.')

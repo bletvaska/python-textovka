@@ -1,5 +1,9 @@
 # About Lists
 
+## Goals
+
+1. Naučiť sa základy práce so zoznamami
+
 ukazka prace so zoznamami
 
 * pocet prvkov len(items)

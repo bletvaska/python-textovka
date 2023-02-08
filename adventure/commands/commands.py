@@ -9,10 +9,8 @@ class Commands(Command):
     name = 'prikazy'
     description = 'zobrazí zoznam dostupných príkazov v hre'
 
-    def exec(self, room, commands: list[Command]):
+    def exec(self, context):
         print('V hre je možné použiť tieto príkazy:')
 
-        for command in commands:
+        for command in context.commands:
             print(f'  {command.name} - {command.description}')
-
-        return states.PLAYING
