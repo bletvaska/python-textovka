@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 
-from context import Context
-
 
 class Command(BaseModel):
     """
@@ -12,5 +10,5 @@ class Command(BaseModel):
     description: str
 
     # methods
-    def exec(self, context: Context) -> str:
+    def exec(self, context) -> str:
         raise NotImplementedError('This method was not yet implemented.')
