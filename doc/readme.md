@@ -45,7 +45,7 @@
 * Command `inventory`
 * [Place Created Items into Room](day.2/415-items.in.room.md)
 * [Command `examine`](day.3/320-examine.md)
-* [Command `take`](day.4/430-take.item.md)
+* [Command `take`](day.3/430-take.item.md)
 * [Command `drop`](day.4/440-drop.item.md)
 * Extended Item Examination
 * [Command `use`](day.4/460-use.item.md)

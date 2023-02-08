@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import states
-from commands import About, Commands, Quit, LookAround, Inventory, Examine
+from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take
 from context import Context
 from helpers import intro, outro
 from items.empty_seats import EmptySeats
@@ -18,7 +18,8 @@ def main():
             Examine(),
             Inventory(),
             LookAround(),
-            Quit()
+            Quit(),
+            Take(),
         ],
 
         current_room=Room(name='v lietadle',
