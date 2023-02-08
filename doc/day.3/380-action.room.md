@@ -1,3 +1,15 @@
+# Action Room
+
+## Rozsirenie triedy `Room` o metodu `.act()`
+
+```python
+def act(self, context):
+    pass
+```
+
+## Trieda `InPlane`
+
+```python
 import states
 from context import Context
 from rooms import Room
@@ -17,4 +29,4 @@ class InPlane(Room):
               'Jones nemohol prežiť podobnú radostnú udalosť.')
 
         context.game_state = states.PLANE_CRASH
-
+```
