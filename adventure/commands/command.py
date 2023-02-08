@@ -8,7 +8,8 @@ class Command(BaseModel):
     # fields
     name: str
     description: str
+    param = ''
 
     # methods
-    def exec(self, context) -> str:
+    def exec(self, context):
         raise NotImplementedError('This method was not yet implemented.')

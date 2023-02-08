@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import states
-from commands import About, Commands, Quit, LookAround, Inventory
+from commands import About, Commands, Quit, LookAround, Inventory, Examine
 from context import Context
 from helpers import intro, outro
 from items.empty_seats import EmptySeats
@@ -15,6 +15,7 @@ def main():
         commands=[
             About(),
             Commands(),
+            Examine(),
             Inventory(),
             LookAround(),
             Quit()
@@ -39,7 +40,9 @@ def main():
             continue
 
         for command in context.commands:
-            if command.name == line:
+            if line.startswith(command.name):
+                param = line.split(command.name)[1].strip()
+                command.param = param
                 command.exec(context)
                 break
         else:
