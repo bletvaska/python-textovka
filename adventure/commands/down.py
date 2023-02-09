@@ -9,7 +9,12 @@ class Down(Command):
 
     def exec(self, context):
         if DOWN in context.current_room.exits:
-            context.current_room = get_room_by_name(context.current_room.exits[DOWN], context.world)
+            # getting ready
+            name = context.current_room.exits[DOWN]
+            rooms = context.world
+
+            # change current room
+            context.current_room = get_room_by_name(name, rooms)
             context.current_room.show()
         else:
             print('Tam sa nedá ísť.')

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import states
-from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take, Down, East, North, South, Up, West
-from commands.drop import Drop
+from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take, Down, East, North, South, Up, West, \
+    Drop
 from context import Context
 from helpers import intro, outro, get_room_by_name
 from rooms.world import load_world
