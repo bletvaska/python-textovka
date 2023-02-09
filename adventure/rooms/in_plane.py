@@ -17,4 +17,3 @@ class InPlane(Room):
               'Jones nemohol prežiť podobnú radostnú udalosť.')
 
         context.game_state = states.PLANE_CRASH
-

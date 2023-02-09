@@ -52,6 +52,15 @@ def main():
         else:
             print('Taký príkaz nepoznám.')
 
+    if context.game_state not in (states.GAME_SOLVED, states.QUIT):
+        print("Správa z tlače:\n"
+              "Od nášho zvláštneho korešpondenta z Káhiry sme sa dozvedeli, že národný hrdina, miláčik čitateľov, "
+              "nositeľ rádu za statočnosť, známy Indiana Jones, už bohužiaľ nie je medzi nami. Zomrel v egyptskej "
+              "púšti, 31. apríla 1939, deň potom, ako si vybral svoju zaslúženú dovolenku. Jeho odchodom stráca naša "
+              "spoločnosť jednu z najväčších postáv v dejinách Spojených Štátov. Veď to bol práve on, kto sa bez "
+              "váhania\n"
+              "(pokračovanie na str. 5)")
+
 
 if __name__ == '__main__':
     intro()

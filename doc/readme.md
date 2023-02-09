@@ -28,12 +28,8 @@
 * [Item _Empty Seats_](day.2/410-empty.seats.md)
 * Daily Cheat Sheet
 
-* Stack Trace
 
-
-
-
-## Day 3: The World
+## Day 3: The Items
 
 * Backpack and Game Context
 * [Inventory](day.3/310-inventory.md)
@@ -45,8 +41,9 @@
 
 
 
-## Day 4: The Items
+## Day 4: The World
 
+* Stack Trace
 * The World and Connected Rooms
 * Command `down`
 * Commands `north`, `south`, `east` and `west`
