@@ -30,7 +30,7 @@ def main():
             West(),
         ],
         world=world,
-        current_room=get_room_by_name('v lietadle', world),
+        current_room=get_room_by_name('oáza', world),
     )
 
     # show room

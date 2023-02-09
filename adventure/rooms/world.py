@@ -2,6 +2,7 @@ from items.coconut_palm_tree import CoconutPalmTree
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from rooms import Room
+from rooms.at_enemy_gate import AtEnemyGate
 from rooms.directions import DOWN, SOUTH, NORTH, WEST, EAST
 from rooms.free_fall import FreeFall
 from rooms.in_plane import InPlane
