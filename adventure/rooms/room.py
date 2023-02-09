@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 from items.item import Item
-from .directions import NORTH, SOUTH, EAST, WEST, UP, DOWN
 
 
 class Room(BaseModel):
