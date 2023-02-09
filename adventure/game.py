@@ -2,6 +2,7 @@
 
 import states
 from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take
+from commands.down import Down
 from commands.drop import Drop
 from context import Context
 from helpers import intro, outro, get_room_by_name
@@ -15,6 +16,7 @@ def main():
         commands=[
             About(),
             Commands(),
+            Down(),
             Drop(),
             Examine(),
             Inventory(),
