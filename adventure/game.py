@@ -2,7 +2,7 @@
 
 import states
 from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take, Down, East, North, South, Up, West, \
-    Drop
+    Drop, Use
 from context import Context
 from helpers import intro, outro, get_room_by_name
 from rooms.world import load_world
@@ -26,6 +26,7 @@ def main():
             South(),
             Take(),
             Up(),
+            Use(),
             West(),
         ],
         world=world,
@@ -44,9 +45,12 @@ def main():
 
         for command in context.commands:
             if line.startswith(command.name):
+                # execute command
                 param = line.split(command.name)[1].strip()
                 command.param = param
                 command.exec(context)
+
+                # make action in room
                 context.current_room.act(context)
                 break
         else:
