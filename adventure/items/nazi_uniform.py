@@ -1,6 +1,7 @@
 from context import Context
 from .features import EXPLORABLE, MOVABLE
 from .item import Item
+from .key import Key
 
 
 class NaziUniform(Item):
