@@ -5,10 +5,6 @@ from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take
 from commands.drop import Drop
 from context import Context
 from helpers import intro, outro, get_room_by_name
-from items.empty_seats import EmptySeats
-from items.whip import Whip
-from rooms.directions import DOWN
-from rooms.in_plane import InPlane
 from rooms.world import load_world
 
 

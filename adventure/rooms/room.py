@@ -9,7 +9,7 @@ class Room(BaseModel):
     name: str
     description: str
     items: list[Item] = []  # : list
-    exits: dict[str, str]
+    exits: dict[str, str] = {}
 
     def act(self, context):
         pass
