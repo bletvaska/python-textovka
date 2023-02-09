@@ -9,10 +9,12 @@ from items.empty_seats import EmptySeats
 from items.whip import Whip
 from rooms.directions import DOWN
 from rooms.in_plane import InPlane
+from rooms.world import load_world
 
 
 def main():
     # init
+    world = load_world()
     context = Context(
         commands=[
             About(),
@@ -24,15 +26,8 @@ def main():
             Quit(),
             Take(),
         ],
-
-        current_room=InPlane(name='v lietadle',
-                             description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. '
-                                         'Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba '
-                                         'živej duše. (Celkom zaujímavá situácia, že áno?)',
-                             items=[EmptySeats(), Whip()],
-                             exits={
-                                 DOWN: 'vo vzduchu'
-                             })
+        world=world,
+        current_room=get_room_by_name('v lietadle', world),
     )
 
     # show room

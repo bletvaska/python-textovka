@@ -35,4 +35,4 @@ class Room(BaseModel):
         else:
             print('Môžeš ísť:')
             for ex in self.exits:
-                print(f'* {ex}')
+                print(f'  {ex}')
