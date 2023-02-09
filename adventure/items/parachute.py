@@ -1,4 +1,5 @@
 from context import Context
+from helpers import get_room_by_name
 from .features import MOVABLE, USABLE
 from .item import Item
 
@@ -16,7 +17,9 @@ class Parachute(Item):
             return
 
         # act
-        # teleportujem sa do miestnosti miesto pristatia
+        # teleportujem sa do miestnosti pust
+        context.current_room = get_room_by_name('púšť', context.world)
 
         # render
         print('Nad hlavou sa ti otvoril padák a po chvíli šťastne pristál...')
+        context.current_room.show()
