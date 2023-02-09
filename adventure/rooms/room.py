@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 from items.item import Item
+from .directions import NORTH, SOUTH, EAST, WEST, UP, DOWN
 
 
 class Room(BaseModel):
@@ -8,7 +9,14 @@ class Room(BaseModel):
     name: str
     description: str
     items: list[Item] = []  # : list
-    exits = []  #: list
+    exits = {
+        NORTH: None,
+        SOUTH: None,
+        EAST: None,
+        WEST: None,
+        UP: None,
+        DOWN: None
+    }
 
     def act(self, context):
         pass
