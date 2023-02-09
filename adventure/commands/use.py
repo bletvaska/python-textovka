@@ -22,9 +22,11 @@ class Use(Command):
             return
 
         # is item usable?
-        if USABLE not in item.features:
-            print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')
-            return
+        # if USABLE not in item.features:
+        #     print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')
+        #     return
 
         # use item
-        item.use(context)
+        success = item.use(context)
+        if success is False:
+            print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')

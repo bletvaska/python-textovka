@@ -9,17 +9,19 @@ class Parachute(Item):
     description = 'Obyčajný padák MADE IN U.S.A. 1933'
     features = [MOVABLE, USABLE]
 
-    def use(self, context: Context):
+    def use(self, context: Context) -> bool:
         # check usability
-        # musim byt v miesntosti volny pad
+        # is indy in room free fall?
         if context.current_room.name != 'voľný pád':
-            print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')
-            return
+            return False
 
         # act
-        # teleportujem sa do miestnosti pust
+        # move to the room desert
         context.current_room = get_room_by_name('púšť', context.world)
+        self.features.remove(USABLE)
 
         # render
         print('Nad hlavou sa ti otvoril padák a po chvíli šťastne pristál...')
         context.current_room.show()
+
+        return True
