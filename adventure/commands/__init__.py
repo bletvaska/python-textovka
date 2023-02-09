@@ -5,3 +5,9 @@ from .inventory import Inventory
 from .look_around import LookAround
 from .quit import Quit
 from .take import Take
+from .east import East
+from .west import West
+from .north import North
+from .south import South
+from .up import Up
+from .down import Down

@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 import states
-from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take
-from commands.down import Down
+from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take, Down, East, North, South, Up, West
 from commands.drop import Drop
 from context import Context
 from helpers import intro, outro, get_room_by_name
@@ -18,11 +17,16 @@ def main():
             Commands(),
             Down(),
             Drop(),
+            East(),
             Examine(),
             Inventory(),
             LookAround(),
+            North(),
             Quit(),
+            South(),
             Take(),
+            Up(),
+            West(),
         ],
         world=world,
         current_room=get_room_by_name('v lietadle', world),
