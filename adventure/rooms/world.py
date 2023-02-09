@@ -1,7 +1,7 @@
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from rooms import Room
-from rooms.directions import DOWN
+from rooms.directions import DOWN, SOUTH, NORTH, WEST, EAST
 from rooms.free_fall import FreeFall
 from rooms.in_plane import InPlane
 
@@ -23,4 +23,16 @@ def load_world() -> list[Room]:
             description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
                         'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
         ),
+
+        Room(
+            name='púšť',
+            description='Si na púšti, ktorá sa vyznačuje predovšetkým tým, že je pustá. (Je zaujímavé, že to tu vyzerá '
+                        'úplne inak, ako v lietadle).',
+            exits={
+                SOUTH: 'oáza',
+                NORTH: 'púšť',
+                WEST: 'púšť',
+                EAST: 'púšť'
+            }
+        )
     ]

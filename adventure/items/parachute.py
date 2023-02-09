@@ -19,4 +19,4 @@ class Parachute(Item):
         # teleportujem sa do miestnosti miesto pristatia
 
         # render
-        print('pouzivam padak')
+        print('Nad hlavou sa ti otvoril padák a po chvíli šťastne pristál...')
