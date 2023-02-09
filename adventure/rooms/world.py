@@ -51,5 +51,14 @@ def load_world() -> list[Room]:
             items=[CoconutPalmTree()]
         ),
 
+        AtEnemyGate(
+            name='pred táborom',
+            description='Stojíš pri plote z ostnatého drôtu. Na juhu je brána, ktorá vedie do vojenského tábora. Na '
+                        'blízkej strážnej veži hliadkuje nemecký vojak. Na severe vidíš za piesočnou dunou vrch palmy.',
+            exits={
+                NORTH: 'oáza'
+            }
+        ),
+
 
     ]
