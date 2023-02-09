@@ -1,3 +1,4 @@
+from items.coconut_palm_tree import CoconutPalmTree
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from rooms import Room
@@ -34,5 +35,21 @@ def load_world() -> list[Room]:
                 WEST: 'púšť',
                 EAST: 'púšť'
             }
-        )
+        ),
+
+        Room(
+            name='oáza',
+            description='Si v malej oáze uprostred púšte. Pri malom jazierku stojí palma s niekoľkými kokosovými '
+                        'orechmi. Nič moc. Zaujímavejšie je, že kúsok odtiaľto smerom na juh je plot z ostnatého '
+                        'drôtu s bránou a strážnou vežou.',
+            exits={
+                SOUTH: 'pred táborom',
+                NORTH: 'púšť',
+                EAST: 'púšť',
+                WEST: 'púšť',
+            },
+            items=[CoconutPalmTree()]
+        ),
+
+
     ]
