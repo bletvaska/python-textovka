@@ -9,7 +9,7 @@ from rooms.world import load_world
 
 
 def main():
-    # init
+    # game init
     world = load_world()
     context = Context(
         commands=[
