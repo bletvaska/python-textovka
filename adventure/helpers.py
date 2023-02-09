@@ -1,6 +1,7 @@
 from pyfiglet import Figlet
 
 from items.item import Item
+from rooms import Room
 
 
 def intro():
@@ -30,5 +31,13 @@ def get_item_by_name(name: str, items: list[Item]) -> Item | None:
     for item in items:
         if item.name == name:
             return item
+
+    # return None
+
+
+def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
+    for room in rooms:
+        if room.name == name:
+            return room
 
     # return None
