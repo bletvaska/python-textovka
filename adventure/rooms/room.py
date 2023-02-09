@@ -9,14 +9,7 @@ class Room(BaseModel):
     name: str
     description: str
     items: list[Item] = []  # : list
-    exits = {
-        NORTH: None,
-        SOUTH: None,
-        EAST: None,
-        WEST: None,
-        UP: None,
-        DOWN: None
-    }
+    exits: dict[str, str]
 
     def act(self, context):
         pass
@@ -25,10 +18,21 @@ class Room(BaseModel):
         """
         Shows the current room.
         """
+        # print description
         print(self.description)
+
+        # print items
         if self.items != []:  # len(current_room.items) > 0
             print('Vidíš:')
             for item in self.items:
                 print(f'  {item.name}')
         else:
             print('Nevidíš tu nič zvláštne.')
+
+        # print exits
+        if self.exits == {}:
+            print('Z tejto miestnosti nevedú žiadne východy.')
+        else:
+            print('Môžeš ísť:')
+            for ex in self.exits:
+                print(f'* {ex}')
