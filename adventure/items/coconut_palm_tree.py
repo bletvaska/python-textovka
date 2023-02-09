@@ -1,6 +1,7 @@
 from context import Context
 from .features import EXPLORABLE
 from .item import Item
+from .nazi_uniform import NaziUniform
 
 
 class CoconutPalmTree(Item):
