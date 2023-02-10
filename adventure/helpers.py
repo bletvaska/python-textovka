@@ -24,7 +24,8 @@ def outro():
     """
     Prints the outro messages of the game.
     """
-    print('(c)2022 by mirek')
+    print('(c)2022-2023 refactoroval mirek')
+    print('Original game was created by František Fuka aka Fuxoft in 1986')
     print('See you soon.')
 
 

@@ -1,3 +1,5 @@
+import json
+
 from .command import Command
 
 
@@ -6,6 +8,13 @@ class Save(Command):
     description = 'uloží aktuálny stav hry do súboru'
 
     def exec(self, context):
-        print('História príkazov:')
-        for line in context.history:
-            print(f'* {line}')
+        # if no filename was entered
+        filename = self.param
+        if filename == '':
+            print("Nezadal si názov súboru.")
+            return
+
+        with open(filename, 'w') as file:
+            json.dump(context.dict(), file, indent=4, ensure_ascii=False)
+
+        print('Pozícia bola úspešne uložená.')

@@ -1,6 +1,9 @@
-from pydantic import BaseModel
+from typing import TYPE_CHECKING
 
-from game_context import GameContext
+if TYPE_CHECKING:
+    from game_context import GameContext
+
+from pydantic import BaseModel
 
 
 class Command(BaseModel):
@@ -13,5 +16,5 @@ class Command(BaseModel):
     param: str = None
 
     # behavior / methods
-    def exec(self, context: GameContext) -> None:
+    def exec(self, context: "GameContext") -> None:
         raise NotImplemented(f'Príkaz {self.name} ešte nebol implementovaný.')
