@@ -14,6 +14,7 @@ from .altar import Altar
 from .at_enemy_gate import AtEnemyGate
 from .free_fall import FreeFall
 from .in_plane import InPlane
+from .oasis import Oasis
 from .room import Room
 from .yellow_fog import YellowFog
 
@@ -53,7 +54,7 @@ def load_world() -> list[Room]:
             }
         ),
 
-        Room(
+        Oasis(
             name='oáza',
             description='Si v [bold green]malej oáze[/bold green] uprostred púšte. Pri malom jazierku stojí '
                         '[bold magenta]palma[/bold magenta] s niekoľkými kokosovými orechmi. Nič moc. Zaujímavejšie '

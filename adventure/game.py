@@ -53,6 +53,17 @@ def main():
             command.exec(context)
             context.current_room.act(context)
 
+    if context.game_state == states.WELL_DONE:
+        print('A tak sa skončila ďalšia epizóda v dobrodružnom živote Indiana Jonesa. A to, že ju v zdraví prežil, '
+              'je len tvojou zásluhou! Za peniaze, ktoré získal za náhrdelník, si teraz môže Indy konečne dopriať '
+              'kľudnú dovolenku...')
+
+        print()
+        print('...alebo? (To sa ukáže časom)')
+
+        print()
+        print(f'Hru si zvládol na [bold yellow]{context.score}%[/bold yellow].')
+
 
 if __name__ == '__main__':
     intro()
