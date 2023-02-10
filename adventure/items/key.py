@@ -1,4 +1,3 @@
-from game_context import GameContext
 from helpers import get_item_by_name
 from .diamond import Diamond
 from .dictionary import Dictionary
@@ -12,7 +11,7 @@ class Key(Item):
     description = 'Veľký mosadzný kľúč, zrejme od nejakej truhly.'
     features = [MOVABLE, USABLE]
 
-    def use(self, context: GameContext):
+    def use(self, context):
         # check usage conditions
         chest = get_item_by_name('tazka okovana truhlica', context.current_room.items)
         if chest is None:

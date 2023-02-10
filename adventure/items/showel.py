@@ -1,4 +1,3 @@
-from game_context import GameContext
 from rooms import directions
 from .features import MOVABLE, USABLE
 from .item import Item
@@ -9,7 +8,7 @@ class Showel(Item):
     description = 'Je to zázrak, že ešte drží pohromade...'
     features = [MOVABLE, USABLE]
 
-    def use(self, context: GameContext):
+    def use(self, context):
         # check usage conditions
         if context.current_room.name != 'oáza':
             print('nedobre')

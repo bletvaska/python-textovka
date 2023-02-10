@@ -1,39 +1,14 @@
 #!/usr/bin/env python
 import states
-from commands import *
 from game_context import GameContext
 from helpers import intro, outro, parse_line, get_room_by_name
-from rooms.world import load_world
 
 
 def main():
     intro()
 
     # game initialization
-    context = GameContext(
-        rooms=load_world(),
-        commands=[
-            About(),
-            Commands(),
-            Down(),
-            Drop(),
-            East(),
-            Examine(),
-            Help(),
-            Inventory(),
-            Load(),
-            LookAround(),
-            North(),
-            Quit(),
-            Save(),
-            Score(),
-            South(),
-            Take(),
-            Up(),
-            Use(),
-            West()
-        ],
-    )
+    context = GameContext()
 
     # room = context.current_room = get_room_by_name('v lietadle', context)
     # context.backpack.append(Dictionary())

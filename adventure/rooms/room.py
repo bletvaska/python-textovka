@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 from pydantic import BaseModel
+from rich import print
 
 if TYPE_CHECKING:
     from adventure.game_context import GameContext
@@ -27,7 +28,7 @@ class Room(BaseModel):
         else:
             print('Vidíš:')
             for item in self.items:
-                print(f'* {item.name}')
+                print(f'* [yellow]{item.name}[/yellow]')
 
         print()
 
@@ -37,16 +38,16 @@ class Room(BaseModel):
         else:
             print('Možné východy z miestnosti:')
             if directions.DOWN in self.exits:
-                print(f'* dolu')
+                print(f'* [yellow]dolu[/yellow]')
             if directions.UP in self.exits:
-                print(f'* hore')
+                print(f'* [yellow]hore[/yellow]')
             if directions.EAST in self.exits:
-                print(f'* východ')
+                print(f'* [yellow]východ[/yellow]')
             if directions.WEST in self.exits:
-                print(f'* západ')
+                print(f'* [yellow]západ[/yellow]')
             if directions.SOUTH in self.exits:
-                print(f'* juh')
+                print(f'* [yellow]juh[/yellow]')
             if directions.NORTH in self.exits:
-                print(f'* sever')
+                print(f'* [yellow]sever[/yellow]')
 
         print()

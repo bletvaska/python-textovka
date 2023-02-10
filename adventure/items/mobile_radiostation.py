@@ -1,4 +1,3 @@
-from game_context import GameContext
 from helpers import get_item_by_name
 from .features import MOVABLE, USABLE
 from .item import Item
@@ -10,7 +9,7 @@ class MobileRadiostation(Item):
     features = [MOVABLE, USABLE]
     used: bool = False
 
-    def use(self, context: GameContext):
+    def use(self, context):
         # check usage conditions
         battery = get_item_by_name('automobilova bateria', context.backpack + context.current_room.items)
 

@@ -33,7 +33,8 @@ def load_world() -> list[Room]:
         FreeFall(
             name='voľný pád',
             description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
-                        'rýchlo približuje. Mimochodom v diaľke na juhu je vidieť nejaký vojenský tábor.',
+                        'rýchlo približuje. Mimochodom v diaľke na [yellow]juhu[/yellow] je vidieť nejaký vojenský '
+                        'tábor.',
         ),
 
         Room(
@@ -51,8 +52,8 @@ def load_world() -> list[Room]:
         Room(
             name='oáza',
             description='Si v malej oáze uprostred púšte. Pri malom jazierku stojí palma s niekoľkými kokosovými '
-                        'orechmi. Nič moc. Zaujímavejšie je, že kúsok odtiaľto smerom na juh je plot z ostnatého '
-                        'drôtu s bránou a strážnou vežou.',
+                        'orechmi. Nič moc. Zaujímavejšie je, že kúsok odtiaľto smerom na [yellow]juh[/yellow] je plot '
+                        'z ostnatého drôtu s bránou a strážnou vežou.',
             exits={
                 directions.SOUTH: 'pred táborom',
                 directions.NORTH: 'púšť',
@@ -64,8 +65,9 @@ def load_world() -> list[Room]:
 
         AtEnemyGate(
             name='pred táborom',
-            description='Stojíš pri plote z ostnatého drôtu. Na juhu je brána, ktorá vedie do vojenského tábora. Na '
-                        'blízkej strážnej veži hliadkuje nemecký vojak. Na severe vidíš za piesočnou dunou vrch palmy.',
+            description='Stojíš pri plote z ostnatého drôtu. Na [yellow]juhu[/yellow] je brána, ktorá vedie do '
+                        'vojenského tábora. Na blízkej strážnej veži hliadkuje nemecký vojak. Na '
+                        '[yellow]severe[/yellow] vidíš za piesočnou dunou vrch palmy.',
             exits={
                 directions.NORTH: 'oáza'
             }
@@ -200,7 +202,7 @@ def load_world() -> list[Room]:
 
         Room(
             name='vyklenok',
-            description='Si v malom vyklenku. Na juh od teba stoji oltar.',
+            description='Si v malom výklenku. Na [yellow]juh[/yellow] od teba stoji oltár.',
             exits={
                 directions.SOUTH: 'oltar'
             },

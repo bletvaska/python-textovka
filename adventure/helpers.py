@@ -1,5 +1,8 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from game_context import GameContext
 from commands.command import Command
-from game_context import GameContext
 from items.item import Item
 from rooms.room import Room
 
@@ -24,12 +27,12 @@ def outro():
     """
     Prints the outro messages of the game.
     """
-    print('(c)2022-2023 refactoroval mirek')
-    print('Original game was created by František Fuka aka Fuxoft in 1986')
+    print('Tento remake vytvoril mirek sko súčasť svojich školení v rokoch 2022-2023.')
+    print('Originálnu hru vytvoril v roku 1986 František Fuka aka Fuxoft.')
     print('See you soon.')
 
 
-def parse_line(line: str, context: GameContext) -> Command | None:
+def parse_line(line: str, context: 'GameContext') -> Command | None:
     """
     Returns command object based on the input entered by user.
     """
@@ -41,7 +44,7 @@ def parse_line(line: str, context: GameContext) -> Command | None:
     return None  # default
 
 
-def get_room_by_name(name: str, context: GameContext) -> Room | None:
+def get_room_by_name(name: str, context: 'GameContext') -> Room | None:
     """
     Returns room by its name.
     """

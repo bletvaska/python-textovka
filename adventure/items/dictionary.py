@@ -1,4 +1,3 @@
-from game_context import GameContext
 from helpers import get_item_by_name
 from .features import MOVABLE, USABLE
 from .item import Item
@@ -9,7 +8,7 @@ class Dictionary(Item):
     description = 'Je to anglicko-staroegyptský slovník, 14. upravené vydanie.'
     features = [MOVABLE, USABLE]
 
-    def use(self, context: GameContext):
+    def use(self, context):
         # check if there is writing on wall in the room
         item = get_item_by_name('napis na stene', context.current_room.items)
         if item is None:

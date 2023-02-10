@@ -1,12 +1,15 @@
 [tool.poetry]
 name = "adventure"
-version = "0.1.0"
+version = "2023.2"
 description = "Project for Python 101 training."
-authors = ["Miroslav Biňas <miroslav.binas@tuke.sk>"]
-readme = "README.md"
+authors = [
+    "František Fuka",
+    "Miroslav Biňas <miroslav.binas@tuke.sk>"
+]
+readme = "readme.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 pydantic = "^1.10.2"
 rich = "^13.3.1"
 
