@@ -1,5 +1,6 @@
 from items.coconut_palm_tree import CoconutPalmTree
 from items.empty_seats import EmptySeats
+from items.showel import Showel
 from items.whip import Whip
 from rooms import Room
 from rooms.at_enemy_gate import AtEnemyGate
@@ -98,7 +99,7 @@ def load_world() -> list[Room]:
                 EAST: 'v tábore'
             },
             items=[
-                # Showel(),
+                Showel(),
                 # MobileRadiostation()
             ]
         ),
