@@ -24,6 +24,7 @@ programovaní alebo skriptovania v inom jazyku.
 * moduly a balíky
 * type hints
 * defenzívne programovanie
+* práca s farbami v konzole pomocou knižnice [rich](https://github.com/Textualize/rich)
 
 
 ## Literatúra
