@@ -10,11 +10,10 @@ class Command(BaseModel):
     """
     Describes every command in game.
     """
-    # fields
     name: str
+    aliases: list[str] = []
     description: str
     param: str = None
 
-    # behavior / methods
     def exec(self, context: "GameContext") -> None:
         raise NotImplemented(f'Príkaz {self.name} ešte nebol implementovaný.')

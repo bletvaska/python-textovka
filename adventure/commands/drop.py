@@ -1,3 +1,5 @@
+from rich import print
+
 from helpers import get_item_by_name
 from .command import Command
 
@@ -23,9 +25,10 @@ class Drop(Command):
         # drop item
         context.backpack.remove(item)
         context.current_room.items.append(item)
+        item.on_drop(context)
 
         # render
-        print(f'Do miestnosti si položil {item.name}.')
+        print(f'Do miestnosti si položil [bold magenta]{item.name}[/bold magenta].')
 
         # append command to history
         context.history.append(f'{self.name} {self.param}')

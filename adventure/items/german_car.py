@@ -10,10 +10,10 @@ class GermanCar(Item):
     description = 'Mercedes Benz, ale bohužiaľ v nepojazdnom stave.'
     features = [EXAMINABLE]
 
-    def examine(self, context):
+    def on_examine(self, context):
         # action
         context.current_room.items.append(CarBattery())
         self.features.remove(EXAMINABLE)
 
         # render
-        print('V kufri auta si objavil [bold yellow]batériu[/bold yellow]!')
+        print('V kufri auta si objavil [bold magenta]batériu[/bold magenta]!')

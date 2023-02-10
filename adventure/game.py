@@ -3,13 +3,36 @@
 from rich import print
 
 import states
+from commands import *
 from game_context import GameContext
 from helpers import intro, outro, parse_line, get_room_by_name
 
 
 def main():
     # game initialization
-    context = GameContext()
+    context = GameContext(
+        commands=[
+            About(),
+            Commands(),
+            Down(),
+            Drop(),
+            East(),
+            Examine(),
+            Help(),
+            Inventory(),
+            Load(),
+            LookAround(),
+            North(),
+            Quit(),
+            Save(),
+            Score(),
+            South(),
+            Take(),
+            Up(),
+            Use(),
+            West()
+        ]
+    )
 
     context.current_room = get_room_by_name('v lietadle', context)
     context.current_room.show()

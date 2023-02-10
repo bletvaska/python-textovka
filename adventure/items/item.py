@@ -18,3 +18,6 @@ class Item(BaseModel):
 
     def on_drop(self, context: 'GameContext'):
         pass
+
+    def __str__(self):
+        return self.name

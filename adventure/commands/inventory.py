@@ -1,3 +1,5 @@
+from rich import print
+
 from .command import Command
 
 
@@ -13,4 +15,4 @@ class Inventory(Command):
         else:
             print('V batohu máš:')
             for item in context.backpack:
-                print(f'* {item.name}')
+                print(f'* [bold magenta]{item}[/bold magenta]')

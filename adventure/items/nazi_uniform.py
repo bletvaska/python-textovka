@@ -6,9 +6,10 @@ from .key import Key
 
 
 class NaziUniform(Item):
-    name = 'nemecka uniforma'
+    name = 'nemecku uniformu'
     description = 'Zachovalá dôstojnícka uniforma.'
     features = [MOVABLE, USABLE, EXAMINABLE]
+    is_dressed = False
 
     def on_examine(self, context):
         # action
@@ -16,16 +17,22 @@ class NaziUniform(Item):
         self.features.remove(EXAMINABLE)
 
         # render
-        print('V jednom jej vrecku si objavil [bold yellow]kľúč[/bold yellow]!')
+        print('V jednom jej vrecku si objavil [bold magenta]kľúč[/bold magenta]!')
 
     def on_use(self, context):
         # action
-        self.name = 'nemecka uniforma (oblecena)'
+        self.is_dressed = True
 
         # render
-        print('Obliekol si si [bold yellow]uniformu[/bold yellow]... Padne ti ako uliata.')
+        print('Obliekol si si [bold magenta]uniformu[/bold magenta]... Padne ti ako uliata.')
 
         return True
 
     def on_drop(self, context):
-        self.name = 'nemecka uniforma'
+        self.is_dressed = False
+
+    def __str__(self):
+        if self.is_dressed is True:
+            return f'{self.name} (oblečená)'
+        else:
+            return self.name

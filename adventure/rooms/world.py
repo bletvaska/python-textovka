@@ -27,14 +27,17 @@ def load_world() -> list[Room]:
             exits={
                 directions.DOWN: 'voľný pád'
             },
-            items=[Whip(), EmptySeats()]
+            items=[
+                Whip(),
+                EmptySeats()
+            ]
         ),
 
         FreeFall(
             name='voľný pád',
             description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a vôbec sa nevzrušuj zemou, ktorá sa '
-                        'rýchlo približuje. Mimochodom v diaľke na [yellow]juhu[/yellow] je vidieť nejaký vojenský '
-                        'tábor.',
+                        'rýchlo približuje. Mimochodom v diaľke na [bold yellow]juhu[/bold yellow] je vidieť nejaký '
+                        '[bold green]vojenský tábor[/bold green].',
         ),
 
         Room(
@@ -52,22 +55,24 @@ def load_world() -> list[Room]:
         Room(
             name='oáza',
             description='Si v malej oáze uprostred púšte. Pri malom jazierku stojí palma s niekoľkými kokosovými '
-                        'orechmi. Nič moc. Zaujímavejšie je, že kúsok odtiaľto smerom na [yellow]juh[/yellow] je plot '
-                        'z ostnatého drôtu s bránou a strážnou vežou.',
+                        'orechmi. Nič moc. Zaujímavejšie je, že kúsok odtiaľto smerom na '
+                        '[bold yellow]juh[/bold yellow] je plot z ostnatého drôtu s bránou a strážnou vežou.',
             exits={
                 directions.SOUTH: 'pred táborom',
                 directions.NORTH: 'púšť',
                 directions.EAST: 'púšť',
                 directions.WEST: 'púšť',
             },
-            items=[CoconutPalmTree()]
+            items=[
+                CoconutPalmTree()
+            ]
         ),
 
         AtEnemyGate(
             name='pred táborom',
-            description='Stojíš pri plote z ostnatého drôtu. Na [yellow]juhu[/yellow] je brána, ktorá vedie do '
-                        'vojenského tábora. Na blízkej strážnej veži hliadkuje nemecký vojak. Na '
-                        '[yellow]severe[/yellow] vidíš za piesočnou dunou vrch palmy.',
+            description='Stojíš pri plote z ostnatého drôtu. Na [bold yellow]juhu[/bold yellow] je brána, ktorá vedie '
+                        'do vojenského tábora. Na blízkej strážnej veži hliadkuje nemecký vojak. Na '
+                        '[bold yellow]severe[/bold yellow] vidíš za piesočnou dunou vrch palmy.',
             exits={
                 directions.NORTH: 'oáza'
             }
@@ -75,8 +80,9 @@ def load_world() -> list[Room]:
 
         Room(
             name='v tábore',
-            description='Stojíš uprostred vyľudneného vojenského tábora. Na severe je brána vedúca von do púšte. Na '
-                        'západe je malý stan, ktorý slúži ako sklad. Na východe je veliteľov stan.',
+            description='Stojíš uprostred vyľudneného vojenského tábora. Na [bold yellow]severe[/bold yellow] je brána '
+                        'vedúca von do púšte. Na [bold yellow]západe[/bold yellow] je malý stan, ktorý slúži ako '
+                        'sklad. Na [bold yellow]východe[/bold yellow] je veliteľov stan.',
             exits={
                 directions.NORTH: 'pred táborom',
                 directions.EAST: 'veliteľov stan',
@@ -177,7 +183,7 @@ def load_world() -> list[Room]:
         ),
 
         Room(
-            name='uzka chodba',
+            name='úzka chodba',
             description='Si v úzkej západno-východnej chodbe.',
             items=[
                 Diamond(),
@@ -185,26 +191,26 @@ def load_world() -> list[Room]:
             ],
             exits={
                 directions.WEST: 'podzemie',
-                directions.EAST: 'oltar'
+                directions.EAST: 'oltár'
             }
         ),
 
         Altar(
-            name='oltar',
+            name='oltár',
             description='Stojíš pri veľkom oltári z čistého krištáľu. Z oltára vychádza modré svetlo vrhajúce tiene '
                         'na steny miestnosti. Na [bold yellow]západe[/bold yellow] je vchod do úzkej chodby a na '
                         '[bold yellow]severe[/bold yellow], za závesmi pavučín, vidíš v stene výklenok.',
             exits={
-                directions.WEST: 'uzka chodba',
-                directions.NORTH: 'vyklenok'
+                directions.WEST: 'úzka chodba',
+                directions.NORTH: 'výklenok'
             }
         ),
 
         Room(
-            name='vyklenok',
+            name='výklenok',
             description='Si v malom výklenku. Na [bold yellow]juh[/bold yellow] od teba stoji oltár.',
             exits={
-                directions.SOUTH: 'oltar'
+                directions.SOUTH: 'oltár'
             },
             items=[
                 Diamond()

@@ -18,4 +18,4 @@ class EmptySeats(Item):
         self.features.remove(EXAMINABLE)
 
         # render
-        print('Pod jedným z nich si našiel [bold yellow]padák[/bold yellow]. Šťastná to náhoda.')
+        print('Pod jedným z nich si našiel [bold magenta]padák[/bold magenta]. Šťastná to náhoda.')

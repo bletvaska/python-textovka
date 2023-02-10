@@ -29,7 +29,7 @@ class Room(BaseModel):
         else:
             print('Vidíš:')
             for item in self.items:
-                print(f'* [bold yellow]{item.name}[/bold yellow]')
+                print(f'* [bold magenta]{item}[/bold magenta]')
 
         print()
 
@@ -39,16 +39,16 @@ class Room(BaseModel):
         else:
             print('Možné východy z miestnosti:')
             if directions.DOWN in self.exits:
-                print(f'* [yellow]dolu[/yellow]')
+                print(f'* [bold yellow]dolu[/bold yellow]')
             if directions.UP in self.exits:
-                print(f'* [yellow]hore[/yellow]')
+                print(f'* [bold yellow]hore[/bold yellow]')
             if directions.EAST in self.exits:
-                print(f'* [yellow]východ[/yellow]')
+                print(f'* [bold yellow]východ[/bold yellow]')
             if directions.WEST in self.exits:
-                print(f'* [yellow]západ[/yellow]')
+                print(f'* [bold yellow]západ[/bold yellow]')
             if directions.SOUTH in self.exits:
-                print(f'* [yellow]juh[/yellow]')
+                print(f'* [bold yellow]juh[/bold yellow]')
             if directions.NORTH in self.exits:
-                print(f'* [yellow]sever[/yellow]')
+                print(f'* [bold yellow]sever[/bold yellow]')
 
         print()

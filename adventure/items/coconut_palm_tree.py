@@ -6,7 +6,7 @@ from .nazi_uniform import NaziUniform
 
 
 class CoconutPalmTree(Item):
-    name = 'kokosova palma'
+    name = 'kokosovu palmu'
     description = 'Zdá sa, že na jej plody nedosiahneš.'
     features = [EXAMINABLE]
 
@@ -16,4 +16,4 @@ class CoconutPalmTree(Item):
         self.features.remove(EXAMINABLE)
 
         # render
-        print('Pod koreňmi palmy si objavil ukrytú [yellow]uniformu[/yellow].')
+        print('Pod koreňmi palmy si objavil ukrytú [bold magenta]uniformu[/bold magenta].')
