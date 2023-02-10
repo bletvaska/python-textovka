@@ -22,3 +22,6 @@ class NaziUniform(Item):
         print('Obliekol si si uniformu... Padne ti ako uliata.')
 
         return True
+
+    def on_drop(self, context):
+        self.name = 'nemecka uniforma'

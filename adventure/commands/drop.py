@@ -20,9 +20,10 @@ class Drop(Command):
             print('Taký predmet pri sebe nemáš.')
             return
 
-        # take item
+        # drop item
         context.backpack.remove(item)
         context.current_room.items.append(item)
+        item.on_drop(context)
 
         # render
         print(f'Do miestnosti si položil predmet {item.name}.')

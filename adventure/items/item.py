@@ -8,3 +8,6 @@ class Item(BaseModel):
 
     def use(self, context) -> bool:
         return False
+
+    def on_drop(self, context):
+        pass

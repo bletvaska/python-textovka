@@ -17,7 +17,8 @@ def load_world() -> list[Room]:
                         'živej duše. (Celkom zaujímavá situácia, že áno?)',
             items=[
                 EmptySeats(),
-                Whip()],
+                Whip()
+            ],
             exits={
                 DOWN: 'voľný pád'
             }),
