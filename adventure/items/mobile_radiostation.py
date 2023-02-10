@@ -1,6 +1,7 @@
 from rich import print
 
-from helpers import get_item_by_name
+from helpers import get_item_by_type
+from . import CarBattery
 from .features import MOVABLE, USABLE
 from .item import Item
 
@@ -13,7 +14,7 @@ class MobileRadiostation(Item):
 
     def on_use(self, context):
         # check usage conditions
-        battery = get_item_by_name('automobilovu bateriu', context.backpack)
+        battery = get_item_by_type(CarBattery, context.backpack)
 
         if battery is None:
             print('Bohužiaľ, nemáš žiadny zdroj elektriny.')

@@ -1,7 +1,10 @@
-from helpers import get_item_by_name
+from rich import print
+
+from helpers import get_item_by_type
 from .diamond import Diamond
 from .dictionary import Dictionary
 from .features import MOVABLE, USABLE
+from .heavy_chest import HeavyChest
 from .item import Item
 from .map import Map
 
@@ -13,7 +16,7 @@ class Key(Item):
 
     def on_use(self, context):
         # check usage conditions
-        chest = get_item_by_name('tazku okovanu truhlicu', context.current_room.items)
+        chest = get_item_by_type(HeavyChest, context.current_room.items)
         if chest is None:
             return False
 
@@ -23,7 +26,7 @@ class Key(Item):
             Dictionary(),
             Diamond(),
         ])
-        print('Otvoril si truhlu a našiel si v nej zaujímavé veci!')
+        print('Otvoril si [bold magenta]truhlu[/bold magenta] a našiel si v nej zaujímavé veci!')
 
         # remove usability
         self.features.remove(USABLE)

@@ -1,7 +1,8 @@
 from rich import print
 
-from helpers import get_item_by_name
+from helpers import get_item_by_type
 from .diamond import Diamond
+from .diamond_on_ceiling import DiamondOnCeiling
 from .features import MOVABLE, USABLE
 from .item import Item
 
@@ -13,7 +14,7 @@ class Whip(Item):
 
     def on_use(self, context):
         # check usage conditions
-        diamond_on_ceiling = get_item_by_name('diamant pri strope', context.current_room.items)
+        diamond_on_ceiling = get_item_by_type(DiamondOnCeiling, context.current_room.items)
         if diamond_on_ceiling is None:
             return False
 

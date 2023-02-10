@@ -1,3 +1,5 @@
+from rich import print
+
 from helpers import get_room_by_name
 from .features import MOVABLE, USABLE
 from .item import Item

@@ -21,9 +21,9 @@ def load_world() -> list[Room]:
     return [
         InPlane(
             name='v lietadle',
-            description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu '
-                        'nádherný kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom '
-                        'zaujímavá situácia, že?) ',
+            description='Prebudil si sa v malom dvojmotorovom [bold green]lietadle[/bold green], plachtiacom nad '
+                        'egyptskou púšťou. Je tu nádherný kľud, pretože motory stoja a na palube nie je okrem teba '
+                        'živá duša. (Celkom zaujímavá situácia, že?) ',
             exits={
                 directions.DOWN: 'voľný pád'
             },
@@ -111,7 +111,7 @@ def load_world() -> list[Room]:
 
         Room(
             name='malý stan',
-            description='Si v malom stane. Je tu hromada neužitočných harabúrd.',
+            description='Si v [bold green]malom stane[/bold green]. Je tu hromada neužitočných harabúrd.',
             exits={
                 directions.EAST: 'v tábore'
             },
@@ -123,8 +123,8 @@ def load_world() -> list[Room]:
 
         Room(
             name='podzemie',
-            description='Stojíš na kamenných dlaždiciach pod dierou vedúcou von z podzemia. Steny sú pomaľované '
-                        'výjavmi zo života egyptských bohov.',
+            description='Stojíš na [bold green]kamenných dlaždiciach[/bold green] pod dierou vedúcou von z podzemia. '
+                        'Steny sú pomaľované výjavmi zo života egyptských bohov.',
             exits={
                 directions.UP: 'oáza',
                 directions.EAST: 'úzka chodba',
@@ -168,7 +168,7 @@ def load_world() -> list[Room]:
 
         YellowFog(
             name='žltá hmla',
-            description='Si v žltej hmle.',
+            description='Si v [bold green]žltej hmle[/bold green].',
             exits={
                 directions.EAST: 'chodba',
                 directions.WEST: 'žltá hmla',
@@ -179,7 +179,7 @@ def load_world() -> list[Room]:
 
         Room(
             name='koniec chodby',
-            description='Si na konci chodby.',
+            description='Si na [bold green]konci chodby[/bold green].',
             exits={
                 directions.WEST: 'žltá hmla'
             },
@@ -190,7 +190,7 @@ def load_world() -> list[Room]:
 
         Room(
             name='úzka chodba',
-            description='Si v úzkej západno-východnej chodbe.',
+            description='Si v [bold green]úzkej západno-východnej chodbe[/bold green].',
             items=[
                 Diamond(),
                 WritingOnWall()
@@ -203,9 +203,10 @@ def load_world() -> list[Room]:
 
         Altar(
             name='oltár',
-            description='Stojíš pri veľkom oltári z čistého krištáľu. Z oltára vychádza modré svetlo vrhajúce tiene '
-                        'na steny miestnosti. Na [bold yellow]západe[/bold yellow] je vchod do úzkej chodby a na '
-                        '[bold yellow]severe[/bold yellow], za závesmi pavučín, vidíš v stene výklenok.',
+            description='Stojíš pri [bold green]veľkom oltári[/bold green] z čistého krištáľu. Z oltára vychádza modré '
+                        'svetlo vrhajúce tiene na steny miestnosti. Na [bold yellow]západe[/bold yellow] je vchod do '
+                        '[bold green]úzkej chodby[/bold green] a na [bold yellow]severe[/bold yellow], za závesmi '
+                        'pavučín, vidíš v stene [bold green]výklenok[/bold green].',
             exits={
                 directions.WEST: 'úzka chodba',
                 directions.NORTH: 'výklenok'
@@ -214,7 +215,8 @@ def load_world() -> list[Room]:
 
         Room(
             name='výklenok',
-            description='Si v malom výklenku. Na [bold yellow]juh[/bold yellow] od teba stoji oltár.',
+            description='Si v malom [bold green]výklenku[/bold green]. Na [bold yellow]juh[/bold yellow] od teba '
+                        'stoji [bold green]oltár[/bold green].',
             exits={
                 directions.SOUTH: 'oltár'
             },

@@ -1,6 +1,7 @@
-from helpers import get_item_by_name
+from helpers import get_item_by_type
 from .features import MOVABLE, USABLE
 from .item import Item
+from .writing_on_wall import WritingOnWall
 
 
 class Dictionary(Item):
@@ -10,7 +11,7 @@ class Dictionary(Item):
 
     def on_use(self, context):
         # check if there is writing on wall in the room
-        item = get_item_by_name('napis na stene', context.current_room.items)
+        item = get_item_by_type(WritingOnWall, context.current_room.items)
         if item is None:
             return False
 
