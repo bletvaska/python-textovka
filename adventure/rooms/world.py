@@ -5,7 +5,7 @@ from items.empty_seats import EmptySeats
 from items.german_car import GermanCar
 from items.heavy_chest import HeavyChest
 from items.mobile_radiostation import MobileRadiostation
-from items.showel import Showel
+from items.shovel import Shovel
 from items.whip import Whip
 from items.writing_on_wall import WritingOnWall
 from rooms import directions
@@ -105,7 +105,7 @@ def load_world() -> list[Room]:
                 directions.EAST: 'v tábore'
             },
             items=[
-                Showel(),
+                Shovel(),
                 MobileRadiostation()
             ]
         ),
@@ -192,8 +192,8 @@ def load_world() -> list[Room]:
         Altar(
             name='oltar',
             description='Stojíš pri veľkom oltári z čistého krištáľu. Z oltára vychádza modré svetlo vrhajúce tiene '
-                        'na steny miestnosti. Na západe je vchod do úzkej chodby a na severe, za závesmi pavučín, '
-                        'vidíš v stene výklenok.',
+                        'na steny miestnosti. Na [bold yellow]západe[/bold yellow] je vchod do úzkej chodby a na '
+                        '[bold yellow]severe[/bold yellow], za závesmi pavučín, vidíš v stene výklenok.',
             exits={
                 directions.WEST: 'uzka chodba',
                 directions.NORTH: 'vyklenok'
@@ -202,7 +202,7 @@ def load_world() -> list[Room]:
 
         Room(
             name='vyklenok',
-            description='Si v malom výklenku. Na [yellow]juh[/yellow] od teba stoji oltár.',
+            description='Si v malom výklenku. Na [bold yellow]juh[/bold yellow] od teba stoji oltár.',
             exits={
                 directions.SOUTH: 'oltar'
             },

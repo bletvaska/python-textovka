@@ -1,3 +1,5 @@
+from rich import print
+
 from helpers import get_item_by_name
 from items.features import MOVABLE
 from .command import Command
@@ -31,7 +33,7 @@ class Take(Command):
         context.backpack.append(item)
 
         # render
-        print(f'Do batohu si si vložil {item.name}.')
+        print(f'Do batohu si si vložil [bold yellow]{item.name}[/bold yellow].')
 
         # append command to history
         context.history.append(f'{self.name} {self.param}')

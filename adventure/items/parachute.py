@@ -8,7 +8,7 @@ class Parachute(Item):
     description = 'Obyčajný padák. Made in U.S.A. 1933'
     features = [MOVABLE, USABLE]
 
-    def use(self, context) -> bool:
+    def on_use(self, context) -> bool:
         # check usage conditions
         if context.current_room.name != 'voľný pád':
             return False

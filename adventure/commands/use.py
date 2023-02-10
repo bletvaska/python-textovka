@@ -13,8 +13,8 @@ class Use(Command):
             print("Neviem, čo chceš použiť.")
             return
 
-        # search for item in room
-        item = get_item_by_name(self.param, context.current_room.items + context.backpack)
+        # search for item in backpack
+        item = get_item_by_name(self.param, context.backpack)
 
         # was item found?
         if item is None:
@@ -22,13 +22,7 @@ class Use(Command):
             return
 
         # is item usable?
-        if USABLE not in item.features:
-            print('Tento predmet sa nedá použiť.')
-            return
-
-        # use item
-        status = item.use(context)
-        if status is False:
+        if USABLE not in item.features or item.on_use(context) is False:
             print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')
         else:
             # append command to history

@@ -1,4 +1,4 @@
-from .features import USABLE, MOVABLE
+from .features import MOVABLE
 from .item import Item
 
 

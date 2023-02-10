@@ -1,3 +1,5 @@
+from rich import print
+
 from .car_battery import CarBattery
 from .features import EXAMINABLE
 from .item import Item
@@ -14,4 +16,4 @@ class GermanCar(Item):
         self.features.remove(EXAMINABLE)
 
         # render
-        print('V kufri auta si objavil batériu!')
+        print('V kufri auta si objavil [bold yellow]batériu[/bold yellow]!')

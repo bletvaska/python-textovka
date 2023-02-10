@@ -1,3 +1,5 @@
+from rich import print
+
 from helpers import get_item_by_name
 from .diamond import Diamond
 from .features import MOVABLE, USABLE
@@ -9,7 +11,7 @@ class Whip(Item):
     description = 'Tvoj neoceniteľný pomocník..!'
     features = [MOVABLE, USABLE]
 
-    def use(self, context):
+    def on_use(self, context):
         # check usage conditions
         diamond_on_ceiling = get_item_by_name('diamant pri strope', context.current_room.items)
         if diamond_on_ceiling is None:
@@ -18,7 +20,7 @@ class Whip(Item):
         # use item
         context.current_room.items.remove(diamond_on_ceiling)
         context.current_room.items.append(Diamond())
-        print('Podarilo sa ti zraziť diamant dolu!')
+        print('Podarilo sa ti zraziť [bold yellow]diamant[/bold yellow] dolu!')
         self.features.remove(USABLE)
 
         return True

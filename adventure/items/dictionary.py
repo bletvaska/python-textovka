@@ -8,7 +8,7 @@ class Dictionary(Item):
     description = 'Je to anglicko-staroegyptský slovník, 14. upravené vydanie.'
     features = [MOVABLE, USABLE]
 
-    def use(self, context):
+    def on_use(self, context):
         # check if there is writing on wall in the room
         item = get_item_by_name('napis na stene', context.current_room.items)
         if item is None:

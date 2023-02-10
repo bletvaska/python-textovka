@@ -6,20 +6,21 @@ from rich import print
 if TYPE_CHECKING:
     from adventure.game_context import GameContext
 from . import directions
+from items.item import Item
 
 
 class Room(BaseModel):
     name: str
     description: str
-    items: list = []
-    exits: dict = {}
+    items: list[Item] = []
+    exits: dict[str, str] = {}
 
     def act(self, context: 'GameContext'):
         pass
 
     def show(self):
         # room name and description
-        print(f'Nachádzaš sa v miestnosti {self.name}.\n')
+        # print(f'Nachádzaš sa v miestnosti {self.name}.\n')
         print(f'{self.description}\n')
 
         # items
@@ -28,7 +29,7 @@ class Room(BaseModel):
         else:
             print('Vidíš:')
             for item in self.items:
-                print(f'* [yellow]{item.name}[/yellow]')
+                print(f'* [bold yellow]{item.name}[/bold yellow]')
 
         print()
 

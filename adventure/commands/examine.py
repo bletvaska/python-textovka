@@ -26,7 +26,7 @@ class Examine(Command):
 
         # is item examinable?
         if EXAMINABLE in item.features:
-            item.examine(context)
+            item.on_examine(context)
 
         # append command to history
         context.history.append(f'{self.name} {self.param}')

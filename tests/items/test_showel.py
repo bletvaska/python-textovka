@@ -2,7 +2,7 @@ import pytest
 
 from helpers import get_room_by_name
 from items.features import USABLE, MOVABLE
-from items.showel import Showel
+from items.shovel import Shovel
 from rooms import directions
 
 
@@ -12,7 +12,7 @@ class TestSuiteShowel:
 
     @pytest.fixture
     def item(self):
-        yield Showel()
+        yield Shovel()
 
     def test_when_created_then_expect_specific_name(self, item):
         assert item.name == 'lopata', 'Incorrect name.'

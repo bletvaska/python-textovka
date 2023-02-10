@@ -11,7 +11,7 @@ class Key(Item):
     description = 'Veľký mosadzný kľúč, zrejme od nejakej truhly.'
     features = [MOVABLE, USABLE]
 
-    def use(self, context):
+    def on_use(self, context):
         # check usage conditions
         chest = get_item_by_name('tazka okovana truhlica', context.current_room.items)
         if chest is None:
