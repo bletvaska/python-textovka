@@ -27,6 +27,16 @@ def outro():
     # return None
 
 
+def victory():
+    intro()
+
+    figlet = Figlet()
+    banner = figlet.renderText('Victory!')
+    print(banner)
+    print('Indiana Jones opäť raz našiel poklad a zachránil kus histórie tentokrát pred nacistami.')
+    print()
+
+
 def get_item_by_name(name: str, items: list[Item]) -> Item | None:
     for item in items:
         if item.name == name:

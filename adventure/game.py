@@ -4,7 +4,7 @@ import states
 from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take, Down, East, North, South, Up, West, \
     Drop, Use
 from context import Context
-from helpers import intro, outro, get_room_by_name
+from helpers import intro, outro, get_room_by_name, victory
 from rooms.world import load_world
 
 
@@ -64,6 +64,9 @@ def main():
               "spoločnosť jednu z najväčších postáv v dejinách Spojených Štátov. Veď to bol práve on, kto sa bez "
               "váhania\n"
               "(pokračovanie na str. 5)")
+
+    if context.game_state == states.GAME_SOLVED:
+        victory()
 
 
 if __name__ == '__main__':
