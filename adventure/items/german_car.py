@@ -13,6 +13,9 @@ class GermanCar(Item):
     def on_examine(self, context):
         # action
         context.current_room.items.append(CarBattery())
+
+        # post-processing
+        context.score += 5
         self.features.remove(EXAMINABLE)
 
         # render

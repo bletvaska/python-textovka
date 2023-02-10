@@ -26,8 +26,12 @@ class Key(Item):
             Dictionary(),
             Diamond(),
         ])
+
+        # post-processing
+        self.features.remove(USABLE)
+        context.score += 5
+
+        # render
         print('Otvoril si [bold magenta]truhlu[/bold magenta] a našiel si v nej zaujímavé veci!')
 
-        # remove usability
-        self.features.remove(USABLE)
         return True

@@ -17,7 +17,12 @@ class Shovel(Item):
 
         # shovel usage
         context.current_room.exits[directions.DOWN] = 'podzemie'
-        print('Pod vrstvou piesku si objavil vchod do [bold green]podzemia[/bold green]!')
+
+        # post-processing
         self.features.remove(USABLE)
+        context.score += 5
+
+        # render
+        print('Pod vrstvou piesku si objavil vchod do [bold green]podzemia[/bold green]!')
 
         return True

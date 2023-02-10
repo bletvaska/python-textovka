@@ -5,6 +5,7 @@ from items.empty_seats import EmptySeats
 from items.german_car import GermanCar
 from items.heavy_chest import HeavyChest
 from items.mobile_radiostation import MobileRadiostation
+from items.pharaos_necklace import PharaohsPlatinumNecklace
 from items.shovel import Shovel
 from items.whip import Whip
 from items.writing_on_wall import WritingOnWall
@@ -223,5 +224,17 @@ def load_world() -> list[Room]:
             items=[
                 Diamond()
             ]
+        ),
+
+        Room(
+            name='faraónova hrobka',
+            description='Si vo [bold green]faraónovej hrobke[/bold green]. Okolo sarkofágu leží na zemi značné '
+                        'množstvo ľudských kostier. Jediná cesta vedie [bold green]hore[/bold green].',
+            items=[
+                PharaohsPlatinumNecklace(),
+            ],
+            exits={
+                directions.UP: 'oltár'
+            }
         )
     ]

@@ -21,7 +21,12 @@ class Whip(Item):
         # use item
         context.current_room.items.remove(diamond_on_ceiling)
         context.current_room.items.append(Diamond())
-        print('Podarilo sa ti zraziť [bold magenta]diamant[/bold magenta] dolu!')
+
+        # post-processing
         self.features.remove(USABLE)
+        context.score += 5
+
+        # render
+        print('Podarilo sa ti zraziť [bold magenta]diamant[/bold magenta] dolu!')
 
         return True

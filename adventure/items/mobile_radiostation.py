@@ -28,5 +28,6 @@ class MobileRadiostation(Item):
             print('Ale niečo za niečo... Chcú, aby si našiel faraónov [bold magenta]platinový '
                   'náhrdelník[/bold magenta], ktorý Nemci hľadajú už niekoľko mesiacov.')
             self.used = True
+            context.score += 5
 
         return True
