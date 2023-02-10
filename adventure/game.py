@@ -2,7 +2,7 @@
 
 import states
 from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take, Down, East, North, South, Up, West, \
-    Drop, Use
+    Drop, Use, Save
 from context import Context
 from helpers import intro, outro, get_room_by_name, victory
 from rooms.world import load_world
@@ -23,6 +23,7 @@ def main():
             LookAround(),
             North(),
             Quit(),
+            Save(),
             South(),
             Take(),
             Up(),
@@ -56,6 +57,7 @@ def main():
         else:
             print('Taký príkaz nepoznám.')
 
+    # death of indiana jones in press
     if context.game_state not in (states.GAME_SOLVED, states.QUIT):
         print("Správa z tlače:\n"
               "Od nášho zvláštneho korešpondenta z Káhiry sme sa dozvedeli, že národný hrdina, miláčik čitateľov, "
@@ -65,6 +67,7 @@ def main():
               "váhania\n"
               "(pokračovanie na str. 5)")
 
+    # victory screen
     if context.game_state == states.GAME_SOLVED:
         victory()
 
