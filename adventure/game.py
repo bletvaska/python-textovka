@@ -2,7 +2,7 @@
 
 import states
 from commands import About, Commands, Quit, LookAround, Inventory, Examine, Take, Down, East, North, South, Up, West, \
-    Drop, Use, Save
+    Drop, Use, Save, Load
 from context import Context
 from helpers import intro, outro, get_room_by_name, victory
 from rooms.world import load_world
@@ -20,6 +20,7 @@ def main():
             East(),
             Examine(),
             Inventory(),
+            Load(),
             LookAround(),
             North(),
             Quit(),

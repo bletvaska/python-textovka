@@ -5,7 +5,7 @@ from .command import Command
 
 class Save(Command):
     name = 'uloz'
-    description = 'uloží rozohratú hru do súboru'
+    description = 'uloží rozohranú hru do súboru'
 
     def exec(self, context):
         with open('save.json', 'w') as file:
