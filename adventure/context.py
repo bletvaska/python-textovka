@@ -12,3 +12,5 @@ class Context(BaseModel):
     world: list[Room]
     game_state = states.PLAYING
     backpack: list[Item] = []
+    score = 0
+    # history: list[str]

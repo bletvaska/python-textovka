@@ -15,3 +15,4 @@ from .drop import Drop
 from .use import Use
 from .save import Save
 from .load import Load
+from .score import Score

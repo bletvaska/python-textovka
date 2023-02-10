@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from rich import print
 
 from items.item import Item
 
@@ -22,16 +23,16 @@ class Room(BaseModel):
 
         # print items
         if self.items != []:  # len(current_room.items) > 0
-            print('Vidíš:')
+            print('[yellow]Vidíš:[/yellow]')
             for item in self.items:
                 print(f'  {item.name}')
         else:
-            print('Nevidíš tu nič zvláštne.')
+            print('[yellow]Nevidíš tu nič zvláštne.[/yellow]')
 
         # print exits
         if self.exits == {}:
-            print('Z tejto miestnosti nevedú žiadne východy.')
+            print('[magenta]Z tejto miestnosti nevedú žiadne východy.[/magenta]')
         else:
-            print('Môžeš ísť:')
+            print('[magenta]Môžeš ísť:[/magenta]')
             for ex in self.exits:
                 print(f'  {ex}')
