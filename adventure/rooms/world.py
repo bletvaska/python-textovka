@@ -42,8 +42,8 @@ def load_world() -> list[Room]:
 
         Room(
             name='púšť',
-            description='Si na púšti, ktorá sa vyznačuje predovšetkým tým, že je pustá. (Je zaujímavé, že to tu vyzerá '
-                        'úplne inak, ako v lietadle).',
+            description='Si na [bold green]púšti[/bold green], ktorá sa vyznačuje predovšetkým tým, že je pustá. (Je '
+                        'zaujímavé, že to tu vyzerá úplne inak, ako v lietadle).',
             exits={
                 directions.SOUTH: 'oáza',
                 directions.NORTH: 'púšť',
@@ -54,9 +54,10 @@ def load_world() -> list[Room]:
 
         Room(
             name='oáza',
-            description='Si v malej oáze uprostred púšte. Pri malom jazierku stojí palma s niekoľkými kokosovými '
-                        'orechmi. Nič moc. Zaujímavejšie je, že kúsok odtiaľto smerom na '
-                        '[bold yellow]juh[/bold yellow] je plot z ostnatého drôtu s bránou a strážnou vežou.',
+            description='Si v [bold green]malej oáze[/bold green] uprostred púšte. Pri malom jazierku stojí '
+                        '[bold magenta]palma[/bold magenta] s niekoľkými kokosovými orechmi. Nič moc. Zaujímavejšie '
+                        'je, že kúsok odtiaľto smerom na [bold yellow]juh[/bold yellow] je plot z ostnatého drôtu s '
+                        'bránou a strážnou vežou.',
             exits={
                 directions.SOUTH: 'pred táborom',
                 directions.NORTH: 'púšť',
@@ -70,9 +71,11 @@ def load_world() -> list[Room]:
 
         AtEnemyGate(
             name='pred táborom',
-            description='Stojíš pri plote z ostnatého drôtu. Na [bold yellow]juhu[/bold yellow] je brána, ktorá vedie '
-                        'do vojenského tábora. Na blízkej strážnej veži hliadkuje nemecký vojak. Na '
-                        '[bold yellow]severe[/bold yellow] vidíš za piesočnou dunou vrch palmy.',
+            description='Stojíš [bold green]pri plote[/bold green] z ostnatého drôtu. Na '
+                        '[bold yellow]juhu[/bold yellow] je brána, ktorá vedie do '
+                        '[bold green]vojenského tábora[/bold green]. Na blízkej strážnej veži hliadkuje nemecký vojak. '
+                        'Na [bold yellow]severe[/bold yellow] vidíš za piesočnou dunou vrch '
+                        '[bold magenta]palmy[/bold magenta].',
             exits={
                 directions.NORTH: 'oáza'
             }
@@ -80,9 +83,10 @@ def load_world() -> list[Room]:
 
         Room(
             name='v tábore',
-            description='Stojíš uprostred vyľudneného vojenského tábora. Na [bold yellow]severe[/bold yellow] je brána '
-                        'vedúca von do púšte. Na [bold yellow]západe[/bold yellow] je malý stan, ktorý slúži ako '
-                        'sklad. Na [bold yellow]východe[/bold yellow] je veliteľov stan.',
+            description='Stojíš uprostred vyľudneného [bold green]vojenského tábora[/bold green]. Na '
+                        '[bold yellow]severe[/bold yellow] je brána vedúca von do [bold green]púšte[/bold green]. Na '
+                        '[bold yellow]západe[/bold yellow] je [bold green]malý stan[/bold green], ktorý slúži ako '
+                        'sklad. Na [bold yellow]východe[/bold yellow] je [bold green]veliteľov stan[/bold green].',
             exits={
                 directions.NORTH: 'pred táborom',
                 directions.EAST: 'veliteľov stan',
@@ -95,7 +99,8 @@ def load_world() -> list[Room]:
 
         Room(
             name='veliteľov stan',
-            description='Si vo veliteľovom stane. Je tu značný neporiadok. Všade dookola je množstvo smetí.',
+            description='Si vo [bold green]veliteľovom stane[/bold green]. Je tu značný neporiadok. Všade dookola je '
+                        'množstvo smetí.',
             exits={
                 directions.WEST: 'v tábore',
             },
@@ -118,11 +123,11 @@ def load_world() -> list[Room]:
 
         Room(
             name='podzemie',
-            description='Stojíš na kamenných dlaždiciach pod dierou vedúcou von z podzemia. Steny sú pomalované '
+            description='Stojíš na kamenných dlaždiciach pod dierou vedúcou von z podzemia. Steny sú pomaľované '
                         'výjavmi zo života egyptských bohov.',
             exits={
                 directions.UP: 'oáza',
-                directions.EAST: 'uzka chodba',
+                directions.EAST: 'úzka chodba',
                 directions.SOUTH: 'prázdna miestnosť'
             }
         ),
@@ -140,8 +145,8 @@ def load_world() -> list[Room]:
 
         Room(
             name='komôrka',
-            description='Si v malej komôrke, ktorej steny sú vyzdobené rozličnými náboženskými motívmi (Bohovia, '
-                        'zvieratá, bojovníci, mŕtvoly, atď.).',
+            description='Si v [bold green]malej komôrke[/bold green], ktorej steny sú vyzdobené rozličnými '
+                        'náboženskými motívmi (Bohovia, zvieratá, bojovníci, mŕtvoly, atď.).',
             exits={
                 directions.NORTH: 'prázdna miestnosť'
             },
@@ -152,8 +157,9 @@ def load_world() -> list[Room]:
 
         Room(
             name='chodba',
-            description='Stojíš na začiatku širokej chodby, ktorá pokračuje na západ do podivnej žltej hmly. Pri '
-                        'stene leží rozpadnutá ľudská kostra, nad ktorou je v stene vyrytý nápis "2Z1S1V".',
+            description='Stojíš na začiatku [bold green]širokej chodby[/bold green], ktorá pokračuje na západ do '
+                        'podivnej [bold green]žltej hmly[/bold green]. Pri stene leží rozpadnutá ľudská kostra, '
+                        'nad ktorou je v stene vyrytý nápis "2Z1S1V".',
             exits={
                 directions.EAST: 'prázdna miestnosť',
                 directions.WEST: 'žltá hmla'

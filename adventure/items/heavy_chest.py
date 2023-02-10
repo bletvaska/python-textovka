@@ -2,5 +2,5 @@ from .item import Item
 
 
 class HeavyChest(Item):
-    name = 'tazka okovana truhlica'
+    name = 'tazku okovanu truhlicu'
     description = 'Je vybavená masívnym zámkom...'

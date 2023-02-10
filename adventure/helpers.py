@@ -52,7 +52,7 @@ def get_room_by_name(name: str, context: 'GameContext') -> Room | None:
         if room.name == name:
             return room
 
-    return None  # default
+    # return None  # default
 
 
 def get_item_by_name(name: str, items: list[Item]) -> Item | None:
@@ -60,4 +60,12 @@ def get_item_by_name(name: str, items: list[Item]) -> Item | None:
         if item.name == name:
             return item
 
-    return None  # default
+    # return None  # default
+
+
+def get_item_by_type(cls, items: list[Item]) -> Item | None:
+    for item in items:
+        if isinstance(item, cls) is True:
+            return item
+
+    # return None

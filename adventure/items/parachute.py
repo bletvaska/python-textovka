@@ -15,7 +15,7 @@ class Parachute(Item):
 
         # use item
         context.current_room = get_room_by_name('púšť', context)
-        print('Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...')
+        print('Nad hlavou sa ti roztvoril [bold magenta]padák[/bold magenta] a po chvíli si šťastne pristál...')
         context.current_room.show()
 
         # remove usability

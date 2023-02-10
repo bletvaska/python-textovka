@@ -13,7 +13,7 @@ class Key(Item):
 
     def on_use(self, context):
         # check usage conditions
-        chest = get_item_by_name('tazka okovana truhlica', context.current_room.items)
+        chest = get_item_by_name('tazku okovanu truhlicu', context.current_room.items)
         if chest is None:
             return False
 

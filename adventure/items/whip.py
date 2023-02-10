@@ -20,7 +20,7 @@ class Whip(Item):
         # use item
         context.current_room.items.remove(diamond_on_ceiling)
         context.current_room.items.append(Diamond())
-        print('Podarilo sa ti zraziť [bold yellow]diamant[/bold yellow] dolu!')
+        print('Podarilo sa ti zraziť [bold magenta]diamant[/bold magenta] dolu!')
         self.features.remove(USABLE)
 
         return True
