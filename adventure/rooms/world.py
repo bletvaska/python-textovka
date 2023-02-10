@@ -15,7 +15,9 @@ def load_world() -> list[Room]:
             description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. '
                         'Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba '
                         'živej duše. (Celkom zaujímavá situácia, že áno?)',
-            items=[EmptySeats(), Whip()],
+            items=[
+                EmptySeats(),
+                Whip()],
             exits={
                 DOWN: 'voľný pád'
             }),
@@ -49,7 +51,9 @@ def load_world() -> list[Room]:
                 EAST: 'púšť',
                 WEST: 'púšť',
             },
-            items=[CoconutPalmTree()]
+            items=[
+                CoconutPalmTree()
+            ]
         ),
 
         AtEnemyGate(
@@ -59,6 +63,43 @@ def load_world() -> list[Room]:
             exits={
                 NORTH: 'oáza'
             }
+        ),
+
+        Room(
+            name='v tábore',
+            description='Stojíš uprostred vyľudneného vojenského tábora. Na severe je brána vedúca von do púšte. Na '
+                        'západe je malý stan, ktorý slúži ako sklad. Na východe je veliteľov stan.',
+            exits={
+                NORTH: 'pred táborom',
+                EAST: 'veliteľov stan',
+                WEST: 'malý stan'
+            },
+            items=[
+                # GermanCar()
+            ]
+        ),
+
+        Room(
+            name='veliteľov stan',
+            description='Si vo veliteľovom stane. Je tu značný neporiadok. Všade dookola je množstvo smetí.',
+            exits={
+                WEST: 'v tábore',
+            },
+            items=[
+                # HeavyChest()
+            ]
+        ),
+
+        Room(
+            name='malý stan',
+            description='Si v malom stane. Je tu hromada neužitočných harabúrd.',
+            exits={
+                EAST: 'v tábore'
+            },
+            items=[
+                # Showel(),
+                # MobileRadiostation()
+            ]
         ),
 
 

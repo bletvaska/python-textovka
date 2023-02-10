@@ -32,6 +32,7 @@ programovaní alebo skriptovania v inom jazyku.
 * [Python – Kompletní příručka jazyka pro verzi 3.10](https://www.martinus.sk/?uItem=1429819) - Kniha venovaná jazyku Python verzie 3.10.
 * [Make Your Own Python Text Adventure: A Guide to Learning Programming](https://www.amazon.com/Make-Your-Python-Text-Adventure/dp/1484232305) - Zrejme učebnica programovania v jazyku Python, v ktorej autor
   tvorí taktiež textovú adventúru. Ale úplne ináč, ako to robíme my (o dosť horšie :-))
+* [The lexicon of Interactive Fiction](https://ifonlytefl.wordpress.com/2011/11/24/the-lexicon-of-interactive-fiction/) - krátky návod o tom, ako hrať textové adventúry
 
 
 ## World Map
