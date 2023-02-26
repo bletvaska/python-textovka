@@ -9,6 +9,8 @@ from helpers import intro, outro, parse_line, get_room_by_name
 
 
 def main():
+    intro()
+
     # game initialization
     context = GameContext(
         commands=[
@@ -63,6 +65,8 @@ def main():
 
         print()
         print(f'Hru si zvládol na [bold yellow]{context.score}%[/bold yellow].')
+
+    outro()
 
 
 if __name__ == '__main__':

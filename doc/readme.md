@@ -50,3 +50,9 @@
 ## Day 5
 
 * [Correct Main Module](day.5/599-correct.main.md)
+
+
+## TODO
+
+* rich in day 1/2
+* generator escape kodov pre farebny vystup v terminali na linuxe https://ansi.gabebanks.net/

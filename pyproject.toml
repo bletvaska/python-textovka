@@ -32,5 +32,5 @@ markers = [
     "wip: work in progress",
 ]
 
-#[tool.poetry.scripts]
-#indy2 = 'adventure.game:main'
+[tool.poetry.scripts]
+indy2 = 'adventure.game:main'
