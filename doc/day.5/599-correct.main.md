@@ -17,4 +17,4 @@
        print('Indiana Jones and his Great Escape')
    ```
 
-    **Poznámka:** Pre spestrenie môžete použiť aj nasledovný banner:
+   **Poznámka:** Pre spestrenie môžete použiť aj nasledovný banner:
