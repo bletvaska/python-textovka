@@ -14,8 +14,8 @@
 * About Dataclasses
 * [Dataclass for Abstract Command](day.1/150-dataclass.command.md)
 * [Command `about`](day.1/160-commands.as.dataclasses.md)
-* [Command `commands`](day.1/160-commands.as.dataclasses.md)
-* [Command `quit`](day.1/160-commands.as.dataclasses.md)
+* [Command `commands`](day.1/170-command.commands.md)
+* [Command `quit`](day.1/180-command.quit.md)
 * Daily Cheat Sheet
 
 
