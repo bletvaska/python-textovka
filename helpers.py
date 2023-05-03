@@ -10,5 +10,6 @@ def intro():
 
 def outro():
     print('---')
+    print('Tento remake v rámci školenia Python 101 vytvoril')
     print('(c)2023 by mire(c) z koši(c)')
     print()

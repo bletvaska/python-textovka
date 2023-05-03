@@ -19,14 +19,14 @@ while game_state == STATE_PLAYING:
         print('toto je vyrobene vylucne pre evku.')
 
     elif line == 'prikazy':
-        print('Zoznam dostupnych prikazov v hre:')
-        print('* o hre - zobrazi informacie o hre')
-        print('* prikazy - zobrazi zoznam dostupnych prikazov')
+        print('Zoznam dostupných príkazov v hre:')
+        print('* koniec - ukončí hru')
+        print('* o hre - zobrazí informácie o hre')
+        print('* príkazy - zobrazí zoznam dostupných príkazov v hre')
 
     elif line == 'koniec':
         question = input('Naozaj chceš skončiť? (ano/nie) ').lower().strip()
         if question == 'ano':
-            print('Díky, že si si zahral túto mocnú hru.')
             game_state = STATE_QUIT
 
     else:
