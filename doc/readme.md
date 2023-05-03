@@ -1,8 +1,12 @@
 # Indiana Jones 2
 
+## Day 0: Not Too Short Introduction to Python
+
+* [Guess the Number](day.0/000-basics.md)
+
+
 ## Day 1: The Basics
 
-* [The Basics](day.1/100-basics.md)
 * [Program Flow](day.1/110-program.flow.md)
 * [Game State](day.1/120-game.state.md)
 * [Creating of Own Functions](day.1/130-own.functions.md)
