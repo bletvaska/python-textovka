@@ -1,7 +1,10 @@
-print("Indiana Jones and his Greatest Python Adventure")
-game_state = 'playing'
+STATE_PLAYING = 'playing'
+STATE_QUIT = 'quit'
 
-while game_state == 'playing':
+print("Indiana Jones and his Greatest Python Adventure")
+game_state = STATE_PLAYING
+
+while game_state == STATE_PLAYING:
     line = input('> ').lower().lstrip().rstrip()
 
     if line == '':  # len(line) == 0
@@ -23,7 +26,7 @@ while game_state == 'playing':
         question = input('Naozaj chceš skončiť? (ano/nie) ').lower().strip()
         if question == 'ano':
             print('Díky, že si si zahral túto mocnú hru.')
-            game_state = 'quit'
+            game_state = STATE_QUIT
 
     else:
         print('Taký príkaz nepoznám.')
