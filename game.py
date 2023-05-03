@@ -16,6 +16,9 @@ while line != 'koniec':
         print('* o hre - zobrazi informacie o hre')
         print('* prikazy - zobrazi zoznam dostupnych prikazov')
 
+    elif line == 'koniec':
+        print('Díky, že si si zahral túto mocnú hru.')
+
     else:
         print('Taký príkaz nepoznám.')
 
