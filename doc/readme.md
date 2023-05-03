@@ -11,7 +11,7 @@
 * [Game State](day.1/120-game.state.md)
 * [Creating of Own Functions](day.1/130-own.functions.md)
 * [Main Building Blocks of the Game](day.1/140-main.building.blocks.md)
-* About Dataclasses
+* [About Dataclasses](day.1/145-about.dataclasses.md)
 * [Dataclass for Abstract Command](day.1/150-dataclass.command.md)
 * [Command `about`](day.1/160-commands.as.dataclasses.md)
 * [Command `commands`](day.1/170-command.commands.md)
