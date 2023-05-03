@@ -4,7 +4,10 @@ line = None
 while line != 'koniec':
     line = input('> ').lower().lstrip().rstrip()
 
-    if line == 'o hre':
+    if line == '':  # len(line) == 0
+        continue
+
+    elif line == 'o hre':
         print('Túto mocnú hru spáchal mocný programátor mirek')
         print('(c)2023 by mirek')
 
@@ -21,5 +24,7 @@ while line != 'koniec':
 
     else:
         print('Taký príkaz nepoznám.')
+
+    print('...')
 
 print('koniec')
