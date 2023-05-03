@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from states import STATE_QUIT
+
 
 class Command(BaseModel):
     name: str
@@ -21,3 +23,19 @@ class About(Command):
 class Commands(Command):
     name = 'prikazy'
     description = 'zobrazí zoznam dostupných príkazov v hre'
+
+    def exec(self):
+        print('Zoznam dostupných príkazov v hre:')
+        print('* koniec - ukončí hru')
+        print('* o hre - zobrazí informácie o hre')
+        print('* príkazy - zobrazí zoznam dostupných príkazov v hre')
+
+
+class Quit(Command):
+    name = 'koniec'
+    description = 'ukončí hru'
+
+    def exec(self):
+        question = input('Naozaj chceš skončiť? (ano/nie) ').lower().strip()
+        if question == 'ano':
+            game_state = STATE_QUIT

@@ -1,3 +1,4 @@
+from commands import About, Commands, Quit
 from helpers import intro, outro
 from states import STATE_PLAYING, STATE_QUIT
 
@@ -12,19 +13,13 @@ while game_state == STATE_PLAYING:
         continue
 
     elif line == 'o hre':
-        print('Túto mocnú hru spáchal mocný programátor mirek')
-        print('(c)2023 by mirek')
+        About().exec()
 
     elif line == 'prikazy':
-        print('Zoznam dostupných príkazov v hre:')
-        print('* koniec - ukončí hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* príkazy - zobrazí zoznam dostupných príkazov v hre')
+        Commands().exec()
 
     elif line == 'koniec':
-        question = input('Naozaj chceš skončiť? (ano/nie) ').lower().strip()
-        if question == 'ano':
-            game_state = STATE_QUIT
+        Quit().exec()
 
     else:
         print('Taký príkaz nepoznám.')
