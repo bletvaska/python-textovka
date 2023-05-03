@@ -1,4 +1,7 @@
 def intro():
+    """
+    Shows the game intro banner.
+    """
     print(' ___           _ _                         _                       ')
     print('|_ _|_ __   __| (_) __ _ _ __   __ _      | | ___  _ __   ___  ___ ')
     print(" | || '_ \ / _` | |/ _` | '_ \ / _` |  _  | |/ _ \| '_ \ / _ \/ __|")
@@ -7,9 +10,16 @@ def intro():
     print("        Indiana Jones and his Greatest Python Adventure")
     print()
 
+    # return None
+
 
 def outro():
+    """
+    Shows the game outro banner.
+    """
     print('---')
     print('Tento remake v rámci školenia Python 101 vytvoril')
     print('(c)2023 by mire(c) z koši(c)')
     print()
+
+    # return None
