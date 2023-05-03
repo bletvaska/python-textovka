@@ -1,5 +1,4 @@
-STATE_PLAYING = 'playing'
-STATE_QUIT = 'quit'
+from states import STATE_PLAYING, STATE_QUIT
 
 print("Indiana Jones and his Greatest Python Adventure")
 game_state = STATE_PLAYING
