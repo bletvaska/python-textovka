@@ -1,7 +1,9 @@
+from helpers import intro, outro
 from states import STATE_PLAYING, STATE_QUIT
 
-print("Indiana Jones and his Greatest Python Adventure")
 game_state = STATE_PLAYING
+
+intro()
 
 while game_state == STATE_PLAYING:
     line = input('> ').lower().lstrip().rstrip()
@@ -30,4 +32,4 @@ while game_state == STATE_PLAYING:
     else:
         print('Taký príkaz nepoznám.')
 
-print('koniec')
+outro()
