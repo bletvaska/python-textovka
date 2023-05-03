@@ -15,9 +15,6 @@ while game_state == STATE_PLAYING:
         print('Túto mocnú hru spáchal mocný programátor mirek')
         print('(c)2023 by mirek')
 
-    elif line == 'pre evku':
-        print('toto je vyrobene vylucne pre evku.')
-
     elif line == 'prikazy':
         print('Zoznam dostupných príkazov v hre:')
         print('* koniec - ukončí hru')
