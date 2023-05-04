@@ -15,11 +15,7 @@ current_room = Airplane()
 intro()
 
 # show room
-print(current_room.description)
-
-print('Vidíš:')
-for item in current_room.items:
-    print(f'  {item}')
+current_room.show()
 
 # game loop
 while game_state == STATE_PLAYING:

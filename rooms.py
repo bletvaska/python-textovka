@@ -7,6 +7,13 @@ class Room(BaseModel):
     items: list = []
     exits: list = []
 
+    def show(self):
+        print(self.description)
+
+        print('Vidíš:')
+        for item in self.items:
+            print(f'  {item}')
+
 
 class Airplane(Room):
     name = 'v lietadle'

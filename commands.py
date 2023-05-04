@@ -53,10 +53,6 @@ class LookAround(Command):
     description = 'rozhliadne sa v aktuálnej miestnosti'
 
     def exec(self, current_room):
-        print(current_room.description)
-
-        print('Vidíš:')
-        for item in current_room.items:
-            print(f'  {item}')
+        current_room.show()
 
         return STATE_PLAYING
