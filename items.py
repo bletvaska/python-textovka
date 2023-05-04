@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from features import USABLE, MOVABLE
+from features import USABLE, MOVABLE, EXAMINABLE
 
 
 class Item(BaseModel):
@@ -13,3 +13,9 @@ class Whip(Item):
     name = 'bic'
     description = 'tvoj neoceniteľný pomocník...!'
     features = [MOVABLE, USABLE]
+
+class EmptySeats(Item):
+    name = 'prazdne sedadla'
+    description = 'Obvyklé letecké sedadlá.'
+    features = [EXAMINABLE]
+
