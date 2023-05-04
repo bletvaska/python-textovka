@@ -1,24 +1,27 @@
 from commands import About, Commands, Quit, LookAround
+from game_context import GameContext
 from helpers import intro, outro
 from rooms import Airplane
 from states import STATE_PLAYING
 
-game_state = STATE_PLAYING
+context = GameContext(
+    current_room=Airplane()
+)
+
 commands = [
     About(),
     Commands(),
     LookAround(),
     Quit(),
 ]
-current_room = Airplane()
 
 intro()
 
 # show room
-current_room.show()
+context.current_room.show()
 
 # game loop
-while game_state == STATE_PLAYING:
+while context.game_state == STATE_PLAYING:
     # get input from user
     line = input('> ').lower().lstrip().rstrip()
 
@@ -29,7 +32,7 @@ while game_state == STATE_PLAYING:
     # parse command
     for cmd in commands:
         if cmd.name == line:
-            game_state = cmd.exec(current_room)
+            cmd.exec(context)
             break
     else:
         print('Taký príkaz nepoznám.')
