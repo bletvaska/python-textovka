@@ -2,11 +2,16 @@
 
 kazda miestnost ma tieto vlastnosti:
 
-* názov - jedinečný názov miestnosti, ktorym vieme miestnost odlisit od ostatnych miestnosti v hre
+* názov - jedinečný názov miestnosti, ktorým vieme miestnosť odlíšiť od ostatných miestností v hre
 * opis - opis miestnosti
 * zoznam predmetov v miestnosti
 * zoznam východov (susedia)
 
+
+## Modul `room.py` a trieda `Room`
+
+Pre reprezentáciu miestností budeme používať samostatný modul s názvom `room.py`. Do tohto modulu umiestnime aj
+implementáciu dátovej triedy pre reprezentáciu miestnosti.
 
 ```python
 from pydantic import BaseModel
@@ -17,18 +22,4 @@ class Room(BaseModel):
     description: str
     items = []  # : list
     exits = []  #: list
-```
-
-## Miestnosť v lietadle
-
-```python
-from rooms import Room
-
-
-room = Room(name='v lietadle',
-            description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je '
-                        'tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej '
-                        'duše. (Celkom zaujímavá situácia, že áno?)',
-            items=['bič', 'prázdne sedadlá'],
-            exits=[])
 ```

@@ -1,4 +1,4 @@
-# Prikaz `koniec`
+# Príkaz `koniec`
 
 Pomocou tohto príkazu ukončíme hru. Aby však nedošlo k ukončeniu omylom, pred ukončením sa hráča najprv opýtame, či chce hru naozaj skončiť.
 
@@ -13,3 +13,4 @@ class Quit(Command):
             game_state = states.QUIT
 ```
 
+Ak však tento príkaz spustíme a vyberieme si možnosť `ano`, hra sa žiaľ neukončí.
