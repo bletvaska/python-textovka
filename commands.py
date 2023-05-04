@@ -8,7 +8,7 @@ class Command(BaseModel):
     description: str
 
     def exec(self):
-        print('>>> chyba implementacia metody exec')
+        raise NotImplementedError('Function exec() was not yet implemented.')
 
 
 class About(Command):
