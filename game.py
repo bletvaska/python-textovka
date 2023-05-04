@@ -17,6 +17,9 @@ while game_state == STATE_PLAYING:
     for cmd in commands:
         if cmd.name == line:
             cmd.exec()
+            break
+    else:
+        print('Taký príkaz nepoznám.')
 
     # if line == '':  # len(line) == 0
     #     continue
