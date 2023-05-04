@@ -19,7 +19,7 @@ while game_state == STATE_PLAYING:
         Commands().exec()
 
     elif line == 'koniec':
-        Quit().exec()
+        game_state = Quit().exec()
 
     else:
         print('Taký príkaz nepoznám.')

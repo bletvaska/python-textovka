@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from states import STATE_QUIT
+from states import STATE_QUIT, STATE_PLAYING
 
 
 class Command(BaseModel):
@@ -38,4 +38,6 @@ class Quit(Command):
     def exec(self):
         question = input('Naozaj chceš skončiť? (ano/nie) ').lower().strip()
         if question == 'ano':
-            game_state = STATE_QUIT
+            return STATE_QUIT
+
+        return STATE_PLAYING
