@@ -1,5 +1,6 @@
 from commands import About, Commands, Quit
 from helpers import intro, outro
+from rooms import Airplane
 from states import STATE_PLAYING, STATE_QUIT
 
 game_state = STATE_PLAYING
@@ -8,8 +9,16 @@ commands = [
     Commands(),
     Quit(),
 ]
+current_room = Airplane()
 
 intro()
+
+# show room
+print(current_room.description)
+
+print('Vidíš:')
+for item in current_room.items:
+    print(item)
 
 # game loop
 while game_state == STATE_PLAYING:
