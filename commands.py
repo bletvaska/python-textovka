@@ -19,6 +19,8 @@ class About(Command):
         print('Túto mocnú hru spáchal mocný programátor mirek')
         print('(c)2023 by mirek')
 
+        return STATE_PLAYING
+
 
 class Commands(Command):
     name = 'prikazy'
@@ -29,6 +31,8 @@ class Commands(Command):
         print('* koniec - ukončí hru')
         print('* o hre - zobrazí informácie o hre')
         print('* príkazy - zobrazí zoznam dostupných príkazov v hre')
+
+        return STATE_PLAYING
 
 
 class Quit(Command):

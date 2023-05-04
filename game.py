@@ -11,29 +11,21 @@ commands = [
 
 intro()
 
+# game loop
 while game_state == STATE_PLAYING:
+    # get input from user
     line = input('> ').lower().lstrip().rstrip()
 
+    # is input empty?
+    if line == '':  # len(line) == 0
+        continue
+
+    # parse command
     for cmd in commands:
         if cmd.name == line:
-            cmd.exec()
+            game_state = cmd.exec()
             break
     else:
         print('Taký príkaz nepoznám.')
-
-    # if line == '':  # len(line) == 0
-    #     continue
-    #
-    # elif line == 'o hre':
-    #     About().exec()
-    #
-    # elif line == 'prikazy':
-    #     Commands().exec()
-    #
-    # elif line == 'koniec':
-    #     game_state = Quit().exec()
-    #
-    # else:
-    #     print('Taký príkaz nepoznám.')
 
 outro()
