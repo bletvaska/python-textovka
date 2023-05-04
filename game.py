@@ -1,12 +1,13 @@
-from commands import About, Commands, Quit
+from commands import About, Commands, Quit, LookAround
 from helpers import intro, outro
 from rooms import Airplane
-from states import STATE_PLAYING, STATE_QUIT
+from states import STATE_PLAYING
 
 game_state = STATE_PLAYING
 commands = [
     About(),
     Commands(),
+    LookAround(),
     Quit(),
 ]
 current_room = Airplane()
@@ -18,7 +19,7 @@ print(current_room.description)
 
 print('Vidíš:')
 for item in current_room.items:
-    print(item)
+    print(f'  {item}')
 
 # game loop
 while game_state == STATE_PLAYING:
@@ -32,7 +33,7 @@ while game_state == STATE_PLAYING:
     # parse command
     for cmd in commands:
         if cmd.name == line:
-            game_state = cmd.exec()
+            game_state = cmd.exec(current_room)
             break
     else:
         print('Taký príkaz nepoznám.')
