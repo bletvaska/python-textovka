@@ -1,3 +1,4 @@
+from items.features import EXAMINABLE
 from .command import Command
 
 
@@ -13,16 +14,15 @@ class Examine(Command):
 
         else:
 
-            for item in context.current_room.items:
+            for item in context.current_room.items + context.backpack:
                 if item.name == self.param:
                     print(item.description)
+
+                    # check if item is examinable
+                    if EXAMINABLE in item.features:
+                        item.examine(context)
+                        
                     break
             else:
-                for item in context.backpack:
-                    if item.name == self.param:
-                        print(item.description)
-                        break
-
-                else:
-                    print('Taký predmet tu nikde nevidím.')
+                print('Taký predmet tu nikde nevidím.')
 
