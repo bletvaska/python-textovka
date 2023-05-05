@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from rooms import Room
+from rooms.room import Room
 from states import STATE_PLAYING
 
 

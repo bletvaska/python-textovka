@@ -1,15 +1,12 @@
 # Predmet Bič
 
 ```python
-from dataclasses import dataclass, field
-
-from adventure.items import MOVABLE, USABLE
-from adventure.items.item import Item
+from items.features import MOVABLE, USABLE
+from items import Item
 
 
-@dataclass
 class Whip(Item):
-    name: str = 'bic'
-    description: str = 'Tvoj neoceniteľný pomocník..!'
-    features: list = field(default_factory=lambda: [MOVABLE, USABLE])
+   name = 'bic'
+   description = 'Tvoj neoceniteľný pomocník..!'
+   features = [MOVABLE, USABLE]
 ```

@@ -1,5 +1,7 @@
 # Color Output with rich
 
+[![Logo modulu rich](../images/logo-rich.svg)](https://github.com/Textualize/rich)
+
 
 ## Inštalácia
 

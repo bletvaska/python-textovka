@@ -1,8 +1,8 @@
 from commands import About, Commands, Quit, LookAround, Inventory
 from game_context import GameContext
 from helpers import intro, outro
-from items import Whip
-from rooms import Airplane
+from items.whip import Whip
+from rooms.airplane import Airplane
 from states import STATE_PLAYING
 
 context = GameContext(

@@ -57,6 +57,7 @@ class Inventory(Command):
 
     def exec(self, context):
         # is backpack empty?
+        # if context.backpack == []:
         if len(context.backpack) == 0:
             print('Batoh je prázdny.')
 
