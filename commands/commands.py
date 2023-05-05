@@ -1,3 +1,5 @@
+from rich import print
+
 from .command import Command
 
 
@@ -10,4 +12,4 @@ class Commands(Command):
 
         # list all available commands
         for command in context.commands:
-            print(f'* {command.name} - {command.description}')
+            print(f'* [bold cyan]{command.name:13}[/bold cyan] - {command.description}')
