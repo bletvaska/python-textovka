@@ -12,6 +12,9 @@ class Room(BaseModel):
     def show(self):
         print(self.description)
 
-        print('Vidíš:')
-        for item in self.items:
-            print(f'  [bold magenta]{item.name}[/bold magenta]')
+        if len(self.items) == 0:
+            print('Nevidíš tu nič zaujímavé.')
+        else:
+            print('Vidíš:')
+            for item in self.items:
+                print(f'  [bold magenta]{item.name}[/bold magenta]')
