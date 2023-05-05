@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from rich import print
 
 from game_context import GameContext
 from states import STATE_QUIT
@@ -48,3 +49,19 @@ class LookAround(Command):
 
     def exec(self, context):
         context.current_room.show()
+
+
+class Inventory(Command):
+    name = 'inventar'
+    description = 'zobrazí obsah batohu'
+
+    def exec(self, context):
+        # is backpack empty?
+        if len(context.backpack) == 0:
+            print('Batoh je prázdny.')
+
+        # something in backpack
+        else:
+            print('V batohu máš:')
+            for item in context.backpack:
+                print(f'  [bold magenta]{item.name}[/bold magenta]')

@@ -1,16 +1,19 @@
-from commands import About, Commands, Quit, LookAround
+from commands import About, Commands, Quit, LookAround, Inventory
 from game_context import GameContext
 from helpers import intro, outro
+from items import Whip
 from rooms import Airplane
 from states import STATE_PLAYING
 
 context = GameContext(
     current_room=Airplane()
 )
+context.backpack.append(Whip())
 
 commands = [
     About(),
     Commands(),
+    Inventory(),
     LookAround(),
     Quit(),
 ]

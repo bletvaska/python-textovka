@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from rich import print
 
 from items import Whip, EmptySeats
 
@@ -14,7 +15,7 @@ class Room(BaseModel):
 
         print('Vidíš:')
         for item in self.items:
-            print(f'  {item.name}')
+            print(f'  [bold magenta]{item.name}[/bold magenta]')
 
 
 class Airplane(Room):
