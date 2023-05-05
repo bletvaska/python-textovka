@@ -1,3 +1,4 @@
+from game_context import GameContext
 from .features import EXAMINABLE
 from .item import Item
 from .parachute import Parachute
@@ -8,7 +9,7 @@ class EmptySeats(Item):
     description = 'Obvyklé letecké sedadlá.'
     features = [EXAMINABLE]
 
-    def examine(self, context):
+    def examine(self, context: GameContext):
         # crate parachute
         parachute = Parachute()
 
