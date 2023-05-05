@@ -1,4 +1,8 @@
-from commands import About, Commands, Quit, LookAround, Inventory
+from commands.about import About
+from commands.commands import Commands
+from commands.inventory import Inventory
+from commands.look_around import LookAround
+from commands.quit import Quit
 from game_context import GameContext
 from helpers import intro, outro
 from items.whip import Whip
