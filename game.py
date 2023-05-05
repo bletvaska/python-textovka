@@ -9,18 +9,17 @@ from items.whip import Whip
 from rooms.airplane import Airplane
 from states import STATE_PLAYING
 
+# game initialization
 context = GameContext(
-    current_room=Airplane()
+    current_room=Airplane(),
+    commands=[
+        About(),
+        Commands(),
+        Inventory(),
+        LookAround(),
+        Quit(),
+    ]
 )
-context.backpack.append(Whip())
-
-commands = [
-    About(),
-    Commands(),
-    Inventory(),
-    LookAround(),
-    Quit(),
-]
 
 intro()
 
@@ -37,7 +36,7 @@ while context.game_state == STATE_PLAYING:
         continue
 
     # parse command
-    for cmd in commands:
+    for cmd in context.commands:
         if cmd.name == line:
             cmd.exec(context)
             break

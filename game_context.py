@@ -8,4 +8,5 @@ class GameContext(BaseModel):
     current_room: Room
     backpack: list = []
     game_state: str = STATE_PLAYING
+    commands: list
 
