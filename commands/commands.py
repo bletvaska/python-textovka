@@ -7,3 +7,7 @@ class Commands(Command):
 
     def exec(self, context):
         print('Zoznam dostupných príkazov v hre:')
+
+        # list all available commands
+        for command in context.commands:
+            print(f'* {command.name} - {command.description}')

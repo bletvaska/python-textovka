@@ -5,7 +5,6 @@ from commands.look_around import LookAround
 from commands.quit import Quit
 from game_context import GameContext
 from helpers import intro, outro
-from items.whip import Whip
 from rooms.airplane import Airplane
 from states import STATE_PLAYING
 
