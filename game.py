@@ -1,5 +1,6 @@
 from commands.about import About
 from commands.commands import Commands
+from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.look_around import LookAround
 from commands.quit import Quit
@@ -14,6 +15,7 @@ context = GameContext(
     commands=[
         About(),
         Commands(),
+        Examine(),
         Inventory(),
         LookAround(),
         Quit(),
@@ -36,8 +38,12 @@ while context.game_state == STATE_PLAYING:
 
     # parse command
     for cmd in context.commands:
-        if cmd.name == line:
+        if line.startswith(cmd.name):
+            param = line.split(cmd.name)[1].strip()
+
+            cmd.param = param
             cmd.exec(context)
+
             break
     else:
         print('Taký príkaz nepoznám.')
