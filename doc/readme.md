@@ -37,6 +37,7 @@
 
 * Backpack and Game Context
 * [Inventory](day.3/310-inventory.md)
+* [Color Output with rich](day.3/315-rich.md)
 * [Command `examine`](day.3/320-examine.md)
 * Extended Item Examination
 * Item Parachute
