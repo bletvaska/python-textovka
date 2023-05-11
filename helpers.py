@@ -1,3 +1,6 @@
+from items.item import Item
+
+
 def intro():
     """
     Shows the game intro banner.
@@ -21,5 +24,13 @@ def outro():
     print('Tento remake v rámci školenia Python 101 vytvoril')
     print('(c)2023 by mire(c) z koši(c)')
     print()
+
+    # return None
+
+
+def get_item_by_name(name: str, items: list[Item]) -> Item:
+    for item in items:
+        if item.name == name:
+            return item
 
     # return None

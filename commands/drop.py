@@ -1,5 +1,6 @@
 from rich import print
 
+from helpers import get_item_by_name
 from .command import Command
 
 
@@ -16,16 +17,30 @@ class Drop(Command):
         else:
 
             # search for item in backpack
-            for item in context.backpack:
-                if item.name == self.param:
-                    # drop item in current room
-                    context.backpack.remove(item)
-                    context.current_room.items.append(item)
+            item = get_item_by_name(self.param, context.backpack)
 
-                    # render
-                    print(f'V miestnosti si položil predmet [magenta bold]{item.name}[/magenta bold].')
-
-                    break
-            else:
+            if item == None:
                 print('Taký predmet pri sebe nemáš.')
+            else:
+                # drop item in current room
+                context.backpack.remove(item)
+                context.current_room.items.append(item)
+
+                # render
+                print(f'V miestnosti si položil predmet [magenta bold]{item.name}[/magenta bold].')
+
+
+
+            # for item in context.backpack:
+            #     if item.name == self.param:
+            #         # drop item in current room
+            #         context.backpack.remove(item)
+            #         context.current_room.items.append(item)
+            #
+            #         # render
+            #         print(f'V miestnosti si položil predmet [magenta bold]{item.name}[/magenta bold].')
+            #
+            #         break
+            # else:
+            #     print('Taký predmet pri sebe nemáš.')
 
