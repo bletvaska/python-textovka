@@ -1,6 +1,7 @@
 import states
 from items.empty_seats import EmptySeats
 from items.whip import Whip
+from . import directions
 from .room import Room
 
 
@@ -11,6 +12,9 @@ class Airplane(Room):
         Whip(),
         EmptySeats()
     ]
+    exits = {
+        directions.DOWN: 'voľný pád'
+    }
     counter = 0
 
     def act(self, context):

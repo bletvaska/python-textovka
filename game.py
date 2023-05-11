@@ -8,7 +8,6 @@ from commands.quit import Quit
 from commands.take import Take
 from game_context import GameContext
 from helpers import intro, outro
-from items.whip import Whip
 from rooms.airplane import Airplane
 from states import STATE_PLAYING
 
