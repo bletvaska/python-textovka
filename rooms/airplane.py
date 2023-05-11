@@ -13,7 +13,7 @@ class Airplane(Room):
         EmptySeats()
     ]
     exits = {
-        directions.DOWN: 'voľný pád'
+        directions.DOWN: 'voľný pád',
     }
     counter = 0
 

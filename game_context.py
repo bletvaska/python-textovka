@@ -9,4 +9,5 @@ class GameContext(BaseModel):
     backpack: list = []
     game_state: str = STATE_PLAYING
     commands: list
+    world: list[Room]
 

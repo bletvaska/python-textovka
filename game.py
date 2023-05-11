@@ -7,13 +7,14 @@ from commands.look_around import LookAround
 from commands.quit import Quit
 from commands.take import Take
 from game_context import GameContext
-from helpers import intro, outro
+from helpers import intro, outro, get_room_by_name
 from rooms.airplane import Airplane
+from rooms.world import get_world
 from states import STATE_PLAYING
 
 # game initialization
+world = get_world()
 context = GameContext(
-    current_room=Airplane(),
     commands=[
         About(),
         Commands(),
@@ -23,8 +24,11 @@ context = GameContext(
         LookAround(),
         Quit(),
         Take(),
-    ]
+    ],
+    world=world,
+    current_room=get_room_by_name('v lietadle', world),
 )
+
 # context.backpack.append(Whip())
 
 intro()

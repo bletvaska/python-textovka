@@ -1,4 +1,5 @@
 from items.item import Item
+from rooms.room import Room
 
 
 def intro():
@@ -34,3 +35,7 @@ def get_item_by_name(name: str, items: list[Item]) -> Item:
             return item
 
     # return None
+
+
+def get_room_by_name(name: str, rooms: list[Room]) -> Room:
+    return rooms[0]
