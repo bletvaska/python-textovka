@@ -5,6 +5,7 @@ from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.look_around import LookAround
 from commands.quit import Quit
+from commands.take import Take
 from game_context import GameContext
 from helpers import intro, outro
 from items.whip import Whip
@@ -22,6 +23,7 @@ context = GameContext(
         Inventory(),
         LookAround(),
         Quit(),
+        Take(),
     ]
 )
 context.backpack.append(Whip())

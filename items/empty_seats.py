@@ -1,3 +1,5 @@
+from rich import print
+
 from game_context import GameContext
 from .features import EXAMINABLE
 from .item import Item
@@ -20,4 +22,4 @@ class EmptySeats(Item):
         self.features.remove(EXAMINABLE)
 
         # render
-        print('Pod jedným z nich si našiel padák. Šťastná to náhoda.')
+        print('Pod jedným z nich si našiel [magenta bold]padák[/magenta bold]. Šťastná to náhoda.')
