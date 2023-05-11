@@ -13,34 +13,19 @@ class Drop(Command):
         # len(self.param) == 0
         if self.param == '':
             print('Neviem, aký predmet chceš položiť.')
+            return
 
-        else:
+        # search for item in backpack
+        item = get_item_by_name(self.param, context.backpack)
 
-            # search for item in backpack
-            item = get_item_by_name(self.param, context.backpack)
+        # was item found in backpack?
+        if item == None:
+            print('Taký predmet pri sebe nemáš.')
+            return
 
-            if item == None:
-                print('Taký predmet pri sebe nemáš.')
-            else:
-                # drop item in current room
-                context.backpack.remove(item)
-                context.current_room.items.append(item)
+        # drop item in current room
+        context.backpack.remove(item)
+        context.current_room.items.append(item)
 
-                # render
-                print(f'V miestnosti si položil predmet [magenta bold]{item.name}[/magenta bold].')
-
-
-
-            # for item in context.backpack:
-            #     if item.name == self.param:
-            #         # drop item in current room
-            #         context.backpack.remove(item)
-            #         context.current_room.items.append(item)
-            #
-            #         # render
-            #         print(f'V miestnosti si položil predmet [magenta bold]{item.name}[/magenta bold].')
-            #
-            #         break
-            # else:
-            #     print('Taký predmet pri sebe nemáš.')
-
+        # render
+        print(f'V miestnosti si položil predmet [magenta bold]{item.name}[/magenta bold].')
