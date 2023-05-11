@@ -38,4 +38,8 @@ def get_item_by_name(name: str, items: list[Item]) -> Item:
 
 
 def get_room_by_name(name: str, rooms: list[Room]) -> Room:
-    return rooms[0]
+    for room in rooms:
+        if room.name == name:
+            return room
+
+    # return None
