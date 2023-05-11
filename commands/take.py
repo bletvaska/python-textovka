@@ -30,7 +30,7 @@ class Take(Command):
             return
 
         # is backpack full?
-        if len(context.backpack) >= 1:
+        if len(context.backpack) >= 2:
             print('Batoh je plný.')
             return
 

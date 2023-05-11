@@ -1,5 +1,4 @@
 from rich import print
-
 from pydantic import BaseModel
 
 
@@ -8,6 +7,9 @@ class Room(BaseModel):
     description: str
     items: list = []
     exits: list = []
+
+    def act(self, context):
+        pass
 
     def show(self):
         print(self.description)

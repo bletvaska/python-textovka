@@ -26,7 +26,7 @@ context = GameContext(
         Take(),
     ]
 )
-context.backpack.append(Whip())
+# context.backpack.append(Whip())
 
 intro()
 
@@ -51,6 +51,9 @@ while context.game_state == STATE_PLAYING:
             # prepare and execute command
             cmd.param = param
             cmd.exec(context)
+
+            # make action in room
+            context.current_room.act(context)
 
             break
     else:
