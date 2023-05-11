@@ -1,3 +1,4 @@
+from helpers import get_item_by_name
 from items.features import EXAMINABLE
 from .command import Command
 
@@ -11,18 +12,17 @@ class Examine(Command):
         # len(self.param) == 0
         if self.param == '':
             print('Neviem, aký predmet chceš preskúmať.')
+            return
 
-        else:
+        # find item by name
+        item = get_item_by_name(self.param, context.current_room.items + context.backpack)
+        if item == None:
+            print('Taký predmet tu nikde nevidím.')
+            return
 
-            for item in context.current_room.items + context.backpack:
-                if item.name == self.param:
-                    print(item.description)
+        # action
+        print(item.description)
 
-                    # check if item is examinable
-                    if EXAMINABLE in item.features:
-                        item.examine(context)
-                        
-                    break
-            else:
-                print('Taký predmet tu nikde nevidím.')
-
+        # check if item is examinable
+        if EXAMINABLE in item.features:
+            item.examine(context)
