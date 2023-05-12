@@ -42,4 +42,5 @@ def get_room_by_name(name: str, rooms: list[Room]) -> Room:
         if room.name == name:
             return room
 
+    raise ValueError(f'Room {name} not found.')
     # return None

@@ -3,6 +3,7 @@ from items.whip import Whip
 from rooms import directions
 from .airplane import Airplane
 from .free_fall import FreeFall
+from .oasis import Oasis
 from .room import Room
 
 
@@ -36,7 +37,7 @@ def get_world() -> list[Room]:
             }
         ),
 
-        Room(
+        Oasis(
             name='oáza',
             description='Si v [bold green]malej oáze[/bold green] uprostred púšte. Pri malom jazierku stojí '
                         '[bold magenta]palma[/bold magenta] s niekoľkými kokosovými orechmi. Nič moc. Zaujímavejšie '
