@@ -1,3 +1,6 @@
+from rich import print
+
+from helpers import get_room_by_name
 from .features import MOVABLE, USABLE
 from .item import Item
 
@@ -17,6 +20,9 @@ class Parachute(Item):
             return
 
         # action
+        room = get_room_by_name('púšť', context.world)
+        context.current_room = room
 
         # render
-        print('pouzivam padak')
+        print('[bold green]Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...[/bold green]')
+        room.show()
