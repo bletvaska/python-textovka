@@ -5,4 +5,4 @@ from .item import Item
 class Whip(Item):
     name = 'bic'
     description = 'Tvoj neoceniteľný pomocník...!'
-    features = [MOVABLE, USABLE]
+    features = [MOVABLE]

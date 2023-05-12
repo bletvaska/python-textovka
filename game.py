@@ -7,6 +7,7 @@ from commands.inventory import Inventory
 from commands.look_around import LookAround
 from commands.quit import Quit
 from commands.take import Take
+from commands.use import Use
 from game_context import GameContext
 from helpers import intro, outro, get_room_by_name
 from rooms.world import get_world
@@ -25,6 +26,7 @@ context = GameContext(
         LookAround(),
         Quit(),
         Take(),
+        Use(),
     ],
     world=world,
     current_room=get_room_by_name('v lietadle', world),
