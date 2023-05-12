@@ -26,4 +26,4 @@ class Use(Command):
             return
 
         # action
-        print('Print pouzivam predmet')
+        item.use(context)
