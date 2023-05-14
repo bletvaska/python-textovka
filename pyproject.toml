@@ -3,7 +3,7 @@ name = "textovka"
 version = "0.1.0"
 description = "Indiana Jones 2 remake written in Python."
 authors = ["Miroslav Biňas <miroslav.binas@tuke.sk>"]
-readme = "README.md"
+readme = "readme.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -12,6 +12,8 @@ rich = "^13.3.5"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.13.1"
+requests = "^2.30.0"
+httpx = "^0.24.0"
 
 [build-system]
 requires = ["poetry-core"]
