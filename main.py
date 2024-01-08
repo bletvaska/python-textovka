@@ -1,10 +1,11 @@
-from states import STATE_PLAYING, STATE_QUIT
+# from states import STATE_PLAYING, STATE_QUIT
+import states
 
 print("Indiana Jones and his Greatest Python Adventure")
 
 
-game_state = STATE_PLAYING
-while game_state == STATE_PLAYING:
+game_state = states.PLAYING
+while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()   # echo line | lower | lstrip | rstrip
 
     if line == '':  # if len(line) == 0:
@@ -22,7 +23,7 @@ while game_state == STATE_PLAYING:
 
     elif line == 'koniec':
         print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
-        game_state = STATE_QUIT
+        game_state = states.QUIT
 
     else:
         print('Taký príkaz nepoznám.')
