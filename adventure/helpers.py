@@ -19,7 +19,7 @@ def intro():
     print(" | || '_ \\ / _` | |/ _` | '_ \\ / _` |  _  | |/ _ \\| '_ \\ / _ \\/ __|   __) |")
     print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\  / __/ ")
     print("|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/ |_____|")
-    print('and his Great Python Adventure'.center(80))
+    print('and his Greatest Python Adventure'.center(80))
     print()
 
 

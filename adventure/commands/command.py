@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from game_context import GameContext
@@ -11,7 +11,7 @@ class Command(BaseModel):
     Describes every command in game.
     """
     name: str
-    aliases: list[str] = []
+    aliases: List[str] = []
     description: str
     param: str = None
 

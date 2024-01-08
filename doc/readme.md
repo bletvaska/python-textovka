@@ -2,6 +2,7 @@
 
 ![Indiana Jones 2: Loading Screen](images/indiana.jones.png)
 
+
 ## Day 0: Not Too Short Introduction to Python
 
 * [Guess the Number](day.0/000-basics.md)
@@ -45,7 +46,6 @@
 * Item Parachute
 * [Command `take`](day.3/360-take.item.md)
 * [Command `drop`](day.3/370-drop.item.md)
-
 
 
 ## Day 4: The World

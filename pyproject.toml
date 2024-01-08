@@ -9,9 +9,9 @@ authors = [
 readme = "readme.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-pydantic = "^1.10.2"
-rich = "^13.3.1"
+python = "^3.12"
+pydantic = "^2.5.3"
+rich = "^13.7.0"
 
 
 [tool.poetry.group.dev.dependencies]
