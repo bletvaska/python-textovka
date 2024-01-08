@@ -1,0 +1,1 @@
+# Východy z miestnosti

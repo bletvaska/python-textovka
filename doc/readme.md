@@ -1,58 +1,63 @@
 # Indiana Jones 2
 
+![Indiana Jones 2: Loading Screen](images/indiana.jones.png)
+
+## Day 0: Not Too Short Introduction to Python
+
+* [Guess the Number](day.0/000-basics.md)
+
+
 ## Day 1: The Basics
 
-* [The Basics](day.1/100-basics.md)
 * [Program Flow](day.1/110-program.flow.md)
 * [Game State](day.1/120-game.state.md)
-* [Creating of Own Functions](day.1/125-own.functions.md)
-* ~~[Inventory](day.1/130-inventory.md)~~
+* [Creating of Own Functions](day.1/130-own.functions.md)
+* [Main Building Blocks of the Game](day.1/140-main.building.blocks.md)
+* [About Dataclasses](day.1/145-about.dataclasses.md)
+* [Dataclass for Abstract Command](day.1/150-dataclass.command.md)
+* [Command `about`](day.1/160-commands.as.dataclasses.md)
+* [Command `commands`](day.1/170-command.commands.md)
+* [Command `quit`](day.1/180-command.quit.md)
+* [Daily Cheat Sheet](day.1/daily.cheat.sheet.md)
 
 
 ## Day 2: The Commands
 
-* [Main Building Blocks of the Game](day.2/200-main.building.blocks.md)
-* About Dataclasses
-* [Dataclass for Abstract Command](day.2/210-dataclass.command.md)
-* Raising an Exception
+* [Raising an Exception](day.2/200-raising.an.exception.md)
+* [Working with Lists](day.2/210-lists.intro.md)
+* [Parsing Commands](day.2/220-parse.line.md)
+* [Dataclass for Generic Room](day.2/230-room.representation.md)
+* [Creating New Room](day.2/240-new.room.md)
+* [Command `look around` and `__str__()` Method](day.2/250-look.around.md)
+* [Dataclass for Generic Item](day.2/400-item.representation.md)
+* [Item _Whip_](day.2/405-whip.md)
+* [Item _Empty Seats_](day.2/410-empty.seats.md)
+* [Daily Cheat Sheet](day.2/daily.cheat.sheet.md)
+
+
+## Day 3: The Items
+
+* Backpack and Game Context
+* [Inventory](day.3/310-inventory.md)
+* [Color Output with rich](day.3/315-rich.md)
+* [Command `examine`](day.3/320-examine.md)
+* Extended Item Examination
+* Item Parachute
+* [Command `take`](day.3/360-take.item.md)
+* [Command `drop`](day.3/370-drop.item.md)
+
+
+
+## Day 4: The World
+
 * Stack Trace
-* [Command `about`](day.2/220-commands.as.dataclasses.md)
-* [Command `commands`](day.2/220-commands.as.dataclasses.md)
-* [Command `quit`](day.2/220-commands.as.dataclasses.md)
-* Parsing Commands
-* Game Context
-
-
-## Day 3: The World
-
-* Dataclass for Generic Room
-* Creating New Room
-* Command `look around` and `__str__()` Method
 * The World and Connected Rooms
 * Command `down`
 * Commands `north`, `south`, `east` and `west`
-
-
-## Day 4: The Items
-
-* [Dataclass for Generic Item](day.4/400-item.representation.md)
-* [Item _Whip_](day.4/405-whip.md)
-* [Item _Empty Seats_](day.4/410-empty.seats.md)
-* Command `inventory`
-* [Place Created Items into Room](day.4/415-items.in.room.md)
-* [Command `examine`](day.4/420-examine.md)
-* [Command `take`](day.4/430-take.item.md)
-* [Command `drop`](day.4/440-drop.item.md)
-* Extended Item Examination
-* [Command `use`](day.4/460-use.item.md)
+* [Place Created Items into Room](day.2/415-items.in.room.md)
+* [Command `use`](day.4/480-use.item.md)
 
 
 ## Day 5
 
 * [Correct Main Module](day.5/599-correct.main.md)
-
-
-## TODO
-
-* rich in day 1/2
-* generator escape kodov pre farebny vystup v terminali na linuxe https://ansi.gabebanks.net/

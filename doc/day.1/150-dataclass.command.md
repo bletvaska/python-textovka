@@ -8,20 +8,18 @@
 ## Command Dataclass
 
 ```python
-from dataclasses import dataclass
+from pydantic import BaseModel
 
 
-@dataclass
-class Command:
+class Command(BaseModel):
     """
-    Describes every command in game.
+    Generic game command.
     """
     # fields
     name: str
     description: str
 
-    # behavior / methods
-    def exec(self, backpack):
-        # ! FIXME exception
-        print('vykonavam prikaz')
+    # methods
+    def exec(self):
+        print('vykonavam prikaz ', self.name)
 ```
