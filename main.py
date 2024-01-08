@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import states
 from helpers import intro, outro
 
