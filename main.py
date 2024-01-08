@@ -2,7 +2,7 @@ print("Indiana Jones and his Greatest Python Adventure")
 
 line = None
 while line != 'koniec':
-    line = input('> ')
+    line = input('> ').lower().lstrip().rstrip()   # echo line | lower | lstrip | rstrip
 
     if line == '':  # if len(line) == 0:
         pass  # {}
