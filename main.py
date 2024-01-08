@@ -1,12 +1,11 @@
-# from states import STATE_PLAYING, STATE_QUIT
 import states
+from helpers import intro, outro
 
-print("Indiana Jones and his Greatest Python Adventure")
-
+intro()
 
 game_state = states.PLAYING
 while game_state == states.PLAYING:
-    line = input('> ').lower().lstrip().rstrip()   # echo line | lower | lstrip | rstrip
+    line = input('> ').lower().lstrip().rstrip()  # echo line | lower | lstrip | rstrip
 
     if line == '':  # if len(line) == 0:
         pass  # {}
@@ -28,4 +27,4 @@ while game_state == states.PLAYING:
     else:
         print('Taký príkaz nepoznám.')
 
-print('(c)2024 mirek')
+outro()
