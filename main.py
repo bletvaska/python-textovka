@@ -1,19 +1,26 @@
 print("Indiana Jones and his Greatest Python Adventure")
-line = input('> ')
 
-if line == '':  # if len(line) == 0:
-    pass  # {}
+line = None
+while line != 'koniec':
+    line = input('> ')
 
-elif line == 'o hre':
-    print('(c)2023 created by mirek')
-    print('Dalsie dobrodruzstvo indiana jonesa tentokrat vytvorene v jazyku Python.')
+    if line == '':  # if len(line) == 0:
+        pass  # {}
 
-elif line == 'prikazy':
-    print('V hre je možné použiť tieto príkazy:')
-    print('* o hre - zobrazí informácie o hre')
-    print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+    elif line == 'o hre':
+        print('(c)2023 created by mirek')
+        print('Dalsie dobrodruzstvo indiana jonesa tentokrat vytvorene v jazyku Python.')
 
-else:
-    print('Taký príkaz nepoznám.')
+    elif line == 'prikazy':
+        print('V hre je možné použiť tieto príkazy:')
+        print('* koniec - ukončí rozhratú hru')
+        print('* o hre - zobrazí informácie o hre')
+        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
 
-print('koniec')
+    elif line == 'koniec':
+        print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
+
+    else:
+        print('Taký príkaz nepoznám.')
+
+print('(c)2024 mirek')
