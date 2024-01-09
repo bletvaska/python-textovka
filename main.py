@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Commands, Quit, Command
+from commands import About, Commands, Quit
 from helpers import intro, outro
 
-intro()
 
+# game initialization
 game_state = states.PLAYING
+commands = [
+    About(),
+    Commands(),
+    Quit()
+]
+
+# game loop
+intro()
 while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()  # echo line | lower | lstrip | rstrip
 

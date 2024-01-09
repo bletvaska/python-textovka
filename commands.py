@@ -54,3 +54,6 @@ class Quit(Command):
         if choice in ('a', 'y', 'ano', 'yes'):
             print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
             game_state = states.QUIT
+
+        # return None
+
