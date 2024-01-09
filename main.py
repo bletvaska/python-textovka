@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Commands
+from commands import About, Commands, Quit, Command
 from helpers import intro, outro
 
 intro()
@@ -21,10 +21,8 @@ while game_state == states.PLAYING:
         cmd.exec()
 
     elif line == 'koniec':
-        choice = input('Naozaj chceš skončiť? (a/n) ').lower().strip()
-        if choice in ('a', 'y', 'ano', 'yes'):
-            print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
-            game_state = states.QUIT
+        cmd = Quit()
+        cmd.exec()
 
     else:
         print('Taký príkaz nepoznám.')
