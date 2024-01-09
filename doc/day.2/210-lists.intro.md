@@ -6,7 +6,16 @@
 
 ukazka prace so zoznamami
 
+* vytvorenie zoznamu
+
+   ```python
+   >>> l = ['jano', 'fero', 'jozo']
+   ```
+
 * pocet prvkov len(items)
+   ```python
+   >>> len(l)
+   ```
 * pristup ku jednotlivym prvkom items[0]
 * slicing operator
 * prejst prvky jeden po druhom
