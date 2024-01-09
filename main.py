@@ -22,8 +22,10 @@ while game_state == states.PLAYING:
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
 
     elif line == 'koniec':
-        print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
-        game_state = states.QUIT
+        choice = input('Naozaj chceš skončiť? (a/n) ').lower().strip()
+        if choice in ('a', 'y', 'ano', 'yes'):
+            print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
+            game_state = states.QUIT
 
     else:
         print('Taký príkaz nepoznám.')
