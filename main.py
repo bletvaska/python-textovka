@@ -13,12 +13,12 @@ while game_state == states.PLAYING:
         pass  # {}
 
     elif line == 'o hre':
-        about = About()
-        about.exec()
+        cmd = About()
+        cmd.exec()
 
     elif line == 'prikazy':
-        commands = Commands()
-        commands.exec()
+        cmd = Commands()
+        cmd.exec()
 
     elif line == 'koniec':
         choice = input('Naozaj chceš skončiť? (a/n) ').lower().strip()
