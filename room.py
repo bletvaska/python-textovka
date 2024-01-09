@@ -8,5 +8,5 @@ class Room(BaseModel):
     # fields
     name: str
     description: str
-    items: list = []  # : list
-    exits: list = []  # : list
+    items: list[str] = []
+    exits: list = []
