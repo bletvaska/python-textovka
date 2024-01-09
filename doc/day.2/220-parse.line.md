@@ -9,7 +9,7 @@ daný príkaz neexistuje, vráti nám hodnotu `None` alebo vyvolá výnimku.
 
 ## Parametre funkcie
 
-Vytvoríme teda funkciu `parse_line()`, ktorá bude mať tieto parametre:
+V module `helpers` teda vytvoríme funkciu `parse_line()`, ktorá bude mať tieto parametre:
 
 * `line` - vstup od používateľa
 * `commands` - zoznam existujúcich príkazov
@@ -50,7 +50,6 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
 ```
 
 
-
 ## Vytvorená funkcia `parse_line()`
 
 * `command.param` ?
@@ -66,7 +65,17 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
 ```
 
 
-## Použitie parsera pomocou `if-else`
+## Použitie parsera
+
+Vytvorený parser môžeme použiť dvoma spôsobmi:
+
+1. pomocou `if-else`
+2. pomocou ošetrenia výnimky
+
+Príklady oboch použití sa nachádzajú v ďalšom texte.
+
+
+### Použitie parsera pomocou `if-else`
 
 ```python
 command = parse_line(line, commands)
@@ -77,7 +86,7 @@ else:
 ```
 
 
-## Použitie parsera pomocou ošetrenia výnimky
+### Použitie parsera pomocou ošetrenia výnimky
 
 ```python
 try:

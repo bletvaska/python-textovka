@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from commands import About, Commands, Quit, Command
+from commands import About, Commands, Quit, Command, LookAround
 from helpers import intro, outro
 from room import Room
 
@@ -18,6 +18,7 @@ game_state = states.PLAYING
 commands = [
     About(),
     Commands(),
+    LookAround(),
     Quit()
 ]
 
@@ -44,7 +45,7 @@ while game_state == states.PLAYING:
     if command is None:
         print('Taký príkaz nepoznám.')
     else:
-        command.exec()
+        command.exec(current_room)
 
     # try:
     #     command = parse_line(line, commands)

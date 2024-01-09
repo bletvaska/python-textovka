@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 import states
+from room import Room
 
 
 class Command(BaseModel):
@@ -12,7 +13,7 @@ class Command(BaseModel):
     description: str
 
     # methods
-    def exec(self):
+    def exec(self, room: Room):
         raise NotImplementedError('This method was not yet implemented.')
 
 
@@ -23,7 +24,7 @@ class About(Command):
     name: str = 'o hre'
     description: str = 'zobrazí informácie o hre'
 
-    def exec(self):
+    def exec(self, room):
         print('(c)2024 created by mirek')
         print('Ďalšie dobrodružstvo Indiana Jonesa tentokrát vytvorene v jazyku Python.')
 
@@ -35,7 +36,7 @@ class Commands(Command):
     name: str = 'prikazy'
     description: str = 'zobrazí zoznam dostupných príkazov v hre'
 
-    def exec(self):
+    def exec(self, room):
         print('V hre je možné použiť tieto príkazy:')
         print('* koniec - ukončí rozhratú hru')
         print('* o hre - zobrazí informácie o hre')
@@ -49,7 +50,7 @@ class Quit(Command):
     name: str = 'koniec'
     description: str = 'ukončí hru'
 
-    def exec(self):
+    def exec(self, room):
         choice = input('Naozaj chceš skončiť? (a/n) ').lower().strip()
         if choice in ('a', 'y', 'ano', 'yes'):
             print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
@@ -57,3 +58,16 @@ class Quit(Command):
 
         # return None
 
+
+class LookAround(Command):
+    """
+    Look around in the room.
+    """
+    name: str = 'rozhliadni sa'
+    description: str = 'rozhliadne sa v aktuálnej miestnosti'
+
+    def exec(self, room):
+        print(room.description)
+        print('Vidíš:')
+        for item in room.items:
+            print(item)

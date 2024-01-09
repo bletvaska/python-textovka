@@ -1,6 +1,6 @@
 # Balik `commands`
 
-co su to baliky
+## co su to baliky
 
 ```
 commands/
@@ -11,6 +11,8 @@ commands/
 ├── look_around.py
 └── quit.py
 ```
+
+## pouzitie baliku `commands`
 
 mozeme do `__init__.py` vlozit importy:
 
