@@ -24,3 +24,17 @@ class About(Command):
     def exec(self):
         print('(c)2024 created by mirek')
         print('Dalšie dobrodružstvo Indiana Jonesa tentokrát vytvorene v jazyku Python.')
+
+
+class Commands(Command):
+    """
+    Shows all Commmands
+    """
+    name: str = 'prikazy'
+    description: str = 'zobrazí zoznam dostupných príkazov v hre'
+
+    def exec(self):
+        print('V hre je možné použiť tieto príkazy:')
+        print('* koniec - ukončí rozhratú hru')
+        print('* o hre - zobrazí informácie o hre')
+        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')

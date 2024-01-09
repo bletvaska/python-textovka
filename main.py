@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import states
-from commands import About
+from commands import About, Commands
 from helpers import intro, outro
 
 intro()
@@ -17,10 +17,8 @@ while game_state == states.PLAYING:
         about.exec()
 
     elif line == 'prikazy':
-        print('V hre je možné použiť tieto príkazy:')
-        print('* koniec - ukončí rozhratú hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+        commands = Commands()
+        commands.exec()
 
     elif line == 'koniec':
         choice = input('Naozaj chceš skončiť? (a/n) ').lower().strip()
