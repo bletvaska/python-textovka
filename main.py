@@ -2,6 +2,7 @@
 import states
 from commands import About, Commands, Quit, Command
 from helpers import intro, outro
+from room import Room
 
 
 def parse_line(line: str, commands: list[Command]):
@@ -19,6 +20,15 @@ commands = [
     Commands(),
     Quit()
 ]
+
+room = Room(
+    name='v lietadle',
+    description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je '
+                'tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej '
+                'duše. (Celkom zaujímavá situácia, že áno?)',
+    items=['bič', 'prázdne sedadlá'],
+    # exits=[]
+)
 
 # game loop
 intro()

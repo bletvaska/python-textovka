@@ -21,7 +21,7 @@ Kostra funkcie môže vyzerať takto:
 
 ```python
 def parse_line(line, commands):
-   return None
+   pass
 ```
 
 ## Type Hinting
@@ -35,15 +35,25 @@ funkcie `line` na nový riadok v tele funkcie, za ním napísať operátor `.` a
 typu `str`. To preto, že vývojové prostredie netuší, akého typu bude tento parameter.
 
 ```python
-def parse_line(line: str, commands: list[Command]) -> Command | None:
-   return None
+def parse_line(line: str, commands: list[Command]):
+   pass
 ```
 
-* type hinting
-   * parametre funkcie
-   * navratovy typ
+## Návratový typ funkcie a type hinting
+
+* navratovy typ
 * predvoleny `return None` na konci
-* `command.param`
+
+```python
+def parse_line(line: str, commands: list[Command]) -> Command | None:
+   # return None
+```
+
+
+
+## Vytvorená funkcia `parse_line()`
+
+* `command.param` ?
 
 ```python
 def parse_line(line: str, commands: list[Command]) -> Command | None:
@@ -53,4 +63,26 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
          return command
 
    return None  # default
+```
+
+
+## Použitie parsera pomocou `if-else`
+
+```python
+command = parse_line(line, commands)
+if command is None:
+    print('Taký príkaz nepoznám.')
+else:
+    command.exec()
+```
+
+
+## Použitie parsera pomocou ošetrenia výnimky
+
+```python
+try:
+    command = parse_line(line, commands)
+    command.exec()
+except AttributeError:
+    print('Taký príkaz nepoznám.')
 ```
