@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import states
+from commands import About
 from helpers import intro, outro
 
 intro()
@@ -12,8 +13,8 @@ while game_state == states.PLAYING:
         pass  # {}
 
     elif line == 'o hre':
-        print('(c)2024 created by mirek')
-        print('Dalsie dobrodruzstvo indiana jonesa tentokrat vytvorene v jazyku Python.')
+        about = About()
+        about.exec()
 
     elif line == 'prikazy':
         print('V hre je možné použiť tieto príkazy:')
