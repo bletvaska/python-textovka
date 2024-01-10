@@ -30,3 +30,11 @@ Musíme však najprv importovať funkciu `print` z modulu `rich`:
 ```python
 from rich import print
 ```
+
+## Použité farby v hre
+
+V hre budeme používať tieto farby:
+
+* názov predmetu - `magenta`
+* smer z miestnosti - `yellow`
+* názov miestnosti - `green`
