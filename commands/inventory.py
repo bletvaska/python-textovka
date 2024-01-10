@@ -7,7 +7,8 @@ class Inventory(Command):
     name: str = 'inventar'
     description: str = 'zobrazí obsah hráčovho batohu'
 
-    def exec(self, room: Room) -> str:
+    def exec(self, room: Room, backpack) -> str:
         print('zobrazujem inventar')
+        print(backpack)
 
         return states.PLAYING

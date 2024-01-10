@@ -9,7 +9,7 @@ class About(Command):
     name: str = 'o hre'
     description: str = 'zobrazí informácie o hre'
 
-    def exec(self, room):
+    def exec(self, room, backpack):
         print('(c)2024 created by mirek')
         print('Ďalšie dobrodružstvo Indiana Jonesa tentokrát vytvorene v jazyku Python.')
 

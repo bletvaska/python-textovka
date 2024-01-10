@@ -12,7 +12,10 @@ from items.whip import Whip
 from rooms.room import Room
 
 # game initialization
-backpack = []
+backpack = [
+    Whip(),
+    EmptySeats(),
+]
 game_state = states.PLAYING
 commands = [
     About(),
@@ -49,7 +52,7 @@ while game_state == states.PLAYING:
     if command is None:
         print('Taký príkaz nepoznám.')
     else:
-        game_state = command.exec(current_room)
+        game_state = command.exec(current_room, backpack)
 
     # try:
     #     command = parse_line(line, commands)

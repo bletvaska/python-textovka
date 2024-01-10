@@ -7,7 +7,7 @@ class Examine(Command):
     name: str = 'preskumaj'
     description: str = 'zobrazí informácie o zvolenom predmete'
 
-    def exec(self, room: Room) -> str:
+    def exec(self, room: Room, backpack) -> str:
         if self.param == '':
             print('Neviem, čo chceš preskúmať.')
             return states.PLAYING

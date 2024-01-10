@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+from items.item import Item
 from rooms.room import Room
 
 
@@ -13,5 +14,5 @@ class Command(BaseModel):
     param: str = None
 
     # methods
-    def exec(self, room: Room) -> str:
+    def exec(self, room: Room, backpack: list[Item]) -> str:
         raise NotImplementedError('This method was not yet implemented.')
