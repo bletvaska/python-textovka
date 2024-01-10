@@ -29,6 +29,7 @@ current_room = Room(
 
 # game loop
 intro()
+print()
 current_room.show()
 
 while game_state == states.PLAYING:
