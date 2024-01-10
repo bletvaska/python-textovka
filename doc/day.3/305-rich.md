@@ -43,15 +43,34 @@ V hre budeme používať tieto farby:
 Pre použitie farieb v hre aktuálne stačí upraviť len metódu `.show()` v triede `Room`, kde dochádza k výpisovaniu názvov
 predmetov.
 
+Najprv nezabudnite importnúť funkciu `print()` z balíka `rich`:
+```python
+from rich import print
+```
+
+Následne aktualizjte výpis predmetov vo funkcii `.show()`:
+
 ```python
 def show(self):
-    print(self.description)
-    print()
+   print(self.description)
+   print()
 
-    if len(self.items) != 0:  # self.items != []
-        print('Vidíš:')
-        for item in self.items:
-            print(item.name)
-    else:
-        print('Nevidíš tu nič zvláštne.')
+   if len(self.items) != 0:  # self.items != []
+      print('Vidíš:')
+      for item in self.items:
+         print(f'* [bold magenta]{item.name}[/bold magenta]')
+   else:
+      print('Nevidíš tu nič zvláštne.')
 ```
+
+## Problém v prostredí PyCharm
+
+Ak program spúšťate v prostredí PyCharm, pravdepodobne výstup fialový neuvidíte. Aby ste ho videli, tak potrebujete
+urobiť toto:
+
+1. `Run > Edit Configurations...`
+2. vyberte si spúšťač, pomocou ktorého spúšťate hru
+3. rozlikliknite `Modify options` a vyberte voľbu `Emulate terminal in output console`
+4. potvrďte zmeny kliknutím na tlačidlo `OK`
+
+Keď teraz hru spustíte, zoznam predmetov už bude fialový.
