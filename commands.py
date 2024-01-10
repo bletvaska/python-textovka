@@ -71,6 +71,6 @@ class LookAround(Command):
     description: str = 'rozhliadne sa v aktuálnej miestnosti'
 
     def exec(self, room):
-        self.show()
+        room.show()
 
         return states.PLAYING
