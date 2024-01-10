@@ -39,9 +39,9 @@
 ## Day 3: The Items
 
 * Backpack and Game Context
-* [Inventory](day.3/315-inventory)
+* [Inventory](day.3/320-inventory)
 * [Color Output with rich](day.3/305-rich)
-* [Command `examine`](day.3/320-examine.md)
+* [Command `examine`](day.3/310-examine.and.parser.refactoring)
 * Extended Item Examination
 * Item Parachute
 * [Command `take`](day.3/360-take.item.md)

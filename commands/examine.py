@@ -12,5 +12,10 @@ class Examine(Command):
             print('Neviem, čo chceš preskúmať.')
             return states.PLAYING
         else:
-            print(f'zobazujem informacie o predmete {self.param}')
+            for item in room.items:
+                if item.name == self.param:
+                    print(item.description)
+                    return states.PLAYING
+
+            print('Taký predmet tu nikde nevidím.')
             return states.PLAYING
