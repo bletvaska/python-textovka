@@ -1,4 +1,4 @@
-from commands import Command
+from commands.command import Command
 
 
 def intro():
@@ -11,6 +11,7 @@ def intro():
     print(" | || | | | (_| | | (_| | | | | (_| | | |_| | (_) | | | |  __/\\__ \\")
     print("|___|_| |_|\\__,_|_|\\__,_|_| |_|\\__,_|  \\___/ \\___/|_| |_|\\___||___/")
     print("Indiana Jones and his Greatest Python Adventure".center(70))
+
 
 def outro():
     """
