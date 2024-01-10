@@ -19,64 +19,61 @@ Vidíš:
 
 ## Pokus o riešenie
 
-
-
 ```python
 class LookAround(Command):
-    name = 'rozhliadni sa'
-    description = 'rozhliadne sa v aktuálnej miestnosti'
+   name = 'rozhliadni sa'
+   description = 'rozhliadne sa v aktuálnej miestnosti'
 
-    def exec(self):
-        print(current_room.description)
-        if current_room.items != []:  # len(current_room.items) > 0
-            print('Vidíš:')
-            for item in current_room.items:
-                print(f'  {item}')
-        else:
-            print('Nevidíš tu nič zvláštne.')
+   def exec(self):
+      print(current_room.description)
+      if current_room.items != []:  # len(current_room.items) > 0
+         print('Vidíš:')
+         for item in current_room.items:
+            print(f'  {item}')
+      else:
+         print('Nevidíš tu nič zvláštne.')
 ```
 
 Lenže nebude fungovať, pretože premenná `current_room` nie je v tomto kontexte definovaná.
 
+## Metóda `.exec()` s parametrom
 
-## Aktualizácia triedy `Room`
-
-V triede `Room` vytvorte metódu `.show()`, pomocou ktorej "vykreslíte" obsah miestnosti na obrazovku.
-
-```python
-from pydantic import BaseModel
-
-
-class Room(BaseModel):
-    # fields
-    name: str
-    description: str
-    items = []  # : list
-    exits = []  #: list
-
-    def show(self):
-        """
-        Shows the current room.
-        """
-        print(self.description)
-        if self.items != []:  # len(current_room.items) > 0
-            print('Vidíš:')
-            for item in self.items:
-                print(f'  {item}')
-        else:
-            print('Nevidíš tu nič zvláštne.')
-```
-
-
-## Aktualizácia príkazu `rozhliadni sa`
+Aby príkaz fungoval, ako mal, musíme miestnosť do príkazu dostať. Do metódy `.exec()` preto pridáme parameter `room`:
 
 ```python
 class LookAround(Command):
-    name = 'rozhliadni sa'
-    description = 'rozhliadne sa v aktuálnej miestnosti'
+   name = 'rozhliadni sa'
+   description = 'rozhliadne sa v aktuálnej miestnosti'
 
-    def exec(self, room):
-        room.show()
-
-        return states.PLAYING
+   def exec(self, room):
+      print(room.description)
+      if room.items != []:  # len(current_room.items) > 0
+         print('Vidíš:')
+         for item in room.items:
+            print(f'  {item}')
+      else:
+         print('Nevidíš tu nič zvláštne.')
 ```
+
+## Refaktoring
+
+Táto zmena sa však dotkne viacerých miest. V module `main` napríklad musíme tento parameter posunúť do metódy `.exec()`
+už pri jej volaní:
+
+```python
+# parse and execute command
+command = parse_line(line, commands)
+if command is None:
+   print('Taký príkaz nepoznám.')
+else:
+   command.exec(current_room)
+```
+
+Ak by sme teraz spustili hru a napísali príkaz `rozhliadni sa`, tak všetko bude pracovať, ako má. Ak však napíšeme
+akýkoľvek iný príkaz, skončíme s výnimkou. To preto, že parameter `room` používame pri každom jednom volaní
+metódy `.exec()`. To znamená, že ho voláme pri každom jednom príkaze.
+
+Tento problém potrebujeme vyriešiť na viacerých miestach:
+
+* v triede `Command`
+* v metóde `.exec()` každého jedného príkazu
