@@ -72,6 +72,12 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
 
 Všetko funguje tak, ako doteraz a ako bonus parser teraz rozpozná aj príkaz `preskumaj` s parametrom.
 
+## Parameter príkazu
+
+Potrebujeme však ešte získať parameter, ktorým je názov predmetu, a ktorý je zadaný za príkazom.
+
+## Riešenie
+
 ```python
 class Examine(Command):
    name = 'preskumaj'

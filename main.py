@@ -11,6 +11,7 @@ from items.whip import Whip
 from rooms.room import Room
 
 # game initialization
+backpack = []
 game_state = states.PLAYING
 commands = [
     About(),
