@@ -17,7 +17,7 @@ class Room(BaseModel):
         print(self.description)
         print()
 
-        if len(self.items) != 0:
+        if len(self.items) != 0:  # self.items != []
             print('Vidíš:')
             for item in self.items:
                 print(item.name)
