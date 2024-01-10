@@ -13,6 +13,7 @@ class Commands(Command):
         print('V hre je možné použiť tieto príkazy:')
         print('* koniec - ukončí rozhratú hru')
         print('* o hre - zobrazí informácie o hre')
+        print('* preskumaj - zobrazí informácie o predmete')
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
 
         return states.PLAYING

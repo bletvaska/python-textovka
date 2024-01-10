@@ -2,6 +2,7 @@
 import states
 from commands.about import About
 from commands.commands import Commands
+from commands.examine import Examine
 from commands.look_around import LookAround
 from commands.quit import Quit
 from helpers import intro, outro, parse_line
@@ -14,6 +15,7 @@ game_state = states.PLAYING
 commands = [
     About(),
     Commands(),
+    Examine(),
     LookAround(),
     Quit(),
 ]
