@@ -12,12 +12,11 @@ V prípade, že je batoh prázdny, vypíše na obrazovku text:
 Batoh je prázdny.
 ```
 
-V opačnom prípade vypíše na obrazovku zoznam predmetov v batohu napríklad takto:
+V opačnom prípade vypíše na obrazovku zoznam predmetov (fialovou farbou) v batohu napríklad takto:
 
 ```
 V batohu máš:
 * bic
-* revolver
 ```
 
 **Poznámka:** Nezabudnite rozšíriť aj zoznam dostupných príkazov, ktorý sa zobrazí po zadaní príkazu `prikazy`.

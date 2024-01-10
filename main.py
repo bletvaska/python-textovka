@@ -3,6 +3,7 @@ import states
 from commands.about import About
 from commands.commands import Commands
 from commands.examine import Examine
+from commands.inventory import Inventory
 from commands.look_around import LookAround
 from commands.quit import Quit
 from helpers import intro, outro, parse_line
@@ -17,6 +18,7 @@ commands = [
     About(),
     Commands(),
     Examine(),
+    Inventory(),
     LookAround(),
     Quit(),
 ]
