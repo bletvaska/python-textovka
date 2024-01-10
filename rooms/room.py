@@ -20,6 +20,6 @@ class Room(BaseModel):
         if len(self.items) != 0:  # self.items != []
             print('Vidíš:')
             for item in self.items:
-                print(item.name)
+                print(f'* {item.name}')
         else:
             print('Nevidíš tu nič zvláštne.')
