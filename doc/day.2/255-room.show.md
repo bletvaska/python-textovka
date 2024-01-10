@@ -20,12 +20,9 @@ class Room(BaseModel):
         Shows the current room.
         """
         print(self.description)
-        if self.items != []:  # len(current_room.items) > 0
-            print('Vidíš:')
-            for item in self.items:
-                print(f'  {item}')
-        else:
-            print('Nevidíš tu nič zvláštne.')
+        print('Vidíš:')
+        for item in self.items:
+            print(item.name)
 ```
 
 
