@@ -1,0 +1,5 @@
+# Formátovanie reťazcov
+
+```python
+f'{}'
+```

@@ -2,7 +2,6 @@
 
 [![Logo modulu rich](../images/logo-rich.svg)](https://github.com/Textualize/rich)
 
-
 ## Inštalácia
 
 Nainštalujeme
@@ -38,3 +37,21 @@ V hre budeme používať tieto farby:
 * názov predmetu - `magenta`
 * smer z miestnosti - `yellow`
 * názov miestnosti - `green`
+
+## Refaktoring
+
+Pre použitie farieb v hre aktuálne stačí upraviť len metódu `.show()` v triede `Room`, kde dochádza k výpisovaniu názvov
+predmetov.
+
+```python
+def show(self):
+    print(self.description)
+    print()
+
+    if len(self.items) != 0:  # self.items != []
+        print('Vidíš:')
+        for item in self.items:
+            print(item.name)
+    else:
+        print('Nevidíš tu nič zvláštne.')
+```
