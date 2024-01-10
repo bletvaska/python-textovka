@@ -5,7 +5,7 @@ from commands.commands import Commands
 from commands.look_around import LookAround
 from commands.quit import Quit
 from helpers import intro, outro, parse_line
-from room import Room
+from rooms.room import Room
 
 # game initialization
 game_state = states.PLAYING
@@ -13,7 +13,7 @@ commands = [
     About(),
     Commands(),
     LookAround(),
-    Quit()
+    Quit(),
 ]
 
 current_room = Room(
