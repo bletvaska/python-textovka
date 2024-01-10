@@ -36,12 +36,12 @@ while game_state == states.PLAYING:
     if command is None:
         print('Taký príkaz nepoznám.')
     else:
-        command.exec(current_room)
+        game_state = command.exec(current_room)
 
     # try:
     #     command = parse_line(line, commands)
-    #     command.exec()
-    # except AttributeError:
+    #     game_state = command.exec(current_room)
+    # except AttributeError:  # CommandDoesntExist
     #     print('Taký príkaz nepoznám.')
 
 outro()

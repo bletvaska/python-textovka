@@ -13,7 +13,7 @@ class Command(BaseModel):
     description: str
 
     # methods
-    def exec(self, room: Room):
+    def exec(self, room: Room) -> str:
         raise NotImplementedError('This method was not yet implemented.')
 
 
@@ -27,6 +27,8 @@ class About(Command):
     def exec(self, room):
         print('(c)2024 created by mirek')
         print('Ďalšie dobrodružstvo Indiana Jonesa tentokrát vytvorene v jazyku Python.')
+
+        return states.PLAYING
 
 
 class Commands(Command):
@@ -42,6 +44,8 @@ class Commands(Command):
         print('* o hre - zobrazí informácie o hre')
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
 
+        return states.PLAYING
+
 
 class Quit(Command):
     """
@@ -54,9 +58,9 @@ class Quit(Command):
         choice = input('Naozaj chceš skončiť? (a/n) ').lower().strip()
         if choice in ('a', 'y', 'ano', 'yes'):
             print('Ďakujem, že si si zahral túto úžasnú (ukradnutú) hru.')
-            game_state = states.QUIT
+            return states.QUIT
 
-        # return None
+        return states.PLAYING
 
 
 class LookAround(Command):
@@ -71,3 +75,5 @@ class LookAround(Command):
         print('Vidíš:')
         for item in room.items:
             print(item)
+
+        return states.PLAYING
