@@ -1,3 +1,6 @@
+from commands import Command
+
+
 def intro():
     """
     Shows the intro screen of the game.
@@ -15,3 +18,14 @@ def outro():
     """
     print('(c)2024 mirek')
     print('See you soon')
+
+
+def parse_line(line: str, commands: list[Command]) -> Command | None:
+    """
+    Parse a command from user's input and return command if found.
+    """
+    for command in commands:
+        if line == command.name:
+            return command
+
+    return None

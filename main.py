@@ -1,17 +1,8 @@
 #!/usr/bin/env python3
 import states
 from commands import About, Commands, Quit, Command, LookAround
-from helpers import intro, outro
+from helpers import intro, outro, parse_line
 from room import Room
-
-
-def parse_line(line: str, commands: list[Command]):
-    for command in commands:
-        if line == command.name:
-            return command
-
-    return None
-
 
 # game initialization
 game_state = states.PLAYING
