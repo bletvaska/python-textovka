@@ -8,5 +8,9 @@ class Examine(Command):
     description: str = 'zobrazí informácie o zvolenom predmete'
 
     def exec(self, room: Room) -> str:
-        print('zobazujem informacie o predmete')
-        return states.PLAYING
+        if self.param == '':
+            print('Neviem, čo chceš preskúmať.')
+            return states.PLAYING
+        else:
+            print(f'zobazujem informacie o predmete {self.param}')
+            return states.PLAYING

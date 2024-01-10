@@ -26,7 +26,8 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
     Parse a command from user's input and return command if found.
     """
     for command in commands:
-        if line == command.name:
+        if line.startswith(command.name):
+            command.param = line.split(command.name, maxsplit=1)[1].lstrip()
             return command
 
     return None

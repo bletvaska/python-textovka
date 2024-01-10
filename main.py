@@ -31,8 +31,8 @@ current_room = Room(
 
 # game loop
 intro()
-print()
 current_room.show()
+print()
 
 while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()  # echo line | lower | lstrip | rstrip
@@ -53,5 +53,7 @@ while game_state == states.PLAYING:
     #     game_state = command.exec(current_room)
     # except AttributeError:  # CommandDoesntExist
     #     print('Taký príkaz nepoznám.')
+
+    print()
 
 outro()

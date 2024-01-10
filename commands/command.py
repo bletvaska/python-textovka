@@ -10,6 +10,7 @@ class Command(BaseModel):
     # fields
     name: str
     description: str
+    param: str = None
 
     # methods
     def exec(self, room: Room) -> str:
