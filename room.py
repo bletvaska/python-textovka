@@ -10,3 +10,9 @@ class Room(BaseModel):
     description: str
     items: list[str] = []
     exits: list = []
+
+    def show(self):
+        print(self.description)
+        print('Vidíš:')
+        for item in self.items:
+            print(item)

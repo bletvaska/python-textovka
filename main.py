@@ -24,6 +24,8 @@ current_room = Room(
 
 # game loop
 intro()
+current_room.show()
+
 while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()  # echo line | lower | lstrip | rstrip
 
