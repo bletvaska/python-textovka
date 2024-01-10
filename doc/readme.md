@@ -26,7 +26,7 @@
 
 * [Raising an Exception](day.2/200-raising.an.exception.md)
 * [Working with Lists](day.2/210-lists.intro.md)
-* [Parsing Commands](day.2/220-parse.line.md)
+* [Parsing Commands](day.2/225-parse.line)
 * [Dataclass for Generic Room](day.2/230-room.representation.md)
 * [Creating New Room](day.2/240-new.room.md)
 * [Command `look around` and `__str__()` Method](day.2/250-look.around.md)
@@ -39,7 +39,7 @@
 ## Day 3: The Items
 
 * Backpack and Game Context
-* [Inventory](day.3/315-inventory)
+* [Inventory](day.2/220-inventory)
 * [Color Output with rich](day.3/305-rich)
 * [Command `examine`](day.3/325-examine.and.parser.refactoring)
 * Extended Item Examination

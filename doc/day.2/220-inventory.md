@@ -1,7 +1,11 @@
 # Príkaz `inventar`
 
-V balíku `commands` v module `inventory.py` vytvorte triedu `Inventory`, ktorá bude reprezentovať príkaz `inventar` na
-výpis obsahu batohu. O príkaze bude platiť:
+## Ciele
+
+1. Naučiť sa odovzdávať dáta funkciám/metódam pomocou parametrov
+
+V module `commands.py` vytvorte triedu `Inventory`, ktorá bude reprezentovať príkaz `inventar` na výpis obsahu batohu. O
+príkaze bude platiť:
 
 * jeho meno je `inventar`
 * jeho opis je `zobrazí obsah hráčovho batohu`
@@ -12,7 +16,7 @@ V prípade, že je batoh prázdny, vypíše na obrazovku text:
 Batoh je prázdny.
 ```
 
-V opačnom prípade vypíše na obrazovku zoznam predmetov (fialovou farbou) v batohu napríklad takto:
+V opačnom prípade vypíše na obrazovku zoznam predmetov v batohu napríklad takto:
 
 ```
 V batohu máš:
@@ -21,17 +25,30 @@ V batohu máš:
 
 **Poznámka:** Nezabudnite rozšíriť aj zoznam dostupných príkazov, ktorý sa zobrazí po zadaní príkazu `prikazy`.
 
-## Riešenie
+### Kostra riešenia
 
 ```python
-from .command import Command
-
-
 class Inventory(Command):
    name = 'inventar'
    description = 'zobrazí obsah hráčovho batohu'
 
-   def exec(self, context) -> str:
+   def exec(self):
+      print('Obsah batohu.')
+```
+
+## Problém
+
+Ako však dostať obsah premennej `backpack` z modulu `main` do metódy `.exec()` triedy `Inventory`, ktorá sa nachádza v
+module `commands`?
+
+
+
+```python
+class Inventory(Command):
+   name = 'inventar'
+   description = 'zobrazí obsah hráčovho batohu'
+
+   def exec(self):
       # check if backpack is empty
       if len(context.backpack) == 0:  # context.backpack == []
          print('Batoh je prázdny')

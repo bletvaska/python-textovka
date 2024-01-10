@@ -25,6 +25,7 @@ Ak však tento príkaz spustíme a vyberieme si možnosť `ano`, hra sa žiaľ n
 Je to kvôli tomu, že premenná `game_state`, do ktorej ukladáme nový stav, je lokálnou premennou v metóde `.exec()`. Táto
 premenná prestane existovať po ukončení metódy.
 
+
 ## Funkcie/metódy vracajúce hodnotu
 
 Ak chceme zabezpečiť, aby sa hra ukončila, potrebujeme nový stav dostať z metódy `.exec()` von do miesta volania v
@@ -44,8 +45,8 @@ V module `main.py` upravíme fragment kódu, kde spúšťame príkaz `koniec` ta
 
 ```python
 elif line == 'koniec':
-cmd = Quit()
-game_state = cmd.exec()
+    cmd = Quit()
+    game_state = cmd.exec()
 ```
 
 Ak vyskúšame hru ukončiť, budeme úspešní. Ak však hráč napíš `nie`, hra sa ukončí aj tak. V čom je problém?

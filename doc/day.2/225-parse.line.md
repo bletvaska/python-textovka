@@ -57,8 +57,7 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
 ```python
 def parse_line(line: str, commands: list[Command]) -> Command | None:
    for command in commands:
-      if line.startswith(command.name):
-         command.param = line.split(command.name, maxsplit=1)[1].lstrip()
+      if line == command.name:
          return command
 
    return None  # default
