@@ -1,6 +1,6 @@
-NORTH = 'north'
-SOUTH = 'south'
-EAST = 'east'
-WEST = 'west'
-DOWN = 'down'
-UP = 'up'
+NORTH = 90
+SOUTH = 180
+EAST = 0
+WEST = 270
+UP = -90
+DOWN = -180
