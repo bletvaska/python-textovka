@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from rich import print
 
 from items.item import Item
-from rooms import directions as dirs
+from rooms.directions import DOWN, UP, WEST, EAST, SOUTH, NORTH
 
 
 class Room(BaseModel):
@@ -37,17 +37,17 @@ class Room(BaseModel):
         else:
             directions = []
 
-            if dirs.NORTH in self.exits:
+            if NORTH in self.exits:
                 directions.append('sever')
-            if dirs.SOUTH in self.exits:
+            if SOUTH in self.exits:
                 directions.append('juh')
-            if dirs.EAST in self.exits:
+            if EAST in self.exits:
                 directions.append('východ')
-            if dirs.WEST in self.exits:
+            if WEST in self.exits:
                 directions.append('západ')
-            if dirs.UP in self.exits:
+            if UP in self.exits:
                 directions.append('hore')
-            if dirs.DOWN in self.exits:
+            if DOWN in self.exits:
                 directions.append('dolu')
 
             print('Možné východy z miestnosti:')
