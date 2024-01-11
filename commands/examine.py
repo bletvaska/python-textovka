@@ -24,5 +24,5 @@ class Examine(Command):
 
         # is item examinable?
         if EXAMINABLE in item.features:
-            input('Moment... Niečo tam je...')
+            input('Moment... Niečo tam je... ')
             item.examine(context)

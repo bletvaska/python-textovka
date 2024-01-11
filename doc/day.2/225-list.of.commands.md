@@ -24,6 +24,11 @@ def exec(self, commands):
 ```
 
 
+## Additional Tasks
+
+1. Názvy príkazov vypíšte na šírku 10 znakov.
+
+
 ## Additional topics
 
 Zoznam príkazov je možné vypísať aj zotriedene.

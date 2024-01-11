@@ -46,9 +46,8 @@ def parse_line(line: str, commands: list[Command]):
 
 ```python
 def parse_line(line: str, commands: list[Command]) -> Command | None:
-   # return None
+# return None
 ```
-
 
 ## Vytvorená funkcia `parse_line()`
 
@@ -63,7 +62,6 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
    return None  # default
 ```
 
-
 ## Použitie parsera
 
 Vytvorený parser môžeme použiť dvoma spôsobmi:
@@ -73,24 +71,34 @@ Vytvorený parser môžeme použiť dvoma spôsobmi:
 
 Príklady oboch použití sa nachádzajú v ďalšom texte.
 
+Je však potrebné spraviť refaktoring kvôli parametrom vo volaní metódy `.exec()`: Príkaz `inventar` potrebuje mať pri
+volaní batoh. Príkaz `prikazy` potrebuje mať zoznam príkazov. Ostatné príkazy nepotrebujú nič. Aby sme ale zabezpečili
+jednodtné správanie, a aby každý príkaz dostal presne to, čo potrebuje, budeme posielať všetkým príkazom všetky potrebné
+parametre. Tie, ktoré ich potrebujú, ich použijú a tie, ktoré ich nepotrebujú, ich nepoužijú.
+
+Za tým účelom je potrebné upraviť aj podobu metódy `.exec()` priamo v triede `Command`:
+
+```python
+def exec(self, backapck: list[str], commands: list[Command]):
+    raise NotImplementedError('This method was not yet implemented.')
+```
 
 ### Použitie parsera pomocou `if-else`
 
 ```python
 command = parse_line(line, commands)
 if command is None:
-    print('Taký príkaz nepoznám.')
+   print('Taký príkaz nepoznám.')
 else:
-    command.exec()
+   command.exec(backpack, commands)
 ```
-
 
 ### Použitie parsera pomocou ošetrenia výnimky
 
 ```python
 try:
-    command = parse_line(line, commands)
-    command.exec()
+   command.exec(backpack, commands)
+   command.exec()
 except AttributeError:
-    print('Taký príkaz nepoznám.')
+   print('Taký príkaz nepoznám.')
 ```

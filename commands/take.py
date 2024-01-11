@@ -1,8 +1,6 @@
-import states
 from commands.command import Command
 from helpers import get_item_by_name
-from items.features import EXAMINABLE, MOVABLE
-from rooms.room import Room
+from items.features import MOVABLE
 
 
 class Take(Command):
@@ -31,4 +29,3 @@ class Take(Command):
         context.backpack.append(item)
         # render
         print(f'Do batohu si vložil predmet {item.name}.')
-
