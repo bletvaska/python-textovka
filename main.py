@@ -13,8 +13,8 @@ from rooms.room import Room
 
 # game initialization
 backpack = [
-    Whip(),
-    EmptySeats(),
+    # Whip(),
+    # EmptySeats(),
 ]
 game_state = states.PLAYING
 commands = [

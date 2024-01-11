@@ -41,23 +41,31 @@ class Inventory(Command):
 Ako však dostať obsah premennej `backpack` z modulu `main` do metódy `.exec()` triedy `Inventory`, ktorá sa nachádza v
 module `commands`?
 
+Batoh odovzdáme ako parameter metódy `.exec()`:
 
+```python
+def exec(self, backpack):
+    print(backpack)
+```
+
+
+## Riešenie
 
 ```python
 class Inventory(Command):
    name = 'inventar'
    description = 'zobrazí obsah hráčovho batohu'
 
-   def exec(self):
+   def exec(self, backpack):
       # check if backpack is empty
-      if len(context.backpack) == 0:  # context.backpack == []
+      if len(backpack) == 0:  # backpack == []
          print('Batoh je prázdny')
          return
 
       # print content of backpack
       print('V batohu máš:')
-      for item in context.backpack:
-         print(f'  {item.name}')
+      for item in backpack:
+         print(item)
 ```
 
 ## Additional Tasks
