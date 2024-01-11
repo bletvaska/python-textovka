@@ -37,6 +37,9 @@ Aktualizujte metódu `.show()` v triede `Room` tak, aby zobrazovala aj východy 
 
    **Poznámka**: Východy z miestnosti vypisujeme farbou `yellow`.
 
+
+## Riešenie
+
 ```python
 # list exits
 if self.exits == {}:
