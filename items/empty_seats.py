@@ -13,5 +13,8 @@ class EmptySeats(Item):
         # vloz do aktualnej miestnosti predmet padak
         context.current_room.items.append(Parachute())
 
+        # odstranime vlastnost preskumatelnost zo sedadiel
+        self.features.remove(EXAMINABLE)
+
         # vyrenderuj
         print('Pod jedným z nich si našiel padák. Šťastná to náhoda.')
