@@ -14,7 +14,7 @@ Batoh v hre budeme reprezentovať pomocou zoznamu.
 
 Naučiť sa pracovať so zoznamami je veľmi dôležité, pretože zoznamy patria k jedným z najčastejšie používaných dátových
 týpov. Rovnako to bude aj v našom prípade - nepoužijeme ich len pri tvorbe batohu, ale aj pri zobrazovaní zoznamu
-predmetov v miestnosti alebo pri rozpoznávaní príkazov, ktoré hráč môže v hre použiť.
+predmetov v miestnosti alebo pri rozpoznávaní/zobrazovaní príkazov, ktoré hráč môže v hre použiť.
 
 Teraz si teda ukážeme základy práce so zoznamami.
 

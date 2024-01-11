@@ -26,7 +26,7 @@
 
 * [Raising an Exception](day.2/200-raising.an.exception.md)
 * [Working with Lists](day.2/210-lists.intro.md)
-* [Parsing Commands](day.2/225-parse.line)
+* [Parsing Commands](day.2/227-parse.line)
 * [Dataclass for Generic Room](day.2/230-room.representation.md)
 * [Creating New Room](day.2/240-new.room.md)
 * [Command `look around` and `__str__()` Method](day.2/250-look.around.md)

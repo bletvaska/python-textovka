@@ -1,4 +1,5 @@
-import states
+from rich import print
+
 from commands.command import Command
 
 
@@ -11,7 +12,6 @@ class Commands(Command):
 
     def exec(self, context):
         print('V hre je možné použiť tieto príkazy:')
-        print('* koniec - ukončí rozhratú hru')
-        print('* o hre - zobrazí informácie o hre')
-        print('* preskumaj - zobrazí informácie o predmete')
-        print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
+
+        for command in context.commands:
+            print(f'* [bold cyan]{command.name}[/bold cyan] - {command.description}')

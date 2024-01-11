@@ -37,6 +37,7 @@ V hre budeme používať tieto farby:
 * názov predmetu - `magenta`
 * smer z miestnosti - `yellow`
 * názov miestnosti - `green`
+* názov príkazu - `cyan`
 
 
 
