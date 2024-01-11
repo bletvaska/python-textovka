@@ -31,6 +31,7 @@ context = GameContext(
         # exits=[]
     )
 )
+context.commands.sort()
 
 # game loop
 intro()

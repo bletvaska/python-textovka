@@ -15,3 +15,12 @@ class Command(BaseModel):
     # methods
     def exec(self, context: GameContext):
         raise NotImplementedError('This method was not yet implemented.')
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __lt__(self, other):
+        return self.name < other.name
+
+    def __gt__(self, other):
+        return self.name > other.name
