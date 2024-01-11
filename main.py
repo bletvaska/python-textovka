@@ -6,6 +6,7 @@ from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.look_around import LookAround
 from commands.quit import Quit
+from commands.take import Take
 from game_context import GameContext
 from helpers import intro, outro, parse_line
 from items.empty_seats import EmptySeats
@@ -21,6 +22,7 @@ context = GameContext(
         Inventory(),
         LookAround(),
         Quit(),
+        Take(),
     ],
     current_room=Room(
         name='v lietadle',
