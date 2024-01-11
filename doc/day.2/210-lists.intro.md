@@ -24,15 +24,15 @@ Teraz si teda ukážeme základy práce so zoznamami.
 ### Vytvorenie prazdneho batohu
 
 ```python
->> > bp = []
->> > type(bp)
+>>> bp = []
+>>> type(bp)
 list
 ```
 
 ### Vytvorenie neprazdneho batohu
 
 ```python
->> > bp = ['bic']
+>>> bp = ['bic']
 ```
 
 ### Vlozenie novych veci do batohu
@@ -40,48 +40,48 @@ list
 Do batohu postupne vlozime klobuk, revolver a mapu:
 
 ```python
->> > bp.append('klobuk')
->> > bp.append('revolver')
->> > bp.append('mapa')
+>>> bp.append('klobuk')
+>>> bp.append('revolver')
+>>> bp.append('mapa')
 ```
 
 Obsah batohu skontrolumeme:
 
 ```python
->> > bp
+>>> bp
 ['bic', 'klobuk', 'revolver', 'mapa']
 ```
 
 ### Pocet prvkov v batohu
 
 ```python
->> > len(bp)
+>>> len(bp)
 4
 ```
 
 ### Pristup ku jednotlivym prvkom
 
 ```python
->> > bp[0]
+>>> bp[0]
 'bic'
 ```
 
 ### Slicing operator
 
 ```python
->> > bp[1:4]
+>>> bp[1:4]
 ['klobuk', 'revolver', 'mapa']
->> > bp[:4]
+>>> bp[:4]
 ['bic', 'klobuk', 'revolver', 'mapa']
->> > bp[2:]
+>>> bp[2:]
 ['revolver', 'mapa']
->> > bp[:]
+>>> bp[:]
 ['bic', 'klobuk', 'revolver', 'mapa']
->> > bp[::1]
+>>> bp[::1]
 ['bic', 'klobuk', 'revolver', 'mapa']
->> > bp[::2]
+>>> bp[::2]
 ['bic', 'revolver']
->> > bp[::-1]
+>>> bp[::-1]
 ['mapa', 'revolver', 'klobuk', 'bic']
 ```
 
@@ -95,50 +95,50 @@ for item in bp:
 ### Zistit, ci je v batohu predmet
 
 ```python
->> > 'klobuk' in bp
+>>> 'klobuk' in bp
 True
 ```
 
 ### Najst predmet v batohu
 
 ```python
->> > bp.index('klobuk')
+>>> bp.index('klobuk')
 1
 ```
 
 ### Odstranit predmet z batohu
 
 ```python
->> > bp.remove('bic')
->> > bp
+>>> bp.remove('bic')
+>>> bp
 ['klobuk', 'revolver', 'mapa']
 ```
 
 ```python
->> > bp.pop(2)
+>>> bp.pop(2)
 'mapa'
->> > bp
+>>> bp
 ['klobuk', 'revolver']
 ```
 
 ```python
->> > bp.pop()
+>>> bp.pop()
 'revolver'
 ```
 
 ### Vlozit do batohu obsah ineho batohu
 
 ```python
->> > stash = ['diamant', 'kriz', 'minca']
->> > bp = bp + stash
->> > bp
+>>> stash = ['diamant', 'kriz', 'minca']
+>>> bp = bp + stash
+>>> bp
 ['klobuk', 'diamant', 'kriz', 'minca']
 ```
 
 ### Zmenit predmet v batohu
 
 ```python
->> > bp[3] = 'zlata minca'
->> > bp
+>>> bp[3] = 'zlata minca'
+>>> bp
 ['klobuk', 'diamant', 'kriz', 'zlata minca']
 ```

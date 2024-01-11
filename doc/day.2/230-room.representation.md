@@ -20,6 +20,6 @@ from pydantic import BaseModel
 class Room(BaseModel):
     name: str
     description: str
-    items = []  # : list
-    exits = []  #: list
+    items: list = []
+    exits: list = []
 ```

@@ -48,3 +48,22 @@ def examine(self, context):
 
 
 ## Rozšírenie príkazu `preskumaj`
+
+```python
+ def exec(self, context):
+     if self.param == '':
+         print('Neviem, čo chceš preskúmať.')
+     else:
+         for item in context.current_room.items:
+             if item.name == self.param:
+                 print(item.description)
+
+                 # is item examinable?
+                 if EXAMINABLE in item.features:
+                     input('Skúmam...')
+                     item.examine(context)
+
+                 return
+
+         print('Taký predmet tu nikde nevidím.')
+```
