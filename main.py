@@ -12,6 +12,7 @@ from game_context import GameContext
 from helpers import intro, outro, parse_line
 from items.empty_seats import EmptySeats
 from items.whip import Whip
+from rooms.plane import Plane
 from rooms.room import Room
 
 # game initialization
@@ -26,14 +27,7 @@ context = GameContext(
         Quit(),
         Take(),
     ],
-    current_room=Room(
-        name='v lietadle',
-        description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je '
-                    'tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej '
-                    'duše. (Celkom zaujímavá situácia, že áno?)',
-        items=[Whip(), EmptySeats()],
-        # exits=[]
-    )
+    current_room=Plane()
 )
 context.commands.sort()
 
@@ -55,12 +49,7 @@ while context.game_state == states.PLAYING:
         print('Taký príkaz nepoznám.')
     else:
         command.exec(context)
-
-    # try:
-    #     command = parse_line(line, commands)
-    #     game_state = command.exec(current_room)
-    # except AttributeError:  # CommandDoesntExist
-    #     print('Taký príkaz nepoznám.')
+        context.current_room.act(context)
 
     print()
 

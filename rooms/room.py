@@ -14,6 +14,9 @@ class Room(BaseModel):
     items: list[Item] = []
     exits: list = []
 
+    def act(self, context):
+        pass
+
     def show(self):
         print(self.description)
         print()
