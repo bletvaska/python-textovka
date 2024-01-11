@@ -19,6 +19,24 @@ UP = 'up'
 
 ## Rozšírenie metódy `.show()`
 
+Aktualizujte metódu `.show()` v triede `Room` tak, aby zobrazovala aj východy z danej miestnosti.
+
+* Ak z miestnosti nebudu viesť žiadne východy, tak vypíšte na obrazovku správu:
+
+   ```
+   Z miestnosti nevedú žiadne východy.
+   ```
+
+* Ak z miestnosti bude viesť minimálne jeden východ, vypíšte na obrazovku:
+
+   ```
+   Možné východy z miestnosti:
+   * sever
+   * dolu
+   ```
+
+   **Poznámka**: Východy z miestnosti vypisujeme farbou `yellow`.
+
 ```python
 # list exits
 if self.exits == {}:

@@ -21,9 +21,14 @@ class Room(BaseModel):
         print(self.description)
         print()
 
+        # show items available in room
         if len(self.items) != 0:  # self.items != []
             print('Vidíš:')
             for item in self.items:
                 print(f'* [bold magenta]{item.name}[/bold magenta]')
         else:
             print('Nevidíš tu nič zvláštne.')
+        print()
+
+        # show exits from room
+        print(self.exits)
