@@ -1,5 +1,6 @@
 import states
 from commands.command import Command
+from helpers import get_item_by_name
 from items.features import EXAMINABLE
 
 
@@ -10,16 +11,18 @@ class Examine(Command):
     def exec(self, context):
         if self.param == '':
             print('Neviem, čo chceš preskúmať.')
-        else:
-            for item in context.current_room.items:
-                if item.name == self.param:
-                    print(item.description)
+            return
 
-                    # is item examinable?
-                    if EXAMINABLE in item.features:
-                        input('Skúmam...')
-                        item.examine(context)
+        item = get_item_by_name(self.param, context.current_room.items)
 
-                    return
-
+        if item is None:
             print('Taký predmet tu nikde nevidím.')
+            return
+
+        # action
+        print(item.description)
+
+        # is item examinable?
+        if EXAMINABLE in item.features:
+            input('Moment... Niečo tam je...')
+            item.examine(context)
