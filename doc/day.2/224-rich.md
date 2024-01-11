@@ -16,12 +16,12 @@ alebo
 $ pip install rich
 ```
 
-## Použitie
+## Použitie vo výpise predmetov v príkaze `inventar`
 
 Upravíme výpis názvu predmetu v príkaze `inventar`:
 
 ```python
-print(f'  [bold magenta]{item.name}[/bold magenta]')
+print(f'  [bold magenta]{item}[/bold magenta]')
 ```
 
 Musíme však najprv importovať funkciu `print` z modulu `rich`:
@@ -38,30 +38,7 @@ V hre budeme používať tieto farby:
 * smer z miestnosti - `yellow`
 * názov miestnosti - `green`
 
-## Refaktoring
 
-Pre použitie farieb v hre aktuálne stačí upraviť len metódu `.show()` v triede `Room`, kde dochádza k výpisovaniu názvov
-predmetov.
-
-Najprv nezabudnite importnúť funkciu `print()` z balíka `rich`:
-```python
-from rich import print
-```
-
-Následne aktualizjte výpis predmetov vo funkcii `.show()`:
-
-```python
-def show(self):
-   print(self.description)
-   print()
-
-   if len(self.items) != 0:  # self.items != []
-      print('Vidíš:')
-      for item in self.items:
-         print(f'* [bold magenta]{item.name}[/bold magenta]')
-   else:
-      print('Nevidíš tu nič zvláštne.')
-```
 
 ## Problém v prostredí PyCharm
 

@@ -20,7 +20,7 @@ V opačnom prípade vypíše na obrazovku zoznam predmetov v batohu napríklad t
 
 ```
 V batohu máš:
-* bic
+bic
 ```
 
 **Poznámka:** Nezabudnite rozšíriť aj zoznam dostupných príkazov, ktorý sa zobrazí po zadaní príkazu `prikazy`.
@@ -68,12 +68,13 @@ class Inventory(Command):
          print(item)
 ```
 
+
 ## Additional Tasks
 
 1. Miesto výpisu predmetov pod seba ich vypíšte vedľa seba
 
    ```python
-   elif line in ("inventar", 'inventory', 'i'):
+   def exec(self, backpack):
        if backpack == []:
            print("Batoh je prázdny.")
        else:

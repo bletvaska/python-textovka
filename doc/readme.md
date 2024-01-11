@@ -40,7 +40,7 @@
 
 * Backpack and Game Context
 * [Inventory](day.2/220-inventory)
-* [Color Output with rich](day.3/305-rich)
+* [Color Output with rich](day.2/224-rich)
 * [Command `examine`](day.3/325-examine.and.parser.refactoring)
 * Extended Item Examination
 * Item Parachute
