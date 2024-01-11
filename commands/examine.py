@@ -13,7 +13,7 @@ class Examine(Command):
             print('Neviem, čo chceš preskúmať.')
             return
 
-        item = get_item_by_name(self.param, context.current_room.items)
+        item = get_item_by_name(self.param, context.current_room.items + context.backpack)
 
         if item is None:
             print('Taký predmet tu nikde nevidím.')
