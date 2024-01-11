@@ -7,15 +7,13 @@ class Examine(Command):
     name: str = 'preskumaj'
     description: str = 'zobrazí informácie o zvolenom predmete'
 
-    def exec(self, room: Room, backpack) -> str:
+    def exec(self, context):
         if self.param == '':
             print('Neviem, čo chceš preskúmať.')
-            return states.PLAYING
         else:
-            for item in room.items:
+            for item in context.current_room.items:
                 if item.name == self.param:
                     print(item.description)
-                    return states.PLAYING
+                    return
 
             print('Taký predmet tu nikde nevidím.')
-            return states.PLAYING

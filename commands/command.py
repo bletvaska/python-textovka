@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
-from items.item import Item
-from rooms.room import Room
+from game_context import GameContext
 
 
 class Command(BaseModel):
@@ -14,5 +13,5 @@ class Command(BaseModel):
     param: str = None
 
     # methods
-    def exec(self, room: Room, backpack: list[Item]) -> str:
+    def exec(self, context: GameContext):
         raise NotImplementedError('This method was not yet implemented.')

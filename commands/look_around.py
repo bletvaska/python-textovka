@@ -9,7 +9,5 @@ class LookAround(Command):
     name: str = 'rozhliadni sa'
     description: str = 'rozhliadne sa v aktuálnej miestnosti'
 
-    def exec(self, room, backpack):
-        room.show()
-
-        return states.PLAYING
+    def exec(self, context):
+        context.current_room.show()

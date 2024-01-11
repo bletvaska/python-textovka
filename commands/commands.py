@@ -9,11 +9,9 @@ class Commands(Command):
     name: str = 'prikazy'
     description: str = 'zobrazí zoznam dostupných príkazov v hre'
 
-    def exec(self, room, backpack):
+    def exec(self, context):
         print('V hre je možné použiť tieto príkazy:')
         print('* koniec - ukončí rozhratú hru')
         print('* o hre - zobrazí informácie o hre')
         print('* preskumaj - zobrazí informácie o predmete')
         print('* prikazy - zobrazí zoznam dostupných príkazov v hre')
-
-        return states.PLAYING
