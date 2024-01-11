@@ -1,5 +1,6 @@
 import states
 from commands.command import Command
+from helpers import get_item_by_name
 from items.features import EXAMINABLE, MOVABLE
 from rooms.room import Room
 
@@ -11,19 +12,23 @@ class Take(Command):
     def exec(self, context):
         if self.param == '':
             print('Neviem, čo chceš zobrať.')
-        else:
-            for item in context.current_room.items:
-                if item.name == self.param:
-                    # is item movable?
-                    if MOVABLE in item.features:
-                        # odstranim z miestnosti
-                        context.current_room.items.remove(item)
-                        # vlozim do batohu
-                        context.backpack.append(item)
-                        # render
-                        print(f'Do batohu si vložil predmet {item.name}.')
-                    else:
-                        print('Tento predmet sa nedá zobrať.')
-                    return
+            return
 
+        item = get_item_by_name(self.param, context.current_room.items)
+
+        if item is None:
             print('Taký predmet tu nikde nevidím.')
+            return
+
+        if MOVABLE not in item.features:
+            print('Tento predmet sa nedá zobrať.')
+            return
+
+        # action
+        # odstranim z miestnosti
+        context.current_room.items.remove(item)
+        # vlozim do batohu
+        context.backpack.append(item)
+        # render
+        print(f'Do batohu si vložil predmet {item.name}.')
+

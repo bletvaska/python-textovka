@@ -1,7 +1,6 @@
 import states
 from commands.command import Command
 from items.features import EXAMINABLE
-from rooms.room import Room
 
 
 class Examine(Command):
