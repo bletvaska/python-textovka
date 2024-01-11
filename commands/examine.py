@@ -1,5 +1,6 @@
 import states
 from commands.command import Command
+from items.features import EXAMINABLE
 from rooms.room import Room
 
 
@@ -14,6 +15,12 @@ class Examine(Command):
             for item in context.current_room.items:
                 if item.name == self.param:
                     print(item.description)
+
+                    # is item examinable?
+                    if EXAMINABLE in item.features:
+                        input('Skúmam...')
+                        item.examine(context)
+
                     return
 
             print('Taký predmet tu nikde nevidím.')
