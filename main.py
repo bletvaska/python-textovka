@@ -13,6 +13,7 @@ from commands.quit import Quit
 from commands.south import South
 from commands.take import Take
 from commands.up import Up
+from commands.use import Use
 from commands.west import West
 from game_context import GameContext
 from helpers import intro, outro, parse_line, get_room_by_name
@@ -38,6 +39,7 @@ context = GameContext(
         South(),
         Take(),
         Up(),
+        Use(),
         West(),
     ],
     world=get_world()
