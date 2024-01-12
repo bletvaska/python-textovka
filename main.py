@@ -9,11 +9,12 @@ from commands.look_around import LookAround
 from commands.quit import Quit
 from commands.take import Take
 from game_context import GameContext
-from helpers import intro, outro, parse_line
+from helpers import intro, outro, parse_line, get_room_by_name
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from rooms.plane import Plane
 from rooms.room import Room
+from rooms.world import get_world
 
 # game initialization
 context = GameContext(
@@ -27,9 +28,10 @@ context = GameContext(
         Quit(),
         Take(),
     ],
-    current_room=Plane()
+    world=get_world()
 )
 context.commands.sort()
+context.current_room = get_room_by_name('v lietadle', context.world)
 
 # game loop
 intro()

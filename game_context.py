@@ -7,6 +7,7 @@ import states
 
 class GameContext(BaseModel):
     game_state: str = states.PLAYING
-    current_room: Room
+    current_room: Room = None
     backpack: list[Item] = []
     commands: list
+    world: list[Room]
