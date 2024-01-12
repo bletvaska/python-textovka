@@ -5,9 +5,9 @@ from .writing_on_wall import WritingOnWall
 
 
 class Dictionary(Item):
-    name = 'slovnik'
-    description = 'Je to anglicko-staroegyptský slovník, 14. upravené vydanie.'
-    features = [MOVABLE, USABLE]
+    name: str = 'slovnik'
+    description: str = 'Je to anglicko-staroegyptský slovník, 14. upravené vydanie.'
+    features: list[int] = [MOVABLE, USABLE]
 
     def on_use(self, context):
         # check if there is writing on wall in the room

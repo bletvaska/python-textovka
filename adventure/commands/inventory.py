@@ -5,8 +5,8 @@ from .command import Command
 
 class Inventory(Command):
     # fields
-    name = 'inventar'
-    description = 'zobrazí obsah hráčovho batohu'
+    name: str = 'inventar'
+    description: str = 'zobrazí obsah hráčovho batohu'
 
     # methods
     def exec(self, context):

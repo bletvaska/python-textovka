@@ -3,9 +3,9 @@ from .item import Item
 
 
 class Diamond(Item):
-    name = 'diamant'
-    description = 'Ťažký, neforemný drahý kameň.'
-    features = [MOVABLE]
+    name: str = 'diamant'
+    description: str = 'Ťažký, neforemný drahý kameň.'
+    features: list[int] = [MOVABLE]
 
     def on_drop(self, context):
         if context.current_room.name == 'oltár':

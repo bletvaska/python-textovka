@@ -6,8 +6,8 @@ from .command import Command
 
 
 class Take(Command):
-    name = 'vezmi'
-    description = 'vezme predmet z miestnosti a vloží ho do batohu'
+    name: str = 'vezmi'
+    description: str = 'vezme predmet z miestnosti a vloží ho do batohu'
 
     def exec(self, context):
         # if no item was entered

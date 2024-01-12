@@ -4,8 +4,8 @@ from .command import Command
 
 
 class Up(Command):
-    name = 'hore'
-    description = 'presunie sa do miestnosti hore od aktuálnej'
+    name: str = 'hore'
+    description: str = 'presunie sa do miestnosti hore od aktuálnej'
 
     def exec(self, context):
         # get current room

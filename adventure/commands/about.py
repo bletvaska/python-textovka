@@ -2,8 +2,8 @@ from .command import Command
 
 
 class About(Command):
-    name = 'o hre'
-    description = 'zobrazí informácie o hre'
+    name: str = 'o hre'
+    description: str = 'zobrazí informácie o hre'
     # aliases = [ 'about' ]
 
     def exec(self, context):

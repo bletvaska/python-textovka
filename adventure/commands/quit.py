@@ -4,8 +4,8 @@ from .command import Command
 
 class Quit(Command):
     # fields
-    name = 'koniec'
-    description = 'ukončí hru'
+    name: str = 'koniec'
+    description: str = 'ukončí hru'
 
     # methods
     def exec(self, context):

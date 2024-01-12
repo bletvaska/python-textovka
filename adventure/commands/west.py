@@ -4,8 +4,8 @@ from .command import Command
 
 
 class West(Command):
-    name = 'zapad'
-    description = 'presunie sa do miestnosti na západ od aktuálnej'
+    name: str = 'zapad'
+    description: str = 'presunie sa do miestnosti na západ od aktuálnej'
 
     def exec(self, context):
         # get current room

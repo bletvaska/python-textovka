@@ -2,8 +2,8 @@ from .command import Command
 
 
 class Help(Command):
-    name = 'pomoc'
-    description = 'zobrazí pomocníka ku zvolenému príkazu'
+    name: str = 'pomoc'
+    description: str = 'zobrazí pomocníka ku zvolenému príkazu'
 
     def exec(self, context):
         for command in context.commands:

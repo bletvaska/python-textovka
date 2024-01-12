@@ -6,9 +6,9 @@ from .nazi_uniform import NaziUniform
 
 
 class CoconutPalmTree(Item):
-    name = 'kokosovu palmu'
-    description = 'Zdá sa, že na jej plody nedosiahneš.'
-    features = [EXAMINABLE]
+    name: str = 'kokosovu palmu'
+    description: str = 'Zdá sa, že na jej plody nedosiahneš.'
+    features: list[int] = [EXAMINABLE]
 
     def on_examine(self, context):
         # action

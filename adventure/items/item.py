@@ -8,7 +8,7 @@ from pydantic import BaseModel
 class Item(BaseModel):
     name: str
     description: str
-    features: list = []
+    features: list[int] = []
 
     def on_use(self, context: 'GameContext'):
         return False

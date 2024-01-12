@@ -4,8 +4,8 @@ from .command import Command
 
 
 class Save(Command):
-    name = 'uloz'
-    description = 'uloží aktuálny stav hry do súboru'
+    name: str = 'uloz'
+    description: str = 'uloží aktuálny stav hry do súboru'
 
     def exec(self, context):
         # if no filename was entered

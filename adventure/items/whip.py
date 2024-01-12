@@ -8,9 +8,9 @@ from .item import Item
 
 
 class Whip(Item):
-    name = 'bic'
-    description = 'Tvoj neoceniteľný pomocník..!'
-    features = [MOVABLE, USABLE]
+    name: str = 'bic'
+    description: str = 'Tvoj neoceniteľný pomocník..!'
+    features: list[int] = [MOVABLE, USABLE]
 
     def on_use(self, context):
         # check usage conditions

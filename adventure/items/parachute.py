@@ -6,9 +6,9 @@ from .item import Item
 
 
 class Parachute(Item):
-    name = 'padak'
-    description = 'Obyčajný padák. Made in U.S.A. 1933'
-    features = [MOVABLE, USABLE]
+    name: str = 'padak'
+    description: str = 'Obyčajný padák. Made in U.S.A. 1933'
+    features: list[int] = [MOVABLE, USABLE]
 
     def on_use(self, context) -> bool:
         # check usage conditions

@@ -4,8 +4,8 @@ from .command import Command
 
 
 class Down(Command):
-    name = 'dolu'
-    description = 'presunie sa do miestnosti dolu od aktuálnej'
+    name: str = 'dolu'
+    description: str = 'presunie sa do miestnosti dolu od aktuálnej'
 
     def exec(self, context):
         # get current room

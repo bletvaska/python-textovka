@@ -14,4 +14,4 @@ class GameContext(BaseModel):
     commands: list[Command] = []
     game_state: str = PLAYING
     history: list[str] = []
-    score = 0
+    score: int = 0

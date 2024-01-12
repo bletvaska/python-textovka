@@ -6,9 +6,9 @@ from .item import Item
 
 
 class Shovel(Item):
-    name = 'lopatu'
-    description = 'Je to zázrak, že ešte drží pohromade...'
-    features = [MOVABLE, USABLE]
+    name: str = 'lopatu'
+    description: str = 'Je to zázrak, že ešte drží pohromade...'
+    features: list[int] = [MOVABLE, USABLE]
 
     def on_use(self, context):
         # check usage conditions

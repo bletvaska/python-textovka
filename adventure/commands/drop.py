@@ -5,8 +5,8 @@ from .command import Command
 
 
 class Drop(Command):
-    name = 'poloz'
-    description = 'vyberie zvolený predmet z batohu a položí ho do aktuálnej miestnosti'
+    name: str = 'poloz'
+    description: str = 'vyberie zvolený predmet z batohu a položí ho do aktuálnej miestnosti'
 
     def exec(self, context):
         # if no item was entered

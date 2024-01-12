@@ -4,8 +4,8 @@ from .command import Command
 
 
 class North(Command):
-    name = 'sever'
-    description = 'presunie sa do miestnosti na sever od aktuálnej'
+    name: str = 'sever'
+    description: str = 'presunie sa do miestnosti na sever od aktuálnej'
 
     def exec(self, context):
         # get current room

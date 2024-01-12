@@ -6,8 +6,8 @@ from .command import Command
 
 
 class Use(Command):
-    name = 'pouzi'
-    description = 'použije zvolený predmet'
+    name: str = 'pouzi'
+    description: str = 'použije zvolený predmet'
 
     def exec(self, context):
         # if no item was entered
@@ -25,7 +25,7 @@ class Use(Command):
 
         # is item usable?
         if USABLE not in item.features or item.on_use(context) is False:
-            print('[bold red]Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo '
+            print('[bold red]Podľa teba som zrejme blbec, ale naozaj nechápem, načo by to v tejto chvíli bolo '
                   'dobré.[/bold red]')
         else:
             # append command to history

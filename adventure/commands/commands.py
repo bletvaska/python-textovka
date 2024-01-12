@@ -3,8 +3,8 @@ from .command import Command
 
 class Commands(Command):
     # fields
-    name = 'prikazy'
-    description = 'zobrazí dostupné príkazy v hre'
+    name: str = 'prikazy'
+    description: str = 'zobrazí dostupné príkazy v hre'
 
     # methods
     def exec(self, context):

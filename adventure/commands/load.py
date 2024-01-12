@@ -5,8 +5,8 @@ from .command import Command
 
 
 class Load(Command):
-    name = 'nacitaj'
-    description = 'načíta stav hry zo súboru'
+    name: str = 'nacitaj'
+    description: str = 'načíta stav hry zo súboru'
 
     def exec(self, context) -> None:
         # if no filename was entered

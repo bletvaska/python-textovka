@@ -7,9 +7,9 @@ from .item import Item
 
 
 class MobileRadiostation(Item):
-    name = 'prenosnu radiostanicu'
-    description = 'Zdá sa, že je schopná prevádzky.'
-    features = [MOVABLE, USABLE]
+    name: str = 'prenosnu radiostanicu'
+    description: str = 'Zdá sa, že je schopná prevádzky.'
+    features: list[int] = [MOVABLE, USABLE]
     used: bool = False
 
     def on_use(self, context):

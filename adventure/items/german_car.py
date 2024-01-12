@@ -6,9 +6,9 @@ from .item import Item
 
 
 class GermanCar(Item):
-    name = 'nemecky automobil'
-    description = 'Mercedes Benz, ale bohužiaľ v nepojazdnom stave.'
-    features = [EXAMINABLE]
+    name: str = 'nemecky automobil'
+    description: str = 'Mercedes Benz, ale bohužiaľ v nepojazdnom stave.'
+    features: list[int] = [EXAMINABLE]
 
     def on_examine(self, context):
         # action

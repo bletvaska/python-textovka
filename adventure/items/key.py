@@ -10,9 +10,9 @@ from .map import Map
 
 
 class Key(Item):
-    name = 'kluc'
-    description = 'Veľký mosadzný kľúč, zrejme od nejakej truhly.'
-    features = [MOVABLE, USABLE]
+    name: str = 'kluc'
+    description: str = 'Veľký mosadzný kľúč, zrejme od nejakej truhly.'
+    features: list[int] = [MOVABLE, USABLE]
 
     def on_use(self, context):
         # check usage conditions

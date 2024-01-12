@@ -4,8 +4,8 @@ from .command import Command
 
 
 class Examine(Command):
-    name = 'preskumaj'
-    description = 'zobrazí informácie o zvolenom predmete'
+    name: str = 'preskumaj'
+    description: str = 'zobrazí informácie o zvolenom predmete'
 
     def exec(self, context):
         # if no item was entered

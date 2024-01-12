@@ -6,10 +6,10 @@ from .key import Key
 
 
 class NaziUniform(Item):
-    name = 'nemecku uniformu'
-    description = 'Zachovalá dôstojnícka uniforma.'
-    features = [MOVABLE, USABLE, EXAMINABLE]
-    is_dressed = False
+    name: str = 'nemecku uniformu'
+    description: str = 'Zachovalá dôstojnícka uniforma.'
+    features: list[int] = [MOVABLE, USABLE, EXAMINABLE]
+    is_dressed: bool = False
 
     def on_examine(self, context):
         # action

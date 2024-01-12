@@ -3,6 +3,6 @@ from .item import Item
 
 
 class CarBattery(Item):
-    name = 'automobilovu bateriu'
-    description = 'Ešte je trochu nabitá.'
-    features = [MOVABLE]
+    name: str = 'automobilovu bateriu'
+    description: str = 'Ešte je trochu nabitá.'
+    features: list[int] = [MOVABLE]
