@@ -1,2 +1,0 @@
-# Indyho voľný pád
-

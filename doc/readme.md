@@ -55,7 +55,7 @@
 * Command `down`
 * Commands `north`, `south`, `east` and `west`
 * [Place Created Items into Room](day.3/295-items.in.room.md)
-* [Command `use`](day.4/480-use.item.md)
+* [Command `use`](day.5/550-use.item)
 
 
 ## Day 5
