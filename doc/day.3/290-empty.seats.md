@@ -12,7 +12,7 @@ from items import Item
 
 
 class EmptySeats(Item):
-   name = 'prazdne sedadla'
-   description = 'Obyčajné letecké sedadlá.'
-   features = [EXAMINABLE]
+   name: str = 'prazdne sedadla'
+   description: str = 'Obyčajné letecké sedadlá.'
+   features: list[int] = [EXAMINABLE]
 ```

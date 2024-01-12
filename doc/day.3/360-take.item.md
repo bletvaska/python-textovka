@@ -3,6 +3,8 @@
 Vytvorte triedu `Take`, ktorá bude reprezentovať príkaz `vezmi`. Tento príkaz vezme predmet z miestnosti a vloží ho
 do hráčovho batohu.
 
+Príkaz bude mať tieto vlastnosti:
+
 * názov príkazu: `vezmi`
 * opis príkazu: `vezme predmet z miestnosti a vloží ho do batohu`
 

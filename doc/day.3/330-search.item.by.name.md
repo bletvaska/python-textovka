@@ -17,3 +17,18 @@ Funkciu umiestnite do modulu `helpers`.
 def get_item_by_name(name: str, items: list[Item]) -> Item | None:
     pass
 ```
+
+
+## Riešenie
+
+```python
+def get_item_by_name(name: str, items: list[Item]) -> Item | None:
+   """
+   Return item by its name or None if not found.
+   """
+    for item in items:
+        if item.name == name:
+            return item
+
+    # return None  # default
+```

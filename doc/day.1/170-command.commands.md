@@ -9,10 +9,10 @@ Príkaz `prikazy` zobrazí zoznam dostupných príkazov hry. Bude to akýsi pomo
 ```python
 class Commands(Command):
     """
-    List all the commands of the game.
+    Shows all Commmands
     """
-    name = 'prikazy'
-    description = 'zobrazí zoznam dostupných príkazov v hre'
+    name: str = 'prikazy'
+    description: str = 'zobrazí zoznam dostupných príkazov v hre'
 
     def exec(self):
         print('V hre je možné použiť tieto príkazy:')

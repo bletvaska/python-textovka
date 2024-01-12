@@ -14,17 +14,21 @@ v zavislosti od toho, co bude mozne s predmetom robit, budu mat niektore predmet
 + preskumanie predmetu()
 
 ```python
-from dataclasses import dataclass, field
+from pydantic import BaseModel
 
 
-@dataclass
-class Item:
-    name: str
-    description: str
-    features: list = field(default_factory=list)
+class Item(BaseModel):
+   name: str
+   description: str
+   features: list[int] = []
 ```
 
 ## Vlastnosti
+
+Zoznam prípustných vlastností uložíme do samostatného modulu `features.py`, ktorý sa bude nachádzať v balíku `items`.
+Vlastnosti tentokrát môžeme reprezentovať celými číslami.
+
+Zoznam vlastností bude vyzerať nasledovne:
 
 ```python
 # if the item can be taken/dropped to/from backpack

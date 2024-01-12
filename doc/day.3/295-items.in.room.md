@@ -12,6 +12,8 @@ Room(
     ),
 ```
 
+## Aktualizácia metódy `.show()`
+
 Upravte metodu `Room.show()` tak, aby zobrazila aj predmety, ktore sa nachadzaju v miestnosti. Musi platit, ze:
 
 * ak sa v miestnosti nenachadza ziadny predmet, tak vypisete na obrazovku retazec:
@@ -28,3 +30,18 @@ Upravte metodu `Room.show()` tak, aby zobrazila aj predmety, ktore sa nachadzaju
    * prazdne sedadla
    ```
 
+## Riešenie
+
+```python
+def show(self):
+    """
+    Shows the current room.
+    """
+    print(self.description)
+    if self.items != []:  # len(current_room.items) > 0
+        print('Vidíš:')
+        for item in self.items:
+            print(f'  {item}')
+    else:
+        print('Nevidíš tu nič zvláštne.')
+```

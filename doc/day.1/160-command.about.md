@@ -10,12 +10,12 @@ class About(Command):
     """
     Shows info about the game.
     """
-    name = 'o hre'
-    description = 'zobrazí informácie o hre'
+    name: str = 'o hre'
+    description: str = 'zobrazí informácie o hre'
 
     def exec(self):
-        print('(c)2023 created by mirek')
-        print('Dalšie dobrodružstvo Indiana Jonesa je tentokrát vytvorené v jazyku Python.')
+        print('(c)2024 created by mirek')
+        print('Dalšie dobrodružstvo Indiana Jonesa tentokrát vytvorené v jazyku Python.')
 ```
 
 
