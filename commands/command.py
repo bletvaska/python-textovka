@@ -1,5 +1,9 @@
 from pydantic import BaseModel
 
+# from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
+#     from game_context import GameContext
+
 from game_context import GameContext
 
 

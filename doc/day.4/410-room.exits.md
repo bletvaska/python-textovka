@@ -8,12 +8,13 @@
 V tomto module zadefinujeme smery, ktorými môže Indy chodiť:
 
 ```python
-NORTH = 'north'
-SOUTH = 'south'
-EAST = 'east'
-WEST = 'west'
-DOWN = 'down'
-UP = 'up'
+NORTH = 90
+SOUTH = 180
+EAST = 0
+WEST = 270
+UP = -90
+DOWN = -180
+
 ```
 
 
@@ -41,26 +42,26 @@ Aktualizujte metódu `.show()` v triede `Room` tak, aby zobrazovala aj východy 
 ## Riešenie
 
 ```python
-# list exits
-if self.exits == {}:
+# show exits from room
+if len(self.exits) == 0:
    print('Z miestnosti nevedú žiadne východy.')
 else:
-   dirs = []
-   if DOWN in self.exits:
-       dirs.append('dolu')
-   if UP in self.exits:
-       dirs.append('hore')
-   if NORTH in self.exits:
-       dirs.append('sever')
-   if SOUTH in self.exits:
-       dirs.append('juh')
-   if EAST in self.exits:
-       dirs.append('východ')
-   if WEST in self.exits:
-       dirs.append('západ')
+   directions = []
 
-   # render
+   if NORTH in self.exits:
+       directions.append('sever')
+   if SOUTH in self.exits:
+       directions.append('juh')
+   if EAST in self.exits:
+       directions.append('východ')
+   if WEST in self.exits:
+       directions.append('západ')
+   if UP in self.exits:
+       directions.append('hore')
+   if DOWN in self.exits:
+       directions.append('dolu')
+
    print('Možné východy z miestnosti:')
-   for d in dirs:
-       print(f'  [bold yellow]{d}[/bold yellow]')
+   for direction in directions:
+       print(f'* [bold yellow]{direction}[/bold yellow]')
 ```
