@@ -11,11 +11,10 @@ class Parachute(Item):
     description: str = 'obyčajný padák. Made in U.S.A. 1933'
     features: list[int] = [MOVABLE, USABLE]
 
-    def use(self, context: GameContext):
+    def use(self, context: GameContext) -> bool:
         # sme v spravnej miestnosti?
         if context.current_room.name != 'vo vzduchu':
-            print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')
-            return
+            return False
 
         # presun sa do miestnosti pust
         context.current_room = get_room_by_name('púšť', context.world)
@@ -23,3 +22,5 @@ class Parachute(Item):
         # render
         print('[bold green]Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...[/bold green]')
         context.current_room.show()
+
+        # return True

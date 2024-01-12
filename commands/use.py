@@ -27,6 +27,7 @@ class Use(Command):
             return
 
         # use item
-        item.use(context)
+        if item.use(context) == False:
+            print('Podľa teba som zrejme blbec, ale naozaj nechápem, na čo by to v tejto chvíli bolo dobré.')
 
 
