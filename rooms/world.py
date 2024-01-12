@@ -1,6 +1,7 @@
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from rooms import directions
+from .freefall import FreeFall
 from .plane import Plane
 from .room import Room
 
@@ -21,7 +22,7 @@ def get_world() -> list[Room]:
             ]
         ),
 
-        Room(
+        FreeFall(
             name='vo vzduchu',
             description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a nevšímaj si zem, ktorá sa rapídne '
                         'približuje. Mimochodom, v diaľke na [bold yellow]juhu[/bold yellow] je vidieť nejaký '
