@@ -4,7 +4,7 @@ from rooms import directions
 
 
 class South(Command):
-    name: str = 'sever'
+    name: str = 'juh'
     description: str = 'presunie sa do miestnosti na juh od aktuálnej'
 
     def exec(self, context):
