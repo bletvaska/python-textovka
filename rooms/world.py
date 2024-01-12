@@ -10,8 +10,8 @@ def get_world() -> list[Room]:
         Room(
             name='vo vzduchu',
             description='Vznášaš sa medzi oblakmi. Uži si tento zaujímavý pocit a nevšímaj si zem, ktorá sa rapídne '
-                        'približuje. Mimochodom, v diaľke na [bold yellow]juhu[/bold yellow] je vidieť nejaký vojenský '
-                        'tábor.',
+                        'približuje. Mimochodom, v diaľke na [bold yellow]juhu[/bold yellow] je vidieť nejaký '
+                        '[bold green]vojenský tábor[/bold green].',
         ),
 
         Room(
