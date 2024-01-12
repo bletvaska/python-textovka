@@ -1,17 +1,8 @@
 import states
-from items.empty_seats import EmptySeats
-from items.whip import Whip
-from rooms import directions
 from rooms.room import Room
 
 
 class Plane(Room):
-    name: str = 'v lietadle'
-    description: str = 'Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej duše. (Celkom zaujímavá situácia, že áno?)'
-    items: list = [Whip(), EmptySeats()]
-    exits: dict = {
-        directions.DOWN: 'vo vzduchu'
-    }
     steps: int = 4
 
     def act(self, context):
