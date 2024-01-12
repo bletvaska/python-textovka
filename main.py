@@ -30,7 +30,7 @@ context = GameContext(
     ],
     world=get_world()
 )
-context.commands.sort()
+# context.commands.sort()
 context.current_room = get_room_by_name('v lietadle', context.world)
 
 # game loop
