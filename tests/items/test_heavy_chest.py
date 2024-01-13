@@ -1,6 +1,6 @@
 import pytest
 
-from items.heavy_chest import HeavyChest
+from adventure.items.heavy_chest import HeavyChest
 
 
 @pytest.mark.items

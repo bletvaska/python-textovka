@@ -1,8 +1,8 @@
 import pytest
 
-from helpers import parse_line, get_item_by_name
-from items.empty_seats import EmptySeats
-from items.features import EXAMINABLE
+from adventure.helpers import parse_line, get_item_by_name
+from adventure.items.empty_seats import EmptySeats
+from adventure.items.features import EXAMINABLE
 
 
 @pytest.mark.items

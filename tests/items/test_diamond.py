@@ -1,7 +1,7 @@
 import pytest
 
-from items.diamond import Diamond
-from items.features import MOVABLE
+from adventure.items.diamond import Diamond
+from adventure.items.features import MOVABLE
 
 
 @pytest.mark.items

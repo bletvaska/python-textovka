@@ -1,7 +1,6 @@
 import pytest
 
-from items.diamond_on_ceiling import DiamondOnCeiling
-from items.features import MOVABLE
+from adventure.items.diamond_on_ceiling import DiamondOnCeiling
 
 
 @pytest.mark.items

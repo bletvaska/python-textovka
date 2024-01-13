@@ -1,8 +1,8 @@
 import pytest
 
-from helpers import get_room_by_name, get_item_by_name
-from items.features import MOVABLE, USABLE
-from items.whip import Whip
+from adventure.helpers import get_room_by_name, get_item_by_name
+from adventure.items.features import MOVABLE, USABLE
+from adventure.items.whip import Whip
 
 
 @pytest.mark.items
@@ -31,7 +31,7 @@ class TestSuiteWhip:
         game_context.current_room = get_room_by_name('komôrka', game_context)
 
         # act
-        item.use(game_context)
+        item.on_use(game_context)
         captured = capsys.readouterr()
 
         # assert
@@ -42,14 +42,14 @@ class TestSuiteWhip:
         game_context.current_room = get_room_by_name('komôrka', game_context)
 
         # assert
-        assert item.use(game_context) is True, 'True should be returned.'
+        assert item.on_use(game_context) is True, 'True should be returned.'
 
     def test_when_used_successfully_then_diamond_should_appear_in_room(self, game_context, item):
         # arrange
         game_context.current_room = get_room_by_name('komôrka', game_context)
 
         # act
-        item.use(game_context)
+        item.on_use(game_context)
         diamond = get_item_by_name('diamant', game_context.current_room.items)
 
         # assert
@@ -60,7 +60,7 @@ class TestSuiteWhip:
         game_context.current_room = get_room_by_name('komôrka', game_context)
 
         # act
-        item.use(game_context)
+        item.on_use(game_context)
         diamond = get_item_by_name('diamant pri strope', game_context.current_room.items)
 
         # assert

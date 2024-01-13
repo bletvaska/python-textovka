@@ -1,8 +1,8 @@
 import pytest
 
-from helpers import parse_line
-from rooms import directions
-from rooms.yellow_fog import YellowFog
+from adventure.helpers import parse_line
+from adventure.rooms import directions
+from adventure.rooms.yellow_fog import YellowFog
 
 pytestmark = [pytest.mark.rooms, pytest.mark.yellow_fog]
 

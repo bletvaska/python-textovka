@@ -1,8 +1,8 @@
 import pytest
 
-from helpers import parse_line, get_room_by_name, get_item_by_name
-from items.features import EXAMINABLE
-from items.german_car import GermanCar
+from adventure.helpers import parse_line, get_room_by_name, get_item_by_name
+from adventure.items.features import EXAMINABLE
+from adventure.items.german_car import GermanCar
 
 
 @pytest.mark.items

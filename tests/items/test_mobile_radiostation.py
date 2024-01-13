@@ -1,9 +1,8 @@
 import pytest
 
-from helpers import get_room_by_name
-from items.car_battery import CarBattery
-from items.features import MOVABLE, USABLE
-from items.mobile_radiostation import MobileRadiostation
+from adventure.items.car_battery import CarBattery
+from adventure.items.features import MOVABLE, USABLE
+from adventure.items.mobile_radiostation import MobileRadiostation
 
 
 @pytest.mark.items

@@ -1,6 +1,6 @@
 import pytest
 
-from commands.take import Take
+from adventure.commands.take import Take
 
 pytestmark = [pytest.mark.commands, pytest.mark.take]
 

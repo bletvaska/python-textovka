@@ -1,7 +1,7 @@
 import pytest
 
-from items.dictionary import Dictionary
-from items.features import MOVABLE
+from adventure.items.dictionary import Dictionary
+from adventure.items.features import MOVABLE
 
 
 @pytest.mark.items

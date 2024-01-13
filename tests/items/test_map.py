@@ -1,7 +1,7 @@
 import pytest
 
-from items.features import MOVABLE
-from items.map import Map
+from adventure.items.features import MOVABLE
+from adventure.items.map import Map
 
 
 @pytest.mark.items

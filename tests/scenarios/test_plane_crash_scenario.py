@@ -1,7 +1,7 @@
 import pytest
 
-import states
-from helpers import parse_line
+from adventure import states
+from adventure.helpers import parse_line
 
 pytestmark = [pytest.mark.scenarios, pytest.mark.plane_crash]
 

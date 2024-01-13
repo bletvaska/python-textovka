@@ -1,7 +1,7 @@
 import pytest
 
-from items.car_battery import CarBattery
-from items.features import MOVABLE
+from adventure.items.car_battery import CarBattery
+from adventure.items.features import MOVABLE
 
 
 @pytest.mark.items

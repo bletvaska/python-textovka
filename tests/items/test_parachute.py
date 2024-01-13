@@ -1,8 +1,8 @@
 import pytest
 
-from helpers import get_room_by_name
-from items.features import USABLE, MOVABLE
-from items.parachute import Parachute
+from adventure.helpers import get_room_by_name
+from adventure.items.features import USABLE, MOVABLE
+from adventure.items.parachute import Parachute
 
 
 @pytest.mark.items

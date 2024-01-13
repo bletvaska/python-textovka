@@ -1,7 +1,7 @@
 import pytest
 
-from commands.down import Down
-from helpers import get_room_by_name, parse_line
+from adventure.commands.down import Down
+from adventure.helpers import get_room_by_name, parse_line
 
 pytestmark = [pytest.mark.commands, pytest.mark.down]
 

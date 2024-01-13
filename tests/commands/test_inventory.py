@@ -1,7 +1,7 @@
 import pytest
 
-from commands.inventory import Inventory
-from items.whip import Whip
+from adventure.commands.inventory import Inventory
+from adventure.items.whip import Whip
 
 pytestmark = [pytest.mark.commands, pytest.mark.inventory]
 

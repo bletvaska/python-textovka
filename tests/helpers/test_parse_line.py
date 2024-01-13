@@ -1,7 +1,7 @@
 import pytest
 
-from commands.command import Command
-from helpers import parse_line
+from adventure.commands.command import Command
+from adventure.helpers import parse_line
 
 
 def test_when_empty_line_is_given_then_expect_none(game_context):

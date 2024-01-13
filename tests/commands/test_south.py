@@ -1,7 +1,7 @@
 import pytest
 
-from commands.south import South
-from helpers import get_room_by_name, parse_line
+from adventure.commands.south import South
+from adventure.helpers import get_room_by_name, parse_line
 
 pytestmark = [pytest.mark.commands, pytest.mark.south]
 

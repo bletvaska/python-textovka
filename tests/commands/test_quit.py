@@ -3,8 +3,8 @@ import sys
 
 import pytest
 
-from commands.quit import Quit
-import states
+from adventure.commands.quit import Quit
+from adventure import states
 
 pytestmark = [pytest.mark.commands, pytest.mark.quit]
 

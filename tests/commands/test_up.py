@@ -1,7 +1,7 @@
 import pytest
 
-from commands.up import Up
-from helpers import parse_line
+from adventure.commands.up import Up
+from adventure.helpers import parse_line
 
 pytestmark = [pytest.mark.commands, pytest.mark.up]
 

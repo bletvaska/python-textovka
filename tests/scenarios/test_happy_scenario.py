@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import parse_line
+from adventure.helpers import parse_line
 
 pytestmark = [pytest.mark.scenarios, pytest.mark.happy_scenario]
 

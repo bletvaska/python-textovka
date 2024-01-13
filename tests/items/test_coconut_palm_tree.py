@@ -1,8 +1,8 @@
 import pytest
 
-from helpers import parse_line, get_room_by_name, get_item_by_name
-from items.coconut_palm_tree import CoconutPalmTree
-from items.features import EXAMINABLE
+from adventure.helpers import parse_line, get_room_by_name, get_item_by_name
+from adventure.items.coconut_palm_tree import CoconutPalmTree
+from adventure.items.features import EXAMINABLE
 
 
 @pytest.mark.items

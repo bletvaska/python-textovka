@@ -1,7 +1,7 @@
 import pytest
 
-from items.features import USABLE, MOVABLE
-from items.key import Key
+from adventure.items.features import USABLE, MOVABLE
+from adventure.items.key import Key
 
 
 @pytest.mark.items
