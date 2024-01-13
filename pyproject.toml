@@ -30,6 +30,12 @@ testpaths = ["tests/"]
 python_files = ["test_*.py"]
 markers = [
     "wip: work in progress",
+    'down',
+    'up',
+    'commands',
+    'scanerios',
+    'shot_by_enemy',
+    'plane_crash'
 ]
 
 [tool.poetry.scripts]
