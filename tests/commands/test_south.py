@@ -2,8 +2,18 @@ import pytest
 
 from adventure.commands.south import South
 from adventure.helpers import get_room_by_name, parse_line
+from adventure.game_context import GameContext
 
 pytestmark = [pytest.mark.commands, pytest.mark.south]
+
+
+@pytest.fixture(scope='module')
+def game_context():
+    yield GameContext(
+        commands=[
+            South()
+        ]
+    )
 
 
 @pytest.fixture
@@ -32,6 +42,9 @@ def test_when_moves_to_south_then_new_room_must_be_on_south_from_actual(cmd, gam
 
 
 def test_if_there_is_no_room_on_south_then_current_room_remains_after_going_south(cmd, game_context):
+    # arrange
+    game_context.current_room = get_room_by_name('v lietadle', game_context)
+
     # act
     command = parse_line(cmd.name, game_context)
     command.exec(game_context)
@@ -41,6 +54,9 @@ def test_if_there_is_no_room_on_south_then_current_room_remains_after_going_sout
 
 
 def test_if_there_is_no_room_on_south_then_error_message_should_appear(cmd, game_context, capsys):
+    # arrange
+    game_context.current_room = get_room_by_name('v lietadle', game_context)
+    
     # act
     command = parse_line(cmd.name, game_context)
     command.exec(game_context)
