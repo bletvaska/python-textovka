@@ -1,4 +1,4 @@
-from items import Diamond
+from adventure.items import Diamond
 from . import directions
 from .room import Room
 

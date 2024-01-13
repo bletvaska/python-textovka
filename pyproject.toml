@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "adventure"
-version = "2023.2"
+version = "2024.1"
 description = "Project for Python 101 training."
 authors = [
     "František Fuka",

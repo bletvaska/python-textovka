@@ -1,4 +1,4 @@
-from items.item import Item
+from adventure.items.item import Item
 
 
 class PharaohsPlatinumNecklace(Item):

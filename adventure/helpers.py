@@ -2,9 +2,9 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from game_context import GameContext
-from commands.command import Command
-from items.item import Item
-from rooms.room import Room
+from adventure.commands.command import Command
+from adventure.items.item import Item
+from adventure.rooms.room import Room
 
 
 def intro():

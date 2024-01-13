@@ -1,6 +1,6 @@
 import json
 
-from game_context import GameContext
+from adventure.game_context import GameContext
 from .command import Command
 
 

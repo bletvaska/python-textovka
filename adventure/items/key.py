@@ -1,6 +1,6 @@
 from rich import print
 
-from helpers import get_item_by_type
+from adventure.helpers import get_item_by_type
 from .diamond import Diamond
 from .dictionary import Dictionary
 from .features import MOVABLE, USABLE

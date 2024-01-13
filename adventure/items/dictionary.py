@@ -1,4 +1,4 @@
-from helpers import get_item_by_type
+from adventure.helpers import get_item_by_type
 from .features import MOVABLE, USABLE
 from .item import Item
 from .writing_on_wall import WritingOnWall

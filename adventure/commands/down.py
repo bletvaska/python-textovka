@@ -1,5 +1,5 @@
-from rooms import directions
-from helpers import get_room_by_name
+from adventure.rooms import directions
+from adventure.helpers import get_room_by_name
 from .command import Command
 
 

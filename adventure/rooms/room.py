@@ -6,7 +6,7 @@ from rich import print
 if TYPE_CHECKING:
     from adventure.game_context import GameContext
 from . import directions
-from items.item import Item
+from adventure.items.item import Item
 
 
 class Room(BaseModel):

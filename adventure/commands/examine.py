@@ -1,5 +1,5 @@
-from helpers import get_item_by_name
-from items.features import EXAMINABLE
+from adventure.helpers import get_item_by_name
+from adventure.items.features import EXAMINABLE
 from .command import Command
 
 

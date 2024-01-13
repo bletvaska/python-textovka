@@ -1,6 +1,6 @@
 from rich import print
 
-from helpers import get_item_by_type
+from adventure.helpers import get_item_by_type
 from . import CarBattery
 from .features import MOVABLE, USABLE
 from .item import Item

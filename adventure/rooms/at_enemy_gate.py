@@ -1,5 +1,5 @@
-from helpers import get_item_by_name
-import states
+from adventure.helpers import get_item_by_name
+from adventure import states
 from . import directions
 from .room import Room
 

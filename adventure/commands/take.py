@@ -1,7 +1,7 @@
 from rich import print
 
-from helpers import get_item_by_name
-from items.features import MOVABLE
+from adventure.helpers import get_item_by_name
+from adventure.items.features import MOVABLE
 from .command import Command
 
 

@@ -1,7 +1,7 @@
-import states
-from helpers import get_item_by_type
-from items.pharaos_necklace import PharaohsPlatinumNecklace
-from rooms.room import Room
+from adventure import states
+from adventure.helpers import get_item_by_type
+from adventure.items.pharaos_necklace import PharaohsPlatinumNecklace
+from adventure.rooms.room import Room
 
 
 class Oasis(Room):

@@ -1,4 +1,4 @@
-import states
+from adventure import states
 from .command import Command
 
 

@@ -1,6 +1,6 @@
 from rich import print
 
-from rooms import directions
+from adventure.rooms import directions
 from .features import MOVABLE, USABLE
 from .item import Item
 

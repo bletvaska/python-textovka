@@ -1,6 +1,6 @@
 from rich import print
 
-import states
+from adventure import states
 from .room import Room
 
 
