@@ -34,7 +34,7 @@ class TestSuiteGermanCar:
         command = parse_line(f'preskumaj {item.name}', game_context)
         command.exec(game_context)
 
-        item = get_item_by_name('automobilova bateria', game_context.current_room.items)
+        item = get_item_by_name('automobilovu bateriu', game_context.current_room.items)
 
         # assert
         assert item is not None, 'Car battery is not in room.'

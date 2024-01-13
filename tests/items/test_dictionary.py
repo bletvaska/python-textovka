@@ -1,7 +1,7 @@
 import pytest
 
 from adventure.items.dictionary import Dictionary
-from adventure.items.features import MOVABLE
+from adventure.items.features import MOVABLE, USABLE
 
 
 @pytest.mark.items
@@ -20,7 +20,7 @@ class TestSuiteDictionary:
 
     def test_when_created_then_expect_features_movable_and_usable(self, item):
         # arrange
-        expected = [MOVABLE]
+        expected = [MOVABLE, USABLE]
 
         # assert
         assert set(item.features) == set(expected), f'Item should have following features: {expected}.'

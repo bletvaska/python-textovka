@@ -13,7 +13,7 @@ class TestSuiteCarBattery:
         yield CarBattery()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'automobilova bateria', 'Incorrect name.'
+        assert item.name == 'automobilovu bateriu', 'Incorrect name.'
 
     def test_when_created_then_expect_specific_description(self, item):
         assert item.description == 'Ešte je trochu nabitá.', 'Incorrect description.'

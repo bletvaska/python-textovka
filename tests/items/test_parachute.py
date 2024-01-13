@@ -32,7 +32,7 @@ class TestSuiteParachute:
         game_context.backpack.append(item)
 
         # act
-        item.use(game_context)
+        item.on_use(game_context)
         captured = capsys.readouterr()
 
         # assert
@@ -45,7 +45,7 @@ class TestSuiteParachute:
         game_context.backpack.append(item)
 
         # act
-        item.use(game_context)
+        item.on_use(game_context)
 
         # assert
         assert game_context.current_room.name == 'púšť', 'Indy should appear in room "púšť".'

@@ -12,7 +12,7 @@ class TestSuiteHeavyChest:
         yield HeavyChest()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'tazka okovana truhlica'
+        assert item.name == 'tazku okovanu truhlicu'
 
     def test_when_created_then_expect_specific_description(self, item):
         assert item.description == 'Je vybavená masívnym zámkom...'

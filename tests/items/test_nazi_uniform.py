@@ -14,7 +14,7 @@ class TestSuiteNaziUniform:
         yield NaziUniform()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'nemecka uniforma', 'Incorrect name.'
+        assert item.name == 'nemecku uniformu', 'Incorrect name.'
 
     def test_when_created_then_expect_specific_description(self, item):
         assert item.description == 'Zachovalá dôstojnícka uniforma.', 'Incorrect description.'
@@ -29,7 +29,7 @@ class TestSuiteNaziUniform:
     def test_when_examined_then_key_should_appear_room(self, item, game_context):
         # arrange
         game_context.current_room = get_room_by_name('oáza', game_context)
-        command = parse_line(f'preskumaj kokosova palma', game_context)
+        command = parse_line(f'preskumaj kokosovu palmu', game_context)
         command.exec(game_context)
 
         # act
@@ -44,7 +44,7 @@ class TestSuiteNaziUniform:
     def test_when_examined_then_it_is_not_examinable_anymore(self, item, game_context):
         # arrange
         game_context.current_room = get_room_by_name('oáza', game_context)
-        command = parse_line(f'preskumaj kokosova palma', game_context)
+        command = parse_line(f'preskumaj kokosovu palmu', game_context)
         command.exec(game_context)
 
         # act

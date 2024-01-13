@@ -14,7 +14,7 @@ class TestSuiteCoconutPalmTree:
         yield CoconutPalmTree()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'kokosova palma'
+        assert item.name == 'kokosovu palmu'
 
     def test_when_created_then_expect_specific_description(self, item):
         assert item.description == 'Zdá sa, že na jej plody nedosiahneš.'
@@ -34,7 +34,7 @@ class TestSuiteCoconutPalmTree:
         command = parse_line(f'preskumaj {item.name}', game_context)
         command.exec(game_context)
 
-        item = get_item_by_name('nemecka uniforma', game_context.current_room.items)
+        item = get_item_by_name('nemecku uniformu', game_context.current_room.items)
 
         # assert
         assert item is not None, 'Nazi uniform is not in room.'

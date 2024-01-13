@@ -15,7 +15,7 @@ class TestSuiteShowel:
         yield Shovel()
 
     def test_when_created_then_expect_specific_name(self, item):
-        assert item.name == 'lopata', 'Incorrect name.'
+        assert item.name == 'lopatu', 'Incorrect name.'
 
     def test_when_created_then_expect_specific_description(self, item):
         assert item.description == 'Je to zázrak, že ešte drží pohromade...', 'Incorrect description.'
@@ -33,7 +33,7 @@ class TestSuiteShowel:
         game_context.backpack.append(item)
 
         # act
-        item.use(game_context)
+        item.on_use(game_context)
         captured = capsys.readouterr()
 
         # assert
@@ -45,7 +45,7 @@ class TestSuiteShowel:
         game_context.backpack.append(item)
 
         # act
-        item.use(game_context)
+        item.on_use(game_context)
 
         # assert
         assert directions.DOWN in game_context.current_room.exits \

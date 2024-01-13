@@ -33,4 +33,4 @@ def test_when_backpack_has_items_then_print_its_content_on_stdout(cmd, capsys, g
     captured = capsys.readouterr()
 
     assert captured.out == ('V batohu máš:\n'
-                            '* bic\n')
+                            '  bic\n')
