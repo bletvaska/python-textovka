@@ -34,6 +34,13 @@ Príkaz musí spĺňať nasledovné podmienky:
      Tento predmet sa nedá zobrať.
      ```
 
+   * Ak už má hráč v batohu 4 predmety, je plný. V tom prípade vypíšte na obrazovku správu `Batoh je plný.`:
+
+     ```
+     > vezmi bic
+     Batoh je plný.
+     ```
+
    * Ak hráč úspešne vloží predmet do batohu, tak vypíšte na obrazovku správu:
 
      ```
