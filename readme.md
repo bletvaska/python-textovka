@@ -1,6 +1,6 @@
 # Python 101
 
-rozsah: 5 dní
+rozsah: 5 dní (40 hodín)
 
 Kurz pre všetkých, ktorí sa chcú naučiť základy programovania v jazyku Python. Počas kurzu účastníci postupne
 vytvoria jednoduchú textovú adventúru, ktorá bude mať rozsah zhruba 500 až 700 riadkov kódu. Popri tom sa prakticky
