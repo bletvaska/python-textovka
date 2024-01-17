@@ -37,7 +37,7 @@ programovania alebo skriptovania v inom jazyku.
   tvorí taktiež textovú adventúru. Ale úplne ináč, ako to robíme my (o dosť horšie :-))
 
 
-## World Map
+## Mapa herného sveta
 
 ```
                                          +--+
