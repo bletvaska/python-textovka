@@ -55,3 +55,5 @@ class Inventory(Command):
             print('V batohu máš:')
             for item in backpack:
                 print('* ' + item)
+
+        return states.PLAYING

@@ -29,7 +29,7 @@ while game_state == states.PLAYING:
 
     elif line == 'inventar':
         cmd = Inventory()
-        cmd.exec(backpack)
+        game_state = cmd.exec(backpack)
 
     else:
         print('Taký príkaz nepoznám.')
