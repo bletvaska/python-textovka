@@ -26,12 +26,13 @@ class Commands(Command):
     name: str = 'prikazy'
     description: str = 'zobrazi dostupne prikazy v hre'
 
-    def exec(self, backpack):
+    def exec(self, backpack, commands):
         print('V hre je mozne pouzit tieto prikazy:')
-        print('* [bold cyan]inventar[/bold cyan] - zobrazi obsah hráčovho batohu')
-        print('* [bold cyan]koniec[/bold cyan] - zobrazi informacie o hre')
-        print('* [bold cyan]o hre[/bold cyan] - zobrazi informacie o hre')
-        print('* [bold cyan]prikazy[/bold cyan] - zobrazi zoznam dostupnych prikazov v hre')
+
+        # print('* [bold cyan]inventar[/bold cyan] - zobrazi obsah hráčovho batohu')
+        # print('* [bold cyan]koniec[/bold cyan] - zobrazi informacie o hre')
+        # print('* [bold cyan]o hre[/bold cyan] - zobrazi informacie o hre')
+        # print('* [bold cyan]prikazy[/bold cyan] - zobrazi zoznam dostupnych prikazov v hre')
         return states.PLAYING
 
 

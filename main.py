@@ -7,6 +7,12 @@ intro()
 # game initialization
 backpack = ['bic', 'slivovica']
 game_state = states.PLAYING
+commands = [
+    About(),
+    Commands(),
+    Inventory(),
+    Quit()
+]
 
 # game loop
 while game_state == states.PLAYING:
@@ -21,7 +27,7 @@ while game_state == states.PLAYING:
 
     elif line == 'prikazy':
         commands = Commands()
-        game_state = commands.exec(backpack)
+        game_state = commands.exec(backpack, commands)
 
     elif line == 'koniec':
         cmd = Quit()
