@@ -1,43 +1,42 @@
-# main building blocks
+# Main Building Blocks
 
-- predmety
-- miestnosti
-- prikazy
-
-
-## O miestnostiach
-
-kazda miestnost ma:
-
-- zoznam predmetov
-- opis
-- zoznam vychodov (susedia)
-- nazov miestnosti
+* prikazy
+* miestnost
+* predmet
+* kontext
 
 
-## O predmetoch
+## Miestnost
 
-kazdy jeden predmet ma:
-
-- nazov
-- opis
-- zoznam vlastnosti [movable, usable]
-
-v zavislosti od vlastnosti predmetu budem moct s niektorymi robit tieto cinnosti:
-
-- pouzit()
-- preskumat()
+* opis
+* zoznam predmetov
+* zoznam vychodov z miesnosti
+* meno
 
 
-## O prikazoch
+## Predmet
 
-kazdy jeden prikaz ma tieto vlastnosti:
+* vlastnosti (viem zobrat, viem preniest, da sa pouzit, ...)
+* opis
+* meno
 
-- nazov/meno
-- opis
-- parameter
 
-kazdy jeden prikaz ma metodu:
+## Prikaz
 
-- vykonaj()
+* meno
+* opis
+* pouzitie/spustenie
+* [aliasy]
+
+class Command:
+   name: str
+   description: str
+   aliases: list
+
+   def exec():
+      pass
+
+
+
+## Class
 

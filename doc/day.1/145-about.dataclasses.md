@@ -26,4 +26,3 @@ V opačnom prípade ho stačí nainštalovať pomocou nástroja `pip` takto:
 ```bash
 $ pip install pydantic
 ```
-

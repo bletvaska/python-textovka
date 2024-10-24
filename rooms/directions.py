@@ -1,6 +1,0 @@
-NORTH = 90
-SOUTH = 180
-EAST = 0
-WEST = 270
-UP = -90
-DOWN = -180
