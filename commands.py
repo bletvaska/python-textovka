@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from rich import print
 
 import states
 
@@ -27,9 +28,10 @@ class Commands(Command):
 
     def exec(self, backpack):
         print('V hre je mozne pouzit tieto prikazy:')
-        print('* koniec - zobrazi informacie o hre')
-        print('* o hre - zobrazi informacie o hre')
-        print('* prikazy - zobrazi zoznam dostupnych prikazov v hre')
+        print('* [bold cyan]inventar[/bold cyan] - zobrazi obsah hráčovho batohu')
+        print('* [bold cyan]koniec[/bold cyan] - zobrazi informacie o hre')
+        print('* [bold cyan]o hre[/bold cyan] - zobrazi informacie o hre')
+        print('* [bold cyan]prikazy[/bold cyan] - zobrazi zoznam dostupnych prikazov v hre')
         return states.PLAYING
 
 
@@ -54,6 +56,6 @@ class Inventory(Command):
         else:
             print('V batohu máš:')
             for item in backpack:
-                print('* ' + item)
+                print(f'* [bold magenta]{item}[/bold magenta]')
 
         return states.PLAYING
