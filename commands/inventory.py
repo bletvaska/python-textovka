@@ -1,5 +1,4 @@
 from rich import print
-import states
 from .command import Command
 
 
@@ -7,12 +6,10 @@ class Inventory(Command):
     name: str = 'inventar'
     description: str = 'zobrazí obsah hráčovho batohu'
 
-    def exec(self, backpack, commands):
-        if len(backpack) == 0:
+    def exec(self, context):
+        if len(context.backpack) == 0:
             print('Batoh je prázdny.')
         else:
             print('V batohu máš:')
-            for item in backpack:
+            for item in context.backpack:
                 print(f'* [bold magenta]{item}[/bold magenta]')
-
-        return states.PLAYING

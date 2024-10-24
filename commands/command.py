@@ -5,5 +5,5 @@ class Command(BaseModel):
     name: str
     description: str
 
-    def exec(self, backpack, commands):
+    def exec(self, context):
         raise NotImplementedError('This method is not implemented.')

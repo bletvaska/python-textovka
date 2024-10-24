@@ -41,4 +41,8 @@ class Command:
 ## Kontext hry
 
 * batoh
+* zoznam prikazov
+* aktualna miestnost
+* zoznam vsetkych miestnosti
+* historia prikazov
 
