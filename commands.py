@@ -8,7 +8,7 @@ class Command(BaseModel):
     description: str
 
     def exec(self):
-        print('Implementacia spustenia tohto prikazu este nebola vytvorena.')
+        raise NotImplementedError('This method is not implemented.')
 
 
 class About(Command):
