@@ -10,6 +10,11 @@
 ## What is a Dataclass?
 
 
+## Ilustration
+
+vzťah medzi triedou a objektom je podobný, ako je vzťah medzi obrazom a kontajnerom.
+
+
 
 ## Pydantic
 

@@ -3,7 +3,7 @@
 * prikazy
 * miestnost
 * predmet
-* kontext
+* kontext hry
 
 
 ## Miestnost
@@ -38,5 +38,7 @@ class Command:
 
 
 
-## Class
+## Kontext hry
+
+* batoh
 

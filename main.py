@@ -1,10 +1,14 @@
 import states
-from commands import About, Commands, Quit
+from commands import About, Commands, Quit, Inventory
 from helpers import intro, outro
 
 intro()
 
-game_state = states.PLAYING   # states.PLAYING
+# game initialization
+backpack = ['bic', 'slivovica']
+game_state = states.PLAYING
+
+# game loop
 while game_state == states.PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
@@ -13,15 +17,19 @@ while game_state == states.PLAYING:
 
     elif line == 'o hre':
         about = About()
-        game_state = about.exec()
+        game_state = about.exec(backpack)
 
     elif line == 'prikazy':
         commands = Commands()
-        game_state = commands.exec()
+        game_state = commands.exec(backpack)
 
     elif line == 'koniec':
         cmd = Quit()
-        game_state = cmd.exec()
+        game_state = cmd.exec(backpack)
+
+    elif line == 'inventar':
+        cmd = Inventory()
+        cmd.exec(backpack)
 
     else:
         print('Taký príkaz nepoznám.')

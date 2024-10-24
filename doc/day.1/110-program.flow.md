@@ -52,7 +52,7 @@ Vytvorenie hernej slučky a prvých príkazov.
         print('Ďalšie dobrodružstvo Indiana Jonesa tentokrát vytvorené v jazyku Python.')
     ```
 
-2. Vytvorte príkaz `prikazy`, ktorý vypíše zoznam všetkých príkazov, ktoré sa dajú v hre použiť.
+2. **Lab:** Vytvorte príkaz `prikazy`, ktorý vypíše zoznam všetkých príkazov, ktoré sa dajú v hre použiť.
 
     ```python
     > prikazy
@@ -194,12 +194,12 @@ Vytvorenie hernej slučky a prvých príkazov.
             print('Taký príkaz nepoznám.')
    ```
 
-3. V rámci implementácie príkazu `koniec` zabezpečte, aby sa pred samotným ukončením hra ešte opýtala, či chce hráč naozaj skončiť. A až po potvrdení sa hra aj naozaj ukončila.
+3. **Lab:** V rámci implementácie príkazu `koniec` zabezpečte, aby sa pred samotným ukončením hra ešte opýtala, či chce hráč naozaj skončiť. A až po potvrdení sa hra aj naozaj ukončila.
 
     ```python
     elif line == 'koniec':
         choice = input('Naozaj chceš skončiť? (a/n)? ')
-        if choice in ('a', 'ano', 'y', 'yes', ''):
+        if choice == 'a':
             print('Dakujem, ze si si zahral tuto fantasticku hru. Príď aj nabudúce.')
         else:
             line = None
