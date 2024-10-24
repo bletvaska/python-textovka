@@ -1,7 +1,7 @@
 from rich import print
 
 import states
-from commands.command import Command
+from .command import Command
 
 
 class Commands(Command):

@@ -1,5 +1,5 @@
 import states
-from commands.command import Command
+from .command import Command
 
 
 class About(Command):
