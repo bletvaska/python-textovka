@@ -1,4 +1,4 @@
-from commands import Command
+from commands.command import Command
 
 
 def intro():
