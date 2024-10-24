@@ -1,15 +1,17 @@
 # Python 101
 
-rozsah: 5 dní
+rozsah: 5 dní (40 hodín)
 
 Kurz pre všetkých, ktorí sa chcú naučiť základy programovania v jazyku Python. Počas kurzu účastníci postupne
 vytvoria jednoduchú textovú adventúru, ktorá bude mať rozsah zhruba 500 až 700 riadkov kódu. Popri tom sa prakticky
 zoznámia so všetkými základnými konštrukciami jazyka, ako aj s organizáciou projektu do modulov a balíkov.
 
+![Nahrávacia obrazovka hry Indiana Jones 2](doc/images/indiana.jones.png)
+
 Textová adventúra, ktorá sa vytvára počas kurzu, je remake-om klasickej textovky [Indiana Jones 2](https://www.zx-spectrum.cz/index.php?cat1=3&cat2=3&game_id=indyjones.txt), ktorú v roku 1987 vytvoril [Františka Fuku](https://www.fuxoft.cz/) pre mikropočítače _ZX Spectrum_.
 
 Kurz sa priamo nevenuje základom algoritmizácie, takže sa od účastníkov očakáva, že majú skúsenosť aspoň so základmi
-programovaní alebo skriptovania v inom jazyku.
+programovania alebo skriptovania v inom jazyku.
 
 
 ## Preberané témy
