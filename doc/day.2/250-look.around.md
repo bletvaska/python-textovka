@@ -1,73 +1,36 @@
-# Príkaz Rozhliadni sa
+# Príkaz `Rozhliadni sa` a aktuálna miestnosť
 
-Vytvorte príkaz `rozhliadni sa`. Vlastnosti tohto príkazu sú:
+## Lab
 
-* názov - `rozhliadni sa `
-* opis - `rozhliadne sa v aktuálnej miestnosti`
+V module `look_around.py` vytvorte triedu `LookAround`, ktorá bude reprezentovať príkaz `rozhliadni sa`. Vlastnosti tohto príkazu sú:
 
-Po zadaní tohto príkazu sa znovu zobrazí opis miestnosti spolu so zoznamom predmetov, ktoré sa v nej nachádzajú.
+* názov - `rozhliadni sa`
+* opis - `rozhliadne sa v aktualnej miestnosti`
 
-Po vytvorení príkazu nezabudnite aktualizovať zoznam príkazov hry, ktorý je dostupný po zadaní príkazu `prikazy`.
+Po zadaní tohto príkazu sa zobrazí opis miestnosti. To znamená, že nad objektom aktuálnej miestnosti sa zavolá metóda `.show()`.
+
+
+## Problém: ako získať aktuálnu miestnosť?
+
+Ak sa nad tým zamyslíme, tak prídeme na to, že pri volaní príkazu nemáme k dispozícii aktuálnu miestnosť. Ak teda chceme úlohu splniť, musíme pred vytvorením príkazu aktualizovať herný kontext a rozšíriť ho o aktuálnu miestnosť:
+
+```python
 
 ```
-> rozhliadni sa
-Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej duše. (Celkom zaujímavá situácia, že áno?)
-Vidíš:
-* bič
-* prázdne sedadlá
-```
 
-## Pokus o riešenie
+Vzhľadom na úpravu kontextu je potrebné urobiť aj jemný refaktoring celého kódu a teda najmä začiatku hry v module `main.py`
+
+* je potrebné aktualizovať vytvorenie kontextu pridaním aktuálnej miestnosti
+* je potrebné upraviť prvotné zobrazenie miestnosti, v ktorej sa Indiana Jones nachádza po spustení hry
+
+
+## Riešenie
 
 ```python
 class LookAround(Command):
    name = 'rozhliadni sa'
    description = 'rozhliadne sa v aktuálnej miestnosti'
 
-   def exec(self):
-      print(current_room.description)
-      print('Vidíš:')
-      for item in current_room.items:
-          print(item)
+   def exec(self, context):
+      context.current_room.show()
 ```
-
-Lenže nebude fungovať, pretože premenná `current_room` nie je v tomto kontexte definovaná.
-
-## Metóda `.exec()` s parametrom
-
-Aby príkaz fungoval, ako mal, musíme miestnosť do príkazu dostať. Do metódy `.exec()` preto pridáme parameter `room`:
-
-```python
-class LookAround(Command):
-   name = 'rozhliadni sa'
-   description = 'rozhliadne sa v aktuálnej miestnosti'
-
-   def exec(self, room):
-      print(room.description)
-      print('Vidíš:')
-      for item in room.items:
-          print(item)
-```
-
-## Refaktoring
-
-Táto zmena sa však dotkne viacerých miest. V module `main` napríklad musíme tento parameter posunúť do metódy `.exec()`
-už pri jej volaní:
-
-```python
-# parse and execute command
-command = parse_line(line, commands)
-if command is None:
-   print('Taký príkaz nepoznám.')
-else:
-   command.exec(current_room)
-```
-
-Ak by sme teraz spustili hru a napísali príkaz `rozhliadni sa`, tak všetko bude pracovať, ako má. Ak však napíšeme
-akýkoľvek iný príkaz, skončíme s výnimkou. To preto, že parameter `room` používame pri každom jednom volaní
-metódy `.exec()`. To znamená, že ho voláme pri každom jednom príkaze.
-
-Tento problém potrebujeme vyriešiť na viacerých miestach:
-
-* v triede `Command`
-* v metóde `.exec()` každého jedného príkazu
