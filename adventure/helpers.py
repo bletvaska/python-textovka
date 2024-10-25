@@ -22,9 +22,10 @@ def outro():
     print('Dakujem ze si si zahral. Nabuduce zaplat.')
 
 
-def parse_line(line: str, commands: list[Command]) -> Command | None:
+def parse_line(line: str, commands: list[Command]) -> tuple[Command, str] | tuple[None, None]:
     for command in commands:
-        if line == command.name:
-            return command
+        if line.startswith(command.name):
+            param = line.split(command.name)[1].lstrip()
+            return command, param
 
-    return None  # default
+    return None, None  # default

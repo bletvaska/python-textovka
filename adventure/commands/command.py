@@ -10,5 +10,5 @@ class Command(BaseModel):
     name: str
     description: str
 
-    def exec(self, context: "GameContext"):
+    def exec(self, context: "GameContext", param: str):
         raise NotImplementedError('This method is not implemented.')

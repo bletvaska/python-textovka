@@ -28,10 +28,10 @@ while context.game_state == states.PLAYING:
     if line == '':
         continue
 
-    command = parse_line(line, context.commands)
+    command, param = parse_line(line, context.commands)
     if command is None:
         print('Taký príkaz nepoznám.')
     else:
-        command.exec(context)
+        command.exec(context, param)
 
 outro()
