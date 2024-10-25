@@ -18,7 +18,7 @@ class Room(BaseModel):
         else:
             print('Vidíš: ')
             for item in self.items:
-                print(f'* [bold magenta]{item}[/bold magenta]')
+                print(f'* [bold magenta]{item.name}[/bold magenta]')
 
         # render exits
         if len(self.exits) == 0:

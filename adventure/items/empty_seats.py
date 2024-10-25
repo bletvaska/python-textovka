@@ -3,6 +3,6 @@ from items.item import Item
 
 
 class EmptySeats(Item):
-    name = "prazdne sedadla"
-    description = "Obyčajné letecké sedadlá."
+    name: str = "prazdne sedadla"
+    description: str = "Obyčajné letecké sedadlá."
     features: list[int] = [EXAMINABLE]
