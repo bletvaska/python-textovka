@@ -20,7 +20,10 @@ Trieda bude mať tieto členské premenné:
 class GameContext(BaseModel):
     backpack: list = []
     commands: list[Command] = [
-]
+      About(),
+      Commands(),
+      Quit()
+    ],
     game_state: str = PLAYING
 ```
 
