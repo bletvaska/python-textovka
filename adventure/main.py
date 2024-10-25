@@ -1,9 +1,4 @@
 import states
-from commands.about import About
-from commands.commands import Commands
-from commands.inventory import Inventory
-from commands.look_around import LookAround
-from commands.quit import Quit
 from game_context import GameContext
 from helpers import intro, outro, parse_line
 from rooms.room import Room
@@ -11,15 +6,7 @@ from rooms.room import Room
 intro()
 
 # game initialization
-context = GameContext(
-    commands=[
-        About(),
-        Commands(),
-        Inventory(),
-        LookAround(),
-        Quit()
-    ]
-)
+context = GameContext()
 
 context.current_room = Room(name='v lietadle',
             description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je '
