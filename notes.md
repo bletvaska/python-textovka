@@ -45,4 +45,5 @@ class Command:
 * aktualna miestnost
 * zoznam vsetkych miestnosti
 * historia prikazov
+* stav hry
 
