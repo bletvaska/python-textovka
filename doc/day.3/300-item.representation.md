@@ -13,6 +13,18 @@ v zavislosti od toho, co bude mozne s predmetom robit, budu mat niektore predmet
 + pouzitie predmetu()
 + preskumanie predmetu()
 
+
+## Lab
+
+Vytvorte balík `items`, do ktorého budeme vkladať triedy reprezentujúce predmety. V balíku `items` vytvorte modul `item.py`, v ktorom sa bude nachádzať trieda `Item`. Táto trieda bude rodičovskou triedou pre každý predmet, ktorý v hre vytvoríme.
+
+Trieda `Item` bude mať tieto vlastnosti:
+
+* `name` - názov predmetu typu reťazec
+* `description` - opis predmetu typu reťazec
+* `features` - zoznam vlastností predmetu
+
+
 ```python
 from pydantic import BaseModel
 
@@ -40,3 +52,5 @@ USABLE = 2
 # if it is possible to make some action after item is examined
 EXAMINABLE = 3
 ```
+
+Tým pádom členská premenná `features` triedy `Item` bude typu zoznam celých čísel.
