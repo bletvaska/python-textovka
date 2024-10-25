@@ -6,4 +6,13 @@ class Examine(Command):
     description: str = 'zobrazí informácie o zvolenom predmete'
 
     def exec(self, context, param):
-        print('skumam predmet')
+        if param == '':
+            print('Neviem, čo chceš preskúmať.')
+            return
+
+        for item in context.current_room.items:
+            if param == item.name:
+                print(item.description)
+                break
+        else:
+            print('Taký predmet tu nikde nevidím.')
