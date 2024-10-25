@@ -30,9 +30,9 @@
 * [Dataclass for Generic Room](day.2/230-room.representation.md)
 * [Creating New Room](day.2/240-new.room.md)
 * [Command `look around` and `__str__()` Method](day.2/250-look.around.md)
-* [Dataclass for Generic Item](day.3/280-item.representation.md)
-* [Item _Whip_](day.3/285-whip.md)
-* [Item _Empty Seats_](day.3/290-empty.seats.md)
+* [Dataclass for Generic Item](day.3/300-item.representation)
+* [Item _Whip_](day.3/305-whip)
+* [Item _Empty Seats_](day.3/310-empty.seats)
 * [Daily Cheat Sheet](day.2/daily.cheat.sheet.md)
 
 
@@ -54,7 +54,7 @@
 * The World and Connected Rooms
 * Command `down`
 * Commands `north`, `south`, `east` and `west`
-* [Place Created Items into Room](day.3/295-items.in.room.md)
+* [Place Created Items into Room](day.3/315-items.in.room)
 * [Command `use`](day.5/550-use.item)
 
 

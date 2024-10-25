@@ -5,7 +5,7 @@
 V module `look_around.py` vytvorte triedu `LookAround`, ktorá bude reprezentovať príkaz `rozhliadni sa`. Vlastnosti tohto príkazu sú:
 
 * názov - `rozhliadni sa`
-* opis - `rozhliadne sa v aktualnej miestnosti`
+* opis - `rozhliadne sa v aktuálnej miestnosti`
 
 Po zadaní tohto príkazu sa zobrazí opis miestnosti. To znamená, že nad objektom aktuálnej miestnosti sa zavolá metóda `.show()`.
 
@@ -15,7 +15,11 @@ Po zadaní tohto príkazu sa zobrazí opis miestnosti. To znamená, že nad obje
 Ak sa nad tým zamyslíme, tak prídeme na to, že pri volaní príkazu nemáme k dispozícii aktuálnu miestnosť. Ak teda chceme úlohu splniť, musíme pred vytvorením príkazu aktualizovať herný kontext a rozšíriť ho o aktuálnu miestnosť:
 
 ```python
-
+class GameContext(BaseModel):
+    backpack: list = []
+    commands: list[Command] = []
+    game_state: str = PLAYING
+    current_room: Room = None
 ```
 
 Vzhľadom na úpravu kontextu je potrebné urobiť aj jemný refaktoring celého kódu a teda najmä začiatku hry v module `main.py`
