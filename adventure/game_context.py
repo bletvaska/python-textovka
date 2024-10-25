@@ -12,7 +12,7 @@ from states import PLAYING
 
 class GameContext(BaseModel):
     backpack: list = []
-    commands: list[Command] =     [
+    commands: list[Command] = [
         About(),
         Commands(),
         Inventory(),
