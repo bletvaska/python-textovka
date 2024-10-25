@@ -5,6 +5,7 @@ from commands.inventory import Inventory
 from commands.quit import Quit
 from game_context import GameContext
 from helpers import intro, outro, parse_line
+from rooms.room import Room
 
 intro()
 
@@ -18,7 +19,15 @@ context = GameContext(
     ]
 )
 
+room = Room(name='v lietadle',
+            description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je '
+                        'tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej '
+                        'duše. (Celkom zaujímavá situácia, že áno?)',
+            items=['bič', 'prázdne sedadlá'],
+            exits=['dolu'])
+
 # game loop
+room.show()
 while context.game_state == states.PLAYING:
     line = input('> ').lstrip().rstrip().lower()
 
