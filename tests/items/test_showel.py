@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import get_room_by_name
+from adventure.helpers import get_room_by_name
 from items.features import USABLE, MOVABLE
 from items.shovel import Shovel
 from rooms import directions

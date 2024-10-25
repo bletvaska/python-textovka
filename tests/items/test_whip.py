@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import get_room_by_name, get_item_by_name
+from adventure.helpers import get_room_by_name, get_item_by_name
 from items.features import MOVABLE, USABLE
 from items.whip import Whip
 

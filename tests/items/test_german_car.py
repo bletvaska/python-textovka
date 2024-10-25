@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import parse_line, get_room_by_name, get_item_by_name
+from adventure.helpers import parse_line, get_room_by_name, get_item_by_name
 from items.features import EXAMINABLE
 from items.german_car import GermanCar
 

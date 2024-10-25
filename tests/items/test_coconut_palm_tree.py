@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import parse_line, get_room_by_name, get_item_by_name
+from adventure.helpers import parse_line, get_room_by_name, get_item_by_name
 from items.coconut_palm_tree import CoconutPalmTree
 from items.features import EXAMINABLE
 

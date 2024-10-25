@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import parse_line, get_item_by_name, get_room_by_name
+from adventure.helpers import parse_line, get_item_by_name, get_room_by_name
 from items.features import USABLE, MOVABLE, EXAMINABLE
 from items.nazi_uniform import NaziUniform
 

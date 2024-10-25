@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import parse_line
+from adventure.helpers import parse_line
 from rooms import directions
 from rooms.yellow_fog import YellowFog
 

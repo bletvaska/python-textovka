@@ -24,5 +24,5 @@ from .commands import Commands
 a tym padom mozeme importovat jednoduchsie v `game.py`
 
 ```python
-from commands import About, Commands, Quit
+from adventure.commands import About, Commands, Quit
 ```

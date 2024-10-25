@@ -1,6 +1,6 @@
 import pytest
 
-from helpers import parse_line, get_item_by_name
+from adventure.helpers import parse_line, get_item_by_name
 from items.empty_seats import EmptySeats
 from items.features import EXAMINABLE
 

@@ -24,7 +24,7 @@ Príkaz musí spĺňať nasledovné podmienky:
 ## Riešenie
 
 ```python
-from helpers import get_room_by_name
+from adventure.helpers import get_room_by_name
 from rooms import directions
 from .command import Command
 

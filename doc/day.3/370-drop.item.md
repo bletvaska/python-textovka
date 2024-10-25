@@ -34,7 +34,7 @@ Príkaz musí spĺňať nasledovné podmienky:
 ## Riešenie
 
 ```python
-from helpers import get_item_by_name
+from adventure.helpers import get_item_by_name
 from .command import Command
 
 
