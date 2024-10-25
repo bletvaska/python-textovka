@@ -1,5 +1,10 @@
 # Rozhliadnutie sa v miestnosti
 
+Ak chceme "vykresliť" miestnosť, musíme to urobiť pomocou samostatného vypisovania jednotlivých položiek miestnosti ručne. V princípe sa jedná o krátky fragment kódu pre vypísanie opisu miestností, zoznamu predmetov v nej a zoznamu východov z nej.
+
+Miesto toho, aby sme to robili takto pracne, vytvoríme na tento účel priamo v triede `Room` metódu `.show()`, ktorá to urobí za nás.
+
+
 ## Aktualizácia triedy `Room`
 
 V triede `Room` vytvorte inštančnú metódu `.show()`. Táto metóda nebude mať žiadny parameter a po jej zavolaní sa vypíše na obrazovku opis miestnosti, zoznam východov z miestnosti a zoznam predmetov nachádzajúcich sa v miestnosti. Výstup môže vyzerať nasledovne:
