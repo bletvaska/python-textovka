@@ -30,51 +30,6 @@ O jeho správaní bude platiť nasledovné:
    Tvoj neoceniteľný pomocník..!
    ```
 
-Kostra príkazu bude vyzerať nasledovne:
-
-```python
-class Examine(Command):
-   name = 'preskumaj'
-   description = 'zobrazí informácie o zvolenom predmete'
-
-   def exec(self, room):
-      print('skumam predmet')
-```
-
-Nezabudnúť ju pridať aj do zoznamu príkazov.
-
-## Rozpoznávanie príkazov s parametrom
-
-Náš parser momentálne dokáže rozpoznávať len príkazy, ktoré nemajú parameter. Aby sme mohli pracovať s príkazmi, ktoré
-majú parameter, musíme ho upraviť. Ak totiž teraz napíšeme príkaz `preskumaj`, vypíše sa pomocná správa. Ak však
-napíšeme príkaz `preskumaj bic`, dostaneme odpoveď, že hra daný príkaz nepozná.
-
-Pri rozpoznávaní príkazov teda nemôžeme očakávať jeho presné znenie, ale budeme čakať, že vstup od používateľa sa bude
-začínať názvom príkazu. To vieme overiť volaním metódy `.startswith()` (alebo aj metódy `.index()`) nad reťazcom so
-vstupom od používateľa:
-
-```python
->>> 'preskumaj bic'.startswith('preskumaj')
-True
->>> 'preskumaj bic'.startswith('o hre')
-False
-```
-
-Aktualizujeme teda parser nasledovne:
-
-```python
-def parse_line(line: str, commands: list[Command]) -> Command | None:
-    for command in commands:
-        if line.startswith(command.name):
-            return command
-    return None
-```
-
-Všetko funguje tak, ako doteraz a ako bonus parser teraz rozpozná aj príkaz `preskumaj` s parametrom.
-
-## Parameter príkazu
-
-Potrebujeme však ešte získať parameter, ktorým je názov predmetu, a ktorý je zadaný za príkazom.
 
 ## Riešenie
 
