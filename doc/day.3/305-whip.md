@@ -1,11 +1,10 @@
 # Predmet Bič
 
-Vytvorte predmet bič, ktorý bude mať:
+V module `whip.py` vytvorte predmet bič, o ktorom bude platiť:
 
-* názov `bic`
-* opis `Tvoj neoceniteľný pomocník..!`
-* v zozname vlastností bude mať vlastnosti `MOVABLE` a `USABLE`
-
+* názov predmetu - `bic`
+* opis predmetu - `Tvoj neoceniteľný pomocník..!`
+* tento predmet sa bude dať preskúmať a bude sa dať použiť
 
 ```python
 from items.features import MOVABLE, USABLE

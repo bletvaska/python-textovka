@@ -11,7 +11,7 @@ Vytvorte triedu s názvom `GameContext` v module `game_context.py`. Táto trieda
 
 Trieda bude mať tieto členské premenné:
 
-* `commands` - zoznam príkazov, ktoré vieme v hre použiť, ktorý bude predvolene prázdny
+* `commands` - zoznam príkazov, ktoré vieme v hre použiť, a do ktorého rovno vložíme zoznam príkazov, ktorý máme zatiaľ vytvorený
 * `game_state` - aktuálny stav hry, ktorý bude predvolene `PLAYING`
 * `backpack` - hráčov batoh, ktorý bude predvolene prázdny
 
@@ -19,7 +19,11 @@ Trieda bude mať tieto členské premenné:
 ```python
 class GameContext(BaseModel):
     backpack: list = []
-    commands: list[Command] = []
+    commands: list[Command] = [
+      About(),
+      Commands(),
+      Quit()
+    ],
     game_state: str = PLAYING
 ```
 

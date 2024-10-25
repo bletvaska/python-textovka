@@ -1,10 +1,10 @@
 # Predmet Prázdne sedadlá
 
-Vytvorte predmet prázdne sedadlá, ktorý bude mať:
+V module `empty_seats.py` vytvorte predmet prázdne sedadlá, o ktorom bude platiť:
 
-* názov `prazdne sedadla`
-* opis `Obyčajné letecké sedadlá.`
-* v zozname vlastností len vlastnosť `EXAMINABLE`
+* názov predmetu - `prazdne sedadla`
+* opis predmetu - `Obyčajné letecké sedadlá.`
+* tento predmet sa bude dať preskúmať
 
 ```python
 from items.features import EXAMINABLE
