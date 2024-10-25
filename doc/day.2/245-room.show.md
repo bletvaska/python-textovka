@@ -5,7 +5,7 @@ Ak chceme "vykresliť" miestnosť, musíme to urobiť pomocou samostatného vypi
 Miesto toho, aby sme to robili takto pracne, vytvoríme na tento účel priamo v triede `Room` metódu `.show()`, ktorá to urobí za nás.
 
 
-## Aktualizácia triedy `Room`
+## Lab: Aktualizácia triedy `Room`
 
 V triede `Room` vytvorte inštančnú metódu `.show()`. Táto metóda nebude mať žiadny parameter a po jej zavolaní sa vypíše na obrazovku opis miestnosti, zoznam východov z miestnosti a zoznam predmetov nachádzajúcich sa v miestnosti. Výstup môže vyzerať nasledovne:
 
