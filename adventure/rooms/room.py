@@ -1,5 +1,7 @@
 from typing import TYPE_CHECKING
 
+from rooms.direction import TR_TABLE
+
 if TYPE_CHECKING:
     from game_context import GameContext
 
@@ -36,4 +38,16 @@ class Room(BaseModel):
         else:
             print('Možné východy z miestnosti: ')
             for ex in self.exits:
-                print(f'  * [bold yellow]{ex}[/bold yellow]')
+                print(f'* [bold yellow]{TR_TABLE[ex]}[/bold yellow]')
+                # if ex == DOWN:
+                #     print(f'* [bold yellow]dolu[/bold yellow]')
+                # elif ex == UP:
+                #     print(f'* [bold yellow]hore[/bold yellow]')
+                # elif ex == NORTH:
+                #     print(f'* [bold yellow]sever[/bold yellow]')
+                # elif ex == SOUTH:
+                #     print(f'* [bold yellow]juh[/bold yellow]')
+                # elif ex == WEST:
+                #     print(f'* [bold yellow]západ[/bold yellow]')
+                # elif ex == EAST:
+                #     print(f'* [bold yellow]východ[/bold yellow]')

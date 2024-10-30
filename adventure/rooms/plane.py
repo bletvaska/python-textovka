@@ -18,10 +18,10 @@ class Plane(Room):
     exits: dict = {
         DOWN: 'voľný pád',
         UP: 'voľný pád',
-        NORTH: 'voľný pád',
-        SOUTH: 'voľný pád',
         EAST: 'voľný pád',
         WEST: 'voľný pád',
+        NORTH: 'voľný pád',
+        SOUTH: 'voľný pád',
     }
     steps: int = 4
 
