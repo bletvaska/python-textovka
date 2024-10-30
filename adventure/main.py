@@ -15,11 +15,11 @@ context.current_room = Room(
                 'tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej '
                 'duše. (Celkom zaujímavá situácia, že áno?)',
     items=[
-        # Whip(),
+        Whip(),
         EmptySeats()
     ],
     exits=['dolu'])
-context.backpack = [Whip()]
+# context.backpack = [Whip()]
 
 # game loop
 context.current_room.show()

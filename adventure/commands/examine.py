@@ -10,14 +10,9 @@ class Examine(Command):
             print('Neviem, čo chceš preskúmať.')
             return
 
-        for item in context.current_room.items:
+        for item in context.current_room.items + context.backpack:
             if param == item.name:
                 print(item.description)
                 break
         else:
-            for item in context.backpack:
-                if param == item.name:
-                    print(item.description)
-                    break
-            else:
-                 print('Taký predmet tu nikde nevidím.')
+            print('Taký predmet tu nikde nevidím.')
