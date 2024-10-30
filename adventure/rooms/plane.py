@@ -1,3 +1,4 @@
+import states
 from items.empty_seats import EmptySeats
 from items.item import Item
 from items.whip import Whip
@@ -17,4 +18,8 @@ class Plane(Room):
     steps: int = 5
 
     def act(self, context):
-        print('ta daco robim s miestnostou')
+        self.steps = self.steps - 1
+
+        if self.steps == 0:
+            print('Lietadlo šťastne pristálo (strmhlavo). Je mi to ľúto, ale ani taký profesionál ako je Indiana Jones nemohol prežiť podobnú radostnú udalosť.')
+            context.game_state = states.PLANE_CRASH
