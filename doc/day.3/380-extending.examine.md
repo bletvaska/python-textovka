@@ -45,7 +45,7 @@ def examine(self, context):
    self.features.remove(EXAMINABLE)
 
    # render
-   print('Pod jedným z nich si našiel padák. Šťastná to náhoda.')
+   print('Pod jedným z nich si našiel [bold magenta]padák[/bold magenta]. Šťastná to náhoda.')
 ```
 
 **Poznámka:** Pre fajnšmekrov treba dodať, že toto nie je objektovo-orientované riešenie problému.
@@ -69,6 +69,6 @@ def examine(self, context):
 
      # is item examinable?
      if EXAMINABLE in item.features:
-         input('Skúmam...')
+         input('Pozrel si sa trošku bližšie a...')
          item.examine(context)
 ```

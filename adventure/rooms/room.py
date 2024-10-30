@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 from rich import print
 
+from items.item import Item
+
 
 class Room(BaseModel):
     name: str
     description: str
-    items: list = []
+    items: list[Item] = []
     exits: list = []
 
     def show(self):

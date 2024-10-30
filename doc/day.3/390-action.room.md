@@ -8,6 +8,7 @@ Niekoľko miestností v hre vyžaduje špeciálnu aktivitu bez toho, aby hráč 
 * Ak Indy včas neotvorí padák, zabije sa.
 * Ak Indy nebude mať oblečenú uniformu, zastrelí ho stráž.
 
+
 ## Rozsirenie triedy `Room` o metodu `.act()`
 
 Do triedy `Room` vložíme špeciálnu metódu `.act()`, ktorá sa spustí po vykonaní každého príkazu. Táto metóda nebude
