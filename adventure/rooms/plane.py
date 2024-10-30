@@ -15,7 +15,7 @@ class Plane(Room):
         EmptySeats()
     ]
     exits: list = ['dolu']
-    steps: int = 5
+    steps: int = 4
 
     def act(self, context):
         self.steps = self.steps - 1
