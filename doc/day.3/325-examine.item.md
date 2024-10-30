@@ -34,30 +34,27 @@ O jeho správaní bude platiť nasledovné:
 ## Riešenie
 
 ```python
+from .command import Command
+
 class Examine(Command):
-   name = 'preskumaj'
-   description = 'zobrazí informácie o zvolenom predmete'
+    name: str = 'preskumaj'
+    description: str = 'zobrazí informácie o zvolenom predmete'
 
-   def exec(self, context):
-      # if no item was entered
-      if self.param == '':
-         print('Neviem, čo chceš preskúmať.')
+    def exec(self, context, param):
+        if param == '':
+            print('Neviem, čo chceš preskúmať.')
+            return
 
-      # search for item
-      else:
-         # search for item in backpack
-         for item in context.backpack:
-            if item.name == self.param:
-               print(item.description)
-               break
-         else:
-            # search for item in current room
-            for item in context.current_room.items:
-               if item.name == self.param:
-                  print(item.description)
-                  break
-            else:
-               # not found
-               print('Taký predmet tu nikde nevidím.')
-
+        for item in context.current_room.items:
+            if param == item.name:
+                print(item.description)
+                break
+        else:
+            print('Taký predmet tu nikde nevidím.')
 ```
+
+
+## Lab
+
+Aktuálne príkaz `preskumaj` hľadá len predmety, ktoré sa nachádzajú v miestnosti. Rozšírte preto implementáciu tak, aby nepreskúmal len predmety, ktoré sa nachádzajú v miestnosti, ale aj tie, ktoré sa nachádzajú v batohu.
+

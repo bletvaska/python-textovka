@@ -12,4 +12,4 @@ class Inventory(Command):
         else:
             print('V batohu máš:')
             for item in context.backpack:
-                print(f'* [bold magenta]{item}[/bold magenta]')
+                print(f'* [bold magenta]{item.name}[/bold magenta]')

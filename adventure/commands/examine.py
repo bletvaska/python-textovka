@@ -15,4 +15,9 @@ class Examine(Command):
                 print(item.description)
                 break
         else:
-            print('Taký predmet tu nikde nevidím.')
+            for item in context.backpack:
+                if param == item.name:
+                    print(item.description)
+                    break
+            else:
+                 print('Taký predmet tu nikde nevidím.')
