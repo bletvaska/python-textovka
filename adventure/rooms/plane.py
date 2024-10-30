@@ -2,7 +2,7 @@ import states
 from items.empty_seats import EmptySeats
 from items.item import Item
 from items.whip import Whip
-from .direction import DOWN
+from .direction import DOWN, UP, NORTH, SOUTH, EAST, WEST
 from .room import Room
 
 
@@ -16,7 +16,12 @@ class Plane(Room):
         EmptySeats()
     ]
     exits: dict = {
-        DOWN: 'voľný pád'
+        DOWN: 'voľný pád',
+        UP: 'voľný pád',
+        NORTH: 'voľný pád',
+        SOUTH: 'voľný pád',
+        EAST: 'voľný pád',
+        WEST: 'voľný pád',
     }
     steps: int = 4
 
