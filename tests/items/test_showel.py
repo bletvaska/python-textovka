@@ -3,7 +3,7 @@ import pytest
 from adventure.helpers import get_room_by_name
 from items.features import USABLE, MOVABLE
 from items.shovel import Shovel
-from rooms import directions
+from rooms import direction
 
 
 @pytest.mark.items

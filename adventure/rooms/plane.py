@@ -2,6 +2,7 @@ import states
 from items.empty_seats import EmptySeats
 from items.item import Item
 from items.whip import Whip
+from .direction import DOWN
 from .room import Room
 
 
@@ -14,7 +15,9 @@ class Plane(Room):
         Whip(),
         EmptySeats()
     ]
-    exits: list = ['dolu']
+    exits: dict = {
+        DOWN: 'voľný pád'
+    }
     steps: int = 4
 
     def act(self, context):
