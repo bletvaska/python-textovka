@@ -27,3 +27,4 @@ class GameContext(BaseModel):
     ]
     game_state: str = PLAYING
     current_room: Room = None
+    history: list[str] = []

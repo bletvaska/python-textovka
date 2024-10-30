@@ -6,7 +6,11 @@ vypadne a potom zabezpečíme, aby ten padák po preskúmaní naozaj vypadol.
 
 ## Predmet padák
 
-Vytvorte predmet padák.
+V triede `Parachute` v module `parachute.py` vytvorte predmet padák. O tomto predmete platí:
+
+* jeho meno je: `padak`
+* jeho opis je: `Obyčajný padák. Made in U.S.A. 1933`
+* predmet je prenositeľný a použiteľný
 
 ```python
 from items.features import MOVABLE, USABLE, EXAMINABLE
@@ -16,7 +20,7 @@ from items.item import Item
 class Parachute(Item):
     name: str = 'padak'
     description: str = 'Obyčajný padák. Made in U.S.A. 1933'
-    features = [MOVABLE, USABLE]
+    features: list[int] = [MOVABLE, USABLE]
 ```
 
 
@@ -50,20 +54,21 @@ def examine(self, context):
 ## Rozšírenie príkazu `preskumaj`
 
 ```python
- def exec(self, context):
-     if self.param == '':
+ def exec(self, context, param):
+     if param == '':
          print('Neviem, čo chceš preskúmať.')
-     else:
-         for item in context.current_room.items:
-             if item.name == self.param:
-                 print(item.description)
+         return
 
-                 # is item examinable?
-                 if EXAMINABLE in item.features:
-                     input('Skúmam...')
-                     item.examine(context)
-
-                 return
-
+     item = get_item_by_name(param, context.current_room.items + context.backpack)
+     if item is None:
          print('Taký predmet tu nikde nevidím.')
+         return
+
+     # action
+     print(item.description)
+
+     # is item examinable?
+     if EXAMINABLE in item.features:
+         input('Skúmam...')
+         item.examine(context)
 ```
