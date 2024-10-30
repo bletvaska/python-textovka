@@ -1,3 +1,8 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from game_context import GameContext
+
 from pydantic import BaseModel
 from rich import print
 
@@ -9,6 +14,9 @@ class Room(BaseModel):
     description: str
     items: list[Item] = []
     exits: list = []
+
+    def act(self, context: 'GameContext'):
+        pass
 
     def show(self):
         # render description

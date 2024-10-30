@@ -22,5 +22,6 @@ while context.game_state == states.PLAYING:
         print('Taký príkaz nepoznám.')
     else:
         command.exec(context, param)
+        context.current_room.act(context)
 
 outro()
