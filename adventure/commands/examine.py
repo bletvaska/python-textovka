@@ -1,3 +1,4 @@
+from helpers import get_item_by_name
 from .command import Command
 
 
@@ -10,9 +11,10 @@ class Examine(Command):
             print('Neviem, čo chceš preskúmať.')
             return
 
-        for item in context.current_room.items + context.backpack:
-            if param == item.name:
-                print(item.description)
-                break
-        else:
+        item = get_item_by_name(param, context.current_room.items + context.backpack)
+        if item is None:
             print('Taký predmet tu nikde nevidím.')
+            return
+
+        # action
+        print(item.description)
