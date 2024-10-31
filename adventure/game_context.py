@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from commands.down import Down
 from commands.east import East
 from commands.north import North
+from commands.save import Save
 from commands.south import South
 from commands.up import Up
 from commands.use import Use
@@ -34,6 +35,7 @@ class GameContext(BaseModel):
         LookAround(),
         North(),
         Quit(),
+        Save(),
         South(),
         Take(),
         Up(),
