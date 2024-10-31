@@ -6,3 +6,6 @@ QUIT = 'quit'
 
 # when Indiana Jones didn't jump from plane on time
 PLANE_CRASH = 'plane crash'
+
+# when Indiana Jones falls without opened parachute
+DEATH_BY_FREE_FALL = 'death by free fall'
