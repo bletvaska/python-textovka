@@ -5,6 +5,7 @@ from commands.east import East
 from commands.north import North
 from commands.south import South
 from commands.up import Up
+from commands.use import Use
 from commands.west import West
 from rooms.room import Room
 from commands.command import Command
@@ -36,6 +37,7 @@ class GameContext(BaseModel):
         South(),
         Take(),
         Up(),
+        Use(),
         West(),
     ]
     game_state: str = PLAYING
