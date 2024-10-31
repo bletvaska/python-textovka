@@ -1,6 +1,11 @@
 from pydantic import BaseModel
 
 from commands.down import Down
+from commands.east import East
+from commands.north import North
+from commands.south import South
+from commands.up import Up
+from commands.west import West
 from rooms.room import Room
 from commands.command import Command
 from commands.about import About
@@ -22,11 +27,16 @@ class GameContext(BaseModel):
         Commands(),
         Down(),
         Drop(),
+        East(),
         Examine(),
         Inventory(),
         LookAround(),
+        North(),
         Quit(),
-        Take()
+        South(),
+        Take(),
+        Up(),
+        West(),
     ]
     game_state: str = PLAYING
     current_room: Room = None
