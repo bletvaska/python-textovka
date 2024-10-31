@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 from commands.down import Down
 from commands.east import East
+from commands.load import Load
 from commands.north import North
 from commands.save import Save
 from commands.south import South
@@ -32,6 +33,7 @@ class GameContext(BaseModel):
         East(),
         Examine(),
         Inventory(),
+        Load(),
         LookAround(),
         North(),
         Quit(),

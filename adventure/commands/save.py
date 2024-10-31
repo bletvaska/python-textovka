@@ -12,8 +12,8 @@ class Save(Command):
             print('Neviem, do akého súboru chceš ulož svoju pozíciu.')
             return
 
-        file = open(filename, 'w')
-        json.dump(context.history, file)
-        file.close()
+        with open(filename, 'w') as file:
+            json.dump(context.history, file)
+            print('Pozícia bola úspešne uložená.')
 
-        print('Pozícia bola úspešne uložená.')
+        # return None
