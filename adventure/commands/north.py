@@ -15,3 +15,5 @@ class North(Command):
         room_name = context.current_room.exits[NORTH]
         context.current_room = get_room_by_name(room_name, context.world)
         context.current_room.show()
+
+        context.history.append(self.name)

@@ -24,3 +24,5 @@ class Use(Command):
         was_used = item.use(context)
         if not was_used:
             print('Podľa teba som zrejme blbec, ale naozaj nechápem, načo by to v tejto chvíli bolo dobré.')
+        else:
+            context.history.append(f'{self.name} {param}')

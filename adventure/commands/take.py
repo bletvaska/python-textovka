@@ -27,3 +27,5 @@ class Take(Command):
         context.current_room.items.remove(item)
         context.backpack.append(item)
         print(f'Do batohu si vložil predmet [bold magenta]{item.name}[/bold magenta].')
+
+        context.history.append(f'{self.name} {param}')

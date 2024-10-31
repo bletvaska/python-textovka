@@ -24,3 +24,5 @@ class Examine(Command):
         if EXAMINABLE in item.features:
             input('Pozrel si sa trošku bližšie a...')
             item.examine(context)
+
+            context.history.append(f'{self.name} {param}')

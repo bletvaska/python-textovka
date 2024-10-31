@@ -22,3 +22,5 @@ class Drop(Command):
         context.backpack.remove(item)
         context.current_room.items.append(item)
         print(f'Do miestnosti si položil [bold magenta]{item.name}[/bold magenta].')
+
+        context.history.append(f'{self.name} {param}')
