@@ -9,7 +9,7 @@ def get_world() -> list[Room]:
     return [
         Plane(
             name='lietadlo',
-            description='Prebudil si sa v [bold green]malom dvojmotorovom lietadle[/bold green] plachtiacom nad '
+            description='Prebudil si sa v malom dvojmotorovom [bold green]lietadle[/bold green] plachtiacom nad '
                         'egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem '
                         'teba živej duše. (Celkom zaujímavá situácia, že áno?)',
             exits={

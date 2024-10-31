@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+from commands.down import Down
 from rooms.room import Room
 from commands.command import Command
 from commands.about import About
@@ -19,6 +20,7 @@ class GameContext(BaseModel):
     commands: list[Command] = [
         About(),
         Commands(),
+        Down(),
         Drop(),
         Examine(),
         Inventory(),
