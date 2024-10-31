@@ -1,13 +1,13 @@
+
 import states
 from game_context import GameContext
-from helpers import intro, outro, parse_line
-from rooms.plane import Plane
+from helpers import intro, outro, parse_line, get_room_by_name
 
 intro()
 
 # game initialization
 context = GameContext()
-context.current_room = Plane()
+context.current_room = get_room_by_name('lietadlo', context.world)
 
 # game loop
 context.current_room.show()

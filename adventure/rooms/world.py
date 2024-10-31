@@ -8,10 +8,10 @@ from .room import Room
 def get_world() -> list[Room]:
     return [
         Plane(
-            name='v lietadle',
-            description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je tu '
-                        'nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej duše. (Celkom '
-                        'zaujímavá situácia, že áno?)',
+            name='lietadlo',
+            description='Prebudil si sa v [bold green]malom dvojmotorovom lietadle[/bold green] plachtiacom nad '
+                        'egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem '
+                        'teba živej duše. (Celkom zaujímavá situácia, že áno?)',
             exits={
                 DOWN: 'vo vzduchu'
             },

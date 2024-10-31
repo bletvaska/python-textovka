@@ -1,6 +1,9 @@
 from rich import print
+from typing import TYPE_CHECKING
 
-from game_context import GameContext
+if TYPE_CHECKING:
+    from game_context import GameContext
+
 from .features import EXAMINABLE
 from .item import Item
 from .parachute import Parachute
@@ -11,7 +14,7 @@ class EmptySeats(Item):
     description: str = "Obyčajné letecké sedadlá."
     features: list[int] = [EXAMINABLE]
 
-    def examine(self, context: GameContext):
+    def examine(self, context: 'GameContext'):
         # 1. vlozis do miestnosti predmet padak
         context.current_room.items.append(Parachute())
 

@@ -1,5 +1,6 @@
 from commands.command import Command
 from items.item import Item
+from rooms.room import Room
 
 
 def intro():
@@ -36,5 +37,13 @@ def get_item_by_name(name: str, items: list[Item]) -> Item | None:
     for item in items:
         if name == item.name:
             return item
+
+    return None  # default
+
+
+def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
+    for room in rooms:
+        if name == room.name:
+            return room
 
     return None  # default
