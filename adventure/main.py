@@ -1,7 +1,7 @@
 from rich import print
 
 import states
-from commands import About, Commands
+from commands import About, Commands, Quit
 from helpers import intro, outro
 
 intro()
@@ -23,7 +23,8 @@ while game_state == states.PLAYING:
         cmd.exec()
 
     elif line == 'koniec':
-        game_state = states.QUIT
+        cmd = Quit()
+        game_state = cmd.exec()
 
     else:
         print('Taký príkaz nepoznám.')

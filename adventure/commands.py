@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from rich import print
 
+import states
+
 
 class Command(BaseModel):
     """
@@ -23,7 +25,11 @@ class About(Command):
 
 
 class Quit(Command):
-    pass
+    name: str = "koniec"
+    description: str = "ukončí rozohratú hru"
+
+    def exec(self):
+        return states.QUIT
 
 
 class Commands(Command):
