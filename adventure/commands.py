@@ -38,12 +38,10 @@ class Commands(Command):
     name: str = "prikazy"
     description: str = "zobrazí zoznam dostupných príkazov v hre"
 
-    def exec(self):
+    def exec(self, commands):
         print('V hre je možné použiť tieto príkazy:')
-        print('* [bold cyan]inventar[/bold cyan] - zobrazí obsah hráčovho batohu')
-        print('* [bold cyan]o hre[/bold cyan] - zobrazí informácie o hre')
-        print('* [bold cyan]koniec[/bold cyan] - ukončí rozohratú hru')
-        print('* [bold cyan]prikazy[/bold cyan] - zobrazí zoznam dostupných príkazov v hre')
+        for command in commands:
+            print(f'* [bold cyan]{command.name}[/bold cyan] - {command.description}')
 
 
 class Inventory(Command):
@@ -51,7 +49,7 @@ class Inventory(Command):
     description: str = 'zobrazí obsah hráčovho batohu'
 
     def exec(self, backpack):
-        if len(backpack) == 0:
+        if len(backpack) == 0:  # backpack == []
             print('Batoh je prázdny')
         else:
             print('V batohu máš:')
