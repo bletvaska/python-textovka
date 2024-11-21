@@ -28,6 +28,6 @@ while game_state == states.PLAYING:
     if cmd is None:
         print('Taký príkaz nepoznám.')
     else:
-        game_state = cmd.exec(backpack, commands)
+        game_state = cmd.exec(context)
 
 outro()
