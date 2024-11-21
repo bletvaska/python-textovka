@@ -1,7 +1,10 @@
 from rich import print
 
 import states
-from commands import About, Commands, Quit, Inventory
+from commands.about import About
+from commands.commands import Commands
+from commands.inventory import Inventory
+from commands.quit import Quit
 from helpers import intro, outro, parse_line
 
 intro()
