@@ -32,7 +32,7 @@ class TestSuiteCoconutPalmTree:
 
         # act
         command = parse_line(f'preskumaj {item.name}', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         item = get_item_by_name('nemecka uniforma', game_context.current_room.items)
 
@@ -45,7 +45,7 @@ class TestSuiteCoconutPalmTree:
 
         # act
         command = parse_line(f'preskumaj {item.name}', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         item = get_item_by_name(item.name, game_context.current_room.items)
 

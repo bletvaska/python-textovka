@@ -45,8 +45,8 @@ V module `main.py` upravíme fragment kódu, kde spúšťame príkaz `koniec` ta
 
 ```python
 elif line == 'koniec':
-    cmd = Quit()
-    game_state = cmd.exec()
+cmd = Quit()
+game_state = cmd.exec(backpack)
 ```
 
 Ak vyskúšame hru ukončiť, budeme úspešní. Ak však hráč napíš `nie`, hra sa ukončí aj tak. V čom je problém?

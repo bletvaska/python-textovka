@@ -29,7 +29,7 @@ class TestSuiteParachute:
     def test_when_examined_then_parachute_should_appear_in_plane(self, item, game_context):
         # act
         command = parse_line(f'preskumaj {item.name}', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         item = get_item_by_name('padak', game_context.current_room.items)
 
@@ -39,7 +39,7 @@ class TestSuiteParachute:
     def test_when_examined_then_it_is_not_examinable_anymore(self, item, game_context):
         # act
         command = parse_line(f'preskumaj {item.name}', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         item = get_item_by_name(item.name, game_context.current_room.items)
 

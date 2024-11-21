@@ -22,7 +22,7 @@ def test_when_created_then_expect_specific_description(cmd):
 def test_when_moves_down_then_new_room_must_be_down_from_actual(cmd, game_context):
     # act
     command = parse_line(cmd.name, game_context)
-    command.exec(game_context)
+    command.exec(backpack)
 
     # assert
     assert game_context.current_room.name == 'voľný pád'
@@ -34,7 +34,7 @@ def test_if_there_is_no_room_down_then_current_room_remains_after_going_down(cmd
 
     # act
     command = parse_line(cmd.name, game_context)
-    command.exec(game_context)
+    command.exec(backpack)
 
     # assert
     assert game_context.current_room.name == 'v tábore'
@@ -46,7 +46,7 @@ def test_if_there_is_no_room_down_then_error_message_should_appear(cmd, game_con
 
     # act
     command = parse_line(cmd.name, game_context)
-    command.exec(game_context)
+    command.exec(backpack)
     captured = capsys.readouterr()
 
     # assert

@@ -25,7 +25,7 @@ def test_when_moves_to_east_then_new_room_must_be_on_east_from_actual(cmd, game_
 
     # act
     command = parse_line(cmd.name, game_context)
-    command.exec(game_context)
+    command.exec(backpack)
 
     # assert
     assert game_context.current_room.name == 'veliteľov stan'
@@ -34,7 +34,7 @@ def test_when_moves_to_east_then_new_room_must_be_on_east_from_actual(cmd, game_
 def test_if_there_is_no_room_on_east_then_current_room_remains_after_going_east(cmd, game_context):
     # act
     command = parse_line(cmd.name, game_context)
-    command.exec(game_context)
+    command.exec(backpack)
 
     # assert
     assert game_context.current_room.name == 'v lietadle'
@@ -43,7 +43,7 @@ def test_if_there_is_no_room_on_east_then_current_room_remains_after_going_east(
 def test_if_there_is_no_room_on_east_then_error_message_should_appear(cmd, game_context, capsys):
     # act
     command = parse_line(cmd.name, game_context)
-    command.exec(game_context)
+    command.exec(backpack)
     captured = capsys.readouterr()
 
     # assert

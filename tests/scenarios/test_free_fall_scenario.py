@@ -21,7 +21,7 @@ def test_when_free_fall_scenario_is_entered_then_game_state_should_be_death_by_f
     # act
     for line in scenario:
         command = parse_line(line, game_context)
-        command.exec(game_context)
+        command.exec(backpack)
         game_context.current_room.act(game_context)
 
     # assert

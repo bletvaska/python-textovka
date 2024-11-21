@@ -28,7 +28,7 @@ def test_when_first_step_is_made_then_all_exits_goes_to_yellow_fog_and_east_goes
 
     # act
     command = parse_line(direction, game_context)
-    command.exec(game_context)
+    command.exec(backpack)
     game_context.current_room.act(game_context)
 
     # assert

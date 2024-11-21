@@ -31,13 +31,13 @@ about = About()
 Následne môžeme nad vytvoreným objektom typu `About` zavolať metódu `.exec()`:
 
 ```python
-about.exec()
+about.exec(backpack)
 ```
 
 To je samozrejme možné napísať aj v jednom riadku takto:
 
 ```python
-About().exec()
+About().exec(backpack)
 ```
 
 Aktualizujeme teda pôvodný kód a hernú slučku, kde sa nachádza časť kódu, ktorá sa spustí v prípade napísania
@@ -45,5 +45,5 @@ príkazu `o hre`. Táto časť bude teraz vyzerať takto:
 
 ```python
 elif line == 'o hre':
-    About().exec()
+About().exec(backpack)
 ```

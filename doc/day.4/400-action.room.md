@@ -30,10 +30,10 @@ Jej pravidelné spúšťanie zabezpečíme v hernej slučke rovno po spustení p
  # parse and execute command
 command, param = parse_line(line, context.commands)
 if command is None:
-   print('Taký príkaz nepoznám.')
+    print('Taký príkaz nepoznám.')
 else:
-   command.exec(context, param)
-   context.current_room.act(context)
+    command.exec(backpack)
+    context.current_room.act(context)
 ```
 
 ## Trieda `Plane`

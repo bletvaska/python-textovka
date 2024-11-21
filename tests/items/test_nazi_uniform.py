@@ -30,11 +30,11 @@ class TestSuiteNaziUniform:
         # arrange
         game_context.current_room = get_room_by_name('oáza', game_context)
         command = parse_line(f'preskumaj kokosova palma', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         # act
         command = parse_line(f'preskumaj {item.name}', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         item = get_item_by_name('kluc', game_context.current_room.items)
 
@@ -45,11 +45,11 @@ class TestSuiteNaziUniform:
         # arrange
         game_context.current_room = get_room_by_name('oáza', game_context)
         command = parse_line(f'preskumaj kokosova palma', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         # act
         command = parse_line(f'preskumaj {item.name}', game_context)
-        command.exec(game_context)
+        command.exec(backpack)
 
         item = get_item_by_name('kluc', game_context.current_room.items)
 

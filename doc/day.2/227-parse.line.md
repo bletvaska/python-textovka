@@ -88,17 +88,17 @@ def exec(self, backapck: list[str], commands: list[Command]):
 ```python
 command = parse_line(line, commands)
 if command is None:
-   print('Taký príkaz nepoznám.')
+    print('Taký príkaz nepoznám.')
 else:
-   command.exec(backpack, commands)
+    command.exec(backpack)
 ```
 
 ### Použitie parsera pomocou ošetrenia výnimky
 
 ```python
 try:
-   command.exec(backpack, commands)
-   command.exec()
+    command.exec(backpack)
+    command.exec(backpack)
 except AttributeError:
-   print('Taký príkaz nepoznám.')
+    print('Taký príkaz nepoznám.')
 ```
