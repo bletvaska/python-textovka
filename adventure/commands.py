@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from rich import print
 
 
 class Command(BaseModel):
@@ -26,4 +27,11 @@ class Quit(Command):
 
 
 class Commands(Command):
-    pass
+    name: str = "prikazy"
+    description: str = "zobrazí zoznam dostupných príkazov v hre"
+
+    def exec(self):
+        print('V hre je možné použiť tieto príkazy:')
+        print('* [bold cyan]o hre[/bold cyan] - zobrazí informácie o hre')
+        print('* [bold cyan]prikazy[/bold cyan] - zobrazí zoznam dostupných príkazov v hre')
+        print('* [bold cyan]koniec[/bold cyan] - ukončí rozohratú hru')

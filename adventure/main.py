@@ -1,7 +1,7 @@
 from rich import print
 
 import states
-from commands import About
+from commands import About, Commands
 from helpers import intro, outro
 
 intro()
@@ -19,10 +19,8 @@ while game_state == states.PLAYING:
         cmd.exec()
 
     elif line == 'prikazy':
-        print('V hre je možné použiť tieto príkazy:')
-        print('* [bold cyan]o hre[/bold cyan] - zobrazí informácie o hre')
-        print('* [bold cyan]prikazy[/bold cyan] - zobrazí zoznam dostupných príkazov v hre')
-        print('* [bold cyan]koniec[/bold cyan] - ukončí rozohratú hru')
+        cmd = Commands()
+        cmd.exec()
 
     elif line == 'koniec':
         game_state = states.QUIT
