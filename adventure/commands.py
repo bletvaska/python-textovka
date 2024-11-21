@@ -12,7 +12,7 @@ class Command(BaseModel):
     description: str
 
     def exec(self):
-        print(f'vykonavam prikaz {self.name}')
+        raise NotImplementedError(f'This method was not yet implemented for command {self.name}.')
 
 
 class About(Command):
@@ -22,6 +22,8 @@ class About(Command):
     def exec(self):
         print('(c)2024 ukradol mirek')
         print('Ďalšie dobrodružstvo Indiana Jonesa. Tentokrát s jazykom Python.')
+
+        # return None
 
 
 class Quit(Command):
