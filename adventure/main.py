@@ -1,27 +1,33 @@
+from rich import print
 
 import states
-from game_context import GameContext
-from helpers import intro, outro, parse_line, get_room_by_name
+from commands import About
+from helpers import intro, outro
 
 intro()
 
-# game initialization
-context = GameContext()
-context.current_room = get_room_by_name('lietadlo', context.world)
+game_state = states.PLAYING
 
-# game loop
-context.current_room.show()
-while context.game_state == states.PLAYING:
-    line = input('> ').lstrip().rstrip().lower()
+while game_state == states.PLAYING:
+    line = input('> ').lower().lstrip().rstrip()
 
-    if line == '':
+    if line == '':  # len(line) == 0
         continue
 
-    command, param = parse_line(line, context.commands)
-    if command is None:
-        print('Taký príkaz nepoznám.')
+    elif line == 'o hre':
+        cmd = About()
+        cmd.exec()
+
+    elif line == 'prikazy':
+        print('V hre je možné použiť tieto príkazy:')
+        print('* [bold cyan]o hre[/bold cyan] - zobrazí informácie o hre')
+        print('* [bold cyan]prikazy[/bold cyan] - zobrazí zoznam dostupných príkazov v hre')
+        print('* [bold cyan]koniec[/bold cyan] - ukončí rozohratú hru')
+
+    elif line == 'koniec':
+        game_state = states.QUIT
+
     else:
-        command.exec(context, param)
-        context.current_room.act(context)
+        print('Taký príkaz nepoznám.')
 
 outro()
