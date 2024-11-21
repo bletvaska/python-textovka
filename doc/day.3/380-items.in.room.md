@@ -3,8 +3,8 @@
 Vytvorené predmety vložte do miestnosti:
 
 ```python
-Room(
-        name='v lietadle',
+context.current_room = Room(
+        name='lietadlo',
         description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu nádherný '
                     'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
                     'že?) ',
