@@ -56,4 +56,4 @@ class Inventory(Command):
         else:
             print('V batohu máš:')
             for item in backpack:
-                print(item)
+                print(f'* [bold magenta]{item}[/bold magenta]')
