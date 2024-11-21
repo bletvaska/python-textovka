@@ -1,33 +1,25 @@
 from rich import print
 
 import states
-from commands.about import About
-from commands.commands import Commands
-from commands.inventory import Inventory
-from commands.quit import Quit
+from game_context import GameContext
 from helpers import intro, outro, parse_line
 
 intro()
 
-game_state = states.PLAYING
-backpack = ['bic', 'padak']
-commands = [
-    About(),
-    Commands(),
-    Inventory(),
-    Quit()
-]
+# game initialization
+context = GameContext()
 
-while game_state == states.PLAYING:
+# game loop
+while context.game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()
 
     if line == '':  # len(line) == 0
         continue
 
-    cmd = parse_line(line, commands)
+    cmd = parse_line(line, context.commands)
     if cmd is None:
         print('Taký príkaz nepoznám.')
     else:
-        game_state = cmd.exec(context)
+        cmd.exec(context)
 
 outro()
