@@ -15,7 +15,6 @@ commands = [
     Quit()
 ]
 
-
 while game_state == states.PLAYING:
     line = input('> ').lower().lstrip().rstrip()
 
@@ -26,24 +25,6 @@ while game_state == states.PLAYING:
     if cmd is None:
         print('Taký príkaz nepoznám.')
     else:
-        cmd.exec()
-
-    # elif line == 'inventar':
-    #     cmd = Inventory()
-    #     cmd.exec(backpack)
-    #
-    # elif line == 'o hre':
-    #     cmd = About()
-    #     cmd.exec()
-    #
-    # elif line == 'prikazy':
-    #     cmd = Commands()
-    #     cmd.exec(commands)
-    #
-    # elif line == 'koniec':
-    #     cmd = Quit()
-    #     game_state = cmd.exec()
-    #
-
+        game_state = cmd.exec(backpack, commands)
 
 outro()
