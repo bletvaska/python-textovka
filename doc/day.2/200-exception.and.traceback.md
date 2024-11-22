@@ -1,0 +1,2 @@
+# Čo je to výnimka?
+

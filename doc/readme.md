@@ -24,7 +24,8 @@
 
 ## Day 2: The Commands
 
-* [Raising an Exception](day.2/200-raising.an.exception.md)
+* [Exception and Traceback](day.2/200-exception.and.traceback.md)
+* [Raising an Exception](day.2/205-raising.an.exception.md)
 * [Working with Lists](day.2/210-lists.intro.md)
 * [Backpack](day.2/220-backpack.md)
 * [Inventory](day.2/230-inventory)
