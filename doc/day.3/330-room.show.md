@@ -39,6 +39,8 @@ Z miestnosti nevedú žiadne východy.
 ```
 
 
+## Riešenie
+
 ```python
 from pydantic import BaseModel
 

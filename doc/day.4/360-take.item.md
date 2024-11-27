@@ -1,7 +1,7 @@
 # Príkaz `vezmi`
 
 Vytvorte triedu `Take`, ktorá bude reprezentovať príkaz `vezmi`. Tento príkaz vezme predmet z miestnosti a vloží ho
-do hráčovho batohu.
+do hráčovho batohu. V batohu však bude možné naraz niesť len 5 predmetov.
 
 Príkaz bude mať tieto vlastnosti:
 
@@ -33,6 +33,13 @@ Príkaz musí spĺňať nasledovné podmienky:
      > vezmi prazdne sedadla
      Tento predmet sa nedá zobrať.
      ```
+
+   * Ak sa v batohu už nachádza min. `5` predmetov, vypíšte na obrazovku správu:
+
+   ```
+   > vezmi bic
+   Batoh je plný.
+   ```
 
    * Ak hráč úspešne vloží predmet do batohu, tak vypíšte na obrazovku správu:
 

@@ -14,7 +14,9 @@ context.current_room = Room(
     name='lietadlo',
     description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej duše. (Celkom zaujímavá situácia, že áno?)',
     items=['bič', 'prázdne sedadlá'],
+    exits=['dolu']
 )
+context.current_room.show()
 
 # game loop
 while context.game_state == states.PLAYING:
