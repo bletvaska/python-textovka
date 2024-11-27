@@ -8,9 +8,11 @@ context.current_room = Room(
         description='Prebudil si sa v malom dvojmotorovom lietadle, plachtiacom nad egyptskou púšťou. Je tu nádherný '
                     'kľud, pretože motory stoja a na palube nie je okrem teba živá duša. (Celkom zaujímavá situácia, '
                     'že?) ',
-        items=[Whip(), EmptySeats()]
-    ),
+        items=[Whip(), EmptySeats()],
+        exits=['dolu'],
+)
 ```
+
 
 ## Aktualizácia metódy `.show()`
 

@@ -7,8 +7,8 @@ V module `empty_seats.py` vytvorte predmet prázdne sedadlá, o ktorom bude plat
 * tento predmet sa bude dať preskúmať
 
 ```python
-from items.features import EXAMINABLE
-from items import Item
+from .features import EXAMINABLE
+from .item import Item
 
 
 class EmptySeats(Item):
