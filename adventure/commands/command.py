@@ -12,7 +12,7 @@ class Command(BaseModel):
     """
     name: str
     description: str
-    param: str
+    param: str = None
 
     def exec(self, context: "GameContext"):
         raise NotImplementedError(f'This method was not yet implemented for command {self.name}.')

@@ -6,4 +6,4 @@ class Examine(Command):
     description: str = 'zobrazí informácie o zvolenom predmete'
 
     def exec(self, context):
-        print('skumam zvoleny predmet')
+        print(f'skumam predmet {self.param}')
