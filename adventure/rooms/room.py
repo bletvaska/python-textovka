@@ -27,5 +27,3 @@ class Room(BaseModel):
             print('Možné východy z miestnosti:')
             for exit in self.exits:
                 print(f'* [bold yellow]{exit}[/bold yellow]')
-
-

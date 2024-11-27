@@ -38,6 +38,11 @@ Ak z miestnosti nevedú žiadne východy, tak vypíšte na obrazovku:
 Z miestnosti nevedú žiadne východy.
 ```
 
+Ak používate modul rich na farebný výpis, tak:
+
+* predmety vypíšte fialovou farbou (`magenta`)
+* východy z miestnosti vypíšte žltou farbou (`yellow`)
+
 
 ## Riešenie
 
