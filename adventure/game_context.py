@@ -6,12 +6,13 @@ from commands.commands import Commands
 from commands.inventory import Inventory
 from commands.look_around import LookAround
 from commands.quit import Quit
+from items.item import Item
 from rooms.room import Room
 from states import PLAYING
 
 
 class GameContext(BaseModel):
-    backpack: list = []
+    backpack: list[Item] = []
     commands: list[Command] = [
         About(),
         Commands(),

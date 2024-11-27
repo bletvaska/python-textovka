@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from rich import print
 
+from items.item import Item
+
 
 class Room(BaseModel):
     """
@@ -9,7 +11,7 @@ class Room(BaseModel):
     name: str
     description: str
     exits: list = []
-    items: list = []
+    items: list[Item] = []
 
     def show(self):
         print(self.description)
@@ -19,7 +21,7 @@ class Room(BaseModel):
         else:
             print('Vidíš:')
             for item in self.items:
-                print(f'* [bold magenta]{item}[/bold magenta]')
+                print(f'* [bold magenta]{item.name}[/bold magenta]')
 
         if len(self.exits) == 0:
             print('Z miestnosti nevedú žiadne východy.')
