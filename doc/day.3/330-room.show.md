@@ -51,18 +51,28 @@ from pydantic import BaseModel
 
 
 class Room(BaseModel):
-    # fields
+    """
+    Game room representation.
+    """
     name: str
     description: str
-    items: list = []
     exits: list = []
+    items: list = []
 
     def show(self):
-        """
-        Shows the current room.
-        """
         print(self.description)
-        print('Vidíš:')
-        for item in self.items:
-            print(item.name)
+
+        if len(self.items) == 0:
+            print('Nevidíš tu nič zvláštne.')
+        else:
+            print('Vidíš:')
+            for item in self.items:
+                print(f'* [bold magenta]{item}[/bold magenta]')
+
+        if len(self.exits) == 0:
+            print('Z miestnosti nevedú žiadne východy.')
+        else:
+            print('Možné východy z miestnosti:')
+            for exit in self.exits:
+                print(f'* [bold yellow]{exit}[/bold yellow]')
 ```
