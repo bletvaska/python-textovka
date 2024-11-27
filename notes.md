@@ -16,7 +16,7 @@
 
 ## Predmet
 
-* vlastnosti (viem zobrat, viem preniest, da sa pouzit, ...)
+* vlastnosti (viem preniest, da sa preskumat, da sa pouzit, ...)
 * opis
 * meno
 
@@ -28,13 +28,15 @@
 * pouzitie/spustenie
 * [aliasy]
 
+```python
 class Command:
    name: str
    description: str
    aliases: list
 
-   def exec():
+   def exec(self):
       pass
+```
 
 
 
@@ -46,4 +48,3 @@ class Command:
 * zoznam vsetkych miestnosti
 * historia prikazov
 * stav hry
-
