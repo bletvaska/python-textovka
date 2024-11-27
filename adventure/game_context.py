@@ -4,6 +4,7 @@ from commands.about import About
 from commands.command import Command
 from commands.commands import Commands
 from commands.inventory import Inventory
+from commands.look_around import LookAround
 from commands.quit import Quit
 from rooms.room import Room
 from states import PLAYING
@@ -15,6 +16,7 @@ class GameContext(BaseModel):
         About(),
         Commands(),
         Inventory(),
+        LookAround(),
         Quit(),
     ]
     game_state: str = PLAYING
