@@ -1,2 +1,7 @@
-# Čo je to výnimka?
+# O výnimkách
 
+
+## Čo je to výnimka?
+
+
+## Čo je to Traceback/Stacktrace?
