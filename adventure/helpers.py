@@ -24,7 +24,8 @@ def outro():
 
 def parse_line(line: str, commands: list[Command]) -> Command | None:
     for command in commands:
-        if line == command.name:
+        if line.startswith(command.name):
+            command.param = line.split(command.name)[1].lstrip()
             return command
 
     # return None
