@@ -13,6 +13,10 @@ class Room(BaseModel):
     exits: list = []
     items: list[Item] = []
 
+    def act(self, context):
+        print('[bold red]act()[/bold red]')
+        pass
+
     def show(self):
         print(self.description)
 
