@@ -1,4 +1,5 @@
 from helpers import get_item_by_name
+from items.features import EXAMINABLE
 from .command import Command
 
 
@@ -22,3 +23,7 @@ class Examine(Command):
 
         # when found
         print(item.description)
+
+        if EXAMINABLE in item.features:
+            input('Pozrel si sa trošku bližšie a...')
+            item.examine(context)
