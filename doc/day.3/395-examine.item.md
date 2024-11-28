@@ -40,13 +40,14 @@ class Examine(Command):
     name: str = 'preskumaj'
     description: str = 'zobrazí informácie o zvolenom predmete'
 
-    def exec(self, context, param):
-        if param == '':
+    def exec(self, context):
+        item_name = self.param
+        if item_name == '':
             print('Neviem, čo chceš preskúmať.')
             return
 
         for item in context.current_room.items:
-            if param == item.name:
+            if item_name == item.name:
                 print(item.description)
                 break
         else:

@@ -64,13 +64,15 @@ class Take(Command):
     description: str = 'vezme predmet z miestnosti a vloží ho do batohu'
 
     def exec(self, context):
+        item_name = self.param
+
         # if no item was entered
-        if self.param == '':
+        if item_name == '':
             print('Neviem, čo chceš zobrať.')
             return
 
         # search for item
-        item = get_item_by_name(self.param, context.current_room.items)
+        item = get_item_by_name(item_name, context.current_room.items)
 
         # not found
         if item is None:

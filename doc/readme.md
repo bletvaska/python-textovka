@@ -50,8 +50,8 @@
 * [Command `examine`](day.3/325-examine.and.parser.refactoring)
 * Extended Item Examination
 * Item Parachute
-* [Command `take`](day.4/410-take.item)
-* [Command `drop`](day.4/420-drop.item)
+* [Command `take`](day.4/420-take.item)
+* [Command `drop`](day.4/430-drop.item)
 
 
 ## Day 4: The World

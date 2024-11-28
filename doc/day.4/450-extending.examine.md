@@ -38,8 +38,7 @@ Implementácia metódy `examine()` v predmete `prazdne sedadla` teda môže vyze
 ```python
 def examine(self, context):
    # add parachute to current room
-   room = get_current_room(context)
-   room.items.append(Parachute())
+   context.current_room.items.append(Parachute())
 
    # remove EXAMINABLE from list of features
    self.features.remove(EXAMINABLE)
