@@ -7,7 +7,6 @@ from items.empty_seats import EmptySeats
 from items.whip import Whip
 from rooms.room import Room
 
-intro()
 
 # game initialization
 context = GameContext()
@@ -20,6 +19,8 @@ context.current_room = Room(
     ],
     exits=['dolu']
 )
+
+intro()
 context.current_room.show()
 
 # game loop
