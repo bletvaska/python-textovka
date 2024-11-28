@@ -2,26 +2,12 @@ from rich import print
 
 import states
 from game_context import GameContext
-from helpers import intro, outro, parse_line
-from items.empty_seats import EmptySeats
-from items.whip import Whip
-from rooms.directions import DOWN
-from rooms.plane import Plane
+from helpers import intro, outro, parse_line, get_room_by_name
 
 
 # game initialization
 context = GameContext()
-context.current_room = Plane(
-    name='lietadlo',
-    description='Prebudil si sa v malom dvojmotorovom lietadle plachtiacom nad egyptskou púšťou. Je tu nádherný kľud, pretože motory sú vypnuté a na palube nie je okrem teba živej duše. (Celkom zaujímavá situácia, že áno?)',
-    items=[
-        Whip(),
-        EmptySeats()
-    ],
-    exits={
-        DOWN: 'vo vzduchu',
-    }
-)
+context.current_room = get_room_by_name('v lietadle', context.world)
 
 intro()
 context.current_room.show()

@@ -11,6 +11,7 @@ from commands.quit import Quit
 from commands.take import Take
 from items.item import Item
 from rooms.room import Room
+from rooms.world import get_world
 from states import PLAYING
 
 
@@ -28,3 +29,4 @@ class GameContext(BaseModel):
     ]
     game_state: str = PLAYING
     current_room: Room = None
+    world: list[Room] = get_world()
