@@ -1,4 +1,5 @@
 from commands.command import Command
+from items.item import Item
 
 
 def intro():
@@ -27,5 +28,13 @@ def parse_line(line: str, commands: list[Command]) -> Command | None:
         if line.startswith(command.name):
             command.param = line.split(command.name)[1].lstrip()
             return command
+
+    # return None
+
+
+def get_item_by_name(name: str, items: list[Item]) -> Item | None:
+    for item in items:
+        if item.name == name:
+            return item
 
     # return None
