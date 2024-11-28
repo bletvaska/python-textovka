@@ -38,7 +38,7 @@ V hre budeme používať tieto farby:
 * smer z miestnosti - `yellow`
 * názov miestnosti - `green`
 * názov príkazu - `cyan`
-
+* chybové hlášky - `red`
 
 
 ## Problém v prostredí PyCharm

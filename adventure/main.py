@@ -21,7 +21,7 @@ while context.game_state == states.PLAYING:
 
     cmd = parse_line(line, context.commands)
     if cmd is None:
-        print('Taký príkaz nepoznám.')
+        print('[bold red]Taký príkaz nepoznám.[/bold red]')
     else:
         cmd.exec(context)
         context.current_room.act(context)

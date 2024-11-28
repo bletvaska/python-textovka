@@ -85,6 +85,8 @@ def exec(self, backapck: list[str], commands: list[Command]):
 
 ### Použitie parsera pomocou `if-else`
 
+V prípade, že daný príkaz parser nerozpoznal, vypíšte na obrazovku červenou farbu hlášku "`Taký príkaz nepoznám.`"
+
 ```python
 command = parse_line(line, commands)
 if command is None:

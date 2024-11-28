@@ -12,7 +12,7 @@ Príkaz bude mať tieto vlastnosti:
 
 Príkaz musí spĺňať nasledovné podmienky:
 
-* V prípade, že sa daným smerom nedá ísť, vypíšte na obrazovku správu:
+* V prípade, že sa daným smerom nedá ísť, vypíšte na obrazovku červenou farbou správu:
 
    ```
    Tam sa nedá ísť.
