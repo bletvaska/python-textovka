@@ -1,6 +1,9 @@
+from typing import TYPE_CHECKING
 from pydantic import BaseModel
 from rich import print
 
+if TYPE_CHECKING:
+    from game_context import GameContext
 from items.item import Item
 
 
@@ -13,8 +16,7 @@ class Room(BaseModel):
     exits: dict = {}
     items: list[Item] = []
 
-    def act(self, context):
-        print('[bold red]act()[/bold red]')
+    def act(self, context: 'GameContext'):
         pass
 
     def show(self):
