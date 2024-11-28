@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from commands.about import About
 from commands.command import Command
 from commands.commands import Commands
+from commands.drop import Drop
 from commands.examine import Examine
 from commands.inventory import Inventory
 from commands.look_around import LookAround
@@ -18,6 +19,7 @@ class GameContext(BaseModel):
     commands: list[Command] = [
         About(),
         Commands(),
+        Drop(),
         Examine(),
         Inventory(),
         LookAround(),
