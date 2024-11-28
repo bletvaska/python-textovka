@@ -4,6 +4,20 @@ Vytvorili sme funkciu `search_item_by_name()`, ktorá nám uľahčí tvorbu funk
 
 
 ```python
-def exec(self, context):
+ def exec(self, context):
+     item_name = self.param
 
+     # if not item was entered
+     if item_name == '':
+         print('Neviem, čo chceš preskúmať.')
+         return
+
+     # if not found
+     item = get_item_by_name(item_name, context.current_room.items)
+     if item is None:
+         print('Taký predmet tu nikde nevidím.')
+         return
+
+     # when found
+     print(item.description)
 ```

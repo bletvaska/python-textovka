@@ -52,14 +52,16 @@ Príkaz musí spĺňať nasledovné podmienky:
 ## Riešenie
 
 ```python
-from adventure.helpers import get_item_by_name
+from rich import print
+
+from helpers import get_item_by_name
 from items.features import MOVABLE
 from .command import Command
 
 
 class Take(Command):
-    name = 'vezmi'
-    description = 'vezme predmet z miestnosti a vloží ho do batohu'
+    name: str = 'vezmi'
+    description: str = 'vezme predmet z miestnosti a vloží ho do batohu'
 
     def exec(self, context):
         # if no item was entered
@@ -80,10 +82,15 @@ class Take(Command):
             print('Tento predmet sa nedá zobrať.')
             return
 
+        # is backpack full?
+        if len(context.backpack) >= 5:
+           print('Batoh je plný.')
+           return
+
         # take item
         context.current_room.items.remove(item)
         context.backpack.append(item)
 
         # render
-        print(f'Do batohu si vložil predmet {item.name}.')
+        print(f'Do batohu si vložil predmet [bold magenta]{item.name}[/bold magenta].')
 ```
