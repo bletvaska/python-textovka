@@ -15,7 +15,7 @@ class Examine(Command):
             return
 
         # if not found
-        item = get_item_by_name(item_name, context.current_room.items)
+        item = get_item_by_name(item_name, context.current_room.items + context.backpack)
         if item is None:
             print('Taký predmet tu nikde nevidím.')
             return
