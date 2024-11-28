@@ -1,0 +1,6 @@
+UP = 'hore'
+DOWN = 'dole'
+NORTH = 'sever'
+SOUTH = 'juh'
+EAST = 'východ'
+WEST = 'západ'

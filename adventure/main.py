@@ -5,6 +5,7 @@ from game_context import GameContext
 from helpers import intro, outro, parse_line
 from items.empty_seats import EmptySeats
 from items.whip import Whip
+from rooms.directions import DOWN, NORTH
 from rooms.plane import Plane
 
 
@@ -17,7 +18,9 @@ context.current_room = Plane(
         Whip(),
         EmptySeats()
     ],
-    exits=['dolu']
+    exits={
+        DOWN: 'vo vzduchu',
+    }
 )
 
 intro()
