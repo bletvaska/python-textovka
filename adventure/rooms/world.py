@@ -1,7 +1,6 @@
 from items.empty_seats import EmptySeats
 from items.whip import Whip
 from .directions import NORTH, SOUTH, EAST, WEST, UP, DOWN
-# from .free_fall import FreeFall
 from .plane import Plane
 from .room import Room
 
