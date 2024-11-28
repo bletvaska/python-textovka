@@ -1,8 +1,13 @@
-# Padák
+# Pokročilé preskúmanie predmetu
 
-Vytvorte predmet padák. O predmete plati, ze:
+Po preskúmaní prázdnych sedadiel spoza nich vypadne padák. Začneme teda tým, že vytvoríme padák, ktorý spoza nich
+vypadne a potom zabezpečíme, aby ten padák po preskúmaní naozaj vypadol.
 
-* trieda, v ktorej sa bude nachádzať, sa volá `Parachute`
+
+## Padák
+
+V triede `Parachute` v module `parachute.py` vytvorte predmet padák. O tomto predmete platí:
+
 * názov bude: `padak`
 * opis bude: `Obyčajný padák. Made in U.S.A. 1933`
 * zoznam vlastností: prenositeľný a použiteľný
@@ -12,11 +17,11 @@ Vytvorte predmet padák. O predmete plati, ze:
 
 ```python
 from items.item import Item
-from items.features import MOVABLE, EXAMINABLE
+from items.features import MOVABLE, USABLE
 
 
 class Parachute(Item):
    name: str = "padak"
    description: str = "Obyčajný padák. Made in U.S.A. 1933"
-   features: list[int] = [MOVABLE, EXAMINABLE]
+   features: list[int] = [MOVABLE, USABLE]
 ```
