@@ -42,4 +42,8 @@ def get_item_by_name(name: str, items: list[Item]) -> Item | None:
 
 
 def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
-    pass
+    for room in rooms:
+        if room.name == name:
+            return room
+
+    # return None
