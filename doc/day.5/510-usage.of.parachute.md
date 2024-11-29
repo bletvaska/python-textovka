@@ -13,26 +13,28 @@ Použitie padáku znamená:
      ```
      Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...
      ```
+3. po použití sa padák stane automaticky nepoužiteľný
+
 
 ## Použitie padáku
 
 ```python
 class Parachute(Item):
-   name = 'padak'
-   description = 'Made in USA 1939'
-   features = [MOVABLE, USABLE]
+   name: str = 'padak'
+   description: str = 'Made in USA 1939'
+   features: list[int] = [MOVABLE, USABLE]
 
-   def use(self, context):
-      # if not in correct room
-      if context.current_room.name != 'voľný pád':
-         print('Podľa teba som zrejme blbec, ale naozaj nechápem, k čomu by to v súčasnej dobe bolo dobré.')
-         return
+   def use(self, context) -> bool:
+       # if not in correct room
+       if context.current_room.name != 'voľný pád':
+           return False
 
-      # action
-      room = get_room_by_name('púšť', context.world)
-      context.current_room = room
+       # action
+       room = get_room_by_name('púšť', context.world)
+       context.current_room = room
 
-      # render
-      print('[bold green]Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...[/bold green]')
-      room.show()
+       # render
+       print('[bold green]Nad hlavou sa ti roztvoril padák a po chvíli si šťastne pristál...[/bold green]')
+       room.show()
+       return True
 ```

@@ -73,6 +73,6 @@
 
 ## Day 5
 
-* [Command `use` Item](day.5/550-use.item.md)
-* [Usage of Parachute](day.5/560-usage.of.parachute.md)
+* [Command `use` Item](day.5/500-use.item)
+* [Usage of Parachute](day.5/510-usage.of.parachute)
 * [Correct Main Module](day.5/599-correct.main.md)
