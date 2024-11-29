@@ -9,3 +9,6 @@ PLANE_CRASH = 'plane crash'
 
 # when indy dies without parachute
 DEATH_BY_FREE_FALL = 'death by free fall'
+
+# game was completed
+VICTORY = 'victory'

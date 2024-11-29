@@ -16,19 +16,16 @@ Začneme teda vytvorením mosadzného kľúčika. Ten bude mať tieto vlastnosti
 Jeho základná implementácia (bez použitia) sa bude nachádzať v balíčku `items` v module `key.py` a vyzerať bude takto:
 
 ```python
-from dataclasses import dataclass, field
-
-from adventure.items import MOVABLE, USABLE
-from adventure.items.item import Item
+from items.features import MOVABLE, USABLE
+from items.item import Item
 
 
-@dataclass
 class Key(Item):
     name: str = 'kluc'
     description: str = 'Veľký mosadzný kľúč, zrejme od nejakej truhly.'
-    features: list = field(default_factory=lambda: [MOVABLE, USABLE])
+    features: list[int] = [MOVABLE, USABLE]
 
-    def use(self, context):
+    def use(self, context) -> bool:
         return False
 ```
 
@@ -47,30 +44,25 @@ Uniformu vytvoríme v balíčku `items` v module `nazi_uniform.py`. Základná i
 vyzerať takto:
 
 ```python
-from dataclasses import dataclass, field
-
-from adventure.helpers import get_current_room
-from adventure.items import MOVABLE, USABLE, EXAMINABLE
-from adventure.items.item import Item
-from adventure.items import Key
+from items.features import MOVABLE, USABLE, EXAMINABLE
+from items.item import Item
+from items import Key
 
 
-@dataclass
 class NaziUniform(Item):
    name: str = 'nemecka uniforma'
    description: str = 'Zachovalá dôstojnícka uniforma.'
-   features: list = field(default_factory=lambda: [MOVABLE, USABLE, EXAMINABLE])
+   features: list[int] = [MOVABLE, USABLE, EXAMINABLE]
 
    def examine(self, context):
       # action
-      room = get_current_room(context)
-      room.items.append(Key())
+      context.current_room.items.append(Key())
       self.features.remove(EXAMINABLE)
 
       # render
       print('V jednom jej vrecku si objavil kľúč!')
 
-   def use(self, context):
+   def use(self, context) -> bool:
       return False
 ```
 
@@ -90,24 +82,19 @@ Implementácia palmy sa bude nachádzať v balíčku `items` v module `coconut_p
 vyzerať nasledovne:
 
 ```python
-from dataclasses import dataclass, field
-
-from adventure.helpers import get_current_room
-from adventure.items import EXAMINABLE
-from adventure.items.item import Item
-from adventure.items import NaziUniform
+from items.features import EXAMINABLE
+from items.item import Item
+from items import NaziUniform
 
 
-@dataclass
 class CoconutPalmTree(Item):
    name: str = 'kokosova palma'
    description: str = 'Zdá sa, že na jej plody nedosiahneš.'
-   features: list = field(default_factory=lambda: [EXAMINABLE])
+   features: list[int] = [EXAMINABLE]
 
    def examine(self, context):
       # action
-      room = get_current_room(context)
-      room.items.append(NaziUniform())
+      context.current_room.items.append(NaziUniform())
       self.features.remove(EXAMINABLE)
 
       # render
