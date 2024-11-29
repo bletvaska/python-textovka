@@ -1,5 +1,5 @@
 UP = 'hore'
-DOWN = 'dole'
+DOWN = 'dolu'
 NORTH = 'sever'
 SOUTH = 'juh'
 EAST = 'východ'
