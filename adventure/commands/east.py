@@ -14,6 +14,8 @@ class East(Command):
             print('[bold red]Tam sa nedá ísť.[/bold red]')
             return
 
+        context.history.append(self.name)
+
         name = context.current_room.exits[EAST]
         context.current_room = get_room_by_name(name, context.world)
         context.current_room.show()

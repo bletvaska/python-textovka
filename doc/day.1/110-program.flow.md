@@ -229,5 +229,3 @@ Vytvorenie hernej slučky a prvých príkazov.
     ```
 
    **Poznámka:** Kombinácia `.rstrip().lstrip()` sa dá nahradiť volaním jednej metódy `.strip()`.
-
-3. Rovnaký spôsob použite aj na ošetrenie vstupu v prípade potvrdenia ukončenia programu.

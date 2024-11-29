@@ -1,3 +1,5 @@
+from rich import print
+
 from commands.command import Command
 from items.item import Item
 from rooms.room import Room
@@ -47,3 +49,13 @@ def get_room_by_name(name: str, rooms: list[Room]) -> Room | None:
             return room
 
     # return None
+
+
+def ask_yes_no(question: str) -> bool:
+    answer = input(question).lower()
+
+    while answer not in ['a', 'ano', 'y', 'yes', 'n', 'no', 'nie']:
+        print('[bold red]Nesprávny vstup. Zadaj prosím a/n[/bold red] ')
+        answer = input(question).lower()
+
+    return answer in ['a', 'ano', 'y', 'yes']

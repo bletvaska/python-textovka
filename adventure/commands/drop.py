@@ -20,6 +20,8 @@ class Drop(Command):
             print('Taký predmet pri sebe nemáš.')
             return
 
+        context.history.append(f'{self.name} {item_name}')
+
         context.backpack.remove(item)
         context.current_room.items.append(item)
         print(f'Do miestnosti si položil predmet [bold magenta]{item.name}[/bold magenta].')

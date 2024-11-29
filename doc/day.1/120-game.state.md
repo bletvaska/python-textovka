@@ -51,6 +51,9 @@ STATE_PLAYING = 'playing'
 
 # when QUIT command was entered
 STATE_QUIT = 'quit'
+
+# whether the game has been successfully completed
+STATE_VICTORY = 'victory'
 ```
 
 Následne už len upravíme podmienku v cykle hlavnej slučky:
@@ -77,6 +80,9 @@ PLAYING = 'playing'
 
 # when QUIT command was entered
 QUIT = 'quit'
+
+# whether the game has been successfully completed
+VICTORY = 'victory'
 ```
 
 A adekvátne aktualizujeme aj kód:
@@ -119,7 +125,7 @@ if __name__ == '__main__':
             print('Taký príkaz nepoznám.')
 
     # game credits
-    print('(c)2022 by mirek mocný programátor')
+    print('(c)2024 by mirek mocný programátor')
 
 ```
 
@@ -131,6 +137,7 @@ from enum import Enum
 class GameState(Enum):
     PLAYING = 1
     END = 2
+    VICTORY = 3
 ```
 
 

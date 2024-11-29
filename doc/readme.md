@@ -75,4 +75,4 @@
 
 * [Command `use` Item](day.5/500-use.item)
 * [Usage of Parachute](day.5/510-usage.of.parachute)
-* [Correct Main Module](day.5/599-correct.main.md)
+* [Correct Main Module](day.5/580-correct.main)

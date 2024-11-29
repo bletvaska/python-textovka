@@ -1,5 +1,6 @@
 from helpers import get_item_by_name
 from items.features import EXAMINABLE
+from states import PLAYING
 from .command import Command
 
 
@@ -22,8 +23,11 @@ class Examine(Command):
             return
 
         # when found
+        context.history.append(f'{self.name} {item_name}')
+
         print(item.description)
 
         if EXAMINABLE in item.features:
-            input('Pozrel si sa trošku bližšie a...')
+            if context.game_state == PLAYING:
+                input('Pozrel si sa trošku bližšie a...')
             item.examine(context)

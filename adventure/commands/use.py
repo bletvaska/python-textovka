@@ -28,3 +28,5 @@ class Use(Command):
         if item.use(context) is False:
             print('[bold red]Podľa teba som zrejme blbec, ale naozaj nechápem, načo by to v tejto chvíli bolo dobré.[/bold red]')
             return
+
+        context.history.append(f'{self.name} {item_name}')

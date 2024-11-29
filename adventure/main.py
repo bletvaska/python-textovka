@@ -7,7 +7,8 @@ from helpers import intro, outro, parse_line, get_room_by_name
 
 # game initialization
 context = GameContext()
-context.current_room = get_room_by_name('lietadlo', context.world)
+context.reset()
+# context.current_room = get_room_by_name('lietadlo', context.world)
 
 intro()
 context.current_room.show()

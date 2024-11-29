@@ -12,3 +12,6 @@ DEATH_BY_FREE_FALL = 'death by free fall'
 
 # game was completed
 VICTORY = 'victory'
+
+# when game is loading state
+LOADING = 'loading'
