@@ -11,7 +11,7 @@ class Item(BaseModel):
     description: str
     features: list[int] = []
 
-    def use(self, context: 'GameContext'):
+    def use(self, context: 'GameContext') -> bool:
         raise NotImplementedError('Usage of item was not yet implemented.')
 
     def examine(self, context: 'GameContext'):

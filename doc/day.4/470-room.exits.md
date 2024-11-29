@@ -17,6 +17,16 @@ DOWN = -180
 
 ```
 
+## Úprava triedy `Room`
+
+```python
+class Room(BaseModel):
+    name: str
+    description: str
+    exits: dict[str, str] = {}
+    items: list[Item] = []
+```
+
 
 ## Rozšírenie metódy `.show()`
 

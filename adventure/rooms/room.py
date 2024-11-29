@@ -13,7 +13,7 @@ class Room(BaseModel):
     """
     name: str
     description: str
-    exits: dict = {}
+    exits: dict[str, str] = {}
     items: list[Item] = []
 
     def act(self, context: 'GameContext'):
