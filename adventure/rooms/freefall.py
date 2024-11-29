@@ -1,0 +1,16 @@
+from rich import print
+
+import states
+from rooms.room import Room
+
+
+class FreeFall(Room):
+    steps: int = 2
+
+    def act(self, context):
+        self.steps = self.steps - 1
+
+        if self.steps == 0:
+            print(
+                '[bold red]Stal si sa zakladateľom športového odvetvia, ktoré vojde do histórie ako skok hlboký.[/bold red]')
+            context.game_state = states.DEATH_BY_FREE_FALL
