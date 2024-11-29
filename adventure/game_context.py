@@ -15,6 +15,7 @@ from commands.south import South
 from commands.take import Take
 from commands.up import Up
 from commands.west import West
+from commands.use import Use
 from items.item import Item
 from rooms.room import Room
 from rooms.world import get_world
@@ -37,6 +38,7 @@ class GameContext(BaseModel):
         South(),
         Take(),
         Up(),
+        Use(),
         West(),
     ]
     game_state: str = PLAYING
