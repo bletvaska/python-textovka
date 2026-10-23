@@ -35,7 +35,7 @@ def test_when_created_then_expect_specific_description(cmd):
 
 def test_when_invoked_without_parameter_then_specific_message_should_appear(cmd, game_context, capsys):
     # act
-    cmd.exec(backpack)
+    cmd.exec(game_context)
     captured = capsys.readouterr()
 
     # assert
@@ -64,7 +64,7 @@ def test_when_invoked_without_the_name_of_command_then_command_description_shoul
     cmd.param = command.name
 
     # act
-    cmd.exec(backpack)
+    cmd.exec(game_context)
     captured = capsys.readouterr()
 
     # assert

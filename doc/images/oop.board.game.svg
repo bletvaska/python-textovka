@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620" font-family="Noto Sans, DejaVu Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#5d4a2a"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#306998"/>
+    </marker>
+  </defs>
+
+  <!-- background and table -->
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="40" y="34" font-size="22" font-weight="bold" fill="#263238">Textovka ako stolová hra</text>
+  <rect x="20" y="50" width="920" height="555" rx="18" fill="#efe3c8" stroke="#c8b48a" stroke-width="3"/>
+  <text x="920" y="595" font-size="12" fill="#8a7550" text-anchor="end" font-style="italic">herný stôl</text>
+
+  <!-- ===== world: room cards ===== -->
+  <text x="45" y="80" font-size="13" font-weight="bold" fill="#5d4a2a">SVET – karty miestností</text>
+
+  <!-- room: lietadlo -->
+  <g>
+    <rect x="45" y="92" width="190" height="160" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <path d="M45,122 V102 a10,10 0 0 1 10,-10 H225 a10,10 0 0 1 10,10 V122 Z" fill="#2e7d32"/>
+    <text x="57" y="113" font-size="15" font-weight="bold" fill="#ffffff">lietadlo</text>
+    <text x="55" y="142" font-size="11" fill="#263238"><tspan font-weight="bold">opis:</tspan> Prebudil si sa v malom</text>
+    <text x="55" y="157" font-size="11" fill="#263238">lietadle nad púšťou…</text>
+    <text x="55" y="178" font-size="11" fill="#263238"><tspan font-weight="bold">východy:</tspan> dolu</text>
+    <text x="55" y="199" font-size="11" fill="#263238" font-weight="bold">predmety:</text>
+    <rect x="55" y="208" width="40" height="30" rx="5" fill="#fce4ec" stroke="#ad1457" stroke-width="1.5"/>
+    <text x="75" y="227" font-size="11" fill="#ad1457" text-anchor="middle" font-weight="bold">bič</text>
+    <rect x="102" y="208" width="112" height="30" rx="5" fill="#fce4ec" stroke="#ad1457" stroke-width="1.5"/>
+    <text x="158" y="227" font-size="11" fill="#ad1457" text-anchor="middle" font-weight="bold">prázdne sedadlá</text>
+    <!-- pawn -->
+    <circle cx="210" cy="148" r="9" fill="#e53935" stroke="#7f1d1d" stroke-width="1.5"/>
+    <path d="M197,182 Q199,160 210,156 Q221,160 223,182 Z" fill="#e53935" stroke="#7f1d1d" stroke-width="1.5"/>
+  </g>
+
+  <!-- arrow lietadlo -> volny pad -->
+  <line x1="238" y1="172" x2="281" y2="172" stroke="#5d4a2a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="259" y="164" font-size="11" fill="#5d4a2a" text-anchor="middle">dolu</text>
+
+  <!-- room: volny pad -->
+  <g>
+    <rect x="285" y="92" width="190" height="160" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <path d="M285,122 V102 a10,10 0 0 1 10,-10 H465 a10,10 0 0 1 10,10 V122 Z" fill="#2e7d32"/>
+    <text x="297" y="113" font-size="15" font-weight="bold" fill="#ffffff">voľný pád</text>
+    <text x="295" y="142" font-size="11" fill="#263238"><tspan font-weight="bold">opis:</tspan> Vznášaš sa medzi</text>
+    <text x="295" y="157" font-size="11" fill="#263238">oblakmi, zem sa blíži…</text>
+    <text x="295" y="178" font-size="11" fill="#263238"><tspan font-weight="bold">východy:</tspan> žiadne</text>
+    <text x="295" y="199" font-size="11" fill="#263238" font-weight="bold">predmety:</text>
+    <text x="295" y="218" font-size="11" fill="#78909c" font-style="italic">nič</text>
+  </g>
+
+  <!-- arrow volny pad -> pust -->
+  <line x1="478" y1="172" x2="521" y2="172" stroke="#5d4a2a" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="499" y="164" font-size="11" fill="#5d4a2a" text-anchor="middle">padák</text>
+
+  <!-- room: pust -->
+  <g>
+    <rect x="525" y="92" width="190" height="160" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <path d="M525,122 V102 a10,10 0 0 1 10,-10 H705 a10,10 0 0 1 10,10 V122 Z" fill="#2e7d32"/>
+    <text x="537" y="113" font-size="15" font-weight="bold" fill="#ffffff">púšť</text>
+    <text x="535" y="142" font-size="11" fill="#263238"><tspan font-weight="bold">opis:</tspan> Si na púšti, ktorá</text>
+    <text x="535" y="157" font-size="11" fill="#263238">je naozaj pustá…</text>
+    <text x="535" y="178" font-size="11" fill="#263238"><tspan font-weight="bold">východy:</tspan> sever, juh, …</text>
+    <text x="535" y="199" font-size="11" fill="#263238" font-weight="bold">predmety:</text>
+    <text x="535" y="218" font-size="11" fill="#78909c" font-style="italic">nič</text>
+  </g>
+
+  <!-- pawn legend -->
+  <circle cx="52" cy="272" r="6" fill="#e53935" stroke="#7f1d1d" stroke-width="1"/>
+  <text x="64" y="276" font-size="12" fill="#5d4a2a">figúrka ukazuje, kde sa práve nachádzaš</text>
+
+  <!-- ===== backpack ===== -->
+  <text x="760" y="80" font-size="13" font-weight="bold" fill="#5d4a2a">BATOH</text>
+  <rect x="772" y="100" width="130" height="85" rx="8" fill="#f8bbd0" stroke="#ad1457" stroke-width="1.5"/>
+  <rect x="766" y="110" width="130" height="85" rx="8" fill="#f8bbd0" stroke="#ad1457" stroke-width="1.5"/>
+  <g>
+    <rect x="760" y="120" width="130" height="85" rx="8" fill="#fce4ec" stroke="#ad1457" stroke-width="2"/>
+    <path d="M760,146 V128 a8,8 0 0 1 8,-8 H882 a8,8 0 0 1 8,8 V146 Z" fill="#ad1457"/>
+    <text x="772" y="139" font-size="13" font-weight="bold" fill="#ffffff">padák</text>
+    <text x="772" y="166" font-size="11" fill="#263238">Obyčajný padák.</text>
+    <text x="772" y="182" font-size="11" fill="#263238">Made in U.S.A. 1933</text>
+  </g>
+  <text x="760" y="226" font-size="11" fill="#5d4a2a">kôpka kariet predmetov,</text>
+  <text x="760" y="241" font-size="11" fill="#5d4a2a">ktoré nosíš so sebou</text>
+
+  <!-- ===== roles ===== -->
+  <line x1="40" y1="292" x2="920" y2="292" stroke="#c8b48a" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- player -->
+  <circle cx="70" cy="322" r="14" fill="#455a64"/>
+  <path d="M46,362 Q48,338 70,338 Q92,338 94,362 Z" fill="#455a64"/>
+  <text x="70" y="382" font-size="13" font-weight="bold" fill="#263238" text-anchor="middle">hráč</text>
+  <text x="70" y="397" font-size="11" fill="#5d4a2a" text-anchor="middle">človek</text>
+  <!-- player bubble -->
+  <path d="M110,306 H290 a10,10 0 0 1 10,10 V340 a10,10 0 0 1 -10,10 H120 a10,10 0 0 1 -10,-10 V334 L96,328 L110,322 V316 a0,0 0 0 1 0,0 Z" fill="#ffffff" stroke="#455a64" stroke-width="1.5"/>
+  <text x="124" y="334" font-size="16" font-family="DejaVu Sans Mono, Consolas, monospace" fill="#263238">&gt; vezmi bič</text>
+
+  <!-- arrow player -> python -->
+  <line x1="306" y1="328" x2="402" y2="328" stroke="#306998" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <!-- python game master -->
+  <rect x="406" y="306" width="96" height="46" rx="10" fill="#306998"/>
+  <text x="454" y="335" font-size="15" font-weight="bold" fill="#ffd43b" text-anchor="middle">Python</text>
+  <text x="454" y="370" font-size="13" font-weight="bold" fill="#263238" text-anchor="middle">pán hry</text>
+  <text x="454" y="385" font-size="11" fill="#5d4a2a" text-anchor="middle">herná slučka</text>
+  <!-- python bubble -->
+  <path d="M530,302 H905 a10,10 0 0 1 10,10 V346 a10,10 0 0 1 -10,10 H540 a10,10 0 0 1 -10,-10 V334 L514,328 L530,322 V312 a10,10 0 0 1 0,0 Z" fill="#ffffff" stroke="#306998" stroke-width="1.5"/>
+  <text x="544" y="324" font-size="13" fill="#263238">Nájdem v ruke kartu „vezmi“ a vykonám jej</text>
+  <text x="544" y="343" font-size="13" fill="#263238">efekt: kartu biča presuniem do batohu.</text>
+
+  <!-- arrow python -> vezmi card -->
+  <path d="M430,354 Q380,380 356,412" fill="none" stroke="#306998" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+
+  <!-- ===== hand of action cards ===== -->
+  <text x="45" y="470" font-size="13" font-weight="bold" fill="#5d4a2a">RUKA HRÁČA –</text>
+  <text x="45" y="486" font-size="13" font-weight="bold" fill="#5d4a2a">akčné karty</text>
+  <text x="45" y="502" font-size="13" font-weight="bold" fill="#5d4a2a">(príkazy)</text>
+
+  <g font-size="11" fill="#263238">
+    <!-- o hre -->
+    <rect x="170" y="452" width="100" height="130" rx="8" fill="#e0f7fa" stroke="#00838f" stroke-width="2"/>
+    <path d="M170,478 V460 a8,8 0 0 1 8,-8 H262 a8,8 0 0 1 8,8 V478 Z" fill="#00838f"/>
+    <text x="180" y="470" font-size="13" font-weight="bold" fill="#ffffff">o hre</text>
+    <text x="180" y="500" font-size="10" font-weight="bold" fill="#00838f">EFEKT</text>
+    <text x="180" y="518">ukáže info</text>
+    <text x="180" y="533">o hre</text>
+
+    <!-- vezmi (played, raised) -->
+    <rect x="282" y="420" width="100" height="130" rx="8" fill="#e0f7fa" stroke="#ff8f00" stroke-width="4"/>
+    <path d="M282,446 V428 a8,8 0 0 1 8,-8 H374 a8,8 0 0 1 8,8 V446 Z" fill="#00838f"/>
+    <text x="292" y="438" font-size="13" font-weight="bold" fill="#ffffff">vezmi</text>
+    <text x="292" y="468" font-size="10" font-weight="bold" fill="#00838f">EFEKT</text>
+    <text x="292" y="486">predmet</text>
+    <text x="292" y="501">z miestnosti</text>
+    <text x="292" y="516">→ do batohu</text>
+    <text x="332" y="568" font-size="11" font-weight="bold" fill="#e65100" text-anchor="middle">zahraná karta</text>
+
+    <!-- poloz -->
+    <rect x="394" y="452" width="100" height="130" rx="8" fill="#e0f7fa" stroke="#00838f" stroke-width="2"/>
+    <path d="M394,478 V460 a8,8 0 0 1 8,-8 H486 a8,8 0 0 1 8,8 V478 Z" fill="#00838f"/>
+    <text x="404" y="470" font-size="13" font-weight="bold" fill="#ffffff">polož</text>
+    <text x="404" y="500" font-size="10" font-weight="bold" fill="#00838f">EFEKT</text>
+    <text x="404" y="518">predmet</text>
+    <text x="404" y="533">z batohu</text>
+    <text x="404" y="548">→ do miestnosti</text>
+
+    <!-- preskumaj -->
+    <rect x="506" y="452" width="100" height="130" rx="8" fill="#e0f7fa" stroke="#00838f" stroke-width="2"/>
+    <path d="M506,478 V460 a8,8 0 0 1 8,-8 H598 a8,8 0 0 1 8,8 V478 Z" fill="#00838f"/>
+    <text x="516" y="470" font-size="13" font-weight="bold" fill="#ffffff">preskúmaj</text>
+    <text x="516" y="500" font-size="10" font-weight="bold" fill="#00838f">EFEKT</text>
+    <text x="516" y="518">prečíta opis</text>
+    <text x="516" y="533">predmetu</text>
+
+    <!-- dolu -->
+    <rect x="618" y="452" width="100" height="130" rx="8" fill="#e0f7fa" stroke="#00838f" stroke-width="2"/>
+    <path d="M618,478 V460 a8,8 0 0 1 8,-8 H710 a8,8 0 0 1 8,8 V478 Z" fill="#00838f"/>
+    <text x="628" y="470" font-size="13" font-weight="bold" fill="#ffffff">dolu</text>
+    <text x="628" y="500" font-size="10" font-weight="bold" fill="#00838f">EFEKT</text>
+    <text x="628" y="518">presunie</text>
+    <text x="628" y="533">figúrku na</text>
+    <text x="628" y="548">miestnosť dolu</text>
+
+    <!-- koniec -->
+    <rect x="730" y="452" width="100" height="130" rx="8" fill="#e0f7fa" stroke="#00838f" stroke-width="2"/>
+    <path d="M730,478 V460 a8,8 0 0 1 8,-8 H822 a8,8 0 0 1 8,8 V478 Z" fill="#00838f"/>
+    <text x="740" y="470" font-size="13" font-weight="bold" fill="#ffffff">koniec</text>
+    <text x="740" y="500" font-size="10" font-weight="bold" fill="#00838f">EFEKT</text>
+    <text x="740" y="518">opýta sa</text>
+    <text x="740" y="533">a ukončí hru</text>
+
+    <text x="848" y="522" font-size="18" fill="#5d4a2a">…</text>
+  </g>
+</svg>

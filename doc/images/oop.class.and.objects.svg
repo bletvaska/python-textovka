@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="Noto Sans, DejaVu Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1f4fa3"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="20" y="34" font-size="22" font-weight="bold" fill="#263238">Šablóna (trieda) a vyplnené karty (objekty)</text>
+
+  <!-- captions -->
+  <text x="165" y="66" font-size="13" font-weight="bold" fill="#546e7a" text-anchor="middle">TRIEDA = prázdna šablóna</text>
+  <path d="M420,62 h510" stroke="#546e7a" stroke-width="1.5"/>
+  <path d="M420,62 v8 M930,62 v8" stroke="#546e7a" stroke-width="1.5"/>
+  <rect x="560" y="54" width="230" height="18" fill="#ffffff"/>
+  <text x="675" y="67" font-size="13" font-weight="bold" fill="#546e7a" text-anchor="middle">OBJEKTY = vyplnené karty</text>
+
+  <!-- ===== template ===== -->
+  <g font-size="14" fill="#263238">
+    <rect x="40" y="80" width="250" height="270" rx="12" fill="#f5f5f5" stroke="#2e7d32" stroke-width="2.5" stroke-dasharray="7 4"/>
+    <path d="M40,120 V92 a12,12 0 0 1 12,-12 H278 a12,12 0 0 1 12,12 V120 Z" fill="#2e7d32"/>
+    <text x="54" y="106" font-size="16" font-weight="bold" fill="#ffffff" letter-spacing="1.5">MIESTNOSŤ</text>
+
+    <text x="54" y="148" font-weight="bold">názov:</text>
+    <line x1="104" y1="150" x2="276" y2="150" stroke="#90a4ae" stroke-width="1.5"/>
+    <text x="54" y="174" font-weight="bold">opis:</text>
+    <line x1="96" y1="176" x2="276" y2="176" stroke="#90a4ae" stroke-width="1.5"/>
+    <line x1="54" y1="196" x2="276" y2="196" stroke="#90a4ae" stroke-width="1.5"/>
+    <text x="54" y="222" font-weight="bold">východy:</text>
+    <line x1="124" y1="224" x2="276" y2="224" stroke="#90a4ae" stroke-width="1.5"/>
+    <text x="54" y="248" font-weight="bold">predmety:</text>
+    <line x1="130" y1="250" x2="276" y2="250" stroke="#90a4ae" stroke-width="1.5"/>
+
+    <rect x="52" y="265" width="226" height="72" rx="8" fill="#c8e6c9"/>
+    <text x="64" y="286" font-size="12" font-weight="bold" fill="#1b5e20">PRAVIDLO</text>
+    <text x="266" y="286" font-size="12" font-family="DejaVu Sans Mono, Consolas, monospace" fill="#6a1b9a" text-anchor="end">.show()</text>
+    <text x="64" y="307">Ukáž opis, predmety</text>
+    <text x="64" y="326">a východy.</text>
+  </g>
+  <text x="165" y="376" font-size="14" font-family="DejaVu Sans Mono, Consolas, monospace" fill="#263238" text-anchor="middle">class Room:</text>
+
+  <!-- arrow -->
+  <line x1="296" y1="215" x2="410" y2="215" stroke="#1f4fa3" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="353" y="203" font-size="12" fill="#1f4fa3" text-anchor="middle" font-style="italic">vyplň perom</text>
+  <text x="353" y="235" font-size="11" fill="#1f4fa3" text-anchor="middle" font-family="DejaVu Sans Mono, Consolas, monospace">__init__()</text>
+
+  <!-- ===== object: lietadlo ===== -->
+  <g font-size="14" fill="#263238">
+    <rect x="420" y="80" width="240" height="270" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+    <path d="M420,120 V92 a12,12 0 0 1 12,-12 H648 a12,12 0 0 1 12,12 V120 Z" fill="#2e7d32"/>
+    <text x="434" y="106" font-size="16" font-weight="bold" fill="#ffffff" letter-spacing="1.5">MIESTNOSŤ</text>
+
+    <text x="434" y="148" font-weight="bold">názov:</text>
+    <text x="486" y="148" fill="#1f4fa3" font-style="italic">lietadlo</text>
+    <text x="434" y="174" font-weight="bold">opis:</text>
+    <text x="476" y="174" fill="#1f4fa3" font-style="italic">Prebudil si sa</text>
+    <text x="434" y="194" fill="#1f4fa3" font-style="italic">v malom lietadle…</text>
+    <text x="434" y="222" font-weight="bold">východy:</text>
+    <text x="506" y="222" fill="#1f4fa3" font-style="italic">dolu</text>
+    <text x="434" y="248" font-weight="bold">predmety:</text>
+    <text x="512" y="248" fill="#1f4fa3" font-style="italic">bič, sedadlá</text>
+
+    <rect x="432" y="265" width="216" height="72" rx="8" fill="#c8e6c9"/>
+    <text x="444" y="286" font-size="12" font-weight="bold" fill="#1b5e20">PRAVIDLO</text>
+    <text x="636" y="286" font-size="12" font-family="DejaVu Sans Mono, Consolas, monospace" fill="#6a1b9a" text-anchor="end">.show()</text>
+    <text x="444" y="307">Ukáž opis, predmety</text>
+    <text x="444" y="326">a východy.</text>
+  </g>
+  <text x="540" y="376" font-size="13" font-family="DejaVu Sans Mono, Consolas, monospace" fill="#263238" text-anchor="middle">plane = Room('lietadlo', …)</text>
+
+  <!-- ===== object: pust ===== -->
+  <g font-size="14" fill="#263238">
+    <rect x="690" y="80" width="240" height="270" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+    <path d="M690,120 V92 a12,12 0 0 1 12,-12 H918 a12,12 0 0 1 12,12 V120 Z" fill="#2e7d32"/>
+    <text x="704" y="106" font-size="16" font-weight="bold" fill="#ffffff" letter-spacing="1.5">MIESTNOSŤ</text>
+
+    <text x="704" y="148" font-weight="bold">názov:</text>
+    <text x="756" y="148" fill="#1f4fa3" font-style="italic">púšť</text>
+    <text x="704" y="174" font-weight="bold">opis:</text>
+    <text x="746" y="174" fill="#1f4fa3" font-style="italic">Si na púšti, ktorá</text>
+    <text x="704" y="194" fill="#1f4fa3" font-style="italic">je naozaj pustá…</text>
+    <text x="704" y="222" font-weight="bold">východy:</text>
+    <text x="776" y="222" fill="#1f4fa3" font-style="italic">sever, juh, …</text>
+    <text x="704" y="248" font-weight="bold">predmety:</text>
+    <text x="782" y="248" fill="#1f4fa3" font-style="italic">žiadne</text>
+
+    <rect x="702" y="265" width="216" height="72" rx="8" fill="#c8e6c9"/>
+    <text x="714" y="286" font-size="12" font-weight="bold" fill="#1b5e20">PRAVIDLO</text>
+    <text x="906" y="286" font-size="12" font-family="DejaVu Sans Mono, Consolas, monospace" fill="#6a1b9a" text-anchor="end">.show()</text>
+    <text x="714" y="307">Ukáž opis, predmety</text>
+    <text x="714" y="326">a východy.</text>
+  </g>
+  <text x="810" y="376" font-size="13" font-family="DejaVu Sans Mono, Consolas, monospace" fill="#263238" text-anchor="middle">desert = Room('púšť', …)</text>
+
+  <!-- legend -->
+  <rect x="40" y="405" width="14" height="14" rx="2" fill="#263238"/>
+  <text x="62" y="417" font-size="13" fill="#263238"><tspan font-weight="bold">vytlačené</tspan> na šablóne – rovnaké na všetkých kartách</text>
+  <rect x="500" y="405" width="14" height="14" rx="2" fill="#1f4fa3"/>
+  <text x="522" y="417" font-size="13" fill="#1f4fa3"><tspan font-weight="bold">vpísané perom</tspan> – každá karta má vlastné</text>
+</svg>

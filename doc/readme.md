@@ -14,11 +14,12 @@
 * [Game State](day.1/120-game.state.md)
 * [Creating of Own Functions](day.1/130-own.functions.md)
 * [Main Building Blocks of the Game](day.1/140-main.building.blocks.md)
-* [About Dataclasses](day.1/150-about.dataclasses)
-* [Dataclass for Abstract Command](day.1/160-dataclass.command)
-* [Command `about`](day.1/170-command.about)
-* [Command `commands`](day.1/180-command.commands)
-* [Command `quit`](day.1/190-command.quit)
+* [Introduction to OOP: The Board Game](day.1/145-intro.to.oop.md)
+* [About Dataclasses](day.1/150-about.dataclasses.md)
+* [Dataclass for Abstract Command](day.1/160-dataclass.command.md)
+* [Command `about`](day.1/170-command.about.md)
+* [Command `commands`](day.1/180-command.commands.md)
+* [Command `quit`](day.1/190-command.quit.md)
 * [Daily Cheat Sheet](day.1/daily.cheat.sheet.md)
 
 
@@ -28,11 +29,11 @@
 * [Raising an Exception](day.2/205-raising.an.exception.md)
 * [Working with Lists](day.2/210-lists.intro.md)
 * [Backpack](day.2/220-backpack.md)
-* [Inventory](day.2/230-inventory)
+* [Inventory](day.2/230-inventory.md)
 * [String Formatting](day.2/240-string.formatting.md)
-* [Color Output with rich](day.2/250-rich)
+* [Color Output with rich](day.2/250-rich.md)
 * [List of Commands](day.2/260-list.of.commands.md)
-* [Parsing Commands](day.2/270-parse.line)
+* [Parsing Commands](day.2/270-parse.line.md)
 * [Refactoring: Package Commands](day.2/280-package.commands.md)
 * [Refactoring: Game Context](day.2/290-game.context.md)
 * [Refactoring: Circular Import Problem](day.2/295-circular.import.fix.md)
@@ -41,17 +42,18 @@
 
 ## Day 3: The Items
 
-* [Dataclass for Generic Room](day.3/300-room.representation)
+* [Dataclass for Generic Room](day.3/300-room.representation.md)
 * [Current Room in Game Context](day.3/310-current.room.in.game.context.md)
-* [Creating New Room](day.3/320-new.room)
+* [Creating New Room](day.3/320-new.room.md)
 * [Showing the Room](day.3/330-room.show.md)
-* [Command `look around`](day.3/340-look.around)
-* [Dataclass for Generic Item](day.3/350-item.representation)
-* [Item _Whip_](day.3/360-whip)
-* [Item _Empty Seats_](day.3/370-empty.seats)
+* [Command `look around`](day.3/340-look.around.md)
+* [Dataclass for Generic Item](day.3/350-item.representation.md)
+* [Item _Whip_](day.3/360-whip.md)
+* [Item _Empty Seats_](day.3/370-empty.seats.md)
 * [Items in Room](day.3/380-items.in.room.md)
 * [Parsing Commands with Parameters](day.3/390-parsing.commands.with.params.md)
 * [Command `examine` Item](day.3/395-examine.item.md)
+* [Daily Cheat Sheet](day.3/daily.cheat.sheet.md)
 
 
 ## Day 4: The World
@@ -73,6 +75,15 @@
 
 ## Day 5
 
-* [Command `use` Item](day.5/500-use.item)
-* [Usage of Parachute](day.5/510-usage.of.parachute)
-* [Correct Main Module](day.5/580-correct.main)
+* [Command `use` Item](day.5/500-use.item.md)
+* [Refactoring of the Class `Item`](day.5/505-refactoring.of.item.md)
+* [Usage of Parachute](day.5/510-usage.of.parachute.md)
+* [Free Fall](day.5/520-free.fall.md)
+* [Commands History](day.5/530-commands.history.md)
+* [Context Reset](day.5/540-context.reset.md)
+* [Command `restart`](day.5/550-command.restart.md)
+* [Command `save`](day.5/560-command.save.md)
+* [Command `load`](day.5/570-command.load.md)
+* [Correct Main Module](day.5/580-correct.main.md)
+* [Coconut Palm Tree](day.5/599-coconut.palm.tree.md)
+* [Daily Cheat Sheet](day.5/daily.cheat.sheet.md)

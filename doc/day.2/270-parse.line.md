@@ -79,7 +79,7 @@ parametre. Tie, ktoré ich potrebujú, ich použijú a tie, ktoré ich nepotrebu
 Za tým účelom je potrebné upraviť aj podobu metódy `.exec()` priamo v triede `Command`:
 
 ```python
-def exec(self, backapck: list[str], commands: list[Command]):
+def exec(self, backpack: list[str], commands: list[Command]):
     raise NotImplementedError('This method was not yet implemented.')
 ```
 
@@ -92,15 +92,15 @@ command = parse_line(line, commands)
 if command is None:
     print('Taký príkaz nepoznám.')
 else:
-    command.exec(backpack)
+    command.exec(backpack, commands)
 ```
 
 ### Použitie parsera pomocou ošetrenia výnimky
 
 ```python
+command = parse_line(line, commands)
 try:
-    command.exec(backpack)
-    command.exec(backpack)
+    command.exec(backpack, commands)
 except AttributeError:
     print('Taký príkaz nepoznám.')
 ```

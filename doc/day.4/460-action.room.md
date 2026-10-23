@@ -32,7 +32,7 @@ command, param = parse_line(line, context.commands)
 if command is None:
     print('Taký príkaz nepoznám.')
 else:
-    command.exec(backpack)
+    command.exec(context)
     context.current_room.act(context)
 ```
 
