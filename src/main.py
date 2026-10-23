@@ -3,7 +3,7 @@ import states
 # from states import PLAYING, QUIT
 # from states import PLAYING as STATE_PLAYING
 # import helpers
-from helpers import intro
+from helpers import intro, ask_yes_no, outro
 from commands.about import About
 
 
@@ -29,8 +29,7 @@ while game_state == states.PLAYING:
         print('* koniec - ukončí hru')
 
     elif line == 'koniec':
-        choice = input('Naozaj chceš skončiť? (a/n) ').strip().lower()
-        if choice == 'a':
+        if ask_yes_no('Naozaj chceš skonciť?') == True:
             game_state = states.QUIT
 
     else:

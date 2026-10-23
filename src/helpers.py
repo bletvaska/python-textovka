@@ -1,3 +1,5 @@
+import states
+
 def intro():
     """
     Shows the intro screen of the game.
@@ -16,3 +18,12 @@ def outro():
     Shows the outro screen of the game.
     """
     print('Ďakujem, že si si zahral túto mimoriadne fantastickú hru. Podpor mladého autora prevedním vhodnej čiastky na jeho účet. Díky.')
+
+
+def ask_yes_no(question):
+    choice = input(f'{question} (a/n) ').strip().lower()
+
+    while choice not in ['ano', 'a', 'yes', 'y', 'nie', 'n', 'no', 'áno']:
+        choice = input(f'Nesprávny vstup. {question} Zadaj prosím a/n ').strip().lower()
+
+    return choice in ['a', 'ano', 'áno', 'yes', 'y']
